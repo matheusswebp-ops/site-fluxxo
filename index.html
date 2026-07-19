@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluxxo · Design, Web e Soluções sob medida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="page-fx" aria-hidden="true">
+  <span class="sky"></span>
+  <b class="b1" data-sp="-0.11"></b>
+  <b class="b2" data-sp="-0.20"></b>
+  <b class="b3" data-sp="-0.15"></b>
+  <b class="b4" data-sp="-0.18"></b>
+  <b class="b5" data-sp="-0.14"></b>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="fioGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c6dff"/><stop offset="0.5" stop-color="#b57bff"/><stop offset="1" stop-color="#7a2ef0"/></linearGradient>
+  <linearGradient id="fioGrad2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a2ef0"/><stop offset="1" stop-color="#7c6dff"/></linearGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#241a37"/><stop offset="1" stop-color="#120c1e"/></linearGradient>
+  <linearGradient id="sheenGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.12)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></linearGradient>
+  <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ff0a8"/><stop offset="1" stop-color="#1fbf6b"/></linearGradient>
+  <linearGradient id="metalGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9dcff"/><stop offset="0.5" stop-color="#b57bff"/><stop offset="1" stop-color="#6a34c9"/></linearGradient>
+  <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(123,113,255,.5)"/><stop offset="1" stop-color="rgba(123,113,255,0)"/></linearGradient>
+  <radialGradient id="orbGlow" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="rgba(181,123,255,.5)"/><stop offset="1" stop-color="rgba(181,123,255,0)"/></radialGradient>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="dropSoft" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.5"/></filter>
+</defs></svg>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-shell">
+    <a href="#top" class="brand">
+      <svg class="mk" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <defs><linearGradient id="bmk" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#c9a0ff"/><stop offset="1" stop-color="#7a2ef0"/></linearGradient></defs>
+        <path d="M8 34 L22 12 Q24 9 28 9 L34 9 Q30 9 28 12 L16 32 Q14 35 10 35 L8 35 Z" fill="url(#bmk)"/>
+        <path d="M22 24 L30 24 L38 36 L32 36 L26 27 L22 33 L16 33 Z" fill="url(#bmk)"/>
+      </svg>
+      fluxxo
+    </a>
+    <div class="nav-links">
+      <a href="design.html">Design</a>
+      <a href="webdesign.html">Web</a>
+      <a href="#frentes">Soluções</a>
+      <a href="#processo">Como funciona</a>
+      <a href="blog.html">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="analise.html" class="nav-tool">Análise grátis</a>
+    </div>
+    <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="nav-cta">Falar com a gente</a>
+    <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mpanel">
+  <a href="design.html">Design</a>
+  <a href="webdesign.html">Web</a>
+  <a href="#frentes">Soluções</a>
+  <a href="#processo">Como funciona</a>
+  <a href="blog.html">Blog</a>
+  <a href="#faq">FAQ</a>
+  <a href="analise.html">Análise grátis</a>
+  <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
+</div>
+
+<!-- ============ HERO · Constelacao Fluxxo ============ -->
+<header class="hero" id="top">
+  <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+
+  <!-- palco cinematográfico: caos -> fluxo -->
+  <canvas class="cine" id="cine" aria-hidden="true"></canvas>
+  <div class="cine-vignette" aria-hidden="true"></div>
+  <div class="cine-leak" aria-hidden="true"></div>
+  <div class="cine-grain" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow">Design · Web · Soluções</span>
+    <h1>
+      <span class="word" style="animation-delay:1.55s">Design,</span>
+      <span class="word" style="animation-delay:1.66s">sites</span>
+      <span class="word" style="animation-delay:1.77s">e</span>
+      <span class="word" style="animation-delay:1.88s">soluções</span><br>
+      <span class="word grad" style="animation-delay:2s">sob&nbsp;medida.</span>
+    </h1>
+    <p class="hero-sub">Design da marca, criação do site e soluções que automatizam processos e resolvem o que trava a sua empresa.</p>
+    <div class="hero-actions">
+      <a href="#frentes" class="btn-primary">Ver como funciona
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+      <a href="#contato" class="btn-ghost">Falar com a gente</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="mouse"></span>role para conhecer</div>
+</header>
+
+
+<!-- ============ SEÇÃO 2 · AS TRÊS FRENTES ============ -->
+<section class="frentes" id="frentes">
+  <div class="wrap frentes-inner">
+
+    <div class="f-head reveal-up">
+      <span class="kicker">Três frentes, uma empresa</span>
+      <h2>Tudo que sua empresa precisa, <span class="grad">num lugar só.</span></h2>
+      <p>Design, web e soluções feitos por um time só. Role e conheça cada frente.</p>
+    </div>
+
+    <div class="acts">
+
+        <!-- ATO 1 · DESIGN -->
+        <article class="act" data-s="0">
+          <div class="act-text">
+            <div class="kicker">01 · Design</div>
+            <h2>A identidade que faz sua marca ser <span class="grad">levada a sério.</span></h2>
+            <p>Vai muito além do logo. A gente cria o sistema visual completo da sua marca: cores, tipografia, aplicações e as peças que ela usa pra se comunicar todo dia.</p>
+            <ul class="act-list">
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Identidade visual completa</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Peças para redes sociais e anúncios</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Um padrão visual que se mantém em tudo</li>
+            </ul>
+            <a class="act-cta" href="design.html"><span>Ver portfólio de design</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="illo">
+            <svg viewBox="0 0 520 416" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+              <ellipse cx="260" cy="200" rx="230" ry="168" fill="url(#orbGlow)" opacity=".5"/>
+              <g stroke="rgba(181,123,255,.05)"><path d="M0 104H520M0 208H520M0 312H520M130 0V416M260 0V416M390 0V416"/></g>
+              <g filter="url(#dropSoft)"><rect x="88" y="66" width="344" height="284" rx="22" fill="url(#panelGrad)" stroke="rgba(181,123,255,.22)"/></g>
+              <path d="M88 66h344a22 22 0 0 1 22 22v34H66V88a22 22 0 0 1 22-22Z" fill="url(#sheenGrad)" opacity=".5"/>
+              <g><circle cx="112" cy="90" r="4" fill="#7c6dff"/><circle cx="126" cy="90" r="4" fill="#b57bff"/><circle cx="140" cy="90" r="4" fill="#7a2ef0"/></g>
+              <rect x="356" y="84" width="60" height="12" rx="6" fill="rgba(255,255,255,.06)"/>
+              <path d="M120 252 C 152 150 214 150 214 210 C 214 264 152 264 170 200 C 186 150 252 150 302 202"
+                    stroke="url(#fioGrad)" stroke-width="4" stroke-linecap="round" filter="url(#softGlow)"
+                    pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1;animation:draw2 4.4s ease-in-out infinite"/>
+              <circle cx="120" cy="252" r="4" fill="#e9d8ff"/><circle cx="302" cy="202" r="4" fill="#e9d8ff"/>
+              <text x="250" y="150" font-family="'Poppins',sans-serif" font-weight="700" font-size="50" fill="url(#fioGrad2)">Aa</text>
+              <rect x="318" y="116" width="90" height="10" rx="5" fill="rgba(255,255,255,.5)"><animate attributeName="width" values="0;90;90;0" keyTimes="0;.4;.78;1" dur="4.4s" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.6 0 0.4 1" repeatCount="indefinite"/></rect>
+              <rect x="318" y="133" width="66" height="7" rx="3" fill="rgba(255,255,255,.22)"><animate attributeName="width" values="0;66;66;0" keyTimes="0;.46;.78;1" dur="4.4s" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.6 0 0.4 1" repeatCount="indefinite"/></rect>
+              <g filter="url(#dropSoft)"><rect x="150" y="292" width="222" height="40" rx="20" fill="#160f24" stroke="rgba(255,255,255,.08)"/></g>
+              <g>
+                <circle cx="178" cy="312" r="11" fill="#7c6dff"/><circle cx="214" cy="312" r="11" fill="#b57bff"/>
+                <circle cx="250" cy="312" r="11" fill="#7a2ef0"/><circle cx="286" cy="312" r="11" fill="#4a2a86"/>
+                <circle cx="322" cy="312" r="11" fill="#241640"/>
+                <circle cx="348" cy="312" r="9" fill="none" stroke="rgba(255,255,255,.3)" stroke-dasharray="2 3"/>
+              </g>
+              <g filter="url(#glow)"><path d="M0 0 L0 20 L6 15 L10 23 L13 21 L9 14 L16 14 Z" fill="#fff" stroke="#7a2ef0" stroke-width=".8">
+                <animateMotion dur="4.4s" repeatCount="indefinite" rotate="auto" calcMode="spline" keyTimes="0;.5;1" keyPoints="0;1;0" keySplines="0.4 0 0.2 1;0.4 0 0.2 1"
+                  path="M120 252 C 152 150 214 150 214 210 C 214 264 152 264 170 200 C 186 150 252 150 302 202"/>
+              </path></g>
+              <g fill="#c9a0ff"><circle cx="70" cy="56" r="1.6"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle>
+              <circle cx="474" cy="118" r="1.6"><animate attributeName="opacity" values=".2;1;.2" dur="3.6s" repeatCount="indefinite"/></circle>
+              <circle cx="452" cy="332" r="1.6"><animate attributeName="opacity" values=".2;1;.2" dur="2.6s" repeatCount="indefinite"/></circle></g>
+            </svg>
+          </div>
+        </article>
+
+        <!-- ATO 2 · WEB -->
+        <article class="act" data-s="1">
+          <div class="act-text">
+            <div class="kicker">02 · Web</div>
+            <h2>Um site que trabalha pra <span class="grad">fechar venda.</span></h2>
+            <p>Sites e landing pages rápidos e feitos pra converter. Cada seção é pensada pra levar o visitante até a ação, sem enrolação e sem template genérico.</p>
+            <ul class="act-list">
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sites e landing pages sob medida</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Rápido e perfeito em qualquer tela</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Estrutura pensada pra converter</li>
+            </ul>
+            <a class="act-cta" href="webdesign.html"><span>Ver sites</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="illo">
+            <svg viewBox="0 0 520 416" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+              <ellipse cx="260" cy="200" rx="240" ry="168" fill="url(#orbGlow)" opacity=".4"/>
+              <g filter="url(#dropSoft)"><rect x="70" y="46" width="380" height="300" rx="20" fill="url(#panelGrad)" stroke="rgba(181,123,255,.22)"/></g>
+              <path d="M70 46h380a20 20 0 0 1 20 20v26H50V66a20 20 0 0 1 20-20Z" fill="rgba(255,255,255,.04)"/>
+              <path d="M70 92H450" stroke="rgba(255,255,255,.08)"/>
+              <g fill="#5a4d78"><circle cx="92" cy="69" r="4.5"/><circle cx="108" cy="69" r="4.5"/><circle cx="124" cy="69" r="4.5"/></g>
+              <rect x="300" y="61" width="120" height="16" rx="8" fill="rgba(255,255,255,.05)"/><circle cx="314" cy="69" r="3" fill="#1fbf6b"/>
+              <rect x="92" y="112" width="220" height="120" rx="12" fill="url(#fioGrad)" filter="url(#softGlow)"><animate attributeName="opacity" values="0;0;.9;.9;0" keyTimes="0;.16;.3;.86;1" dur="5s" repeatCount="indefinite"/></rect>
+              <path d="M92 124a12 12 0 0 1 12-12h196a12 12 0 0 1 12 12v46H92Z" fill="url(#sheenGrad)"><animate attributeName="opacity" values="0;0;.5;.5;0" keyTimes="0;.16;.3;.86;1" dur="5s" repeatCount="indefinite"/></path>
+              <rect x="330" y="120" width="98" height="14" rx="5" fill="rgba(255,255,255,.55)"><animate attributeName="width" values="0;98;98;0" keyTimes="0;.42;.82;1" dur="5s" repeatCount="indefinite"/></rect>
+              <rect x="330" y="142" width="74" height="9" rx="4" fill="#3a3158"><animate attributeName="width" values="0;74;74;0" keyTimes="0;.48;.82;1" dur="5s" repeatCount="indefinite"/></rect>
+              <rect x="330" y="158" width="88" height="9" rx="4" fill="#2f2748"><animate attributeName="width" values="0;88;88;0" keyTimes="0;.54;.82;1" dur="5s" repeatCount="indefinite"/></rect>
+              <rect x="330" y="184" width="82" height="30" rx="9" fill="#7a2ef0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.58;.66;.88;1" dur="5s" repeatCount="indefinite"/></rect>
+              <g transform="translate(92 250)">
+                <path fill="url(#chartFill)"><animate attributeName="d" values="M0 74 L200 74 L200 74 L0 74 Z;M0 74 L0 54 C40 42 60 30 100 34 C140 38 168 14 200 8 L200 74 Z;M0 74 L0 54 C40 42 60 30 100 34 C140 38 168 14 200 8 L200 74 Z;M0 74 L200 74 L200 74 L0 74 Z" keyTimes="0;.55;.8;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0.3 0 0.2 1;0 0 1 1;0.6 0 0.4 1"/></path>
+                <path d="M0 54 C40 42 60 30 100 34 C140 38 168 14 200 8" fill="none" stroke="#7c6dff" stroke-width="2.5" filter="url(#glow)" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1;animation:draw2 5s ease-in-out infinite"/>
+              </g>
+              <text x="330" y="298" fill="#8f86a8" font-family="'Space Mono',monospace" font-size="12">conversão</text>
+              <text x="330" y="322" fill="#7fe0b0" font-family="'Poppins',sans-serif" font-weight="600" font-size="21">+38%</text>
+              <g><rect x="330" y="250" width="90" height="26" rx="13" fill="rgba(31,191,107,.1)" stroke="rgba(31,191,107,.32)"/>
+                <circle cx="348" cy="263" r="4" fill="#1fbf6b"><animate attributeName="opacity" values=".3;1;.3" dur="1.6s" repeatCount="indefinite"/></circle>
+                <text x="360" y="267" fill="#7fe0b0" font-family="'Space Mono',monospace" font-size="11">no ar</text></g>
+              <g filter="url(#glow)"><path d="M0 0 L0 20 L6 15 L10 23 L13 21 L9 14 L16 14 Z" fill="#fff">
+                <animateMotion dur="5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keyPoints="0;1;0" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" path="M250 140 L371 199"/>
+              </path></g>
+            </svg>
+          </div>
+        </article>
+
+        <!-- ATO 3 · SOLUÇÕES -->
+        <article class="act" data-s="2">
+          <div class="act-text">
+            <div class="kicker">03 · Soluções</div>
+            <h2>A tecnologia que tira o <span class="grad">trabalho manual</span> das suas costas.</h2>
+            <p>Automações e sistemas sob medida pra sua operação. A gente conecta suas ferramentas e transforma tarefa repetitiva em processo que roda sozinho.</p>
+            <ul class="act-list">
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Automação de processos que se repetem</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Integração entre as suas ferramentas</li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sistemas sob medida pro seu jeito de trabalhar</li>
+            </ul>
+            <span class="act-soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Em breve</span>
+          </div>
+          <div class="illo">
+            <svg viewBox="0 0 520 416" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+              <ellipse cx="292" cy="200" rx="150" ry="132" fill="url(#orbGlow)" opacity=".5"/>
+              <text x="46" y="96" fill="#8f86a8" font-family="'Space Mono',monospace" font-size="11">manual</text>
+              <text x="392" y="96" fill="#7fe0b0" font-family="'Space Mono',monospace" font-size="11">automático</text>
+              <g filter="url(#dropSoft)">
+                <rect x="44" y="108" width="128" height="42" rx="13" fill="url(#panelGrad)" stroke="rgba(255,255,255,.1)"/>
+                <rect x="44" y="160" width="128" height="42" rx="13" fill="url(#panelGrad)" stroke="rgba(255,255,255,.1)"/>
+                <rect x="44" y="212" width="128" height="42" rx="13" fill="url(#panelGrad)" stroke="rgba(255,255,255,.1)"/>
+              </g>
+              <g stroke="#5a4d78" stroke-width="2" fill="none"><rect x="56" y="120" width="18" height="18" rx="5"/><rect x="56" y="172" width="18" height="18" rx="5"/><rect x="56" y="224" width="18" height="18" rx="5"/></g>
+              <g fill="#3a3158"><rect x="84" y="123" width="72" height="7" rx="3"/><rect x="84" y="132" width="52" height="6" rx="3" fill="#2c2547"/>
+               <rect x="84" y="175" width="60" height="7" rx="3"/><rect x="84" y="184" width="70" height="6" rx="3" fill="#2c2547"/>
+               <rect x="84" y="227" width="76" height="7" rx="3"/><rect x="84" y="236" width="48" height="6" rx="3" fill="#2c2547"/></g>
+              <g stroke="url(#fioGrad)" stroke-width="2" fill="none" filter="url(#glow)">
+                <path id="s_a1" d="M172 129 C 212 140 226 176 252 186"/>
+                <path id="s_a2" d="M172 181 C 206 185 216 192 246 198"/>
+                <path id="s_a3" d="M172 233 C 212 224 226 210 252 200"/>
+              </g>
+              <circle r="3" fill="#efe2ff" filter="url(#glow)"><animateMotion dur="2s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keyPoints="0;1" keySplines="0.4 0 0.2 1"><mpath xlink:href="#s_a1"/></animateMotion></circle>
+              <circle r="3" fill="#efe2ff" filter="url(#glow)"><animateMotion dur="2.3s" begin=".3s" repeatCount="indefinite"><mpath xlink:href="#s_a2"/></animateMotion></circle>
+              <circle r="3" fill="#efe2ff" filter="url(#glow)"><animateMotion dur="2.6s" begin=".6s" repeatCount="indefinite"><mpath xlink:href="#s_a3"/></animateMotion></circle>
+              <g transform="translate(292 193)">
+                <circle r="56" fill="url(#orbGlow)" opacity=".7"/>
+                <circle r="46" fill="rgba(20,14,32,.72)" stroke="rgba(181,123,255,.25)"/>
+                <circle r="38" fill="none" stroke="rgba(181,123,255,.4)"><animate attributeName="r" values="32;46;32" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="3s" repeatCount="indefinite"/></circle>
+              </g>
+              <g transform="translate(284 187)"><g style="transform-box:fill-box;transform-origin:center;animation:spinCore 7s linear infinite">
+                <path fill="url(#metalGrad)" d="M0 -26 8 -24 10 -17 16 -14 23 -16 27 -9 22 -4 22 4 27 9 23 16 16 14 10 17 8 24 0 26 -8 24 -10 17 -16 14 -23 16 -27 9 -22 4 -22 -4 -27 -9 -23 -16 -16 -14 -10 -17 -8 -24 Z"/>
+                <circle r="9" fill="#160f24"/></g></g>
+              <g transform="translate(316 216)"><g style="transform-box:fill-box;transform-origin:center;animation:spinRev 5s linear infinite">
+                <path fill="#8b3dff" d="M0 -17 6 -15 8 -10 13 -8 15 -11 18 -6 14 -3 14 3 18 6 15 11 13 8 8 10 6 15 0 17 -6 15 -8 10 -13 8 -15 11 -18 6 -14 3 -14 -3 -18 -6 -15 -11 -13 -8 -8 -10 -6 -15 Z"/>
+                <circle r="6" fill="#0e0a17"/></g></g>
+              <g stroke="url(#fioGrad)" stroke-width="2" fill="none" filter="url(#glow)">
+                <path id="s_b1" d="M338 178 C 366 168 380 140 414 136"/>
+                <path id="s_b2" d="M338 208 C 366 216 380 236 414 240"/>
+              </g>
+              <circle r="3" fill="#c9f7dd" filter="url(#glow)"><animateMotion dur="2.1s" repeatCount="indefinite"><mpath xlink:href="#s_b1"/></animateMotion></circle>
+              <circle r="3" fill="#c9f7dd" filter="url(#glow)"><animateMotion dur="2.4s" begin=".4s" repeatCount="indefinite"><mpath xlink:href="#s_b2"/></animateMotion></circle>
+              <g filter="url(#dropSoft)">
+                <rect x="392" y="116" width="112" height="42" rx="13" fill="rgba(31,191,107,.07)" stroke="rgba(31,191,107,.3)"/>
+                <rect x="392" y="218" width="112" height="42" rx="13" fill="rgba(31,191,107,.07)" stroke="rgba(31,191,107,.3)"/>
+              </g>
+              <g><circle cx="412" cy="137" r="11" fill="url(#greenGrad)"/><circle cx="412" cy="239" r="11" fill="url(#greenGrad)"/>
+                 <g stroke="#06301d" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M407 137l3 3 6-6"/><path d="M407 239l3 3 6-6"/></g></g>
+              <g fill="#2f5545"><rect x="430" y="130" width="60" height="6" rx="3"/><rect x="430" y="140" width="44" height="5" rx="3"/>
+               <rect x="430" y="232" width="60" height="6" rx="3"/><rect x="430" y="242" width="44" height="5" rx="3"/></g>
+              <g transform="translate(210 330)">
+                <rect x="0" y="0" width="94" height="30" rx="15" fill="#160f24" stroke="rgba(181,123,255,.35)"/>
+                <circle cx="76" cy="15" r="11" fill="url(#fioGrad2)"><animate attributeName="cx" values="16;16;76;76" keyTimes="0;.4;.6;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1"/></circle>
+              </g>
+              <text x="316" y="351" fill="#b57bff" font-family="'Space Mono',monospace" font-size="12">rodando</text>
+            </svg>
+          </div>
+        </article>
+
+    </div><!-- /.acts -->
+
+    <div class="f-cta reveal-up">
+      <h3>Não sabe <span class="grad">por onde começar?</span></h3>
+      <p>A gente monta o pacote certo pra sua empresa.</p>
+      <a href="#contato" class="btn-hero">
+        <span>Começar meu projeto</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+  </div><!-- /.frentes-inner -->
+</section>
+
+
+<!-- ============ SEÇÃO · TRABALHOS SELECIONADOS ============ -->
+<section class="work" id="trabalhos">
+  <div class="wrap">
+    <div class="work-head rv">
+      <span class="kicker">Portfólio</span>
+      <h2>Um gosto do que sai<br>da nossa <span class="grad">bancada.</span></h2>
+      <p>Peças reais, de projetos reais. Isso aqui é só o aperitivo: o portfólio completo tem muito mais.</p>
+    </div>
+  </div>
+  <div class="work-belt rv" aria-hidden="true">
+    <div class="work-row wr-a"><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt=""><img src="img/thumb-muda-tudo.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt=""><img src="img/carrossel-engenharia-civil-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/thumb-cpl-bingo.jpg" alt=""><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt=""><img src="img/thumb-muda-tudo.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt=""><img src="img/carrossel-engenharia-civil-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/thumb-cpl-bingo.jpg" alt=""></div>
+    <div class="work-row wr-b"><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/imobiliaria-01.webp" alt=""><img src="img/thumb-curriculo-forte.jpg" alt=""><img src="img/suplemento-feno-grego-01.jpg" alt=""><img src="img/carrossel-trafego-pago-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-vem-de-amazon-1.webp" alt=""><img src="img/imobiliaria-05.webp" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/imobiliaria-01.webp" alt=""><img src="img/thumb-curriculo-forte.jpg" alt=""><img src="img/suplemento-feno-grego-01.jpg" alt=""><img src="img/carrossel-trafego-pago-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-vem-de-amazon-1.webp" alt=""><img src="img/imobiliaria-05.webp" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""></div>
+  </div>
+  <div class="work-ctas rv">
+    <a href="design.html" class="btn-hero"><span>Ver o portfólio de design</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============ SEÇÃO · SITES NO AR ============ -->
+<section class="sites-show" id="sites">
+  <div class="wrap">
+    <div class="work-head rv">
+      <span class="kicker">Sites e landing pages</span>
+      <h2>Páginas que estão no ar,<br><span class="grad">vendendo agora.</span></h2>
+      <p>Passe o mouse em cima e navegue: o print rola a página inteira, do topo ao rodapé.</p>
+    </div>
+    <div class="sites-grid">
+      <div class="site-card rv">
+        <div class="site-frame">
+          <span class="ws-bar"><i></i><i></i><i></i></span>
+          <span class="ws-view"><span class="ws-scroll"><img src="img/sites/site-alvo.jpg" alt="Site Alvo AG" loading="lazy"></span></span>
+        </div>
+        <div class="site-meta"><b>Alvo AG</b><span>Landing page · Agenciamento</span></div>
+      </div>
+      <div class="site-card rv">
+        <div class="site-frame">
+          <span class="ws-bar"><i></i><i></i><i></i></span>
+          <span class="ws-view"><span class="ws-scroll"><img src="img/sites/site-puravive.jpg" alt="Site PuraVive" loading="lazy"></span></span>
+        </div>
+        <div class="site-meta"><b>PuraVive</b><span>E-commerce · Suplementos</span></div>
+      </div>
+      <div class="site-card rv">
+        <div class="site-frame">
+          <span class="ws-bar"><i></i><i></i><i></i></span>
+          <span class="ws-view"><span class="ws-scroll"><img src="img/sites/site-drasumaia.jpg" alt="Site Dra. Sumaia" loading="lazy"></span></span>
+        </div>
+        <div class="site-meta"><b>Dra. Sumaia</b><span>Landing page · Saúde</span></div>
+      </div>
+    </div>
+    <div class="work-ctas rv">
+      <a href="webdesign.html" class="btn-hero"><span>Ver todos os sites</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SEÇÃO 3 · PROCESSO ============ -->
+<section class="proc" id="processo">
+  <div class="wrap">
+    <div class="proc-head reveal-up">
+      <span class="kicker">Como funciona</span>
+      <h2>Do primeiro oi à <span class="grad">entrega final</span></h2>
+      <p>Um caminho claro, sem surpresa no meio. Você sabe exatamente o que acontece em cada etapa.</p>
+    </div>
+
+    <div class="proc-steps">
+      <span class="proc-line" aria-hidden="true"></span>
+      <span class="proc-fill" aria-hidden="true"></span>
+
+      <div class="proc-step">
+        <div class="proc-card">
+          <span class="proc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><circle cx="9" cy="10.5" r=".6" fill="currentColor"/><circle cx="13" cy="10.5" r=".6" fill="currentColor"/><circle cx="17" cy="10.5" r=".6" fill="currentColor"/></svg></span>
+          <h3>Conversa</h3>
+          <p>Entendemos seu negócio, seu objetivo e o que trava hoje. Sem compromisso.</p>
+        </div>
+        <div class="proc-node"><span>01</span></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card">
+          <span class="proc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M9 13h6M9 17h4"/></svg></span>
+          <h3>Proposta</h3>
+          <p>Você recebe escopo, prazo e valor fechados. Sem surpresa depois.</p>
+        </div>
+        <div class="proc-node"><span>02</span></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card">
+          <span class="proc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7a2.1 2.1 0 0 0-3-3l-7 7-1 4z"/><path d="M15 6l3 3"/><circle cx="5.5" cy="18.5" r="1.6"/></svg></span>
+          <h3>Design</h3>
+          <p>Criamos a identidade e o desenho de tudo que vai ser produzido. Você aprova antes da gente executar.</p>
+        </div>
+        <div class="proc-node"><span>03</span></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card">
+          <span class="proc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 7l-2 10"/></svg></span>
+          <h3>Desenvolvimento</h3>
+          <p>Colocamos a mão na massa nas três frentes: design, site e soluções, testando a cada etapa.</p>
+        </div>
+        <div class="proc-node"><span>04</span></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card">
+          <span class="proc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="M12 15l-3-3a11 11 0 0 1 8-9 11 11 0 0 1-9 8z"/><circle cx="15" cy="9" r="1.2"/></svg></span>
+          <h3>Entrega e acompanhamento</h3>
+          <p>Entregamos tudo pronto e continuamos do seu lado pra ajustar e evoluir com o tempo.</p>
+        </div>
+        <div class="proc-node"><span>05</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEÇÃO · MARCAS QUE CONFIAM ============ -->
+<section class="clients" id="clientes">
+  <div class="wrap">
+    <div class="clients-head rv">
+      <span class="kicker">Marcas que confiam</span>
+      <h2>Marcas que já confiam<br>na <span class="grad">Fluxxo</span></h2>
+      <p>De clínicas a e-commerces, ajudamos negócios de todos os tamanhos a transformar visita em cliente.</p>
+    </div>
+
+    <div class="client-rows rv">
+    <div class="crow"><div class="client-track">
+        <div class="client-chip escuro"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></div>
+        <!-- dup -->
+        <div class="client-chip escuro" aria-hidden="true"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></div>
+    </div></div>
+
+    <div class="crow"><div class="client-track rev">
+        <div class="client-chip"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></div>
+        <div class="client-chip"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></div>
+        <div class="client-chip escuro"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></div>
+        <!-- dup -->
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></div>
+        <div class="client-chip" aria-hidden="true"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></div>
+        <div class="client-chip escuro" aria-hidden="true"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></div>
+    </div></div>
+    </div>
+
+    <div class="clients-cta rv">
+      <a href="#depoimentos" class="btn-hero"><span>Ver todos os cases</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEÇÃO 4 · PROVA SOCIAL ============ -->
+<section class="proof" id="depoimentos">
+  <div class="wrap">
+    <div class="proof-head rv">
+      <span class="kicker">Prova de verdade</span>
+      <h2>Quem confiou, <span class="grad">colheu resultado</span></h2>
+      <p>Marcas que passaram pelas três frentes da Fluxxo: design, web e soluções. Os números falam, e os clientes também.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat rv"><span class="stat-idx">01 / entregas</span><span class="stat-num"><span class="stat-cnt" data-to="140">140</span><span class="suf">+</span></span><span class="stat-label">projetos entregues</span></div>
+      <div class="stat rv"><span class="stat-idx">02 / marcas</span><span class="stat-num"><span class="stat-cnt" data-to="95">95</span><span class="suf">+</span></span><span class="stat-label">marcas atendidas</span></div>
+      <div class="stat rv"><span class="stat-idx">03 / satisfação</span><span class="stat-num"><span class="stat-cnt" data-to="98">98</span><span class="suf">%</span></span><span class="stat-label">de clientes satisfeitos</span></div>
+    </div>
+
+    <div class="mural rv">
+      <div class="mrow"><div class="mtrack">
+        <figure class="tcard"><span class="tbrand">Web</span><blockquote>“Vou ser sincera: eu achava que o problema era o produto. Era o site. <em>Trocamos e a venda destravou</em> na primeira semana. Fiquei até brava de não ter feito antes.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></span><span class="tmeta"><span>E-commerce de suplementos</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Web</span><blockquote>“A gente rodava anúncio e culpava o algoritmo. Trocamos só a página e <em>bateu a meta do trimestre com folga</em>. O algoritmo tava inocente.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></span><span class="tmeta"><span>Educação médica</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Design</span><blockquote>“Mandei mensagem numa quarta, apavorado com o lançamento. <em>Sábado tava tudo pronto</em>. E olha que eu nem tinha dado um briefing direito.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></span><span class="tmeta"><span>Treinamento para vender na Amazon</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Design</span><blockquote>“O logo antigo era eu que tinha feito no Canva, então a régua tava baixa kkk. Mas falando sério: <em>hoje a marca abre porta</em> antes da gente dizer qualquer coisa.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></span><span class="tmeta"><span>Marca de tecnologia</span></span></figcaption></figure>
+        <!-- dup -->
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Web</span><blockquote>“Vou ser sincera: eu achava que o problema era o produto. Era o site. <em>Trocamos e a venda destravou</em> na primeira semana. Fiquei até brava de não ter feito antes.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/puravive.png" alt="PuraVive" loading="lazy"></span><span class="tmeta"><span>E-commerce de suplementos</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Web</span><blockquote>“A gente rodava anúncio e culpava o algoritmo. Trocamos só a página e <em>bateu a meta do trimestre com folga</em>. O algoritmo tava inocente.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/imedf.png" alt="IMEDF" loading="lazy"></span><span class="tmeta"><span>Educação médica</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Design</span><blockquote>“Mandei mensagem numa quarta, apavorado com o lançamento. <em>Sábado tava tudo pronto</em>. E olha que eu nem tinha dado um briefing direito.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/sellerpro.png" alt="Seller Pro" loading="lazy"></span><span class="tmeta"><span>Treinamento para vender na Amazon</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Design</span><blockquote>“O logo antigo era eu que tinha feito no Canva, então a régua tava baixa kkk. Mas falando sério: <em>hoje a marca abre porta</em> antes da gente dizer qualquer coisa.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/fader.png" alt="Fader" loading="lazy"></span><span class="tmeta"><span>Marca de tecnologia</span></span></figcaption></figure>
+      </div></div>
+
+      <div class="mrow"><div class="mtrack r">
+        <figure class="tcard"><span class="tbrand">Web</span><blockquote>“Eu trabalho com marketing, ou seja, cliente chato nível máximo. Me fizeram perguntas que nem eu tinha me feito. <em>A página saiu melhor que o meu briefing</em>.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></span><span class="tmeta"><span>Assessoria de marketing</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Soluções</span><blockquote>“Meu medo era ficar refém de agência pra trocar uma vírgula. <em>Hoje eu mesmo atualizo tudo</em>. Só ligo pra eles pra coisa grande.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></span><span class="tmeta"><span>Marketing imobiliário</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Soluções</span><blockquote>“Um mês depois de pagar, me chamaram com uma lista de melhorias. Estranhei, <em>achei que era cobrança</em> kkk. Era sugestão. De graça.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></span><span class="tmeta"><span>Tecnologia</span></span></figcaption></figure>
+        <figure class="tcard"><span class="tbrand">Design</span><blockquote>“Mandei um monte de referência desconexa, tipo quero isso mas diferente. Voltou <em>uma identidade que parecia nossa desde sempre</em>. Até hoje não sei como.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></span><span class="tmeta"><span>Educação</span></span></figcaption></figure>
+        <!-- dup -->
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Web</span><blockquote>“Eu trabalho com marketing, ou seja, cliente chato nível máximo. Me fizeram perguntas que nem eu tinha me feito. <em>A página saiu melhor que o meu briefing</em>.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/vd-marketing.png" alt="VD Marketing" loading="lazy"></span><span class="tmeta"><span>Assessoria de marketing</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Soluções</span><blockquote>“Meu medo era ficar refém de agência pra trocar uma vírgula. <em>Hoje eu mesmo atualizo tudo</em>. Só ligo pra eles pra coisa grande.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/mentesimob.png" alt="Mentes Imob" loading="lazy"></span><span class="tmeta"><span>Marketing imobiliário</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Soluções</span><blockquote>“Um mês depois de pagar, me chamaram com uma lista de melhorias. Estranhei, <em>achei que era cobrança</em> kkk. Era sugestão. De graça.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/flynow.png" alt="Flynow" loading="lazy"></span><span class="tmeta"><span>Tecnologia</span></span></figcaption></figure>
+        <figure class="tcard" aria-hidden="true"><span class="tbrand">Design</span><blockquote>“Mandei um monte de referência desconexa, tipo quero isso mas diferente. Voltou <em>uma identidade que parecia nossa desde sempre</em>. Até hoje não sei como.”</blockquote><figcaption class="tperson"><span class="tavatar tlogo"><img src="img/logos/iducali.png" alt="Iducali" loading="lazy"></span><span class="tmeta"><span>Educação</span></span></figcaption></figure>
+      </div></div>
+    </div>
+
+    <div class="proof-cta rv">
+      <p>Sua marca pode ser o próximo case.</p>
+      <a href="#contato" class="btn-hero"><span>Quero esses resultados</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SEÇÃO · PERGUNTAS FREQUENTES ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-head rv">
+      <span class="kicker">Perguntas frequentes</span>
+      <h2>Ainda com <span class="grad">dúvidas?</span></h2>
+      <p>Separamos as perguntas que mais escutamos antes de fechar um projeto.</p>
+    </div>
+
+    <div class="faq-list rv">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">
+          <span>Quanto tempo leva pra ficar pronto?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Depende da frente: sites e landing pages costumam ficar prontos em 2 a 3 semanas, projetos de design em 1 a 2 semanas, e soluções sob medida variam conforme a complexidade. No fim da primeira conversa você já sai com um prazo fechado, sem enrolação.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Como funciona o orçamento?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Sem compromisso e sem letra miúda. Você conta o que precisa, a gente entende o escopo e devolve um valor fechado antes de começar, nada de custo surpresa no meio do caminho.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Preciso ter tudo pronto (textos, logo, imagens) antes de começar?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Não. Ajudamos a organizar e, quando falta algo, como copywriting ou identidade visual, cobrimos isso dentro do próprio projeto. Você entra com a ideia, a gente cuida do resto.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>E depois que o projeto vai ao ar, o suporte acaba?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Não é "publicou e sumiu". Continuamos de olho: aviso automático se algo sair do ar, checagem periódica de performance e suporte direto se precisar ajustar alguma coisa.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Vocês atendem empresas de qualquer tamanho?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Sim. Já entregamos projetos para autônomos, clínicas, e-commerces e consultorias: o processo se adapta ao tamanho e à maturidade de cada negócio, não o contrário.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Posso pedir ajustes depois da entrega?</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Claro. Toda entrega passa por uma rodada de ajustes inclusa. Depois disso, mudanças pontuais ou evoluções contínuas podem ser combinadas à parte, sem burocracia.</p></div></div>
+      </div>
+    </div>
+
+    <div class="faq-cta rv">
+      <p>Não achou sua pergunta aqui?</p>
+      <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="btn-hero"><span>Fala com a gente</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ ANÁLISE GRATUITA ============ -->
+<section class="tool-band" id="analise">
+  <div class="wrap">
+    <div class="tool-card rv">
+      <span class="tool-ring" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      </span>
+      <span class="tool-kicker">Ferramenta gratuita</span>
+      <h2>Será que seu site <span class="grad">vende de verdade?</span></h2>
+      <p>12 perguntas, 3 minutos e um diagnóstico honesto: nota de 0 a 100, raio-x de 4 pilares e o plano de correção na ordem certa. Sem cadastro, sem e-mail, resultado na tela.</p>
+      <div class="tool-pills" aria-hidden="true">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>Clareza</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 4 7.1 17 2.5-7.4L21 11.1 4 4z"/><path d="m14 14 6 6"/></svg>Conversão</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.2V11c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6.2z"/><path d="M9.2 12.2l2 2 3.6-4"/></svg>Confiança</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Técnica</span>
+      </div>
+      <a href="analise.html" class="btn-hero"><span>Testar meu site agora</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SEÇÃO 5 · CONTATO ============ -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-intro rv">
+        <span class="ct-kicker">Bora começar</span>
+        <h2>Sua próxima grande entrega<br>começa com um <span class="grad">“oi”</span>.</h2>
+        <p>Escolhe a frente, conta o que precisa e manda. A gente responde em minutos. De verdade, não é força de expressão.</p>
+        <ul class="ct-perks">
+          <li><span class="live"></span> Time online agora, pronto pra atender</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> Resposta em minutos, não em dias</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> Orçamento sem compromisso nenhum</li>
+        </ul>
+        <div class="ct-channels">
+          <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="ct-chan"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0112 4zm-2.7 4c-.2 0-.5 0-.7.4-.2.4-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.7 2.7 4.2 3.7 2.1.8 2.5.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2 0-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.6.8c-.1.2-.3.2-.5.1-.7-.3-1.4-.6-2.1-1.5-.5-.6-.8-1.2-.9-1.4-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3.2-.5 0-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.6-.4z"/></svg> WhatsApp</a>
+          <a href="mailto:contato@fluxxo.com.br" class="ct-chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> E-mail</a>
+          <a href="#contato" class="ct-chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg> Instagram</a>
+        </div>
+      </div>
+
+      <div class="ct-card rv">
+        <form id="ctForm" class="ct-form" novalidate>
+          <div class="ct-field">
+            <input id="ctName" name="name" type="text" placeholder=" " autocomplete="name" required>
+            <label for="ctName">Seu nome</label>
+          </div>
+          <div class="ct-field">
+            <input id="ctEmail" name="email" type="email" placeholder=" " autocomplete="email" required>
+            <label for="ctEmail">Seu melhor e-mail</label>
+          </div>
+
+          <div>
+            <span class="ct-svc-label">Qual serviço você precisa? <b>*</b></span>
+            <div class="ct-svc-grid" id="ctSvcGrid">
+              <button type="button" class="ct-svc" data-svc="Design" aria-pressed="false">
+                <span class="svc-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+                <span class="svc-name">Design</span>
+                <span class="svc-sub">marca &amp; visual</span>
+              </button>
+              <button type="button" class="ct-svc" data-svc="Web" aria-pressed="false">
+                <span class="svc-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></span>
+                <span class="svc-name">Web</span>
+                <span class="svc-sub">sites &amp; apps</span>
+              </button>
+              <button type="button" class="ct-svc" data-svc="Soluções" aria-pressed="false">
+                <span class="svc-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/><circle cx="12" cy="12" r="3.4"/></svg></span>
+                <span class="svc-name">Soluções</span>
+                <span class="svc-sub">automação</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="ct-field">
+            <textarea id="ctMsg" name="msg" placeholder=" "></textarea>
+            <label for="ctMsg">Conta um pouco do projeto (opcional)</label>
+          </div>
+
+          <button type="submit" class="ct-submit">
+            <span class="spin" aria-hidden="true"></span>
+            <span class="lbl">Enviar pedido</span>
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-wrap">
+<footer class="footer-card">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-line">
+        <svg class="mk" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <defs><linearGradient id="bmkFooter" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#ffb27a"/><stop offset="1" stop-color="#f0541e"/></linearGradient></defs>
+          <path d="M8 34 L22 12 Q24 9 28 9 L34 9 Q30 9 28 12 L16 32 Q14 35 10 35 L8 35 Z" fill="url(#bmkFooter)"/>
+          <path d="M22 24 L30 24 L38 36 L32 36 L26 27 L22 33 L16 33 Z" fill="url(#bmkFooter)"/>
+        </svg>
+        <span class="logo-name">fluxxo</span>
+      </div>
+      <p class="tagline">Design, sites e soluções sob medida para transformar visita em cliente.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.1h4.52V23H.24V8.1zM8.34 8.1h4.33v2h.06c.6-1.1 2.07-2.3 4.27-2.3 4.56 0 5.4 3 5.4 6.9V23h-4.5v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.9-2.75 3.8V23h-4.5V8.1z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <b>Navegue</b>
+      <a href="#frentes">Design</a>
+      <a href="#frentes">Web</a>
+      <a href="#frentes">Soluções</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="footer-col">
+      <b>Fale com a gente</b>
+      <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
+      <a href="analise.html">Análise gratuita do seu site</a>
+      <a href="#">WhatsApp</a>
+      <a href="mailto:contato@fluxxo.com.br">contato@fluxxo.com.br</a>
+    </div>
+  </div>
+
+  <div class="footer-base">
+    <div class="links">
+      <a href="termos.html">Termos</a><i>|</i>
+      <a href="privacidade.html">Privacidade</a>
+    </div>
+    <span>© 2026 Fluxxo · Todos os direitos reservados.</span>
+  </div>
+</footer>
+</div>
+
+<script src="js/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/site-scroll.js"></script>
+</body>
+</html>
