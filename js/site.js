@@ -103,7 +103,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       ctx.clearRect(0,0,W,H);
 
       // brilho das curvas (nasce no reunir, vive no pulso, morre no soltar)
-      var curveA = ph.i===1 ? ph.p*.5 : ph.i===2 ? .5 : ph.i===3 ? (1-ph.p)*.5 : 0;
+      var curveA = 0; // linhas desligadas: a parede de sites é o palco
       if(curveA>0.01){
         for(var k=0;k<curves.length;k++){
           var c=curves[k];
@@ -118,7 +118,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         }
       }
       // pulso de luz percorrendo as curvas
-      if(ph.i===2){
+      if(false){
         for(var k2=0;k2<curves.length;k2++){
           var tp=Math.min(1,ph.p*1.15-(k2*.06));
           if(tp<=0) continue;
@@ -185,7 +185,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // ---------- estático elegante p/ reduced-motion ----------
     function staticFrame(){
       ctx.clearRect(0,0,W,H);
-      for(var k=0;k<curves.length;k++){
+      for(var k=0;k<0;k++){
         var c=curves[k];
         var g=ctx.createLinearGradient(c.p0.x,c.p0.y,c.p3.x,c.p3.y);
         g.addColorStop(0,'rgba(124,77,255,0)'); g.addColorStop(.5,'rgba(169,156,255,.22)'); g.addColorStop(1,'rgba(108,69,150,0)');
@@ -510,6 +510,280 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
+
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  render();
+})();
+
+// ============ O Fio: a jornada do projeto presa ao scroll ============
+(function () {
+  var stage = document.querySelector('.fio-stage');
+  if (!stage) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var track = document.getElementById('fioTrack');
+  var path = document.getElementById('fioPath');
+  var tip = document.getElementById('fioTip');
+  var ghost = document.getElementById('fioGhost');
+  var num = document.getElementById('fioNum');
+  var cards = [].slice.call(stage.querySelectorAll('.fio-card'));
+
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fase = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+  var suave = function (t) { return t * t * (3 - 2 * t); };
+
+  var L = path.getTotalLength();
+  path.style.strokeDasharray = L;
+  path.style.strokeDashoffset = L;
+
+  var atual = -1, ticking = false;
+  function render() {
+    ticking = false;
+    var r = stage.getBoundingClientRect();
+    var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+
+    // trilho anda na horizontal
+    var desloc = Math.max(0, track.scrollWidth - innerWidth);
+    var t = suave(fase(p, 0.06, 0.96));
+    track.style.transform = 'translateX(' + (-desloc * t) + 'px)';
+
+    // fio se desenha + faísca na ponta
+    var d = fase(p, 0.04, 0.97);
+    path.style.strokeDashoffset = L * (1 - d);
+    var pt = path.getPointAtLength(L * d);
+    tip.setAttribute('cx', pt.x); tip.setAttribute('cy', pt.y);
+
+    // estação ativa: card com centro mais perto do centro da tela
+    var meio = innerWidth / 2, melhor = 0, menor = Infinity;
+    cards.forEach(function (c, i) {
+      var cr = c.getBoundingClientRect();
+      var dist = Math.abs(cr.left + cr.width / 2 - meio);
+      if (dist < menor) { menor = dist; melhor = i; }
+    });
+    cards.forEach(function (c, i) { c.classList.toggle('on', i === melhor); });
+
+    if (melhor !== atual) {
+      atual = melhor;
+      var label = '0' + (melhor + 1);
+      ghost.textContent = label;
+      num.textContent = label;
+      if (ghost.animate) ghost.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: 450, easing: 'ease-out' }
+      );
+    }
+  }
+
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  render();
+})();
+
+// ============ Fechamento cinético: palavras batem, telas de cor varrem, CTA magnético ============
+(function () {
+  var stage = document.querySelector('.end-stage');
+  if (!stage) return;
+
+  // monta as palavras (|trecho| = destaque)
+  var beats = [].slice.call(stage.querySelectorAll('.end-beat[data-words]'));
+  beats.forEach(function (b) {
+    var raw = b.getAttribute('data-words');
+    b.textContent = '';
+    raw.split('|').forEach(function (seg, si) {
+      seg.split(' ').forEach(function (w, wi, arr) {
+        if (!w) return;
+        var sp = document.createElement('span');
+        sp.className = 'e-w' + (si % 2 === 1 ? ' e-hl' : '');
+        sp.textContent = w;
+        b.appendChild(sp);
+        b.appendChild(document.createTextNode(' '));
+      });
+    });
+    b._ws = [].slice.call(b.querySelectorAll('.e-w'));
+  });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var bg1 = document.getElementById('endBg1');
+  var bg2 = document.getElementById('endBg2');
+  var fin = document.getElementById('endFinal');
+  var big = fin.querySelector('.end-big');
+  var q = fin.querySelector('.end-q');
+  var mag = document.getElementById('endMag');
+
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fase = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+  var suave = function (t) { return t * t * (3 - 2 * t); };
+  var rnd = function (i) { var x = Math.sin(i * 91.7 + 47.3) * 43758.5453; return x - Math.floor(x); };
+
+  // batida de palavras: cada uma cai de escala gigante com blur, na sua vez
+  function bater(beat, p, a, b, idx) {
+    var out = suave(fase(p, b, b + 0.06));
+    var vis = p >= a - 0.02 && p <= b + 0.08;
+    beat.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    var n = beat._ws.length;
+    beat._ws.forEach(function (w, k) {
+      var ini = a + (k / n) * (b - a) * 0.7;
+      var t = suave(fase(p, ini, ini + (b - a) * 0.22));
+      var esc = 3 - 2 * t;
+      var rot = (rnd(idx * 37 + k) - 0.5) * 14 * (1 - t);
+      w.style.opacity = t * (1 - out);
+      w.style.transform = 'scale(' + esc + ') rotate(' + rot + 'deg) translateY(' + (-60 * out) + 'px)';
+      w.style.filter = 'blur(' + ((1 - t) * 10 + out * 6) + 'px)';
+    });
+  }
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var r = stage.getBoundingClientRect();
+    var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+
+    // ATO 1 · fundo escuro, primeira verdade
+    bater(beats[0], p, 0.03, 0.26, 1);
+
+    // VARREDURA 1 · painel magenta corta a tela na diagonal
+    var w1 = suave(fase(p, 0.24, 0.36)) * 190 - 40;
+    bg1.style.clipPath = 'polygon(-60% 0,' + w1 + '% 0,' + (w1 - 25) + '% 100%,-60% 100%)';
+
+    // ATO 2 · a provocação
+    bater(beats[1], p, 0.34, 0.56, 2);
+
+    // VARREDURA 2 · painel roxo vivo vem da direita
+    var w2 = 140 - suave(fase(p, 0.54, 0.66)) * 200;
+    bg2.style.clipPath = 'polygon(' + w2 + '% 0,160% 0,160% 100%,' + (w2 + 25) + '% 100%)';
+
+    // ATO FINAL · pergunta gigante + CTA
+    var tb = suave(fase(p, 0.64, 0.76));
+    var tq = suave(fase(p, 0.74, 0.82));
+    var tbtn = suave(fase(p, 0.78, 0.88));
+    fin.style.visibility = p > 0.6 ? 'visible' : 'hidden';
+    big.style.opacity = tb;
+    big.style.transform = 'scale(' + (3.2 - 2.2 * tb) + ')';
+    big.style.filter = 'blur(' + ((1 - tb) * 12) + 'px)';
+    q.style.opacity = tq;
+    q.style.transform = 'scale(' + (2.4 - 1.4 * tq) + ') rotate(' + ((1 - tq) * 24) + 'deg)';
+    mag.style.opacity = tbtn;
+    mag.querySelector('.end-btn').style.transform = 'translateY(' + (46 - 46 * tbtn) + 'px)';
+  }
+
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  render();
+
+  // botão magnético
+  if (window.matchMedia('(pointer: fine)').matches) {
+    var bx = 0, by = 0, tx = 0, ty = 0;
+    stage.addEventListener('mousemove', function (e) {
+      var rb = mag.getBoundingClientRect();
+      var dx = e.clientX - (rb.left + rb.width / 2), dy = e.clientY - (rb.top + rb.height / 2);
+      var d = Math.hypot(dx, dy);
+      if (d < 200) { var f = (1 - d / 200) * 0.45; tx = dx * f; ty = dy * f; }
+      else { tx = 0; ty = 0; }
+    }, { passive: true });
+    stage.addEventListener('mouseleave', function () { tx = 0; ty = 0; }, { passive: true });
+    (function magLoop() {
+      bx += (tx - bx) * 0.14; by += (ty - by) * 0.14;
+      mag.style.transform = 'translate(' + bx + 'px,' + by + 'px)';
+      requestAnimationFrame(magLoop);
+    })();
+  }
+})();
+
+// ============ Intro: limpa o overlay depois da cortina ============
+(function () {
+  var intro = document.getElementById('intro');
+  if (!intro) return;
+  setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 2600);
+})();
+
+// ============ Hero: a parede de sites inclina com o mouse e afunda no scroll ============
+(function () {
+  var plane = document.getElementById('wallPlane');
+  var hero = document.querySelector('.hero');
+  if (!plane || !hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var mx = 0, my = 0, cx = 0, cy = 0;
+  var fino = window.matchMedia('(pointer: fine)').matches;
+  if (fino) {
+    hero.addEventListener('mousemove', function (e) {
+      mx = e.clientX / innerWidth - 0.5;
+      my = e.clientY / innerHeight - 0.5;
+    }, { passive: true });
+    hero.addEventListener('mouseleave', function () { mx = 0; my = 0; }, { passive: true });
+  }
+  (function loop() {
+    cx += (mx - cx) * 0.045; cy += (my - cy) * 0.045;
+    var mergulho = Math.min(1, window.scrollY / innerHeight);
+    plane.style.transform = 'translate(-50%,-50%)'
+      + ' translateY(' + (mergulho * 90) + 'px)'
+      + ' rotateX(' + (16 - cy * 7) + 'deg)'
+      + ' rotateY(' + (-9 + cx * 9) + 'deg)'
+      + ' rotateZ(4deg) scale(' + (1.08 + mergulho * 0.06) + ')';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// ============ A Máquina: laptop expande até a tela engolir o viewport ============
+(function () {
+  var stage = document.querySelector('.maq-stage');
+  if (!stage) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var bg = document.getElementById('maqBg');
+  var grid = document.getElementById('maqGrid');
+  var head = document.getElementById('maqHead');
+  var laptop = document.getElementById('maqLaptop');
+  var view = document.getElementById('maqView');
+  var chips = [document.getElementById('mChip1'), document.getElementById('mChip2'), document.getElementById('mChip3')];
+
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fase = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+  var suave = function (t) { return t * t * (3 - 2 * t); };
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var r = stage.getBoundingClientRect();
+    var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+
+    // fundo índigo + malha acendem
+    var tbg = suave(fase(p, 0.04, 0.24)) * (1 - suave(fase(p, 0.9, 1)));
+    bg.style.opacity = tbg;
+    grid.style.opacity = tbg * 0.9;
+
+    // título entra e SAI antes do laptop chegar
+    var th = suave(fase(p, 0.02, 0.12)) * (1 - suave(fase(p, 0.15, 0.24)));
+    head.style.opacity = th;
+    head.style.transform = 'translateY(-50%) translateY(' + (24 - 24 * th) + 'px)';
+
+    // laptop nasce depois que o título já foi
+    var t1 = suave(fase(p, 0.18, 0.34));
+    // expansão: escala necessária pra tela cobrir o viewport inteiro
+    var vw = view.offsetWidth || 1, vh = view.offsetHeight || 1;
+    var alvo = Math.max(innerWidth / vw, innerHeight / vh) * 1.06;
+    var t2 = suave(fase(p, 0.38, 0.66));        // cresce
+    var t3 = suave(fase(p, 0.86, 0.99));        // encolhe de volta
+    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2 * (1 - t3);
+    laptop.style.opacity = t1;
+    laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
+
+    // chips em sequência sobre o fullscreen
+    var janelas = [[0.5, 0.62], [0.62, 0.75], [0.75, 0.88]];
+    chips.forEach(function (c, i) {
+      var a = janelas[i][0], b = janelas[i][1];
+      var tin = suave(fase(p, a, a + 0.04));
+      var tout = suave(fase(p, b - 0.03, b));
+      c.style.opacity = tin * (1 - tout);
+      c.style.transform = 'translateY(' + (16 - 16 * tin + 10 * tout) + 'px)';
+    });
+  }
 
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
   window.addEventListener('scroll', onScroll, { passive: true });
