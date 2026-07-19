@@ -727,7 +727,7 @@
 .lap-copy h2 .grad{color:#fff}
 
 .lap-scene{perspective:1700px;perspective-origin:50% 28%;margin-top:22vh}
-.laptop{position:relative;width:min(700px,86vw);transform-style:preserve-3d;opacity:0;will-change:transform;z-index:2}
+.laptop{position:relative;width:min(700px,86vw);transform-style:preserve-3d;opacity:0;will-change:transform;z-index:2;margin-bottom:clamp(11px,1.6vw,16px)}
 
 /* tampa/tela: dobra na linha da base (visão frontal, estilo Apple) */
 .lap-lid{position:relative;width:94%;margin:0 auto;aspect-ratio:16/10.4;transform-origin:50% 100%;transform-style:preserve-3d;
@@ -751,7 +751,7 @@
   background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.09) 45%,rgba(255,255,255,.02) 53%,transparent 62%)}
 
 /* base fininha de alumínio (como a Apple mostra de frente) */
-.lap-base{position:relative;width:100%;height:clamp(11px,1.6vw,16px);z-index:3;
+.lap-base{position:absolute;top:100%;left:0;right:0;margin-top:-1px;height:clamp(11px,1.6vw,16px);z-index:3;
   background:linear-gradient(180deg,#4c4c53 0%,#36363c 30%,#232329 78%,#101014 100%);
   border-radius:3px 3px 14px 14px;
   box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 14px 44px -12px rgba(0,0,0,.9)}
@@ -760,7 +760,7 @@
 .lap-base::after{content:"";position:absolute;left:1.5%;right:1.5%;bottom:-1px;height:2px;border-radius:50%;
   background:linear-gradient(90deg,transparent,rgba(0,0,0,.7) 20%,rgba(0,0,0,.7) 80%,transparent)}
 .lap-hinge,.lap-kb,.lap-pad{display:none}
-.lap-shadow{position:absolute;left:4%;right:4%;bottom:-46px;height:64px;border-radius:50%;
+.lap-shadow{position:absolute;left:4%;right:4%;bottom:-58px;height:64px;border-radius:50%;
   background:radial-gradient(ellipse at center,rgba(124,77,255,.32),rgba(0,0,0,.5) 55%,transparent 78%);
   filter:blur(24px);opacity:0}
 
@@ -1085,12 +1085,12 @@
 .maq-head h2 .grad{color:#fff}
 .maq-head p{color:var(--text-muted);margin-top:12px;font-size:clamp(.95rem,1.5vw,1.05rem)}
 .maq-scene{position:relative;z-index:2;display:flex;justify-content:center}
-.maq-laptop{position:relative;width:min(640px,80vw);opacity:0;will-change:transform}
+.maq-laptop{position:relative;width:min(640px,80vw);opacity:0;will-change:transform;margin-bottom:clamp(10px,1.5vw,15px)}
 .maq-screen{position:relative;width:94%;margin:0 auto;aspect-ratio:16/10;border-radius:16px 16px 4px 4px;overflow:hidden;
   background:#05060f;
   box-shadow:0 0 0 1.5px #3f4470,0 0 0 5px #090a16 inset,0 -1px 0 rgba(255,255,255,.2),0 40px 100px -30px rgba(0,0,0,.9)}
 .maq-view{position:absolute;inset:5px;border-radius:12px 12px 2px 2px;overflow:hidden;background:#0a0d22}
-.maq-base{position:relative;width:100%;height:clamp(10px,1.5vw,15px);
+.maq-base{position:absolute;top:100%;left:0;right:0;margin-top:-1px;height:clamp(10px,1.5vw,15px);
   background:linear-gradient(180deg,#4a4f7c 0%,#333854 30%,#20233c 78%,#0e1020 100%);
   border-radius:3px 3px 13px 13px;box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 14px 44px -12px rgba(0,0,0,.9)}
 .maq-base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:13%;height:45%;
