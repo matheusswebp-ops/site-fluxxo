@@ -68,21 +68,7 @@ const BRANDS = [
     // todas as 30 lâminas do brandbook, em ordem
     apps:Array.from({length:30},(_,k)=>'img/identidade/chinatour/lamina-'+String(k+1).padStart(2,'0')+'.jpg')
   },
-  {
-    nome:'Nave', destaque:'Fit',
-    tagline:'Marca de estúdio de treino funcional: energia, movimento e presença digital.',
-    cores:{paper:'#0a1410', paper2:'#12241b', ink:'#eafff3', soft:'#8fb8a2', accent:'#7dff5e'},
-    logo:null,
-    apps:[]
-  },
-  {
-    nome:'Maré', destaque:'Alta',
-    tagline:'Identidade para pousada à beira-mar: calma, sal e horizonte em cada aplicação.',
-    cores:{paper:'#06131d', paper2:'#0d2334', ink:'#e8f4fb', soft:'#8aaec2', accent:'#4fc3f7'},
-    logo:null,
-    apps:[]
-  }
-];
+  ];
 
 const ROOT = document.documentElement;
 const DEFAULT_VARS = ['--paper','--paper-2','--ink','--ink-soft','--cobalt','--cobalt-light','--line'];
