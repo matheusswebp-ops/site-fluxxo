@@ -1,0 +1,22 @@
+# Fluxxo
+
+> Estúdio brasileiro de design, criação de sites e automação, baseado em Fortaleza (CE). Cria peças para redes sociais e anúncios, sites e landing pages focados em conversão, e soluções sob medida. Contato: contato@fluxxo.io · WhatsApp +55 85 99265-7146.
+
+A Fluxxo trabalha em três frentes: design (carrosséis, anúncios Meta e Google, thumbnails, identidade visual), web (sites e landing pages rápidos, responsivos e estruturados pra converter) e automação de processos. Mais de 300 projetos publicados, com portfólio real e testes de velocidade abertos ao público.
+
+## Páginas principais
+
+- [Início](https://fluxxo.io/): visão geral dos serviços, processo de trabalho, portfólio e depoimentos de clientes reais
+- [Portfólio de Design](https://fluxxo.io/design): carrosséis, anúncios, thumbnails e identidades visuais criados pela Fluxxo
+- [Sites e Landing Pages](https://fluxxo.io/webdesign): projetos no ar com prints navegáveis e testes de performance
+- [Análise gratuita](https://fluxxo.io/analise): ferramenta gratuita que avalia se um site vende, em 12 perguntas e 4 pilares (clareza, conversão, confiança, técnica), sem cadastro
+- [Blog](https://fluxxo.io/blog): artigos sobre design, sites e conversão
+
+## Conteúdo
+
+- [Seu site é bonito. E daí?](https://fluxxo.io/artigo): o que faz uma página vender de verdade, com os 6 elementos que separam páginas bonitas de páginas que convertem
+
+## Legal
+
+- [Termos de Uso](https://fluxxo.io/termos)
+- [Política de Privacidade](https://fluxxo.io/privacidade)
