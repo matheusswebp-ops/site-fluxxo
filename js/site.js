@@ -358,7 +358,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var subida = 130 - 130 * t2;               // nascimento
     var mergulho = t6 * (mobile ? 9 : 13);      // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
-    var tilt = 17 - 9 * t3 - 4 * t6;
+    var tilt = 17 * (1 - t3); // camera assenta frontal ao abrir: tampa e base viram um corpo so
     laptop.style.opacity = t2;
     laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
     shadow.style.opacity = t2 * 0.9 * (1 - t6);

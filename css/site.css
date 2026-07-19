@@ -158,7 +158,7 @@
   .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(181,123,255,.4)}
   @keyframes rise{to{opacity:1;transform:none}}
 
-  .scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:9px;color:var(--text-dim);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:rise 1s ease 2.7s forwards}
+  .scroll-cue{position:absolute;bottom:24px;left:0;right:0;margin:0 auto;width:max-content;z-index:5;display:flex;flex-direction:column;align-items:center;gap:9px;color:var(--text-dim);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:rise 1s ease 2.7s forwards}
   .scroll-cue .mouse{width:22px;height:34px;border:1.5px solid var(--text-dim);border-radius:12px;position:relative}
   .scroll-cue .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--purple-light);animation:wheel 1.6s ease-in-out infinite}
   @keyframes wheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
