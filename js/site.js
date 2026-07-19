@@ -304,3 +304,215 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       }, 500);
     });
   })();
+
+// ============ MacBook cine-scroll: nasce, abre, acende e a câmera mergulha na tela ============
+(function () {
+  var stage = document.querySelector('.lap-stage');
+  if (!stage) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var laptop = document.getElementById('laptop');
+  var lid = document.getElementById('lapLid');
+  var view = document.querySelector('.lap-view');
+  var shot = document.getElementById('lapShot');
+  var copy = document.getElementById('lapCopy');
+  var hint = document.getElementById('lapHint');
+  var cap = document.getElementById('lapCap');
+  var shadow = document.querySelector('.lap-shadow');
+
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fase = function (p, ini, fim) { return clamp((p - ini) / (fim - ini), 0, 1); };
+  var suave = function (t) { return t * t * (3 - 2 * t); };
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var r = stage.getBoundingClientRect();
+    var total = r.height - window.innerHeight;
+    var p = clamp(-r.top / total, 0, 1);
+    var mobile = window.innerWidth < 700;
+
+    // título: entra no início, SAI antes da tampa terminar de abrir (sem atropelo)
+    var tIn = suave(fase(p, 0, 0.14));
+    var tOut = suave(fase(p, 0.3, 0.44));
+    copy.style.opacity = tIn * (1 - tOut);
+    copy.style.transform = 'translateY(' + (24 - 24 * tIn - 30 * tOut) + 'px)';
+
+    // laptop nasce de baixo, pequeno e fechado
+    var t2 = suave(fase(p, 0.06, 0.26));
+    // tampa abre
+    var t3 = suave(fase(p, 0.28, 0.56));
+    lid.style.transform = 'rotateX(' + (-90 + 90 * t3) + 'deg)';
+    // tela acende
+    var t4 = suave(fase(p, 0.46, 0.62));
+    view.style.filter = 'brightness(' + (0.1 + 0.9 * t4) + ')';
+    // site rola dentro da tela
+    var t5 = suave(fase(p, 0.6, 0.96));
+    var alcance = Math.max(0, shot.offsetHeight - view.offsetHeight);
+    shot.style.transform = 'translateY(-' + alcance * t5 * 0.6 + 'px)';
+
+    // ZOOM: a câmera mergulha até a tela dominar o viewport
+    var t6 = suave(fase(p, 0.58, 0.97));
+    var escalaMax = mobile ? 1.55 : 2.1;
+    var escala = (0.8 + 0.16 * t2) + (escalaMax - 0.96) * t6;
+    var subida = 130 - 130 * t2;               // nascimento
+    var mergulho = t6 * (mobile ? 9 : 13);      // desce um pouco pra tela centralizar no zoom
+    // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
+    var tilt = 17 - 9 * t3 - 4 * t6;
+    laptop.style.opacity = t2;
+    laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
+    shadow.style.opacity = t2 * 0.9 * (1 - t6);
+
+    // dica de rolagem só no comecinho
+    hint.style.opacity = t2 * (1 - suave(fase(p, 0.26, 0.36)));
+
+    // legenda do projeto por cima do zoom final
+    var t7 = suave(fase(p, 0.82, 0.92));
+    cap.style.opacity = t7;
+    cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(render); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  if (shot.complete) render(); else shot.addEventListener('load', render);
+})();
+
+// ============ Manifesto cinético: letras se formam, fundo muda, spotlight segue ============
+(function () {
+  var stage = document.querySelector('.mani-stage');
+  if (!stage) return;
+
+  var phrases = [].slice.call(document.querySelectorAll('.mani-phrase'));
+
+  // monta as letras (|trecho| = destaque)
+  phrases.forEach(function (ph) {
+    var raw = ph.getAttribute('data-text');
+    ph.textContent = '';
+    raw.split('|').forEach(function (seg, si) {
+      if (!seg) return;
+      var wrap = null;
+      if (si % 2 === 1) { wrap = document.createElement('span'); wrap.className = 'm-hl'; ph.appendChild(wrap); }
+      seg.split(' ').forEach(function (word, wi, arr) {
+        if (!word) { (wrap || ph).appendChild(document.createTextNode(' ')); return; }
+        var w = document.createElement('span'); w.className = 'm-w';
+        for (var k = 0; k < word.length; k++) {
+          var l = document.createElement('span'); l.className = 'm-l'; l.textContent = word[k];
+          w.appendChild(l);
+          // morph: depois do primeiro x de "fluxo." entra um segundo x fantasma
+          if (ph.dataset.morph && word[k] === 'x') {
+            var x2 = document.createElement('span'); x2.className = 'm-l m-x2'; x2.textContent = 'x';
+            w.appendChild(x2);
+          }
+        }
+        (wrap || ph).appendChild(w);
+        if (wi < arr.length - 1) (wrap || ph).appendChild(document.createTextNode(' '));
+      });
+    });
+    ph._letters = [].slice.call(ph.querySelectorAll('.m-l:not(.m-x2)'));
+    ph._x2 = ph.querySelector('.m-x2');
+    ph._hl = ph.querySelector('.m-hl');
+  });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var sticky = document.getElementById('maniSticky');
+  var bg = document.getElementById('maniBg');
+  var spot = document.getElementById('maniSpot');
+  var dots = [].slice.call(document.querySelectorAll('#maniDots i'));
+
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fase = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+  var suave = function (t) { return t * t * (3 - 2 * t); };
+  var rnd = function (i) { var x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+
+  // paleta do fundo ao longo da rolagem
+  var STOPS = [
+    [0.00, [14, 8, 21]], [0.20, [14, 8, 21]],
+    [0.30, [43, 10, 34]], [0.45, [43, 10, 34]],
+    [0.55, [245, 242, 236]], [0.70, [245, 242, 236]],
+    [0.80, [14, 8, 21]], [1.00, [14, 8, 21]]
+  ];
+  function bgColor(p) {
+    for (var i = 0; i < STOPS.length - 1; i++) {
+      var a = STOPS[i], b = STOPS[i + 1];
+      if (p >= a[0] && p <= b[0]) {
+        var t = suave(fase(p, a[0], b[0]));
+        return [0, 1, 2].map(function (k) { return Math.round(a[1][k] + (b[1][k] - a[1][k]) * t); });
+      }
+    }
+    return STOPS[STOPS.length - 1][1];
+  }
+
+  // spotlight segue o mouse com atraso gostoso
+  var mx = innerWidth / 2, my = innerHeight / 2, sx = mx, sy = my, spotOn = false;
+  stage.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+  var W = 0.25; // janela de cada frase
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var r = stage.getBoundingClientRect();
+    var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+
+    // fundo
+    var c = bgColor(p);
+    bg.style.backgroundColor = 'rgb(' + c.join(',') + ')';
+    var luz = (c[0] * 0.299 + c[1] * 0.587 + c[2] * 0.114) / 255;
+    sticky.classList.toggle('is-light', luz > 0.5);
+
+    // frases
+    phrases.forEach(function (ph, i) {
+      var a = i * W, b = a + W;
+      var ultima = i === phrases.length - 1;
+      var out = ultima ? 0 : suave(fase(p, b - W * 0.16, b));
+      var vis = p >= a - W * 0.05 && (ultima || p <= b + W * 0.05);
+      ph.style.visibility = vis ? 'visible' : 'hidden';
+      if (!vis) return;
+
+      var n = ph._letters.length;
+      ph._letters.forEach(function (l, k) {
+        var ini = a + (k / n) * W * 0.42;
+        var t = suave(fase(p, ini, ini + W * 0.26));
+        var dx = (rnd(i * 97 + k) - 0.5) * 340 * (1 - t);
+        var dy = (rnd(i * 57 + k * 3) - 0.5) * 260 * (1 - t) - out * (90 + rnd(k) * 120);
+        var rot = (rnd(i * 31 + k * 7) - 0.5) * 70 * (1 - t) + out * (rnd(k * 5) - 0.5) * 40;
+        l.style.opacity = t * (1 - out);
+        l.style.transform = 'translate(' + dx + 'px,' + dy + 'px) rotate(' + rot + 'deg)';
+        l.style.filter = 'blur(' + ((1 - t) * 7 + out * 5) + 'px)';
+      });
+
+      // sublinhado do destaque se desenha no meio da frase
+      if (ph._hl) ph._hl.style.setProperty('--u', suave(fase(p, a + W * 0.5, a + W * 0.72)) * (1 - out));
+
+      // morph fluxo -> fluxxo (frase final)
+      if (ph._x2) {
+        var m = suave(fase(p, a + W * 0.55, a + W * 0.78));
+        ph._x2.style.maxWidth = (m * 0.62) + 'em';
+        ph._x2.style.opacity = m;
+      }
+    });
+
+    // pontinhos de progresso
+    var atual = clamp(Math.floor(p / W), 0, 3);
+    dots.forEach(function (d, i) { d.classList.toggle('on', i === atual); });
+
+    spotOn = r.top < innerHeight && r.bottom > 0;
+  }
+
+  function loop() {
+    if (spotOn) {
+      sx += (mx - sx) * 0.08; sy += (my - sy) * 0.08;
+      spot.style.transform = 'translate(-50%,-50%) translate(' + sx + 'px,' + sy + 'px)';
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  render();
+})();
