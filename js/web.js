@@ -266,9 +266,6 @@
   // ---- fechamento: varredura de cor + botão magnético ----
   var fs = document.querySelector('.final-section');
   if (fs) {
-    var sweep = document.createElement('span');
-    sweep.className = 'final-sweep';
-    fs.insertBefore(sweep, fs.firstChild);
     if (!reduz) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) { fs.classList.toggle('fs-in', e.isIntersecting); });
