@@ -653,3 +653,23 @@
   a:focus-visible, button:focus-visible { outline: 2px solid #c9a0ff; outline-offset: 3px; }
   /* vídeo real dentro do frame */
   .frame-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ============ títulos cinéticos (palavra a palavra no scroll) ============ */
+  .kin .kw{display:inline-block;opacity:0;transform:translateY(28px) rotate(2.5deg);filter:blur(7px);
+    transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1),filter .65s ease}
+  .kin.kin-in .kw{opacity:1;transform:none;filter:none}
+  .kin-big .kw{transform:scale(2.2) translateY(10px);filter:blur(10px)}
+  .kin-big.kin-in .kw{transform:none;filter:none}
+  @media (prefers-reduced-motion:reduce){.kin .kw{opacity:1;transform:none;filter:none;transition:none}}
+
+  /* ============ fechamento: varredura de cor ============ */
+  .final-section{position:relative;overflow:hidden}
+  .final-sweep{position:absolute;inset:-1px;z-index:0;pointer-events:none;
+    background:linear-gradient(150deg,#4c1d95 0%,#7c3aed 55%,#3b0764 100%);
+    clip-path:polygon(-40% 0,-15% 0,-40% 100%,-65% 100%);
+    transition:clip-path 1.1s cubic-bezier(.76,0,.24,1)}
+  .final-section.fs-in .final-sweep{clip-path:polygon(-40% 0,160% 0,135% 100%,-65% 100%)}
+  .final-inner{position:relative;z-index:2}
+  .final-section .footer-card{position:relative;z-index:2}
+  .final-section.fs-in .btn-fire{box-shadow:0 18px 60px rgba(0,0,0,.35),0 0 0 6px rgba(255,255,255,.14)}
+  .btn-fire{will-change:transform}
