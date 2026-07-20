@@ -802,3 +802,7 @@
   .mobile-panel{transition:none}
   .mobile-panel a{transition:none;opacity:1;transform:none}
 }
+
+  /* marca real */
+  .brand .brand-img{height:34px;width:auto;display:block}
+  .logo-line .logo-img{height:38px;width:auto;display:block}

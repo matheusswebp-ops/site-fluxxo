@@ -427,3 +427,6 @@ body{padding-top:80px}
   .mobile-panel{transition:none}
   .mobile-panel a{transition:none;opacity:1;transform:none}
 }
+
+/* marca real */
+.brand .brand-img{height:34px;width:auto;display:block}
