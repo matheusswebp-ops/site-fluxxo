@@ -738,3 +738,8 @@
   .hero{isolation:isolate}
   .hero-left{position:relative;z-index:5}
   .hero-bg{display:none}
+
+  /* mobile: o frame adota a proporção exata do vídeo (16:9), sem corte */
+  @media (max-width:700px){
+    .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:16/9}
+  }
