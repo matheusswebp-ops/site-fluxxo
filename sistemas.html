@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=839">
-<link rel="stylesheet" href="css/blog.css?v=839">
-<link rel="stylesheet" href="css/sistemas.css?v=839">
+<link rel="stylesheet" href="css/site.css?v=840">
+<link rel="stylesheet" href="css/blog.css?v=840">
+<link rel="stylesheet" href="css/sistemas.css?v=840">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas e automação sob medida","serviceType":["Automação de processos","Painéis e dashboards","Integrações entre ferramentas"],"provider":{"@id":"https://fluxxo.io/#org"},"areaServed":"BR"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Sistemas","item":"https://fluxxo.io/sistemas"}]}]}</script>
 </head>
 <body>
@@ -106,13 +106,15 @@
       <span class="col-chip">refaz tudo</span>
       <span class="col-chip">de novo amanhã</span>
       <div class="col-node" id="colNode">
-        <div class="cn-rings" aria-hidden="true">
+        <div class="cn-mark" aria-hidden="true">
+          <span class="cn-burst" id="cnBurst"></span>
+          <span class="cn-halo"></span>
           <span class="cn-ring r1"><i></i></span>
           <span class="cn-ring r2"><i></i></span>
-          <span class="cn-core"></span>
+          <img class="cn-logo" src="img/brand/isotipo.png" alt="">
         </div>
         <div class="cn-result">
-          <b>1 fluxo automático</b>
+          <b>Tudo isso vira <span class="cn-hl">um fluxo só.</span></b>
           <p><span>3h por dia viraram</span> <b class="cn-zero">0h</b></p>
         </div>
       </div>
@@ -120,57 +122,79 @@
   </div>
 </section>
 
-<!-- ============ DEMOS VIVAS ============ -->
-<section class="sis-demos wrap" id="demos">
-  <div class="work-head b-rv">
-    <span class="kicker">Nada aqui é imagem parada</span>
-    <h2>Sistemas se apresentam <span class="grad">funcionando.</span></h2>
-    <p>Três coisas que a gente constrói, rodando na sua frente agora.</p>
-  </div>
-  <div class="demo-grid">
-    <div class="demo-card b-rv">
-      <div class="demo-frame">
-        <div class="saas" aria-hidden="true">
-          <aside class="sa-side"><span class="sa-logo"></span><span class="sa-item on"></span><span class="sa-item"></span><span class="sa-item"></span><span class="sa-item"></span></aside>
-          <div class="sa-main">
-            <div class="sa-top"><span class="sa-tt"></span><span class="sa-avatar"></span></div>
-            <div class="sa-kpis">
-              <div class="sa-kpi"><b></b><span></span><i class="sa-spark s1"></i></div>
-              <div class="sa-kpi"><b></b><span></span><i class="sa-spark s2"></i></div>
-              <div class="sa-kpi"><b></b><span></span><i class="sa-spark s3"></i></div>
+<!-- ============ DEMOS VIVAS · showcase pinado (3 atos no scroll) ============ -->
+<section class="show-stage" id="demos" aria-label="Sistemas rodando ao vivo">
+  <div class="show-sticky">
+    <div class="show-head">
+      <span class="kicker">Nada aqui é imagem parada</span>
+      <h2>Sistemas se apresentam <span class="grad">funcionando.</span></h2>
+    </div>
+    <div class="show-stack" id="showStack">
+
+      <article class="show-act" data-act="0">
+        <div class="show-demo">
+          <div class="demo-frame">
+            <div class="saas" aria-hidden="true">
+              <aside class="sa-side"><span class="sa-logo"></span><span class="sa-item on"></span><span class="sa-item"></span><span class="sa-item"></span><span class="sa-item"></span></aside>
+              <div class="sa-main">
+                <div class="sa-top"><span class="sa-tt"></span><span class="sa-avatar"></span></div>
+                <div class="sa-kpis">
+                  <div class="sa-kpi"><b></b><span></span><i class="sa-spark s1"></i></div>
+                  <div class="sa-kpi"><b></b><span></span><i class="sa-spark s2"></i></div>
+                  <div class="sa-kpi"><b></b><span></span><i class="sa-spark s3"></i></div>
+                </div>
+                <div class="sa-chart"><svg viewBox="0 0 400 120" preserveAspectRatio="none"><path class="sa-area" d="M0 95 C 40 80, 70 92, 110 70 S 180 40, 230 52 S 320 22, 400 30 L400 120 L0 120 Z"/><path class="sa-line" d="M0 95 C 40 80, 70 92, 110 70 S 180 40, 230 52 S 320 22, 400 30"/></svg></div>
+                <div class="sa-rows"><span></span><span></span><span></span></div>
+              </div>
             </div>
-            <div class="sa-chart"><svg viewBox="0 0 400 120" preserveAspectRatio="none"><path class="sa-area" d="M0 95 C 40 80, 70 92, 110 70 S 180 40, 230 52 S 320 22, 400 30 L400 120 L0 120 Z"/><path class="sa-line" d="M0 95 C 40 80, 70 92, 110 70 S 180 40, 230 52 S 320 22, 400 30"/></svg></div>
-            <div class="sa-rows"><span></span><span></span><span></span></div>
           </div>
         </div>
-      </div>
-      <div class="demo-meta"><b>Painéis e SaaS</b><p>Seu negócio em números vivos, na tela, em tempo real. Sem caçar dado em planilha.</p></div>
-    </div>
+        <div class="show-copy">
+          <span class="show-idx">01</span>
+          <b>Painéis e SaaS</b>
+          <p>Seu negócio em números vivos, na tela, em tempo real. Sem caçar dado em planilha, sem fechar o mês no escuro.</p>
+        </div>
+      </article>
 
-    <div class="demo-card b-rv">
-      <div class="demo-frame demo-flow" aria-hidden="true">
-        <span class="fl-node n1">WhatsApp</span>
-        <span class="fl-node n2">Planilha</span>
-        <span class="fl-node n3">CRM</span>
-        <span class="fl-node n4">E-mail</span>
-        <svg class="fl-lines" viewBox="0 0 400 240" preserveAspectRatio="none">
-          <path d="M95 60 L200 60" /><path d="M200 60 L200 120 L120 120 L120 180" /><path d="M200 60 L290 60 L290 180" />
-        </svg>
-        <i class="fl-dot d1"></i><i class="fl-dot d2"></i><i class="fl-dot d3"></i>
-      </div>
-      <div class="demo-meta"><b>Automações e integrações</b><p>Suas ferramentas conversando sozinhas. O dado entra num lugar e chega em todos.</p></div>
-    </div>
+      <article class="show-act" data-act="1">
+        <div class="show-demo">
+          <div class="demo-frame demo-flow" aria-hidden="true">
+            <span class="fl-node n1">WhatsApp</span>
+            <span class="fl-node n2">Planilha</span>
+            <span class="fl-node n3">CRM</span>
+            <span class="fl-node n4">E-mail</span>
+            <svg class="fl-lines" viewBox="0 0 400 240" preserveAspectRatio="none">
+              <path d="M95 60 L200 60" /><path d="M200 60 L200 120 L120 120 L120 180" /><path d="M200 60 L290 60 L290 180" />
+            </svg>
+            <i class="fl-dot d1"></i><i class="fl-dot d2"></i><i class="fl-dot d3"></i>
+          </div>
+        </div>
+        <div class="show-copy">
+          <span class="show-idx">02</span>
+          <b>Automações e integrações</b>
+          <p>Suas ferramentas conversando sozinhas. O dado entra num lugar e chega em todos, na hora, sem ninguém digitar de novo.</p>
+        </div>
+      </article>
 
-    <div class="demo-card b-rv">
-      <div class="demo-frame demo-bot" aria-hidden="true">
-        <span class="bt-msg u1">oi, vocês atendem sábado?</span>
-        <span class="bt-typing"><i></i><i></i><i></i></span>
-        <span class="bt-msg r1">Atendemos sim! Sábado das 8h às 12h. Quer agendar um horário? 😊</span>
-        <span class="bt-msg u2">quero! pode ser 9h</span>
-        <span class="bt-msg r2">Fechado: sábado, 9h ✓ Te mandei a confirmação no WhatsApp.</span>
-      </div>
-      <div class="demo-meta"><b>Atendimento automático</b><p>Responde, qualifica e agenda 24h por dia. Seu cliente nunca fica no vácuo.</p></div>
+      <article class="show-act" data-act="2">
+        <div class="show-demo">
+          <div class="demo-frame demo-bot" aria-hidden="true">
+            <span class="bt-msg u1">oi, vocês atendem sábado?</span>
+            <span class="bt-typing"><i></i><i></i><i></i></span>
+            <span class="bt-msg r1">Atendemos sim! Sábado das 8h às 12h. Quer agendar um horário? 😊</span>
+            <span class="bt-msg u2">quero! pode ser 9h</span>
+            <span class="bt-msg r2">Fechado: sábado, 9h ✓ Te mandei a confirmação no WhatsApp.</span>
+          </div>
+        </div>
+        <div class="show-copy">
+          <span class="show-idx">03</span>
+          <b>Atendimento automático</b>
+          <p>Responde, qualifica e agenda 24h por dia. Seu cliente nunca fica no vácuo, nem no domingo à noite.</p>
+        </div>
+      </article>
+
     </div>
+    <div class="show-rail" id="showRail" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -251,51 +275,73 @@
   </div>
 </section>
 
-<!-- ============ SEGMENTOS ============ -->
-<section class="seg wrap">
-  <div class="work-head b-rv">
-    <span class="kicker">Onde isso encaixa</span>
-    <h2>Se tem processo que repete,<br><span class="grad">dá pra automatizar.</span></h2>
+<!-- ============ SEGMENTOS · trilho horizontal pinado ============ -->
+<section class="seg-stage" id="segmentos" aria-label="Onde a automação encaixa">
+  <div class="seg-sticky">
+    <div class="seg-head">
+      <span class="kicker">Onde isso encaixa</span>
+      <h2>Se tem processo que repete, <span class="grad">dá pra automatizar.</span></h2>
+    </div>
+    <div class="seg-viewport">
+      <div class="seg-track" id="segTrack">
+        <article class="seg-card">
+          <span class="seg-num">01</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8v8M8 12h8"/></svg></div>
+          <b>Clínicas e consultórios</b>
+          <p>Agendamento, confirmação por WhatsApp, lembrete de retorno e prontuário organizado sem ninguém no telefone.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">02</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+          <b>E-commerce</b>
+          <p>Pedido, estoque, nota, rastreio e pós-venda conectados de ponta a ponta, sem retrabalho.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">03</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M10.3 8.3v5l4.4-2.5-4.4-2.5z" fill="currentColor" stroke="none"/></svg></div>
+          <b>Infoprodutores</b>
+          <p>Venda, acesso, cobrança recusada, recuperação e suporte rodando sozinhos enquanto você grava.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">04</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4 8 4v14"/><path d="M9.5 21v-5.5h5V21"/><path d="M9.5 9.5h.01M14.5 9.5h.01"/></svg></div>
+          <b>Imobiliárias e corretores</b>
+          <p>Lead entra, é qualificado, distribuído e acompanhado sem planilha na mão nem lead esfriando.</p>
+        </article>
+        <article class="seg-card seg-card-cta">
+          <span class="seg-num">+</span>
+          <b>Seu segmento não tá aqui?</b>
+          <p>Melhor ainda: a gente desenha do zero pro seu fluxo, do seu jeito.</p>
+          <a href="https://wa.me/5585992657146?text=Oi%21%20Meu%20processo%20%C3%A9%20meio%20diferente%2C%20quero%20ver%20como%20a%20Fluxxo%20automatizaria%20pra%20mim." target="_blank" rel="noopener" class="seg-card-link">Desenhar o meu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+    <div class="seg-progress" id="segProgress" aria-hidden="true"><span></span></div>
   </div>
-  <div class="seg-grid">
-    <div class="seg-card b-rv">
-      <span class="seg-num">01</span>
-      <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8v8M8 12h8"/></svg></div>
-      <b>Clínicas e consultórios</b>
-      <p>Agendamento, confirmação por WhatsApp, lembrete de retorno e prontuário organizado.</p>
-    </div>
-    <div class="seg-card b-rv">
-      <span class="seg-num">02</span>
-      <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
-      <b>E-commerce</b>
-      <p>Pedido, estoque, nota, rastreio e pós-venda conectados de ponta a ponta.</p>
-    </div>
-    <div class="seg-card b-rv">
-      <span class="seg-num">03</span>
-      <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M10.3 8.3v5l4.4-2.5-4.4-2.5z" fill="currentColor" stroke="none"/></svg></div>
-      <b>Infoprodutores</b>
-      <p>Venda, acesso, cobrança recusada, recuperação e suporte rodando sozinhos.</p>
-    </div>
-    <div class="seg-card b-rv">
-      <span class="seg-num">04</span>
-      <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4 8 4v14"/><path d="M9.5 21v-5.5h5V21"/><path d="M9.5 9.5h.01M14.5 9.5h.01"/></svg></div>
-      <b>Imobiliárias e corretores</b>
-      <p>Lead entra, é qualificado, distribuído e acompanhado sem planilha na mão.</p>
-    </div>
-  </div>
-  <p class="seg-more b-rv">Seu segmento não tá aí? Melhor ainda: a gente desenha do zero pro seu fluxo.</p>
 </section>
 
-<!-- ============ FECHO ============ -->
-<section class="sis-end wrap">
-  <div class="sis-end-card b-rv">
-    <h2>Pare de ser o <span class="grad">sistema</span> da sua empresa.</h2>
-    <p>Conta pra gente o processo que mais te rouba tempo. A gente responde com o desenho da automação.</p>
-    <div class="sis-mag" id="sisMag">
-      <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20p%C3%A1gina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20automatizar%20processos%20do%20meu%20neg%C3%B3cio.%20Bora%20conversar%3F" class="btn-primary sis-btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:19px;height:19px"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
-        <span>Desenhar minha automação</span>
-      </a>
+<!-- ============ FECHO · cena de encerramento com texto formando + fluxxo ============ -->
+<section class="sclose-stage" id="fecho" aria-label="Fechamento">
+  <div class="sclose-sticky">
+    <span class="sclose-glow" id="scloseGlow" aria-hidden="true"></span>
+    <span class="sclose-flash" id="scloseFlash" aria-hidden="true"></span>
+
+    <div class="sclose-line" id="scloseLine" aria-hidden="true">
+      <span>Pare</span> <span>de</span> <span>ser</span> <span>o</span> <span class="w-hot">sistema</span> <span>da</span> <span>sua</span> <span>empresa.</span>
+    </div>
+
+    <div class="sclose-final" id="scloseFinal">
+      <img class="sclose-mark" src="img/brand/isotipo.png" alt="" aria-hidden="true">
+      <span class="sclose-brand">fluxxo</span>
+      <p>Conta pra gente o processo que mais te rouba tempo. A gente responde com o desenho da sua automação.</p>
+      <div class="sis-mag" id="sisMag">
+        <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20p%C3%A1gina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20automatizar%20processos%20do%20meu%20neg%C3%B3cio.%20Bora%20conversar%3F" class="btn-primary sis-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:19px;height:19px"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+          <span>Desenhar minha automação</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -333,9 +379,9 @@
 </footer>
 </div>
 
-<script src="js/blog.js?v=839"></script>
-<script src="js/sistemas.js?v=839"></script>
+<script src="js/blog.js?v=840"></script>
+<script src="js/sistemas.js?v=840"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="js/web-scroll.js?v=839"></script>
+<script src="js/web-scroll.js?v=840"></script>
 </body>
 </html>
