@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=839">
+<link rel="stylesheet" href="css/style.css?v=850">
+<link rel="stylesheet" href="css/design-hero.css?v=850">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Portfólio de Design da Fluxxo","url":"https://fluxxo.io/design","inLanguage":"pt-BR","about":"Carrosséis, anúncios, thumbnails e identidade visual"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Design","item":"https://fluxxo.io/design"}]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -69,21 +70,57 @@
   <a href="https://wa.me/5585992657146?text=Oi%21%20Acabei%20de%20ver%20o%20portf%C3%B3lio%20de%20design%20da%20Fluxxo%20e%20quero%20pe%C3%A7as%20nesse%20n%C3%ADvel%20pra%20minha%20marca.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
 </div>
 
-<!-- ================= SEÇÃO 1 — HERO ================= -->
-<div class="wrap">
-  <section class="hero">
-    <p class="eyebrow">Design para redes sociais &amp; anúncios</p>
-    <h1>Design que <em>segura o dedo</em> <span class="out">no feed.</span></h1>
+<!-- ================= SEÇÃO 1 · HERO (palco da home + parede de artes) ================= -->
+<header class="dhero" id="top">
+  <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 
-    <div class="hero-foot">
-      <p class="hero-sub">Carrosséis, posts e anúncios pensados pra <b>performar</b>, não só pra ficar bonito no portfólio. Cada peça nasce de um objetivo: parar o scroll, gerar salvamento, converter clique.</p>
-      <a href="https://wa.me/5585992657146?text=Oi%21%20Acabei%20de%20ver%20o%20portf%C3%B3lio%20de%20design%20da%20Fluxxo%20e%20quero%20pe%C3%A7as%20nesse%20n%C3%ADvel%20pra%20minha%20marca.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="hero-cta">
-        Ver como eu trabalho
+  <!-- parede 3D de artes reais ao fundo -->
+  <div class="hero-wall" aria-hidden="true">
+    <div class="wall-plane" id="wallPlane">
+      <div class="wall-col wc-a">
+        <img src="img/anuncio-viapty-carro.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt="">
+        <img src="img/anuncio-viapty-carro.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt="">
+      </div>
+      <div class="wall-col wc-b">
+        <img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-creme-dental-1.jpg" alt=""><img src="img/anuncio-corretora-funil.jpg" alt="">
+        <img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-creme-dental-1.jpg" alt=""><img src="img/anuncio-corretora-funil.jpg" alt="">
+      </div>
+      <div class="wall-col wc-c">
+        <img src="img/anuncio-estudio-de-rica.jpg" alt=""><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt="">
+        <img src="img/anuncio-estudio-de-rica.jpg" alt=""><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt="">
+      </div>
+      <div class="wall-col wc-d">
+        <img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/anuncio-protocolo-gem.jpg" alt="">
+        <img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/anuncio-protocolo-gem.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- palco cinematográfico -->
+  <canvas class="cine" id="cine" aria-hidden="true"></canvas>
+  <div class="cine-vignette" aria-hidden="true"></div>
+  <div class="cine-leak" aria-hidden="true"></div>
+  <div class="cine-grain" aria-hidden="true"></div>
+
+  <div class="dh-content">
+    <span class="dh-eyebrow">Design para redes sociais &amp; anúncios</span>
+    <h1>
+      <span class="word" style="animation-delay:1s">Design</span>
+      <span class="word" style="animation-delay:1.12s">que</span>
+      <span class="word grad" style="animation-delay:1.26s">segura&nbsp;o&nbsp;dedo</span><br>
+      <span class="word" style="animation-delay:1.42s">no&nbsp;feed.</span>
+    </h1>
+    <p class="dh-sub">Carrosséis, posts e anúncios pensados pra <b>performar</b>, não só pra ficar bonito no portfólio. Cada peça nasce de um objetivo: parar o scroll, gerar salvamento, converter clique.</p>
+    <div class="dh-actions">
+      <a href="https://wa.me/5585992657146?text=Oi%21%20Acabei%20de%20ver%20o%20portf%C3%B3lio%20de%20design%20da%20Fluxxo%20e%20quero%20pe%C3%A7as%20nesse%20n%C3%ADvel%20pra%20minha%20marca.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="btn-primary">Quero peças nesse nível
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+      <a href="#trabalhos" class="btn-ghost">Ver os trabalhos</a>
     </div>
-  </section>
-</div>
+  </div>
+
+  <div class="scroll-cue"><span class="mouse"></span>role pra ver os trabalhos</div>
+</header>
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
@@ -92,11 +129,18 @@
   </div>
 </div>
 
+<!-- ================= FAIXA DE NÚMEROS ================= -->
+<section class="dh-stats wrap" aria-label="Números do estúdio de design">
+  <div class="dh-stat"><b>+350</b><span>peças criadas e publicadas, entre carrosséis, anúncios e thumbnails</span></div>
+  <div class="dh-stat"><b>+40</b><span>marcas que já colocaram design nosso no feed delas</span></div>
+  <div class="dh-stat"><b>15</b><span>nichos diferentes nesse portfólio, do jiu-jitsu à medicina</span></div>
+</section>
+
 <!-- ================= SEÇÃO 2 — PORTFÓLIO (BENTO) ================= -->
 <section class="portfolio wrap" id="trabalhos">
   <div class="port-head">
     <div>
-      <h2>Trabalhos selecionados</h2>
+      <h2>Trabalhos <span class="grad">selecionados</span></h2>
       <p>Uma amostra entre redes sociais e anúncios. Passe o mouse pra ver o formato de cada peça.</p>
     </div>
     <div class="filters" role="tablist" aria-label="Filtrar por tipo">
@@ -732,6 +776,7 @@
   <span class="fm foot-links"><a href="index.html">início</a> · <a href="webdesign.html">web</a> · <a href="blog.html">blog</a></span>
 </footer>
 
-<script src="js/main.js?v=839"></script>
+<script src="js/main.js?v=850"></script>
+<script src="js/design-hero.js?v=850"></script>
 </body>
 </html>
