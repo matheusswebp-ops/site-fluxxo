@@ -75,27 +75,28 @@
       var r = stage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var tCol = suave(fase(p, 0.4, 0.74));     // colapso pro centro
-      var tNode = suave(fase(p, 0.58, 0.9));    // fluxo + resultado nascem
+      var tCol = suave(fase(p, 0.3, 0.6));      // colapso pro centro
+      var tNode = suave(fase(p, 0.5, 0.76));    // fluxo + resultado nascem
+      var tExit = suave(fase(p, 0.86, 1));      // sai fluindo pra cima
 
-      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.42, 0.6)));
+      head.style.opacity = suave(fase(p, 0, 0.1)) * (1 - suave(fase(p, 0.34, 0.5)));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
-        var ini = 0.02 + (i / chips.length) * 0.22;
+        var ini = (i / chips.length) * 0.24;
         var t1 = suave(fase(p, ini, ini + 0.12));
         var x = a.x * (1 - tCol);
         var y = a.y * (1 - tCol);
         var esc = (0.7 + 0.3 * t1) * (1 - tCol * 0.85);
-        c.style.opacity = t1 * (1 - suave(fase(p, 0.56, 0.74)));
+        c.style.opacity = t1 * (1 - suave(fase(p, 0.48, 0.64)));
         c.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) rotate(' + (a.r * (1 - tCol)) + 'deg) scale(' + esc + ')';
       });
 
-      node.style.transform = 'translate(-50%,-50%) scale(' + tNode + ')';
-      node.style.opacity = tNode;
+      node.style.transform = 'translate(-50%,-50%) translateY(' + (tExit * -80) + 'px) scale(' + (tNode * (1 + tExit * 0.2)) + ')';
+      node.style.opacity = tNode * (1 - tExit);
 
       if (burst) {
-        var tB = fase(p, 0.58, 0.86);
+        var tB = fase(p, 0.54, 0.82);
         burst.style.transform = 'scale(' + (0.4 + tB * 2) + ')';
         burst.style.opacity = (tB > 0 && tB < 1) ? (1 - tB) * 0.9 : 0;
       }
@@ -166,6 +167,7 @@
   if (showStage && !reduz && window.innerWidth > 900) {
     var acts = [].slice.call(showStage.querySelectorAll('.show-act'));
     var railDots = [].slice.call(showStage.querySelectorAll('.show-rail i'));
+    var showHead = showStage.querySelector('.show-head');
     var n = acts.length;
     var showTick = false;
     function showRender() {
@@ -174,10 +176,17 @@
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
       var seg = 1 / n;
       var active = clamp(Math.floor(p / seg), 0, n - 1);
+      if (showHead) showHead.style.opacity = suave(fase(p, 0.02, 0.13));
       acts.forEach(function (act, i) {
         var center = (i + 0.5) * seg;
         var d = (p - center) / seg;                 // 0 no centro do ato
-        var vis = clamp(1 - Math.abs(d) * 1.7, 0, 1);
+        var vis;
+        if (i === n - 1) {                          // último ato segura cheio até o fim
+          d = Math.min(d, 0);
+          vis = clamp(1 - Math.max(0, center - p) / seg * 1.7, 0, 1);
+        } else {
+          vis = clamp(1 - Math.abs(d) * 1.7, 0, 1);
+        }
         act.style.opacity = vis;
         act.style.transform = 'translateY(' + (d * -46) + 'px) scale(' + (0.93 + 0.07 * vis) + ')';
         act.style.pointerEvents = vis > 0.5 ? 'auto' : 'none';
@@ -195,6 +204,7 @@
   var segTrack = document.getElementById('segTrack');
   if (segStage && segTrack && !reduz && window.innerWidth > 900) {
     var segCards = [].slice.call(segTrack.querySelectorAll('.seg-card'));
+    var segHead = segStage.querySelector('.seg-head');
     var segBar = document.querySelector('#segProgress span');
     var segTick = false, segMax = 0;
     function segMeasure() {
@@ -206,6 +216,7 @@
       segTick = false;
       var r = segStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+      if (segHead) segHead.style.opacity = suave(fase(p, 0.02, 0.13));
       segTrack.style.transform = 'translateX(' + (-suave(p) * segMax) + 'px)';
       if (segBar) segBar.style.width = (p * 100) + '%';
       var mid = innerWidth / 2, best = 1e9, bi = 0;

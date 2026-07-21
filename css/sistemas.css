@@ -32,7 +32,7 @@
 @keyframes stBlink{50%{opacity:0}}
 
 /* ---------- o colapso ---------- */
-.col-stage{position:relative;z-index:2;height:185vh}
+.col-stage{position:relative;z-index:2;height:200vh}
 .col-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .col-head{position:absolute;top:10vh;left:0;right:0;text-align:center;z-index:3}
 .col-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
