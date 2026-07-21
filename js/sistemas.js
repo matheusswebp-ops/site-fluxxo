@@ -78,16 +78,14 @@
       var tCol = suave(fase(p, 0.22, 0.52));    // colapso pro centro
       var tNode = suave(fase(p, 0.46, 0.72));   // fluxo + resultado nascem e seguram até o fim
 
-      head.style.opacity = suave(fase(p, 0, 0.06)) * (1 - suave(fase(p, 0.26, 0.42)));
+      head.style.opacity = 1 - suave(fase(p, 0.26, 0.42));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
-        var ini = (i / chips.length) * 0.2;
-        var t1 = suave(fase(p, ini, ini + 0.1));
         var x = a.x * (1 - tCol);
         var y = a.y * (1 - tCol);
-        var esc = (0.7 + 0.3 * t1) * (1 - tCol * 0.85);
-        c.style.opacity = t1 * (1 - suave(fase(p, 0.4, 0.54)));
+        var esc = (0.9 + 0.1 * (1 - tCol)) * (1 - tCol * 0.82);
+        c.style.opacity = 0.9 * (1 - suave(fase(p, 0.38, 0.52)));   // já espalhados/visíveis na entrada
         c.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) rotate(' + (a.r * (1 - tCol)) + 'deg) scale(' + esc + ')';
       });
 
@@ -243,15 +241,10 @@
       var r = scStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var lineOut = suave(fase(p, 0.44, 0.56));   // linha sai
+      var lineOut = suave(fase(p, 0.42, 0.56));   // frase sai
       scLine.style.opacity = 1 - lineOut;
-      scLine.style.transform = 'translateY(' + (lineOut * -30) + 'px)';
-      var step = 0.3 / wN;
-      scWords.forEach(function (w, i) {
-        var wt = suave(fase(p, 0.05 + i * step, 0.05 + i * step + 0.14));
-        w.style.opacity = wt;
-        w.style.transform = 'translateY(' + ((1 - wt) * 26) + 'px)';
-      });
+      scLine.style.transform = 'translateY(' + (lineOut * -24) + 'px)';
+      scWords.forEach(function (w) { w.style.opacity = 1; w.style.transform = ''; });
 
       if (scGlow) scGlow.style.opacity = suave(fase(p, 0.16, 0.46)) * (1 - suave(fase(p, 0.62, 0.82))) * 0.9 + suave(fase(p, 0.6, 0.85)) * 0.5;
       if (scFlash) { var fl = clamp(1 - Math.abs(p - 0.5) / 0.05, 0, 1); scFlash.style.opacity = fl * 0.55; }
