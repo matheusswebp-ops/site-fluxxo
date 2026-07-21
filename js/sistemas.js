@@ -78,7 +78,7 @@
       var tCol = suave(fase(p, 0.4, 0.74));     // colapso pro centro
       var tNode = suave(fase(p, 0.58, 0.9));    // fluxo + resultado nascem
 
-      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.42, 0.6)));
+      head.style.opacity = 1 - suave(fase(p, 0.42, 0.6));   // título já visível na chegada
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
