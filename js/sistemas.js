@@ -57,6 +57,8 @@
     var node = document.getElementById('colNode');
     var head = document.getElementById('colHead');
     var burst = document.getElementById('cnBurst');
+    var beam = document.getElementById('cnBeam');
+    var drop = document.getElementById('cnDrop');
 
     // posições espalhadas (determinísticas)
     var alvos = chips.map(function (c, i) {
@@ -98,6 +100,18 @@
         var tB = fase(p, 0.58, 0.86);
         burst.style.transform = 'scale(' + (0.4 + tB * 2) + ')';
         burst.style.opacity = (tB > 0 && tB < 1) ? (1 - tB) * 0.9 : 0;
+      }
+
+      // conexão com a próxima seção: feixe + gota descem rumo às demos
+      var tBeam = suave(fase(p, 0.72, 1));
+      if (beam) {
+        beam.style.transform = 'translateX(-50%) scaleY(' + tBeam.toFixed(3) + ')';
+        beam.style.opacity = (tBeam * 0.9).toFixed(3);
+      }
+      if (drop) {
+        var tD = fase(p, 0.74, 1);
+        drop.style.opacity = (tD > 0.03 && tD < 0.97) ? 1 : 0;
+        drop.style.transform = 'translate(-50%,-50%) translateY(' + (tD * innerHeight * 0.56).toFixed(0) + 'px)';
       }
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
@@ -342,15 +356,15 @@
     var pWrap = document.getElementById('dbParticles');
     var particles = [];
     if (pWrap) {
-      var N = window.innerWidth < 700 ? 10 : 20;
+      var N = window.innerWidth < 700 ? 5 : 9;
       for (var pi = 0; pi < N; pi++) {
         var el = document.createElement('i');
-        var size = 1.4 + Math.random() * 2.6;
+        var size = 1.3 + Math.random() * 2.1;
         el.style.left = (Math.random() * 100).toFixed(2) + '%';
         el.style.top = (Math.random() * 100).toFixed(2) + '%';
         el.style.width = size.toFixed(1) + 'px';
         el.style.height = size.toFixed(1) + 'px';
-        el.style.opacity = (0.25 + Math.random() * 0.5).toFixed(2);
+        el.style.opacity = (0.12 + Math.random() * 0.26).toFixed(2);
         pWrap.appendChild(el);
         particles.push({ el: el, sy: 300 + Math.random() * 560, mx: (Math.random() - 0.5) * 100, my: (Math.random() - 0.5) * 66 });
       }
