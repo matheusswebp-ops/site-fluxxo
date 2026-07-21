@@ -75,28 +75,27 @@
       var r = stage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var tCol = suave(fase(p, 0.3, 0.6));      // colapso pro centro
-      var tNode = suave(fase(p, 0.5, 0.76));    // fluxo + resultado nascem
-      var tExit = suave(fase(p, 0.86, 1));      // sai fluindo pra cima
+      var tCol = suave(fase(p, 0.22, 0.52));    // colapso pro centro
+      var tNode = suave(fase(p, 0.46, 0.72));   // fluxo + resultado nascem e seguram até o fim
 
-      head.style.opacity = suave(fase(p, 0, 0.1)) * (1 - suave(fase(p, 0.34, 0.5)));
+      head.style.opacity = suave(fase(p, 0, 0.06)) * (1 - suave(fase(p, 0.26, 0.42)));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
-        var ini = (i / chips.length) * 0.24;
-        var t1 = suave(fase(p, ini, ini + 0.12));
+        var ini = (i / chips.length) * 0.2;
+        var t1 = suave(fase(p, ini, ini + 0.1));
         var x = a.x * (1 - tCol);
         var y = a.y * (1 - tCol);
         var esc = (0.7 + 0.3 * t1) * (1 - tCol * 0.85);
-        c.style.opacity = t1 * (1 - suave(fase(p, 0.48, 0.64)));
+        c.style.opacity = t1 * (1 - suave(fase(p, 0.4, 0.54)));
         c.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) rotate(' + (a.r * (1 - tCol)) + 'deg) scale(' + esc + ')';
       });
 
-      node.style.transform = 'translate(-50%,-50%) translateY(' + (tExit * -80) + 'px) scale(' + (tNode * (1 + tExit * 0.2)) + ')';
-      node.style.opacity = tNode * (1 - tExit);
+      node.style.transform = 'translate(-50%,-50%) scale(' + tNode + ')';
+      node.style.opacity = tNode;
 
       if (burst) {
-        var tB = fase(p, 0.54, 0.82);
+        var tB = fase(p, 0.46, 0.72);
         burst.style.transform = 'scale(' + (0.4 + tB * 2) + ')';
         burst.style.opacity = (tB > 0 && tB < 1) ? (1 - tB) * 0.9 : 0;
       }
@@ -174,23 +173,15 @@
       showTick = false;
       var r = showStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
-      var seg = 1 / n;
-      var active = clamp(Math.floor(p / seg), 0, n - 1);
-      if (showHead) showHead.style.opacity = suave(fase(p, 0.02, 0.13));
+      if (showHead) showHead.style.opacity = suave(fase(p, 0, 0.08));
+      var ci = p * (n - 1);                          // ato 0 cheio em p=0, ato n-1 cheio em p=1
       acts.forEach(function (act, i) {
-        var center = (i + 0.5) * seg;
-        var d = (p - center) / seg;                 // 0 no centro do ato
-        var vis;
-        if (i === n - 1) {                          // último ato segura cheio até o fim
-          d = Math.min(d, 0);
-          vis = clamp(1 - Math.max(0, center - p) / seg * 1.7, 0, 1);
-        } else {
-          vis = clamp(1 - Math.abs(d) * 1.7, 0, 1);
-        }
-        act.style.opacity = vis;
-        act.style.transform = 'translateY(' + (d * -46) + 'px) scale(' + (0.93 + 0.07 * vis) + ')';
-        act.style.pointerEvents = vis > 0.5 ? 'auto' : 'none';
+        var off = i - ci;
+        act.style.transform = 'translateX(' + (off * 108) + '%)';
+        act.style.opacity = clamp(1 - Math.abs(off) * 1.25, 0, 1);
+        act.style.pointerEvents = Math.abs(off) < 0.5 ? 'auto' : 'none';
       });
+      var active = clamp(Math.round(ci), 0, n - 1);
       railDots.forEach(function (dot, i) { dot.classList.toggle('on', i === active); });
     }
     function showScroll() { if (!showTick) { showTick = true; requestAnimationFrame(showRender); } }

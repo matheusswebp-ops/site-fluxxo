@@ -32,7 +32,7 @@
 @keyframes stBlink{50%{opacity:0}}
 
 /* ---------- o colapso ---------- */
-.col-stage{position:relative;z-index:2;height:200vh}
+.col-stage{position:relative;z-index:2;height:135vh}
 .col-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .col-head{position:absolute;top:10vh;left:0;right:0;text-align:center;z-index:3}
 .col-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
@@ -71,7 +71,7 @@
 .cn-zero{color:#5fe0a8;font-weight:700}
 
 /* ---------- demos vivas · showcase pinado ---------- */
-.show-stage{position:relative;z-index:2;height:280vh}
+.show-stage{position:relative;z-index:2;height:180vh}
 .show-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .show-head{position:absolute;top:8.5vh;left:0;right:0;text-align:center;z-index:4;padding:0 20px}
 .show-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
@@ -168,7 +168,7 @@
 .calc-right .sis-btn{margin-top:18px}
 
 /* ---------- segmentos · trilho horizontal pinado ---------- */
-.seg-stage{position:relative;z-index:2;height:290vh}
+.seg-stage{position:relative;z-index:2;height:185vh}
 .seg-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
 .seg-head{position:absolute;top:9vh;left:0;right:0;text-align:center;z-index:4;padding:0 20px}
 .seg-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
@@ -235,7 +235,7 @@
   background:rgba(124,77,255,.12);border:1px solid rgba(169,156,255,.25);padding:5px 10px;border-radius:100px}
 
 /* ---------- fecho · cena de encerramento ---------- */
-.sclose-stage{position:relative;z-index:2;height:225vh;background:#0e0815}
+.sclose-stage{position:relative;z-index:2;height:155vh;background:#0e0815}
 .sclose-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .sclose-glow{position:absolute;inset:0;z-index:0;opacity:0;
   background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(124,77,255,.4),transparent 66%)}
@@ -256,7 +256,7 @@
   .sl-grid{grid-template-columns:1fr}
   .calc-card{grid-template-columns:1fr}
   .calc-right{border-left:none;border-top:1px solid var(--line);padding:26px 0 0}
-  .col-stage{height:175vh}
+  .col-stage{height:130vh}
 
   .show-stage{height:auto}
   .show-sticky{position:static;height:auto;padding:80px 0 40px;display:block}
