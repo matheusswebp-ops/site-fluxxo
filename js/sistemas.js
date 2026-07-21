@@ -6,6 +6,17 @@
   var suave = function (t) { return t * t * (3 - 2 * t); };
   var rnd = function (i) { var x = Math.sin(i * 173.3 + 71.7) * 43758.5453; return x - Math.floor(x); };
 
+  // ---------- intro de entrada ----------
+  var intro = document.getElementById('sisIntro');
+  if (intro) {
+    if (reduz) {
+      if (intro.parentNode) intro.parentNode.removeChild(intro);
+    } else {
+      document.body.classList.add('sis-intro-on');
+      setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 2800);
+    }
+  }
+
   // ---------- terminal vivo ----------
   var st = document.getElementById('stBody');
   if (st) {

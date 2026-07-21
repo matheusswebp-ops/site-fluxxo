@@ -1,5 +1,47 @@
 /* ============ SISTEMAS · em cima de site.css + blog.css ============ */
 
+/* ---------- intro: animação de entrada ---------- */
+.sis-intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse 60% 60% at 50% 50%,#140c22,#0b0713 70%);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  animation:siUp .9s cubic-bezier(.76,0,.24,1) 1.75s forwards}
+@keyframes siUp{to{transform:translateY(-100%)}}
+.si-stage{position:relative;width:min(420px,74vw);height:120px;display:flex;align-items:center;justify-content:center}
+.si-line{position:absolute;left:0;right:0;top:50%;height:2px;transform:translateY(-50%) scaleX(0);transform-origin:center;border-radius:2px;
+  background:linear-gradient(90deg,transparent,rgba(201,160,255,.85) 50%,transparent);box-shadow:0 0 16px rgba(139,92,246,.55);
+  animation:siLine .7s cubic-bezier(.5,0,.2,1) .2s forwards}
+@keyframes siLine{to{transform:translateY(-50%) scaleX(1)}}
+.si-orb{position:absolute;left:50%;top:50%;width:34px;height:34px;border-radius:50%;transform:translate(-50%,-50%) scale(0);
+  background:radial-gradient(circle at 34% 28%,#fff,#c9a0ff 42%,#7c3aed 68%,#4c1d95);
+  box-shadow:0 0 34px rgba(139,92,246,1),0 0 90px rgba(139,92,246,.6);
+  animation:siOrb .7s cubic-bezier(.2,1.5,.4,1) .55s forwards,siOrbPulse 2.2s ease-in-out 1.25s infinite}
+@keyframes siOrb{to{transform:translate(-50%,-50%) scale(1)}}
+@keyframes siOrbPulse{0%,100%{box-shadow:0 0 34px rgba(139,92,246,1),0 0 90px rgba(139,92,246,.6)}50%{box-shadow:0 0 44px rgba(139,92,246,1),0 0 120px rgba(139,92,246,.75)}}
+.si-burst{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;opacity:0;
+  border:1.5px solid rgba(169,156,255,.7);animation:siBurst .9s ease-out .7s forwards}
+@keyframes siBurst{0%{opacity:.9;transform:scale(.2)}100%{opacity:0;transform:scale(1.5)}}
+.si-pulse{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#e6d5ff;opacity:0;
+  box-shadow:0 0 14px 2px rgba(201,160,255,.9)}
+.si-pulse.pa{animation:siPL 1s ease-out .85s forwards}
+.si-pulse.pb{animation:siPR 1s ease-out .85s forwards}
+.si-pulse.pc{animation:siPL 1s ease-out 1.15s forwards}
+.si-pulse.pd{animation:siPR 1s ease-out 1.15s forwards}
+@keyframes siPL{0%{opacity:1;transform:translateX(0) scale(1)}100%{opacity:0;transform:translateX(-190px) scale(.4)}}
+@keyframes siPR{0%{opacity:1;transform:translateX(0) scale(1)}100%{opacity:0;transform:translateX(190px) scale(.4)}}
+.si-tag{position:absolute;top:calc(50% + 46px);left:0;right:0;text-align:center;font-family:var(--font-mono);
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--purple-light);opacity:0;
+  animation:siTag .6s ease .95s forwards}
+@keyframes siTag{to{opacity:.85}}
+
+/* cascata do hero após o intro */
+.sis-intro-on .sis-hero-in>*{opacity:0;transform:translateY(28px);animation:sisRise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.sis-intro-on .sis-hero-in>*:nth-child(1){animation-delay:1.9s}
+.sis-intro-on .sis-hero-in>*:nth-child(2){animation-delay:2.02s}
+.sis-intro-on .sis-hero-in>*:nth-child(3){animation-delay:2.14s}
+.sis-intro-on .sis-hero-in>*:nth-child(4){animation-delay:2.26s}
+.sis-intro-on .sis-hero-in>*:nth-child(5){animation-delay:2.38s}
+@keyframes sisRise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sis-intro{display:none}.sis-intro-on .sis-hero-in>*{opacity:1;transform:none;animation:none}}
+
 /* ---------- fundo em profundidade (parallax 3D) ---------- */
 .depth-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--bg);perspective:900px}
 .db-grid{position:absolute;inset:-25% -12%;
