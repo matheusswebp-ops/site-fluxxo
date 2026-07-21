@@ -75,20 +75,19 @@
       var r = stage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var tIn = suave(fase(p, 0.02, 0.3));      // chips chegam
-      var tCol = suave(fase(p, 0.42, 0.72));    // colapso pro centro
-      var tNode = suave(fase(p, 0.6, 0.82));    // núcleo + resultado nascem juntos
+      var tCol = suave(fase(p, 0.4, 0.74));     // colapso pro centro
+      var tNode = suave(fase(p, 0.58, 0.9));    // fluxo + resultado nascem
 
-      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.4, 0.58)));
+      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.42, 0.6)));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
-        var ini = 0.02 + (i / chips.length) * 0.2;
+        var ini = 0.02 + (i / chips.length) * 0.22;
         var t1 = suave(fase(p, ini, ini + 0.12));
         var x = a.x * (1 - tCol);
         var y = a.y * (1 - tCol);
         var esc = (0.7 + 0.3 * t1) * (1 - tCol * 0.85);
-        c.style.opacity = t1 * (1 - suave(fase(p, 0.55, 0.72)));
+        c.style.opacity = t1 * (1 - suave(fase(p, 0.56, 0.74)));
         c.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) rotate(' + (a.r * (1 - tCol)) + 'deg) scale(' + esc + ')';
       });
 
@@ -96,7 +95,7 @@
       node.style.opacity = tNode;
 
       if (burst) {
-        var tB = fase(p, 0.6, 0.8);
+        var tB = fase(p, 0.58, 0.86);
         burst.style.transform = 'scale(' + (0.4 + tB * 2) + ')';
         burst.style.opacity = (tB > 0 && tB < 1) ? (1 - tB) * 0.9 : 0;
       }
@@ -149,7 +148,7 @@
     }, { threshold: 0.35 }) : null;
 
     sysVideos.forEach(function (v) {
-      var body = v.closest('.sl-body');
+      var body = v.closest('.sl-body, .demo-canvas');
       var ph = body ? body.querySelector('[data-placeholder]') : null;
       function falhou() { if (ph) ph.classList.remove('is-hidden'); }
       function carregou() {
@@ -198,7 +197,11 @@
     var segCards = [].slice.call(segTrack.querySelectorAll('.seg-card'));
     var segBar = document.querySelector('#segProgress span');
     var segTick = false, segMax = 0;
-    function segMeasure() { segMax = Math.max(0, segTrack.scrollWidth - innerWidth); }
+    function segMeasure() {
+      segMax = segCards.length > 1
+        ? Math.max(0, segCards[segCards.length - 1].offsetLeft - segCards[0].offsetLeft)
+        : 0;
+    }
     function segRender() {
       segTick = false;
       var r = segStage.getBoundingClientRect();
@@ -217,6 +220,7 @@
     segMeasure();
     window.addEventListener('scroll', segScroll, { passive: true });
     window.addEventListener('resize', function () { segMeasure(); segScroll(); }, { passive: true });
+    window.addEventListener('load', function () { segMeasure(); segScroll(); });
     segRender();
   }
 
@@ -228,6 +232,9 @@
     var scFinal = document.getElementById('scloseFinal');
     var scGlow = document.getElementById('scloseGlow');
     var scFlash = document.getElementById('scloseFlash');
+    var scLetters = [].slice.call(document.querySelectorAll('#scloseBrand span'));
+    var scSub = scFinal.querySelector('p');
+    var scCta = document.getElementById('sisMag');
     var wN = scWords.length, scTick = false;
     function scRender() {
       scTick = false;
@@ -247,10 +254,19 @@
       if (scGlow) scGlow.style.opacity = suave(fase(p, 0.16, 0.46)) * (1 - suave(fase(p, 0.62, 0.82))) * 0.9 + suave(fase(p, 0.6, 0.85)) * 0.5;
       if (scFlash) { var fl = clamp(1 - Math.abs(p - 0.5) / 0.05, 0, 1); scFlash.style.opacity = fl * 0.55; }
 
-      var ft = suave(fase(p, 0.54, 0.82));
-      scFinal.style.opacity = ft;
-      scFinal.style.transform = 'translateY(' + ((1 - ft) * 24) + 'px) scale(' + (1.16 - 0.16 * ft) + ')';
-      scFinal.style.pointerEvents = ft > 0.6 ? 'auto' : 'none';
+      scFinal.style.opacity = suave(fase(p, 0.5, 0.6));
+      scFinal.style.transform = 'translateY(' + ((1 - suave(fase(p, 0.5, 0.7))) * 16) + 'px)';
+      scFinal.style.pointerEvents = p > 0.62 ? 'auto' : 'none';
+
+      scLetters.forEach(function (l, i) {
+        var lt = suave(fase(p, 0.56 + i * 0.028, 0.56 + i * 0.028 + 0.13));
+        l.style.opacity = lt;
+        l.style.transform = 'translateY(' + ((1 - lt) * 42) + 'px)';
+      });
+
+      var tail = suave(fase(p, 0.78, 0.92));
+      if (scSub) { scSub.style.opacity = tail; scSub.style.transform = 'translateY(' + ((1 - tail) * 14) + 'px)'; }
+      if (scCta) scCta.style.opacity = tail;
     }
     function scScroll() { if (!scTick) { scTick = true; requestAnimationFrame(scRender); } }
     window.addEventListener('scroll', scScroll, { passive: true });
