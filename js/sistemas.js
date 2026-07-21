@@ -75,17 +75,19 @@
       var r = stage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var tCol = suave(fase(p, 0.22, 0.52));    // colapso pro centro
-      var tNode = suave(fase(p, 0.46, 0.72));   // fluxo + resultado nascem e seguram até o fim
+      var tCol = suave(fase(p, 0.4, 0.74));     // colapso pro centro
+      var tNode = suave(fase(p, 0.58, 0.9));    // fluxo + resultado nascem
 
-      head.style.opacity = 1 - suave(fase(p, 0.26, 0.42));
+      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.42, 0.6)));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
+        var ini = 0.02 + (i / chips.length) * 0.22;
+        var t1 = suave(fase(p, ini, ini + 0.12));
         var x = a.x * (1 - tCol);
         var y = a.y * (1 - tCol);
-        var esc = (0.9 + 0.1 * (1 - tCol)) * (1 - tCol * 0.82);
-        c.style.opacity = 0.9 * (1 - suave(fase(p, 0.38, 0.52)));   // já espalhados/visíveis na entrada
+        var esc = (0.7 + 0.3 * t1) * (1 - tCol * 0.85);
+        c.style.opacity = t1 * (1 - suave(fase(p, 0.56, 0.74)));
         c.style.transform = 'translate(-50%,-50%) translate(' + x + 'px,' + y + 'px) rotate(' + (a.r * (1 - tCol)) + 'deg) scale(' + esc + ')';
       });
 
@@ -93,7 +95,7 @@
       node.style.opacity = tNode;
 
       if (burst) {
-        var tB = fase(p, 0.46, 0.72);
+        var tB = fase(p, 0.58, 0.86);
         burst.style.transform = 'scale(' + (0.4 + tB * 2) + ')';
         burst.style.opacity = (tB > 0 && tB < 1) ? (1 - tB) * 0.9 : 0;
       }
@@ -164,22 +166,22 @@
   if (showStage && !reduz && window.innerWidth > 900) {
     var acts = [].slice.call(showStage.querySelectorAll('.show-act'));
     var railDots = [].slice.call(showStage.querySelectorAll('.show-rail i'));
-    var showHead = showStage.querySelector('.show-head');
     var n = acts.length;
     var showTick = false;
     function showRender() {
       showTick = false;
       var r = showStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
-      if (showHead) showHead.style.opacity = suave(fase(p, 0, 0.08));
-      var ci = p * (n - 1);                          // ato 0 cheio em p=0, ato n-1 cheio em p=1
+      var seg = 1 / n;
+      var active = clamp(Math.floor(p / seg), 0, n - 1);
       acts.forEach(function (act, i) {
-        var off = i - ci;
-        act.style.transform = 'translateX(' + (off * 108) + '%)';
-        act.style.opacity = clamp(1 - Math.abs(off) * 1.25, 0, 1);
-        act.style.pointerEvents = Math.abs(off) < 0.5 ? 'auto' : 'none';
+        var center = (i + 0.5) * seg;
+        var d = (p - center) / seg;                 // 0 no centro do ato
+        var vis = clamp(1 - Math.abs(d) * 1.7, 0, 1);
+        act.style.opacity = vis;
+        act.style.transform = 'translateY(' + (d * -46) + 'px) scale(' + (0.93 + 0.07 * vis) + ')';
+        act.style.pointerEvents = vis > 0.5 ? 'auto' : 'none';
       });
-      var active = clamp(Math.round(ci), 0, n - 1);
       railDots.forEach(function (dot, i) { dot.classList.toggle('on', i === active); });
     }
     function showScroll() { if (!showTick) { showTick = true; requestAnimationFrame(showRender); } }
@@ -193,7 +195,6 @@
   var segTrack = document.getElementById('segTrack');
   if (segStage && segTrack && !reduz && window.innerWidth > 900) {
     var segCards = [].slice.call(segTrack.querySelectorAll('.seg-card'));
-    var segHead = segStage.querySelector('.seg-head');
     var segBar = document.querySelector('#segProgress span');
     var segTick = false, segMax = 0;
     function segMeasure() {
@@ -205,7 +206,6 @@
       segTick = false;
       var r = segStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
-      if (segHead) segHead.style.opacity = suave(fase(p, 0.02, 0.13));
       segTrack.style.transform = 'translateX(' + (-suave(p) * segMax) + 'px)';
       if (segBar) segBar.style.width = (p * 100) + '%';
       var mid = innerWidth / 2, best = 1e9, bi = 0;
@@ -241,10 +241,15 @@
       var r = scStage.getBoundingClientRect();
       var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-      var lineOut = suave(fase(p, 0.42, 0.56));   // frase sai
+      var lineOut = suave(fase(p, 0.44, 0.56));   // linha sai
       scLine.style.opacity = 1 - lineOut;
-      scLine.style.transform = 'translateY(' + (lineOut * -24) + 'px)';
-      scWords.forEach(function (w) { w.style.opacity = 1; w.style.transform = ''; });
+      scLine.style.transform = 'translateY(' + (lineOut * -30) + 'px)';
+      var step = 0.3 / wN;
+      scWords.forEach(function (w, i) {
+        var wt = suave(fase(p, 0.05 + i * step, 0.05 + i * step + 0.14));
+        w.style.opacity = wt;
+        w.style.transform = 'translateY(' + ((1 - wt) * 26) + 'px)';
+      });
 
       if (scGlow) scGlow.style.opacity = suave(fase(p, 0.16, 0.46)) * (1 - suave(fase(p, 0.62, 0.82))) * 0.9 + suave(fase(p, 0.6, 0.85)) * 0.5;
       if (scFlash) { var fl = clamp(1 - Math.abs(p - 0.5) / 0.05, 0, 1); scFlash.style.opacity = fl * 0.55; }
@@ -287,5 +292,46 @@
       mag.style.transform = 'translate(' + bx + 'px,' + by + 'px)';
       requestAnimationFrame(loop);
     })();
+  }
+
+  // ---------- parallax + reveal suave entre as seções ----------
+  if (!reduz && window.innerWidth > 900) {
+    var pars = [];
+    function reg(sel, cfg) {
+      [].slice.call(document.querySelectorAll(sel)).forEach(function (el) {
+        pars.push({ el: el, rise: cfg.rise || 0, drift: cfg.drift || 0, mode: cfg.mode || 'in' });
+        el.style.willChange = 'transform, opacity';
+      });
+    }
+    reg('.sis-hero-in', { drift: 90, mode: 'out' });
+    reg('.sis-live .work-head', { rise: 54, drift: 40 });
+    reg('.sl-grid', { rise: 80, drift: 54 });
+    reg('.calc-card', { rise: 62, drift: 42 });
+    reg('.footer-card', { rise: 46, drift: 28 });
+
+    var parTick = false;
+    function parRender() {
+      parTick = false;
+      var vh = innerHeight, vc = vh / 2;
+      pars.forEach(function (it) {
+        var r = it.el.getBoundingClientRect();
+        var center = r.top + r.height / 2;
+        var pc = (center - vc) / vh;                 // >0 abaixo do centro, <0 acima
+        if (it.mode === 'out') {
+          var out = clamp(-pc * 1.3, 0, 1);          // hero: some e sobe ao rolar
+          it.el.style.opacity = 1 - out;
+          it.el.style.transform = 'translate3d(0,' + (-out * it.drift).toFixed(1) + 'px,0)';
+        } else {
+          var enter = clamp((vh - r.top) / (vh * 0.78), 0, 1);
+          var ty = (1 - enter) * it.rise - pc * it.drift * 0.35;
+          it.el.style.opacity = enter;
+          it.el.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0)';
+        }
+      });
+    }
+    function parScroll() { if (!parTick) { parTick = true; requestAnimationFrame(parRender); } }
+    window.addEventListener('scroll', parScroll, { passive: true });
+    window.addEventListener('resize', parScroll, { passive: true });
+    parRender();
   }
 })();
