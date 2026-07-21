@@ -56,8 +56,6 @@
     var chips = [].slice.call(stage.querySelectorAll('.col-chip'));
     var node = document.getElementById('colNode');
     var head = document.getElementById('colHead');
-    var horas = document.getElementById('colHoras');
-    var count = document.getElementById('colCount');
 
     // posições espalhadas (determinísticas)
     var alvos = chips.map(function (c, i) {
@@ -78,9 +76,9 @@
 
       var tIn = suave(fase(p, 0.02, 0.3));      // chips chegam
       var tCol = suave(fase(p, 0.42, 0.72));    // colapso pro centro
-      var tNode = suave(fase(p, 0.6, 0.78));    // núcleo nasce
+      var tNode = suave(fase(p, 0.6, 0.82));    // núcleo + resultado nascem juntos
 
-      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.5, 0.62)) * 0.65);
+      head.style.opacity = suave(fase(p, 0, 0.12)) * (1 - suave(fase(p, 0.4, 0.58)));
 
       chips.forEach(function (c, i) {
         var a = alvos[i];
@@ -94,15 +92,7 @@
       });
 
       node.style.transform = 'translate(-50%,-50%) scale(' + tNode + ')';
-
-      // 3h -> 0h
-      var hRest = Math.max(0, 3 - 3 * suave(fase(p, 0.62, 0.85)));
-      horas.textContent = (Math.round(hRest * 10) / 10).toString().replace('.', ',') + 'h';
-      horas.style.color = hRest < 0.2 ? '#5fe0a8' : '#fff';
-      count.style.opacity = suave(fase(p, 0.1, 0.2));
-      var lbl = count.querySelector('span');
-      if (hRest < 0.2) lbl.textContent = 'de volta pro que importa';
-      else lbl.textContent = 'por dia nisso';
+      node.style.opacity = tNode;
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -138,6 +128,31 @@
     cH.addEventListener('input', calcula);
     cV.addEventListener('input', calcula);
     calcula();
+  }
+
+  // ---------- sistemas no ar: vídeo real com placeholder de fallback ----------
+  var sysVideos = [].slice.call(document.querySelectorAll('[data-sysvideo]'));
+  if (sysVideos.length) {
+    var vObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) { if (v.play) v.play().catch(function () {}); }
+        else if (v.pause) { v.pause(); }
+      });
+    }, { threshold: 0.35 }) : null;
+
+    sysVideos.forEach(function (v) {
+      var body = v.closest('.sl-body');
+      var ph = body ? body.querySelector('[data-placeholder]') : null;
+      function falhou() { if (ph) ph.classList.remove('is-hidden'); }
+      function carregou() {
+        if (ph) ph.classList.add('is-hidden');
+        if (vObserver) vObserver.observe(v);
+      }
+      v.addEventListener('error', falhou, true);
+      v.addEventListener('loadeddata', carregou);
+      if (v.error) falhou();
+    });
   }
 
   // ---------- CTA magnético ----------
