@@ -1,5 +1,20 @@
 /* ============ SISTEMAS · em cima de site.css + blog.css ============ */
 
+/* ---------- fundo em profundidade (parallax 3D) ---------- */
+.depth-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--bg);perspective:900px}
+.db-grid{position:absolute;inset:-25% -12%;
+  background-image:linear-gradient(rgba(124,77,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(124,77,255,.06) 1px,transparent 1px);
+  background-size:66px 66px;will-change:background-position;
+  -webkit-mask-image:radial-gradient(ellipse 80% 92% at 50% 40%,#000 42%,transparent 86%);mask-image:radial-gradient(ellipse 80% 92% at 50% 40%,#000 42%,transparent 86%)}
+.db-glow{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform;opacity:.55}
+.db-glow.g1{width:52vw;height:52vw;left:-12vw;top:-6vh;background:radial-gradient(circle,rgba(124,77,255,.55),transparent 68%)}
+.db-glow.g2{width:44vw;height:44vw;right:-10vw;top:32vh;background:radial-gradient(circle,rgba(96,64,190,.5),transparent 68%)}
+.db-glow.g3{width:58vw;height:58vw;left:6vw;top:60vh;background:radial-gradient(circle,rgba(150,96,255,.42),transparent 68%)}
+.db-glow.g4{width:40vw;height:40vw;right:2vw;top:-4vh;background:radial-gradient(circle,rgba(70,50,155,.45),transparent 68%)}
+.db-particles{position:absolute;inset:0;will-change:transform}
+.db-particles i{position:absolute;border-radius:50%;background:#c9a0ff;box-shadow:0 0 8px 1px rgba(201,160,255,.75)}
+.db-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 78% 72% at 50% 44%,transparent 46%,rgba(6,4,12,.72) 100%)}
+
 /* ---------- hero com vídeo desfocado ---------- */
 .sis-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;padding:140px 0 80px}
 .sis-video{position:absolute;inset:0;z-index:0}
@@ -235,7 +250,7 @@
   background:rgba(124,77,255,.12);border:1px solid rgba(169,156,255,.25);padding:5px 10px;border-radius:100px}
 
 /* ---------- fecho · cena de encerramento ---------- */
-.sclose-stage{position:relative;z-index:2;height:300vh;background:#0e0815}
+.sclose-stage{position:relative;z-index:2;height:300vh}
 .sclose-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 .sclose-glow{position:absolute;inset:0;z-index:0;opacity:0;
   background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(124,77,255,.4),transparent 66%)}

@@ -334,4 +334,61 @@
     window.addEventListener('resize', parScroll, { passive: true });
     parRender();
   }
+
+  // ---------- fundo em profundidade: parallax multi-camada + câmera 3D ----------
+  var depth = document.querySelector('.depth-bg');
+  if (depth) {
+    var dGrid = document.getElementById('dbGrid');
+    var pWrap = document.getElementById('dbParticles');
+    var particles = [];
+    if (pWrap) {
+      var N = window.innerWidth < 700 ? 10 : 20;
+      for (var pi = 0; pi < N; pi++) {
+        var el = document.createElement('i');
+        var size = 1.4 + Math.random() * 2.6;
+        el.style.left = (Math.random() * 100).toFixed(2) + '%';
+        el.style.top = (Math.random() * 100).toFixed(2) + '%';
+        el.style.width = size.toFixed(1) + 'px';
+        el.style.height = size.toFixed(1) + 'px';
+        el.style.opacity = (0.25 + Math.random() * 0.5).toFixed(2);
+        pWrap.appendChild(el);
+        particles.push({ el: el, sy: 300 + Math.random() * 560, mx: (Math.random() - 0.5) * 100, my: (Math.random() - 0.5) * 66 });
+      }
+    }
+    var dglows = [
+      { el: document.getElementById('dbG1'), sy: -340, mx: 34, my: 22 },
+      { el: document.getElementById('dbG2'), sy: 300, mx: -42, my: -24 },
+      { el: document.getElementById('dbG3'), sy: -470, mx: 28, my: -30 },
+      { el: document.getElementById('dbG4'), sy: 220, mx: -26, my: 26 }
+    ];
+    var mX = 0, mY = 0, tX = 0, tY = 0;
+    function depthRender() {
+      var sy = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var docH = document.documentElement.scrollHeight - innerHeight;
+      var prog = docH > 0 ? sy / docH : 0;
+      if (dGrid) dGrid.style.backgroundPosition = (mX * 12).toFixed(1) + 'px ' + (sy * 0.35 + mY * 12).toFixed(1) + 'px';
+      dglows.forEach(function (g) {
+        if (g.el) g.el.style.transform = 'translate3d(' + (mX * g.mx).toFixed(1) + 'px,' + (prog * g.sy + mY * g.my).toFixed(1) + 'px,0)';
+      });
+      particles.forEach(function (pt) {
+        pt.el.style.transform = 'translate3d(' + (mX * pt.mx).toFixed(1) + 'px,' + ((prog - 0.5) * pt.sy + mY * pt.my).toFixed(1) + 'px,0)';
+      });
+    }
+    if (reduz) {
+      depthRender();
+    } else {
+      if (window.matchMedia('(pointer:fine)').matches) {
+        window.addEventListener('mousemove', function (e) {
+          tX = (e.clientX / innerWidth - 0.5) * 2;
+          tY = (e.clientY / innerHeight - 0.5) * 2;
+        }, { passive: true });
+      }
+      (function dloop() {
+        mX += (tX - mX) * 0.05;
+        mY += (tY - mY) * 0.05;
+        depthRender();
+        requestAnimationFrame(dloop);
+      })();
+    }
+  }
 })();
