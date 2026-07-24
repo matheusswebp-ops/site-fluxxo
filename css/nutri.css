@@ -105,16 +105,6 @@ body{padding-top:0}
   body:has(.mobile-panel.open){overflow:hidden}
 }
 
-/* ============ faixa de formatos ============ */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--paper-2)}
-.marquee-track{display:inline-flex;gap:0;animation:slide 28s linear infinite;will-change:transform}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{
-  font-family:var(--font-display);font-weight:500;font-size:clamp(1rem,2vw,1.3rem);
-  padding:16px 26px;color:var(--ink);display:inline-flex;align-items:center;gap:26px;letter-spacing:-0.005em}
-.marquee-track span::after{content:"✦";color:var(--verde);font-size:0.65em}
-@keyframes slide{to{transform:translateX(-50%)}}
-
 /* ============ PORTFÓLIO ============ */
 .portfolio{padding:clamp(46px,7vw,88px) 0 clamp(60px,8vw,110px)}
 .port-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
@@ -123,14 +113,6 @@ body{padding-top:0}
   font-size:clamp(1.9rem,4.6vw,3.1rem);letter-spacing:-0.02em;line-height:1.05;color:var(--ink)}
 .port-head h2 .grad{color:var(--verde-deep);font-style:italic}
 .port-head p{color:var(--ink-soft);margin-top:12px;max-width:44ch;font-size:0.98rem;line-height:1.55}
-
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filters button{
-  font-family:var(--font-body);font-weight:700;font-size:12.5px;letter-spacing:0.02em;
-  background:var(--paper-2);border:1px solid var(--line);color:var(--ink-soft);
-  padding:9px 16px;border-radius:100px;cursor:pointer;transition:all .18s}
-.filters button:hover{border-color:var(--verde);color:var(--verde-deep)}
-.filters button.active{background:linear-gradient(120deg,#57975f,#3c6f47);border-color:transparent;color:#fff}
 
 /* grade masonry */
 .bento{columns:3;column-gap:16px}
@@ -222,12 +204,9 @@ body{padding-top:0}
   .meta{transform:none;background:linear-gradient(to top,rgba(255,255,255,.9),rgba(255,255,255,.5) 70%,transparent)}
   .cnav{opacity:1;width:32px;height:32px}
   .dots,.carousel .dots{bottom:52px}
-  .marquee-track span{padding:14px 20px;gap:20px}
 }
 @media (max-width:640px){
   .port-head{align-items:flex-start}
-  .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:4px}
-  .filters button{flex:0 0 auto}
   .bento{column-gap:12px}
   .tile{margin-bottom:12px}
 }

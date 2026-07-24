@@ -139,52 +139,6 @@
     })();
   })();
 
-  // ============ Contadores da faixa de números ============
-  (function () {
-    var stats = [].slice.call(document.querySelectorAll('.dh-stat'));
-    if (!stats.length) return;
-
-    if ('IntersectionObserver' in window && !reduz) {
-      var ioR = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var el = e.target;
-          setTimeout(function () { el.classList.add('in'); }, (stats.indexOf(el) % 3) * 110);
-          ioR.unobserve(el);
-        });
-      }, { threshold: .3 });
-      stats.forEach(function (s) { ioR.observe(s); });
-    } else {
-      stats.forEach(function (s) { s.classList.add('in'); });
-    }
-
-    if (reduz) return;
-    var nums = [].slice.call(document.querySelectorAll('.dh-stat b'));
-    nums.forEach(function (b) {
-      var m = b.textContent.match(/\d+/);
-      if (!m) return;
-      b.dataset.alvo = m[0];
-      b.dataset.tpl = b.textContent;
-    });
-    if (!('IntersectionObserver' in window)) return;
-    var ioN = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var b = e.target, alvo = parseInt(b.dataset.alvo, 10), tpl = b.dataset.tpl;
-        var ini = null;
-        function passo(ts) {
-          if (!ini) ini = ts;
-          var t = Math.min(1, (ts - ini) / 1100);
-          var v = Math.round(alvo * (t * t * (3 - 2 * t)));
-          b.textContent = tpl.replace(/\d+/, v);
-          if (t < 1) requestAnimationFrame(passo);
-        }
-        requestAnimationFrame(passo);
-        ioN.unobserve(b);
-      });
-    }, { threshold: .6 });
-    nums.forEach(function (b) { if (b.dataset.alvo) ioN.observe(b); });
-  })();
 
   // ============ Título do portfólio: revela palavra a palavra no scroll ============
   (function () {
@@ -225,7 +179,6 @@
     if (reduz) return;
     var mapa = [
       ['.nhero', [250, 248, 243]],
-      ['.dh-stats', [242, 246, 239]],
       ['#trabalhos', [250, 248, 243]],
       ['.foot', [247, 242, 233]]
     ].map(function (par) {

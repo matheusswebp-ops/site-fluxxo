@@ -48,34 +48,8 @@
     go(0);
   });
 
-  // ---------- Filtros: cada categoria mostra só o tipo dela ----------
-  var tiles = [].slice.call(document.querySelectorAll('.bento .tile'));
-
-  document.querySelectorAll('.filters button').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var ativo = document.querySelector('.filters .active');
-      if (ativo) ativo.classList.remove('active');
-      btn.classList.add('active');
-      var f = btn.dataset.filter;
-
-      tiles.forEach(function (t) {
-        var mostra = f === 'all' || t.dataset.cat === f;
-        t.style.display = mostra ? '' : 'none';
-      });
-
-      // re-stagger dos tiles visíveis
-      if (reduz) return;
-      requestAnimationFrame(function () {
-        var vis = tiles.filter(function (t) { return t.style.display !== 'none'; });
-        vis.forEach(function (t, k) {
-          t.classList.remove('in');
-          setTimeout(function () { t.classList.add('in'); }, 50 + (k % 8) * 55);
-        });
-      });
-    });
-  });
-
   // ---------- Reveal on scroll (stagger) ----------
+  var tiles = [].slice.call(document.querySelectorAll('.bento .tile'));
   if ('IntersectionObserver' in window && !reduz) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {

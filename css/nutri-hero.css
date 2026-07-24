@@ -89,16 +89,6 @@
 .scroll-cue .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--verde);animation:nWheel 1.6s ease-in-out infinite}
 @keyframes nWheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
 
-/* ---------- faixa de números ---------- */
-.dh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:clamp(44px,6vw,76px) 0 clamp(10px,2vw,20px)}
-.dh-stat{border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,30px);background:var(--paper-2);
-  box-shadow:var(--sombra);
-  opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),border-color .3s}
-.dh-stat.in{opacity:1;transform:none}
-.dh-stat:hover{border-color:rgba(78,138,90,.4)}
-.dh-stat b{display:block;font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,4vw,2.9rem);line-height:1;color:var(--verde-deep);letter-spacing:-0.01em}
-.dh-stat span{display:block;margin-top:10px;color:var(--ink-soft);font-size:.94rem;line-height:1.55}
-
 /* ---------- portfólio: título cinético + hover ---------- */
 #trabalhos{scroll-margin-top:90px}
 .kin .kw{display:inline-block;opacity:0;transform:translateY(24px) rotate(2deg);filter:blur(6px);
@@ -116,7 +106,6 @@
   .wall-plane{gap:14px;transform:translate(-50%,-50%) rotateX(14deg) rotateY(-6deg) rotateZ(3deg) scale(1.16)}
   .wall-col{width:44vw;gap:14px}
   .wc-c,.wc-d{display:none}
-  .dh-stats{grid-template-columns:1fr;gap:12px}
   .tile.in:hover{transform:none}
   .tile:hover .art{transform:none}
 }
@@ -134,7 +123,6 @@
   .wall-col{animation:none}
   .nhero h1 .word,.dh-eyebrow,.dh-sub,.dh-actions,.scroll-cue{animation:none;opacity:1;transform:none;filter:none}
   .scroll-cue .mouse::after{animation:none}
-  .dh-stat{opacity:1;transform:none;transition:none}
   .kin .kw{opacity:1;transform:none;filter:none;transition:none}
   .tile.in,.tile .art{transition:none}
 }
