@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Nunito+Sans:opsz,wght@6..12,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/nutri.css?v=3">
-<link rel="stylesheet" href="css/nutri-hero.css?v=2">
+<link rel="stylesheet" href="css/nutri.css?v=4">
+<link rel="stylesheet" href="css/nutri-hero.css?v=3">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Carrosséis para Nutricionistas | Fluxxo","url":"https://fluxxo.io/nutricionista","inLanguage":"pt-BR","about":"Carrosséis de design para nutricionistas"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Nutricionista","item":"https://fluxxo.io/nutricionista"}]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -74,51 +74,49 @@
 <header class="nhero" id="top">
   <div class="blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
-  <!-- parede ao fundo: por enquanto placeholders elegantes.
-       TROCAR: quando as artes de nutricionista chegarem, salve em img/nutri/
-       e substitua cada .wall-card por <img src="img/nutri/arquivo.jpg" alt="">
-       (duplicando a sequência dentro de cada coluna, como está aqui, pro loop ficar contínuo) -->
+  <!-- parede ao fundo: capas reais dos 5 carrosséis (img/nutri/carrossel-0N-slide-1.jpg),
+       em loop contínuo. Cada coluna repete sua sequência de 4 pra o scroll infinito fechar sem emenda. -->
   <div class="hero-wall" aria-hidden="true">
     <div class="wall-plane" id="wallPlane">
       <div class="wall-col wc-a">
-        <div class="wall-card wg1"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg2 r11"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg></div>
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg></div>
-        <div class="wall-card wg4 r169"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg></div>
-        <div class="wall-card wg1"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg2 r11"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg></div>
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg></div>
-        <div class="wall-card wg4 r169"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg></div>
+        <div class="wall-card wg1"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4 r169"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4 r169"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
       </div>
       <div class="wall-col wc-b">
-        <div class="wall-card wg2"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
-        <div class="wall-card wg3 r169"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 0-2 2z"/><path d="M20 17H6a2 2 0 0 0-2 2"/></svg></div>
-        <div class="wall-card wg1 r11"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg4"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M11 18.5h2"/></svg></div>
-        <div class="wall-card wg2"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
-        <div class="wall-card wg3 r169"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 0-2 2z"/><path d="M20 17H6a2 2 0 0 0-2 2"/></svg></div>
-        <div class="wall-card wg1 r11"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg4"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M11 18.5h2"/></svg></div>
+        <div class="wall-card wg2"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3 r169"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3 r169"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
       </div>
       <div class="wall-col wc-c">
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg></div>
-        <div class="wall-card wg1 r169"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg></div>
-        <div class="wall-card wg4"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
-        <div class="wall-card wg2 r11"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg></div>
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg></div>
-        <div class="wall-card wg1 r169"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg></div>
-        <div class="wall-card wg4"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
-        <div class="wall-card wg2 r11"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1 r169"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1 r169"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r11"><img src="img/nutri/carrossel-02-slide-1.jpg" alt=""></div>
       </div>
       <div class="wall-col wc-d">
-        <div class="wall-card wg4 r11"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 0-2 2z"/><path d="M20 17H6a2 2 0 0 0-2 2"/></svg></div>
-        <div class="wall-card wg1"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M11 18.5h2"/></svg></div>
-        <div class="wall-card wg2 r169"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
-        <div class="wall-card wg4 r11"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 0-2 2z"/><path d="M20 17H6a2 2 0 0 0-2 2"/></svg></div>
-        <div class="wall-card wg1"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M11 18.5h2"/></svg></div>
-        <div class="wall-card wg2 r169"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg></div>
-        <div class="wall-card wg3"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg></div>
+        <div class="wall-card wg4 r11"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r169"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg4 r11"><img src="img/nutri/carrossel-03-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg1"><img src="img/nutri/carrossel-04-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg2 r169"><img src="img/nutri/carrossel-05-slide-1.jpg" alt=""></div>
+        <div class="wall-card wg3"><img src="img/nutri/carrossel-01-slide-1.jpg" alt=""></div>
       </div>
     </div>
   </div>
@@ -135,12 +133,12 @@
       <span class="word grad" style="animation-delay:1.2s">confiar</span><br>
       <span class="word" style="animation-delay:1.36s">e&nbsp;marcar&nbsp;a&nbsp;consulta.</span>
     </h1>
-    <p class="dh-sub">Carrosséis, posts, stories e identidade visual criados pra transmitir o cuidado que você já tem no consultório. O paciente abre seu perfil, sente <b>confiança</b> e chama no WhatsApp.</p>
+    <p class="dh-sub">Carrosséis criados pra transmitir o cuidado que você já tem no consultório. O paciente rola o carrossel, sente <b>confiança</b> e chama no WhatsApp.</p>
     <div class="dh-actions">
       <a href="https://wa.me/5585992657146?text=Oi%21%20Sou%20nutricionista%20e%20quero%20um%20design%20que%20encha%20minha%20agenda%20de%20consultas.%20Pode%20me%20mostrar%20como%20funciona%3F" target="_blank" rel="noopener" class="btn-primary">Quero encher minha agenda
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a href="#trabalhos" class="btn-ghost">Ver os formatos</a>
+      <a href="#trabalhos" class="btn-ghost">Ver os carrosséis</a>
     </div>
   </div>
 
@@ -152,63 +150,85 @@
   <div class="port-head">
     <div>
       <h2>Carrosséis pensados pro <span class="grad">seu consultório</span></h2>
-      <p>Cada carrossel abaixo já vem com capa, conteúdo e chamada final. Os espaços estão prontos pra receber as suas artes.</p>
+      <p>Cinco carrosséis reais, feitos pra nutricionistas: capa que prende o olhar, conteúdo que educa e chamada final que leva pro WhatsApp.</p>
     </div>
   </div>
 
-  <!-- ============ COMO TROCAR OS PLACEHOLDERS PELAS ARTES REAIS ============
-       1. Crie a pasta img/nutri/ e salve as artes lá (ex.: img/nutri/carrossel-01-slide-1.jpg).
-       2. Dentro de cada <div class="slide">, troque o <div class="ph ...">
-          por <img src="img/nutri/carrossel-01-slide-1.jpg" alt="..." loading="lazy">
-          e ajuste o --ratio no tile se os slides não forem 4:5. ============ -->
   <div class="bento bento-car">
 
-    <!-- CARROSSEL 01 -->
-    <!-- TROCAR: carrossel real do nutricionista aqui (img/nutri/carrossel-01-slide-*.jpg) -->
+    <!-- CARROSSEL 01 · Doutor Bernardo · 3 mentiras sobre alimentação -->
     <div class="tile carousel" data-cat="carrossel" tabindex="0" aria-roledescription="carrossel" style="--ratio:4/5">
       <div class="viewport"><div class="slides">
-        <div class="slide"><div class="ph g1"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg><b>Carrossel · capa</b><span>sua arte entra aqui</span></div></div>
-        <div class="slide"><div class="ph g3"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg><b>Slide 2</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g1"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg><b>Slide 3</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g3"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg><b>Slide 4</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g1"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Slide 5</b><span>chamada final</span></div></div>
+        <div class="slide"><img src="img/nutri/carrossel-01-slide-1.jpg" alt="Capa: 3 mentiras sobre alimentação que ainda parecem verdade" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-01-slide-2.jpg" alt="Mito 1: você precisa fazer detox" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-01-slide-3.jpg" alt="Mito 2: fruta tem muito açúcar" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-01-slide-4.jpg" alt="Mito 3: carboidrato à noite engorda" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-01-slide-5.jpg" alt="Chamada final: qual dessas frases você mais escuta" loading="lazy"></div>
       </div></div>
       <button class="cnav prev" aria-label="Anterior">‹</button>
       <button class="cnav next" aria-label="Próximo">›</button>
       <div class="dots"></div>
-      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">1080×1350 · 5 slides</span></div>
+      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">Doutor Bernardo · 5 slides</span></div>
     </div>
 
-    <!-- CARROSSEL 02 -->
-    <!-- TROCAR: carrossel real aqui (img/nutri/carrossel-02-slide-*.jpg) -->
+    <!-- CARROSSEL 02 · Doutor Bernardo · Você não precisa cozinhar receitas diferentes todos os dias -->
     <div class="tile carousel" data-cat="carrossel" tabindex="0" aria-roledescription="carrossel" style="--ratio:4/5">
       <div class="viewport"><div class="slides">
-        <div class="slide"><div class="ph g3"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg><b>Carrossel · capa</b><span>sua arte entra aqui</span></div></div>
-        <div class="slide"><div class="ph g5"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg><b>Slide 2</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g3"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg><b>Slide 3</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g5"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Slide 4</b><span>chamada final</span></div></div>
+        <div class="slide"><img src="img/nutri/carrossel-02-slide-1.jpg" alt="Capa: você não precisa cozinhar receitas diferentes todos os dias" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-02-slide-2.jpg" alt="Escolha duas fontes de proteína" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-02-slide-3.jpg" alt="Deixe carboidratos base prontos" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-02-slide-4.jpg" alt="Facilite o consumo de vegetais" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-02-slide-5.jpg" alt="Monte refeições rápidas" loading="lazy"></div>
       </div></div>
       <button class="cnav prev" aria-label="Anterior">‹</button>
       <button class="cnav next" aria-label="Próximo">›</button>
       <div class="dots"></div>
-      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">1080×1350 · 4 slides</span></div>
+      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">Doutor Bernardo · 5 slides</span></div>
     </div>
 
-    <!-- CARROSSEL 03 -->
-    <!-- TROCAR: carrossel real aqui (img/nutri/carrossel-03-slide-*.jpg) -->
+    <!-- CARROSSEL 03 · Maria Luíza · Você almoça e sente fome pouco tempo depois? -->
     <div class="tile carousel" data-cat="carrossel" tabindex="0" aria-roledescription="carrossel" style="--ratio:4/5">
       <div class="viewport"><div class="slides">
-        <div class="slide"><div class="ph g5"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M3 7v10M21 7v10"/></svg><b>Carrossel · capa</b><span>sua arte entra aqui</span></div></div>
-        <div class="slide"><div class="ph g2"><svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></svg><b>Slide 2</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g5"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M9 13c0-4 2-6 6-8"/></svg><b>Slide 3</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g2"><svg viewBox="0 0 24 24"><path d="M5 19c8 1 14-5 14-14-9 0-15 6-14 14z"/><path d="M5 19c3-6 7-10 12-12"/></svg><b>Slide 4</b><span>conteúdo</span></div></div>
-        <div class="slide"><div class="ph g5"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>Slide 5</b><span>chamada final</span></div></div>
-        <div class="slide"><div class="ph g2"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M11 18.5h2"/></svg><b>Slide 6</b><span>chamada final</span></div></div>
+        <div class="slide"><img src="img/nutri/carrossel-03-slide-1.jpg" alt="Capa: você almoça e sente fome pouco tempo depois?" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-03-slide-2.jpg" alt="Um exemplo real de prato" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-03-slide-3.jpg" alt="Use esta estrutura como guia" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-03-slide-4.jpg" alt="Não é só comer pouco" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-03-slide-5.jpg" alt="A regra mais importante" loading="lazy"></div>
       </div></div>
       <button class="cnav prev" aria-label="Anterior">‹</button>
       <button class="cnav next" aria-label="Próximo">›</button>
       <div class="dots"></div>
-      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">1080×1350 · 6 slides</span></div>
+      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">Maria Luíza · 5 slides</span></div>
+    </div>
+
+    <!-- CARROSSEL 04 · Maria Luíza · A embalagem pode dizer fit -->
+    <div class="tile carousel" data-cat="carrossel" tabindex="0" aria-roledescription="carrossel" style="--ratio:4/5">
+      <div class="viewport"><div class="slides">
+        <div class="slide"><img src="img/nutri/carrossel-04-slide-1.jpg" alt="Capa: a embalagem pode dizer fit, mas o rótulo conta a história completa" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-04-slide-2.jpg" alt="Primeiro: olhe a parte da frente" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-04-slide-3.jpg" alt="Depois: leia os ingredientes" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-04-slide-4.jpg" alt="Não analise um número isolado" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-04-slide-5.jpg" alt="O rótulo não precisa causar medo" loading="lazy"></div>
+      </div></div>
+      <button class="cnav prev" aria-label="Anterior">‹</button>
+      <button class="cnav next" aria-label="Próximo">›</button>
+      <div class="dots"></div>
+      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">Maria Luíza · 5 slides</span></div>
+    </div>
+
+    <!-- CARROSSEL 05 · Maria Luíza · Você abre a geladeira sem saber o que procura? -->
+    <div class="tile carousel" data-cat="carrossel" tabindex="0" aria-roledescription="carrossel" style="--ratio:4/5">
+      <div class="viewport"><div class="slides">
+        <div class="slide"><img src="img/nutri/carrossel-05-slide-1.jpg" alt="Capa: você abre a geladeira sem nem saber o que está procurando?" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-05-slide-2.jpg" alt="A fome costuma ser mais flexível" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-05-slide-3.jpg" alt="A vontade costuma ser específica" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-05-slide-4.jpg" alt="Faça uma pausa sem julgar" loading="lazy"></div>
+        <div class="slide"><img src="img/nutri/carrossel-05-slide-5.jpg" alt="Você pode comer mesmo sendo vontade" loading="lazy"></div>
+      </div></div>
+      <button class="cnav prev" aria-label="Anterior">‹</button>
+      <button class="cnav next" aria-label="Próximo">›</button>
+      <div class="dots"></div>
+      <div class="meta"><span class="tag car">Carrossel</span><span class="spec">Maria Luíza · 5 slides</span></div>
     </div>
 
   </div>
