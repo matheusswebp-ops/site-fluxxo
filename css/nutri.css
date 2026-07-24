@@ -209,7 +209,7 @@ body{padding-top:0}
 .tile > img.art{width:100%;height:auto}
 
 /* ============ RODAPÉ ============ */
-.foot{border-top:1px solid var(--line);padding:34px 0 60px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.foot{border-top:1px solid var(--line);padding-top:34px;padding-bottom:60px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 .foot .fm{font-size:12.5px;font-weight:700;color:var(--ink-soft);letter-spacing:0.02em}
 .foot a.mail{font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:-0.015em;color:var(--ink)}
 .foot a.mail:hover{color:var(--verde-deep)}
