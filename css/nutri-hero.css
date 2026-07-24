@@ -1,0 +1,140 @@
+/* ============================================================
+   NUTRICIONISTA · hero claro e clean
+   Equivalente ao design-hero.css, adaptado pro tema claro:
+   blobs orgânicos suaves + partículas discretas + parede de
+   placeholders (troque pelas artes reais depois).
+   ============================================================ */
+
+/* ---------- palco ---------- */
+.nhero{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate;
+  background:linear-gradient(180deg,#fbfaf6 0%,#f6f4ec 60%,#faf8f3 100%)}
+
+/* blobs orgânicos (aurora clara) */
+.blobs{position:absolute;inset:-12% -6%;z-index:0;pointer-events:none;filter:blur(60px);opacity:0;animation:blobsIn 2.2s ease .1s forwards}
+.blobs span{position:absolute;border-radius:50%;will-change:transform}
+.blobs .b1{width:52vw;height:52vw;left:4%;top:6%;background:radial-gradient(circle,rgba(151,193,155,.4),transparent 66%);animation:bDrift1 24s ease-in-out infinite}
+.blobs .b2{width:44vw;height:44vw;right:2%;top:24%;background:radial-gradient(circle,rgba(236,196,160,.42),transparent 66%);animation:bDrift2 28s ease-in-out infinite}
+.blobs .b3{width:58vw;height:58vw;left:26%;bottom:-20%;background:radial-gradient(circle,rgba(196,219,190,.45),transparent 68%);animation:bDrift3 32s ease-in-out infinite}
+@keyframes blobsIn{to{opacity:1}}
+@keyframes bDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,-4%) scale(1.1)}}
+@keyframes bDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5%,5%) scale(1.14)}}
+@keyframes bDrift3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(4%,-6%) scale(1)}}
+
+/* canvas de partículas (folhas de luz, bem discretas) */
+.cine{position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;transition:opacity 1.6s ease .3s}
+.cine.on{opacity:1}
+
+/* ---------- parede de placeholders ao fundo ----------
+   Quando as artes de nutricionista chegarem, é só trocar cada
+   .wall-card por <img src="img/nutri/..."> mantendo as colunas. */
+.hero-wall{position:absolute;inset:-14%;z-index:1;pointer-events:none;overflow:hidden;perspective:1500px}
+.wall-plane{position:absolute;left:50%;top:50%;width:150%;height:160%;transform-style:preserve-3d;will-change:transform;
+  display:flex;justify-content:center;gap:clamp(16px,2vw,28px);
+  transform:translate(-50%,-50%) rotateX(16deg) rotateY(-9deg) rotateZ(4deg) scale(1.08);
+  opacity:.5}
+.wall-col{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px);width:clamp(190px,19vw,320px);
+  animation:wallUp 90s linear infinite}
+.wc-b{animation-name:wallDown;animation-duration:110s}
+.wc-c{animation-duration:126s}
+.wc-d{animation-name:wallDown;animation-duration:142s}
+@keyframes wallUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes wallDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.wall-card{width:100%;aspect-ratio:4/5;border-radius:14px;border:1px solid rgba(60,111,71,.14);
+  display:flex;align-items:center;justify-content:center}
+.wall-card.r169{aspect-ratio:16/9}
+.wall-card.r11{aspect-ratio:1/1}
+.wall-card svg{width:30px;height:30px;stroke:rgba(60,111,71,.4);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.wg1{background:linear-gradient(150deg,#eaf3e7,#d9e8d6)}
+.wg2{background:linear-gradient(150deg,#f8ece2,#f0dcc8)}
+.wg3{background:linear-gradient(160deg,#f2f0e6,#e6e9dc)}
+.wg4{background:linear-gradient(160deg,#e7f0ec,#f4e9dc)}
+.wg2 svg,.wg4 svg{stroke:rgba(163,100,58,.42)}
+/* névoa clara: garante leitura da headline */
+.hero-wall::after{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 62% 54% at 50% 46%,rgba(250,248,243,.55),rgba(250,248,243,.9) 84%),
+    linear-gradient(180deg,rgba(250,248,243,.75) 0%,rgba(250,248,243,.18) 26%,rgba(250,248,243,.18) 58%,#faf8f3 97%)}
+
+/* ---------- conteúdo ---------- */
+.dh-content{position:relative;z-index:5;text-align:center;width:100%;max-width:960px;padding:0 24px}
+.dh-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--verde-deep);margin-bottom:26px;
+  opacity:0;animation:nRise 1s ease .55s forwards}
+.dh-eyebrow::before,.dh-eyebrow::after{content:"";width:30px;height:1px;background:rgba(60,111,71,.4)}
+.nhero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(2.5rem,6.4vw,4.9rem);line-height:1.06;
+  color:var(--ink);letter-spacing:-0.015em}
+.nhero h1 .word{display:inline-block;opacity:0;transform:translateY(24px);filter:blur(6px);animation:nWordRise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes nWordRise{to{opacity:1;transform:none;filter:blur(0)}}
+.nhero h1 .grad{color:var(--verde-deep);font-style:italic}
+.dh-sub{margin:26px auto 0;font-size:clamp(1rem,1.6vw,1.16rem);line-height:1.65;color:var(--ink-soft);max-width:56ch;
+  opacity:0;transform:translateY(14px);animation:nRise 1s ease 1.35s forwards}
+.dh-sub b{color:var(--ink);font-weight:800}
+.dh-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px;
+  opacity:0;transform:translateY(14px);animation:nRise 1s ease 1.55s forwards}
+@keyframes nRise{to{opacity:1;transform:none}}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:#fff;
+  background:linear-gradient(120deg,#57975f,#3c6f47);padding:16px 28px;border-radius:100px;
+  box-shadow:0 16px 36px -14px rgba(60,111,71,.55);transition:transform .16s,filter .2s}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-primary svg{width:16px;height:16px}
+.btn-ghost{display:inline-flex;align-items:center;font-weight:800;font-size:15px;color:var(--verde-deep);
+  background:rgba(255,255,255,.7);border:1px solid rgba(60,111,71,.25);padding:16px 26px;border-radius:100px;
+  transition:background .2s,border-color .2s}
+.btn-ghost:hover{background:#fff;border-color:var(--verde)}
+
+.scroll-cue{position:absolute;bottom:24px;left:0;right:0;margin:0 auto;width:max-content;z-index:5;display:flex;flex-direction:column;align-items:center;gap:9px;
+  color:var(--ink-soft);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  opacity:0;animation:nRise 1s ease 2.1s forwards}
+.scroll-cue .mouse{width:22px;height:34px;border:1.5px solid rgba(44,43,40,.35);border-radius:12px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--verde);animation:nWheel 1.6s ease-in-out infinite}
+@keyframes nWheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
+
+/* ---------- faixa de números ---------- */
+.dh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:clamp(44px,6vw,76px) 0 clamp(10px,2vw,20px)}
+.dh-stat{border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,30px);background:var(--paper-2);
+  box-shadow:var(--sombra);
+  opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),border-color .3s}
+.dh-stat.in{opacity:1;transform:none}
+.dh-stat:hover{border-color:rgba(78,138,90,.4)}
+.dh-stat b{display:block;font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,4vw,2.9rem);line-height:1;color:var(--verde-deep);letter-spacing:-0.01em}
+.dh-stat span{display:block;margin-top:10px;color:var(--ink-soft);font-size:.94rem;line-height:1.55}
+
+/* ---------- portfólio: título cinético + hover ---------- */
+#trabalhos{scroll-margin-top:90px}
+.kin .kw{display:inline-block;opacity:0;transform:translateY(24px) rotate(2deg);filter:blur(6px);
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1),filter .65s ease}
+.kin.kin-in .kw{opacity:1;transform:none;filter:none}
+
+.tile.in{transition:opacity .6s ease,transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease}
+.tile.in:hover{transform:translateY(-5px);border-color:rgba(78,138,90,.35);
+  box-shadow:0 30px 56px -26px rgba(60,80,55,.4)}
+.tile .art{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.tile:hover .art{transform:scale(1.03)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:900px){
+  .wall-plane{gap:14px;transform:translate(-50%,-50%) rotateX(14deg) rotateY(-6deg) rotateZ(3deg) scale(1.16)}
+  .wall-col{width:44vw;gap:14px}
+  .wc-c,.wc-d{display:none}
+  .dh-stats{grid-template-columns:1fr;gap:12px}
+  .tile.in:hover{transform:none}
+  .tile:hover .art{transform:none}
+}
+@media (max-width:720px){
+  .nhero{min-height:100svh;padding:110px 0 70px}
+  .dh-actions{flex-direction:column;width:100%;max-width:380px;margin:32px auto 0}
+  .dh-actions a{width:100%;justify-content:center;text-align:center}
+  .scroll-cue{display:none}
+}
+
+/* ---------- acessibilidade: reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .blobs{animation:none;opacity:.8}
+  .blobs span{animation:none}
+  .wall-col{animation:none}
+  .nhero h1 .word,.dh-eyebrow,.dh-sub,.dh-actions,.scroll-cue{animation:none;opacity:1;transform:none;filter:none}
+  .scroll-cue .mouse::after{animation:none}
+  .dh-stat{opacity:1;transform:none;transition:none}
+  .kin .kw{opacity:1;transform:none;filter:none;transition:none}
+  .tile.in,.tile .art{transition:none}
+}
