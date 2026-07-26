@@ -276,7 +276,8 @@
 .sl-bar{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid rgba(142,162,255,.14);background:rgba(255,255,255,.02)}
 .sl-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
 .sl-bar em{margin-left:auto;font-style:normal;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;color:#8ea2ff}
-.sl-body{position:relative;aspect-ratio:16/10;background:#0a0d22;overflow:hidden}
+/* a janela acompanha a proporcao da gravacao (1280x636), senao o cover corta a interface */
+.sl-body{position:relative;aspect-ratio:1280/636;background:#0a0d22;overflow:hidden}
 .sys-video{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
 .sl-placeholder{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
   background:radial-gradient(ellipse 90% 80% at 50% 20%,#161c48,#0a0d22);transition:opacity .4s ease}

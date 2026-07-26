@@ -790,3 +790,41 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.addEventListener('resize', onScroll, { passive: true });
   render();
 })();
+
+/* ---------- vídeo preguiçoso: só baixa quando a seção chega perto da tela ---------- */
+(function () {
+  var vids = [].slice.call(document.querySelectorAll('[data-lazyvideo]'));
+  if (!vids.length) return;
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function liga(v) {
+    if (v.dataset.ligado) return;
+    v.dataset.ligado = '1';
+    v.addEventListener('loadeddata', function () {
+      v.classList.add('pronto');
+      if (!reduz && v.play) v.play().catch(function () {});
+    });
+    v.addEventListener('error', function () { v.remove(); }, true);   // falhou: o mock em CSS reaparece
+    v.src = v.dataset.src;
+    v.load();
+  }
+
+  if (!('IntersectionObserver' in window)) { vids.forEach(liga); return; }
+
+  // carrega um pouco antes de aparecer, pra não engasgar na entrada
+  var ioCarga = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { liga(e.target); ioCarga.unobserve(e.target); } });
+  }, { rootMargin: '300px 0px' });
+
+  // só toca enquanto está visível
+  var ioPlay = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting && !reduz) { if (v.play) v.play().catch(function () {}); }
+      else if (v.pause) { v.pause(); }
+    });
+  }, { threshold: 0 });   // a cena do laptop escala e desloca no scroll:
+                          // qualquer limiar acima de 0 faz o vídeo pausar no meio da animação
+
+  vids.forEach(function (v) { ioCarga.observe(v); ioPlay.observe(v); });
+})();
