@@ -10,6 +10,7 @@ A Fluxxo trabalha em três frentes: design (carrosséis, anúncios Meta e Google
 - [Portfólio de Design](https://fluxxo.io/design): carrosséis, anúncios, thumbnails e identidades visuais criados pela Fluxxo
 - [Sites e Landing Pages](https://fluxxo.io/webdesign): projetos no ar com prints navegáveis e testes de performance
 - [Sistemas e Automação](https://fluxxo.io/sistemas): automações, painéis e integrações sob medida, com calculadora de tempo perdido
+- [Nutricionistas](https://fluxxo.io/nutricionista): gerenciamento de redes sociais para consultórios de nutrição, com estratégia de conteúdo, carrosséis, roteiros de Reels e stories entregues em cronograma mensal
 - [Análise gratuita](https://fluxxo.io/analise): ferramenta gratuita que avalia se um site vende, em 12 perguntas e 4 pilares (clareza, conversão, confiança, técnica), sem cadastro
 - [Blog](https://fluxxo.io/blog): artigos sobre design, sites e conversão
 

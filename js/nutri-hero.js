@@ -140,10 +140,10 @@
   })();
 
 
-  // ============ Título do portfólio: revela palavra a palavra no scroll ============
+  // ============ Títulos de seção: revelam palavra a palavra no scroll ============
   (function () {
-    var h2 = document.querySelector('.port-head h2');
-    if (!h2) return;
+    var heads = [].slice.call(document.querySelectorAll('.kin-h'));
+    if (!heads.length) return;
 
     function reparte(el) {
       if (!el || el.dataset.kin) return; el.dataset.kin = '1';
@@ -166,12 +166,19 @@
       });
     }
 
-    h2.classList.add('kin');
-    reparte(h2);
-    if (reduz || !('IntersectionObserver' in window)) { h2.classList.add('kin-in'); return; }
-    new IntersectionObserver(function (es) {
+    heads.forEach(function (h2) {
+      h2.classList.add('kin');
+      reparte(h2);
+    });
+
+    if (reduz || !('IntersectionObserver' in window)) {
+      heads.forEach(function (h2) { h2.classList.add('kin-in'); });
+      return;
+    }
+    var ioH = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.target.classList.toggle('kin-in', e.isIntersecting); });
-    }, { threshold: .4 }).observe(h2);
+    }, { threshold: .4 });
+    heads.forEach(function (h2) { ioH.observe(h2); });
   })();
 
   // ============ Fundo da página muda de tom por seção (bem sutil, tons claros) ============
@@ -180,7 +187,7 @@
     var mapa = [
       ['.nhero', [250, 248, 243]],
       ['#trabalhos', [250, 248, 243]],
-      ['.foot', [247, 242, 233]]
+      ['.foot', [255, 255, 255]]
     ].map(function (par) {
       var el = document.querySelector(par[0]);
       return el ? { el: el, c: par[1] } : null;

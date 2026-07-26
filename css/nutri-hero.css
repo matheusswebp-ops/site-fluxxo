@@ -62,11 +62,10 @@
   letter-spacing:.18em;text-transform:uppercase;color:var(--verde-deep);margin-bottom:26px;
   opacity:0;animation:nRise 1s ease .55s forwards}
 .dh-eyebrow::before,.dh-eyebrow::after{content:"";width:30px;height:1px;background:rgba(60,111,71,.4)}
-.nhero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(2.5rem,6.4vw,4.9rem);line-height:1.06;
+.nhero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.1rem,5.4vw,4rem);line-height:1.12;
   color:var(--ink);letter-spacing:-0.015em}
 .nhero h1 .word{display:inline-block;opacity:0;transform:translateY(24px);filter:blur(6px);animation:nWordRise .9s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes nWordRise{to{opacity:1;transform:none;filter:blur(0)}}
-.nhero h1 .grad{color:var(--verde-deep);font-style:italic}
 .dh-sub{margin:26px auto 0;font-size:clamp(1rem,1.6vw,1.16rem);line-height:1.65;color:var(--ink-soft);max-width:56ch;
   opacity:0;transform:translateY(14px);animation:nRise 1s ease 1.35s forwards}
 .dh-sub b{color:var(--ink);font-weight:800}
@@ -91,7 +90,7 @@
 @keyframes nWheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
 
 /* ---------- portfólio: título cinético + hover ---------- */
-#trabalhos{scroll-margin-top:90px}
+#trabalhos,#demo,#incluso,#funciona,#faq{scroll-margin-top:90px}
 .kin .kw{display:inline-block;opacity:0;transform:translateY(24px) rotate(2deg);filter:blur(6px);
   transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1),filter .65s ease}
 .kin.kin-in .kw{opacity:1;transform:none;filter:none}
@@ -112,6 +111,7 @@
 }
 @media (max-width:720px){
   .nhero{min-height:100svh;padding:110px 0 70px}
+  .nhero h1{font-size:clamp(1.75rem,8vw,2.4rem)}
   .dh-actions{flex-direction:column;width:100%;max-width:380px;margin:32px auto 0}
   .dh-actions a{width:100%;justify-content:center;text-align:center}
   .scroll-cue{display:none}
