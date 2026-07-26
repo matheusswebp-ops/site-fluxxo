@@ -1,0 +1,126 @@
+/* ============================================================
+   NUTRICIONISTA · hero claro e clean
+   Equivalente ao design-hero.css, adaptado pro tema claro:blobs orgânicos suaves + partículas discretas + parede de
+   placeholders (troque pelas artes reais depois).
+   ============================================================ */
+
+/* ---------- palco ---------- */
+.nhero{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate;
+  background:linear-gradient(180deg,#f2ebe1 0%,#f0e6d8 60%,#f1eadf 100%)}
+
+/* blobs orgânicos (aurora clara) */
+.blobs{position:absolute;inset:-12% -6%;z-index:0;pointer-events:none;filter:blur(60px);opacity:0;animation:blobsIn 2.2s ease .1s forwards}
+.blobs span{position:absolute;border-radius:50%;will-change:transform}
+.blobs .b1{width:52vw;height:52vw;left:4%;top:6%;background:radial-gradient(circle,rgba(203,168,141,.4),transparent 66%);animation:bDrift1 24s ease-in-out infinite}
+.blobs .b2{width:44vw;height:44vw;right:2%;top:24%;background:radial-gradient(circle,rgba(236,196,160,.42),transparent 66%);animation:bDrift2 28s ease-in-out infinite}
+.blobs .b3{width:58vw;height:58vw;left:26%;bottom:-20%;background:radial-gradient(circle,rgba(221,204,178,.45),transparent 68%);animation:bDrift3 32s ease-in-out infinite}
+@keyframes blobsIn{to{opacity:1}}
+@keyframes bDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,-4%) scale(1.1)}}
+@keyframes bDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5%,5%) scale(1.14)}}
+@keyframes bDrift3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(4%,-6%) scale(1)}}
+
+/* canvas de partículas (folhas de luz, bem discretas) */
+.cine{position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;transition:opacity 1.6s ease .3s}
+.cine.on{opacity:1}
+
+/* ---------- parede de placeholders ao fundo ----------
+   Quando as artes de nutricionista chegarem, é só trocar cada
+   .wall-card por <img src="img/nutri/..."> mantendo as colunas. */
+.hero-wall{position:absolute;inset:-14%;z-index:1;pointer-events:none;overflow:hidden;perspective:1500px}
+.wall-plane{position:absolute;left:50%;top:50%;width:150%;height:160%;transform-style:preserve-3d;will-change:transform;
+  display:flex;justify-content:center;gap:clamp(16px,2vw,28px);
+  transform:translate(-50%,-50%) rotateX(16deg) rotateY(-9deg) rotateZ(4deg) scale(1.08);
+  opacity:.5}
+.wall-col{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px);width:clamp(190px,19vw,320px);
+  animation:wallUp 90s linear infinite}
+.wc-b{animation-name:wallDown;animation-duration:110s}
+.wc-c{animation-duration:126s}
+.wc-d{animation-name:wallDown;animation-duration:142s}
+@keyframes wallUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes wallDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+/* toda carta em 4:5 (1080x1350): a arte entra inteira, sem corte */
+.wall-card{width:100%;flex:0 0 auto;aspect-ratio:4/5;border-radius:14px;border:1px solid rgba(124,80,47,.14);
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wall-card svg{width:30px;height:30px;stroke:rgba(124,80,47,.4);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.wall-card img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.wg1{background:linear-gradient(150deg,#efe5d5,#ecdfcc)}
+.wg2{background:linear-gradient(150deg,#efe5d5,#ebdeca)}
+.wg3{background:linear-gradient(160deg,#efe4d4,#ece0ce)}
+.wg4{background:linear-gradient(160deg,#efe4d4,#eee3d2)}
+.wg2 svg,.wg4 svg{stroke:rgba(163,100,58,.42)}
+/* névoa clara:garante leitura da headline */
+.hero-wall::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 62% 54% at 50% 46%,rgba(241,234,223,.55),rgba(241,234,223,.9) 84%),
+    linear-gradient(180deg,rgba(241,234,223,.75) 0%,rgba(241,234,223,.18) 26%,rgba(241,234,223,.18) 58%,#f1eadf 97%)}
+
+/* ---------- conteúdo ---------- */
+.dh-content{position:relative;z-index:5;text-align:center;width:100%;max-width:960px;padding:0 24px}
+.dh-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--laranja-deep);margin-bottom:26px;
+  opacity:0;animation:nRise 1s ease .55s forwards}
+.dh-eyebrow::before,.dh-eyebrow::after{content:"";width:30px;height:1px;background:rgba(124,80,47,.4)}
+.nhero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.1rem,5.4vw,4rem);line-height:1.12;
+  color:var(--ink);letter-spacing:-0.015em}
+.nhero h1 .word{display:inline-block;opacity:0;transform:translateY(24px);filter:blur(6px);animation:nWordRise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes nWordRise{to{opacity:1;transform:none;filter:blur(0)}}
+.dh-sub{margin:26px auto 0;font-size:clamp(1rem,1.6vw,1.16rem);line-height:1.65;color:var(--ink-soft);max-width:56ch;
+  opacity:0;transform:translateY(14px);animation:nRise 1s ease 1.35s forwards}
+.dh-sub b{color:var(--ink);font-weight:800}
+.dh-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px;
+  opacity:0;transform:translateY(14px);animation:nRise 1s ease 1.55s forwards}
+@keyframes nRise{to{opacity:1;transform:none}}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:#f5f0e8;
+  background:linear-gradient(120deg,#a77147,#7c502f);padding:16px 28px;border-radius:100px;
+  box-shadow:0 16px 36px -14px rgba(124,80,47,.55);transition:transform .16s,filter .2s}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-primary svg{width:16px;height:16px}
+.btn-ghost{display:inline-flex;align-items:center;font-weight:800;font-size:15px;color:var(--laranja-deep);
+  background:rgba(245,240,232,.7);border:1px solid rgba(124,80,47,.25);padding:16px 26px;border-radius:100px;
+  transition:background .2s,border-color .2s}
+.btn-ghost:hover{background:#f5f0e8;border-color:var(--laranja)}
+
+.scroll-cue{position:absolute;bottom:24px;left:0;right:0;margin:0 auto;width:max-content;z-index:5;display:flex;flex-direction:column;align-items:center;gap:9px;
+  color:var(--ink-soft);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  opacity:0;animation:nRise 1s ease 2.1s forwards}
+.scroll-cue .mouse{width:22px;height:34px;border:1.5px solid rgba(44,42,40,.35);border-radius:12px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:var(--laranja);animation:nWheel 1.6s ease-in-out infinite}
+@keyframes nWheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
+
+/* ---------- portfólio:título cinético + hover ---------- */
+#trabalhos,#demo,#incluso,#funciona,#faq{scroll-margin-top:90px}
+.kin .kw{display:inline-block;opacity:0;transform:translateY(24px) rotate(2deg);filter:blur(6px);
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1),filter .65s ease}
+.kin.kin-in .kw{opacity:1;transform:none;filter:none}
+
+.tile.in{transition:opacity .6s ease,transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease}
+.tile.in:hover{transform:translateY(-5px);border-color:rgba(153,102,63,.35);
+  box-shadow:0 30px 56px -26px rgba(86,65,49,.4)}
+.tile .art{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.tile:hover .art{transform:scale(1.03)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:900px){
+  .wall-plane{gap:14px;transform:translate(-50%,-50%) rotateX(14deg) rotateY(-6deg) rotateZ(3deg) scale(1.16)}
+  .wall-col{width:44vw;gap:14px}
+  .wc-c,.wc-d{display:none}
+  .tile.in:hover{transform:none}
+  .tile:hover .art{transform:none}
+}
+@media (max-width:720px){
+  .nhero{min-height:100svh;padding:110px 0 70px}
+  .nhero h1{font-size:clamp(1.75rem,8vw,2.4rem)}
+  .dh-actions{flex-direction:column;width:100%;max-width:380px;margin:32px auto 0}
+  .dh-actions a{width:100%;justify-content:center;text-align:center}
+  .scroll-cue{display:none}
+}
+
+/* ---------- acessibilidade:reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .blobs{animation:none;opacity:.8}
+  .blobs span{animation:none}
+  .wall-col{animation:none}
+  .nhero h1 .word,.dh-eyebrow,.dh-sub,.dh-actions,.scroll-cue{animation:none;opacity:1;transform:none;filter:none}
+  .scroll-cue .mouse::after{animation:none}
+  .kin .kw{opacity:1;transform:none;filter:none;transition:none}
+  .tile.in,.tile .art{transition:none}
+}
