@@ -319,6 +319,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hint = document.getElementById('lapHint');
   var cap = document.getElementById('lapCap');
   var shadow = document.querySelector('.lap-shadow');
+  var base = document.querySelector('.lap-base');
 
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var fase = function (p, ini, fim) { return clamp((p - ini) / (fim - ini), 0, 1); };
@@ -352,9 +353,10 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     shot.style.transform = 'translateY(-' + alcance * t5 * 0.6 + 'px)';
 
     // ZOOM: a câmera mergulha até a tela dominar o viewport
-    // no mobile o zoom comeca antes: em 0.58 o laptop passava metade da secao
-    // pequeno no meio da tela, que era a sensacao de vazio
-    var t6 = suave(fase(p, mobile ? 0.40 : 0.58, 0.97));
+    // no mobile o zoom comeca antes (em 0.58 o laptop passava metade da secao
+    // pequeno no meio da tela) e termina antes do fim, pra a tela cheia
+    // ficar parada um tempo em vez de durar um instante
+    var t6 = suave(fase(p, mobile ? 0.40 : 0.58, mobile ? 0.82 : 0.97));
     // no mobile a tela precisa dominar o viewport: em 1.55 o laptop ocupava
     // ~36% da altura e sobrava tarja preta em cima e embaixo
     var escalaMax = mobile ? 3.6 : 2.1;
@@ -363,15 +365,21 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var mergulho = t6 * (mobile ? 0 : 13);      // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
     var tilt = 17 * (1 - t3); // camera assenta frontal ao abrir: tampa e base viram um corpo so
+    // No mobile o laptop chega a 3.6x. Se a moldura continuasse visivel, ao sair
+    // de cena a barra da base cruzaria o site no meio da tela. Entao o hardware
+    // (base e sombra) some conforme o zoom fecha, e o que desliza pra proxima
+    // secao e so a tela cheia. Apagar o laptop inteiro deixava um viewport vazio.
+    var semMoldura = mobile ? suave(fase(p, 0.66, 0.82)) : 0;
     laptop.style.opacity = t2;
     laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
     shadow.style.opacity = t2 * 0.9 * (1 - t6);
+    base.style.opacity = 1 - semMoldura;
 
     // dica de rolagem só no comecinho
     hint.style.opacity = t2 * (1 - suave(fase(p, 0.26, 0.36)));
 
     // legenda do projeto por cima do zoom final
-    var t7 = suave(fase(p, 0.82, 0.92));
+    var t7 = suave(fase(p, mobile ? 0.74 : 0.82, mobile ? 0.84 : 0.92));
     cap.style.opacity = t7;
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }
