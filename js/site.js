@@ -479,15 +479,17 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     phrases.forEach(function (ph, i) {
       var a = i * W, b = a + W;
       var ultima = i === phrases.length - 1;
-      var out = ultima ? 0 : suave(fase(p, b - W * 0.16, b));
+      // a ultima tambem sai: parada no topo com a tela vazia embaixo era o buraco
+      // que separava o manifesto do portfolio
+      var out = ultima ? suave(fase(p, 0.90, 1)) : suave(fase(p, b - W * 0.16, b));
       var vis = p >= a - W * 0.05 && (ultima || p <= b + W * 0.05);
       ph.style.visibility = vis ? 'visible' : 'hidden';
       if (!vis) return;
 
       var n = ph._letters.length;
       ph._letters.forEach(function (l, k) {
-        var ini = a + (k / n) * W * 0.42;
-        var t = suave(fase(p, ini, ini + W * 0.26));
+        var ini = a + (k / n) * W * (ultima ? 0.30 : 0.42);
+        var t = suave(fase(p, ini, ini + W * (ultima ? 0.20 : 0.26)));
         var dx = (rnd(i * 97 + k) - 0.5) * 340 * (1 - t);
         var dy = (rnd(i * 57 + k * 3) - 0.5) * 260 * (1 - t) - out * (90 + rnd(k) * 120);
         var rot = (rnd(i * 31 + k * 7) - 0.5) * 70 * (1 - t) + out * (rnd(k * 5) - 0.5) * 40;
@@ -501,9 +503,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // morph fluxo -> fluxxo (frase final)
       if (ph._x2) {
-        var m = suave(fase(p, a + W * 0.55, a + W * 0.78));
+        var m = suave(fase(p, a + W * 0.38, a + W * 0.58));   // fecha antes de a frase sair
         ph._x2.style.maxWidth = (m * 0.62) + 'em';
-        ph._x2.style.opacity = m;
+        ph._x2.style.opacity = m * (1 - out);   // dissolve junto com a frase, senao fica solido sozinho
       }
     });
 
