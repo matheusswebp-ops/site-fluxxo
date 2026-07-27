@@ -320,6 +320,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cap = document.getElementById('lapCap');
   var shadow = document.querySelector('.lap-shadow');
   var base = document.querySelector('.lap-base');
+  var flash = document.getElementById('lapFlash');
 
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var fase = function (p, ini, fim) { return clamp((p - ini) / (fim - ini), 0, 1); };
@@ -380,7 +381,11 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // legenda do projeto por cima do zoom final
     var t7 = suave(fase(p, mobile ? 0.74 : 0.82, mobile ? 0.84 : 0.92));
-    cap.style.opacity = t7;
+
+    // a tela cheia estoura em branco e o branco e que entrega a proxima secao
+    var branco = suave(fase(p, mobile ? 0.86 : 0.90, mobile ? 0.99 : 1));
+    if (flash) flash.style.opacity = branco;
+    cap.style.opacity = t7 * (1 - branco);
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }
 

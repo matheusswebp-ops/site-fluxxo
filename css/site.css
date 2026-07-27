@@ -770,6 +770,8 @@
 @keyframes lapHintBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .lap-cap{position:absolute;bottom:4vh;z-index:6;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.05em;color:#dfdbe8;opacity:0;transform:translateY(12px);background:rgba(12,9,19,.72);backdrop-filter:blur(8px);padding:10px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.12)}
 .lap-cap b{color:var(--purple-light);font-weight:700}
+/* cortina: ao encher a tela o quadro estoura em branco e leva pra próxima seção */
+.lap-flash{position:absolute;inset:0;z-index:20;pointer-events:none;background:#fff;opacity:0;will-change:opacity}
 
 @media (max-width:700px){
   /* seção mais curta: chega no zoom e cai logo na próxima */
