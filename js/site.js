@@ -319,8 +319,6 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hint = document.getElementById('lapHint');
   var cap = document.getElementById('lapCap');
   var shadow = document.querySelector('.lap-shadow');
-  var base = document.querySelector('.lap-base');
-  var flash = document.getElementById('lapFlash');
 
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var fase = function (p, ini, fim) { return clamp((p - ini) / (fim - ini), 0, 1); };
@@ -334,58 +332,55 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var p = clamp(-r.top / total, 0, 1);
     var mobile = window.innerWidth < 700;
 
-    // título: entra no início, SAI antes da tampa terminar de abrir (sem atropelo)
+    // título: no desktop sai antes da tampa abrir. No mobile ele FICA:
+    // um notebook 16:10 nunca preenche uma tela 9:19.5, entao quem fecha o
+    // quadro e a composicao titulo + notebook + legenda, nao a escala.
     var tIn = suave(fase(p, 0, 0.14));
-    var tOut = suave(fase(p, 0.3, 0.44));
+    var tOut = mobile ? suave(fase(p, 0.80, 0.95)) : suave(fase(p, 0.3, 0.44));   // no mobile sai junto com a tampa fechando
     copy.style.opacity = tIn * (1 - tOut);
     copy.style.transform = 'translateY(' + (24 - 24 * tIn - 30 * tOut) + 'px)';
 
     // laptop nasce de baixo, pequeno e fechado
     var t2 = suave(fase(p, 0.06, 0.26));
-    // tampa abre
-    var t3 = suave(fase(p, 0.28, 0.56));
-    lid.style.transform = 'rotateX(' + (-90 + 90 * t3) + 'deg)';
+    // tampa abre (no mobile mais cedo: o evento principal e o site rolando dentro)
+    var t3 = suave(fase(p, mobile ? 0.18 : 0.28, mobile ? 0.46 : 0.56));
+    // ...e fecha de volta no fim: e o fechamento que encerra a cena, no lugar
+    // de um zoom que recorta a moldura ou de uma cortina que apaga a tela
+    // so no mobile: no desktop o final continua sendo o mergulho da camera,
+    // e fechar a tampa no meio do zoom seria contraditorio
+    var tFecha = mobile ? suave(fase(p, 0.78, 0.93)) : 0;
+    lid.style.transform = 'rotateX(' + (-90 + 90 * t3 - 90 * tFecha) + 'deg)';
     // tela acende
-    var t4 = suave(fase(p, 0.46, 0.62));
-    view.style.filter = 'brightness(' + (0.1 + 0.9 * t4) + ')';
-    // site rola dentro da tela
-    var t5 = suave(fase(p, 0.6, 0.96));
+    var t4 = suave(fase(p, mobile ? 0.38 : 0.46, mobile ? 0.54 : 0.62));
+    view.style.filter = 'brightness(' + (0.1 + 0.9 * t4 * (1 - tFecha)) + ')';   // tela apaga ao fechar
+    // site rola dentro da tela. No mobile percorre o site inteiro e ocupa a
+    // maior parte da secao: e ele que da vida, no lugar do zoom.
+    var t5 = suave(fase(p, mobile ? 0.5 : 0.6, mobile ? 0.98 : 0.96));
     var alcance = Math.max(0, shot.offsetHeight - view.offsetHeight);
-    shot.style.transform = 'translateY(-' + alcance * t5 * 0.6 + 'px)';
+    shot.style.transform = 'translateY(-' + alcance * t5 * (mobile ? 1 : 0.6) + 'px)';
 
-    // ZOOM: a câmera mergulha até a tela dominar o viewport
-    // no mobile o zoom comeca antes (em 0.58 o laptop passava metade da secao
-    // pequeno no meio da tela) e termina antes do fim, pra a tela cheia
-    // ficar parada um tempo em vez de durar um instante
-    var t6 = suave(fase(p, mobile ? 0.40 : 0.58, mobile ? 0.82 : 0.97));
-    // no mobile a tela precisa dominar o viewport: em 1.55 o laptop ocupava
-    // ~36% da altura e sobrava tarja preta em cima e embaixo
-    var escalaMax = mobile ? 3.6 : 2.1;
-    var escala = (0.8 + 0.16 * t2) + (escalaMax - 0.96) * t6;
+    // ZOOM: no desktop a câmera mergulha até a tela dominar o viewport.
+    // No mobile NAO ha mergulho: passar da largura da tela recorta a moldura
+    // e o notebook deixa de parecer um notebook. Ele cresce so ate assentar.
+    var t6 = mobile ? 0 : suave(fase(p, 0.58, 0.97));
+    var escalaMax = 2.1;
+    var escala = mobile
+      ? (0.9 + 0.1 * t2)
+      : (0.8 + 0.16 * t2) + (escalaMax - 0.96) * t6;
     var subida = 130 - 130 * t2;               // nascimento
-    var mergulho = t6 * (mobile ? 0 : 13);      // desce um pouco pra tela centralizar no zoom
+    var mergulho = t6 * 13;                     // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
-    var tilt = 17 * (1 - t3); // camera assenta frontal ao abrir: tampa e base viram um corpo so
-    // No mobile o laptop chega a 3.6x. Se a moldura continuasse visivel, ao sair
-    // de cena a barra da base cruzaria o site no meio da tela. Entao o hardware
-    // (base e sombra) some conforme o zoom fecha, e o que desliza pra proxima
-    // secao e so a tela cheia. Apagar o laptop inteiro deixava um viewport vazio.
-    var semMoldura = mobile ? suave(fase(p, 0.66, 0.82)) : 0;
+    var tilt = 17 * (1 - t3);   // sem voltar a inclinar ao fechar: a caixa do 3D cresce e vaza a lateral // camera assenta frontal ao abrir: tampa e base viram um corpo so
     laptop.style.opacity = t2;
     laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
     shadow.style.opacity = t2 * 0.9 * (1 - t6);
-    base.style.opacity = 1 - semMoldura;
 
     // dica de rolagem só no comecinho
     hint.style.opacity = t2 * (1 - suave(fase(p, 0.26, 0.36)));
 
-    // legenda do projeto por cima do zoom final
-    var t7 = suave(fase(p, mobile ? 0.74 : 0.82, mobile ? 0.84 : 0.92));
-
-    // a tela cheia estoura em branco e o branco e que entrega a proxima secao
-    var branco = suave(fase(p, mobile ? 0.86 : 0.90, mobile ? 0.99 : 1));
-    if (flash) flash.style.opacity = branco;
-    cap.style.opacity = t7 * (1 - branco);
+    // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
+    var t7 = suave(fase(p, mobile ? 0.5 : 0.82, mobile ? 0.6 : 0.92));
+    cap.style.opacity = t7 * (1 - tFecha);
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }
 
