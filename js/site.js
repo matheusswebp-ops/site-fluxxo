@@ -352,11 +352,15 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     shot.style.transform = 'translateY(-' + alcance * t5 * 0.6 + 'px)';
 
     // ZOOM: a câmera mergulha até a tela dominar o viewport
-    var t6 = suave(fase(p, 0.58, 0.97));
-    var escalaMax = mobile ? 1.55 : 2.1;
+    // no mobile o zoom comeca antes: em 0.58 o laptop passava metade da secao
+    // pequeno no meio da tela, que era a sensacao de vazio
+    var t6 = suave(fase(p, mobile ? 0.40 : 0.58, 0.97));
+    // no mobile a tela precisa dominar o viewport: em 1.55 o laptop ocupava
+    // ~36% da altura e sobrava tarja preta em cima e embaixo
+    var escalaMax = mobile ? 3.6 : 2.1;
     var escala = (0.8 + 0.16 * t2) + (escalaMax - 0.96) * t6;
     var subida = 130 - 130 * t2;               // nascimento
-    var mergulho = t6 * (mobile ? 9 : 13);      // desce um pouco pra tela centralizar no zoom
+    var mergulho = t6 * (mobile ? 0 : 13);      // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
     var tilt = 17 * (1 - t3); // camera assenta frontal ao abrir: tampa e base viram um corpo so
     laptop.style.opacity = t2;

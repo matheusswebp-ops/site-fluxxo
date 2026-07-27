@@ -772,9 +772,12 @@
 .lap-cap b{color:var(--purple-light);font-weight:700}
 
 @media (max-width:700px){
-  .lap-stage{height:330vh}
+  /* seção mais curta: chega no zoom e cai logo na próxima */
+  .lap-stage{height:250vh}
   .lap-copy{top:10vh;padding:0 22px}
-  .lap-scene{margin-top:14vh}
+  /* cena centrada, pra tela crescer pro meio do viewport e não pro rodapé */
+  .lap-scene{margin-top:4vh}
+  .laptop{width:94vw}
 }
 @media (prefers-reduced-motion:reduce){
   .lap-stage{height:auto;padding:90px 0}
