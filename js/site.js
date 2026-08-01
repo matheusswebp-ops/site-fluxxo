@@ -335,7 +335,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // título: no desktop sai antes da tampa abrir. No mobile ele FICA:
     // um notebook 16:10 nunca preenche uma tela 9:19.5, entao quem fecha o
     // quadro e a composicao titulo + notebook + legenda, nao a escala.
-    var tIn = suave(fase(p, 0, 0.14));
+    // entra rápido (era 0-14%, ficava telas de rolagem parecendo vazio
+    // logo depois da hero antes do texto aparecer)
+    var tIn = suave(fase(p, 0, 0.05));
     var tOut = mobile ? suave(fase(p, 0.80, 0.95)) : suave(fase(p, 0.3, 0.44));   // no mobile sai junto com a tampa fechando
     copy.style.opacity = tIn * (1 - tOut);
     copy.style.transform = 'translateY(' + (24 - 24 * tIn - 30 * tOut) + 'px)';
