@@ -514,7 +514,6 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     ticking = false;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
-    var mobile = window.innerWidth < 700;
 
     // fundo índigo + malha acendem quase na hora: a seção anterior (Sites
     // no ar) acabou de terminar, então nada de tela vazia logo de cara
@@ -522,16 +521,12 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
-    // título entra quase na hora também e SAI antes do laptop nascer
-    // (t1 começa em 0.18): aqui, diferente do #lapCopy, o título fica no
-    // centro, bem onde o laptop aparece — se as duas fases se sobrepõem
-    // no tempo, sobrepõem na tela.
+    // título entra quase na hora e FICA — ele e o laptop agora são um
+    // grupo só (título em cima, laptop logo abaixo, ver .maq-sticky em
+    // css/site.css), não faz sentido mais sumir o título antes do laptop
     var tIn = suave(fase(p, 0, 0.04));
-    var tOut = suave(fase(p, 0.12, 0.18));
-    head.style.opacity = tIn * (1 - tOut);
-    // no mobile o CSS ancora o título perto do topo (top:100px), não no
-    // centro do container de 100vh: sem o translateY(-50%) de centralizar
-    head.style.transform = (mobile ? '' : 'translateY(-50%) ') + 'translateY(' + (24 - 24 * tIn) + 'px)';
+    head.style.opacity = tIn;
+    head.style.transform = 'translateY(' + (24 - 24 * tIn) + 'px)';
 
     // laptop nasce depois que o título já foi
     var t1 = suave(fase(p, 0.18, 0.34));
