@@ -479,7 +479,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function () {
   var intro = document.getElementById('intro');
   if (!intro) return;
-  setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 2600);
+  setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 1200);
 })();
 
 // ============ Hero: a parede de sites inclina com o mouse e afunda no scroll ============
@@ -619,14 +619,17 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
   window.addEventListener('touchstart', retomar, { passive: true });
   window.addEventListener('scroll', retomar, { passive: true });
-  setInterval(retomar, 1000);
+  var tique = setInterval(function () {
+    retomar();
+    if (vids.every(function (v) { return !v.isConnected || (v.dataset.ligado && !v.paused); })) clearInterval(tique);
+  }, 1000);
 
   if (!('IntersectionObserver' in window)) { vids.forEach(liga); return; }
 
   // carrega um pouco antes de aparecer, pra não engasgar na entrada
   var ioCarga = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { liga(e.target); ioCarga.unobserve(e.target); } });
-  }, { rootMargin: '2000px 0px' });   // 13MB de mp4: 300px de antecedencia nao dava tempo de bufferizar no celular
+  }, { rootMargin: '1200px 0px' });   // antecedencia suficiente pra bufferizar sem competir com a dobra
 
   // só toca enquanto está visível
   var ioPlay = new IntersectionObserver(function (es) {

@@ -27,8 +27,13 @@
 <meta name="twitter:image" content="https://fluxxo.io/img/brand/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=890">
+<!-- fontes sem bloquear a 1a pintura: o media="print" faz o navegador
+     baixar sem esperar, e o onload devolve pra "all". Com display=swap o
+     texto aparece na fonte de sistema e troca quando a real chega. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"></noscript>
+<link rel="stylesheet" href="css/site.css?v=892">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://fluxxo.io/#org","address":{"@type":"PostalAddress","addressLocality":"Fortaleza","addressRegion":"CE","addressCountry":"BR"},"areaServed":"BR","knowsLanguage":"pt-BR","name":"Fluxxo","url":"https://fluxxo.io/","logo":{"@type":"ImageObject","url":"https://fluxxo.io/img/brand/icon-512.png","width":512,"height":512},"email":"contato@fluxxo.io","contactPoint":{"@type":"ContactPoint","telephone":"+55-85-99265-7146","contactType":"sales","availableLanguage":"Portuguese"}},{"@type":"WebSite","@id":"https://fluxxo.io/#site","url":"https://fluxxo.io/","name":"Fluxxo","inLanguage":"pt-BR","publisher":{"@id":"https://fluxxo.io/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto tempo leva pra ficar pronto?","acceptedAnswer":{"@type":"Answer","text":"Depende da frente: sites e landing pages costumam ficar prontos em 2 a 3 semanas, projetos de design em 1 a 2 semanas, e soluções sob medida variam conforme a complexidade. No fim da primeira conversa você já sai com um prazo fechado, sem enrolação."}},{"@type":"Question","name":"Como funciona o orçamento?","acceptedAnswer":{"@type":"Answer","text":"Sem compromisso e sem letra miúda. Você conta o que precisa, a gente entende o escopo e devolve um valor fechado antes de começar, nada de custo surpresa no meio do caminho."}},{"@type":"Question","name":"Preciso ter tudo pronto (textos, logo, imagens) antes de começar?","acceptedAnswer":{"@type":"Answer","text":"Não. Ajudamos a organizar e, quando falta algo, como copywriting ou identidade visual, cobrimos isso dentro do próprio projeto. Você entra com a ideia, a gente cuida do resto."}},{"@type":"Question","name":"E depois que o projeto vai ao ar, o suporte acaba?","acceptedAnswer":{"@type":"Answer","text":"Não é \"publicou e sumiu\". Continuamos de olho: aviso automático se algo sair do ar, checagem periódica de performance e suporte direto se precisar ajustar alguma coisa."}},{"@type":"Question","name":"Vocês atendem empresas de qualquer tamanho?","acceptedAnswer":{"@type":"Answer","text":"Sim. Já entregamos projetos para autônomos, clínicas, e-commerces e consultorias: o processo se adapta ao tamanho e à maturidade de cada negócio, não o contrário."}},{"@type":"Question","name":"Posso pedir ajustes depois da entrega?","acceptedAnswer":{"@type":"Answer","text":"Claro. Toda entrega passa por uma rodada de ajustes inclusa. Depois disso, mudanças pontuais ou evoluções contínuas podem ser combinadas à parte, sem burocracia."}}]},{"@type":"Service","name":"Design, sites e automação","provider":{"@id":"https://fluxxo.io/#org"},"areaServed":"BR","serviceType":["Design gráfico","Criação de sites e landing pages","Automação de processos"]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -76,7 +81,7 @@
 <nav class="nav" id="nav">
   <div class="nav-shell">
     <a href="#top" class="brand">
-      <img src="img/brand/logo.webp" alt="fluxxo" class="brand-img">
+      <img src="img/brand/logo.webp" alt="fluxxo" class="brand-img" decoding="async">
     </a>
     <div class="nav-links">
       <a href="design.html">Design</a>
@@ -110,16 +115,16 @@
   <div class="hero-wall" aria-hidden="true">
     <div class="wall-plane" id="wallPlane">
       <div class="wall-col wc-a">
-        <img src="img/sites/site-alvo.jpg" alt=""><img src="img/sites/site-deia-glace.jpg" alt=""><img src="img/sites/site-jose-tech.jpg" alt="">
-        <img src="img/sites/site-alvo.jpg" alt=""><img src="img/sites/site-deia-glace.jpg" alt=""><img src="img/sites/site-jose-tech.jpg" alt="">
+        <img src="img/sites/wall/site-alvo.jpg" alt="" decoding="async"><img src="img/sites/wall/site-deia-glace.jpg" alt="" decoding="async"><img src="img/sites/wall/site-jose-tech.jpg" alt="" decoding="async">
+        <img src="img/sites/wall/site-alvo.jpg" alt="" decoding="async"><img src="img/sites/wall/site-deia-glace.jpg" alt="" decoding="async"><img src="img/sites/wall/site-jose-tech.jpg" alt="" decoding="async">
       </div>
       <div class="wall-col wc-b">
-        <img src="img/sites/site-puravive.jpg" alt=""><img src="img/sites/site-drasumaia.jpg" alt=""><img src="img/sites/site-formacao-gem.jpg" alt="">
-        <img src="img/sites/site-puravive.jpg" alt=""><img src="img/sites/site-drasumaia.jpg" alt=""><img src="img/sites/site-formacao-gem.jpg" alt="">
+        <img src="img/sites/wall/site-puravive.jpg" alt="" decoding="async"><img src="img/sites/wall/site-drasumaia.jpg" alt="" decoding="async"><img src="img/sites/wall/site-formacao-gem.jpg" alt="" decoding="async">
+        <img src="img/sites/wall/site-puravive.jpg" alt="" decoding="async"><img src="img/sites/wall/site-drasumaia.jpg" alt="" decoding="async"><img src="img/sites/wall/site-formacao-gem.jpg" alt="" decoding="async">
       </div>
       <div class="wall-col wc-c">
-        <img src="img/sites/site-marla-gestante.jpg" alt=""><img src="img/sites/site-ana-lameu.jpg" alt=""><img src="img/sites/site-desintox.jpg" alt="">
-        <img src="img/sites/site-marla-gestante.jpg" alt=""><img src="img/sites/site-ana-lameu.jpg" alt=""><img src="img/sites/site-desintox.jpg" alt="">
+        <img src="img/sites/wall/site-marla-gestante.jpg" alt="" decoding="async"><img src="img/sites/wall/site-ana-lameu.jpg" alt="" decoding="async"><img src="img/sites/wall/site-desintox.jpg" alt="" decoding="async">
+        <img src="img/sites/wall/site-marla-gestante.jpg" alt="" decoding="async"><img src="img/sites/wall/site-ana-lameu.jpg" alt="" decoding="async"><img src="img/sites/wall/site-desintox.jpg" alt="" decoding="async">
       </div>
     </div>
   </div>
@@ -162,10 +167,10 @@
     <div class="lap-scene">
       <div class="laptop" id="laptop">
         <div class="lap-lid" id="lapLid">
-          <div class="lap-cover" aria-hidden="true"><img src="img/brand/isotipo-limpo.png" alt=""></div>
+          <div class="lap-cover" aria-hidden="true"><img src="img/brand/isotipo-limpo.png" alt="" loading="lazy" decoding="async"></div>
           <div class="lap-screen">
             <span class="lap-notch" aria-hidden="true"></span>
-            <div class="lap-view"><img src="img/sites/site-alvo.jpg" alt="Site da Alvo AG, criado pela Fluxxo" id="lapShot"></div>
+            <div class="lap-view"><img src="img/sites/site-alvo.jpg" alt="Site da Alvo AG, criado pela Fluxxo" id="lapShot" loading="lazy" decoding="async"></div>
             <span class="lap-glare" aria-hidden="true"></span>
           </div>
         </div>
@@ -382,8 +387,8 @@
     </div>
   </div>
   <div class="work-belt rv" aria-hidden="true">
-    <div class="work-row wr-a"><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt=""><img src="img/thumb-muda-tudo.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt=""><img src="img/carrossel-engenharia-civil-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/thumb-cpl-bingo.jpg" alt=""><img src="img/carrossel-carneiros-temporada-1.jpg" alt=""><img src="img/carrossel-clinica-1.jpg" alt=""><img src="img/carrossel-google-ads-1.jpg" alt=""><img src="img/thumb-muda-tudo.jpg" alt=""><img src="img/carrossel-istrateg-1.jpg" alt=""><img src="img/carrossel-engenharia-civil-1.jpg" alt=""><img src="img/anuncio-pura-vive.jpg" alt=""><img src="img/carrossel-receitas-bolo-1.jpg" alt=""><img src="img/carrossel-seguros-1.jpg" alt=""><img src="img/thumb-cpl-bingo.jpg" alt=""></div>
-    <div class="work-row wr-b"><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/imobiliaria-01.webp" alt=""><img src="img/thumb-curriculo-forte.jpg" alt=""><img src="img/suplemento-feno-grego-01.jpg" alt=""><img src="img/carrossel-trafego-pago-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-vem-de-amazon-1.webp" alt=""><img src="img/imobiliaria-05.webp" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""><img src="img/anuncio-mapa-100k-hoje.jpg" alt=""><img src="img/carrossel-jiu-jitsu-1.jpg" alt=""><img src="img/imobiliaria-01.webp" alt=""><img src="img/thumb-curriculo-forte.jpg" alt=""><img src="img/suplemento-feno-grego-01.jpg" alt=""><img src="img/carrossel-trafego-pago-1.jpg" alt=""><img src="img/anuncio-seller-pro.jpg" alt=""><img src="img/carrossel-vem-de-amazon-1.webp" alt=""><img src="img/imobiliaria-05.webp" alt=""><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt=""></div>
+    <div class="work-row wr-a"><img src="img/carrossel-carneiros-temporada-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-clinica-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-google-ads-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/thumb-muda-tudo.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-istrateg-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-engenharia-civil-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/anuncio-pura-vive.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-receitas-bolo-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-seguros-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/thumb-cpl-bingo.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-carneiros-temporada-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-clinica-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-google-ads-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/thumb-muda-tudo.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-istrateg-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-engenharia-civil-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/anuncio-pura-vive.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-receitas-bolo-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-seguros-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/thumb-cpl-bingo.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="work-row wr-b"><img src="img/anuncio-mapa-100k-hoje.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-jiu-jitsu-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/imobiliaria-01.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb-curriculo-forte.jpg" alt="" loading="lazy" decoding="async"><img src="img/suplemento-feno-grego-01.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-trafego-pago-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/anuncio-seller-pro.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-vem-de-amazon-1.webp" alt="" loading="lazy" decoding="async"><img src="img/imobiliaria-05.webp" alt="" loading="lazy" decoding="async"><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt="" loading="lazy" decoding="async"><img src="img/anuncio-mapa-100k-hoje.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-jiu-jitsu-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/imobiliaria-01.webp" alt="" loading="lazy" decoding="async"><img src="img/thumb-curriculo-forte.jpg" alt="" loading="lazy" decoding="async"><img src="img/suplemento-feno-grego-01.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-trafego-pago-1.jpg" alt="" loading="lazy" decoding="async"><img src="img/anuncio-seller-pro.jpg" alt="" loading="lazy" decoding="async"><img src="img/carrossel-vem-de-amazon-1.webp" alt="" loading="lazy" decoding="async"><img src="img/imobiliaria-05.webp" alt="" loading="lazy" decoding="async"><img src="img/anuncio-mentoria-ppa-inscricoes.jpg" alt="" loading="lazy" decoding="async"></div>
   </div>
   <div class="work-ctas rv">
     <a href="design.html" class="btn-hero"><span>Ver o portfólio de design</span>
@@ -839,7 +844,7 @@
 <footer class="footer-card">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="logo-line"><img src="img/brand/logo.webp" alt="fluxxo" class="logo-img"></div>
+      <div class="logo-line"><img src="img/brand/logo.webp" alt="fluxxo" class="logo-img" loading="lazy" decoding="async"></div>
       <p class="tagline">Design, sites e soluções sob medida para transformar visita em cliente.</p>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -877,7 +882,7 @@
 </footer>
 </div>
 
-<script src="js/site.js?v=891"></script>
+<script src="js/site.js?v=893"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="js/site-scroll.js?v=839"></script>
 </body>
