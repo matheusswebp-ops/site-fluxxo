@@ -515,8 +515,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-    // fundo índigo + malha acendem
-    var tbg = suave(fase(p, 0.04, 0.24)) * (1 - suave(fase(p, 0.9, 1)));
+    // fundo índigo + malha acendem (sem fade-out: a partir de 0.55 o
+    // .fio-stage já cobre tudo, então o que vem depois nunca é visto)
+    var tbg = suave(fase(p, 0.04, 0.24));
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
@@ -528,23 +529,25 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     head.style.opacity = tIn * (1 - tOut);
     head.style.transform = 'translateY(-50%) translateY(' + (24 - 24 * tIn) + 'px)';
 
-    // laptop nasce depois que o título já foi
+    // laptop nasce depois que o título já foi, cresce mas NUNCA chega a
+    // engolir a tela: em p=0.55 o .fio-stage já entra por cima (ver
+    // css/site.css .fio-stage) — a curva de crescimento segue até 0.66,
+    // mas só é vista até uns 60% do caminho, com a tela do laptop ainda
+    // visivelmente menor que o viewport
     var t1 = suave(fase(p, 0.18, 0.34));
-    // expansão: escala necessária pra tela cobrir o viewport inteiro
     var vw = view.offsetWidth || 1, vh = view.offsetHeight || 1;
     var alvo = Math.max(innerWidth / vw, innerHeight / vh) * 1.06;
-    var t2 = suave(fase(p, 0.38, 0.66));        // cresce
-    var t3 = suave(fase(p, 0.86, 0.99));        // encolhe de volta
-    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2 * (1 - t3);
+    var t2 = suave(fase(p, 0.38, 0.66));
+    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
     laptop.style.opacity = t1;
     laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
 
-    // chips em sequência sobre o fullscreen
-    var janelas = [[0.5, 0.62], [0.62, 0.75], [0.75, 0.88]];
+    // chips em sequência, comprimidos pra caber antes do handoff em 0.55
+    var janelas = [[0.40, 0.455], [0.455, 0.505], [0.505, 0.55]];
     chips.forEach(function (c, i) {
       var a = janelas[i][0], b = janelas[i][1];
-      var tin = suave(fase(p, a, a + 0.04));
-      var tout = suave(fase(p, b - 0.03, b));
+      var tin = suave(fase(p, a, a + 0.018));
+      var tout = suave(fase(p, b - 0.015, b));
       c.style.opacity = tin * (1 - tout);
       c.style.transform = 'translateY(' + (16 - 16 * tin + 10 * tout) + 'px)';
     });
