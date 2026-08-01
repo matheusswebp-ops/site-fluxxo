@@ -331,6 +331,12 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var total = r.height - window.innerHeight;
     var p = clamp(-r.top / total, 0, 1);
     var mobile = window.innerWidth < 700;
+    // "p" NAO anda durante a entrada da secao: ele so sai de 0 quando o
+    // topo da secao alcanca o topo da tela (o sticky travando). Toda a
+    // primeira tela de rolagem fica em p=0 -- era por isso que a tampa
+    // ficava fechada "rolando rolando" antes de abrir. pIn cobre esse
+    // trecho: 0 com o topo da secao na base da tela, 1 quando trava.
+    var pIn = clamp((window.innerHeight - r.top) / window.innerHeight, 0, 1);
 
     // título: a ENTRADA é a cascata CSS (.is-in); aqui só a saída — e o
     // inline só existe enquanto a saída roda, senão sobrescreveria a
@@ -341,23 +347,24 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     copy.style.transform = tOut > 0 ? 'translateY(' + (-30 * tOut) + 'px)' : '';
 
     // laptop nasce de baixo, pequeno e fechado
-    var t2 = suave(fase(p, mobile ? 0 : 0.06, mobile ? 0.16 : 0.26));
-    // tampa abre — no mobile desde o PRIMEIRO pixel de scroll: fechada,
-    // a caixa da tampa fica vazia na tela (ela gira da dobradiça) e isso
-    // lia como um buraco entre o título e o notebook até ela abrir
-    var t3 = suave(fase(p, mobile ? 0 : 0.28, mobile ? 0.30 : 0.56));
+    // no mobile o nascimento acompanha a ENTRADA (pIn): ele assenta
+    // enquanto a secao sobe, nao depois
+    var t2 = mobile ? suave(pIn) : suave(fase(p, 0.06, 0.26));
+    // tampa abre junto com a entrada no mobile: meio aberta com a secao
+    // meio na tela, toda aberta quando ela termina de entrar
+    var t3 = mobile ? suave(pIn) : suave(fase(p, 0.28, 0.56));
     // ...e fecha de volta no fim: e o fechamento que encerra a cena, no lugar
     // de um zoom que recorta a moldura ou de uma cortina que apaga a tela
     // so no mobile: no desktop o final continua sendo o mergulho da camera,
     // e fechar a tampa no meio do zoom seria contraditorio
     var tFecha = mobile ? suave(fase(p, 0.78, 0.93)) : 0;
     lid.style.transform = 'rotateX(' + (-90 + 90 * t3 - 90 * tFecha) + 'deg)';
-    // tela acende (mobile: logo atrás da tampa abrindo)
-    var t4 = suave(fase(p, mobile ? 0.12 : 0.46, mobile ? 0.32 : 0.62));
+    // tela acende junto com a tampa abrindo (mobile: tambem na entrada)
+    var t4 = mobile ? suave(fase(pIn, 0.45, 0.95)) : suave(fase(p, 0.46, 0.62));
     view.style.filter = 'brightness(' + (0.1 + 0.9 * t4 * (1 - tFecha)) + ')';   // tela apaga ao fechar
     // site rola dentro da tela. No mobile percorre o site inteiro e ocupa a
     // maior parte da secao: e ele que da vida, no lugar do zoom.
-    var t5 = suave(fase(p, mobile ? 0.34 : 0.6, mobile ? 0.98 : 0.96));
+    var t5 = suave(fase(p, mobile ? 0.04 : 0.6, mobile ? 0.98 : 0.96));
     var alcance = Math.max(0, shot.offsetHeight - view.offsetHeight);
     shot.style.transform = 'translateY(-' + alcance * t5 * (mobile ? 1 : 0.6) + 'px)';
 
@@ -388,7 +395,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     else { hint.style.transition = ''; hint.style.opacity = ''; }
 
     // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
-    var t7 = suave(fase(p, mobile ? 0.38 : 0.82, mobile ? 0.48 : 0.92));
+    var t7 = suave(fase(p, mobile ? 0.02 : 0.82, mobile ? 0.12 : 0.92));
     cap.style.opacity = t7 * (1 - tFecha);
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }
@@ -523,17 +530,20 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     ticking = false;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+    // "p" fica em 0 durante toda a entrada da secao (so anda quando o
+    // sticky trava). pIn cobre a entrada: 0 com o topo da secao na base
+    // da tela, 1 quando ela termina de entrar.
+    var pIn = clamp((innerHeight - r.top) / innerHeight, 0, 1);
 
-    // fundo índigo + malha acendem quase na hora: a seção anterior (Sites
-    // no ar) acabou de terminar, então nada de tela vazia logo de cara
-    var tbg = suave(fase(p, 0, 0.08));
+    // fundo índigo + malha acendem durante a propria entrada
+    var tbg = suave(fase(pIn, 0.1, 0.6));
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
-    // título e laptop entram pela cascata CSS (.is-in) — o JS não toca
-    // na opacidade nem no head; só o transform da cena do laptop:
-    // o translateY do nascimento assenta logo depois do sticky travar
-    var t1 = suave(fase(p, 0, 0.16));
+    // título e laptop entram pela cascata CSS (.is-in) — o JS só escreve
+    // o transform da cena. O assentar acompanha a ENTRADA (pIn), senão
+    // ficaria parado no offset inicial durante toda a primeira tela.
+    var t1 = suave(pIn);
     // expansão: cresce até 65% do caminho pra tela cobrir o viewport
     // inteiro — nunca engole a tela de verdade — e FICA lá, sem encolher
     // de volta (o encolhimento deixava um vão vazio antes do Fio começar)
@@ -604,8 +614,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   // iOS às vezes rejeita o play() sem gesto (ex.: modo economia de
-  // energia). Retoma no próximo toque/scroll qualquer vídeo visível
-  // que tenha ficado parado.
+  // energia) e o vídeo fica congelado no 1º frame. Retoma no próximo
+  // toque/scroll e também num tique de 1s, porque a rejeição pode
+  // acontecer depois — o arquivo é grande e o play() real vem tarde.
   function retomar() {
     if (reduz) return;
     vids.forEach(function (v) {
@@ -616,13 +627,14 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
   window.addEventListener('touchstart', retomar, { passive: true });
   window.addEventListener('scroll', retomar, { passive: true });
+  setInterval(retomar, 1000);
 
   if (!('IntersectionObserver' in window)) { vids.forEach(liga); return; }
 
   // carrega um pouco antes de aparecer, pra não engasgar na entrada
   var ioCarga = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { liga(e.target); ioCarga.unobserve(e.target); } });
-  }, { rootMargin: '300px 0px' });
+  }, { rootMargin: '2000px 0px' });   // 13MB de mp4: 300px de antecedencia nao dava tempo de bufferizar no celular
 
   // só toca enquanto está visível
   var ioPlay = new IntersectionObserver(function (es) {
