@@ -1072,7 +1072,9 @@
      (ver js/site.js), mas o laptop ainda demorava telas inteiras de
      rolagem pra virar algo reconhecível depois do fim do "Sites no ar" */
   .maq-stage{height:200vh}
-  .maq-head{padding:0 22px}
+  /* no lugar de centralizado num container de 100vh (o que sobra um
+     tanto de vão em cima/embaixo num celular), ancorado perto do topo */
+  .maq-head{top:100px;padding:0 22px}
 }
 @media (prefers-reduced-motion:reduce){
   .maq-stage{height:auto}

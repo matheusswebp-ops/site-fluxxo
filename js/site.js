@@ -514,6 +514,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     ticking = false;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
+    var mobile = window.innerWidth < 700;
 
     // fundo índigo + malha acendem quase na hora: a seção anterior (Sites
     // no ar) acabou de terminar, então nada de tela vazia logo de cara
@@ -528,7 +529,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var tIn = suave(fase(p, 0, 0.04));
     var tOut = suave(fase(p, 0.12, 0.18));
     head.style.opacity = tIn * (1 - tOut);
-    head.style.transform = 'translateY(-50%) translateY(' + (24 - 24 * tIn) + 'px)';
+    // no mobile o CSS ancora o título perto do topo (top:100px), não no
+    // centro do container de 100vh: sem o translateY(-50%) de centralizar
+    head.style.transform = (mobile ? '' : 'translateY(-50%) ') + 'translateY(' + (24 - 24 * tIn) + 'px)';
 
     // laptop nasce depois que o título já foi
     var t1 = suave(fase(p, 0.18, 0.34));
