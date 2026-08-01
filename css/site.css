@@ -1074,7 +1074,11 @@
   .maq-stage{height:200vh}
   /* no lugar de centralizado num container de 100vh (o que sobra um
      tanto de vão em cima/embaixo num celular), ancorado perto do topo */
-  .maq-head{top:100px;padding:0 22px}
+  /* título e laptop empilhados como um grupo só (coluna), não mais o
+     título flutuando isolado por cima e o laptop centralizado sozinho */
+  .maq-sticky{flex-direction:column;justify-content:flex-start;padding-top:100px}
+  .maq-head{position:static;padding:0 22px;transform:none}
+  .maq-scene{margin-top:24px}
 }
 @media (prefers-reduced-motion:reduce){
   .maq-stage{height:auto}
