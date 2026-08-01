@@ -536,38 +536,28 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // sticky trava). pIn cobre a entrada: 0 com o topo da secao na base
     // da tela, 1 quando ela termina de entrar.
     var pIn = clamp((innerHeight - r.top) / innerHeight, 0, 1);
+    var mobile = window.innerWidth < 700;
 
     // fundo índigo + malha acendem durante a propria entrada
     var tbg = suave(fase(pIn, 0.1, 0.6));
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
-    // título e laptop entram pela cascata CSS (.is-in) — o JS só escreve
-    // o transform da cena. O assentar acompanha a ENTRADA (pIn), senão
-    // ficaria parado no offset inicial durante toda a primeira tela.
+    // mesma cena da secao do primeiro notebook: o laptop so ASSENTA
+    // (nasce de baixo e cresce de leve) junto com a entrada da secao --
+    // sem zoom pra engolir o viewport, que era o que cortava a tela e
+    // exigia meia pagina de scroll pra acontecer
     var t1 = suave(pIn);
-    // expansão: cresce até 65% do caminho pra tela cobrir o viewport
-    // inteiro — nunca engole a tela de verdade — e FICA lá, sem encolher
-    // de volta (o encolhimento deixava um vão vazio antes do Fio começar)
-    var vw = view.offsetWidth || 1, vh = view.offsetHeight || 1;
-    var alvoFull = Math.max(innerWidth / vw, innerHeight / vh) * 1.06;
-    var alvo = 1 + (alvoFull - 1) * 0.65;
-    var t2 = suave(fase(p, 0.38, 0.66));        // cresce e mantém
-    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
-    // nascimento curto no mobile: 150px de offset num celular abria um
-    // buraco entre o título e o laptop durante a entrada
-    var nasc = window.innerWidth < 700 ? 44 : 150;
-    laptop.style.transform = 'translateY(' + (nasc - nasc * t1) + 'px) scale(' + escala + ')';
+    var nasc = mobile ? 44 : 90;
+    laptop.style.transform = 'translateY(' + (nasc - nasc * t1) + 'px) scale(' + (0.9 + 0.1 * t1) + ')';
 
-    // chips em sequência, comprimidos pra caber antes do handoff pro
-    // .fio-stage em p=0.6 (ver css/site.css .fio-stage)
-    var janelas = [[0.40, 0.455], [0.455, 0.505], [0.505, 0.56]];
+    // tags entram juntas, logo abaixo do notebook, durante a entrada
+    // (como a legenda da 1a cena) -- nao ha mais fullscreen pra
+    // sequenciar uma por uma em cima
+    var tc = suave(fase(pIn, 0.6, 1));
     chips.forEach(function (c, i) {
-      var a = janelas[i][0], b = janelas[i][1];
-      var tin = suave(fase(p, a, a + 0.018));
-      var tout = suave(fase(p, b - 0.015, b));
-      c.style.opacity = tin * (1 - tout);
-      c.style.transform = 'translateY(' + (16 - 16 * tin + 10 * tout) + 'px)';
+      c.style.opacity = String(tc);
+      c.style.transform = 'translateY(' + (16 - 16 * tc) + 'px)';
     });
   }
 
