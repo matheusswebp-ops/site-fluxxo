@@ -1068,7 +1068,10 @@
 @keyframes saShine{60%,100%{transform:translateX(100%)}}
 
 @media (max-width:700px){
-  .maq-stage{height:340vh}
+  /* 340vh era comprido demais no celular: título/fundo já entram rápido
+     (ver js/site.js), mas o laptop ainda demorava telas inteiras de
+     rolagem pra virar algo reconhecível depois do fim do "Sites no ar" */
+  .maq-stage{height:200vh}
   .maq-head{padding:0 22px}
 }
 @media (prefers-reduced-motion:reduce){
