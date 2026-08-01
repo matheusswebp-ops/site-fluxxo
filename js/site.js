@@ -515,8 +515,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-    // fundo índigo + malha acendem
-    var tbg = suave(fase(p, 0.04, 0.24)) * (1 - suave(fase(p, 0.9, 1)));
+    // fundo índigo + malha acendem (sem fade-out: sem o encolhimento do
+    // laptop no final, não sobra vão vazio pra esconder)
+    var tbg = suave(fase(p, 0.04, 0.24));
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
@@ -530,12 +531,14 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // laptop nasce depois que o título já foi
     var t1 = suave(fase(p, 0.18, 0.34));
-    // expansão: escala necessária pra tela cobrir o viewport inteiro
+    // expansão: cresce até 65% do caminho pra tela cobrir o viewport
+    // inteiro — nunca engole a tela de verdade — e FICA lá, sem encolher
+    // de volta (o encolhimento deixava um vão vazio antes do Fio começar)
     var vw = view.offsetWidth || 1, vh = view.offsetHeight || 1;
-    var alvo = Math.max(innerWidth / vw, innerHeight / vh) * 1.06;
-    var t2 = suave(fase(p, 0.38, 0.66));        // cresce
-    var t3 = suave(fase(p, 0.86, 0.99));        // encolhe de volta
-    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2 * (1 - t3);
+    var alvoFull = Math.max(innerWidth / vw, innerHeight / vh) * 1.06;
+    var alvo = 1 + (alvoFull - 1) * 0.65;
+    var t2 = suave(fase(p, 0.38, 0.66));        // cresce e mantém
+    var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
     laptop.style.opacity = t1;
     laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
 
