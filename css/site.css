@@ -780,10 +780,12 @@
   /* secao curta: abre, o site rola dentro da tela e ja entrega a proxima */
   /* espaco pra tampa fechar antes de a proxima secao subir por cima */
   .lap-stage{height:300vh}
-  .lap-copy{top:9vh;padding:0 22px}
-  /* notebook inteiro, ocupando a largura, centrado entre titulo e legenda */
-  /* grupo desce pra ficar centrado entre o titulo e a base da tela */
-  .lap-scene{margin-top:9vh}
+  /* num celular a cena centralizada + titulo absoluto abria um buraco
+     enorme entre texto e notebook: empilha tudo como um grupo so no
+     topo, igual a Maquina */
+  .lap-sticky{justify-content:flex-start;padding-top:88px}
+  .lap-copy{position:static;top:auto;padding:0 22px}
+  .lap-scene{margin-top:26px}
   .laptop{width:92vw}
   /* legenda colada no notebook, em vez de presa no rodape: fecha o quadro */
   .lap-cap{position:static;margin-top:20px;bottom:auto}

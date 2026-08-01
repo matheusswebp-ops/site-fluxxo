@@ -367,7 +367,10 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var escala = mobile
       ? (0.9 + 0.1 * t2)
       : (0.8 + 0.16 * t2) + (escalaMax - 0.96) * t6;
-    var subida = 130 - 130 * t2;               // nascimento
+    // nascimento: offset curto no mobile — 130px num celular vira um
+    // buraco visivel entre o titulo e o notebook durante a entrada
+    var nasc = mobile ? 44 : 130;
+    var subida = nasc - nasc * t2;
     var mergulho = t6 * 13;                     // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
     var tilt = 17 * (1 - t3);   // sem voltar a inclinar ao fechar: a caixa do 3D cresce e vaza a lateral // camera assenta frontal ao abrir: tampa e base viram um corpo so
@@ -537,7 +540,10 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var alvo = 1 + (alvoFull - 1) * 0.65;
     var t2 = suave(fase(p, 0.38, 0.66));        // cresce e mantém
     var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
-    laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
+    // nascimento curto no mobile: 150px de offset num celular abria um
+    // buraco entre o título e o laptop durante a entrada
+    var nasc = window.innerWidth < 700 ? 44 : 150;
+    laptop.style.transform = 'translateY(' + (nasc - nasc * t1) + 'px) scale(' + escala + ')';
 
     // chips em sequência, comprimidos pra caber antes do handoff pro
     // .fio-stage em p=0.6 (ver css/site.css .fio-stage)
