@@ -1075,11 +1075,14 @@
 @keyframes saShine{60%,100%{transform:translateX(100%)}}
 
 @media (max-width:700px){
-  .maq-stage{height:340vh}
+  /* nasce em cima da seção anterior (Sites no ar) antes dela terminar de
+     sair — mesma técnica de .frentes/.work/.fio-stage; z-index já é 3,
+     maior que o 2 de .sites-show, só falta o overlap */
+  .maq-stage{height:340vh;margin-top:-40vh}
   .maq-head{padding:0 22px}
 }
 @media (prefers-reduced-motion:reduce){
-  .maq-stage{height:auto}
+  .maq-stage{height:auto;margin-top:0}
   .maq-sticky{position:static;height:auto;padding:100px 0;flex-direction:column;gap:36px}
   .maq-bg,.maq-gridfx{opacity:1;position:absolute}
   .maq-head{position:static;opacity:1;transform:none}
