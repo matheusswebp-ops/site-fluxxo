@@ -515,16 +515,17 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var r = stage.getBoundingClientRect();
     var p = clamp(-r.top / (r.height - innerHeight), 0, 1);
 
-    // fundo índigo + malha acendem (sem fade-out: sem o encolhimento do
-    // laptop no final, não sobra vão vazio pra esconder)
-    var tbg = suave(fase(p, 0.04, 0.24));
+    // fundo índigo + malha acendem quase na hora: a seção anterior (Sites
+    // no ar) acabou de terminar, então nada de tela vazia logo de cara
+    var tbg = suave(fase(p, 0, 0.08));
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
-    // título entra e SAI antes do laptop nascer (t1 começa em 0.18): aqui,
-    // diferente do #lapCopy, o título fica no centro, bem onde o laptop
-    // aparece — se as duas fases se sobrepõem no tempo, sobrepõem na tela.
-    var tIn = suave(fase(p, 0.02, 0.10));
+    // título entra quase na hora também e SAI antes do laptop nascer
+    // (t1 começa em 0.18): aqui, diferente do #lapCopy, o título fica no
+    // centro, bem onde o laptop aparece — se as duas fases se sobrepõem
+    // no tempo, sobrepõem na tela.
+    var tIn = suave(fase(p, 0, 0.04));
     var tOut = suave(fase(p, 0.12, 0.18));
     head.style.opacity = tIn * (1 - tOut);
     head.style.transform = 'translateY(-50%) translateY(' + (24 - 24 * tIn) + 'px)';
