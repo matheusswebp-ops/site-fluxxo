@@ -341,21 +341,23 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     copy.style.transform = tOut > 0 ? 'translateY(' + (-30 * tOut) + 'px)' : '';
 
     // laptop nasce de baixo, pequeno e fechado
-    var t2 = suave(fase(p, 0.06, 0.26));
-    // tampa abre (no mobile mais cedo: o evento principal e o site rolando dentro)
-    var t3 = suave(fase(p, mobile ? 0.18 : 0.28, mobile ? 0.46 : 0.56));
+    var t2 = suave(fase(p, mobile ? 0 : 0.06, mobile ? 0.16 : 0.26));
+    // tampa abre — no mobile desde o PRIMEIRO pixel de scroll: fechada,
+    // a caixa da tampa fica vazia na tela (ela gira da dobradiça) e isso
+    // lia como um buraco entre o título e o notebook até ela abrir
+    var t3 = suave(fase(p, mobile ? 0 : 0.28, mobile ? 0.30 : 0.56));
     // ...e fecha de volta no fim: e o fechamento que encerra a cena, no lugar
     // de um zoom que recorta a moldura ou de uma cortina que apaga a tela
     // so no mobile: no desktop o final continua sendo o mergulho da camera,
     // e fechar a tampa no meio do zoom seria contraditorio
     var tFecha = mobile ? suave(fase(p, 0.78, 0.93)) : 0;
     lid.style.transform = 'rotateX(' + (-90 + 90 * t3 - 90 * tFecha) + 'deg)';
-    // tela acende
-    var t4 = suave(fase(p, mobile ? 0.38 : 0.46, mobile ? 0.54 : 0.62));
+    // tela acende (mobile: logo atrás da tampa abrindo)
+    var t4 = suave(fase(p, mobile ? 0.12 : 0.46, mobile ? 0.32 : 0.62));
     view.style.filter = 'brightness(' + (0.1 + 0.9 * t4 * (1 - tFecha)) + ')';   // tela apaga ao fechar
     // site rola dentro da tela. No mobile percorre o site inteiro e ocupa a
     // maior parte da secao: e ele que da vida, no lugar do zoom.
-    var t5 = suave(fase(p, mobile ? 0.5 : 0.6, mobile ? 0.98 : 0.96));
+    var t5 = suave(fase(p, mobile ? 0.34 : 0.6, mobile ? 0.98 : 0.96));
     var alcance = Math.max(0, shot.offsetHeight - view.offsetHeight);
     shot.style.transform = 'translateY(-' + alcance * t5 * (mobile ? 1 : 0.6) + 'px)';
 
@@ -386,7 +388,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     else { hint.style.transition = ''; hint.style.opacity = ''; }
 
     // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
-    var t7 = suave(fase(p, mobile ? 0.5 : 0.82, mobile ? 0.6 : 0.92));
+    var t7 = suave(fase(p, mobile ? 0.38 : 0.82, mobile ? 0.48 : 0.92));
     cap.style.opacity = t7 * (1 - tFecha);
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }
@@ -591,6 +593,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function liga(v) {
     if (v.dataset.ligado) return;
     v.dataset.ligado = '1';
+    v.muted = true;         // iOS: a propriedade (não só o atributo) precisa estar true na hora do play()
     v.addEventListener('loadeddata', function () {
       v.classList.add('pronto');
       if (!reduz && v.play) v.play().catch(function () {});
@@ -599,6 +602,20 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     v.src = v.dataset.src;
     v.load();
   }
+
+  // iOS às vezes rejeita o play() sem gesto (ex.: modo economia de
+  // energia). Retoma no próximo toque/scroll qualquer vídeo visível
+  // que tenha ficado parado.
+  function retomar() {
+    if (reduz) return;
+    vids.forEach(function (v) {
+      if (!v.dataset.ligado || !v.paused || !v.isConnected) return;
+      var r = v.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight && v.play) { v.muted = true; v.play().catch(function () {}); }
+    });
+  }
+  window.addEventListener('touchstart', retomar, { passive: true });
+  window.addEventListener('scroll', retomar, { passive: true });
 
   if (!('IntersectionObserver' in window)) { vids.forEach(liga); return; }
 
