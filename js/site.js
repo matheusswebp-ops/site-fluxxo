@@ -541,12 +541,13 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     laptop.style.opacity = t1;
     laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
 
-    // chips em sequência sobre o fullscreen
-    var janelas = [[0.5, 0.62], [0.62, 0.75], [0.75, 0.88]];
+    // chips em sequência, comprimidos pra caber antes do handoff pro
+    // .fio-stage em p=0.6 (ver css/site.css .fio-stage)
+    var janelas = [[0.40, 0.455], [0.455, 0.505], [0.505, 0.56]];
     chips.forEach(function (c, i) {
       var a = janelas[i][0], b = janelas[i][1];
-      var tin = suave(fase(p, a, a + 0.04));
-      var tout = suave(fase(p, b - 0.03, b));
+      var tin = suave(fase(p, a, a + 0.018));
+      var tout = suave(fase(p, b - 0.015, b));
       c.style.opacity = tin * (1 - tout);
       c.style.transform = 'translateY(' + (16 - 16 * tin + 10 * tout) + 'px)';
     });

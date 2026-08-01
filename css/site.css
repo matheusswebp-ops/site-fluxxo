@@ -800,8 +800,14 @@
 
 
 /* ============ O FIO · processo cinematográfico ============ */
-.fio-stage{position:relative;z-index:2;height:480vh}
-.fio-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+/* sobe por cima da Máquina antes do laptop terminar: em p=0.6 do scroll
+   de .maq-stage (300vh úteis no desktop), falta 40% = 120vh. Precisa de
+   fundo sólido e z-index acima do palco da máquina (.maq-stage é
+   z-index 3), senão o laptop apareceria atravessando. Agora que o
+   overflow-x:clip do body foi removido (quebrava position:sticky no
+   Safari), esse mesmo truque de .frentes/.work funciona aqui também. */
+.fio-stage{position:relative;z-index:5;height:480vh;margin-top:-120vh}
+.fio-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;background:#0e0815}
 .fio-ghost{position:absolute;right:-2vw;top:50%;transform:translateY(-50%);z-index:0;pointer-events:none;
   font-family:var(--font-display);font-weight:600;font-size:clamp(16rem,38vw,34rem);line-height:1;
   color:transparent;-webkit-text-stroke:1.5px rgba(169,156,255,.13);transition:opacity .4s}
@@ -928,12 +934,15 @@
 .fio-counter b{color:var(--purple-light);font-weight:700}
 
 @media (max-width:700px){
-  .fio-stage{height:430vh}
+  /* .maq-stage no mobile é 200vh (100vh úteis), não 400vh: o -120vh do
+     desktop cortaria a máquina cedo demais aqui — recalculado pro mesmo
+     p=0.6 */
+  .fio-stage{height:430vh;margin-top:-40vh}
   .fio-head{top:7vh;padding:0 20px}
   .fio-ghost{font-size:19rem;right:-14vw}
 }
 @media (prefers-reduced-motion:reduce){
-  .fio-stage{height:auto}
+  .fio-stage{height:auto;margin-top:0}
   .fio-sticky{position:static;height:auto;padding:90px 0 60px;overflow:visible}
   .fio-head{position:static;margin-bottom:40px}
   .fio-world{height:auto}
