@@ -1005,7 +1005,10 @@
 
 /* ============ A MÁQUINA · laptop fullscreen com SaaS ============ */
 .maq-stage{position:relative;z-index:3;height:400vh}
-.maq-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* fundo sólido desde o 1º frame: sem isso, no overlap mobile com
+   .sites-show, o começo do palco (antes do .maq-bg entrar via JS) fica
+   transparente e deixa a seção anterior sumir num vazio */
+.maq-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0e0815}
 .maq-bg{position:absolute;inset:0;opacity:0;
   background:radial-gradient(ellipse 80% 60% at 50% 30%,#141b4d 0%,#0b0f2e 55%,#070a1e 100%)}
 .maq-gridfx{position:absolute;inset:0;opacity:0;
