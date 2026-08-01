@@ -395,7 +395,9 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     else { hint.style.transition = ''; hint.style.opacity = ''; }
 
     // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
-    var t7 = suave(fase(p, mobile ? 0.02 : 0.82, mobile ? 0.12 : 0.92));
+    // no mobile a legenda tambem entra durante a entrada (pIn), senao
+    // fica um vazio embaixo do notebook ate o sticky travar
+    var t7 = mobile ? suave(fase(pIn, 0.55, 1)) : suave(fase(p, 0.82, 0.92));
     cap.style.opacity = t7 * (1 - tFecha);
     cap.style.transform = 'translateY(' + (12 - 12 * t7) + 'px)';
   }

@@ -781,14 +781,18 @@
   /* espaco pra tampa fechar antes de a proxima secao subir por cima */
   .lap-stage{height:300vh}
   /* num celular a cena centralizada + titulo absoluto abria um buraco
-     enorme entre texto e notebook: empilha tudo como um grupo so no
-     topo, igual a Maquina */
-  .lap-sticky{justify-content:flex-start;padding-top:88px}
+     enorme entre texto e notebook: empilha tudo como um grupo so.
+     Centrado (nao grudado no topo) pra nao sobrar todo o vao embaixo;
+     o padding-top compensa a barra de navegacao. */
+  .lap-sticky{justify-content:center;padding-top:76px}
   .lap-copy{position:static;top:auto;padding:0 22px}
   .lap-scene{margin-top:26px}
   .laptop{width:92vw}
   /* legenda colada no notebook, em vez de presa no rodape: fecha o quadro */
   .lap-cap{position:static;margin-top:20px;bottom:auto}
+  /* "continua rolando" junto do grupo, nao preso no rodape: preso la
+     embaixo ele abria um vao entre o notebook e ele */
+  .lap-hint{position:static;bottom:auto;margin-top:18px}
 }
 @media (prefers-reduced-motion:reduce){
   .lap-stage{height:auto;padding:90px 0}
