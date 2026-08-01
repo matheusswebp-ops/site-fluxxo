@@ -335,11 +335,13 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // título: no desktop sai antes da tampa abrir. No mobile ele FICA:
     // um notebook 16:10 nunca preenche uma tela 9:19.5, entao quem fecha o
     // quadro e a composicao titulo + notebook + legenda, nao a escala.
-    // entra rápido (era 0-14%, ficava telas de rolagem parecendo vazio
-    // logo depois da hero antes do texto aparecer)
+    // "p" fica travado em 0 enquanto a seção desliza pra cima entrando na
+    // tela (antes do sticky travar), então a opacidade NÃO depende mais
+    // de tIn -- já está visível por CSS (ver .lap-copy). tIn só afeta o
+    // pequeno movimento de assentar.
     var tIn = suave(fase(p, 0, 0.05));
     var tOut = mobile ? suave(fase(p, 0.80, 0.95)) : suave(fase(p, 0.3, 0.44));   // no mobile sai junto com a tampa fechando
-    copy.style.opacity = tIn * (1 - tOut);
+    copy.style.opacity = 1 - tOut;
     copy.style.transform = 'translateY(' + (24 - 24 * tIn - 30 * tOut) + 'px)';
 
     // laptop nasce de baixo, pequeno e fechado
@@ -525,9 +527,12 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // título entra quase na hora e FICA — ele e o laptop agora são um
     // grupo só (título em cima, laptop logo abaixo, ver .maq-sticky em
-    // css/site.css), não faz sentido mais sumir o título antes do laptop
+    // css/site.css), não faz sentido mais sumir o título antes do laptop.
+    // "p" fica travado em 0 enquanto a seção desliza pra cima entrando na
+    // tela, então a opacidade não depende de tIn -- já visível por CSS
+    // (ver .maq-head). tIn só afeta o pequeno movimento de assentar.
     var tIn = suave(fase(p, 0, 0.04));
-    head.style.opacity = tIn;
+    head.style.opacity = 1;
     head.style.transform = 'translateY(' + (24 - 24 * tIn) + 'px)';
 
     // laptop nasce depois que o título já foi

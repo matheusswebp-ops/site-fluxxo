@@ -724,7 +724,11 @@
 /* ============ MACBOOK CINE-SCROLL (home) ============ */
 .lap-stage{position:relative;z-index:2;height:420vh}
 .lap-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
-.lap-copy{position:absolute;top:9vh;text-align:center;z-index:1;opacity:0;transform:translateY(24px)}
+/* opacity:1 por padrão (não 0): enquanto a seção ainda desliza pra cima
+   vindo de baixo da tela (antes do position:sticky travar), o "p" do
+   JS fica travado em 0 -- se o texto começasse invisível, só apareceria
+   DEPOIS da seção preencher a tela inteira, não durante a entrada */
+.lap-copy{position:absolute;top:9vh;text-align:center;z-index:1;opacity:1;transform:translateY(24px)}
 .lap-copy .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:14px}
 .lap-copy h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);letter-spacing:-0.03em;line-height:1.08;color:var(--title)}
 .lap-copy h2 .grad{color:#fff}
@@ -1020,7 +1024,9 @@
   background-size:56px 56px;
   -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,#000 30%,transparent 75%);
   mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,#000 30%,transparent 75%)}
-.maq-head{position:static;text-align:center;z-index:1;opacity:0}
+/* opacity:1 por padrão, mesmo motivo do .lap-copy: "p" fica travado em
+   0 enquanto a seção ainda desliza pra cima entrando na tela */
+.maq-head{position:static;text-align:center;z-index:1;opacity:1}
 .maq-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#8ea2ff;display:block;margin-bottom:14px}
 .maq-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);letter-spacing:-0.03em;line-height:1.08;color:var(--title)}
 .maq-head h2 .grad{color:#fff}
