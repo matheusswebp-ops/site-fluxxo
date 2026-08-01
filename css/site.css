@@ -713,11 +713,17 @@
 .ws-bar i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.14)}
 .ws-view{display:block;height:clamp(230px,26vw,320px);overflow:hidden}
 .ws-scroll{display:block;transition:transform 16s linear}
-.ws-scroll img{width:100%;display:block}
+.ws-scroll img{width:100%;height:auto;display:block}   /* height:auto obrigatorio: sem ele o atributo height="7806" das tags vira altura literal e distorce */
 .site-card:hover .ws-scroll{transform:translateY(calc(-100% + clamp(230px,26vw,320px)))}
 .site-meta{display:flex;flex-direction:column;gap:3px;padding:0 4px}
 .site-meta b{font-family:var(--font-display);font-weight:500;font-size:15.5px;color:var(--text-bright);letter-spacing:-0.01em}
 .site-meta span{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim)}
+@media (max-width:1020px){
+  /* a tira anda amarrada a rolagem (js/site.js): transicao aqui atrasaria
+     cada frame; e o :hover nao existe no touch */
+  .ws-scroll{transition:none}
+  .site-card:hover .ws-scroll{transform:none}
+}
 @media (max-width:900px){.sites-grid{grid-template-columns:1fr;gap:26px}}
 @media (prefers-reduced-motion:reduce){.ws-scroll{transition:none}}
 

@@ -530,3 +530,34 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     requestAnimationFrame(loop);
   })();
 })();
+
+// ============ Portfolio no mobile: a pagina rola dentro do frame ============
+// Substitui o .in-view (que disparava uma transicao de 16s, lenta e solta da
+// rolagem): agora a tira anda amarrada a posicao do frame na tela.
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(max-width:1020px)').matches) return;
+  var alvos = [].slice.call(document.querySelectorAll('.browser')).map(function (b) {
+    return { quadro: b, janela: b.querySelector('.viewport'), tira: b.querySelector('.page-scroll') };
+  }).filter(function (a) { return a.janela && a.tira && a.tira.querySelector('img'); });
+  if (!alvos.length) return;
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    alvos.forEach(function (a) {
+      var r = a.quadro.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) return;
+      var alcance = a.tira.offsetHeight - a.janela.offsetHeight;
+      if (alcance <= 0) return;
+      var prog = (innerHeight - r.top) / (innerHeight + r.height);
+      prog = Math.max(0, Math.min(1, prog));
+      a.tira.style.transform = 'translateY(-' + (alcance * prog) + 'px)';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', render);
+  render();
+})();

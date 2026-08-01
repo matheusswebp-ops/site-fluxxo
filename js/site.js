@@ -617,12 +617,19 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (r.bottom > 0 && r.top < innerHeight && v.play) { v.muted = true; v.play().catch(function () {}); }
     });
   }
+  // NAO no evento de scroll: rodava dezenas de vezes por segundo fazendo
+  // getBoundingClientRect + play() em cada video -- travava a rolagem e
+  // derrubava a aba no iOS (a pagina "recarregava do nada"). Um toque e
+  // algumas tentativas espacadas bastam.
   window.addEventListener('touchstart', retomar, { passive: true });
-  window.addEventListener('scroll', retomar, { passive: true });
+  var tentativas = 0;
   var tique = setInterval(function () {
     retomar();
-    if (vids.every(function (v) { return !v.isConnected || (v.dataset.ligado && !v.paused); })) clearInterval(tique);
-  }, 1000);
+    if (++tentativas >= 8 ||
+        vids.every(function (v) { return !v.isConnected || (v.dataset.ligado && !v.paused); })) {
+      clearInterval(tique);
+    }
+  }, 1500);
 
   if (!('IntersectionObserver' in window)) { vids.forEach(liga); return; }
 
@@ -642,4 +649,39 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                           // qualquer limiar acima de 0 faz o vídeo pausar no meio da animação
 
   vids.forEach(function (v) { ioCarga.observe(v); ioPlay.observe(v); });
+})();
+
+// ============ Portfolio no mobile: a pagina rola dentro do frame ============
+// No desktop isso e o :hover. No touch nao existe hover, entao a tira anda
+// conforme a pessoa rola a pagina -- amarrado a posicao, nao um timer.
+(function () {
+  if (reduce) return;
+  if (!window.matchMedia('(max-width:1020px)').matches) return;
+  var cards = [].slice.call(document.querySelectorAll('.site-card'));
+  if (!cards.length) return;
+
+  var alvos = cards.map(function (c) {
+    return { janela: c.querySelector('.ws-view'), tira: c.querySelector('.ws-scroll'), card: c };
+  }).filter(function (a) { return a.janela && a.tira; });
+  if (!alvos.length) return;
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    alvos.forEach(function (a) {
+      var r = a.card.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) return;   // fora de cena: nao mexe
+      var alcance = a.tira.offsetHeight - a.janela.offsetHeight;
+      if (alcance <= 0) return;                                   // imagem ainda nao carregou
+      // 0 = topo do card na base da tela, 1 = base do card no topo da tela
+      var prog = (innerHeight - r.top) / (innerHeight + r.height);
+      prog = Math.max(0, Math.min(1, prog));
+      a.tira.style.transform = 'translateY(-' + (alcance * prog) + 'px)';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', render);
+  render();
 })();

@@ -622,8 +622,10 @@
     .stage-panel.active { display: block; }
     .stage-duo { grid-template-columns: 1fr; gap: 30px; }
     .viewport { height: 380px; }
+    /* a tira anda amarrada a rolagem (js/web.js), no lugar da transicao
+       de 16s do .in-view, que era lenta e solta do movimento da pessoa */
     .browser:hover .page-scroll { transform: translateY(0); }
-    .browser.in-view .page-scroll { transform: translateY(calc(-100% + 380px)); }
+    .page-scroll, .page-scroll:has(img) { transition: none; }
     .browser.in-view .scroll-hint { opacity: 0; }
   }
   @media (max-width: 720px) {
