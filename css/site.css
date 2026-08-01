@@ -1026,7 +1026,10 @@
 .maq-head h2 .grad{color:#fff}
 .maq-head p{color:var(--text-muted);margin-top:12px;font-size:clamp(.95rem,1.5vw,1.05rem)}
 .maq-scene{position:relative;z-index:2;display:flex;justify-content:center;margin-top:24px}
-.maq-laptop{position:relative;width:min(640px,80vw);opacity:0;will-change:transform;margin-bottom:clamp(10px,1.5vw,15px)}
+/* cresce a partir do topo, não do centro: sem isso o scale() empurra o
+   laptop pra cima também conforme cresce, cobrindo o título (que tem
+   z-index mais baixo) em vez de só descer e ocupar espaço abaixo dele */
+.maq-laptop{position:relative;width:min(640px,80vw);opacity:0;will-change:transform;transform-origin:top center;margin-bottom:clamp(10px,1.5vw,15px)}
 .maq-screen{position:relative;width:94%;margin:0 auto;aspect-ratio:16/10;border-radius:16px 16px 4px 4px;overflow:hidden;
   background:#05060f;
   box-shadow:0 0 0 1.5px #3f4470,0 0 0 5px #090a16 inset,0 -1px 0 rgba(255,255,255,.2),0 40px 100px -30px rgba(0,0,0,.9)}
