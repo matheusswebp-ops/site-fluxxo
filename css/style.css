@@ -102,7 +102,7 @@ img{display:block;max-width:100%}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* ============ PORTFÓLIO ============ */
-.portfolio{padding:clamp(46px,7vw,88px) 0 clamp(60px,8vw,110px)}
+.portfolio{padding-top:clamp(46px,7vw,88px);padding-bottom:clamp(60px,8vw,110px)}
 .port-head{
   display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
   gap:24px;margin-bottom:clamp(26px,4vw,40px);
@@ -182,6 +182,18 @@ img{display:block;max-width:100%}
 
 /* imagem simples dentro do tile — tamanho natural, sem corte */
 .tile > img.art{width:100%;height:auto}
+
+/* --- "ver mais": pagina o bento de 6 em 6, por categoria --- */
+.load-more-wrap{display:flex;justify-content:center;margin-top:clamp(28px,4vw,44px)}
+.load-more{
+  font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.03em;
+  background:linear-gradient(120deg,#a44dff,#7a2ef0);color:#fff;border:none;
+  padding:13px 30px;border-radius:100px;cursor:pointer;
+  box-shadow:0 0 0 1px rgba(181,123,255,.35) inset, 0 8px 30px rgba(139,61,255,.32);
+  transition:transform .18s, filter .2s;
+}
+.load-more:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.load-more-wrap[hidden]{display:none}
 
 /* ============ IDENTIDADE VISUAL (a página veste a marca) ============ */
 /* a troca de marca redefine as variáveis --paper/--ink/etc no :root,
@@ -269,7 +281,7 @@ body{transition:background-color .9s ease, color .9s ease}
 }
 
 /* ============ RODAPÉ mínimo ============ */
-.foot{border-top:1px solid var(--line);padding:34px 0 60px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.foot{border-top:1px solid var(--line);padding-top:34px;padding-bottom:60px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 .foot .fm{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);letter-spacing:0.02em}
 .foot a.mail{font-family:var(--font-display);font-weight:700;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:-0.02em}
 .foot a.mail:hover{color:var(--cobalt-light)}

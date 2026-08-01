@@ -153,10 +153,26 @@ BRANDS.forEach((b,k)=>{
 document.getElementById('id-prev').addEventListener('click',()=>renderBrand(brandIdx-1));
 document.getElementById('id-next').addEventListener('click',()=>renderBrand(brandIdx+1));
 
-// ---------- Filtros ----------
+// ---------- Filtros + paginação (6 em 6, "ver mais") ----------
 const tiles=[...document.querySelectorAll('.bento .tile')];
 const bento=document.querySelector('.bento');
 const identidade=document.getElementById('identidade');
+const loadMoreWrap=document.getElementById('loadMoreWrap');
+const loadMoreBtn=document.getElementById('loadMoreBtn');
+
+const PAGE_SIZE=6;
+let currentFilter='all';
+let visibleCount=PAGE_SIZE;
+
+function matchesFiltro(t){ return currentFilter==='all' || t.dataset.cat===currentFilter; }
+
+function aplicaPaginacao(){
+  const casados=tiles.filter(matchesFiltro);
+  tiles.forEach(t=>{ t.style.display='none'; });
+  casados.slice(0,visibleCount).forEach(t=>{ t.style.display=''; });
+  loadMoreWrap.hidden = visibleCount>=casados.length;
+  return casados;
+}
 
 document.querySelectorAll('.filters button').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -166,6 +182,7 @@ document.querySelectorAll('.filters button').forEach(btn=>{
 
     if(f==='identidade'){
       bento.style.display='none';
+      loadMoreWrap.hidden=true;
       identidade.hidden=false;
       renderBrand(brandIdx);           // entra vestindo a marca atual
       return;
@@ -175,12 +192,25 @@ document.querySelectorAll('.filters button').forEach(btn=>{
     bento.style.display='';
     limpaTema();
 
-    tiles.forEach(t=>{
-      const show = f==='all' || t.dataset.cat===f;
-      t.style.display = show ? '' : 'none';
-    });
+    currentFilter=f;
+    visibleCount=PAGE_SIZE;            // toda categoria recomeça mostrando 6
+    aplicaPaginacao();
   });
 });
+
+loadMoreBtn.addEventListener('click',()=>{
+  const antes=visibleCount;
+  visibleCount+=PAGE_SIZE;
+  const casados=aplicaPaginacao();
+  if(!reduce){
+    casados.slice(antes,visibleCount).forEach((t,k)=>{
+      t.classList.remove('in');
+      setTimeout(()=>t.classList.add('in'), 50+(k%8)*55);
+    });
+  }
+});
+
+aplicaPaginacao();
 
 // ---------- Reveal on scroll (stagger) ----------
 if('IntersectionObserver' in window && !reduce){

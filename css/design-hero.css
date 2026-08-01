@@ -107,7 +107,7 @@ body{padding-top:0}
 @keyframes dWheel{0%{opacity:1;top:6px}70%{opacity:0;top:15px}100%{opacity:0;top:15px}}
 
 /* ---------- faixa de números (contadores) ---------- */
-.dh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:clamp(44px,6vw,76px) 0 clamp(10px,2vw,20px)}
+.dh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:clamp(44px,6vw,76px);padding-bottom:clamp(10px,2vw,20px)}
 .dh-stat{border:1px solid var(--line);border-radius:16px;padding:clamp(22px,3vw,30px);background:rgba(255,255,255,.03);
   opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),border-color .3s}
 .dh-stat.in{opacity:1;transform:none}
@@ -148,6 +148,7 @@ body.brand-mode .dh-stat{background:var(--paper-2)}
 }
 @media (max-width:720px){
   .dhero{min-height:100svh;padding:110px 0 70px}
+  .dh-content{padding:0 20px}
   .dh-actions{flex-direction:column;width:100%;max-width:380px;margin:32px auto 0}
   .dh-actions a{width:100%;justify-content:center;text-align:center}
   .scroll-cue{display:none}
