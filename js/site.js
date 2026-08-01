@@ -375,12 +375,16 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var mergulho = t6 * 13;                     // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
     var tilt = 17 * (1 - t3);   // sem voltar a inclinar ao fechar: a caixa do 3D cresce e vaza a lateral // camera assenta frontal ao abrir: tampa e base viram um corpo so
-    laptop.style.opacity = t2;
+    // opacidade fixa, nao gateada em t2: "p" e 0 durante toda a entrada
+    // da secao, entao amarrar a opacidade na fase de entrada esconde o
+    // notebook exatamente enquanto a secao entra (o translateY do
+    // nascimento continua no t2, so a visibilidade que nao)
+    laptop.style.opacity = 1;
     laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
-    shadow.style.opacity = t2 * 0.9 * (1 - t6);
+    shadow.style.opacity = 0.9 * (1 - t6);
 
     // dica de rolagem só no comecinho
-    hint.style.opacity = t2 * (1 - suave(fase(p, 0.26, 0.36)));
+    hint.style.opacity = 1 - suave(fase(p, 0.26, 0.36));
 
     // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
     var t7 = suave(fase(p, mobile ? 0.5 : 0.82, mobile ? 0.6 : 0.92));
@@ -535,8 +539,10 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     head.style.opacity = 1;
     head.style.transform = 'translateY(' + (24 - 24 * tIn) + 'px)';
 
-    // laptop nasce depois que o título já foi
-    var t1 = suave(fase(p, 0.18, 0.34));
+    // laptop já visível desde a entrada (opacidade não depende de "p",
+    // que fica travado em 0 enquanto a seção desliza entrando na tela);
+    // o translateY do nascimento assenta logo depois do sticky travar
+    var t1 = suave(fase(p, 0, 0.16));
     // expansão: cresce até 65% do caminho pra tela cobrir o viewport
     // inteiro — nunca engole a tela de verdade — e FICA lá, sem encolher
     // de volta (o encolhimento deixava um vão vazio antes do Fio começar)
@@ -545,7 +551,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var alvo = 1 + (alvoFull - 1) * 0.65;
     var t2 = suave(fase(p, 0.38, 0.66));        // cresce e mantém
     var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
-    laptop.style.opacity = t1;
+    laptop.style.opacity = 1;
     laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
 
     // chips em sequência, comprimidos pra caber antes do handoff pro

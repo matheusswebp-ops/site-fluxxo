@@ -734,7 +734,7 @@
 .lap-copy h2 .grad{color:#fff}
 
 .lap-scene{perspective:1700px;perspective-origin:50% 28%;margin-top:22vh}
-.laptop{position:relative;width:min(700px,86vw);transform-style:preserve-3d;opacity:0;will-change:transform;z-index:2;margin-bottom:clamp(11px,1.6vw,16px)}
+.laptop{position:relative;width:min(700px,86vw);transform-style:preserve-3d;opacity:1;will-change:transform;z-index:2;margin-bottom:clamp(11px,1.6vw,16px)}
 
 /* tampa/tela: dobra na linha da base (visão frontal, estilo Apple) */
 .lap-lid{position:relative;width:94%;margin:0 auto;aspect-ratio:16/10.4;transform-origin:50% 100%;transform-style:preserve-3d;
@@ -769,10 +769,10 @@
 .lap-hinge,.lap-kb,.lap-pad{display:none}
 .lap-shadow{position:absolute;left:4%;right:4%;bottom:-58px;height:64px;border-radius:50%;
   background:radial-gradient(ellipse at center,rgba(124,77,255,.32),rgba(0,0,0,.5) 55%,transparent 78%);
-  filter:blur(24px);opacity:0}
+  filter:blur(24px);opacity:.9}
 
 .lap-hint{position:absolute;bottom:5vh;display:flex;align-items:center;gap:8px;
-  font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--text-dim);opacity:0}
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--text-dim);opacity:1}
 .lap-hint svg{width:14px;height:14px;animation:lapHintBob 1.6s ease-in-out infinite}
 @keyframes lapHintBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .lap-cap{position:absolute;bottom:4vh;z-index:6;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.05em;color:#dfdbe8;opacity:0;transform:translateY(12px);background:rgba(12,9,19,.72);backdrop-filter:blur(8px);padding:10px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.12)}
@@ -1035,7 +1035,7 @@
 /* cresce a partir do topo, não do centro: sem isso o scale() empurra o
    laptop pra cima também conforme cresce, cobrindo o título (que tem
    z-index mais baixo) em vez de só descer e ocupar espaço abaixo dele */
-.maq-laptop{position:relative;width:min(640px,80vw);opacity:0;will-change:transform;transform-origin:top center;margin-bottom:clamp(10px,1.5vw,15px)}
+.maq-laptop{position:relative;width:min(640px,80vw);opacity:1;will-change:transform;transform-origin:top center;margin-bottom:clamp(10px,1.5vw,15px)}
 .maq-screen{position:relative;width:94%;margin:0 auto;aspect-ratio:16/10;border-radius:16px 16px 4px 4px;overflow:hidden;
   background:#05060f;
   box-shadow:0 0 0 1.5px #3f4470,0 0 0 5px #090a16 inset,0 -1px 0 rgba(255,255,255,.2),0 40px 100px -30px rgba(0,0,0,.9)}
