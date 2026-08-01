@@ -332,17 +332,13 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var p = clamp(-r.top / total, 0, 1);
     var mobile = window.innerWidth < 700;
 
-    // título: no desktop sai antes da tampa abrir. No mobile ele FICA:
-    // um notebook 16:10 nunca preenche uma tela 9:19.5, entao quem fecha o
-    // quadro e a composicao titulo + notebook + legenda, nao a escala.
-    // "p" fica travado em 0 enquanto a seção desliza pra cima entrando na
-    // tela (antes do sticky travar), então a opacidade NÃO depende mais
-    // de tIn -- já está visível por CSS (ver .lap-copy). tIn só afeta o
-    // pequeno movimento de assentar.
-    var tIn = suave(fase(p, 0, 0.05));
-    var tOut = mobile ? suave(fase(p, 0.80, 0.95)) : suave(fase(p, 0.3, 0.44));   // no mobile sai junto com a tampa fechando
-    copy.style.opacity = 1 - tOut;
-    copy.style.transform = 'translateY(' + (24 - 24 * tIn - 30 * tOut) + 'px)';
+    // título: a ENTRADA é a cascata CSS (.is-in); aqui só a saída — e o
+    // inline só existe enquanto a saída roda, senão sobrescreveria a
+    // cascata (inline ganha de classe). No desktop sai antes da tampa
+    // abrir; no mobile ele FICA até a tampa fechar.
+    var tOut = mobile ? suave(fase(p, 0.80, 0.95)) : suave(fase(p, 0.3, 0.44));
+    copy.style.opacity = tOut > 0 ? String(1 - tOut) : '';
+    copy.style.transform = tOut > 0 ? 'translateY(' + (-30 * tOut) + 'px)' : '';
 
     // laptop nasce de baixo, pequeno e fechado
     var t2 = suave(fase(p, 0.06, 0.26));
@@ -375,16 +371,16 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var mergulho = t6 * 13;                     // desce um pouco pra tela centralizar no zoom
     // camera levemente de cima: 17deg com a tampa fechada, assenta em 8deg aberta
     var tilt = 17 * (1 - t3);   // sem voltar a inclinar ao fechar: a caixa do 3D cresce e vaza a lateral // camera assenta frontal ao abrir: tampa e base viram um corpo so
-    // opacidade fixa, nao gateada em t2: "p" e 0 durante toda a entrada
-    // da secao, entao amarrar a opacidade na fase de entrada esconde o
-    // notebook exatamente enquanto a secao entra (o translateY do
-    // nascimento continua no t2, so a visibilidade que nao)
-    laptop.style.opacity = 1;
+    // opacidade é da cascata CSS (.is-in); o JS só escreve o transform
+    // da cena (a cascata usa `translate`, que não conflita)
     laptop.style.transform = 'translateY(' + subida + 'px) translateY(' + mergulho + 'vh) scale(' + escala + ') rotateX(' + tilt + 'deg)';
-    shadow.style.opacity = 0.9 * (1 - t6);
-
-    // dica de rolagem só no comecinho
-    hint.style.opacity = 1 - suave(fase(p, 0.26, 0.36));
+    // sombra e dica: inline (com transition desligada, senão os .5s da
+    // cascata atrasam o valor por-frame) só enquanto a saída roda
+    if (t6 > 0.001) { shadow.style.transition = 'none'; shadow.style.opacity = String(0.9 * (1 - t6)); }
+    else { shadow.style.transition = ''; shadow.style.opacity = ''; }
+    var hOut = suave(fase(p, 0.26, 0.36));
+    if (hOut > 0) { hint.style.transition = 'none'; hint.style.opacity = String(1 - hOut); }
+    else { hint.style.transition = ''; hint.style.opacity = ''; }
 
     // legenda: no mobile entra cedo e fica, porque fecha o quadro embaixo
     var t7 = suave(fase(p, mobile ? 0.5 : 0.82, mobile ? 0.6 : 0.92));
@@ -529,18 +525,8 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     bg.style.opacity = tbg;
     grid.style.opacity = tbg * 0.9;
 
-    // título entra quase na hora e FICA — ele e o laptop agora são um
-    // grupo só (título em cima, laptop logo abaixo, ver .maq-sticky em
-    // css/site.css), não faz sentido mais sumir o título antes do laptop.
-    // "p" fica travado em 0 enquanto a seção desliza pra cima entrando na
-    // tela, então a opacidade não depende de tIn -- já visível por CSS
-    // (ver .maq-head). tIn só afeta o pequeno movimento de assentar.
-    var tIn = suave(fase(p, 0, 0.04));
-    head.style.opacity = 1;
-    head.style.transform = 'translateY(' + (24 - 24 * tIn) + 'px)';
-
-    // laptop já visível desde a entrada (opacidade não depende de "p",
-    // que fica travado em 0 enquanto a seção desliza entrando na tela);
+    // título e laptop entram pela cascata CSS (.is-in) — o JS não toca
+    // na opacidade nem no head; só o transform da cena do laptop:
     // o translateY do nascimento assenta logo depois do sticky travar
     var t1 = suave(fase(p, 0, 0.16));
     // expansão: cresce até 65% do caminho pra tela cobrir o viewport
@@ -551,7 +537,6 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var alvo = 1 + (alvoFull - 1) * 0.65;
     var t2 = suave(fase(p, 0.38, 0.66));        // cresce e mantém
     var escala = (0.86 + 0.14 * t1) + (alvo - 1) * t2;
-    laptop.style.opacity = 1;
     laptop.style.transform = 'translateY(' + (150 - 150 * t1) + 'px) scale(' + escala + ')';
 
     // chips em sequência, comprimidos pra caber antes do handoff pro
@@ -570,6 +555,25 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   render();
+})();
+
+// ============ Entrada em cascata: .is-in quando a seção entra na tela ============
+// dispara com o topo da seção cruzando 80% do viewport — a anterior ainda
+// está terminando e os elementos já vão aparecendo, um após o outro (os
+// delays escalonados ficam no CSS). Uma vez só; não re-esconde na volta.
+(function () {
+  var stages = [].slice.call(document.querySelectorAll('.lap-stage, .maq-stage'));
+  if (!stages.length) return;
+  if (reduce || !('IntersectionObserver' in window)) {
+    stages.forEach(function (s) { s.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (en) {
+    en.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -20% 0px' });
+  stages.forEach(function (s) { io.observe(s); });
 })();
 
 /* ---------- vídeo preguiçoso: só baixa quando a seção chega perto da tela ---------- */
