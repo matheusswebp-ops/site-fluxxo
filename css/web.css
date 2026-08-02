@@ -741,9 +741,17 @@
   .hero-left{position:relative;z-index:5}
   .hero-bg{display:none}
 
-  /* mobile: o frame adota a proporção exata do vídeo (16:9), sem corte */
+  /* O comentario antigo dizia "proporcao exata do video (16:9)" mas o
+     arquivo e 960x452 = 2.12:1. Frame 16:9 (1.78) + object-fit:cover
+     cortava as laterais do video no mobile. Agora o frame do VIDEO usa a
+     proporcao real, com contain de reserva; o outro frame (placeholder,
+     sem video) segue 16:9. Vale desde 900px, onde os cards empilham. */
+  @media (max-width:900px){
+    .trust-left-top .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:960/452}
+    .trust-left-top .frame-video{object-fit:contain}
+  }
   @media (max-width:700px){
-    .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:16/9}
+    .trust-left-bottom .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:16/9}
   }
 
 /* ============ MENU MOBILE CINEMATOGRÁFICO ============ */
