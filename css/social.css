@@ -125,7 +125,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
 
 /* ---------- ENTREGÁVEIS ---------- */
 .deliver{padding:clamp(64px,9vw,110px) 0}
-.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+/* 5 cartoes numa grade de 3 deixaria um buraco na 2a fila. Com 6 colunas,
+   os 3 primeiros ocupam 2 cada e os 2 ultimos ocupam 3 cada: as duas filas
+   fecham a largura inteira. */
+.dl-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(16px,2vw,24px)}
+.dl{grid-column:span 2}
+.dl:nth-child(4),.dl:nth-child(5){grid-column:span 3}
 .dl{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(24px,2.6vw,32px);
   transition:transform .3s,border-color .3s,box-shadow .3s}
 .dl:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.32);box-shadow:var(--sombra)}
@@ -217,6 +222,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-art{height:clamp(340px,74vw,430px);order:2}
   .pain-grid,.dl-grid{grid-template-columns:1fr}
+  .dl,.dl:nth-child(4),.dl:nth-child(5){grid-column:auto}
   .lead{max-width:none}
 }
 @media (max-width:620px){
