@@ -15,7 +15,7 @@
 
 /* ============ capas gráficas ============ */
 /* sem crop: o bloco se adapta ao tamanho real da thumb (nunca corta) */
-.b-cover,.feat-cover{position:relative;overflow:hidden;display:block;align-self:start;
+.b-cover,.feat-cover{position:relative;overflow:hidden;display:block;
   background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:22px 22px}
 .b-cover img,.feat-cover img{display:block;width:100%;height:auto;
   transition:transform .5s cubic-bezier(.22,1,.36,1)}
@@ -40,7 +40,9 @@
 
 /* ============ destaque ============ */
 .b-featured{padding-bottom:clamp(30px,4vw,50px)}
-.feat-card{display:grid;grid-template-columns:1.05fr 1fr;border-radius:20px;overflow:hidden;
+/* imagem sempre em cima, ocupando a largura toda; texto sempre embaixo.
+   sem coluna ao lado pra "bater altura com", então nunca sobra vão nem corta nada */
+.feat-card{display:grid;grid-template-columns:1fr;border-radius:20px;overflow:hidden;
   border:1px solid rgba(255,255,255,.09);
   background:linear-gradient(165deg,rgba(28,22,38,.72),rgba(13,10,19,.85));
   box-shadow:0 30px 70px -35px rgba(0,0,0,.8);
@@ -102,7 +104,6 @@
 /* ============ responsivo ============ */
 @media (max-width:1020px){
   .b-grid{grid-template-columns:repeat(2,1fr)}
-  .feat-card{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .blog-hero{padding-top:140px}
