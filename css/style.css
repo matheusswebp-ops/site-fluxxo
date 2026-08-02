@@ -442,3 +442,9 @@ body{padding-top:80px}
 
 /* marca real */
 .brand .brand-img{height:34px;width:auto;display:block}
+
+
+/* carrossel: no touch o :hover cola ao tocar e congelava a esteira */
+@media (hover:none),(pointer:coarse){
+  .marquee:hover .marquee-track{animation-play-state:running!important}
+}

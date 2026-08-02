@@ -1204,3 +1204,13 @@
   .maq-stage.is-in .maq-head p{opacity:1;translate:0 0;transition-delay:.24s}
   .maq-stage.is-in .maq-laptop{opacity:1;translate:0 0;transition-delay:.24s}
 }
+
+
+/* ============ CARROSSEIS: nunca congelar no toque ============ */
+/* no touch o Safari aplica :hover ao tocar e NAO solta -- a esteira
+   parava pra sempre. Pausar no hover so faz sentido com mouse. */
+@media (hover:none),(pointer:coarse){
+  .client-rows:hover .client-track,
+  .mural:hover .mtrack,
+  .work-belt:hover .work-row{animation-play-state:running!important}
+}

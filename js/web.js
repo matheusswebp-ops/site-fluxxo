@@ -531,33 +531,52 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   })();
 })();
 
-// ============ Portfolio no mobile: a pagina rola dentro do frame ============
-// Substitui o .in-view (que disparava uma transicao de 16s, lenta e solta da
-// rolagem): agora a tira anda amarrada a posicao do frame na tela.
-(function () {
+// ============ Portfolio no mobile: a pagina rola quando o frame assenta ============
+// No desktop isso e o :hover. No touch, seguir o dedo (scrub) ficava
+// confuso -- agora a tira comeca a rolar sozinha quando a rolagem PARA
+// com o frame na tela, e volta ao topo quando ele sai.
+function fluxxoRolarNoFrame(seletorQuadro, seletorJanela, seletorTira) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.matchMedia('(max-width:1020px)').matches) return;
-  var alvos = [].slice.call(document.querySelectorAll('.browser')).map(function (b) {
-    return { quadro: b, janela: b.querySelector('.viewport'), tira: b.querySelector('.page-scroll') };
+  var alvos = [].slice.call(document.querySelectorAll(seletorQuadro)).map(function (q) {
+    return { quadro: q, janela: q.querySelector(seletorJanela), tira: q.querySelector(seletorTira), rodando: false };
   }).filter(function (a) { return a.janela && a.tira && a.tira.querySelector('img'); });
   if (!alvos.length) return;
 
-  var ticking = false;
-  function render() {
-    ticking = false;
-    alvos.forEach(function (a) {
-      var r = a.quadro.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > innerHeight + 200) return;
-      var alcance = a.tira.offsetHeight - a.janela.offsetHeight;
-      if (alcance <= 0) return;
-      var prog = (innerHeight - r.top) / (innerHeight + r.height);
-      prog = Math.max(0, Math.min(1, prog));
-      a.tira.style.transform = 'translateY(-' + (alcance * prog) + 'px)';
-    });
+  var VEL = 320;   // px por segundo: velocidade de leitura, nao um tempo fixo
+
+  function comecar(a) {
+    if (a.rodando) return;
+    var alcance = a.tira.offsetHeight - a.janela.offsetHeight;
+    if (alcance <= 0) return;                       // imagem ainda nao carregou
+    a.rodando = true;
+    a.tira.style.transition = 'transform ' + (alcance / VEL) + 's linear';
+    a.tira.style.transform = 'translateY(-' + alcance + 'px)';
   }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  window.addEventListener('load', render);
-  render();
-})();
+  function zerar(a) {
+    a.rodando = false;
+    a.tira.style.transition = 'none';
+    a.tira.style.transform = 'translateY(0)';
+  }
+  function visivelBastante(a) {
+    var r = a.quadro.getBoundingClientRect();
+    var vis = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+    return vis > 0 && vis / Math.min(r.height, innerHeight) > 0.6;
+  }
+
+  var parou = null;
+  function aoRolar() {
+    clearTimeout(parou);
+    alvos.forEach(function (a) { if (a.rodando && !visivelBastante(a)) zerar(a); });
+    // "quando ele parar": 180ms sem rolagem = a pessoa assentou no frame
+    parou = setTimeout(function () {
+      alvos.forEach(function (a) { if (visivelBastante(a)) comecar(a); });
+    }, 180);
+  }
+  window.addEventListener('scroll', aoRolar, { passive: true });
+  window.addEventListener('resize', aoRolar, { passive: true });
+  window.addEventListener('load', aoRolar);
+  aoRolar();
+}
+
+fluxxoRolarNoFrame('.browser', '.viewport', '.page-scroll');

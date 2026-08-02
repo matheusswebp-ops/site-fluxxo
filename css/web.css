@@ -808,3 +808,10 @@
   /* marca real */
   .brand .brand-img{height:34px;width:auto;display:block}
   .logo-line .logo-img{height:38px;width:auto;display:block}
+
+
+/* carrosseis: no touch o :hover cola ao tocar e congelava a esteira */
+@media (hover:none),(pointer:coarse){
+  .client-track:hover,
+  .tstm-viewport:hover .tstm-track{animation-play-state:running!important}
+}
