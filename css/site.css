@@ -677,28 +677,28 @@
 .tool-card .btn-hero{margin-top:12px}
 
 /* ============ TRABALHOS SELECIONADOS (home) ============ */
-.work{position:relative;padding:60px 0 30px;overflow:hidden;background:var(--bg)}
+.work{position:relative;padding:60px 0 30px;overflow:hidden;background:#fff}
 .work-head{text-align:center;max-width:620px;margin:0 auto clamp(40px,5vw,60px)}
-.work-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:16px}
-.work-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-0.03em;line-height:1.06;color:var(--title)}
-.work-head h2 .grad{color:#fff}
-.work-head p{color:var(--text-muted);margin-top:16px;font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.6}
+.work-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);display:block;margin-bottom:16px}
+.work-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-0.03em;line-height:1.06;color:#1c1428}
+.work-head h2 .grad{color:var(--purple)}
+.work-head p{color:#655e78;margin-top:16px;font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.6}
 .work-belt{display:flex;flex-direction:column;gap:18px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .work-row{display:flex;width:max-content;will-change:transform;animation:workA 75s linear infinite}
 .wr-b{animation-name:workB;animation-duration:85s}
 .work-row img{height:clamp(150px,21vw,250px);width:auto;margin-right:18px;border-radius:16px;
-  border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 44px -24px rgba(0,0,0,.75);
+  border:1px solid rgba(16,10,26,.08);box-shadow:0 18px 44px -24px rgba(60,40,90,.35);
   transition:transform .35s ease,border-color .3s ease}
-.work-row img:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(169,156,255,.55)}
+.work-row img:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(124,77,255,.4)}
 .work-belt:hover .work-row{animation-play-state:paused}
 @keyframes workA{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes workB{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .work-ctas{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;margin-top:clamp(30px,4vw,44px)}
 .work-ctas .btn-hero{margin-top:0}
-.work-link{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);letter-spacing:.03em;transition:color .2s}
-.work-link:hover{color:var(--purple-light)}
+.work-link{font-family:var(--font-mono);font-size:13px;color:#655e78;letter-spacing:.03em;transition:color .2s}
+.work-link:hover{color:var(--plum)}
 @media (prefers-reduced-motion:reduce){.work-row{animation:none}}
 
 /* ============ SITES NO AR (home) ============ */
@@ -1024,21 +1024,21 @@
 .maq-stage{position:relative;z-index:3;height:200vh}
 .maq-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:76px}
 .maq-bg{position:absolute;inset:0;opacity:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 30%,#141b4d 0%,#0b0f2e 55%,#070a1e 100%)}
+  background:radial-gradient(ellipse 80% 60% at 50% 30%,#f3effa 0%,#fff 55%,#fff 100%)}
 .maq-gridfx{position:absolute;inset:0;opacity:0;
   background:
-    linear-gradient(rgba(99,102,241,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(99,102,241,.07) 1px,transparent 1px);
+    linear-gradient(rgba(108,69,150,.11) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(108,69,150,.11) 1px,transparent 1px);
   background-size:56px 56px;
   -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,#000 30%,transparent 75%);
   mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,#000 30%,transparent 75%)}
 /* opacity:1 por padrão, mesmo motivo do .lap-copy: "p" fica travado em
    0 enquanto a seção ainda desliza pra cima entrando na tela */
 .maq-head{position:static;text-align:center;z-index:1;opacity:1}
-.maq-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#8ea2ff;display:block;margin-bottom:14px}
-.maq-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);letter-spacing:-0.03em;line-height:1.08;color:var(--title)}
-.maq-head h2 .grad{color:#fff}
-.maq-head p{color:var(--text-muted);margin-top:12px;font-size:clamp(.95rem,1.5vw,1.05rem)}
+.maq-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);display:block;margin-bottom:14px}
+.maq-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);letter-spacing:-0.03em;line-height:1.08;color:#1c1428}
+.maq-head h2 .grad{color:var(--purple)}
+.maq-head p{color:#655e78;margin-top:12px;font-size:clamp(.95rem,1.5vw,1.05rem)}
 .maq-scene{position:relative;z-index:2;display:flex;justify-content:center;margin-top:24px}
 /* cresce a partir do topo, não do centro: sem isso o scale() empurra o
    laptop pra cima também conforme cresce, cobrindo o título (que tem
@@ -1058,8 +1058,9 @@
 .maq-base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:13%;height:45%;
   border-radius:0 0 9px 9px;background:linear-gradient(180deg,#0d0f1e,#2b2f4d)}
 .maq-chips{position:static;z-index:4;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px;padding:0 18px}
-.maq-chip{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.05em;color:#dfe4ff;
-  background:rgba(10,13,34,.72);backdrop-filter:blur(10px);border:1px solid rgba(142,162,255,.35);
+.maq-chip{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.05em;color:#2c2340;
+  background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border:1px solid rgba(108,69,150,.24);
+  box-shadow:0 8px 26px -14px rgba(80,50,120,.4);
   border-radius:100px;padding:11px 20px;opacity:0;transform:translateY(16px)}
 
 /* -------- dashboard SaaS falso (roda em CSS até o vídeo chegar) -------- */
