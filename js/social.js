@@ -34,7 +34,7 @@
 
   // escalonamento: cada item recebe seu índice dentro do próprio grupo,
   // então a entrada acontece em cascata e não tudo de uma vez
-  document.querySelectorAll('.pain-grid, .dl-grid, .seg-grid, .logos-row, .steps, .faq-list').forEach(function (grupo) {
+  document.querySelectorAll('.pain-grid, .dl-grid, .seg-grid, .steps, .faq-list').forEach(function (grupo) {
     var itens = grupo.children;
     for (var i = 0; i < itens.length; i++) {
       itens[i].style.setProperty('--i', i % 8);   // reinicia a cada 8 pra não atrasar demais
@@ -53,21 +53,19 @@
     document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.dataset.count; });
     var st1 = document.querySelector('.steps'); if (st1) st1.classList.add('in-view');
   } else {
-    // entradas: dispara com o elemento ainda subindo, não depois de parado
+    // entradas de IDA E VOLTA: toggle no lugar de unobserve, então o
+    // elemento sai de cena ao rolar de volta e entra de novo na descida
     var ioRv = new IntersectionObserver(function (ens) {
-      ens.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); ioRv.unobserve(e.target); }
-      });
+      ens.forEach(function (e) { e.target.classList.toggle('in', e.isIntersecting); });
     }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
     document.querySelectorAll('.rv').forEach(function (el) { ioRv.observe(el); });
 
-    // linha do tempo: o trilho só se desenha quando a seção aparece
+    // linha do tempo: o trilho se desenha ao entrar e se recolhe ao sair,
+    // então quem sobe e desce de novo vê a animação outra vez
     var steps = document.querySelector('.steps');
     if (steps) {
       var ioSteps = new IntersectionObserver(function (ens) {
-        ens.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in-view'); ioSteps.unobserve(e.target); }
-        });
+        ens.forEach(function (e) { e.target.classList.toggle('in-view', e.isIntersecting); });
       }, { threshold: 0.25 });
       ioSteps.observe(steps);
     }

@@ -106,9 +106,16 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
 .logos{padding:clamp(28px,4vw,44px) 0 clamp(44px,6vw,64px)}
 .logos-cap{display:block;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-dim);margin-bottom:26px}
-.logos-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(24px,4vw,54px)}
-.logos-row img{height:30px;width:auto;filter:brightness(0);opacity:.34;transition:opacity .25s}
-.logos-row img:hover{opacity:.62}
+/* esteira: as marcas passam em loop no lugar de uma fila que quebra linha.
+   Metades identicas no HTML, a animacao anda -50% e o loop fecha sem salto. */
+.logos-belt{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.logos-row{display:flex;align-items:center;gap:clamp(30px,5vw,64px);width:max-content;will-change:transform}
+/* 3 dos 8 logos sao brancos (vem do site escuro): brightness(0) vira
+   silhueta e a opacidade da o cinza, uniforme pros claros e escuros */
+.logos-row img{height:30px;width:auto;filter:brightness(0);opacity:.32;transition:opacity .25s}
+.logos-row img:hover{opacity:.6}
 
 /* ---------- O PROBLEMA ---------- */
 .pain{padding:clamp(64px,9vw,110px) 0;background:var(--paper-3)}
@@ -287,8 +294,8 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   /* --- entradas escalonadas: o JS passa o índice em --i --- */
   .rv{transition-delay:calc(var(--i,0) * 80ms)}
 
-  /* --- LOGOS: sobem juntos e ganham brilho ao passar --- */
-  .logos-row img{animation:socUpIn .7s ease both;animation-delay:calc(var(--i,0) * 60ms)}
+  /* --- LOGOS: esteira contínua --- */
+  .logos-row{animation:socLeft 46s linear infinite}
 
   /* --- PROBLEMA: número fantasma pulsando + faixa que corre --- */
   .pain-card{overflow:hidden}
