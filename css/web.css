@@ -754,12 +754,19 @@
      do arquivo e a largura sai da altura -- assim nao ha corte nem tarja,
      e o resultado NAO depende do object-fit (cover e contain ficam iguais
      quando as proporcoes batem). Vale em qualquer largura de tela. */
-  /* align-self:center e a peca que faltava: .trust-card e flex em COLUNA,
-     entao os filhos esticam na largura (align-items:stretch) e o width:auto
-     era ignorado -- o frame ficava largo e sobrava tarja escura dos lados
-     do video. Com align-self a largura volta a sair da proporcao. */
-  .trust-right .video-frame{flex:none;min-height:0;align-self:center;
-    height:clamp(300px,46vw,430px);aspect-ratio:720/1280;max-width:100%}
+  /* Video vertical (720x1280) dentro do card, sem tarja, sem corte e sem vao:
+     - align-self:center: .trust-card e flex em COLUNA, entao os filhos
+       esticam na largura; sem isso o frame ficava largo e sobrava tarja
+       escura dos lados do video vertical.
+     - aspect-ratio: a largura sai da altura, colando no video (por isso
+       cover e contain dao o mesmo resultado -- nao ha corte possivel).
+     - flex:1: .trust-right usa justify-content:space-between e o card ocupa
+       2 linhas do grid; com flex:none sobrava espaco livre e o video era
+       empurrado pro rodape, longe do texto. Crescendo, ele absorve a folga.
+     - min-height: no mobile o card tem altura automatica, sem folga pra
+       crescer -- sem isso o frame colapsaria pra zero. */
+  .trust-right .video-frame{flex:1 1 auto;min-height:300px;max-height:520px;align-self:center;
+    aspect-ratio:720/1280;max-width:100%}
 
 /* ============ MENU MOBILE CINEMATOGRÁFICO ============ */
 @media (max-width:900px){
