@@ -381,3 +381,10 @@
   .sclose-brand span{opacity:1!important;transform:none!important}
   .sclose-flash{display:none}
 }
+
+
+/* ============ Sem rolagem lateral ============ */
+/* overflow-x so no html nao basta: o body pode ficar mais largo e a pagina
+   arrasta pro lado. `clip` (e nao `hidden`) de proposito: hidden criaria um
+   container de rolagem e quebraria os position:sticky da pagina. */
+html,body{overflow-x:clip}
