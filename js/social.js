@@ -41,58 +41,68 @@
     }
   });
 
+  // movimento reduzido: mostra tudo, sem vincular nada ao scroll
   if (reduz) {
-    document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
-    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.dataset.count; });
+    document.querySelectorAll('.rv').forEach(function (el) {
+      el.style.opacity = 1; el.style.transform = 'none';
+    });
     var st0 = document.querySelector('.steps'); if (st0) st0.classList.add('in-view');
     return;
   }
 
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
-    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.dataset.count; });
-    var st1 = document.querySelector('.steps'); if (st1) st1.classList.add('in-view');
-  } else {
-    // entradas de IDA E VOLTA: toggle no lugar de unobserve, então o
-    // elemento sai de cena ao rolar de volta e entra de novo na descida
-    var ioRv = new IntersectionObserver(function (ens) {
-      ens.forEach(function (e) { e.target.classList.toggle('in', e.isIntersecting); });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-    document.querySelectorAll('.rv').forEach(function (el) { ioRv.observe(el); });
-
-    // linha do tempo: o trilho se desenha ao entrar e se recolhe ao sair,
-    // então quem sobe e desce de novo vê a animação outra vez
+  {
+    // ENTRADA VINCULADA AO SCROLL (ida e volta de verdade)
+    // Antes era uma transição disparada: o elemento entrava sozinho em
+    // .6s e a pessoa nem via. Agora a opacidade e o deslocamento saem da
+    // POSIÇÃO do elemento na tela, calculados por frame — desce e a peça
+    // nasce, sobe e ela desfaz, acompanhando o dedo/roda.
+    var alvos = [].slice.call(document.querySelectorAll('.rv'));
+    var rail = document.querySelector('.steps-rail');
+    var dots = [].slice.call(document.querySelectorAll('.st-dot'));
     var steps = document.querySelector('.steps');
-    if (steps) {
-      var ioSteps = new IntersectionObserver(function (ens) {
-        ens.forEach(function (e) { e.target.classList.toggle('in-view', e.isIntersecting); });
-      }, { threshold: 0.25 });
-      ioSteps.observe(steps);
+    var tick = false;
+
+    function prog(r, vh, ini, fim) {
+      // 1 quando o topo do elemento passa de `fim` da tela; 0 antes de `ini`
+      return Math.max(0, Math.min(1, (vh * ini - r.top) / (vh * (ini - fim))));
     }
 
-    // números do fechamento contam quando entram na tela
-    var ioNum = new IntersectionObserver(function (ens) {
-      ens.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        ioNum.unobserve(e.target);
-        contar(e.target);
+    function pintar() {
+      tick = false;
+      var vh = window.innerHeight;
+
+      alvos.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -240 || r.top > vh + 240) return;   // fora de cena: não gasta frame
+        var t = prog(r, vh, 0.94, 0.62);
+        var e = t * t * (3 - 2 * t);                        // suaviza as pontas
+        el.style.opacity = e;
+        el.style.transform = 'translateY(' + (30 - 30 * e) + 'px)';
       });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('[data-count]').forEach(function (el) { ioNum.observe(el); });
+
+      if (steps && rail) {
+        var rs = steps.getBoundingClientRect();
+        var ts = prog(rs, vh, 0.9, 0.45);
+        rail.style.transform = 'scaleX(' + ts + ')';
+        dots.forEach(function (d, i) {
+          var atraso = i * 0.16;                            // cada bolinha entra um pouco depois
+          var td = Math.max(0, Math.min(1, (ts - atraso) / (1 - atraso || 1)));
+          var el = td * td * (3 - 2 * td);
+          d.style.transform = 'scale(' + (0.2 + 0.8 * el) + ')';
+        });
+        steps.classList.toggle('in-view', ts > 0.02);        // liga o pulso do trilho
+      }
+    }
+
+    function aoRolar() { if (!tick) { tick = true; requestAnimationFrame(pintar); } }
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    window.addEventListener('resize', aoRolar, { passive: true });
+    window.addEventListener('load', pintar);
+    pintar();
+
   }
 
-  function contar(el) {
-    var alvo = parseInt(el.dataset.count, 10) || 0;
-    if (alvo === 0) { el.textContent = '0'; return; }
-    var dur = 1100, t0 = null;
-    function passo(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
-      el.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3)));   // desacelera no fim
-      if (p < 1) requestAnimationFrame(passo);
-    }
-    requestAnimationFrame(passo);
-  }
+
 
   // FAQ: abrir uma fecha a anterior (lista longa fica ilegível toda aberta)
   var qs = [].slice.call(document.querySelectorAll('.faq-list .q'));

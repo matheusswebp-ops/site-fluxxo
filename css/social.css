@@ -54,9 +54,13 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   transition:border-color .2s,background .2s,transform .18s}
 .btn-ghost:hover{border-color:rgba(124,58,237,.45);background:#fff;transform:translateY(-2px)}
 
-/* entrada por scroll (JS liga .in) */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* entrada VINCULADA ao scroll: o js/social.js escreve opacity e transform
+   por frame a partir da posicao do elemento na tela, entao a peca nasce
+   conforme voce desce e desfaz conforme voce sobe. Sem transition aqui de
+   proposito -- ela atrasaria o valor e mataria o vinculo com a rolagem.
+   O estado inicial e invisivel; se o JS nao rodar, o fallback abaixo
+   (.rv:not([style])) devolve a visibilidade. */
+.rv{opacity:0;transform:translateY(30px);will-change:opacity,transform}
 
 /* ---------- NAV ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:14px clamp(14px,3vw,26px);transition:padding .3s}
@@ -285,9 +289,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   .mark::after{transform-origin:left center;animation:socMark .9s cubic-bezier(.2,.85,.2,1) .5s both}
   @keyframes socMark{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-  /* --- entradas escalonadas: o JS passa o índice em --i --- */
-  .rv{transition-delay:calc(var(--i,0) * 80ms)}
-
   /* --- LOGOS: esteira contínua --- */
   .logos-row{animation:socLeft 46s linear infinite}
 
@@ -316,18 +317,14 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   @keyframes socSheen{to{transform:translateX(120%)}}
 
   /* --- COMO FUNCIONA: trilho se desenha, bolinhas pulam, pulso viaja --- */
-  .steps-rail{transform:scaleX(0);transform-origin:left center;transition:transform 1.5s cubic-bezier(.2,.8,.2,1)}
-  .steps.in-view .steps-rail{transform:scaleX(1)}
+  /* o js escreve scaleX por frame: transition aqui atrasaria o valor */
+  .steps-rail{transform:scaleX(0);transform-origin:left center}
   .steps-rail::after{content:"";position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;
     background:#fff;box-shadow:0 0 0 3px rgba(124,58,237,.5),0 0 16px 4px rgba(124,58,237,.8);opacity:0}
   .steps.in-view .steps-rail::after{animation:socTravel 4.2s cubic-bezier(.5,0,.5,1) 1.4s infinite}
   @keyframes socTravel{0%{left:0;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
-  .st-dot{transform:scale(0);transition:transform .6s cubic-bezier(.34,1.7,.64,1)}
-  .steps.in-view li:nth-child(2) .st-dot{transition-delay:.15s}
-  .steps.in-view li:nth-child(3) .st-dot{transition-delay:.3s}
-  .steps.in-view li:nth-child(4) .st-dot{transition-delay:.45s}
-  .steps.in-view li:nth-child(5) .st-dot{transition-delay:.6s}
-  .steps.in-view .st-dot{transform:scale(1)}
+  /* escala das bolinhas tambem vem do scroll (js), com atraso por indice */
+  .st-dot{transform:scale(.2)}
   .st-dot::after{content:"";position:absolute;width:46px;height:46px;border-radius:50%;
     border:2px solid rgba(124,58,237,.55);animation:socRing 2.8s ease-out infinite}
   .steps li:nth-child(3) .st-dot::after{animation-delay:.7s}
