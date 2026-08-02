@@ -16,6 +16,9 @@
 /* ============ capas gráficas ============ */
 .b-cover,.feat-cover{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
   background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:22px 22px}
+.b-cover img,.feat-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.b-card:hover .b-cover img,.feat-card:hover .feat-cover img{transform:scale(1.06)}
 .cover-glyph{width:clamp(64px,7vw,92px);height:auto;color:rgba(255,255,255,.9);
   filter:drop-shadow(0 8px 30px rgba(0,0,0,.4));transition:transform .5s cubic-bezier(.22,1,.36,1)}
 .b-card:hover .cover-glyph,.feat-card:hover .cover-glyph{transform:scale(1.12) rotate(-4deg)}
