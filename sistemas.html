@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=904">
-<link rel="stylesheet" href="css/blog.css?v=904">
-<link rel="stylesheet" href="css/sistemas.css?v=904">
+<link rel="stylesheet" href="css/site.css?v=905">
+<link rel="stylesheet" href="css/blog.css?v=905">
+<link rel="stylesheet" href="css/sistemas.css?v=905">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas e automação sob medida","serviceType":["Automação de processos","Painéis e dashboards","Integrações entre ferramentas"],"provider":{"@id":"https://fluxxo.io/#org"},"areaServed":"BR"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Sistemas","item":"https://fluxxo.io/sistemas"}]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -167,8 +167,128 @@
             <div class="demo-chrome"><i></i><i></i><i></i><em>painel-financeiro</em></div>
             <div class="demo-canvas">
               <video class="demo-vid" data-sysvideo src="video/demo-1.mp4" muted loop playsinline preload="metadata"></video>
-              <div class="demo-mock" data-placeholder>
-                <img src="img/painel.webp" alt="Painel financeiro com números em tempo real" loading="lazy">
+              <!-- Painel construido em SVG (nao imagem): escala sem perder nitidez
+                   em qualquer tela e nao pesa no carregamento. Se um dia entrar
+                   video/demo-1.mp4, o video assume e isso vira reserva. -->
+              <div class="demo-mock" data-placeholder aria-hidden="true">
+                <svg class="dsh" viewBox="0 0 560 357" preserveAspectRatio="xMidYMid slice" role="img"
+                     aria-label="Painel financeiro com receita, despesas, lucro e faturamento dos ultimos 12 meses">
+                  <defs>
+                    <linearGradient id="dshArea" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#8b93ff" stop-opacity=".42"/>
+                      <stop offset="1" stop-color="#8b93ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="dshStroke" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#c9a0ff"/>
+                    </linearGradient>
+                    <linearGradient id="dshLogo" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#a99cff"/><stop offset="1" stop-color="#6366f1"/>
+                    </linearGradient>
+                    <linearGradient id="dshSheen" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+                      <stop offset=".5" stop-color="#fff" stop-opacity=".07"/>
+                      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+                    </linearGradient>
+                    <clipPath id="dshChartClip"><rect x="112" y="136" width="284" height="136" rx="10"/></clipPath>
+                  </defs>
+
+                  <rect width="560" height="357" fill="#0a0d22"/>
+
+                  <!-- barra lateral -->
+                  <rect width="96" height="357" fill="#080b1c"/>
+                  <line x1="96" y1="0" x2="96" y2="357" class="dsh-hair"/>
+                  <rect x="16" y="16" width="20" height="20" rx="6" fill="url(#dshLogo)"/>
+                  <text x="43" y="31" class="dsh-t-brand">Fluxxo</text>
+                  <rect x="8" y="48" width="80" height="22" rx="7" fill="rgba(99,102,241,.2)"/>
+                  <rect x="8" y="48" width="2.5" height="22" rx="1.5" fill="#8b93ff"/>
+                  <text x="20" y="63" class="dsh-t-navon">Visão geral</text>
+                  <text x="20" y="87" class="dsh-t-nav">Receitas</text>
+                  <text x="20" y="111" class="dsh-t-nav">Despesas</text>
+                  <text x="20" y="135" class="dsh-t-nav">Metas</text>
+                  <text x="20" y="159" class="dsh-t-nav">Relatórios</text>
+                  <text x="20" y="183" class="dsh-t-nav">Config.</text>
+                  <circle cx="26" cy="331" r="9" fill="rgba(169,156,255,.22)"/>
+                  <text x="26" y="335" class="dsh-t-ava">M</text>
+                  <text x="42" y="335" class="dsh-t-nav">Mateus</text>
+
+                  <!-- cabecalho -->
+                  <text x="112" y="31" class="dsh-t-h1">Visão geral</text>
+                  <rect x="392" y="13" width="68" height="22" rx="7" class="dsh-pill"/>
+                  <text x="426" y="28" class="dsh-t-pill" text-anchor="middle">Julho 2026</text>
+                  <rect x="470" y="13" width="74" height="22" rx="7" class="dsh-pill"/>
+                  <circle cx="483" cy="24" r="3" fill="#4ade80" class="dsh-live"/>
+                  <text x="492" y="28" class="dsh-t-live">ao vivo</text>
+                  <line x1="112" y1="44" x2="544" y2="44" class="dsh-hair"/>
+
+                  <!-- indicadores -->
+                  <rect x="112" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="124" y="73" class="dsh-t-lbl">RECEITA</text>
+                  <text x="124" y="95" class="dsh-t-val">R$ 84.320</text>
+                  <text x="124" y="112" class="dsh-t-up">▲ 18,4%</text>
+                  <path class="dsh-spark" d="M196,116 L207,109 L218,112 L229,102 L240,95"/>
+
+                  <rect x="260" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="272" y="73" class="dsh-t-lbl">DESPESAS</text>
+                  <text x="272" y="95" class="dsh-t-val">R$ 31.940</text>
+                  <text x="272" y="112" class="dsh-t-up">▼ 4,2%</text>
+                  <path class="dsh-spark" d="M344,100 L355,107 L366,104 L377,111 L388,116"/>
+
+                  <rect x="408" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="420" y="73" class="dsh-t-lbl">LUCRO LÍQUIDO</text>
+                  <text x="420" y="95" class="dsh-t-val">R$ 52.380</text>
+                  <text x="420" y="112" class="dsh-t-up">▲ 26,1% · margem 62%</text>
+                  <path class="dsh-spark" d="M492,118 L503,110 L514,113 L525,101 L536,93"/>
+
+                  <!-- faturamento -->
+                  <rect x="112" y="136" width="284" height="136" rx="10" class="dsh-card"/>
+                  <text x="124" y="155" class="dsh-t-cap">Faturamento · 12 meses</text>
+                  <line x1="124" y1="197" x2="384" y2="197" class="dsh-grid"/>
+                  <line x1="124" y1="226" x2="384" y2="226" class="dsh-grid"/>
+                  <line x1="124" y1="254" x2="384" y2="254" class="dsh-grid"/>
+                  <path class="dsh-area" d="M124,224.8 L147.6,218.7 L171.3,221.3 L194.9,209.3 L218.5,204.1 L242.2,207.6 L265.8,197.2 L289.5,192.1 L313.1,195.5 L336.7,184.3 L360.4,178.3 L384,172.3 L384,254 L124,254 Z"/>
+                  <path class="dsh-line" d="M124,224.8 L147.6,218.7 L171.3,221.3 L194.9,209.3 L218.5,204.1 L242.2,207.6 L265.8,197.2 L289.5,192.1 L313.1,195.5 L336.7,184.3 L360.4,178.3 L384,172.3"/>
+                  <circle cx="384" cy="172.3" r="3.5" fill="#fff" stroke="#8b93ff" stroke-width="2" class="dsh-dot"/>
+                  <rect x="322" y="148" width="58" height="18" rx="6" class="dsh-tip"/>
+                  <text x="351" y="161" class="dsh-t-tip" text-anchor="middle">R$ 84,3 mil</text>
+                  <text x="124" y="266" class="dsh-t-ax">jan</text>
+                  <text x="194" y="266" class="dsh-t-ax">abr</text>
+                  <text x="266" y="266" class="dsh-t-ax">jul</text>
+                  <text x="336" y="266" class="dsh-t-ax">out</text>
+                  <text x="384" y="266" class="dsh-t-ax" text-anchor="end">dez</text>
+                  <rect x="112" y="136" width="90" height="136" fill="url(#dshSheen)" clip-path="url(#dshChartClip)" class="dsh-sheen"/>
+
+                  <!-- por canal -->
+                  <rect x="408" y="136" width="136" height="136" rx="10" class="dsh-card"/>
+                  <text x="420" y="155" class="dsh-t-cap">Por canal</text>
+                  <text x="420" y="178" class="dsh-t-row">Vendas</text>
+                  <text x="532" y="178" class="dsh-t-row2" text-anchor="end">48%</text>
+                  <rect x="420" y="184" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="184" width="54" height="4" rx="2" class="dsh-bar b1"/>
+                  <text x="420" y="200" class="dsh-t-row">Serviços</text>
+                  <text x="532" y="200" class="dsh-t-row2" text-anchor="end">27%</text>
+                  <rect x="420" y="206" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="206" width="30" height="4" rx="2" class="dsh-bar b2"/>
+                  <text x="420" y="222" class="dsh-t-row">Recorrência</text>
+                  <text x="532" y="222" class="dsh-t-row2" text-anchor="end">19%</text>
+                  <rect x="420" y="228" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="228" width="21" height="4" rx="2" class="dsh-bar b3"/>
+                  <text x="420" y="244" class="dsh-t-row">Indicação</text>
+                  <text x="532" y="244" class="dsh-t-row2" text-anchor="end">6%</text>
+                  <rect x="420" y="250" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="250" width="7" height="4" rx="2" class="dsh-bar b4"/>
+
+                  <!-- movimentacoes -->
+                  <rect x="112" y="284" width="432" height="60" rx="10" class="dsh-card"/>
+                  <circle cx="126" cy="299" r="3" fill="#4ade80"/>
+                  <text x="136" y="302" class="dsh-t-row">Assinatura Pro · hoje, 09:14</text>
+                  <text x="532" y="302" class="dsh-t-in" text-anchor="end">+ R$ 1.290,00</text>
+                  <circle cx="126" cy="317" r="3" fill="#4ade80"/>
+                  <text x="136" y="320" class="dsh-t-row">Projeto landing page · ontem</text>
+                  <text x="532" y="320" class="dsh-t-in" text-anchor="end">+ R$ 4.800,00</text>
+                  <circle cx="126" cy="335" r="3" fill="#f87171"/>
+                  <text x="136" y="338" class="dsh-t-row">Ferramentas e licenças · ontem</text>
+                  <text x="532" y="338" class="dsh-t-out" text-anchor="end">− R$ 320,00</text>
+                </svg>
               </div>
             </div>
           </div>
@@ -419,9 +539,9 @@
 </footer>
 </div>
 
-<script src="js/blog.js?v=904"></script>
-<script src="js/sistemas.js?v=904"></script>
+<script src="js/blog.js?v=905"></script>
+<script src="js/sistemas.js?v=905"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="js/web-scroll.js?v=904"></script>
+<script src="js/web-scroll.js?v=905"></script>
 </body>
 </html>
