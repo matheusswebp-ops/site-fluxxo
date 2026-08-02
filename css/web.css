@@ -746,20 +746,16 @@
      cortava as laterais do video no mobile. Agora o frame do VIDEO usa a
      proporcao real, com contain de reserva; o outro frame (placeholder,
      sem video) segue 16:9. Vale desde 900px, onde os cards empilham. */
-  @media (max-width:900px){
-    .trust-left-top .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:960/452}
-    .trust-left-top .frame-video{object-fit:contain}
-  }
+  .trust-left-top .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:960/452}
   @media (max-width:700px){
     .trust-left-bottom .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:16/9}
   }
-  /* PAGESPEED.mp4 e VERTICAL (720x1280, gravacao de celular). Num frame
-     largo, cover cortaria quase tudo e width:100% esticaria. Aqui o video
-     encaixa pela ALTURA e a largura sai da propria proporcao, centrado no
-     frame (o .video-frame ja e flex center) -- o fundo escuro do frame
-     fecha as laterais, como um visualizador. */
-  .trust-right .video-frame{flex:none;min-height:0;height:clamp(300px,46vw,430px)}
-  .trust-right .frame-video{position:relative;inset:auto;width:auto;height:100%;max-width:100%;object-fit:contain}
+  /* PAGESPEED.mp4 e VERTICAL (720x1280). O FRAME adota a proporcao exata
+     do arquivo e a largura sai da altura -- assim nao ha corte nem tarja,
+     e o resultado NAO depende do object-fit (cover e contain ficam iguais
+     quando as proporcoes batem). Vale em qualquer largura de tela. */
+  .trust-right .video-frame{flex:none;min-height:0;height:clamp(300px,46vw,430px);
+    aspect-ratio:720/1280;width:auto;max-width:100%;margin-left:auto;margin-right:auto}
 
 /* ============ MENU MOBILE CINEMATOGRÁFICO ============ */
 @media (max-width:900px){
