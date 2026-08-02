@@ -753,6 +753,13 @@
   @media (max-width:700px){
     .trust-left-bottom .video-frame{flex:none;height:auto;min-height:0;aspect-ratio:16/9}
   }
+  /* PAGESPEED.mp4 e VERTICAL (720x1280, gravacao de celular). Num frame
+     largo, cover cortaria quase tudo e width:100% esticaria. Aqui o video
+     encaixa pela ALTURA e a largura sai da propria proporcao, centrado no
+     frame (o .video-frame ja e flex center) -- o fundo escuro do frame
+     fecha as laterais, como um visualizador. */
+  .trust-right .video-frame{flex:none;min-height:0;height:clamp(300px,46vw,430px)}
+  .trust-right .frame-video{position:relative;inset:auto;width:auto;height:100%;max-width:100%;object-fit:contain}
 
 /* ============ MENU MOBILE CINEMATOGRÁFICO ============ */
 @media (max-width:900px){
