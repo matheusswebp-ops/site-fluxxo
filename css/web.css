@@ -754,8 +754,12 @@
      do arquivo e a largura sai da altura -- assim nao ha corte nem tarja,
      e o resultado NAO depende do object-fit (cover e contain ficam iguais
      quando as proporcoes batem). Vale em qualquer largura de tela. */
-  .trust-right .video-frame{flex:none;min-height:0;height:clamp(300px,46vw,430px);
-    aspect-ratio:720/1280;width:auto;max-width:100%;margin-left:auto;margin-right:auto}
+  /* align-self:center e a peca que faltava: .trust-card e flex em COLUNA,
+     entao os filhos esticam na largura (align-items:stretch) e o width:auto
+     era ignorado -- o frame ficava largo e sobrava tarja escura dos lados
+     do video. Com align-self a largura volta a sair da proporcao. */
+  .trust-right .video-frame{flex:none;min-height:0;align-self:center;
+    height:clamp(300px,46vw,430px);aspect-ratio:720/1280;max-width:100%}
 
 /* ============ MENU MOBILE CINEMATOGRÁFICO ============ */
 @media (max-width:900px){
