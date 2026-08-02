@@ -37,12 +37,27 @@
   </url>
   <url>
     <loc>https://fluxxo.io/blog</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fluxxo.io/artigo</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fluxxo.io/artigo-marca-visual</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fluxxo.io/artigo-velocidade-site</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fluxxo.io/artigo-tarefas-manuais</loc>
+    <lastmod>2026-08-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
