@@ -462,7 +462,7 @@
     background:
       linear-gradient(180deg, #17121f, #120e1a) padding-box,
       linear-gradient(150deg, rgba(181,123,255,0.32), rgba(139,61,255,0.08) 45%, rgba(255,255,255,0.05)) border-box;
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; min-width: 0;
   }
 
   /* Card de baixo com tom roxo mais forte, diferenciando do de cima */
