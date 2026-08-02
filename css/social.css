@@ -367,7 +367,9 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
     radial-gradient(30% 34% at 62% 12%,rgba(99,102,241,.42),transparent 70%);
   filter:blur(6px)}
 .fp-thumbs{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14}
-.fp-thumbs img{position:absolute;width:118px;border-radius:12px;box-shadow:0 18px 40px -18px #000}
+/* height:auto obrigatorio: a largura vem do CSS e, sem isso, o atributo
+   height="800" das tags vira altura literal e distorce a miniatura */
+.fp-thumbs img{position:absolute;width:118px;height:auto;border-radius:12px;box-shadow:0 18px 40px -18px #000}
 .fp-thumbs img:nth-child(1){left:-34px;top:14%;transform:rotate(-11deg)}
 .fp-thumbs img:nth-child(2){right:-30px;top:8%;transform:rotate(9deg)}
 .fp-thumbs img:nth-child(3){left:-22px;bottom:8%;transform:rotate(7deg)}
@@ -386,8 +388,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   text-shadow:0 0 26px rgba(168,85,247,.7)}
 .foot-panel .foot-cta{margin-top:34px;background:#fff;color:#4c1d95;box-shadow:0 18px 44px -14px rgba(0,0,0,.5)}
 .foot-panel .foot-cta:hover{background:#fff;filter:brightness(1)}
-.foot-panel .mail{color:rgba(255,255,255,.55)}
-.foot-panel .mail:hover{color:#fff}
 
 @media (prefers-reduced-motion:no-preference){
   .fp-aurora{animation:socAurora 19s ease-in-out infinite alternate}
