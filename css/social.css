@@ -237,37 +237,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   html{scroll-behavior:auto}
 }
 
-/* ============ O PROBLEMA · visuais concretos em cada cartão ============ */
-/* o texto sozinho não mostrava a dor; cada cartão agora carrega uma
-   miniatura do próprio problema, desenhada em CSS (nada de imagem) */
-.pain-card{display:flex;flex-direction:column;overflow:hidden}
-.pain-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;
-  background:linear-gradient(90deg,var(--violeta),var(--coral));opacity:.85}
-.pain-card p{flex:1}
-.viz{display:block;margin-top:22px;padding:16px;border-radius:12px;background:var(--paper-3);border:1px solid var(--line)}
-.viz-cap{display:block;margin-top:10px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.03em;color:var(--ink-dim)}
-
-/* 01 · semanas irregulares */
-.viz-gaps{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;align-items:end;height:74px}
-.viz-gaps i{display:block;height:22%;border-radius:2px;background:rgba(29,26,38,.09)}
-.viz-gaps i.on{height:100%;background:linear-gradient(180deg,var(--violeta),#a855f7)}
-
-/* 02 · post bonito que não gera conversa */
-.viz-post{display:flex;flex-direction:column;gap:9px}
-.vp-art{display:block;height:44px;border-radius:8px;
-  background:linear-gradient(120deg,#d9cdf2,#f0dfd6 60%,#e7dcf7)}
-.vp-lines{display:flex;flex-direction:column;gap:5px}
-.vp-lines i{display:block;height:5px;border-radius:3px;background:rgba(29,26,38,.11)}
-.vp-lines i:last-child{width:62%}
-.vp-metrics{display:flex;gap:12px;margin-top:2px}
-.vp-metrics em{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--ink-dim)}
-.vp-metrics em:first-child{color:var(--coral)}
-
-/* 03 · mês vazio */
-.viz-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.viz-cal i{display:block;aspect-ratio:1;border-radius:3px;background:rgba(29,26,38,.07)}
-.viz-cal i.on{background:linear-gradient(150deg,var(--violeta),#a855f7)}
-
 /* ============ COMO FUNCIONA · linha do tempo ============ */
 .steps{position:relative;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);
   gap:clamp(18px,2.4vw,30px);counter-reset:none}
@@ -284,19 +253,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
 .steps h3{font-size:1.14rem;font-weight:500;margin-bottom:10px}
 .steps p{color:var(--ink-soft);font-size:14.5px}
 
-/* ============ FECHAMENTO · painel com prova ============ */
-.foot-panel{position:relative;max-width:860px;margin:0 auto;text-align:center;padding:clamp(36px,5vw,64px) clamp(24px,4vw,56px);
-  border-radius:26px;background:var(--paper-2);border:1px solid var(--line);
-  box-shadow:0 34px 70px -40px rgba(45,25,80,.42)}
-.foot-panel::before{content:"";position:absolute;inset:-1px;border-radius:26px;z-index:-1;
-  background:linear-gradient(140deg,rgba(124,58,237,.5),rgba(226,114,91,.32) 55%,rgba(124,58,237,.12))}
-.foot-lead{margin:18px auto 0;max-width:46ch;color:var(--ink-soft);font-size:clamp(.98rem,1.5vw,1.08rem)}
-.foot-facts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:30px auto 0}
-.foot-facts span{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:132px;padding:14px 16px;
-  border-radius:14px;background:var(--paper-3);font-size:12px;color:var(--ink-soft);line-height:1.35;text-align:center}
-.foot-facts b{font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--violeta-deep);letter-spacing:-.02em}
-.foot h2{max-width:22ch}
-
 @media (max-width:1080px){
   .steps{grid-template-columns:repeat(2,1fr);gap:34px}
   .steps-rail{display:none}
@@ -306,6 +262,150 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   .st-dot{width:40px;height:40px;margin-bottom:14px}
   .foot-facts span{min-width:0;flex:1 1 132px}
 }
-@media (prefers-reduced-motion:reduce){
-  .viz-gaps i,.viz-cal i{transition:none}
+
+/* ============================================================
+   MOVIMENTO · a página não pode ter nada estático
+   Tudo aqui é CSS: fundos que respiram, entradas escalonadas,
+   trilho que se desenha e brilhos que atravessam. O JS só liga a
+   classe .in (e conta os números do fechamento).
+   ============================================================ */
+@media (prefers-reduced-motion:no-preference){
+
+  /* --- HERO: malha de cor que respira + título entrando --- */
+  .hero::before{animation:socBreath 16s ease-in-out infinite alternate}
+  @keyframes socBreath{
+    0%{transform:scale(1) translate(0,0);opacity:.9}
+    100%{transform:scale(1.14) translate(-2%,1.5%);opacity:1}
+  }
+  .hero h1,.hero .kicker,.lead,.hero-cta,.hero-tick{animation:socUpIn .85s cubic-bezier(.2,.85,.2,1) both}
+  .hero .kicker{animation-delay:.05s}
+  .hero h1{animation-delay:.14s}
+  .lead{animation-delay:.26s}
+  .hero-cta{animation-delay:.38s}
+  .hero-tick{animation-delay:.5s}
+  @keyframes socUpIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  /* o destaque roxo se pinta da esquerda pra direita */
+  .mark::after{transform-origin:left center;animation:socMark .9s cubic-bezier(.2,.85,.2,1) .5s both}
+  @keyframes socMark{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* --- entradas escalonadas: o JS passa o índice em --i --- */
+  .rv{transition-delay:calc(var(--i,0) * 80ms)}
+
+  /* --- LOGOS: sobem juntos e ganham brilho ao passar --- */
+  .logos-row img{animation:socUpIn .7s ease both;animation-delay:calc(var(--i,0) * 60ms)}
+
+  /* --- PROBLEMA: número fantasma pulsando + faixa que corre --- */
+  .pain-card{overflow:hidden}
+  .pain-card::before{background:linear-gradient(90deg,var(--violeta),var(--coral),var(--violeta));
+    background-size:200% 100%;animation:socSlide 5s linear infinite}
+  @keyframes socSlide{to{background-position:200% 0}}
+  .pain-card::after{content:attr(data-ghost);position:absolute;right:-.06em;bottom:-.34em;z-index:0;pointer-events:none;
+    font-family:var(--font-display);font-weight:600;font-size:9rem;line-height:1;letter-spacing:-.04em;
+    color:rgba(124,58,237,.07);animation:socFloat 7s ease-in-out infinite}
+  .pain-card>*{position:relative;z-index:1}
+  @keyframes socFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .pain-card:hover{transform:translateY(-6px);border-color:rgba(124,58,237,.3);box-shadow:var(--sombra)}
+  .pain-card{transition:transform .35s,border-color .35s,box-shadow .35s}
+
+  /* --- ENTREGÁVEIS: ícone reage --- */
+  .dl-ic{transition:transform .35s cubic-bezier(.34,1.6,.64,1),background .3s}
+  .dl:hover .dl-ic{transform:translateY(-3px) rotate(-6deg) scale(1.06);background:#e3d7fd}
+
+  /* --- SEGMENTOS: brilho atravessa a capa ao passar o mouse --- */
+  .seg-shot{position:relative}
+  .seg-shot::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;transform:translateX(-120%);
+    background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.42) 50%,transparent 70%)}
+  .seg:hover .seg-shot::after{animation:socSheen .85s ease}
+  @keyframes socSheen{to{transform:translateX(120%)}}
+
+  /* --- COMO FUNCIONA: trilho se desenha, bolinhas pulam, pulso viaja --- */
+  .steps-rail{transform:scaleX(0);transform-origin:left center;transition:transform 1.5s cubic-bezier(.2,.8,.2,1)}
+  .steps.in-view .steps-rail{transform:scaleX(1)}
+  .steps-rail::after{content:"";position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;
+    background:#fff;box-shadow:0 0 0 3px rgba(124,58,237,.5),0 0 16px 4px rgba(124,58,237,.8);opacity:0}
+  .steps.in-view .steps-rail::after{animation:socTravel 4.2s cubic-bezier(.5,0,.5,1) 1.4s infinite}
+  @keyframes socTravel{0%{left:0;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+  .st-dot{transform:scale(0);transition:transform .6s cubic-bezier(.34,1.7,.64,1)}
+  .steps.in-view li:nth-child(2) .st-dot{transition-delay:.15s}
+  .steps.in-view li:nth-child(3) .st-dot{transition-delay:.3s}
+  .steps.in-view li:nth-child(4) .st-dot{transition-delay:.45s}
+  .steps.in-view li:nth-child(5) .st-dot{transition-delay:.6s}
+  .steps.in-view .st-dot{transform:scale(1)}
+  .st-dot::after{content:"";position:absolute;width:46px;height:46px;border-radius:50%;
+    border:2px solid rgba(124,58,237,.55);animation:socRing 2.8s ease-out infinite}
+  .steps li:nth-child(3) .st-dot::after{animation-delay:.7s}
+  .steps li:nth-child(4) .st-dot::after{animation-delay:1.4s}
+  .steps li:nth-child(5) .st-dot::after{animation-delay:2.1s}
+  @keyframes socRing{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.9);opacity:0}}
+  .st-when{transition:background .3s,color .3s}
+  .steps li:hover .st-when{background:var(--violeta);color:#fff}
+
+  /* --- FAQ: resposta desliza --- */
+  .q[open] p{animation:socUpIn .4s ease both}
+
+  /* --- botões: brilho passando --- */
+  .btn{position:relative;overflow:hidden}
+  .btn::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
+    background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.3) 50%,transparent 65%);
+    animation:socBtn 4.5s ease-in-out infinite}
+  @keyframes socBtn{0%,72%{transform:translateX(-130%)}88%,100%{transform:translateX(130%)}}
+}
+
+/* ============ FECHAMENTO · painel escuro (contraste de final) ============ */
+/* numa página clara, terminar no escuro dá o peso de "fim" que a caixa
+   branca não dava, e é o mesmo território visual do resto do site */
+.foot{background:linear-gradient(180deg,var(--paper) 0%,#efe9f7 100%)}
+.foot-panel{position:relative;max-width:920px;margin:0 auto;overflow:hidden;text-align:center;
+  padding:clamp(40px,5.5vw,74px) clamp(22px,4vw,58px);border-radius:28px;
+  background:linear-gradient(160deg,#1b1230 0%,#241640 46%,#160f28 100%);
+  box-shadow:0 40px 90px -44px rgba(45,20,90,.62)}
+.fp-aurora{position:absolute;inset:-30%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 22% 28%,rgba(168,85,247,.5),transparent 66%),
+    radial-gradient(34% 38% at 82% 66%,rgba(226,114,91,.34),transparent 68%),
+    radial-gradient(30% 34% at 62% 12%,rgba(99,102,241,.42),transparent 70%);
+  filter:blur(6px)}
+.fp-thumbs{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14}
+.fp-thumbs img{position:absolute;width:118px;border-radius:12px;box-shadow:0 18px 40px -18px #000}
+.fp-thumbs img:nth-child(1){left:-34px;top:14%;transform:rotate(-11deg)}
+.fp-thumbs img:nth-child(2){right:-30px;top:8%;transform:rotate(9deg)}
+.fp-thumbs img:nth-child(3){left:-22px;bottom:8%;transform:rotate(7deg)}
+.fp-thumbs img:nth-child(4){right:-26px;bottom:12%;transform:rotate(-8deg)}
+.fp-in{position:relative;z-index:2}
+.foot-panel .foot-kicker{color:#d7c6ff}
+.foot-panel h2{color:#fff;max-width:22ch;margin:0 auto;font-size:clamp(1.9rem,4.6vw,3rem)}
+.foot-panel .mark{color:#fff}
+.foot-panel .mark::after{background:linear-gradient(90deg,rgba(168,85,247,.6),rgba(226,114,91,.45))}
+.foot-lead{margin:20px auto 0;max-width:46ch;color:rgba(255,255,255,.72);font-size:clamp(.98rem,1.5vw,1.08rem)}
+.foot-facts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:34px auto 0}
+.foot-facts span{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:140px;padding:16px 18px;
+  border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);font-size:12px;color:rgba(255,255,255,.66);line-height:1.35;text-align:center}
+.foot-facts b{font-family:var(--font-display);font-weight:600;font-size:30px;color:#fff;letter-spacing:-.02em;
+  text-shadow:0 0 26px rgba(168,85,247,.7)}
+.foot-panel .foot-cta{margin-top:34px;background:#fff;color:#4c1d95;box-shadow:0 18px 44px -14px rgba(0,0,0,.5)}
+.foot-panel .foot-cta:hover{background:#fff;filter:brightness(1)}
+.foot-panel .mail{color:rgba(255,255,255,.55)}
+.foot-panel .mail:hover{color:#fff}
+
+@media (prefers-reduced-motion:no-preference){
+  .fp-aurora{animation:socAurora 19s ease-in-out infinite alternate}
+  @keyframes socAurora{
+    0%{transform:scale(1) rotate(0deg)}
+    100%{transform:scale(1.2) rotate(8deg)}
+  }
+  .fp-thumbs img{animation:socDrift 13s ease-in-out infinite alternate}
+  .fp-thumbs img:nth-child(2){animation-duration:16s;animation-delay:-3s}
+  .fp-thumbs img:nth-child(3){animation-duration:15s;animation-delay:-6s}
+  .fp-thumbs img:nth-child(4){animation-duration:18s;animation-delay:-9s}
+  @keyframes socDrift{to{translate:0 -20px}}
+  .foot-facts span{transition:transform .35s,background .3s}
+  .foot-facts span:hover{transform:translateY(-4px);background:rgba(255,255,255,.12)}
+}
+
+@media (max-width:620px){
+  .fp-thumbs{display:none}
+  .foot-facts span{min-width:0;flex:1 1 132px;padding:13px 12px}
+  .foot-facts b{font-size:24px}
 }
