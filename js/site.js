@@ -741,7 +741,13 @@ fluxxoRolarNoFrame('.site-card', '.ws-view', '.ws-scroll');
     });
 
     // print do site: a página rola conforme o ato passa pela tela, então
-    // sempre começa do topo em vez de pegar o loop no meio
+    // sempre começa do topo em vez de pegar o loop no meio.
+    // Numa rolagem amarrada ao scroll a velocidade é a do dedo: pra passar
+    // devagar, o jeito é encurtar a DISTÂNCIA percorrida. No celular o bloco
+    // atravessa a tela em pouco scroll, então lá ele anda só um terço do
+    // print — vira um deslizar suave em vez de voar a página inteira.
+    var estreito = window.innerWidth < 700;
+    var fatiaTira = estreito ? 0.34 : 1;
     atos.forEach(function (ato) {
       var tira = ato.querySelector('.lw-strip');
       if (!tira) return;
@@ -750,7 +756,7 @@ fluxxoRolarNoFrame('.site-card', '.ws-view', '.ws-scroll');
       if (alcance <= 0) return;
       var r = ato.getBoundingClientRect();
       var t = Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (vh * 0.5 + r.height * 0.5)));
-      tira.style.transform = 'translateY(-' + (alcance * suave(t)) + 'px)';
+      tira.style.transform = 'translateY(-' + (alcance * fatiaTira * suave(t)) + 'px)';
     });
   }
 
