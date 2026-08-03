@@ -237,12 +237,6 @@
   .act:nth-child(odd) .illo{margin-right:calc(-1 * clamp(12px,5vw,90px))}
   .act:nth-child(even) .illo{margin-left:calc(-1 * clamp(12px,5vw,90px))}
 
-  /* etiqueta: abaixo da peca, alinhada com ela */
-  .illo-tag{position:relative;z-index:5;align-self:flex-end;margin:0 0 -6px 4px;
-    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--text-dim)}
-  .illo-tag::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;
-    background:var(--purple-light);margin-right:8px;vertical-align:1px;
-    box-shadow:0 0 8px rgba(169,156,255,.9)}
   .prev{position:absolute;inset:0;width:100%;height:100%}
 
   /* botão de destaque no fim da seção */
