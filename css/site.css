@@ -223,10 +223,37 @@
     background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:13px;padding:15px 24px}
   .act-soon svg{width:16px;height:16px;color:var(--purple-light)}
 
-  .illo{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:5/4;
-    background:radial-gradient(120% 120% at 50% 0%,#191325,#0e0a17);border:1px solid rgba(255,255,255,.06);
-    box-shadow:0 40px 90px -46px rgba(0,0,0,.85), 0 0 60px -20px rgba(139,61,255,.4)}
-  .illo svg{position:absolute;inset:0;width:100%;height:100%}
+  /* PALCO: as pecas reais precisavam de um fundo que as valorizasse, nao de
+     uma caixa escura vazia. Luz vinda de cima, malha discreta pra dar escala
+     e borda que acende de leve no hover. */
+  .illo{position:relative;display:flex;align-items:center;justify-content:center;
+    border-radius:24px;overflow:hidden;aspect-ratio:5/4;isolation:isolate;
+    background:
+      radial-gradient(78% 62% at 50% 6%,rgba(139,92,246,.2),transparent 62%),
+      radial-gradient(120% 120% at 50% 0%,#1a1428,#0c0915);
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:0 44px 96px -48px rgba(0,0,0,.9), 0 0 70px -24px rgba(139,61,255,.34);
+    transition:border-color .45s,box-shadow .45s}
+  .act:hover .illo{border-color:rgba(181,123,255,.26);
+    box-shadow:0 50px 110px -48px rgba(0,0,0,.92), 0 0 90px -22px rgba(139,61,255,.46)}
+  .illo::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(rgba(181,123,255,.055) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(181,123,255,.055) 1px,transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(72% 66% at 50% 46%,#000 34%,transparent 78%);
+            mask-image:radial-gradient(72% 66% at 50% 46%,#000 34%,transparent 78%)}
+  /* piso: apoia a peca em vez de deixa-la flutuando no vazio */
+  .illo::after{content:"";position:absolute;left:12%;right:12%;bottom:6%;height:16%;z-index:0;
+    pointer-events:none;border-radius:50%;filter:blur(22px);
+    background:radial-gradient(ellipse at center,rgba(0,0,0,.62),transparent 72%)}
+
+  /* etiqueta que ancora a moldura como trabalho real, nao mockup */
+  .illo-tag{position:absolute;left:16px;bottom:14px;z-index:5;
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:rgba(233,226,255,.72);
+    background:rgba(12,9,21,.72);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.1);padding:6px 12px;border-radius:100px}
+  .illo>svg{position:absolute;inset:0;width:100%;height:100%}
   .prev{position:absolute;inset:0;width:100%;height:100%}
 
   /* botão de destaque no fim da seção */
@@ -1238,50 +1265,73 @@ html,body{overflow-x:clip}
    próprio produto: capas reais, um site real rolando e o painel.
    ============================================================ */
 
-/* --- 01 DESIGN · leque de capas reais --- */
-.illo-design{display:flex;align-items:center;justify-content:center}
-.ld-fan{position:relative;display:block;width:76%;height:76%}
-.ld-fan img{position:absolute;top:50%;left:50%;width:52%;height:auto;border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);box-shadow:0 26px 56px -26px rgba(0,0,0,.9);
-  transition:transform .55s cubic-bezier(.2,.8,.2,1)}
-.lf1{transform:translate(-50%,-50%) translateX(-42%) rotate(-9deg);z-index:1}
-.lf2{transform:translate(-50%,-50%) translateY(-3%);z-index:3}
-.lf3{transform:translate(-50%,-50%) translateX(42%) rotate(9deg);z-index:2}
-.act:hover .lf1{transform:translate(-50%,-50%) translateX(-52%) rotate(-13deg)}
-.act:hover .lf3{transform:translate(-50%,-50%) translateX(52%) rotate(13deg)}
-.act:hover .lf2{transform:translate(-50%,-50%) translateY(-7%) scale(1.03)}
+/* --- 01 DESIGN · pilha de capas reais --- */
+/* antes eram 3 capas pequenas soltas num quadro grande. Agora a pilha
+   ocupa o palco: a do meio manda, as laterais dao volume. */
+.illo-design .ld-fan{position:relative;z-index:2;display:block;width:100%;height:84%}
+.ld-fan img{position:absolute;top:50%;left:50%;width:auto;height:100%;border-radius:16px;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 64px -22px rgba(0,0,0,.92),0 0 0 1px rgba(0,0,0,.4);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .6s}
+.lf1{transform:translate(-50%,-50%) translateX(-58%) rotate(-8deg) scale(.9);z-index:1;filter:brightness(.72)}
+.lf2{transform:translate(-50%,-50%);z-index:3}
+.lf3{transform:translate(-50%,-50%) translateX(58%) rotate(8deg) scale(.9);z-index:2;filter:brightness(.72)}
+.act:hover .lf1{transform:translate(-50%,-50%) translateX(-72%) rotate(-11deg) scale(.93);filter:brightness(.85)}
+.act:hover .lf3{transform:translate(-50%,-50%) translateX(72%) rotate(11deg) scale(.93);filter:brightness(.85)}
+.act:hover .lf2{transform:translate(-50%,-50%) scale(1.04)}
 
-/* --- 02 WEB · navegador com site real rolando por dentro --- */
-.illo-web{display:flex;align-items:center;justify-content:center}
-.lw-frame{display:block;width:84%;border-radius:14px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);background:#120e1c;
-  box-shadow:0 30px 64px -28px rgba(0,0,0,.9)}
-.lw-bar{display:flex;align-items:center;gap:6px;padding:10px 13px;
-  background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07)}
-.lw-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.17)}
+/* --- 02 WEB · navegador com site real rolando --- */
+.illo-web .lw-frame{position:relative;z-index:2;display:block;width:88%;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);background:#100c1a;
+  box-shadow:0 36px 76px -26px rgba(0,0,0,.94),0 0 0 1px rgba(0,0,0,.5);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.act:hover .lw-frame{transform:translateY(-6px)}
+.lw-bar{display:flex;align-items:center;gap:6px;padding:11px 14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.lw-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
+.lw-bar i:first-child{background:#e2725b}
 .lw-bar em{margin-left:auto;font-style:normal;font-family:var(--font-mono);font-size:10.5px;
   letter-spacing:.03em;color:var(--text-dim)}
-.lw-view{display:block;height:clamp(200px,23vw,290px);overflow:hidden}
+.lw-view{display:block;height:clamp(196px,22vw,278px);overflow:hidden;background:#0b0812}
 .lw-strip{display:block}
-/* height:auto obrigatorio: a largura vem do CSS e sem ele o atributo
-   height da tag vira altura literal e distorce o print */
+/* height:auto obrigatorio: a largura vem do CSS e sem ele o atributo height
+   da tag vira altura literal e distorce o print */
 .lw-strip img{width:100%;height:auto;display:block}
 
-/* --- 03 SOLUÇÕES · o painel (mesmo do /sistemas) --- */
-.illo-sis{background:#0a0d22}
+/* --- 03 SOLUÇÕES · o painel como tela apoiada no palco --- */
+/* o painel e 1.57:1 e a moldura 1.25:1. Com "slice" ele perdia 20% das
+   laterais (barra lateral e card da direita cortados). Agora vira uma tela
+   com a propria proporcao, apoiada no palco. */
+.illo-sis .ls-screen{position:relative;z-index:2;display:block;width:90%;aspect-ratio:560/357;
+  border-radius:14px;overflow:hidden;background:#0a0d22;
+  border:1px solid rgba(142,162,255,.22);
+  box-shadow:0 36px 76px -26px rgba(0,0,0,.94),0 0 0 1px rgba(0,0,0,.5);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.act:hover .ls-screen{transform:translateY(-6px)}
 .illo-sis .dsh{position:absolute;inset:0;width:100%;height:100%;display:block}
 
 @media (prefers-reduced-motion:no-preference){
-  /* o leque respira e o print rola sozinho: nada parado */
-  .ld-fan img{animation:ldFloat 7s ease-in-out infinite}
-  .lf2{animation-delay:-2.3s}
-  .lf3{animation-delay:-4.6s}
-  @keyframes ldFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
-  .lw-strip{animation:lwRoll 26s cubic-bezier(.45,0,.55,1) infinite}
+  /* respiro do palco: as capas sobem e descem com `translate` (propriedade
+     separada), pra nao brigar com o `transform` que posiciona cada uma */
+  .ld-fan img{animation:ldFloat 7.5s ease-in-out infinite}
+  .lf2{animation-delay:-2.5s}
+  .lf3{animation-delay:-5s}
+  @keyframes ldFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
+
+  /* o site rola sozinho por dentro, ida e volta */
+  .lw-strip{animation:lwRoll 30s cubic-bezier(.45,0,.55,1) infinite}
   @keyframes lwRoll{
-    0%,6%{transform:translateY(0)}
-    48%,58%{transform:translateY(calc(-100% + clamp(200px,23vw,290px)))}
+    0%,5%{transform:translateY(0)}
+    47%,57%{transform:translateY(calc(-100% + clamp(196px,22vw,278px)))}
     100%{transform:translateY(0)}
+  }
+
+  /* luz do palco pulsando de leve, pra moldura nao ficar morta */
+  .illo{background-size:100% 100%,100% 100%;animation:illoGlow 11s ease-in-out infinite alternate}
+  @keyframes illoGlow{
+    0%{background-position:50% 0%,50% 0%}
+    100%{background-position:50% -6%,50% 0%}
   }
 }
 @media (max-width:700px){
