@@ -190,11 +190,10 @@
   /* entrada por scroll em CSS puro (sem JS). Ida e volta é nativo do view-timeline. */
   @keyframes fxRise{from{opacity:0;transform:perspective(1300px) rotateX(11deg) translateY(66px) translateZ(-110px);filter:blur(9px)}to{opacity:1;transform:perspective(1300px) rotateX(0deg) translateY(0) translateZ(0);filter:blur(0)}}
   @keyframes fxRiseIllo{from{opacity:0;transform:perspective(1300px) rotateX(15deg) rotateY(-9deg) translateY(74px) translateZ(-150px) scale(.94);filter:blur(12px)}to{opacity:1;transform:perspective(1300px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0) scale(1);filter:blur(0)}}
-  @supports (animation-timeline: view()){
-    .act .act-text{animation:fxRise both;animation-timeline:view();animation-range:entry 2% cover 46%}
-    .act .illo{animation:fxRiseIllo both;animation-timeline:view();animation-range:entry 6% cover 52%}
-    .reveal-up{animation:fxRise both;animation-timeline:view();animation-range:entry 2% cover 40%}
-  }
+  /* a entrada destes tres e feita em JS (js/site.js), amarrada a posicao na
+     tela. Antes era animation-timeline:view(), que o Safari nao implementa:
+     no iPhone a secao simplesmente nao animava. */
+  .act .act-text,.act .illo,.reveal-up{opacity:0;will-change:opacity,transform}
   .act:nth-child(even) .act-text{order:2}            /* zig-zag: alterna os lados */
   .act:nth-child(even) .illo{order:1}
   .act-text .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);margin-bottom:18px}
@@ -1305,22 +1304,14 @@ html,body{overflow-x:clip}
   .lf3{animation-delay:-5s}
   @keyframes ldFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
 
-  /* o site rola sozinho por dentro do navegador, ida e volta */
-  .lw-strip{animation:lwRoll 30s cubic-bezier(.45,0,.55,1) infinite}
-  @keyframes lwRoll{
-    0%,5%{transform:translateY(0)}
-    47%,57%{transform:translateY(calc(-100% + clamp(240px,30vw,380px)))}
-    100%{transform:translateY(0)}
-  }
-
   /* o halo de luz por tras da peca pulsa devagar */
   .illo::before{animation:illoHalo 12s ease-in-out infinite alternate}
   @keyframes illoHalo{0%{opacity:.75;scale:.96}100%{opacity:1;scale:1.05}}
 }
 @media (max-width:700px){
-  .ld-fan{width:88%;height:70%}
-  .ld-fan img{width:56%}
-  .lw-frame{width:96%}
+  /* NAO travar width e height juntos: a capa tem height:88% e width:auto,
+     e forcar a largura tambem era o que distorcia a imagem no celular */
+  .lw-view{height:clamp(200px,52vw,260px)}
 }
 @media (prefers-reduced-motion:reduce){
   .ld-fan img,.lw-strip{animation:none}

@@ -700,3 +700,63 @@ function fluxxoRolarNoFrame(seletorQuadro, seletorJanela, seletorTira) {
 }
 
 fluxxoRolarNoFrame('.site-card', '.ws-view', '.ws-scroll');
+
+// ============ AS TRÊS FRENTES · entrada amarrada ao scroll ============
+// A entrada era feita com animation-timeline:view(), que o Safari não
+// implementa: no iPhone a seção não animava nada. Agora o progresso sai da
+// POSIÇÃO do elemento na tela e vale em todo navegador, ida e volta. O print
+// do site dentro do navegador também passa a ser rolado pelo scroll, em vez
+// de um loop de 30s que fazia a página chegar "no meio".
+(function () {
+  var frentes = document.querySelector('.frentes');
+  if (!frentes) return;
+
+  var pecas = [].slice.call(document.querySelectorAll('.act .act-text, .act .illo, .reveal-up'));
+  var atos = [].slice.call(document.querySelectorAll('.act'));
+  if (!pecas.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    pecas.forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
+    return;
+  }
+
+  function suave(t) { return t * t * (3 - 2 * t); }
+  function fatia(v, a, b) { return Math.max(0, Math.min(1, (v - a) / (b - a))); }
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var vh = window.innerHeight;
+
+    pecas.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -260 || r.top > vh + 260) return;      // fora de cena
+      var t = suave(fatia((vh * 0.96 - r.top) / (vh * 0.42), 0, 1));
+      var img = el.classList.contains('illo');
+      el.style.opacity = t;
+      el.style.transform = 'perspective(1300px) translateY(' + ((img ? 70 : 60) * (1 - t)) + 'px)'
+        + ' rotateX(' + ((img ? 12 : 9) * (1 - t)) + 'deg)'
+        + ' scale(' + (1 - (img ? 0.05 : 0.03) * (1 - t)) + ')';
+      el.style.filter = t > 0.995 ? '' : 'blur(' + (8 * (1 - t)) + 'px)';
+    });
+
+    // print do site: a página rola conforme o ato passa pela tela, então
+    // sempre começa do topo em vez de pegar o loop no meio
+    atos.forEach(function (ato) {
+      var tira = ato.querySelector('.lw-strip');
+      if (!tira) return;
+      var janela = ato.querySelector('.lw-view');
+      var alcance = tira.offsetHeight - (janela ? janela.offsetHeight : 0);
+      if (alcance <= 0) return;
+      var r = ato.getBoundingClientRect();
+      var t = Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (vh * 0.5 + r.height * 0.5)));
+      tira.style.transform = 'translateY(-' + (alcance * suave(t)) + 'px)';
+    });
+  }
+
+  function aoRolar() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', aoRolar, { passive: true });
+  window.addEventListener('resize', aoRolar, { passive: true });
+  window.addEventListener('load', render);
+  render();
+})();
