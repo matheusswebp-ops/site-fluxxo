@@ -1288,13 +1288,20 @@ html,body{overflow-x:clip}
 /* o painel e 1.57:1; sem caixa em volta ele assume a propria proporcao e
    nao perde mais 20% das laterais como acontecia com o "slice" */
 .illo-sis{flex-direction:column;align-items:stretch}
-.illo-sis .ls-screen{position:relative;z-index:2;display:block;width:100%;aspect-ratio:560/357;
+/* proporcao da GRAVACAO (1280x636 = 2.01:1), nao do painel: com 560/357 o
+   video seria cortado nas laterais. O painel de reserva e 1.57:1 e fica
+   centrado, com as sobras na mesma cor do fundo dele -- invisiveis. */
+.illo-sis .ls-screen{position:relative;z-index:2;display:block;width:100%;aspect-ratio:1280/636;
   border-radius:16px;overflow:hidden;background:#0a0d22;
   border:1px solid rgba(142,162,255,.2);
   box-shadow:0 46px 90px -28px rgba(0,0,0,.95),0 10px 28px -10px rgba(0,0,0,.7);
   transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .act:hover .ls-screen{transform:translateY(-8px)}
-.illo-sis .dsh{position:absolute;inset:0;width:100%;height:100%;display:block}
+.illo-sis .dsh{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block}
+/* a gravacao entra por cima; some se falhar e o painel reaparece */
+.ls-vid{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;display:block;
+  background:#0a0d22;opacity:0;transition:opacity .6s ease}
+.ls-vid.pronto{opacity:1}
 
 @media (prefers-reduced-motion:no-preference){
   /* as capas respiram com `translate` (propriedade separada), pra nao brigar
