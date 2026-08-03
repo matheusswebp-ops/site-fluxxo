@@ -746,8 +746,11 @@ fluxxoRolarNoFrame('.site-card', '.ws-view', '.ws-scroll');
     // devagar, o jeito é encurtar a DISTÂNCIA percorrida. No celular o bloco
     // atravessa a tela em pouco scroll, então lá ele anda só um terço do
     // print — vira um deslizar suave em vez de voar a página inteira.
+    // percorre so uma PARTE do print, de proposito: nao precisa chegar ao
+    // fim, e distancia menor = passagem mais lenta (amarrado ao scroll, a
+    // velocidade e a do dedo; o que se controla e o quanto ele anda)
     var estreito = window.innerWidth < 700;
-    var fatiaTira = estreito ? 0.34 : 1;
+    var fatiaTira = estreito ? 0.22 : 0.5;
     atos.forEach(function (ato) {
       var tira = ato.querySelector('.lw-strip');
       if (!tira) return;

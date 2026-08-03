@@ -434,13 +434,23 @@ html,body{overflow-x:clip}
 /* ciclo longo (7s) em vez de tocar so uma vez no carregamento: a secao
    fica no meio da pagina, entao quem chega precisa pegar a animacao viva */
 @media (prefers-reduced-motion:no-preference){
-  .dsh-line{stroke-dasharray:300;animation:dshDraw 7s ease-out infinite}
-  .dsh-area,.dsh-dot,.dsh-tip,.dsh-t-tip{animation:dshFade 7s ease-out infinite}
-  .dsh-spark{stroke-dasharray:70;animation:dshSpark 7s ease-out infinite}
-  .dsh-bar{transform-box:fill-box;transform-origin:left center;animation:dshBar 7s cubic-bezier(.2,.9,.2,1) infinite}
+  .dsh-line{stroke-dasharray:300;animation:dshDraw 5.5s ease-out infinite}
+  /* movimento CONTINUO: o ciclo de 7s desenhava em 2.4s e ficava parado 4.6s,
+     entao quem chegava no meio via um painel estatico. Estes dois nunca param,
+     e o ciclo principal caiu pra 5.5s. */
+  .dsh-scan{fill:url(#dshScanG);animation:dshScan 3.4s cubic-bezier(.45,0,.55,1) infinite}
+  @keyframes dshScan{0%{transform:translateX(0);opacity:0}
+    10%,72%{opacity:1}
+    100%{transform:translateX(214px);opacity:0}}
+  .dsh-ring{animation:dshRing 2.2s ease-out infinite}
+  @keyframes dshRing{0%{r:4;opacity:.9}75%,100%{r:13;opacity:0}}
+
+  .dsh-area,.dsh-dot,.dsh-tip,.dsh-t-tip{animation:dshFade 5.5s ease-out infinite}
+  .dsh-spark{stroke-dasharray:70;animation:dshSpark 5.5s ease-out infinite}
+  .dsh-bar{transform-box:fill-box;transform-origin:left center;animation:dshBar 5.5s cubic-bezier(.2,.9,.2,1) infinite}
   .dsh-bar.b2{animation-delay:.08s}.dsh-bar.b3{animation-delay:.16s}.dsh-bar.b4{animation-delay:.24s}
   .dsh-live{animation:dshLive 1.9s ease-out infinite}
-  .dsh-sheen{animation:dshSheen 7s ease-in-out infinite}
+  .dsh-sheen{animation:dshSheen 5.5s ease-in-out infinite}
   @keyframes dshDraw{0%{stroke-dashoffset:300}34%,100%{stroke-dashoffset:0}}
   @keyframes dshFade{0%,18%{opacity:0}40%,100%{opacity:1}}
   @keyframes dshSpark{0%{stroke-dashoffset:70}34%,100%{stroke-dashoffset:0}}
