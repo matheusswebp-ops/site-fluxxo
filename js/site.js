@@ -749,16 +749,22 @@ fluxxoRolarNoFrame('.site-card', '.ws-view', '.ws-scroll');
     // percorre so uma PARTE do print, de proposito: nao precisa chegar ao
     // fim, e distancia menor = passagem mais lenta (amarrado ao scroll, a
     // velocidade e a do dedo; o que se controla e o quanto ele anda)
+    // A fatia baixa faz a tira andar MENOS que o scroll: passa devagar e nao
+    // precisa chegar ao fim do print.
     var estreito = window.innerWidth < 700;
-    var fatiaTira = estreito ? 0.22 : 0.5;
+    var fatiaTira = estreito ? 0.16 : 0.22;
     atos.forEach(function (ato) {
       var tira = ato.querySelector('.lw-strip');
-      if (!tira) return;
       var janela = ato.querySelector('.lw-view');
-      var alcance = tira.offsetHeight - (janela ? janela.offsetHeight : 0);
+      if (!tira || !janela) return;
+      var alcance = tira.offsetHeight - janela.offsetHeight;
       if (alcance <= 0) return;
-      var r = ato.getBoundingClientRect();
-      var t = Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (vh * 0.5 + r.height * 0.5)));
+      // progresso pela passagem da PROPRIA JANELA (base -> topo da tela), que
+      // e a janela de scroll mais longa possivel. Antes eu media pelo ato
+      // inteiro, bem mais alto: o percurso acabava com o ato tendo entrado so
+      // um pouco -- dai completar rapido e, chegando depois, ja estar no fim.
+      var rj = janela.getBoundingClientRect();
+      var t = Math.max(0, Math.min(1, (vh - rj.top) / (vh + rj.height)));
       tira.style.transform = 'translateY(-' + (alcance * fatiaTira * suave(t)) + 'px)';
     });
   }

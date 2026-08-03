@@ -1284,24 +1284,30 @@ html,body{overflow-x:clip}
    da tag vira altura literal e distorce o print */
 .lw-strip img{width:100%;height:auto;display:block}
 
-/* --- 03 SOLUÇÕES · o painel como tela solta --- */
-/* o painel e 1.57:1; sem caixa em volta ele assume a propria proporcao e
-   nao perde mais 20% das laterais como acontecia com o "slice" */
+/* --- 03 SOLUÇÕES · o SaaS real dentro de um laptop --- */
+/* mesma construcao do laptop da secao "A Maquina": tela com moldura clara,
+   notch e base com o vinco -- pra nao inventar um segundo desenho de laptop */
 .illo-sis{flex-direction:column;align-items:stretch}
-/* proporcao da GRAVACAO (1280x636 = 2.01:1), nao do painel: com 560/357 o
-   video seria cortado nas laterais. O painel de reserva e 1.57:1 e fica
-   centrado, com as sobras na mesma cor do fundo dele -- invisiveis. */
-.illo-sis .ls-screen{position:relative;z-index:2;display:block;width:100%;aspect-ratio:1280/636;
-  border-radius:16px;overflow:hidden;background:#0a0d22;
-  border:1px solid rgba(142,162,255,.2);
-  box-shadow:0 46px 90px -28px rgba(0,0,0,.95),0 10px 28px -10px rgba(0,0,0,.7);
+.ls-laptop{position:relative;z-index:2;display:block;width:100%;
+  margin-bottom:clamp(9px,1.3vw,14px);
   transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.act:hover .ls-screen{transform:translateY(-8px)}
-.illo-sis .dsh{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block}
+.act:hover .ls-laptop{transform:translateY(-8px)}
+.ls-screen{position:relative;display:block;width:94%;margin:0 auto;
+  aspect-ratio:1280/636;border-radius:15px 15px 4px 4px;overflow:hidden;background:#05060f;
+  box-shadow:0 0 0 1.5px #3f4470,0 0 0 5px #090a16 inset,0 -1px 0 rgba(255,255,255,.2),
+             0 44px 92px -30px rgba(0,0,0,.95)}
+.ls-view{position:absolute;inset:5px;border-radius:11px 11px 2px 2px;overflow:hidden;background:#0a0d22}
+.ls-base{position:absolute;top:100%;left:0;right:0;margin-top:-1px;height:clamp(9px,1.3vw,14px);
+  background:linear-gradient(180deg,#4a4f7c 0%,#333854 30%,#20233c 78%,#0e1020 100%);
+  border-radius:0 0 12px 12px;
+  box-shadow:0 18px 34px -14px rgba(0,0,0,.9)}
+.ls-base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:13%;height:45%;border-radius:0 0 7px 7px;background:#151830}
 /* a gravacao entra por cima; some se falhar e o painel reaparece */
 .ls-vid{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;display:block;
   background:#0a0d22;opacity:0;transition:opacity .6s ease}
 .ls-vid.pronto{opacity:1}
+.illo-sis .dsh{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block}
 
 @media (prefers-reduced-motion:no-preference){
   /* as capas respiram com `translate` (propriedade separada), pra nao brigar
