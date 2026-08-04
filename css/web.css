@@ -194,7 +194,6 @@
 
   .client-track { display: flex; gap: 14px; width: max-content; animation: cmarquee 34s linear infinite; }
   .client-track.rev { animation-direction: reverse; animation-duration: 40s; margin-top: 14px; }
-  .client-track:hover { animation-play-state: paused; }
   @keyframes cmarquee { to { transform: translateX(-50%); } }
 
   /* logos originais soltos no fundo, sem caixa */
@@ -360,7 +359,6 @@
             mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
   }
   .tstm-track { display: flex; gap: 22px; width: max-content; animation: tstmScroll 60s linear infinite; }
-  .tstm-viewport:hover .tstm-track { animation-play-state: paused; }
   @keyframes tstmScroll { to { transform: translateX(-50%); } }
 
   .tstm-card {

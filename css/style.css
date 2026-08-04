@@ -93,7 +93,6 @@ img{display:block;max-width:100%}
   overflow:hidden;white-space:nowrap;
 }
 .marquee-track{display:inline-flex;gap:0;animation:slide 26s linear infinite;will-change:transform}
-.marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-track span{
   font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,2vw,1.35rem);
   padding:16px 26px;color:var(--ink);display:inline-flex;align-items:center;gap:26px;letter-spacing:-0.01em;
