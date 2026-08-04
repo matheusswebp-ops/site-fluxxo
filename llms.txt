@@ -2,7 +2,7 @@
 
 > Estúdio brasileiro de design, criação de sites e automação, baseado em Fortaleza (CE). Cria peças para redes sociais e anúncios, sites e landing pages focados em conversão, e soluções sob medida. Contato: contato@fluxxo.io · WhatsApp +55 85 99265-7146.
 
-A Fluxxo trabalha em três frentes: design (carrosséis, anúncios Meta e Google, thumbnails, identidade visual), web (sites e landing pages rápidos, responsivos e estruturados pra converter) e automação de processos. Mais de 300 projetos publicados, com portfólio real e testes de velocidade abertos ao público.
+A Fluxxo trabalha em três frentes: redes sociais (gestão completa, com planejamento, criação, edição de Reels e publicação), sites e landing pages (código próprio, sem template) e sistemas (painéis, SaaS, área de cliente, integrações e automação). Mais de 300 projetos entregues para 95 marcas, com portfólio real e testes de velocidade abertos ao público.
 
 ## Páginas principais
 
@@ -10,7 +10,7 @@ A Fluxxo trabalha em três frentes: design (carrosséis, anúncios Meta e Google
 - [Portfólio de Design](https://fluxxo.io/design): carrosséis, anúncios, thumbnails e identidades visuais criados pela Fluxxo
 - [Sites e Landing Pages](https://fluxxo.io/webdesign): projetos no ar com prints navegáveis e testes de performance
 - [Sistemas e Automação](https://fluxxo.io/sistemas): automações, painéis e integrações sob medida, com calculadora de tempo perdido
-- [Redes sociais](https://fluxxo.io/social): gestão de conteúdo para redes sociais de empresas de qualquer segmento — estratégia e calendário editorial, carrosséis, roteiros de Reels, stories, publicação no ar e leitura de resultados; portfólio com 15 mercados atendidos
+- [Redes sociais](https://fluxxo.io/social): gestão de conteúdo para redes sociais de empresas de qualquer segmento — estratégia e calendário editorial, carrosséis, roteiros de Reels, stories, publicação no ar e leitura de resultados; portfólio com 14 mercados atendidos
 - [Nutricionistas](https://fluxxo.io/nutricionista): gerenciamento de redes sociais para consultórios de nutrição, com estratégia de conteúdo, carrosséis, roteiros de Reels e stories entregues em cronograma mensal
 - [Psicólogos](https://fluxxo.io/psicologo): gerenciamento de redes sociais para consultórios de psicologia, com conteúdo educativo dentro do Código de Ética do CFP, carrosséis, roteiros de Reels e stories em cronograma mensal
 - [Análise gratuita](https://fluxxo.io/analise): ferramenta gratuita que avalia se um site vende, em 12 perguntas e 4 pilares (clareza, conversão, confiança, técnica), sem cadastro

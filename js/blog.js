@@ -37,17 +37,6 @@ document.querySelectorAll('.b-filters button').forEach(btn => {
   });
 });
 
-// Newsletter (feedback visual; integrar com a ferramenta de e-mail depois)
-const form = document.getElementById('newsForm');
-if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('newsEmail');
-    const btn = form.querySelector('.b-news-btn');
-    if (!email.value || !email.value.includes('@')) { email.focus(); return; }
-    btn.textContent = 'Recebido! ✓';
-    btn.classList.add('ok');
-    email.value = '';
-    setTimeout(() => { btn.textContent = 'Quero receber'; btn.classList.remove('ok'); }, 3200);
-  });
-}
+// O formulario de newsletter foi removido do HTML: ele fingia sucesso e
+// descartava o e-mail digitado, sem backend nenhum por tras. No lugar dele
+// o bloco agora leva pra analise.html, que e uma entrega real.

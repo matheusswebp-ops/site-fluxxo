@@ -82,6 +82,8 @@
   transition:transform .16s,filter .2s}
 .b-news-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
 .b-news-btn.ok{background:linear-gradient(120deg,#0d5c34,#1fbf6b)}
+/* o bloco virou link pra analise.html (antes era formulario que descartava o e-mail) */
+a.b-news-btn{display:inline-flex;align-items:center;text-decoration:none;white-space:nowrap}
 
 /* ============ responsivo ============ */
 @media (max-width:1020px){
