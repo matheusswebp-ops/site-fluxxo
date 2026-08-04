@@ -1390,3 +1390,61 @@ html,body{overflow-x:clip}
   @keyframes dshLive{0%{opacity:1}55%{opacity:.25}100%{opacity:1}}
   @keyframes dshSheen{0%,10%{transform:translateX(0)}55%,100%{transform:translateX(310px)}}
 }
+
+  /* ============ PRECO no kicker de cada frente: a maior lacuna do funil
+     era o site nao dizer quanto custa nem o que entra no escopo ============ */
+  .act-preco{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:999px;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:none;
+    color:#e9dcff;background:rgba(124,77,255,.18);border:1px solid rgba(181,123,255,.34);
+    vertical-align:middle;white-space:nowrap}
+  @media (max-width:640px){.act-preco{display:block;margin:8px 0 0;width:fit-content}}
+
+  /* ============ A DOR, NA VOZ DE QUEM PAGOU ============
+     As quatro frases sao a primeira metade de depoimentos reais; a segunda
+     metade (o resultado) fecha a pagina na secao de prova social. */
+  .dor{position:relative;z-index:4;padding:clamp(54px,8vw,110px) 0 clamp(20px,3vw,40px)}
+  .dor-head{max-width:52ch;margin:0 auto clamp(28px,4vw,48px);text-align:center}
+  .dor-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3.1rem);
+    line-height:1.08;letter-spacing:-.02em;color:var(--title);margin:12px 0 0}
+  .dor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.8vw,22px)}
+  .dor-card{margin:0;padding:clamp(22px,2.6vw,30px);border:1px solid var(--line);border-radius:18px;
+    background:rgba(255,255,255,.028);display:flex;flex-direction:column;gap:20px;justify-content:space-between}
+  .dor-card blockquote{margin:0;font-family:var(--font-display);font-weight:300;
+    font-size:clamp(1.02rem,1.5vw,1.22rem);line-height:1.45;color:var(--title);letter-spacing:-.01em}
+  .dor-card figcaption{display:flex;align-items:center;gap:12px;font-size:.8rem;color:var(--text-dim)}
+  .dor-logo{display:grid;place-items:center;width:74px;height:26px;flex:0 0 auto}
+  .dor-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+    filter:grayscale(1) brightness(1.7);opacity:.72}
+  .dor-logo.escuro img{filter:grayscale(1) brightness(0) invert(1);opacity:.6}
+
+  /* ============ O QUE ESTA COMBINADO (garantias que viviam no FAQ fechado) ============ */
+  .deal{position:relative;z-index:4;padding:clamp(54px,8vw,110px) 0}
+  .deal-head{max-width:56ch;margin:0 auto clamp(26px,3.4vw,44px);text-align:center}
+  .deal-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3.1rem);
+    line-height:1.08;letter-spacing:-.02em;color:var(--title);margin:12px 0 14px}
+  .deal-head p{font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.6;color:var(--text-muted);margin:0}
+  .deal-list{list-style:none;margin:0 auto;padding:0;max-width:900px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
+  .deal-list li{margin:0;padding:clamp(18px,2.2vw,24px);background:#120c1e;
+    font-size:clamp(.94rem,1.35vw,1.02rem);line-height:1.55;color:var(--text-muted)}
+  .deal-list li b{color:var(--title);font-weight:500}
+  .deal-foot{max-width:60ch;margin:clamp(24px,3vw,36px) auto 0;text-align:center;
+    font-size:clamp(.96rem,1.4vw,1.06rem);line-height:1.6;color:var(--text-muted)}
+
+  /* prazo de cada etapa do processo: reduz a ansiedade de "quando fica pronto" */
+  .fc-meta .fc-when{display:inline-block;margin-left:10px;padding:2px 9px;border-radius:999px;
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;
+    color:#e9dcff;background:rgba(124,77,255,.2);border:1px solid rgba(181,123,255,.3);vertical-align:middle}
+
+  /* linha de resultado em destaque no depoimento: e o que separa elogio de prova */
+  .tcard .tmetric{display:block;margin:14px 0 10px;font-family:var(--font-display);font-weight:400;
+    font-size:clamp(1.02rem,1.5vw,1.24rem);line-height:1.25;color:var(--title);letter-spacing:-.015em}
+  .tcard .tmetric em{font-style:normal;color:#fff;
+    background:linear-gradient(180deg,transparent 62%,rgba(124,77,255,.42) 62%)}
+  .tcard blockquote{font-size:clamp(.9rem,1.25vw,.98rem)}
+
+  /* 2o degrau de compromisso pra quem ainda nao quer falar com ninguem */
+  .faq-alt{margin:22px 0 0;font-size:.92rem;line-height:1.6;color:var(--text-dim)}
+  .faq-alt a{color:var(--text-muted);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:1px;transition:color .2s,border-color .2s}
+  @media (hover:hover){.faq-alt a:hover{color:#fff;border-color:#fff}}

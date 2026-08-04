@@ -258,7 +258,7 @@ var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   })();
   // ---- entrada por scroll da Prova Social (JS, ida e volta) ----
   (function(){
-    var rvs=[].slice.call(document.querySelectorAll('.proof .rv, .contact .rv, .clients .rv, .faq .rv'));
+    var rvs=[].slice.call(document.querySelectorAll('.proof .rv, .contact .rv, .clients .rv, .faq .rv, .dor .rv, .deal .rv'));
     if(!rvs.length) return;
     if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(el){el.classList.add('in');}); return; }
     var io=new IntersectionObserver(function(en){
