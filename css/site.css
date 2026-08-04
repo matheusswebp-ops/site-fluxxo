@@ -1417,25 +1417,34 @@ html,body{overflow-x:clip}
     filter:grayscale(1) brightness(1.7);opacity:.72}
   .dor-logo.escuro img{filter:grayscale(1) brightness(0) invert(1);opacity:.6}
 
-  /* ============ O QUE ESTA COMBINADO (garantias que viviam no FAQ fechado) ============ */
-  .deal{position:relative;z-index:4;padding:clamp(54px,8vw,110px) 0}
-  .deal-head{max-width:56ch;margin:0 auto clamp(26px,3.4vw,44px);text-align:center}
-  .deal-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3.1rem);
+  /* ============ O QUE ESTA COMBINADO ============
+     As garantias existiam mas viviam trancadas em FAQ colapsado. Aqui elas
+     ganham o mesmo peso visual das outras secoes da pagina. */
+  .deal{position:relative;z-index:4;padding:clamp(56px,8vw,112px) 0;isolation:isolate}
+  .deal::before{content:"";position:absolute;left:50%;top:8%;width:min(760px,86vw);height:420px;
+    transform:translateX(-50%);border-radius:50%;filter:blur(80px);z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%,rgba(124,77,255,.18),transparent 68%)}
+  .deal-head{max-width:26ch;margin:0 auto clamp(30px,4vw,52px);text-align:center}
+  .deal-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3rem);
     line-height:1.08;letter-spacing:-.02em;color:var(--title);margin:12px 0 14px}
-  .deal-head p{font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.6;color:var(--text-muted);margin:0}
-  .deal-list{list-style:none;margin:0 auto;padding:0;max-width:900px;
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;
-    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
-  .deal-list li{margin:0;padding:clamp(18px,2.2vw,24px);background:#120c1e;
-    font-size:clamp(.94rem,1.35vw,1.02rem);line-height:1.55;color:var(--text-muted)}
-  .deal-list li b{color:var(--title);font-weight:500}
-  .deal-foot{max-width:60ch;margin:clamp(24px,3vw,36px) auto 0;text-align:center;
-    font-size:clamp(.96rem,1.4vw,1.06rem);line-height:1.6;color:var(--text-muted)}
-
-  /* prazo de cada etapa do processo: reduz a ansiedade de "quando fica pronto" */
-  .fc-meta .fc-when{display:inline-block;margin-left:10px;padding:2px 9px;border-radius:999px;
-    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;
-    color:#e9dcff;background:rgba(124,77,255,.2);border:1px solid rgba(181,123,255,.3);vertical-align:middle}
+  .deal-head p{max-width:34ch;margin:0 auto;font-size:clamp(.96rem,1.4vw,1.06rem);
+    line-height:1.6;color:var(--text-muted);text-wrap:balance}
+  .deal-list{list-style:none;margin:0 auto;padding:0;max-width:980px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(12px,1.4vw,16px)}
+  .dl-item{display:flex;align-items:flex-start;gap:14px;margin:0;
+    padding:clamp(18px,2.1vw,24px);border-radius:16px;
+    background:rgba(255,255,255,.032);border:1px solid rgba(255,255,255,.07);
+    transition:border-color .25s,background .25s,transform .25s}
+  @media (hover:hover){.dl-item:hover{border-color:rgba(181,123,255,.3);
+    background:rgba(255,255,255,.05);transform:translateY(-2px)}}
+  .dl-ck{flex:0 0 auto;display:grid;place-items:center;width:22px;height:22px;margin-top:1px;
+    border-radius:7px;color:#c9a0ff;background:rgba(124,77,255,.16);border:1px solid rgba(181,123,255,.26)}
+  .dl-ck svg{width:13px;height:13px}
+  .dl-txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .dl-txt b{font-weight:500;font-size:clamp(.96rem,1.35vw,1.02rem);line-height:1.35;color:var(--title)}
+  .dl-txt span{font-size:clamp(.86rem,1.2vw,.93rem);line-height:1.5;color:var(--text-dim)}
+  .deal-foot{max-width:44ch;margin:clamp(28px,3.4vw,42px) auto 0;text-align:center;
+    font-size:clamp(.94rem,1.35vw,1.02rem);line-height:1.6;color:var(--text-muted);text-wrap:balance}
 
   /* linha de resultado em destaque no depoimento: e o que separa elogio de prova */
   .tcard .tmetric{display:block;margin:14px 0 10px;font-family:var(--font-display);font-weight:400;
@@ -1448,3 +1457,20 @@ html,body{overflow-x:clip}
   .faq-alt{margin:22px 0 0;font-size:.92rem;line-height:1.6;color:var(--text-dim)}
   .faq-alt a{color:var(--text-muted);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:1px;transition:color .2s,border-color .2s}
   @media (hover:hover){.faq-alt a:hover{color:#fff;border-color:#fff}}
+
+  /* ============ CORRECOES DE LEITURA ============ */
+  /* 1. .act-list li e flex com gap, entao cada <b> solto virava item de flex
+        e ganhava 13px de folga de cada lado. O texto agora vai num span so. */
+  .act-list li .act-txt{min-width:0}
+  .act-list li .act-txt b{font-weight:600;color:var(--title)}
+
+  /* 2. subhead nunca deve virar uma linha unica atravessando a tela inteira */
+  .f-head p,.f-cta p,.work-head p,.dor-head p,.proof-head p,.faq-head p,
+  .clients-head p,.faq-cta p,.proof-cta p,.maq-head p,.fio-head p{
+    max-width:52ch;margin-left:auto;margin-right:auto;text-wrap:balance}
+
+  /* 3. logo de cliente no depoimento em cinza, como na secao de dor */
+  .tavatar.tlogo{background:none;border:none;width:auto;min-width:56px;height:26px;border-radius:0}
+  .tavatar.tlogo img{filter:grayscale(1) brightness(1.75);opacity:.72;
+    max-width:78px;max-height:26px;width:auto;height:auto}
+  .tavatar.tlogo.escuro img{filter:grayscale(1) brightness(0) invert(1);opacity:.58}
