@@ -183,3 +183,8 @@ body.brand-mode .dh-stat{background:var(--paper-2)}
 .dh-close-alt{font-size:.95rem;color:var(--text-muted,rgba(255,255,255,.66));text-decoration:none;
   border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:2px;transition:color .2s,border-color .2s}
 @media (hover:hover){.dh-close-alt:hover{color:#fff;border-color:#fff}}
+
+/* titulo de secao com limite de largura, pra nao virar linha unica em tela larga */
+.port-head h2{max-width:22ch;text-wrap:balance}
+.dh-close-card h2{max-width:24ch;text-wrap:balance}
+.dh-stat span{text-wrap:balance}

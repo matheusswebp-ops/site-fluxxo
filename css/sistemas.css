@@ -458,3 +458,11 @@ html,body{overflow-x:clip}
   @keyframes dshLive{0%{opacity:1}55%{opacity:.25}100%{opacity:1}}
   @keyframes dshSheen{0%,10%{transform:translateX(0)}55%,100%{transform:translateX(310px)}}
 }
+
+/* ============ TITULO DE SECAO: limite de largura ============
+   Nenhuma headline desta pagina tinha max-width, entao em tela larga elas
+   viravam uma linha unica atravessando a tela inteira. */
+.col-head h2,.show-head h2,.seg-head h2{max-width:22ch;margin-left:auto;margin-right:auto;
+  line-height:1.1;text-wrap:balance}
+.calc-left h2{max-width:20ch;text-wrap:balance}
+.col-head,.show-head,.seg-head{padding-left:clamp(0px,2vw,24px);padding-right:clamp(0px,2vw,24px)}
