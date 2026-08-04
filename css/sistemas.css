@@ -90,7 +90,8 @@
 
 /* ---------- o colapso ---------- */
 .col-stage{position:relative;z-index:2;height:260vh}
-.col-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.col-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  padding-top:clamp(120px,24vh,210px);padding-bottom:clamp(20px,4vh,50px);box-sizing:border-box}
 .col-head{position:absolute;top:10vh;left:0;right:0;text-align:center;z-index:3}
 .col-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
 .col-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4vw,2.9rem);letter-spacing:-0.03em;color:var(--title)}
@@ -140,12 +141,13 @@
 
 /* ---------- demos vivas · showcase pinado ---------- */
 .show-stage{position:relative;z-index:2;height:340vh}
-.show-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.show-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding-top:clamp(120px,24vh,210px);padding-bottom:clamp(20px,4vh,50px);box-sizing:border-box}
 .show-head{position:absolute;top:8.5vh;left:0;right:0;text-align:center;z-index:4;padding:0 20px}
 .show-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:12px}
 .show-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.7rem);letter-spacing:-0.03em;color:var(--title)}
 .show-head h2 .grad{color:#fff}
-.show-stack{position:relative;width:min(1120px,92vw);height:min(58vh,500px)}
+.show-stack{position:relative;width:min(1120px,92vw);height:min(52vh,460px)}
 .show-act{position:absolute;inset:0;display:grid;grid-template-columns:1.22fr .78fr;gap:clamp(24px,4vw,54px);align-items:center;opacity:0;will-change:transform,opacity}
 .show-demo{position:relative}
 .demo-frame{position:relative;aspect-ratio:16/11;background:#0a0d22;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
@@ -462,7 +464,7 @@ html,body{overflow-x:clip}
 /* ============ TITULO DE SECAO: limite de largura ============
    Nenhuma headline desta pagina tinha max-width, entao em tela larga elas
    viravam uma linha unica atravessando a tela inteira. */
-.col-head h2,.show-head h2,.seg-head h2{max-width:22ch;margin-left:auto;margin-right:auto;
-  line-height:1.1;text-wrap:balance}
+.col-head h2,.show-head h2{max-width:30ch;margin-left:auto;margin-right:auto;line-height:1.12;text-wrap:balance}
+.seg-head h2{max-width:24ch;margin-left:auto;margin-right:auto;line-height:1.12;text-wrap:balance}
 .calc-left h2{max-width:20ch;text-wrap:balance}
 .col-head,.show-head,.seg-head{padding-left:clamp(0px,2vw,24px);padding-right:clamp(0px,2vw,24px)}

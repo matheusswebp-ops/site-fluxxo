@@ -835,17 +835,18 @@
    Precisa de fundo sólido e z-index acima do palco da máquina
    (.maq-stage é z-index 3), senão o laptop apareceria atravessando. */
 .fio-stage{position:relative;z-index:5;height:480vh;margin-top:-40vh}
-.fio-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;background:#0e0815}
+.fio-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;background:#0e0815;
+  padding-top:clamp(120px,24vh,210px);padding-bottom:clamp(20px,4vh,50px);box-sizing:border-box}
 .fio-ghost{position:absolute;right:-2vw;top:50%;transform:translateY(-50%);z-index:0;pointer-events:none;
   font-family:var(--font-display);font-weight:600;font-size:clamp(16rem,38vw,34rem);line-height:1;
   color:transparent;-webkit-text-stroke:1.5px rgba(169,156,255,.13);transition:opacity .4s}
 .fio-head{position:absolute;top:9vh;left:0;right:0;padding:0 clamp(20px,5vw,48px);text-align:center;z-index:3}
 .fio-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:14px}
-.fio-head h2{max-width:24ch;margin:0 auto;font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.9rem);letter-spacing:-0.03em;line-height:1.1;color:var(--title);text-wrap:balance}
+.fio-head h2{max-width:30ch;margin:0 auto;font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.9rem);letter-spacing:-0.03em;line-height:1.1;color:var(--title);text-wrap:balance}
 .fio-head h2 .grad{color:#fff}
 .fio-head p{max-width:50ch;margin:clamp(16px,2vw,24px) auto 0;color:var(--text-muted);font-size:clamp(.95rem,1.5vw,1.05rem);line-height:1.6;text-wrap:balance}
 
-.fio-world{position:relative;z-index:2;height:min(58vh,520px);display:flex;align-items:center}
+.fio-world{position:relative;z-index:2;height:min(52vh,470px);display:flex;align-items:center}
 .fio-track{position:relative;display:flex;align-items:center;gap:clamp(60px,12vw,190px);width:max-content;
   padding:0 max(6vw,calc(50vw - 230px));will-change:transform}
 .fio-wire{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:160px;z-index:0;pointer-events:none}
