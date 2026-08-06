@@ -103,16 +103,16 @@ img{display:block;max-width:100%}
 /* ============ PORTFÓLIO ============ */
 .portfolio{padding-top:clamp(46px,7vw,88px);padding-bottom:clamp(60px,8vw,110px)}
 .port-head{
-  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-  gap:24px;margin-bottom:clamp(26px,4vw,40px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:20px;margin-bottom:clamp(26px,4vw,40px);
 }
 .port-head h2{
   font-family:var(--font-display);font-weight:700;
   font-size:clamp(1.9rem,4.6vw,3.1rem);letter-spacing:-0.03em;line-height:1;
 }
-.port-head p{color:var(--ink-soft);margin-top:12px;max-width:40ch;font-size:0.98rem;line-height:1.5}
+.port-head p{color:var(--ink-soft);margin:12px auto 0;max-width:40ch;font-size:0.98rem;line-height:1.5}
 
-.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .filters button{
   font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;
   background:transparent;border:1px solid var(--line);color:var(--ink-soft);
@@ -301,8 +301,7 @@ body{transition:background-color .9s ease, color .9s ease}
   .hero-foot{flex-direction:column;align-items:stretch;gap:24px}
   .hero-sub{max-width:none}
   .hero-cta{justify-content:center}
-  .port-head{align-items:flex-start}
-  .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .filters button{flex:0 0 auto}
   .bento{column-gap:11px;max-width:100%}
   .tile{margin-bottom:11px}
