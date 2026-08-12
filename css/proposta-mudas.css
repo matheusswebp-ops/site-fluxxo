@@ -48,15 +48,15 @@ main{padding-top:140px;position:relative;z-index:1}
 /* ---------- Split: escopo (esquerda) + preço (direita) ---------- */
 .prop-split{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,56px);align-items:start}
 
-.prop-scope h2{font-size:clamp(24px,3.1vw,36px);line-height:1.18;margin-bottom:clamp(28px,3.5vw,40px);max-width:20ch}
-.prop-checklist{list-style:none;display:flex;flex-direction:column;gap:18px}
+.prop-scope h2{font-size:clamp(24px,3.1vw,36px);line-height:1.18;margin-bottom:clamp(28px,3.5vw,40px)}
+.prop-checklist{list-style:none;display:flex;flex-direction:column;gap:0}
 .prop-checklist li{
-  position:relative;padding-left:24px;color:var(--text);font-size:15.5px;line-height:1.55;
-  border-top:1px solid var(--line);padding-top:18px;
+  display:flex;align-items:center;gap:14px;color:var(--text);font-size:15.5px;line-height:1.5;
+  border-top:1px solid var(--line);padding:18px 0;
 }
 .prop-checklist li:first-child{border-top:none;padding-top:0}
-.prop-checklist li::before{content:"—";position:absolute;left:0;top:18px;color:var(--purple-light)}
-.prop-checklist li:first-child::before{top:0}
+.prop-checklist li:last-child{padding-bottom:0}
+.prop-checklist li svg{flex:none;width:22px;height:22px}
 
 .prop-price{
   position:relative;overflow:hidden;text-align:left;border-radius:22px;
