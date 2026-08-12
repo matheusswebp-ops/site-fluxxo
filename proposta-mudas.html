@@ -22,13 +22,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=936">
-<link rel="stylesheet" href="css/proposta-mudas.css?v=3">
+<link rel="stylesheet" href="css/proposta-mudas.css?v=5">
 </head>
 <body>
 <div class="page-fx" aria-hidden="true">
   <span class="sky"></span>
-  <b class="b1" data-sp="-0.11"></b>
-  <b class="b2" data-sp="-0.20"></b>
+  <b class="b1"></b>
+  <b class="b2"></b>
+</div>
+<div class="prop-aurora" aria-hidden="true">
+  <span class="pa1"></span>
+  <span class="pa2"></span>
 </div>
 
 <!-- ============ NAV (simplificada, proposta 1:1) ============ -->
@@ -43,10 +47,10 @@
 
 <main>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ 1. HERO ============ -->
   <header class="prop-hero wrap" id="top">
     <span class="prop-kicker">Proposta comercial · Fluxxo</span>
-    <h1>Marketing todo dia, no ritmo do seu e-commerce de mudas.</h1>
+    <h1>Marketing todo dia, no ritmo do seu <span class="grad">e-commerce de mudas</span>.</h1>
     <p class="prop-lead">Squad dedicado da Fluxxo cobrindo segunda a sexta, 8h às 18h — criativos, vídeos e testes de anúncio, com direção criativa inclusa.</p>
     <div class="prop-tags">
       <span>Cobertura seg–sex · 8h–18h</span>
@@ -55,54 +59,37 @@
     </div>
   </header>
 
-  <!-- ============ O QUE FICA INCLUSO ============ -->
-  <section class="prop-section wrap reveal">
-    <span class="prop-eyebrow">Escopo</span>
-    <h2>O que você recebe</h2>
-    <div class="prop-cols">
-      <div class="prop-col">
-        <b>Entregas</b>
+  <!-- ============ 2. ESCOPO + INVESTIMENTO ============ -->
+  <section class="prop-section wrap reveal" id="investimento">
+    <div class="prop-split">
+      <div class="prop-scope">
+        <span class="prop-eyebrow">O que você recebe</span>
+        <h2>Cobertura completa, <span class="grad">sem depender de uma pessoa só</span>.</h2>
         <ul class="prop-checklist">
-          <li>Criativos estáticos, sem cota fixa</li>
-          <li>Vídeos para anúncios e redes</li>
+          <li>Criativos estáticos e vídeos, sem cota fixa</li>
           <li>Testes de variação de anúncio</li>
-          <li>Ajustes no mesmo dia</li>
-          <li>Ideias proativas de campanha</li>
-        </ul>
-      </div>
-      <div class="prop-col">
-        <b>Por que via Fluxxo</b>
-        <ul class="prop-checklist">
-          <li>Squad por trás — férias e imprevisto não param a operação</li>
-          <li>Direção criativa em cada peça</li>
-          <li>Ritmo de agência, acostumados a testar rápido</li>
+          <li>Ajustes no mesmo dia, conforme prioridade</li>
+          <li>Ideias proativas de campanha — não só sob demanda</li>
+          <li>Squad por trás: férias e imprevisto não param a operação</li>
           <li>Canal direto com o time durante o expediente</li>
         </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ INVESTIMENTO ============ -->
-  <section class="prop-section wrap reveal" id="investimento">
-    <span class="prop-eyebrow">Investimento</span>
-    <h2>Um valor fixo, cobertura integral</h2>
-    <div class="prop-glow prop-price-card">
-      <span class="prop-price-value">R$ 2.500<small>/mês</small></span>
-      <span class="prop-price-sub">Dedicação integral · segunda a sexta · 8h às 18h</span>
-      <p class="prop-note">Escopo e condições ficam registrados por escrito antes de começar.</p>
-    </div>
-  </section>
-
-  <!-- ============ CTA FINAL ============ -->
-  <section class="prop-section wrap reveal">
-    <div class="prop-glow prop-cta">
-      <h2>Bora começar?</h2>
-      <p>Responde por aqui ou chama no WhatsApp que a gente já alinha o próximo passo.</p>
-      <div class="prop-cta-actions">
-        <a href="https://wa.me/5585992657146?text=Oi%21%20Recebi%20a%20proposta%20da%20Fluxxo%20e%20quero%20fechar." target="_blank" rel="noopener" class="nav-cta">Fechar pelo WhatsApp</a>
-        <a href="mailto:contato@fluxxo.io">contato@fluxxo.io</a>
+      <div class="prop-price">
+        <span class="prop-price-kicker">Investimento</span>
+        <span class="prop-price-value">R$ 2.500<small>/mês</small></span>
+        <span class="prop-price-sub">Dedicação integral · seg–sex · 8h às 18h</span>
+        <a href="https://wa.me/5585992657146?text=Oi%21%20Recebi%20a%20proposta%20da%20Fluxxo%20e%20quero%20fechar." target="_blank" rel="noopener" class="nav-cta prop-price-cta">Fechar pelo WhatsApp</a>
+        <p class="prop-note">Escopo e condições ficam registrados por escrito antes de começar.</p>
       </div>
     </div>
+  </section>
+
+  <!-- ============ 3. CTA FINAL ============ -->
+  <section class="prop-cta-band wrap reveal">
+    <h2>Bora começar?</h2>
+    <p>Responde por aqui ou chama no WhatsApp que a gente já alinha o próximo passo.</p>
+    <a href="mailto:contato@fluxxo.io" class="prop-email">contato@fluxxo.io</a>
   </section>
 
 </main>
@@ -133,6 +120,6 @@
 </footer>
 </div>
 
-<script src="js/proposta-mudas.js?v=3"></script>
+<script src="js/proposta-mudas.js?v=5"></script>
 </body>
 </html>
