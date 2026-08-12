@@ -34,7 +34,7 @@ main{padding-top:140px;position:relative;z-index:1}
 .prop-lead{font-size:clamp(15px,1.7vw,18.5px);line-height:1.6;color:var(--text-muted);max-width:600px;margin:0 auto}
 
 /* ---------- Seções ---------- */
-.prop-section{padding:clamp(20px,4vw,40px) 0 clamp(50px,7vw,90px)}
+.prop-section{padding-top:clamp(20px,4vw,40px);padding-bottom:clamp(50px,7vw,90px)}
 .prop-eyebrow{
   display:block;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--purple-light);margin-bottom:16px;
@@ -73,7 +73,7 @@ main{padding-top:140px;position:relative;z-index:1}
 .prop-note{margin-top:18px;font-size:12.5px;color:var(--text-dim);line-height:1.6}
 
 /* ---------- CTA final ---------- */
-.prop-cta-band{max-width:640px;margin:0 auto;text-align:center;padding:clamp(40px,6vw,64px) 0 clamp(70px,9vw,110px);border-top:1px solid var(--line)}
+.prop-cta-band{max-width:640px;margin:0 auto;text-align:center;padding-top:clamp(40px,6vw,64px);padding-bottom:clamp(70px,9vw,110px);border-top:1px solid var(--line)}
 .prop-cta-band h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:14px}
 .prop-cta-band p{color:var(--text-muted);font-size:15.5px;margin-bottom:20px}
 .prop-email{color:var(--purple-light);font-size:14.5px;text-decoration:underline;text-underline-offset:3px}
@@ -93,4 +93,5 @@ main{padding-top:140px;position:relative;z-index:1}
 @media (max-width:760px){
   .prop-footer-grid{grid-template-columns:1fr}
   main{padding-top:104px}
+  .prop-eyebrow,.prop-scope h2{text-align:center}
 }
