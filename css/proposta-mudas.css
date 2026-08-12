@@ -2,19 +2,24 @@
 
 .prop-nav-shell{max-width:760px}
 
-main{padding-top:120px}
+main{padding-top:132px}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* ---------- Hero ---------- */
-.prop-hero{max-width:820px;margin:0 auto;text-align:center;padding-bottom:clamp(48px,7vw,84px)}
+.prop-hero{max-width:760px;margin:0 auto;text-align:center;padding-bottom:clamp(56px,8vw,96px)}
 .prop-kicker{
   display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--purple-light);margin-bottom:22px;
+  text-transform:uppercase;color:var(--purple-light);margin-bottom:24px;
 }
 .prop-hero h1{
   font-family:var(--font-display);font-weight:600;letter-spacing:-.02em;
-  font-size:clamp(30px,5vw,50px);line-height:1.12;color:var(--text-bright);margin-bottom:22px;
+  font-size:clamp(32px,5.2vw,54px);line-height:1.12;color:var(--text-bright);margin-bottom:22px;
 }
-.prop-lead{font-size:clamp(15px,1.6vw,18px);line-height:1.6;color:var(--text-muted);max-width:640px;margin:0 auto 30px}
+.prop-lead{font-size:clamp(15px,1.7vw,18.5px);line-height:1.6;color:var(--text-muted);max-width:600px;margin:0 auto 32px}
 .prop-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .prop-tags span{
   font-family:var(--font-mono);font-size:11.5px;letter-spacing:.02em;color:var(--text);
@@ -22,88 +27,73 @@ main{padding-top:120px}
 }
 
 /* ---------- Sections ---------- */
-.prop-section{padding:clamp(40px,6vw,72px) 0;border-top:1px solid var(--line)}
+.prop-section{padding:clamp(30px,4.5vw,52px) 0}
+.prop-section + .prop-section{padding-top:0}
 .prop-eyebrow{
   display:block;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--purple-light);margin-bottom:14px;
+  text-transform:uppercase;color:var(--purple-light);margin-bottom:14px;text-align:center;
 }
 .prop-section h2{
-  font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;
-  font-size:clamp(22px,3vw,32px);color:var(--text-bright);max-width:640px;margin-bottom:clamp(28px,4vw,44px);
+  font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;text-align:center;
+  font-size:clamp(24px,3.2vw,34px);color:var(--text-bright);margin:0 auto clamp(32px,4.5vw,48px);
 }
 
-/* ---------- Grid de cards (desafio) ---------- */
-.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.prop-card{
-  background:var(--paper-2,rgba(255,255,255,.03));border:1px solid var(--line);border-radius:14px;padding:26px;
+/* ---------- Escopo: 2 colunas ---------- */
+.prop-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:920px;margin:0 auto}
+.prop-col{
+  background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(26px,3vw,34px);
 }
-.prop-num{display:block;font-family:var(--font-mono);font-size:12px;color:var(--purple-light);margin-bottom:12px}
-.prop-card p{color:var(--text);font-size:14.5px;line-height:1.55}
-
-/* ---------- Lista (como entregamos) ---------- */
-.prop-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.prop-item{border:1px solid var(--line);border-radius:14px;padding:26px;background:rgba(255,255,255,.02)}
-.prop-item h3{font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--text-bright);margin-bottom:10px}
-.prop-item p{color:var(--text-muted);font-size:14.5px;line-height:1.6}
-
-/* ---------- Checklist (escopo) ---------- */
-.prop-checklist{list-style:none;display:flex;flex-direction:column;gap:14px;max-width:640px}
-.prop-checklist li{
-  position:relative;padding-left:30px;color:var(--text);font-size:15px;line-height:1.55;
+.prop-col b{
+  display:block;font-family:var(--font-display);font-weight:600;font-size:13px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--purple-light);margin-bottom:20px;
 }
+.prop-checklist{list-style:none;display:flex;flex-direction:column;gap:15px}
+.prop-checklist li{position:relative;padding-left:28px;color:var(--text);font-size:14.5px;line-height:1.55}
 .prop-checklist li::before{
-  content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:5px;
+  content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:5px;flex:none;
   background:linear-gradient(135deg,#7c4dff,#4d6bf5);
 }
 .prop-checklist li::after{
-  content:"";position:absolute;left:4.5px;top:8.5px;width:7px;height:4px;
+  content:"";position:absolute;left:4.5px;top:7.5px;width:7px;height:4px;
   border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);
 }
 
-/* ---------- Formato ---------- */
-.prop-format{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.prop-format div{background:var(--bg);padding:22px 26px;display:flex;flex-direction:column;gap:6px}
-.prop-format b{font-family:var(--font-display);font-size:14.5px;color:var(--text-bright)}
-.prop-format span{font-size:14px;color:var(--text-muted);line-height:1.5}
+/* ---------- Cards com glow (investimento / cta) ---------- */
+.prop-glow{
+  position:relative;max-width:640px;margin:0 auto;text-align:center;overflow:hidden;
+  border-radius:24px;padding:clamp(38px,5.5vw,58px) clamp(26px,5vw,54px);
+  border:1px solid rgba(169,156,255,.22);
+  background:radial-gradient(ellipse 90% 130% at 50% 0%,rgba(124,77,255,.16),transparent 55%),linear-gradient(165deg,rgba(28,22,38,.9),rgba(13,10,19,.95));
+  box-shadow:0 30px 70px -35px rgba(0,0,0,.8);
+}
 
 /* ---------- Investimento ---------- */
-.prop-price-card{
-  max-width:480px;border:1px solid rgba(181,123,255,.35);border-radius:18px;padding:32px;
-  background:linear-gradient(180deg,rgba(124,77,255,.10),rgba(124,77,255,.02));
-  box-shadow:0 30px 60px -30px rgba(124,77,255,.35);
-}
-.prop-price-top{margin-bottom:22px}
 .prop-price-value{
-  font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4vw,44px);color:var(--text-bright);
+  font-family:var(--font-display);font-weight:700;font-size:clamp(38px,5vw,50px);color:var(--text-bright);
   letter-spacing:-.02em;display:block;
 }
-.prop-price-value small{font-family:var(--font-body);font-weight:500;font-size:15px;color:var(--text-muted)}
-.prop-price-sub{display:block;margin-top:8px;font-family:var(--font-mono);font-size:12px;color:var(--purple-light);letter-spacing:.02em}
-.prop-price-card ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-.prop-price-card li{position:relative;padding-left:22px;font-size:14.5px;color:var(--text);line-height:1.5}
-.prop-price-card li::before{content:"—";position:absolute;left:0;color:var(--purple-light)}
-.prop-note{max-width:480px;margin-top:18px;font-size:13px;color:var(--text-dim);line-height:1.6}
-
-/* ---------- Prova social ---------- */
-.prop-social{text-align:center}
-.prop-social .prop-eyebrow{text-align:center}
-.prop-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(28px,4vw,52px)}
-.prop-logos img{height:26px;width:auto;opacity:.6;filter:grayscale(1) brightness(1.6)}
+.prop-price-value small{font-family:var(--font-body);font-weight:500;font-size:16px;color:var(--text-muted)}
+.prop-price-sub{display:block;margin-top:10px;font-family:var(--font-mono);font-size:12.5px;color:var(--purple-light);letter-spacing:.02em}
+.prop-note{margin-top:22px;font-size:13px;color:var(--text-dim);line-height:1.6}
 
 /* ---------- CTA final ---------- */
-.prop-cta{text-align:center;padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--line)}
-.prop-cta h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3.4vw,34px);color:var(--text-bright);margin-bottom:12px}
-.prop-cta p{color:var(--text-muted);font-size:15.5px;margin-bottom:26px}
+.prop-cta h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:12px}
+.prop-cta p{color:var(--text-muted);font-size:15.5px;margin-bottom:28px}
 .prop-cta-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px}
 .prop-cta-actions a.nav-cta{padding:13px 24px;font-size:14.5px}
 .prop-cta-actions a:not(.nav-cta){color:var(--text-muted);font-size:14.5px;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Footer (2 colunas nesta página) ---------- */
+.prop-footer-grid{grid-template-columns:1.4fr 1fr}
 
 /* ---------- Responsivo ---------- */
 @media (max-width:900px){
   /* esta página não tem menu hambúrguer — mantém o CTA visível no nav */
   .nav-cta{display:inline-block}
 }
-@media (max-width:820px){
-  .prop-grid,.prop-list,.prop-format{grid-template-columns:1fr}
-  main{padding-top:96px}
+@media (max-width:760px){
+  .prop-cols{grid-template-columns:1fr}
+  .prop-footer-grid{grid-template-columns:1fr}
+  main{padding-top:104px}
 }
