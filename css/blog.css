@@ -44,7 +44,7 @@
   background:transparent;border:1px solid var(--line);color:var(--text-muted);
   padding:10px 18px;border-radius:100px;cursor:pointer;transition:all .2s}
 .b-filters button:hover{border-color:var(--text-bright);color:var(--text-bright)}
-.b-filters button.active{background:linear-gradient(120deg,#4a1647,#7c3aed);border-color:transparent;color:#fff}
+.b-filters button.active{background:var(--purple);border-color:transparent;color:#fff}
 
 /* ============ grid de posts ============ */
 .b-posts{padding-bottom:clamp(50px,7vw,90px)}
@@ -77,7 +77,7 @@
 .b-news-form input::placeholder{color:var(--text-dim)}
 .b-news-form input:focus{border-color:rgba(169,156,255,.5);background:rgba(255,255,255,.07)}
 .b-news-btn{font-family:var(--font-body);font-size:14.5px;font-weight:600;color:#fff;border:none;cursor:pointer;
-  background:linear-gradient(120deg,#4a1647,#7c3aed);padding:15px 26px;border-radius:12px;
+  background:var(--purple);padding:15px 26px;border-radius:12px;
   box-shadow:0 0 0 1px rgba(181,123,255,.32) inset,0 10px 34px rgba(139,61,255,.35);
   transition:transform .16s,filter .2s}
 .b-news-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}

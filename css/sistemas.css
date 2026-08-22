@@ -178,7 +178,7 @@
 .p-l{left:11%;top:50%}.p-r{left:89%;top:50%}
 .fl-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;
   font-family:var(--font-display);font-weight:500;font-size:15px;color:#fff;letter-spacing:-0.01em;
-  background:linear-gradient(135deg,#4a1647,#7c3aed);border:1px solid rgba(201,160,255,.5);border-radius:12px;padding:12px 22px;
+  background:var(--purple);border:1px solid rgba(201,160,255,.5);border-radius:12px;padding:12px 22px;
   box-shadow:0 0 30px rgba(139,92,246,.6),0 10px 30px -10px rgba(0,0,0,.7)}
 .fl-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .fl-lines path{fill:none;stroke:rgba(142,162,255,.28);stroke-width:1.4;stroke-dasharray:5 6;animation:flDash 1.4s linear infinite}

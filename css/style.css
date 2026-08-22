@@ -365,7 +365,7 @@ body{padding-top:80px}
   box-shadow:0 0 9px rgba(139,123,255,.9);animation:toolPulse 2.2s ease-in-out infinite}
 .nav-links .nav-tool:hover{color:#fff}
 @keyframes toolPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
-.nav-cta{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#fff;background:linear-gradient(120deg,#4a1647,#7c3aed);padding:10px 18px;border-radius:10px;box-shadow:0 0 0 1px rgba(181,123,255,.3) inset;transition:transform .15s,filter .2s}
+.nav-cta{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#fff;background:var(--cobalt);padding:10px 18px;border-radius:10px;box-shadow:0 0 0 1px rgba(181,123,255,.3) inset;transition:transform .15s,filter .2s}
 .nav-cta:hover{transform:translateY(-1px);filter:brightness(1.08)}
 .nav-burger{display:none;background:none;border:none;color:#f5f3fa;cursor:pointer;padding:6px}
 .nav-burger svg{width:24px;height:24px}
@@ -418,7 +418,7 @@ body{padding-top:80px}
 
   .mobile-panel a:last-child{margin-top:28px;justify-content:center;gap:10px;
     font-family:'Inter',sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:0;color:#fff;
-    background:linear-gradient(120deg,#4a1647,#7c3aed);border-radius:15px;padding:18px;
+    background:var(--cobalt);border-radius:15px;padding:18px;
     box-shadow:0 0 0 1px rgba(181,123,255,.34) inset,0 16px 44px rgba(139,61,255,.4)}
   .mobile-panel a:last-child::before{display:none}
 

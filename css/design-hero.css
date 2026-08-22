@@ -90,7 +90,7 @@ body{padding-top:0}
   opacity:0;transform:translateY(14px);animation:dRise 1s ease 1.8s forwards}
 @keyframes dRise{to{opacity:1;transform:none}}
 .btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:#fff;
-  background:linear-gradient(120deg,#4a1647,#7c3aed);padding:16px 28px;border-radius:12px;
+  background:var(--purple);padding:16px 28px;border-radius:12px;
   box-shadow:0 0 0 1px rgba(181,123,255,.32) inset,0 10px 34px rgba(139,61,255,.42);transition:transform .16s,filter .2s}
 .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
 .btn-primary svg{width:16px;height:16px}
