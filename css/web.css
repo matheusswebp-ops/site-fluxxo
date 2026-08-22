@@ -59,27 +59,22 @@
   .head-wide h2 { font-size: clamp(1.8rem, 3.6vw, 2.9rem); }
 
   /* botões no padrão da home */
-  .btn-primary { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: #fff; background: linear-gradient(120deg, #4a1647, #7c3aed); padding: 16px 28px; border-radius: 12px; text-decoration: none; cursor: pointer; box-shadow: 0 0 0 1px rgba(181,123,255,0.32) inset, 0 10px 34px rgba(139,61,255,0.42); transition: transform 0.16s, filter 0.2s; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: #fff; background: var(--purple); padding: 16px 28px; border-radius: 12px; text-decoration: none; cursor: pointer; box-shadow: 0 0 0 1px rgba(181,123,255,0.32) inset, 0 10px 34px rgba(139,61,255,0.42); transition: transform 0.16s, filter 0.2s; }
   .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); }
   .btn-dark { display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; color: var(--text); background: rgba(255,255,255,0.05); border: 1px solid var(--line); padding: 16px 26px; border-radius: 12px; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
   .btn-dark:hover { background: rgba(255,255,255,0.08); border-color: rgba(181,123,255,0.4); }
 
-  /* Botão brilhante — degradê deslizante + pulso de brilho (cores da home) */
+  /* Botão brilhante — cor sólida (igual home) + pulso de brilho */
   .btn-glow {
     display: inline-block; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: #fff;
-    background: linear-gradient(100deg, #4a1647, #7c3aed, #7c4dff, #4a1647);
-    background-size: 300% 100%;
+    background: var(--purple);
     padding: 16px 30px; border-radius: 12px; text-decoration: none; cursor: pointer;
     position: relative;
-    animation: btnGradShift 5s ease-in-out infinite, btnPulse 2.6s ease-in-out infinite;
+    animation: btnPulse 2.6s ease-in-out infinite;
     transition: transform 0.15s;
   }
   .btn-glow:hover { transform: translateY(-2px); }
 
-  @keyframes btnGradShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
   @keyframes btnPulse {
     0%, 100% { box-shadow: 0 0 0 1px rgba(181,123,255,0.4) inset, 0 4px 22px rgba(139,61,255,0.35); }
     50% { box-shadow: 0 0 0 1px rgba(224,181,255,0.6) inset, 0 6px 42px rgba(224,95,255,0.65), 0 0 30px rgba(139,61,255,0.4); }
@@ -209,6 +204,41 @@
   .client-chip:hover img { opacity: 1; }
 
   .clients-cta { text-align: center; margin-top: 52px; }
+
+  /* ============ TEMA CLARO — proof-section + clients-section + portfolio ============
+     Três seções em sequência, logo após o hero, no mesmo padrão claro da home. */
+  .proof-section, .clients-section, #portfolio { background: #fff; }
+
+  .proof-section .proof-card {
+    background:
+      linear-gradient(120deg, #faf8ff 0%, #f3eefb 100%) padding-box,
+      linear-gradient(120deg, rgba(139,61,255,.3), rgba(108,69,150,.14) 60%, rgba(108,69,150,.08)) border-box;
+    box-shadow: 0 16px 40px -24px rgba(108,69,150,.35);
+  }
+  .proof-section .proof-tile { background: linear-gradient(160deg, #efe6fc, #f8f5fc); border-color: rgba(124,77,255,.28); }
+  .proof-section .proof-card p { color: #655e78; }
+  .proof-section .proof-card p b { color: #1c1428; }
+
+  .clients-section .section-head h2 { color: #1c1428; }
+  .clients-section .section-head h2 .grad { color: var(--purple); }
+  .clients-section .section-head p { color: #655e78; }
+  .clients-section .client-rows::before { background: linear-gradient(90deg, #fff, transparent); }
+  .clients-section .client-rows::after { background: linear-gradient(-90deg, #fff, transparent); }
+  .clients-section .client-chip img { filter: brightness(0); opacity: .5; }
+  .clients-section .client-chip:hover img { opacity: .85; }
+
+  #portfolio .section-head h2 { color: #1c1428; }
+  #portfolio .section-head h2 .grad { color: var(--purple); }
+  #portfolio .section-head p { color: #655e78; }
+  #portfolio .side-item { border-color: rgba(108,69,150,.18); }
+  #portfolio .side-item b { color: #3a3247; }
+  #portfolio .side-item .count { color: #8a8296; }
+  #portfolio .side-item:hover b { color: #1c1428; }
+  #portfolio .side-item.active { background: linear-gradient(120deg, rgba(124,77,255,.14), rgba(77,107,245,.07)); border-color: rgba(124,77,255,.4); }
+  #portfolio .side-item.active b { color: #1c1428; }
+  #portfolio .side-item.active .count { color: var(--purple); }
+  #portfolio .pc-left .pc-name { color: #1c1428; }
+  #portfolio .pc-left .pc-desc { color: #655e78; }
 
   /* Sticky-stack — bloco 1 nasce e trava, bloco 2 sobe e cobre */
   .stack-section { position: relative; padding: 40px 0 90px; }
