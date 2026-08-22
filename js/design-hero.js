@@ -284,7 +284,6 @@
     var ident = document.getElementById('identidade');
     var mapa = [
       ['.dhero', [17, 12, 41]],
-      ['.dh-stats', [17, 12, 41]],
       ['#trabalhos', [17, 12, 41]],
       ['.footer-wrap', [17, 12, 41]]
     ].map(function (par) {
