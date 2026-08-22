@@ -171,19 +171,23 @@ body.brand-mode .dh-stat{background:var(--paper-2)}
 /* ============ FECHAMENTO do portfolio (o visitante que rolou tudo
    nao tinha CTA nenhum: o ultimo ficava no topo da pagina) ============ */
 .dh-close{padding:clamp(48px,7vw,96px) 0 clamp(24px,4vw,48px)}
-.dh-close-card{border:1px solid var(--line);border-radius:22px;padding:clamp(28px,4vw,52px);
-  background:radial-gradient(120% 140% at 50% 0%,rgba(124,77,255,.16),rgba(255,255,255,.03) 60%);
+.dh-close-card{position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid rgba(181,123,255,.28);border-radius:22px;padding:clamp(36px,5vw,60px);
+  background:radial-gradient(120% 140% at 50% 0%,rgba(124,77,255,.22),rgba(255,255,255,.03) 60%);
+  box-shadow:0 0 0 1px rgba(124,77,255,.06) inset,0 30px 80px -30px rgba(124,77,255,.35);
   text-align:center}
-.dh-close-k{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;
+.dh-close-card::before{content:"";position:absolute;z-index:-1;left:50%;top:-40%;
+  width:70%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.35),transparent 70%);filter:blur(50px)}
+.dh-close-k{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--plum,#b57bff);margin-bottom:14px}
+.dh-close-k::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--purple,#8b3dff);
+  box-shadow:0 0 9px 1px rgba(139,92,246,.85)}
 .dh-close-card h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
   font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.08;letter-spacing:-.02em;margin:0 auto 14px}
 .dh-close-card p{max-width:60ch;font-size:clamp(.98rem,1.4vw,1.08rem);line-height:1.65;
   color:var(--text-muted,rgba(255,255,255,.66));margin:0 auto 26px}
-.dh-close-acts{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px}
-.dh-close-alt{font-size:.95rem;color:var(--text-muted,rgba(255,255,255,.66));text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:2px;transition:color .2s,border-color .2s}
-@media (hover:hover){.dh-close-alt:hover{color:#fff;border-color:#fff}}
+.dh-close-acts{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px}
 
 /* titulo de secao com limite de largura, pra nao virar linha unica em tela larga */
 .port-head h2{max-width:22ch;text-wrap:balance}
