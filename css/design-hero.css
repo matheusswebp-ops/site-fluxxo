@@ -3,7 +3,7 @@
    Carregado DEPOIS do style.css: só adiciona, não reescreve a base.
    ============================================================ */
 :root{
-  --bg:#0e0815;
+  --bg:#110c29;
   --purple:#7c4dff;
   --purple-light:#a99cff;
   --title:#b6b5b9;
@@ -68,8 +68,8 @@ body{padding-top:0}
 /* névoa: funde a parede no roxo e garante leitura da headline */
 .hero-wall::after{content:"";position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 60% 52% at 50% 46%,rgba(14,8,21,.32),rgba(14,8,21,.82) 82%),
-    linear-gradient(180deg,rgba(14,8,21,.6) 0%,rgba(14,8,21,.12) 26%,rgba(14,8,21,.12) 58%,#0e0815 97%),
+    radial-gradient(ellipse 60% 52% at 50% 46%,rgba(17,12,41,.32),rgba(17,12,41,.82) 82%),
+    linear-gradient(180deg,rgba(17,12,41,.6) 0%,rgba(17,12,41,.12) 26%,rgba(17,12,41,.12) 58%,#110c29 97%),
     radial-gradient(ellipse 80% 70% at 50% 50%,rgba(93,42,173,.16),transparent 70%)}
 
 /* ---------- conteúdo ---------- */
