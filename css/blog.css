@@ -61,16 +61,21 @@
 
 /* ============ newsletter ============ */
 .b-news{padding-bottom:clamp(70px,9vw,120px)}
-.b-news-card{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;
-  border-radius:22px;padding:clamp(30px,4.5vw,56px);
-  border:1px solid rgba(169,156,255,.22);
-  background:radial-gradient(ellipse 90% 130% at 15% 0%,rgba(124,77,255,.2),transparent 55%),linear-gradient(165deg,rgba(28,22,38,.85),rgba(13,10,19,.92));
-  box-shadow:0 30px 70px -35px rgba(0,0,0,.8)}
+.b-news-card{position:relative;isolation:isolate;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center;
+  border-radius:22px;padding:clamp(36px,5.5vw,64px);
+  border:1px solid rgba(169,156,255,.3);
+  background:radial-gradient(120% 140% at 50% 0%,rgba(124,77,255,.22),rgba(255,255,255,.03) 60%),linear-gradient(165deg,rgba(28,22,38,.85),rgba(13,10,19,.92));
+  box-shadow:0 0 0 1px rgba(124,77,255,.06) inset,0 30px 80px -30px rgba(124,77,255,.4)}
+.b-news-card::before{content:"";position:absolute;z-index:-1;left:50%;top:-40%;
+  width:60%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.35),transparent 70%);filter:blur(50px)}
+.b-news-text{display:flex;flex-direction:column;align-items:center;max-width:56ch}
 .b-news-text .b-kicker{margin-bottom:14px}
 .b-news-text h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-0.03em;line-height:1.1;color:var(--title)}
 .b-news-text h2 .grad{color:#fff}
 .b-news-text p{color:var(--text-muted);margin-top:12px;font-size:14.5px}
-.b-news-form{display:flex;gap:10px;flex-wrap:wrap;min-width:min(420px,100%)}
+.b-news-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;min-width:0}
 .b-news-form input{flex:1;min-width:220px;background:rgba(255,255,255,.05);border:1px solid var(--line);
   border-radius:12px;padding:15px 18px;color:var(--text-bright);font-family:var(--font-body);font-size:14.5px;outline:none;
   transition:border-color .2s,background .2s}
