@@ -16,7 +16,9 @@ if (burger && mpanel) {
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduce) {
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => e.target.classList.toggle('in', e.isIntersecting));
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
   }, { threshold: 0.12, rootMargin: '-40px 0px -40px 0px' });
   document.querySelectorAll('.b-rv').forEach(el => io.observe(el));
 } else {
