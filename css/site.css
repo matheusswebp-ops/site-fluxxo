@@ -175,7 +175,6 @@
   .frentes{position:relative;z-index:6;padding:80px 0;background:#fff;margin-top:-55vh}
   .frentes::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      linear-gradient(180deg, var(--bg) 0%, rgba(17,12,41,.55) 8%, transparent 16%), radial-gradient(75% 55% at 18% 0%, rgba(124,77,255,.5) 0%, rgba(17,12,41,.65) 30%, transparent 62%),
       radial-gradient(72% 32% at 50% 0%, rgba(108,69,150,.065), transparent 62%),
       radial-gradient(84% 38% at 50% 100%, rgba(108,69,150,.065), transparent 66%)}
   .frentes .wrap{position:relative;z-index:1}
@@ -362,7 +361,6 @@
   .proof{position:relative;z-index:2;padding:80px 0;overflow:hidden;background:#fff}
   .proof::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      linear-gradient(180deg, var(--bg) 0%, rgba(17,12,41,.55) 8%, transparent 16%), radial-gradient(75% 55% at 18% 0%, rgba(124,77,255,.5) 0%, rgba(17,12,41,.65) 30%, transparent 62%),
       radial-gradient(72% 54% at 50% 46%, rgba(108,69,150,.07), rgba(108,69,150,.035) 44%, transparent 74%),
       radial-gradient(82% 28% at 50% 100%, rgba(108,69,150,.04), transparent 64%)}
   .proof .wrap{position:relative;z-index:1}
