@@ -235,19 +235,17 @@
   // ---- fundo da página muda de cor por seção ----
   if (!reduz) {
     var mapa = [
-      ['.hero', [14, 8, 21]],
-      ['.clients-section', [22, 11, 34]],
-      ['#portfolio', [14, 8, 21]],
-      ['#prova', [10, 15, 44]],
-      ['.stack-section', [19, 8, 30]],
-      ['#depoimentos', [33, 10, 27]],
-      ['.final-section', [14, 8, 21]]
+      ['.hero', [17, 12, 41]],
+      ['#portfolio', [17, 12, 41]],
+      ['#prova', [17, 12, 41]],
+      ['.stack-section', [17, 12, 41]],
+      ['.final-section', [17, 12, 41]]
     ].map(function (par) {
       var el = document.querySelector(par[0]);
       return el ? { el: el, c: par[1] } : null;
     }).filter(Boolean);
 
-    var cur = [14, 8, 21];
+    var cur = [17, 12, 41];
     (function corLoop() {
       var meio = innerHeight / 2, melhor = null, menor = Infinity;
       mapa.forEach(function (m) {

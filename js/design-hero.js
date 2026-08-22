@@ -283,17 +283,17 @@
     if (reduz) return;
     var ident = document.getElementById('identidade');
     var mapa = [
-      ['.dhero', [14, 8, 21]],
-      ['.dh-stats', [23, 12, 35]],
-      ['#trabalhos', [14, 8, 21]],
-      ['.foot', [19, 9, 29]]
+      ['.dhero', [17, 12, 41]],
+      ['.dh-stats', [17, 12, 41]],
+      ['#trabalhos', [17, 12, 41]],
+      ['.footer-wrap', [17, 12, 41]]
     ].map(function (par) {
       var el = document.querySelector(par[0]);
       return el ? { el: el, c: par[1] } : null;
     }).filter(Boolean);
     if (!mapa.length) return;
 
-    var cur = [14, 8, 21];
+    var cur = [17, 12, 41];
     (function corLoop() {
       // modo identidade visual: a marca manda nas cores, o loop se cala
       if (ident && !ident.hidden) {
