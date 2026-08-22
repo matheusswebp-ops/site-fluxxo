@@ -690,9 +690,6 @@
 
 /* ============ TRABALHOS SELECIONADOS (home) ============ */
 .work{position:relative;padding:90px 0 60px;overflow:hidden;background:#fff}
-.work::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg, var(--bg) 0%, rgba(17,12,41,.55) 8%, transparent 16%), radial-gradient(75% 55% at 18% 0%, rgba(124,77,255,.5) 0%, rgba(17,12,41,.65) 30%, transparent 62%)}
-.work .wrap,.work-belt,.work-ctas{position:relative;z-index:1}
 .work-head{text-align:center;max-width:620px;margin:0 auto clamp(40px,5vw,60px)}
 .work-head .kicker{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-light);display:block;margin-bottom:16px}
 .work-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-0.03em;line-height:1.06;color:var(--title)}
