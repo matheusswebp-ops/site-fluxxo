@@ -1,0 +1,63 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#000}
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:#f5f5f5;
+  min-height:100vh;
+  padding:24px 16px;
+}
+
+.phone{width:100%;max-width:420px}
+
+.header{display:flex;align-items:center;gap:10px;padding:10px 4px 14px}
+.avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,#4b3ba0,#8a2be2);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;flex-shrink:0;
+}
+.uname{font-weight:600;font-size:14px}
+.usub{font-size:11px;color:#8a8a8a}
+.header .dots{margin-left:auto;color:#8a8a8a;font-size:18px;letter-spacing:2px}
+
+.stage{
+  position:relative;width:100%;aspect-ratio:4/5;
+  background:#000;border-radius:14px;overflow:hidden;
+  border:1px solid #1f1f1f;
+}
+.track{display:flex;width:100%;height:100%;transition:transform .35s cubic-bezier(.22,.61,.36,1);touch-action:pan-y}
+.slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;background:#000}
+.slide img{width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+
+.nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(4px);
+  border:none;color:#fff;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;transition:opacity .2s;
+}
+.stage:hover .nav{opacity:1}
+.nav.prev{left:10px}
+.nav.next{right:10px}
+.nav:disabled{display:none}
+
+.counter{
+  position:absolute;top:12px;right:12px;
+  background:rgba(0,0,0,.55);color:#fff;
+  font-size:11px;padding:4px 9px;border-radius:20px;letter-spacing:.3px;
+}
+
+.dashes{display:flex;gap:4px;padding:10px 2px 0}
+.dash{flex:1;height:2px;background:#2a2a2a;border-radius:2px;overflow:hidden}
+.dash.active{background:#fff}
+
+.actions{display:flex;align-items:center;gap:16px;padding:14px 4px 4px;font-size:22px}
+.actions .right{margin-left:auto}
+.likes{padding:8px 4px 0;font-size:13px;font-weight:600}
+.caption{padding:6px 4px 0;font-size:13px;color:#ddd;line-height:1.4}
+.caption b{color:#fff}
+.time{padding:8px 4px 0;font-size:10px;color:#8a8a8a;text-transform:uppercase;letter-spacing:.4px}
