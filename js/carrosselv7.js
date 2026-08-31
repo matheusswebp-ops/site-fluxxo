@@ -1,10 +1,12 @@
+const ASSET_VERSION = '20260831b';
+
 const slides = [
   'img/carrossel-basicus-v7-1.jpg',
   'img/carrossel-basicus-v7-2.jpg',
   'img/carrossel-basicus-v7-3.jpg',
   'img/carrossel-basicus-v7-4.jpg',
   'img/carrossel-basicus-v7-5.jpg'
-];
+].map(src => `${src}?v=${ASSET_VERSION}`);
 
 const track = document.getElementById('track');
 const dashesEl = document.getElementById('dashes');
