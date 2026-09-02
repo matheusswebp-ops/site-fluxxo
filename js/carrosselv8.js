@@ -1,4 +1,4 @@
-const ASSET_VERSION = '20260902c';
+const ASSET_VERSION = '20260902d';
 
 const slides = [
   'img/carrossel-basicus-v8-1.jpg',
