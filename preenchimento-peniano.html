@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609101842">
-<link rel="stylesheet" href="css/pp.css?v=202609101842">
+<link rel="stylesheet" href="css/dna.css?v=202609101846">
+<link rel="stylesheet" href="css/pp.css?v=202609101846">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -185,13 +185,16 @@
         “furar”, ela desliza entre os tecidos e distribui o produto de forma homogênea,
         <b>preservando vasos e nervos</b> — e a sensibilidade.</p>
     </div>
-    <!-- preload="none": o vídeo só baixa quando o visitante manda tocar. O
-         pôster (extraído do primeiro segundo) é o que carrega na primeira
-         visita, e ele pesa 60 KB contra os 3,9 MB do arquivo. -->
+    <!-- Vídeo ambiente: roda sozinho, em looping, sem controle e sem som — é
+         ilustração em movimento, não mídia para assistir. O `src` fica no
+         data-src e só é ligado quando a seção chega perto da tela: assim os
+         3,7 MB não entram no carregamento da página, e quem nunca rola até
+         aqui baixa só o pôster de 60 KB. -->
     <figure class="video-slot">
-      <video src="video/pp-como-funciona.mp4" poster="img/pp-video-poster.webp"
-             width="1280" height="720" controls playsinline preload="none"
-             aria-label="A microcânula de ponta romba deslizando entre os tecidos e distribuindo o ácido hialurônico"></video>
+      <video id="videoComo" class="video-loop" poster="img/pp-video-poster.webp"
+             data-src="video/pp-como-funciona.mp4"
+             width="1280" height="720" muted loop playsinline preload="none"
+             aria-hidden="true" tabindex="-1"></video>
     </figure>
 
     <div class="grid grid-3">
@@ -603,6 +606,27 @@
       itens.forEach(function(i){ i.target.classList.toggle('in', i.isIntersecting) });
     }, {rootMargin:'0px 0px -4% 0px', threshold:0});
     document.querySelectorAll('.t-ombro').forEach(function(s){ obsSec.observe(s) });
+  }
+
+  /* ---- vídeo ambiente: liga ao chegar perto, pausa ao sair ----
+     O arquivo só é pedido quando a seção se aproxima da tela. Depois disso
+     o vídeo roda em looping enquanto estiver visível e pausa quando sai —
+     não adianta gastar bateria animando o que ninguém está vendo. */
+  var vid = document.getElementById('videoComo');
+  if (vid && !reduz && 'IntersectionObserver' in window){
+    var obsVid = new IntersectionObserver(function(itens){
+      itens.forEach(function(i){
+        if (i.isIntersecting){
+          if (!vid.src) vid.src = vid.dataset.src;
+          var p = vid.play();
+          /* alguns navegadores recusam o autoplay: o pôster fica no lugar */
+          if (p && p.catch) p.catch(function(){});
+        } else if (vid.src){
+          vid.pause();
+        }
+      });
+    }, {rootMargin:'200px 0px', threshold:0});
+    obsVid.observe(vid);
   }
 
   /* ---- FAQ: um aberto por vez ---- */
