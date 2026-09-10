@@ -359,6 +359,13 @@ html{scroll-padding-top:88px}
   background:linear-gradient(150deg,#e2edf4,#d3e2ed);
   border:1px solid var(--line);
 }
+/* Sobre o navy a ilustração continua clara — vira um painel aceso, como um
+   negatoscópio. Escurecê-la para acompanhar a seção mataria a legibilidade
+   do diagrama, que é todo feito de linha fina. */
+.sec--dark .ilustra{
+  border-color:rgba(160,205,240,.22);
+  box-shadow:0 0 0 6px rgba(126,186,240,.06),0 46px 92px -44px rgba(0,0,0,.9);
+}
 .ilustra svg{display:block;width:100%;height:auto}
 
 /* O produto se distribui atrás da ponta enquanto ela desliza. Quem anima é o
@@ -571,6 +578,58 @@ html{scroll-padding-top:88px}
    do item de grade e a figura, que só tem conteúdo absoluto dentro, encolhe
    para a largura mínima. */
 .fechamento .foto{width:100%;max-width:380px;justify-self:end}
+
+/* ============================================================
+   VARIANTES ESCURAS
+   A página tem cinco seções escuras: o navy é o chão dela, não um acento.
+   Cada bloco claro ganha aqui a sua versão de vidro — fundo translúcido,
+   borda de luz baixa e texto de apoio tingido de azul, nunca cinza.
+   ============================================================ */
+
+/* ----- 6. duas verdades ----- */
+.sec--dark .verdade{
+  background:rgba(255,255,255,.05);border-color:var(--dark-line);
+  color:var(--dark-ink);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.sec--dark .verdade p{color:var(--dark-ink-soft)}
+.sec--dark .verdade p b{color:var(--dark-ink)}
+.sec--dark .verdade::before{background:#8fc4f0}
+.sec--dark .verdade--risco::before{background:#e8a888}
+.sec--dark .verdade .ic{
+  background:rgba(143,196,240,.13);color:#8fc4f0;
+  box-shadow:inset 0 0 0 1px var(--dark-line);
+}
+.sec--dark .verdade--risco .ic{background:rgba(232,168,136,.14);color:#e8a888}
+.sec--dark .verdade .rot{color:#8fc4f0}
+.sec--dark .verdade--risco .rot{color:#e8a888}
+
+/* ----- 8. autoridade ----- */
+.sec--dark .autoridade .nome{color:var(--dark-ink)}
+.sec--dark .autoridade .crm{color:#8fc4f0}
+.sec--dark .autoridade .bio{color:var(--dark-ink-soft)}
+.sec--dark .autoridade .bio b{color:var(--dark-ink)}
+.sec--dark .credenciais li{color:var(--dark-ink)}
+.sec--dark .credenciais li::before{background:#8fc4f0}
+/* o slot vazio fica claro demais contra o navy: baixa o brilho da trama */
+.sec--dark .vago{
+  background:
+    repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 10px,transparent 10px 22px),
+    linear-gradient(150deg,#3f6b93,#1d3f61 56%,#0d2947);
+}
+
+/* ----- 10. FAQ ----- */
+.sec--dark .faq details{
+  background:rgba(255,255,255,.045);border-color:var(--dark-line);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.sec--dark .faq details[open]{
+  background:rgba(255,255,255,.075);border-color:rgba(143,196,240,.42);
+}
+.sec--dark .faq summary{color:var(--dark-ink)}
+.sec--dark .faq summary::after{border-right-color:#8fc4f0;border-bottom-color:#8fc4f0}
+.sec--dark .faq .resposta{color:var(--dark-ink-soft)}
+.sec--dark .faq .resposta b{color:var(--dark-ink)}
 
 /* ---------- 11. FAQ ---------- */
 .faq{max-width:840px;margin:clamp(30px,3.4vw,46px) auto 0}
