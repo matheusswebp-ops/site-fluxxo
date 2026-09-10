@@ -773,31 +773,37 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
 }
 
 @media (max-width:760px){
-  /* ---- COMPARATIVO: uma coluna, pares intercalados ---- */
-  /* O cabeçalho de coluna sai e cada célula passa a se apresentar: sem isso,
-     numa coluna só, o leitor perde de quem é a linha que está lendo. */
+  /* ---- COMPARATIVO no celular: dois blocos, cada um com a sua imagem ----
+     Numa coluna só a grade entregava foto, foto, e só depois as linhas — as
+     duas imagens ficavam órfãs no topo, longe do que ilustram. Com `order`
+     a leitura vira dois blocos fechados: imagem, cabeçalho e as linhas
+     daquela coluna. Some o pareamento linha a linha, que só existe quando
+     as duas colunas cabem lado a lado; em troca cada imagem fica no bloco
+     a que pertence. */
   .dueto{grid-template-columns:1fr;border:0;border-radius:0;background:none}
-  .dueto-cab{display:none}
-  /* fora da moldura comum, cada foto vira card e fica colada no seu par */
-  .dueto-foto{border:0;border-radius:var(--radius);margin-bottom:10px}
-  .dueto-foto+.dueto-foto{border-left:0;margin-top:18px}
+
+  .dueto-foto{order:1;border:0;border-radius:var(--radius) var(--radius) 0 0}
+  .dueto-foto+.dueto-foto{order:4;border-left:0;margin-top:34px}
+
+  .dueto-cab{
+    order:2;border:1px solid var(--line);border-top:0;border-bottom:0;
+    padding:16px 18px;
+  }
+  .dueto-cab--ruim{order:5;background:var(--paper-2)}
+
   .dueto>p{
-    border:1px solid var(--line);border-radius:var(--radius);
+    border:1px solid var(--line);border-top:0;
     flex-direction:row;align-items:flex-start;
-    padding:16px 18px;font-size:14px;
+    padding:15px 18px;font-size:14px;
   }
-  .dueto>p em{
-    display:block;font-style:normal;font-size:10.5px;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;
-  }
-  .dueto-bom{background:var(--brand-soft);border-color:transparent}
-  .dueto-bom em{color:var(--brand)}
-  .dueto-ruim{background:var(--paper-2)}
-  .dueto-ruim em{color:var(--alerta)}
-  /* o par respira junto: fio curto entre ✓ e ✕, vão largo entre pares */
-  .dueto-bom{margin-bottom:6px}
-  .dueto-ruim{margin-bottom:18px}
-  .dueto>p:last-child{margin-bottom:0}
+  .dueto-bom{order:3;background:var(--brand-soft);border-color:rgba(11,76,116,.14)}
+  .dueto-ruim{order:6;background:var(--paper-2)}
+  /* o cabeçalho já diz de quem é a linha: o micro-rótulo vira repetição */
+  .dueto>p em{display:none}
+  /* fecha o canto de baixo de cada bloco (última linha ✓ e última ✕) */
+  .dueto>p:nth-last-child(2),
+  .dueto>p:last-child{border-radius:0 0 var(--radius) var(--radius)}
+  .dueto>p:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
 
   .nota-mat{grid-template-columns:1fr}
   .nota-mat .foto{aspect-ratio:16/9}
