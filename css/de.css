@@ -1,0 +1,730 @@
+/* ============================================================
+   DISFUNÇÃO ERÉTIL · Variação 01 — Autoridade
+   Página de nicho. Herda tudo de dna.css (tema navy).
+   Aqui só o que o sistema ainda não tinha: cabeçalho fixo,
+   número-herói, ilustração, níveis de tratamento, faixa de
+   sigilo, formulário, localização e FAQ.
+   ============================================================ */
+
+/* ---------- slots de preenchimento ---------- */
+/* Marca o que o Dr. Eduardo precisa preencher. Some ao remover a classe. */
+.slot{
+  border-bottom:1px dashed rgba(11,76,116,.45);
+  padding-bottom:1px;
+  white-space:nowrap;
+}
+
+/* ---------- 1. CABEÇALHO FIXO ---------- */
+html{scroll-padding-top:88px}
+
+.topo{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .3s var(--ease),box-shadow .3s var(--ease),
+             backdrop-filter .3s var(--ease),padding .3s var(--ease);
+  padding:16px 0;
+}
+.topo.solido{
+  background:rgba(246,246,244,.88);
+  backdrop-filter:saturate(1.6) blur(14px);
+  -webkit-backdrop-filter:saturate(1.6) blur(14px);
+  box-shadow:0 1px 0 var(--line),0 12px 30px -26px rgba(10,35,66,.5);
+  padding:10px 0;
+}
+.topo .wrap{display:flex;align-items:center;gap:20px}
+
+.marca{display:flex;align-items:center;gap:11px;min-width:0}
+.marca-sigla{
+  width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--brand),var(--brand-deep));color:#fff;
+}
+.marca-txt{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.marca-nome{font-family:var(--font-display);font-size:15.5px;font-weight:700;
+  letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marca-ctx{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.topo .btn{margin-left:auto;padding:11px 11px 11px 20px;font-size:14px;
+  box-shadow:var(--sombra)}
+.topo .btn i{width:26px;height:26px;font-size:12px}
+.topo .btn:hover{box-shadow:var(--sombra)}
+
+/* barra de progresso de leitura */
+.progresso{position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--brand));
+  transition:width .1s linear}
+
+/* pular para o conteúdo */
+.pular{position:absolute;left:-9999px;top:0;z-index:100;background:var(--brand);
+  color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-size:14px}
+.pular:focus{left:0}
+
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ---------- 2. HERO ---------- */
+/* A partir de 1200px a foto de fundo É a hero: o médico já vem na imagem, com
+   o lado esquerdo vazio reservado ao texto. Como a imagem já traz elementos
+   flutuantes desenhados nela, nada de UI é empilhado por cima — os selos vão
+   em linha sob o CTA e as garantias viram faixa no rodapé da dobra.
+   Abaixo de 1200px o cover joga a figura para o centro, em cima do texto:
+   nessa faixa volta a hero de duas colunas com o retrato 4:5. */
+.hero-dna{flex-direction:column;justify-content:center;align-items:stretch}
+/* respiro para o cabeçalho fixo */
+.hero-dna{padding-top:clamp(104px,11vw,150px)}
+.hero-dna .wrap{grid-template-columns:minmax(0,52%) minmax(0,48%)}
+/* a faixa também é .wrap: precisa sair da grade de duas colunas da hero */
+.hero-dna .hero-garantias{display:block;text-align:left}
+
+@media (min-width:1200px){
+  .hero-dna{
+    background-color:#f7f8fa;
+    background-image:
+      linear-gradient(100deg,#f7f8fa 0%,rgba(247,248,250,.95) 32%,rgba(247,248,250,0) 60%),
+      url("../img/de-hero-desk.webp");
+    background-repeat:no-repeat,no-repeat;
+    background-size:cover,cover;
+    background-position:center,right center;
+  }
+  .hero-dna::before{display:none}
+  /* véu no topo, para o cabeçalho não disputar com a figura */
+  .hero-dna::after{
+    content:"";position:absolute;top:0;left:0;right:0;height:132px;z-index:0;
+    background:linear-gradient(#f7f8fa 12%,rgba(247,248,250,0));pointer-events:none;
+  }
+  .hero-dna .wrap{position:relative;z-index:1}
+  .hero-dna .hero-foto{display:none}
+}
+
+/* tarja superior do hero (kicker com bullet no meio) */
+.tarja{letter-spacing:.16em}
+
+.hero-acoes{display:flex;align-items:center;gap:clamp(14px,2vw,26px);
+  flex-wrap:wrap;margin-top:clamp(26px,3vw,38px)}
+.hero-acoes .btn{margin-top:0}
+
+/* moldura de imagem usada em toda a página */
+.hero-foto{align-self:center;max-width:440px;justify-self:center}
+.foto{
+  position:relative;border-radius:var(--radius-lg);
+  background:linear-gradient(160deg,#cfe0ea,#9db8cd 55%,var(--brand));
+  box-shadow:var(--sombra);
+}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:inherit}
+.r45{aspect-ratio:4/5}
+.r32{aspect-ratio:3/2}
+.r166{aspect-ratio:16/6}
+
+/* legenda de briefing — sai quando a foto real entra no lugar */
+.brief{
+  position:absolute;inset:auto 0 0 0;z-index:2;padding:18px 20px;color:#fff;
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+  font-size:12px;line-height:1.45;letter-spacing:.01em;
+  background:linear-gradient(to top,rgba(8,30,58,.86),transparent);
+}
+.brief b{display:block;color:inherit;font-weight:600;font-size:11px;
+  letter-spacing:.13em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
+
+/* selos: viram itens de linha sob o CTA, sem pílula branca — em fundo claro
+   uma pílula branca flutua no vazio. O check basta. */
+.selos{
+  list-style:none;display:flex;flex-wrap:wrap;
+  gap:10px clamp(18px,2vw,30px);margin-top:clamp(24px,3vw,34px);
+}
+.selos li{
+  display:flex;align-items:center;gap:9px;
+  font-size:14px;font-weight:500;color:var(--ink);
+}
+.selos li::before{
+  content:"";width:19px;height:19px;border-radius:50%;flex:none;
+  background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6.5 9.2 17.3 4 12.1' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
+}
+
+/* faixa de garantias: fecha a primeira dobra sem cobrir a figura */
+.hero-garantias{margin-top:clamp(38px,5vw,64px)}
+.garantias-card{
+  width:100%;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(20px,2vw,26px) clamp(22px,2.4vw,32px);
+  box-shadow:0 26px 54px -34px rgba(10,35,66,.45);
+}
+.garantias-card h2{
+  font-size:13px;font-weight:700;line-height:1.35;letter-spacing:-.01em;
+  margin-bottom:16px;
+}
+.garantias-card ul{list-style:none;display:grid;gap:16px clamp(20px,2.6vw,40px)}
+.garantias-card li{display:flex;gap:12px;align-items:flex-start}
+.garantias-card .ic{
+  width:32px;height:32px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+}
+.garantias-card strong{display:block;font-size:13.5px;font-weight:600;line-height:1.3}
+.garantias-card span{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.4;
+  margin-top:2px}
+
+@media (min-width:981px){
+  /* na largura cheia a faixa deita: rótulo à esquerda, três itens em colunas */
+  .garantias-card{display:grid;grid-template-columns:minmax(140px,190px) 1fr;
+    gap:clamp(22px,3vw,44px);align-items:center}
+  .garantias-card h2{margin-bottom:0;font-size:14px}
+  .garantias-card ul{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ---------- 3. NÚMERO-HERÓI ---------- */
+/* A frase é literal, então a ilustração também é: dois homens, um aceso.
+   Nada de anel nem de contagem — "1 em cada 2" se lê de imediato. O aceso
+   respira em looping para a seção não ficar parada. */
+.numero-heroi{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.dupla{margin:0 0 clamp(22px,2.6vw,32px)}
+.dupla svg{display:block;width:clamp(176px,18vw,232px);height:auto;overflow:visible}
+.busto.apagado{fill:rgba(255,255,255,.12)}
+.busto.aceso{
+  fill:url(#gBusto);transform-origin:center bottom;
+  animation:bustoRespira 3.6s var(--ease) infinite;
+}
+@keyframes bustoRespira{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(143,196,240,0))}
+  45%{filter:drop-shadow(0 6px 20px rgba(143,196,240,.45))}
+}
+
+.numero-heroi .valor{
+  font-family:var(--font-display);font-weight:700;white-space:nowrap;
+  font-size:clamp(38px,5.6vw,76px);line-height:1;letter-spacing:-.045em;
+  background:linear-gradient(150deg,#ffffff 30%,#8fc4f0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.numero-texto{
+  margin-top:clamp(22px,2.6vw,32px);
+  display:flex;flex-direction:column;align-items:center;
+}
+.numero-heroi .h2{font-size:clamp(26px,2.7vw,38px);max-width:40ch;margin-bottom:16px}
+/* medida larga de propósito: o texto tem que fechar em duas linhas */
+.numero-heroi .lead{max-width:78ch;margin:0 auto;font-size:16px}
+
+@media (prefers-reduced-motion:reduce){
+  .busto.aceso{animation:none}
+}
+/* ---------- 4. ILUSTRAÇÃO ---------- */
+.ilustra{
+  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
+  background:var(--paper-2);
+}
+.ilustra svg{display:block;width:100%;height:auto}
+/* Tamanhos em unidades do viewBox. No mobile os dois painéis empilham
+   (o script troca o viewBox) e o texto cresce para continuar legível. */
+.ilustra .i-titulo{font-size:16px;font-weight:700}
+.ilustra .i-rot{font-size:14.5px;font-weight:600}
+.ilustra .i-rot2{font-size:14px}
+.ilustra .i-res1{font-size:17px;font-weight:600}
+.ilustra .i-res2{font-size:15px}
+@media (max-width:760px){
+  /* o viewBox do mobile tem 600 unidades: acima disso os rótulos da direita
+     vazam para fora do quadro */
+  .ilustra .i-titulo{font-size:23px}
+  .ilustra .i-rot{font-size:18px}
+  .ilustra .i-rot2{font-size:17px}
+  .ilustra .i-res1{font-size:20px}
+  .ilustra .i-res2{font-size:18px}
+}
+/* A legenda saiu de baixo da ilustração e virou o título que abre os cards:
+   é ela que faz a ponte entre o diagrama e as quatro causas. */
+.frase-cards{
+  text-align:center;max-width:44ch;margin:clamp(30px,3.6vw,46px) auto clamp(26px,3vw,36px);
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(19px,1.9vw,26px);line-height:1.3;letter-spacing:-.02em;
+}
+.frase-cards b{font-weight:700;color:var(--brand)}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+
+/* Fluxo animado em looping. O movimento aqui é o conteúdo: de um lado o
+   sangue entra e fica; do outro entra pouco e escapa. */
+.ilustra .pulso{will-change:transform,opacity}
+.ilustra .pulso--a{animation:correA 2.4s linear infinite}
+
+@keyframes correA{
+  0%{transform:translateX(0);opacity:0}
+  10%{opacity:1}
+  85%{opacity:1}
+  100%{transform:translateX(150px);opacity:0}
+}
+/* sangue que tenta sair e é barrado pelas veias comprimidas */
+.ilustra .pulso--trava{animation:barrado 2.4s ease-out infinite}
+@keyframes barrado{
+  0%{transform:translateX(0);opacity:0}
+  15%{opacity:.9}
+  55%{transform:translateX(52px);opacity:.9}
+  75%,100%{transform:translateX(52px);opacity:0}
+}
+/* fluxo fraco: entra devagar e nem chega */
+.ilustra .pulso--fraco{animation:fraco 3.4s ease-in-out infinite}
+@keyframes fraco{
+  0%{transform:translateX(0);opacity:0}
+  18%{opacity:.75}
+  70%{transform:translateX(74px);opacity:.4}
+  100%{transform:translateX(88px);opacity:0}
+}
+/* fuga venosa: sai rápido */
+.ilustra .pulso--fuga{animation:fuga 1.5s linear infinite}
+@keyframes fuga{
+  0%{transform:translateX(0);opacity:0}
+  12%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translateX(118px);opacity:0}
+}
+/* câmara cheia respirando / câmara parcial oscilando sem encher */
+.ilustra .enche,.ilustra .oscila{transform-box:fill-box}
+.ilustra .enche{transform-origin:50% 50%;animation:respira 3.8s ease-in-out infinite}
+@keyframes respira{0%,100%{transform:scale(1)}50%{transform:scale(1.022)}}
+.ilustra .oscila{transform-origin:50% 100%;animation:oscila 3.2s ease-in-out infinite}
+@keyframes oscila{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.14)}}
+/* a trava que segura o sangue dentro */
+.ilustra .trava{animation:segura 2.4s ease-in-out infinite}
+@keyframes segura{0%,100%{opacity:1}50%{opacity:.62}}
+
+/* atrasos por ultimo: o shorthand animation zera delay */
+.ilustra .d2{animation-delay:.8s}
+.ilustra .d3{animation-delay:1.6s}
+.ilustra .pulso--fuga.d2{animation-delay:.75s}
+
+@media (prefers-reduced-motion:reduce){
+  .ilustra .pulso--a,.ilustra .pulso--trava,.ilustra .pulso--fraco,
+  .ilustra .pulso--fuga,.ilustra .enche,.ilustra .oscila,.ilustra .trava{animation:none}
+  .ilustra .pulso--trava,.ilustra .pulso--fraco{opacity:.85}
+}
+
+/* ---------- 5. MÉTODO (linha do tempo com destaque na rolagem) ---------- */
+/* As duas colunas se centram uma na outra — nada de vão morto embaixo. */
+#metodo .split{align-items:center}
+#metodo .split-sticky{position:static}
+/* o respiro vive aqui, não num style inline: ao trocar o placeholder pela
+   foto real o inline se perdeu e a imagem colou no texto no desktop */
+#metodo .foto{width:100%;margin-top:clamp(26px,2.4vw,34px)}
+
+.lista-num li.passo{
+  grid-template-columns:44px 1fr;gap:20px;align-items:start;
+  padding:26px 0 30px;border-bottom:none;position:relative;
+}
+.lista-num li.passo:first-child{padding-top:0}
+.lista-num li.passo:last-child{padding-bottom:0}
+
+/* trilho vertical ligando os passos */
+.passo::before{
+  content:"";position:absolute;left:21px;top:44px;bottom:-4px;width:2px;
+  background:var(--line);
+}
+.passo:first-child::before{top:38px}
+.passo:last-child::before{display:none}
+
+.passo em{
+  display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper-tint);
+  font-size:14px;font-weight:600;color:var(--ink-soft);padding:0;z-index:1;
+  transition:background .35s var(--ease),color .35s var(--ease),
+             border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.passo h3{font-size:19px;margin:10px 0 8px;transition:color .35s var(--ease)}
+.passo p{font-size:15px}
+
+.passo.ativo em{
+  background:var(--brand);border-color:var(--brand);color:#fff;
+  box-shadow:0 0 0 6px rgba(11,76,116,.10);
+}
+.passo.ativo h3{color:var(--brand)}
+
+/* ---------- 6. NÍVEIS DE TRATAMENTO ---------- */
+/* Cada nível carrega a própria imagem no HTML. No desktop as quatro são
+   empilhadas no mesmo ponto à direita e só a do nível em foco aparece — vira
+   um palco. No celular elas voltam ao fluxo, uma embaixo do seu nível: sem
+   posição fixa, sem sobreposição, sem depender de toque para ver a imagem.
+
+   Por isso o <li> NÃO é posicionado: se fosse, a figura se ancoraria nele em
+   vez de no bloco. A barra de acento é borda e o trilho sai do marcador. */
+.niveis{position:relative}
+.niveis-lista{list-style:none;width:54%}
+
+.nivel-item{
+  display:grid;grid-template-columns:44px 1fr;gap:18px;
+  padding:18px 20px;border-radius:14px;cursor:pointer;
+  border-left:3px solid transparent;
+  transition:background .3s var(--ease),border-color .3s var(--ease);
+}
+.nivel-item + .nivel-item{margin-top:6px}
+.nivel-item.ativo{background:var(--brand-soft);border-left-color:var(--brand)}
+.nivel-item:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(11,76,116,.22)}
+/* hover só onde existe ponteiro: no toque ele fica grudado depois do tap */
+@media (hover:hover){
+  .nivel-item:hover:not(.ativo){background:rgba(11,76,116,.05)}
+  .nivel-item:hover:not(.ativo) .nivel-marca{box-shadow:inset 0 0 0 2px var(--brand)}
+  .nivel-item:hover:not(.ativo) .nivel-marca i,
+  .nivel-item:hover:not(.ativo) h3{color:var(--brand)}
+}
+
+/* marcador numerado; o trilho desce dele até o próximo */
+.nivel-marca{
+  position:relative;width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;background:var(--paper-2);
+  box-shadow:inset 0 0 0 2px var(--line);
+  transition:background .3s var(--ease),box-shadow .3s var(--ease);
+}
+.nivel-marca i{
+  font-style:normal;font-family:var(--font-display);font-size:16px;font-weight:700;
+  color:var(--ink-soft);transition:color .3s var(--ease);
+}
+.nivel-item:not(:last-child) .nivel-marca::after{
+  content:"";position:absolute;left:50%;top:100%;margin-left:-1px;
+  width:2px;height:calc(100% + 24px);background:var(--line);
+}
+.nivel-item.ativo .nivel-marca{background:var(--brand);box-shadow:0 0 0 5px rgba(11,76,116,.12)}
+.nivel-item.ativo .nivel-marca i{color:#fff}
+
+.nivel-corpo{min-width:0}
+.nivel-rot{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:8px;transition:color .3s var(--ease);
+}
+.nivel-item.ativo .nivel-rot{color:var(--brand)}
+.selo-quando{
+  font-style:normal;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--brand);background:var(--paper-2);
+  padding:4px 9px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--line);
+}
+.nivel-item h3{
+  font-size:clamp(18px,1.7vw,21px);font-weight:600;line-height:1.25;
+  letter-spacing:-.015em;margin-bottom:7px;transition:color .3s var(--ease);
+}
+.nivel-item p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-soft);
+  max-width:46ch}
+
+/* ----- palco: as quatro figuras ocupam o mesmo lugar à direita ----- */
+.nivel-foto{
+  position:absolute;top:0;right:0;width:44%;margin:0;
+  aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(160deg,#cfe0ea,#9db8cd 55%,var(--brand));
+  box-shadow:0 30px 64px -36px rgba(10,35,66,.5);
+  opacity:0;visibility:hidden;transform:scale(1.03);
+  transition:opacity .5s var(--ease),transform .7s var(--ease),visibility .5s;
+}
+.nivel-foto.ativo{opacity:1;visibility:visible;transform:none}
+.nivel-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* quatro traços que marcam o nível em foco, sobre o palco */
+.niveis-passo{position:absolute;z-index:4;right:20px;top:20px;display:flex;gap:6px}
+.niveis-passo i{
+  width:24px;height:4px;border-radius:2px;cursor:pointer;
+  background:rgba(255,255,255,.45);box-shadow:0 1px 3px rgba(10,35,66,.25);
+  transition:background .3s var(--ease),width .3s var(--ease);
+}
+.niveis-passo i.ativo{background:#fff;width:38px}
+
+@media (prefers-reduced-motion:reduce){
+  .nivel-foto{transition:none}
+}
+/* ---------- 7. AUTORIDADE ---------- */
+.autoridade{display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);
+  gap:clamp(32px,5vw,72px);align-items:center}
+/* Quadros com a proporção da própria foto: no retrato (794x1124) o 4:5
+   cortava as mãos; no consultório (760x600) o 3:2 cortava teto e piso. */
+.autoridade .foto{aspect-ratio:794/1124}
+/* A foto do consultório vem com uma moldura branca no próprio arquivo.
+   Um leve zoom com corte tira a borda e faz a imagem encostar nos cantos
+   arredondados do card. */
+.local .foto{aspect-ratio:760/600;overflow:hidden}
+.local .foto img{transform:scale(1.06)}
+.autoridade .nome{font-family:var(--font-display);font-size:var(--fs-h2);
+  font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.autoridade .crm{font-size:15px;font-weight:600;color:var(--brand);margin-top:10px}
+.autoridade .bio{font-size:var(--fs-lead);line-height:var(--lh-body);
+  color:var(--ink-soft);margin:22px 0 26px;max-width:52ch}
+.credenciais{list-style:none;display:flex;flex-direction:column;gap:14px}
+.credenciais li{display:flex;gap:12px;align-items:flex-start;font-size:15px;
+  line-height:1.5}
+.credenciais li::before{
+  content:"";width:20px;height:20px;flex:none;margin-top:3px;
+  background:var(--brand);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h13m-5-6 6 6-6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h13m-5-6 6 6-6 6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px no-repeat;
+}
+
+/* ---------- 8. SIGILO ---------- */
+.sigilo{
+  display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:start;
+  background:var(--brand-soft);border-radius:var(--radius-lg);
+  padding:clamp(26px,3vw,40px);
+}
+.sigilo .cadeado{width:56px;height:56px;border-radius:14px;display:grid;
+  place-items:center;background:var(--brand);color:#fff}
+.sigilo h2{font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);
+  font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:12px}
+.sigilo p{font-size:var(--fs-lead);line-height:var(--lh-body);color:var(--ink-soft);
+  max-width:70ch}
+
+/* ---------- 9. FORMULÁRIO ---------- */
+.form-bloco{display:grid;grid-template-columns:minmax(0,44%) minmax(0,56%);
+  gap:clamp(32px,5vw,72px);align-items:center}
+.form-card{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(26px,3vw,40px);box-shadow:var(--sombra);
+}
+.campo{margin-bottom:18px}
+.campo label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
+.campo input{
+  width:100%;font:inherit;font-size:15px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.campo input::placeholder{color:var(--ink-soft);opacity:.7}
+.campo input:focus{outline:none;border-color:var(--brand);background:var(--paper-2)}
+.campo input[aria-invalid="true"]{border-color:var(--alerta);background:var(--alerta-soft)}
+.erro{display:none;font-size:12.5px;color:var(--alerta);margin-top:7px}
+.campo.invalido .erro{display:block}
+
+.aceite{display:flex;gap:11px;align-items:flex-start;margin:22px 0;
+  font-size:13px;line-height:1.5;color:var(--ink-soft);cursor:pointer}
+.aceite input{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--brand)}
+.aceite a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
+
+.form-card .btn{width:100%;justify-content:center;box-shadow:var(--sombra)}
+.form-card .btn:hover{box-shadow:var(--sombra)}
+.nota{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:16px}
+
+.sucesso{display:none;text-align:center;padding:20px 0}
+.sucesso .ok{width:60px;height:60px;border-radius:50%;background:var(--brand-soft);
+  color:var(--brand);display:grid;place-items:center;margin:0 auto 20px}
+.sucesso h3{font-size:var(--fs-h3);font-weight:700;letter-spacing:-.02em;
+  margin-bottom:10px}
+.sucesso p{font-size:var(--fs-lead);color:var(--ink-soft);line-height:var(--lh-body)}
+.form-card.enviado form{display:none}
+.form-card.enviado .sucesso{display:block}
+
+/* ---------- 10. LOCALIZAÇÃO ---------- */
+.local{display:grid;grid-template-columns:minmax(0,45%) minmax(0,55%);
+  gap:clamp(32px,5vw,72px);align-items:center}
+.dados{list-style:none;display:flex;flex-direction:column;gap:18px;margin:26px 0 30px}
+.dados li{display:flex;gap:14px;align-items:flex-start;font-size:15px;line-height:1.55}
+.dados .ic{width:34px;height:34px;border-radius:9px;flex:none;display:grid;
+  place-items:center;background:var(--brand-soft);color:var(--brand)}
+.dados strong{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
+
+/* ---------- 11. FAQ ---------- */
+.faq{max-width:840px;margin:0 auto}
+.faq details{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-2);
+  margin-bottom:12px;overflow:hidden;transition:border-color .25s var(--ease);
+}
+.faq details[open]{border-color:var(--brand)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:22px 24px;display:flex;gap:18px;
+  align-items:center;font-size:var(--fs-card);font-weight:600;line-height:1.4;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";width:11px;height:11px;margin-left:auto;flex:none;
+  border-right:2px solid var(--brand);border-bottom:2px solid var(--brand);
+  transform:rotate(45deg);transform-origin:60% 60%;
+  transition:transform .25s var(--ease);
+}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq .resposta{padding:0 24px 24px;font-size:15px;line-height:var(--lh-body);
+  color:var(--ink-soft);max-width:66ch}
+
+/* ---------- 12. RODAPÉ ---------- */
+/* Terminador da página. Escuro chapado, sem brilho — não conta como
+   uma das duas seções escuras do padrão. */
+.rodape{background:var(--dark-1);color:var(--dark-ink);
+  padding:clamp(44px,5vw,64px) 0 clamp(34px,4vw,48px)}
+.rodape p{font-size:13.5px;line-height:1.8;color:var(--dark-ink-soft);max-width:80ch}
+.rodape .resp{color:var(--dark-ink);font-weight:600}
+.rodape a{color:var(--dark-ink);text-decoration:underline;text-underline-offset:3px}
+.rodape .divisor{height:1px;background:var(--dark-line);margin:26px 0}
+.rodape .slot{border-bottom-color:rgba(169,196,222,.5)}
+
+/* ---------- BARRA FIXA MOBILE ---------- */
+.barra-mobile{
+  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(246,246,244,.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 -1px 0 var(--line);
+  transform:translateY(110%);transition:transform .35s var(--ease);
+}
+.barra-mobile.visivel{transform:none}
+.barra-mobile .btn{width:100%;justify-content:center;box-shadow:var(--sombra);
+  padding:14px 20px}
+
+/* ---------- PERFORMANCE ---------- */
+/* Seções abaixo da dobra só são renderizadas quando chegam perto da viewport. */
+.adiar{content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width:1080px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============================================================
+   MOBILE / TABLET
+   Regras do briefing: no hero a imagem vem antes do texto e tudo
+   centraliza; as seções de duas colunas centralizam cabeçalho,
+   apoio e botão; o palco da imagem sobe para cima da lista de níveis.
+   ============================================================ */
+@media (max-width:980px){
+  .barra-mobile{display:block}
+
+  /* ---- HERO: foto primeiro, texto depois, tudo centralizado ---- */
+  .hero-dna{min-height:auto}
+  .hero-dna .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .hero-dna .wrap>div:first-child{order:2;display:flex;flex-direction:column;
+    align-items:center;width:100%}
+  /* No mobile a foto também sangra: ocupa a largura toda no topo da dobra,
+     sem card e sem canto, e derrete no fundo para o texto entrar limpo. */
+  /* a foto começa logo abaixo do cabeçalho: atrás dele o rosto ficava velado */
+  .hero-dna{padding-top:78px}
+
+  /* No celular entra a arte vertical própria (800x1328): o médico ocupa a
+     metade de cima e a de baixo já vem vazia, reservada ao texto. Ela vira
+     fundo da dobra — nada de imagem dentro de caixa. */
+  @media (max-width:640px){
+    .hero-dna{
+      background-color:#f5f6f8;
+      background-image:url("../img/de-hero-mob.webp");
+      background-repeat:no-repeat;
+      background-size:100% auto;
+      /* a arte desce a altura do cabeçalho: encostada no topo, a cabeça do
+         médico ficava coberta pela marca */
+      --desce:88px;
+      background-position:center var(--desce);
+      /* o médico termina em ~83% da largura; o texto começa depois disso */
+      padding-top:calc(min(88vw,410px) + var(--desce) - 40px);
+    }
+    .hero-dna .foto{display:none}
+  }
+  .hero-dna .hero-foto{display:contents}
+  .hero-dna .foto{
+    order:1;justify-self:stretch;
+    margin:0 calc(var(--gutter) * -1) clamp(20px,4vw,30px);
+    width:auto;max-width:none;height:min(46vh,368px);aspect-ratio:auto;
+    border-radius:0;box-shadow:none;background:none;
+  }
+  /* recorte fecha no médico: a imagem é 16:9 e o retrato é vertical */
+  .hero-dna .foto img{object-position:74% top;border-radius:0}
+  /* derretimento para o fundo da página */
+  .hero-dna .foto::after{
+    content:"";position:absolute;inset:auto 0 -1px 0;height:42%;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(246,246,244,0),var(--paper));
+  }
+  .selos{justify-content:center}
+  /* na faixa de garantias só o título fica centralizado; os itens leem melhor
+     alinhados à esquerda, com o ícone servindo de marcador */
+  .garantias-card ul{text-align:left}
+  .hero-dna .kicker{justify-content:center}
+  .hero-dna .kicker::after{content:"";width:26px;height:1px;
+    background:currentColor;opacity:.7}
+  .hero-dna .lead{margin-left:auto;margin-right:auto;max-width:46ch}
+  .hero-acoes{justify-content:center}
+
+  /* ---- 1 EM CADA 2: centralizado, com filete virando régua ---- */
+  .numero-heroi{gap:0}
+  .numero-heroi .valor{font-size:clamp(44px,12vw,72px)}
+  .numero-heroi .h2{max-width:22ch;font-size:clamp(28px,7.4vw,38px);margin-bottom:16px}
+  .numero-heroi .lead{max-width:48ch;margin-left:auto;margin-right:auto}
+
+  /* ---- MÉTODO: kicker, headline e subhead centralizados ---- */
+  #metodo .split-sticky{display:flex;flex-direction:column;align-items:center;
+    text-align:center}
+  #metodo .kicker{justify-content:center}
+  #metodo .kicker::after{content:"";width:26px;height:1px;background:currentColor;
+    opacity:.7}
+  #metodo .lead{margin-left:auto;margin-right:auto}
+  /* A imagem é UMA só e pertence ao cabeçalho da seção, não ao primeiro
+     passo: gap curto acima dela e largo antes da lista, senão ela lê como
+     ilustração do item 1. */
+  #metodo .foto{max-width:520px}
+  #metodo .split{gap:64px}
+  #metodo .lista-num{text-align:left}
+
+  /* ---- AGENDE SUA AVALIAÇÃO: tudo centralizado ---- */
+  .autoridade,.form-bloco,.local{grid-template-columns:1fr}
+  .autoridade .hero-foto,.form-bloco .foto,.local .foto{max-width:460px;margin-top:0}
+  .form-bloco{text-align:center}
+  .form-bloco>div:first-child{display:flex;flex-direction:column;align-items:center}
+  .form-bloco .lead{margin-left:auto;margin-right:auto}
+  .form-card{text-align:center}
+  /* o :not() é necessário: o aceite também é um <label> dentro de .campo,
+     e .campo label tem especificidade maior que .aceite */
+  .campo label:not(.aceite){text-align:center}
+  .campo input{text-align:left}
+  /* o consentimento fica à esquerda, alinhado com os campos */
+  .aceite{justify-content:flex-start;text-align:left}
+
+  /* ---- ONDE ESTAMOS: imagem primeiro, cabeçalho e botão centralizados ---- */
+  .local{text-align:center}
+  .local .foto{order:-1;margin:0 auto 34px}
+  .local>div:not(.foto){display:flex;flex-direction:column;align-items:center}
+  .local .kicker{justify-content:center}
+  .local .kicker::after{content:"";width:26px;height:1px;background:currentColor;
+    opacity:.7}
+  .dados{text-align:left}
+
+  .sigilo{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center}
+  .sigilo p{margin-inline:auto}
+}
+
+@media (max-width:640px){
+  html{scroll-padding-top:74px}
+  .marca-ctx{display:none}
+  .topo .btn span{display:none}
+  .topo .btn{padding:9px;gap:0}
+
+  /* hero compacto o bastante para caber na primeira dobra */
+  .hero-dna{padding-bottom:40px}
+  .hero-dna .foto{height:min(42vh,330px)}
+  /* a tarja precisa caber em uma linha */
+  .hero-dna .kicker{font-size:10.5px;letter-spacing:.1em;gap:8px;margin-bottom:14px}
+  .hero-dna .kicker::before,.hero-dna .kicker::after{width:16px}
+  .hero-dna .h1{font-size:clamp(25px,7.6vw,33px)}
+  .hero-dna .lead{font-size:14.5px;margin-top:14px}
+  .hero-acoes{gap:14px;margin-top:22px;flex-direction:column;width:100%}
+  .hero-acoes .btn{width:100%;max-width:330px;justify-content:center;
+    padding:13px 13px 13px 24px}
+  .selos li{font-size:13px}
+  .garantias-card{padding:18px}
+  .garantias-card h2{font-size:13px;margin-bottom:14px}
+
+  .grid-4{grid-template-columns:1fr}
+
+  /* ---- NÍVEIS no mobile: o palco da imagem sobe para cima da lista ---- */
+  /* No celular não há hover nem clique: todo nível já nasce na cor definitiva,
+     e o tingimento cresce de 1 a 4 para a subida continuar legível. */
+  .nivel-item{cursor:default;border-left-color:var(--brand)}
+  .nivel-item:nth-child(1){background:rgba(11,76,116,.05)}
+  .nivel-item:nth-child(2){background:rgba(11,76,116,.08)}
+  .nivel-item:nth-child(3){background:rgba(11,76,116,.11)}
+  .nivel-item:nth-child(4){background:rgba(11,76,116,.14)}
+  .nivel-item .nivel-marca{background:var(--brand);box-shadow:0 0 0 4px rgba(11,76,116,.12)}
+  .nivel-item .nivel-marca i{color:#fff}
+  .nivel-item .nivel-rot{color:var(--brand)}
+  /* o trilho ligava marcador a marcador; com a imagem dentro do card ele
+     não alcança mais o próximo — os cards separados já contam a sequência */
+  .nivel-item .nivel-marca::after{display:none}
+
+  /* a imagem volta ao fluxo, uma embaixo do seu nível: nada de
+     posição fixa, nada que possa cobrir o texto */
+  .niveis-lista{width:100%}
+  .nivel-item{grid-template-columns:38px 1fr;gap:14px;padding:16px 14px}
+  .nivel-marca{width:38px;height:38px}
+  .nivel-marca i{font-size:14px}
+  .nivel-item h3{font-size:17px}
+  .nivel-foto{
+    /* relative, não static: a <img> dentro é absoluta e com static ela
+       se ancorava no bloco inteiro, cobrindo a seção */
+    position:relative;width:100%;aspect-ratio:16/10;
+    grid-column:1/-1;margin-top:16px;
+    opacity:1;visibility:visible;transform:none;
+    box-shadow:0 18px 40px -28px rgba(10,35,66,.45);
+  }
+  .niveis-passo{display:none}
+
+  .faq summary{padding:18px;font-size:15.5px;gap:14px}
+  .faq .resposta{padding:0 18px 20px;font-size:14.5px}
+}
