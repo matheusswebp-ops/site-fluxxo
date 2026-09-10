@@ -18,6 +18,9 @@
 }
 
 /* ---------- 1. CABEÇALHO FIXO ---------- */
+/* Cabeçalho escuro do começo ao fim. A página abre em navy e o navy é o chão
+   dela, não um acento — então a barra acompanha, em vez de piscar de claro
+   para escuro na primeira rolagem. */
 html{scroll-padding-top:88px}
 
 .topo{
@@ -27,10 +30,10 @@ html{scroll-padding-top:88px}
   padding:16px 0;
 }
 .topo.solido{
-  background:rgba(246,246,244,.88);
-  backdrop-filter:saturate(1.6) blur(14px);
-  -webkit-backdrop-filter:saturate(1.6) blur(14px);
-  box-shadow:0 1px 0 var(--line),0 12px 30px -26px rgba(10,35,66,.5);
+  background:rgba(8,28,54,.82);
+  backdrop-filter:saturate(1.5) blur(16px);
+  -webkit-backdrop-filter:saturate(1.5) blur(16px);
+  box-shadow:0 1px 0 var(--dark-line),0 16px 34px -28px rgba(0,0,0,.8);
   padding:10px 0;
 }
 .topo .wrap{display:flex;align-items:center;gap:20px}
@@ -38,21 +41,36 @@ html{scroll-padding-top:88px}
 .marca{display:flex;align-items:center;gap:11px;min-width:0}
 .marca-sigla{
   width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--brand),var(--brand-deep));color:#fff;
+  background:linear-gradient(135deg,#9fd0ea,#4e96a8);color:var(--dark-1);
 }
 .marca-txt{display:flex;flex-direction:column;line-height:1.25;min-width:0}
 .marca-nome{font-family:var(--font-display);font-size:15.5px;font-weight:700;
-  letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.marca-ctx{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;
+  letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:var(--dark-ink)}
+.marca-ctx{font-size:11.5px;color:var(--dark-ink-soft);white-space:nowrap;
   overflow:hidden;text-overflow:ellipsis}
-.topo .btn{margin-left:auto;padding:11px 11px 11px 20px;font-size:14px;
-  box-shadow:var(--sombra)}
+.topo .slot{border-bottom-color:rgba(169,196,222,.5)}
+.topo .btn{margin-left:auto;padding:11px 11px 11px 20px;font-size:14px}
 .topo .btn i{width:26px;height:26px;font-size:12px}
-.topo .btn:hover{box-shadow:var(--sombra)}
+
+/* Botão sobre barra escura: inverte, como manda o DNA — fundo claro, texto
+   na cor da marca. Mesma inversão da barra fixa do celular. */
+.topo .btn,.barra-mobile .btn{
+  background:
+    linear-gradient(105deg,transparent 42%,rgba(11,76,116,.14) 50%,transparent 58%) no-repeat,
+    linear-gradient(135deg,#ffffff,#dbe8f2);
+  background-size:230% 100%,100% 100%;
+  background-position:-70% 0,0 0;
+  color:var(--brand-deep);
+  box-shadow:0 12px 26px -14px rgba(0,0,0,.7);
+}
+.topo .btn::after,.barra-mobile .btn::after{box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+.topo .btn i,.barra-mobile .btn i{background:var(--brand);color:#fff}
+.topo .btn:hover,.barra-mobile .btn:hover{box-shadow:0 16px 30px -14px rgba(0,0,0,.75)}
 
 /* barra de progresso de leitura */
 .progresso{position:absolute;left:0;bottom:0;height:2px;width:0;
-  background:linear-gradient(90deg,var(--accent),var(--brand));
+  background:linear-gradient(90deg,#4e96a8,#9fd0ea);
   transition:width .1s linear}
 
 /* pular para o conteúdo */
@@ -63,12 +81,49 @@ html{scroll-padding-top:88px}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
 
 /* ---------- 2. HERO ---------- */
-/* Aqui a hero é a canônica do DNA, não a de fundo sangrado da página de DE:
-   duas colunas, retrato 4:5 em card sobre gradiente, três chips de credencial
-   e o selo girando. As duas páginas são do mesmo médico — precisam ser
-   reconhecíveis como irmãs, mas não podem abrir igual. */
+/* A hero é a canônica do DNA — duas colunas, retrato 4:5 em card, três chips
+   e o selo girando —, mas o chão é navy. As duas páginas são do mesmo médico:
+   precisam ser reconhecíveis como irmãs e não podem abrir iguais. A de DE é
+   uma página clara com dois acentos escuros; esta inverte o centro tonal, o
+   navy é o chão e a luz é que vira acento. Mesmo sistema, ritmo oposto. */
 .hero-dna{flex-direction:column;justify-content:center;align-items:stretch}
 .hero-dna{padding-top:clamp(104px,11vw,150px)}
+
+.hero-dna.sec--dark{
+  background:
+    radial-gradient(ellipse 58% 68% at 74% 44%,rgba(126,186,240,.26),transparent 66%),
+    radial-gradient(ellipse 80% 55% at 12% 4%,rgba(78,150,168,.16),transparent 70%),
+    linear-gradient(168deg,#08203d,var(--dark-2) 64%,#0d2f57);
+  color:var(--dark-ink);
+}
+/* o brilho claro que o DNA põe atrás da foto é para fundo claro */
+.hero-dna.sec--dark::before{display:none}
+.hero-dna.sec--dark .kicker{color:#8fc4f0}
+.hero-dna.sec--dark .lead{color:var(--dark-ink-soft)}
+.hero-dna.sec--dark .link{color:#8fc4f0}
+/* fio de luz na borda do retrato: sem ele o card branco flutua colado no navy */
+.hero-dna.sec--dark .hero-foto .foto{
+  box-shadow:0 0 0 1px rgba(160,205,240,.24),0 44px 88px -44px rgba(0,0,0,.8);
+}
+/* o check dos selos inverte: navy sobre navy sumia */
+.hero-dna.sec--dark .selos li{color:var(--dark-ink)}
+.hero-dna.sec--dark .selos li::before{
+  background-color:#8fc4f0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6.5 9.2 17.3 4 12.1' fill='none' stroke='%230a2342' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+/* faixa de garantias vira vidro sobre o navy */
+.hero-dna.sec--dark .garantias-card{
+  background:rgba(255,255,255,.055);border-color:var(--dark-line);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 34px 66px -44px rgba(0,0,0,.85);
+}
+.hero-dna.sec--dark .garantias-card h2,
+.hero-dna.sec--dark .garantias-card strong{color:var(--dark-ink)}
+.hero-dna.sec--dark .garantias-card span{color:var(--dark-ink-soft)}
+.hero-dna.sec--dark .garantias-card .ic{
+  background:rgba(143,196,240,.13);color:#8fc4f0;
+  box-shadow:inset 0 0 0 1px var(--dark-line);
+}
 .hero-dna .wrap{grid-template-columns:minmax(0,52%) minmax(0,48%)}
 /* a faixa de garantias também é .wrap: precisa sair da grade de duas colunas */
 .hero-dna .hero-garantias{display:block;text-align:left}
@@ -463,12 +518,11 @@ html{scroll-padding-top:88px}
 .rodape .slot{border-bottom-color:rgba(169,196,222,.5)}
 
 /* ---------- BARRA FIXA MOBILE ---------- */
-.barra-mobile{
-  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
+X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   padding:12px 16px calc(12px + env(safe-area-inset-bottom));
-  background:rgba(246,246,244,.94);
+  background:rgba(8,28,54,.92);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 -1px 0 var(--line);
+  box-shadow:0 -1px 0 var(--dark-line);
   transform:translateY(110%);transition:transform .35s var(--ease);
 }
 .barra-mobile.visivel{transform:none}
