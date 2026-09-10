@@ -98,12 +98,82 @@ html{scroll-padding-top:88px}
 }
 /* o brilho claro que o DNA põe atrás da foto é para fundo claro */
 .hero-dna.sec--dark::before{display:none}
+
+/* Trama de pontos: dá matéria ao navy, que chapado vira só uma cor. Mascarada
+   em elipse do lado do texto, some antes de encostar no retrato. */
+.hero-dna.sec--dark::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(143,196,240,.15) 1px,transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse 62% 58% at 26% 42%,#000,transparent 74%);
+  mask-image:radial-gradient(ellipse 62% 58% at 26% 42%,#000,transparent 74%);
+}
+.hero-dna.sec--dark>.wrap{position:relative;z-index:1}
+
 .hero-dna.sec--dark .kicker{color:#8fc4f0}
 .hero-dna.sec--dark .lead{color:var(--dark-ink-soft)}
 .hero-dna.sec--dark .link{color:#8fc4f0}
-/* fio de luz na borda do retrato: sem ele o card branco flutua colado no navy */
+/* o negrito do título recebe a cor da marca — a variação duotom da página.
+   O DNA só previa isso no h2; aqui ela vale mais na primeira dobra, que é
+   onde "seguro e reversível" é a tese inteira. Uma variação por página. */
+.sec--dark .h1 .azul{color:#8fc4f0}
+.hero-dna.sec--dark .h1{font-size:clamp(38px,4.7vw,66px)}
+
+/* ----- o retrato vira arco, não caixa -----
+   O DNA pede o cliente recortado e proíbe foto em caixa de canto vivo; o card
+   4:5 é a saída quando não há recorte. O arco é essa saída levada a sério:
+   topo em meia-elipse, base assentada, fio de luz na borda e halo por trás.
+   Sem o halo o retrato fica colado no navy, como adesivo. */
 .hero-dna.sec--dark .hero-foto .foto{
-  box-shadow:0 0 0 1px rgba(160,205,240,.24),0 44px 88px -44px rgba(0,0,0,.8);
+  position:relative;z-index:1;
+  border-radius:50% 50% var(--radius-lg) var(--radius-lg)
+              / 44% 44% var(--radius-lg) var(--radius-lg);
+  /* sem anel de 1px em volta: ele é desenhado fora do elemento, então o véu
+     da base não o alcança e sobrava um contorno claro no pé do arco. A luz
+     vem de dentro, só na aresta de cima. */
+  box-shadow:0 48px 96px -46px rgba(0,0,0,.85);
+}
+/* A base do arco derrete no navy. Sem isto o retrato termina numa aresta
+   arredondada em cima do fundo e lê como adesivo: a luz tem que sair do
+   rosto e a sombra tem que ancorar o pé da figura. */
+.hero-dna.sec--dark .hero-foto .foto::after{
+  content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(8,30,58,.78),rgba(8,30,58,.2) 26%,transparent 46%),
+    radial-gradient(ellipse 80% 40% at 50% 104%,rgba(10,35,66,.65),transparent 70%);
+  box-shadow:inset 0 1px 0 rgba(196,228,250,.4);
+}
+
+/* halo: disco de luz atrás do arco */
+.hero-dna.sec--dark .halo{
+  position:absolute;z-index:0;left:50%;top:44%;
+  transform:translate(-50%,-50%);
+  width:158%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,
+    rgba(126,186,240,.42) 0 26%,rgba(110,170,230,.16) 46%,transparent 64%);
+  filter:blur(2px);
+}
+/* dois anéis finos concêntricos: dão borda ao halo, senão ele vira mancha */
+.hero-dna.sec--dark .halo::before,
+.hero-dna.sec--dark .halo::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border-radius:50%;aspect-ratio:1;
+}
+.hero-dna.sec--dark .halo::before{width:74%;border:1px solid rgba(143,196,240,.30)}
+.hero-dna.sec--dark .halo::after{width:96%;border:1px solid rgba(143,196,240,.14)}
+
+/* chips com o ícone da credencial: o ponto do DNA é genérico e, em três
+   pílulas iguais, elas viram etiqueta. O ícone dá o que cada uma afirma. */
+.hero-dna.sec--dark .chip{
+  padding:8px 17px 8px 9px;gap:10px;font-weight:600;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 16px 34px -16px rgba(0,0,0,.8);
+}
+.hero-dna.sec--dark .chip::before{display:none}
+.chip-ic{
+  width:25px;height:25px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
 }
 /* o check dos selos inverte: navy sobre navy sumia */
 .hero-dna.sec--dark .selos li{color:var(--dark-ink)}
