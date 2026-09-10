@@ -248,6 +248,8 @@ html{scroll-padding-top:88px}
   background:rgba(8,30,58,.42);padding:5px 9px;border-radius:var(--radius-pill);
   -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
 }
+/* mesma especificidade que `.vago::after`: precisa vir DEPOIS para vencer */
+.vago--video::after{content:"VÍDEO"}
 
 /* o retrato do hero: o enquadramento fecha no rosto, não no jaleco */
 .hero-foto .foto img{object-position:center 18%}
@@ -353,6 +355,32 @@ html{scroll-padding-top:88px}
 /* Sem uma palavra dentro do desenho: os três cards abaixo são as legendas.
    Isso resolve a legibilidade em qualquer largura — a peça é só geometria,
    escala à vontade e não precisa de troca de viewBox por texto miúdo. */
+/* ---------- 4. COMO FUNCIONA · o vídeo ----------
+   O procedimento é a coisa que mais gera dúvida, e vídeo responde melhor que
+   diagrama: é o médico dizendo, com a própria voz, por que a ponta é romba.
+   Enquanto o vídeo não existe, a moldura já é a definitiva — trocar o miolo
+   pelo player não mexe em proporção, canto nem sombra. */
+.video-slot{
+  position:relative;display:grid;place-items:center;
+  margin:clamp(30px,3.4vw,44px) 0 clamp(28px,3vw,40px);
+  aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 44px 88px -44px rgba(10,35,66,.62);
+}
+.video-slot video,.video-slot iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover;
+}
+.play{
+  position:relative;z-index:2;
+  width:clamp(66px,6.2vw,92px);aspect-ratio:1;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.97);color:var(--brand);
+  /* o triângulo é óptico, não geométrico: recuado à direita ele parece torto */
+  padding-left:5px;
+  box-shadow:0 0 0 14px rgba(255,255,255,.10),0 0 0 1px rgba(255,255,255,.28),
+             0 26px 52px -18px rgba(0,0,0,.7);
+}
+.video-slot .brief{padding:22px 24px}
+
 .ilustra{
   margin:clamp(30px,3.4vw,44px) 0 clamp(28px,3vw,40px);
   border-radius:var(--radius-lg);overflow:hidden;
@@ -414,6 +442,16 @@ html{scroll-padding-top:88px}
    um fio. O contraste bate linha a linha, que é o argumento da seção.
    No celular a grade vira uma coluna e os pares continuam intercalados —
    por isso cada célula carrega o próprio micro-rótulo, escondido no desktop. */
+/* Um slot de imagem no topo de cada coluna: o comparativo é sobre MATERIAL,
+   e material se vê. A da esquerda mostra o produto certificado, a da direita
+   o que costuma vir no lugar dele. */
+.dueto-foto{
+  position:relative;aspect-ratio:16/10;overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.dueto-foto+.dueto-foto{border-left:1px solid var(--line)}
+.dueto-foto .brief{border-radius:0}
+
 .dueto{
   margin-top:clamp(30px,3.4vw,46px);
   display:grid;grid-template-columns:1fr 1fr;
@@ -435,13 +473,13 @@ html{scroll-padding-top:88px}
 .dueto-cab--ruim .dueto-ic{background:var(--alerta)}
 .dueto-cab--ruim h3{color:var(--ink)}
 
-.dueto p{
+.dueto>p{
   padding:clamp(16px,1.7vw,20px) clamp(18px,2vw,26px);
   font-size:var(--fs-body);line-height:1.55;
   border-bottom:1px solid var(--line);
   display:flex;align-items:flex-start;gap:11px;
 }
-.dueto p::before{
+.dueto>p::before{
   content:"";width:17px;height:17px;flex:none;margin-top:3px;
   -webkit-mask-size:15px;mask-size:15px;
   -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
@@ -459,9 +497,9 @@ html{scroll-padding-top:88px}
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7 7 17' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7 7 17' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
-.dueto p:nth-last-child(-n+2){border-bottom:0}
+.dueto>p:nth-last-child(-n+2){border-bottom:0}
 /* micro-rótulo por célula: só aparece quando a grade desmonta */
-.dueto p em{display:none}
+.dueto>p em{display:none}
 
 /* nota de fechamento: card navy dentro de seção clara. Não conta como seção
    escura — é ênfase de bloco, e é aqui que a página crava a tese. */
@@ -731,12 +769,15 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
      numa coluna só, o leitor perde de quem é a linha que está lendo. */
   .dueto{grid-template-columns:1fr;border:0;border-radius:0;background:none}
   .dueto-cab{display:none}
-  .dueto p{
+  /* fora da moldura comum, cada foto vira card e fica colada no seu par */
+  .dueto-foto{border:0;border-radius:var(--radius);margin-bottom:10px}
+  .dueto-foto+.dueto-foto{border-left:0;margin-top:18px}
+  .dueto>p{
     border:1px solid var(--line);border-radius:var(--radius);
     flex-direction:row;align-items:flex-start;
     padding:16px 18px;font-size:14px;
   }
-  .dueto p em{
+  .dueto>p em{
     display:block;font-style:normal;font-size:10.5px;font-weight:700;
     letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;
   }
@@ -747,7 +788,7 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   /* o par respira junto: fio curto entre ✓ e ✕, vão largo entre pares */
   .dueto-bom{margin-bottom:6px}
   .dueto-ruim{margin-bottom:18px}
-  .dueto p:last-child{margin-bottom:0}
+  .dueto>p:last-child{margin-bottom:0}
 
   .nota-mat{grid-template-columns:1fr}
   .nota-mat .foto{aspect-ratio:16/9}

@@ -185,106 +185,21 @@
         “furar”, ela desliza entre os tecidos e distribui o produto de forma homogênea,
         <b>preservando vasos e nervos</b> — e a sensibilidade.</p>
     </div>
-
-    <!-- Ilustração: só geometria, sem uma palavra dentro. As legendas são os
-         três cards abaixo — assim a peça escala para qualquer largura. -->
-    <div class="ilustra">
-      <svg viewBox="0 0 1200 450" role="img"
-           aria-label="Diagrama: a microcânula de ponta romba desliza no plano entre dois tecidos e distribui o ácido hialurônico de forma homogênea, sem atingir os vasos e nervos que ficam dentro dos tecidos.">
-        <defs>
-          <linearGradient id="ppTec" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset="1" stop-color="#dbe8f1"/>
-          </linearGradient>
-          <linearGradient id="ppTec2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#dbe8f1"/>
-            <stop offset="1" stop-color="#ffffff"/>
-          </linearGradient>
-          <!-- degradê vertical: dá volume ao gel, o horizontal achatava -->
-          <linearGradient id="ppGel" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#93d3e0"/>
-            <stop offset=".52" stop-color="#55a9c4"/>
-            <stop offset="1" stop-color="#2b7ea3"/>
-          </linearGradient>
-          <!-- textura de célula: sem ela os tecidos leem como duas pílulas vazias -->
-          <pattern id="ppCel" width="28" height="28" patternUnits="userSpaceOnUse">
-            <circle cx="8" cy="9" r="1.7" fill="#0b4c74" opacity=".08"/>
-            <circle cx="22" cy="21" r="1.7" fill="#0b4c74" opacity=".08"/>
-          </pattern>
-          <clipPath id="ppCorte">
-            <rect class="pp-produto" x="150" y="180" width="832" height="90"/>
-          </clipPath>
-        </defs>
-
-        <!-- o plano superficial entre os dois tecidos -->
-        <path d="M60 225h1080" stroke="#0b4c74" stroke-width="1.5" stroke-dasharray="5 9"
-              opacity=".22"/>
-
-        <!-- tecido superior -->
-        <rect x="48" y="40" width="1104" height="142" rx="38" fill="url(#ppTec)"
-              stroke="rgba(11,76,116,.16)"/>
-        <rect x="48" y="40" width="1104" height="142" rx="38" fill="url(#ppCel)"/>
-        <!-- tecido profundo -->
-        <rect x="48" y="268" width="1104" height="142" rx="38" fill="url(#ppTec2)"
-              stroke="rgba(11,76,116,.16)"/>
-        <rect x="48" y="268" width="1104" height="142" rx="38" fill="url(#ppCel)"/>
-
-        <!-- vasos e nervos: vivos, dentro do tecido, longe do plano -->
-        <g fill="none" stroke="#4e96a8" stroke-width="3.4" stroke-linecap="round">
-          <g class="pp-vaso">
-            <path d="M258 48c18 34-14 56 6 126"/><path d="m268 104 36-20"/>
-            <path d="m272 140-30 16"/>
-            <circle cx="306" cy="82" r="4.4" fill="#4e96a8" stroke="none"/>
-          </g>
-          <g class="pp-vaso d2">
-            <path d="M552 48c-20 36 12 58-8 126"/><path d="m544 102-38-18"/>
-            <circle cx="504" cy="82" r="4.4" fill="#4e96a8" stroke="none"/>
-          </g>
-          <g class="pp-vaso d3">
-            <path d="M846 48c18 34-14 56 6 126"/><path d="m856 106 36-20"/>
-            <path d="m860 142-30 16"/>
-            <circle cx="894" cy="84" r="4.4" fill="#4e96a8" stroke="none"/>
-          </g>
-          <g class="pp-vaso d4">
-            <path d="M1046 48c-20 36 12 58-8 126"/><path d="m1038 104-34-16"/>
-          </g>
-          <g class="pp-vaso d3">
-            <path d="M372 402c18-34-14-56 6-126"/><path d="m382 346 36 20"/>
-            <circle cx="420" cy="368" r="4.4" fill="#4e96a8" stroke="none"/>
-          </g>
-          <g class="pp-vaso">
-            <path d="M694 402c-20-36 12-58-8-126"/><path d="m686 348-38 18"/>
-            <path d="m690 308-30-14"/>
-            <circle cx="646" cy="368" r="4.4" fill="#4e96a8" stroke="none"/>
-          </g>
-          <g class="pp-vaso d2">
-            <path d="M968 402c18-34-14-56 6-126"/><path d="m978 348 34 18"/>
-          </g>
-        </g>
-
-        <!-- o produto, revelado atrás da ponta enquanto ela avança -->
-        <g class="pp-gel" clip-path="url(#ppCorte)">
-          <rect x="150" y="192" width="830" height="66" rx="33" fill="url(#ppGel)"/>
-          <!-- brilho de superfície: o gel tem volume, não é uma barra chapada -->
-          <rect x="164" y="200" width="802" height="15" rx="7.5" fill="#fff" opacity=".22"/>
-        </g>
-        <!-- eco que abre quando a cânula sai: distribuição homogênea -->
-        <rect class="pp-espalha" x="150" y="192" width="830" height="66" rx="33"
-              fill="none" stroke="#4e96a8" stroke-width="2.5"/>
-
-        <!-- A microcânula: haste fina, canhão atrás e ponta romba marcada.
-             O canhão fica bem longe da ponta para que, com a cânula toda
-             inserida, ele pare na entrada e não vire um caroço no meio do gel. -->
-        <g class="pp-canula">
-          <line x1="-920" y1="225" x2="150" y2="225" stroke="#12294a" stroke-width="12"
-                stroke-linecap="round"/>
-          <line x1="-900" y1="225" x2="-700" y2="225" stroke="#12294a" stroke-width="30"
-                stroke-linecap="round"/>
-          <!-- ponta romba: arredondada e marcada, é o argumento da seção -->
-          <circle cx="150" cy="225" r="9.5" fill="none" stroke="#ffffff" stroke-width="3"/>
-        </g>
-      </svg>
-    </div>
+    <!-- Local do vídeo. Para publicar, troque o miolo do <figure> pelo player
+         (<video src="..." controls poster="..."> ou o <iframe> do YouTube/Vimeo)
+         e remova as classes `vago` e `vago--video` — a moldura, a proporção e
+         a sombra continuam valendo para o player. -->
+    <figure class="video-slot vago vago--video">
+      <span class="play" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8.4 5.6a1 1 0 0 1 1.53-.85l8.1 5.15a1 1 0 0 1 0 1.69l-8.1 5.15a1 1 0 0 1-1.53-.85V5.6Z"/>
+        </svg>
+      </span>
+      <p class="brief"><b>Vídeo · 16:9</b>Dr. Eduardo explicando o procedimento em
+        1 a 2 minutos: por que a microcânula tem ponta romba, como o produto é
+        distribuído e o que a reversibilidade significa na prática. Gravado no
+        consultório, câmera parada, sem trilha.</p>
+    </figure>
 
     <div class="grid grid-3">
       <article class="card">
@@ -321,6 +236,15 @@
     <!-- Cinco linhas, cada uma um par: o ✓ e o ✕ que se respondem ficam na
          mesma altura. No celular a grade desmonta e cada célula se apresenta. -->
     <div class="dueto">
+      <figure class="dueto-foto vago">
+        <p class="brief"><b>Imagem · 16:10</b>Ácido hialurônico certificado — caixa e
+          seringa lacrada sobre bancada limpa, lote e registro legíveis.</p>
+      </figure>
+      <figure class="dueto-foto vago">
+        <p class="brief"><b>Imagem · 16:10</b>O outro lado — frasco industrial sem
+          identificação, contexto improvisado. Nada de foto clínica de complicação.</p>
+      </figure>
+
       <div class="dueto-cab dueto-cab--bom">
         <span class="dueto-ic" aria-hidden="true"><svg width="15" height="15"><use href="#i-check"/></svg></span>
         <h3>Ácido hialurônico</h3>
