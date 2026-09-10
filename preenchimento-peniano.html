@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609101730">
-<link rel="stylesheet" href="css/pp.css?v=202609101730">
+<link rel="stylesheet" href="css/dna.css?v=202609101736">
+<link rel="stylesheet" href="css/pp.css?v=202609101736">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -269,10 +269,6 @@
 
     <!-- nota de fechamento: a tese da página, cravada em card navy -->
     <div class="nota-mat">
-      <figure class="foto r43 vago">
-        <p class="brief"><b>Imagem · 4:3</b>Embalagem do produto certificado — caixa e
-          seringa lacrada, lote e registro legíveis, fundo neutro.</p>
-      </figure>
       <div class="nota-mat-txt">
         <p>Se o valor parece bom demais, <b>pergunte qual é o material</b>.
           Reversibilidade é segurança — e é <b>o que você não recupera depois</b>.</p>
@@ -320,40 +316,50 @@
 
     <ol class="jornada">
       <li class="etapa">
-        <span class="etapa-marca" aria-hidden="true">1</span>
-        <div class="etapa-corpo">
+        <figure class="etapa-foto vago">
+          <p class="brief"><b>Imagem · 4:3</b>Celular na mão, conversa aberta no
+            WhatsApp — enquadramento discreto, sem rosto.</p>
+        </figure>
+        <div class="etapa-cab">
+          <span class="etapa-marca" aria-hidden="true">1</span>
           <h3>Contato</h3>
-          <p>Você fala com a equipe pelo WhatsApp.</p>
         </div>
+        <p>Você fala com a equipe pelo WhatsApp.</p>
       </li>
       <li class="etapa">
-        <span class="etapa-marca" aria-hidden="true">2</span>
-        <div class="etapa-corpo">
+        <figure class="etapa-foto vago">
+          <p class="brief"><b>Imagem · 4:3</b>Consulta em andamento — o médico de frente,
+            o paciente de costas ou fora de foco. Ninguém identificável.</p>
+        </figure>
+        <div class="etapa-cab">
+          <span class="etapa-marca" aria-hidden="true">2</span>
           <h3>Avaliação</h3>
-          <p>Consulta para entender seu caso e alinhar expectativas.</p>
         </div>
+        <p>Consulta para entender seu caso e alinhar expectativas.</p>
       </li>
       <li class="etapa">
-        <span class="etapa-marca" aria-hidden="true">3</span>
-        <div class="etapa-corpo">
+        <figure class="etapa-foto vago">
+          <p class="brief"><b>Imagem · 4:3</b>Bancada preparada — luvas, campo estéril e a
+            seringa lacrada. Nada de procedimento em curso.</p>
+        </figure>
+        <div class="etapa-cab">
+          <span class="etapa-marca" aria-hidden="true">3</span>
           <h3>Procedimento</h3>
-          <p>Aplicação em consultório, com produto certificado.</p>
         </div>
+        <p>Aplicação em consultório, com produto certificado.</p>
       </li>
       <li class="etapa">
-        <span class="etapa-marca" aria-hidden="true">4</span>
-        <div class="etapa-corpo">
+        <figure class="etapa-foto vago">
+          <p class="brief"><b>Imagem · 4:3</b>Retorno — aperto de mão ou o médico anotando
+            no prontuário, luz calma, clima resolvido.</p>
+        </figure>
+        <div class="etapa-cab">
+          <span class="etapa-marca" aria-hidden="true">4</span>
           <h3>Retorno</h3>
-          <p>Acompanhamento para avaliar o resultado.</p>
         </div>
+        <p>Acompanhamento para avaliar o resultado.</p>
       </li>
     </ol>
-
-    <figure class="foto r166 vago jornada-foto">
-      <p class="brief"><b>Imagem · 16:6</b>Recepção ou corredor da clínica — ambiente
-        reservado, ninguém identificável, luz calma. Traduz “discrição” sem precisar
-        escrever a palavra.</p>
-    </figure>
 
     <div class="meio-cta">
       <a class="btn" href="#agendar">Agendar avaliação
@@ -392,21 +398,15 @@
 <!-- ===== SEÇÃO 9 — RESULTADOS (escura, ênfase 2 de 2) ===== -->
 <section class="sec sec--tint adiar">
   <div class="wrap">
-    <div class="resultados">
-      <div>
-        <span class="kicker">Sem promessa</span>
-        <h2 class="h2">Sobre os
-          <b>resultados</b></h2>
-        <p class="lead">Cada caso tem um ponto de partida e um resultado possível
-          diferente. Por isso os registros de resultado <b>não são exibidos aqui</b>:
-          eles são mostrados e discutidos <b>na consulta</b>, com o seu caso na frente,
-          sem promessa e sem comparação com o de ninguém.</p>
-      </div>
-
-      <figure class="foto">
-        <img src="img/de-clinica.jpg" alt="Consultório onde o procedimento é realizado"
-             width="760" height="600" loading="lazy" decoding="async">
-      </figure>
+    <div class="resultados head-center">
+      <span class="kicker kicker--center">Sem promessa</span>
+      <h2 class="h2">Sobre os
+        <b>resultados</b></h2>
+      <p class="lead lead--center">Cada caso tem um ponto de partida e um resultado
+        possível diferente. Por isso os registros de resultado
+        <b>não são exibidos aqui</b>: eles são mostrados e discutidos
+        <b>na consulta</b>, com o seu caso na frente, sem promessa e sem comparação
+        com o de ninguém.</p>
     </div>
   </div>
 </section>
@@ -464,24 +464,17 @@
 <section class="sec sec--branco t-ombro" id="agendar"
          style="--ombro-cor:var(--paper-2)">
   <div class="wrap">
-    <div class="fechamento">
-      <div>
-        <span class="kicker">Agende agora</span>
-        <h2 class="h2">Faça do jeito certo —
-          <b>seguro, reversível e com especialista</b></h2>
-        <p class="lead">Fale com nossa equipe pelo WhatsApp e agende sua avaliação.
-          <b>Tire todas as suas dúvidas antes de qualquer decisão.</b></p>
-        <div class="hero-acoes">
-          <!-- href: trocar por https://wa.me/55DDDNUMERO?text=... quando o numero existir -->
-          <a class="btn" href="#" data-zap>Falar no WhatsApp
-            <i aria-hidden="true"><svg width="15" height="15"><use href="#i-whats"/></svg></i></a>
-        </div>
+    <div class="fechamento head-center">
+      <span class="kicker kicker--center">Agende agora</span>
+      <h2 class="h2">Faça do jeito certo —
+        <b>seguro, reversível e com especialista</b></h2>
+      <p class="lead lead--center">Fale com nossa equipe pelo WhatsApp e agende sua
+        avaliação. <b>Tire todas as suas dúvidas antes de qualquer decisão.</b></p>
+      <div class="hero-acoes">
+        <!-- href: trocar por https://wa.me/55DDDNUMERO?text=... quando o numero existir -->
+        <a class="btn" href="#" data-zap>Falar no WhatsApp
+          <i aria-hidden="true"><svg width="15" height="15"><use href="#i-whats"/></svg></i></a>
       </div>
-
-      <figure class="foto r45 vago">
-        <p class="brief"><b>Imagem · 4:5</b>Homem de 30 a 50 anos, expressão tranquila e
-          discreta, roupa neutra — decisão tomada, nada de sensualização.</p>
-      </figure>
     </div>
   </div>
 </section>

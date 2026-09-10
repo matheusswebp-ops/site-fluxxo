@@ -503,13 +503,13 @@ html{scroll-padding-top:88px}
 
 /* nota de fechamento: card navy dentro de seção clara. Não conta como seção
    escura — é ênfase de bloco, e é aqui que a página crava a tese. */
+/* Sem imagem: a nota é só a frase, centrada na faixa navy. O brilho radial
+   sai do meio para o texto ficar no ponto claro da faixa. */
 .nota-mat{
-  display:grid;grid-template-columns:minmax(0,32%) 1fr;
-  gap:clamp(24px,3vw,44px);align-items:center;
   margin-top:clamp(28px,3vw,42px);
-  border-radius:var(--radius-lg);overflow:hidden;
+  border-radius:var(--radius-lg);overflow:hidden;text-align:center;
   background:
-    radial-gradient(ellipse 70% 90% at 88% 50%,rgba(120,180,235,.22),transparent 70%),
+    radial-gradient(ellipse 60% 130% at 50% 50%,rgba(120,180,235,.22),transparent 72%),
     linear-gradient(135deg,var(--dark-1),var(--dark-2));
   color:var(--dark-ink);
 }
@@ -518,9 +518,9 @@ html{scroll-padding-top:88px}
    herda o corpo de 22px da nota e vira o elemento mais alto do card. */
 .nota-mat .brief{border-radius:0;font-size:12px;line-height:1.45;max-width:none;
   color:#fff}
-.nota-mat-txt{padding:clamp(26px,3vw,42px) clamp(24px,3vw,44px) clamp(26px,3vw,42px) 0}
-.nota-mat p{font-size:clamp(17px,1.7vw,22px);line-height:1.45;letter-spacing:-.015em;
-  color:var(--dark-ink-soft);max-width:38ch}
+.nota-mat-txt{padding:clamp(34px,3.8vw,56px) clamp(26px,4vw,64px)}
+.nota-mat p{font-size:clamp(18px,1.9vw,26px);line-height:1.4;letter-spacing:-.02em;
+  color:var(--dark-ink-soft);max-width:44ch;margin:0 auto}
 .nota-mat p b{font-weight:700;color:#fff}
 
 /* ---------- 6. EXPECTATIVA E SEGURANÇA ---------- */
@@ -559,24 +559,23 @@ html{scroll-padding-top:88px}
   gap:var(--gap);position:relative}
 .etapa{position:relative;padding-top:8px}
 .etapa-marca{
-  position:relative;z-index:1;width:46px;height:46px;border-radius:50%;
-  display:grid;place-items:center;margin-bottom:18px;
+  flex:none;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;
   background:var(--brand);color:#fff;
-  font-family:var(--font-display);font-size:17px;font-weight:700;
-  box-shadow:0 0 0 6px var(--paper);
+  font-family:var(--font-display);font-size:15px;font-weight:700;
 }
-/* O trilho sai do <li>, não do marcador: porcentagem dentro do marcador
-   resolve contra os 46px dele e o fio parava no meio do vão. Daqui ele
-   alcança o marcador seguinte, e o halo de 6px o esconde na chegada. */
-.etapa:not(:last-child)::after{
-  content:"";position:absolute;left:46px;top:31px;
-  width:calc(100% - 46px + var(--gap));height:2px;background:var(--line);
+/* Cada etapa carrega a própria imagem. Com foto no topo de todas, o trilho
+   horizontal entre os marcadores não tem mais por onde passar — e nem faz
+   falta: os números já contam a sequência. */
+.etapa-foto{
+  position:relative;aspect-ratio:4/3;overflow:hidden;
+  border-radius:var(--radius);margin-bottom:20px;
+  box-shadow:0 24px 48px -32px rgba(10,35,66,.5);
 }
-.etapa h3{font-size:var(--fs-card);font-weight:600;line-height:var(--lh-card);
-  margin-bottom:9px}
+.etapa-cab{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.etapa h3{font-size:var(--fs-card);font-weight:600;line-height:var(--lh-card)}
 .etapa p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-soft);
   max-width:34ch}
-.jornada-foto{margin-top:clamp(34px,3.6vw,50px)}
 /* botão avulso de meia página: repete o CTA sem inventar frase nova */
 .meio-cta{display:flex;justify-content:center;margin-top:clamp(34px,3.6vw,48px)}
 
@@ -601,21 +600,16 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 9. RESULTADOS ---------- */
-/* Sem antes/depois e sem faixa de selos — instrução do briefing. O apoio
-   visual é o ambiente do consultório, tratado como foto e não como prova. */
-.resultados{display:grid;grid-template-columns:minmax(0,52%) minmax(0,48%);
-  gap:clamp(32px,5vw,72px);align-items:center}
-.resultados .foto{aspect-ratio:760/600;overflow:hidden}
-.resultados .foto img{transform:scale(1.06)}
-.resultados .lead{max-width:50ch}
+/* Sem antes/depois, sem faixa de selos e sem foto — a seção existe para dizer
+   que registro de resultado não se exibe fora da consulta. Uma imagem qualquer
+   aqui trabalharia contra a própria frase. Fica só a declaração, centrada. */
+.resultados .h2{max-width:16ch;margin:0 auto}
+.resultados .lead{max-width:62ch}
 
 /* ---------- 10. CTA FINAL ---------- */
-.fechamento{display:grid;grid-template-columns:minmax(0,56%) minmax(0,44%);
-  gap:clamp(32px,5vw,72px);align-items:center}
-/* `justify-self`, não `margin-left:auto`: margem automática desliga o stretch
-   do item de grade e a figura, que só tem conteúdo absoluto dentro, encolhe
-   para a largura mínima. */
-.fechamento .foto{width:100%;max-width:380px;justify-self:end}
+.fechamento .h2{max-width:22ch;margin:0 auto}
+.fechamento .lead{max-width:54ch}
+.fechamento .hero-acoes{justify-content:center}
 
 /* ============================================================
    VARIANTES ESCURAS
@@ -724,7 +718,7 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
 @media (max-width:1080px){
   .jornada{grid-template-columns:repeat(2,1fr);gap:clamp(26px,3vw,36px) var(--gap)}
   /* com duas colunas o trilho ligaria a linha 1 na 2 pulando o vão */
-  .etapa::after{display:none}
+
 }
 
 @media (max-width:980px){
@@ -745,16 +739,13 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   .hero-acoes{justify-content:center}
 
   /* ---- seções de duas colunas: cabeçalho centralizado, imagem antes ---- */
-  .autoridade,.resultados,.fechamento{grid-template-columns:1fr;text-align:center}
-  .autoridade>div:not(.foto),
-  .resultados>div:not(.foto),
-  .fechamento>div:not(.foto){display:flex;flex-direction:column;align-items:center}
-  .autoridade .kicker,.resultados .kicker,.fechamento .kicker{justify-content:center}
-  .autoridade .kicker::after,.resultados .kicker::after,.fechamento .kicker::after{
-    content:"";width:26px;height:1px;background:currentColor;opacity:.7}
-  .autoridade .bio,.resultados .lead,.fechamento .lead{margin-inline:auto}
+  .autoridade{grid-template-columns:1fr;text-align:center}
+  .autoridade>div:not(.foto){display:flex;flex-direction:column;align-items:center}
+  .autoridade .kicker{justify-content:center}
+  .autoridade .kicker::after{content:"";width:26px;height:1px;
+    background:currentColor;opacity:.7}
+  .autoridade .bio{margin-inline:auto}
   .autoridade .foto{order:-1;max-width:400px;margin:0 auto 34px}
-  .resultados .foto,.fechamento .foto{order:-1;max-width:460px;margin:0 auto 34px}
   /* as credenciais leem melhor à esquerda: o ícone é o marcador da linha */
   .credenciais{text-align:left}
 
@@ -827,16 +818,8 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   .garantias-card{padding:18px}
   .garantias-card h2{font-size:13px;margin-bottom:14px}
 
-  .jornada{grid-template-columns:1fr;gap:22px}
-  .etapa{display:grid;grid-template-columns:46px 1fr;gap:16px;padding-top:0}
-  .etapa-marca{margin-bottom:0}
-  .etapa-corpo{min-width:0}
-  /* empilhada, a sequência ganha o trilho de volta — agora na vertical,
-     do pé de um marcador ao topo do próximo */
-  .etapa:not(:last-child)::after{
-    display:block;left:22px;top:46px;
-    width:2px;height:calc(100% - 24px);
-  }
+  .jornada{grid-template-columns:1fr;gap:30px}
+  .etapa{padding-top:0}
 
   .faq summary{padding:18px;font-size:15.5px;gap:14px}
   .faq .resposta{padding:0 18px 20px;font-size:14.5px}
