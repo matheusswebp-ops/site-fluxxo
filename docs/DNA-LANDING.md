@@ -158,6 +158,14 @@ Cada seção montada com os mesmos 4 movimentos, nesta ordem:
 | **Etapas do método** | 3 cards de imagem 3:4, painel inferior com número em badge + título + link | como funciona |
 | **Qualificação** | 2 cards lado a lado: esquerdo tingido com checks azuis, direito neutro com triângulos coral | pra quem é / pra quem não é |
 | **Autoridade** | card de imagem em gradiente com chips flutuantes + coluna de bio, credencial em azul, ícones sociais em círculo | quem ensina / quem atende |
+| **Comparativo pareado** | grade 2×N: cabeçalho ✓ / ✕ e, abaixo, cada par na mesma linha, coluna boa tingida e ruim neutra, separados por fio | quando a copy entrega pares que se respondem (material A × material B) |
+
+**Comparativo pareado ≠ Qualificação.** A Qualificação são duas listas independentes
+lado a lado. O comparativo é usado quando cada item de um lado responde a um item
+do outro: aí eles têm que cair na mesma altura, senão o leitor perde o par. No
+celular a grade vira uma coluna e os pares continuam intercalados — e cada célula
+passa a carregar o próprio micro-rótulo, porque sem o cabeçalho de coluna não dá
+para saber de quem é a linha que se está lendo.
 
 ### Ordem canônica da página
 
@@ -191,6 +199,27 @@ Usar quando muda o assunto: hero → serviços, escuro → claro.
 **`.t-fade`** — sangria de 90px em gradiente entre duas seções claras de tom diferente.
 
 **Corte seco** — quando as duas seções já se separam pela cor de fundo.
+
+**Seção com virada não leva `content-visibility`.** O platô do ombro é desenhado
+fora da caixa da seção, para dentro da anterior. `content-visibility:auto` (a
+classe `.adiar`, que adia a renderização do que está longe da dobra) impõe
+contenção de pintura e recorta tudo que sai da caixa — o ombro simplesmente
+some, sem erro nenhum no console. Quem tem `.t-ombro` fica de fora do `.adiar`.
+
+---
+
+## 6b. Slots de imagem
+
+Toda página nasce com mais quadros do que fotos prontas. O quadro vazio não pode
+parecer imagem quebrada: ele recebe fundo próprio (mais fechado que o gradiente
+de foto, com trama diagonal), uma etiqueta `IMAGEM` no canto e, no rodapé do
+quadro, o briefing da foto que vai ali — proporção e o que a imagem precisa
+comunicar. Some inteiro ao trocar a classe pelo `<img>`.
+
+**A moldura declara `width:100%`.** O único filho dela é absoluto (a `<img>` ou a
+legenda), então sem largura explícita ela mede zero. Em item de grade o *stretch*
+disfarça — até alguém escrever `margin:0 auto` para centralizar, o que desliga o
+stretch e derruba o quadro para 0×0 sem aviso.
 
 ---
 
