@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609101754">
-<link rel="stylesheet" href="css/pp.css?v=202609101754">
+<link rel="stylesheet" href="css/dna.css?v=202609101842">
+<link rel="stylesheet" href="css/pp.css?v=202609101842">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -185,20 +185,13 @@
         “furar”, ela desliza entre os tecidos e distribui o produto de forma homogênea,
         <b>preservando vasos e nervos</b> — e a sensibilidade.</p>
     </div>
-    <!-- Local do vídeo. Para publicar, troque o miolo do <figure> pelo player
-         (<video src="..." controls poster="..."> ou o <iframe> do YouTube/Vimeo)
-         e remova as classes `vago` e `vago--video` — a moldura, a proporção e
-         a sombra continuam valendo para o player. -->
-    <figure class="video-slot vago vago--video">
-      <span class="play" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8.4 5.6a1 1 0 0 1 1.53-.85l8.1 5.15a1 1 0 0 1 0 1.69l-8.1 5.15a1 1 0 0 1-1.53-.85V5.6Z"/>
-        </svg>
-      </span>
-      <p class="brief"><b>Vídeo · 16:9</b>Dr. Eduardo explicando o procedimento em
-        1 a 2 minutos: por que a microcânula tem ponta romba, como o produto é
-        distribuído e o que a reversibilidade significa na prática. Gravado no
-        consultório, câmera parada, sem trilha.</p>
+    <!-- preload="none": o vídeo só baixa quando o visitante manda tocar. O
+         pôster (extraído do primeiro segundo) é o que carrega na primeira
+         visita, e ele pesa 60 KB contra os 3,9 MB do arquivo. -->
+    <figure class="video-slot">
+      <video src="video/pp-como-funciona.mp4" poster="img/pp-video-poster.webp"
+             width="1280" height="720" controls playsinline preload="none"
+             aria-label="A microcânula de ponta romba deslizando entre os tecidos e distribuindo o ácido hialurônico"></video>
     </figure>
 
     <div class="grid grid-3">
@@ -236,13 +229,15 @@
     <!-- Cinco linhas, cada uma um par: o ✓ e o ✕ que se respondem ficam na
          mesma altura. No celular a grade desmonta e cada célula se apresenta. -->
     <div class="dueto">
-      <figure class="dueto-foto vago">
-        <p class="brief"><b>Imagem · 16:10</b>Ácido hialurônico certificado — caixa e
-          seringa lacrada sobre bancada limpa, lote e registro legíveis.</p>
+      <figure class="dueto-foto">
+        <img src="img/pp-material-ha.webp" width="1200" height="675" loading="lazy"
+             decoding="async"
+             alt="Caixa e seringa lacrada de ácido hialurônico com lote e registro visíveis, sobre bandeja de inox">
       </figure>
-      <figure class="dueto-foto vago">
-        <p class="brief"><b>Imagem · 16:10</b>O outro lado — frasco industrial sem
-          identificação, contexto improvisado. Nada de foto clínica de complicação.</p>
+      <figure class="dueto-foto">
+        <img src="img/pp-material-pmma.webp" width="1200" height="675" loading="lazy"
+             decoding="async"
+             alt="Frasco sem identificação e seringa avulsa sobre bancada improvisada">
       </figure>
 
       <div class="dueto-cab dueto-cab--bom">
@@ -316,9 +311,9 @@
 
     <ol class="jornada">
       <li class="etapa">
-        <figure class="etapa-foto vago">
-          <p class="brief"><b>Imagem · 4:3</b>Celular na mão, conversa aberta no
-            WhatsApp — enquadramento discreto, sem rosto.</p>
+        <figure class="etapa-foto">
+          <img src="img/pp-etapa-1.webp" width="900" height="600" loading="lazy"
+               decoding="async" alt="Celular na mao com uma conversa de agendamento aberta no WhatsApp, recepcao da clinica ao fundo">
         </figure>
         <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">1</span>
@@ -327,9 +322,9 @@
         <p>Você fala com a equipe pelo WhatsApp.</p>
       </li>
       <li class="etapa">
-        <figure class="etapa-foto vago">
-          <p class="brief"><b>Imagem · 4:3</b>Consulta em andamento — o médico de frente,
-            o paciente de costas ou fora de foco. Ninguém identificável.</p>
+        <figure class="etapa-foto">
+          <img src="img/pp-etapa-2.webp" width="900" height="600" loading="lazy"
+               decoding="async" alt="Urologista mostrando um diagrama anatomico em tablet para o paciente durante a consulta">
         </figure>
         <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">2</span>
@@ -338,9 +333,9 @@
         <p>Consulta para entender seu caso e alinhar expectativas.</p>
       </li>
       <li class="etapa">
-        <figure class="etapa-foto vago">
-          <p class="brief"><b>Imagem · 4:3</b>Bancada preparada — luvas, campo estéril e a
-            seringa lacrada. Nada de procedimento em curso.</p>
+        <figure class="etapa-foto">
+          <img src="img/pp-etapa-3.webp" width="900" height="600" loading="lazy"
+               decoding="async" alt="Medico de luvas preparando a seringa ao lado da maca, com o material esteril na bandeja">
         </figure>
         <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">3</span>
@@ -349,9 +344,9 @@
         <p>Aplicação em consultório, com produto certificado.</p>
       </li>
       <li class="etapa">
-        <figure class="etapa-foto vago">
-          <p class="brief"><b>Imagem · 4:3</b>Retorno — aperto de mão ou o médico anotando
-            no prontuário, luz calma, clima resolvido.</p>
+        <figure class="etapa-foto">
+          <img src="img/pp-etapa-4.webp" width="900" height="600" loading="lazy"
+               decoding="async" alt="Consulta de retorno: a ficha de acompanhamento sendo preenchida sobre a mesa">
         </figure>
         <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">4</span>
@@ -372,9 +367,9 @@
 <section class="sec sec--branco adiar">
   <div class="wrap">
     <div class="autoridade">
-      <figure class="foto r45 vago">
-        <p class="brief"><b>Imagem · retrato 4:5</b>Dr. Eduardo no consultório, de jaleco,
-          em atendimento — luz natural, sem pose de estúdio.</p>
+      <figure class="foto r45">
+        <img src="img/pp-medico.webp" width="880" height="1104" loading="lazy"
+             decoding="async" alt="Dr. Eduardo Miranda, urologista">
       </figure>
 
       <div>

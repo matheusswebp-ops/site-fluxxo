@@ -446,7 +446,7 @@ html{scroll-padding-top:88px}
    e material se vê. A da esquerda mostra o produto certificado, a da direita
    o que costuma vir no lugar dele. */
 .dueto-foto{
-  position:relative;aspect-ratio:16/10;overflow:hidden;
+  position:relative;aspect-ratio:16/9;overflow:hidden;
   border-bottom:1px solid var(--line);
 }
 .dueto-foto+.dueto-foto{border-left:1px solid var(--line)}
@@ -568,7 +568,7 @@ html{scroll-padding-top:88px}
    horizontal entre os marcadores não tem mais por onde passar — e nem faz
    falta: os números já contam a sequência. */
 .etapa-foto{
-  position:relative;aspect-ratio:4/3;overflow:hidden;
+  position:relative;aspect-ratio:3/2;overflow:hidden;
   border-radius:var(--radius);margin-bottom:20px;
   box-shadow:0 24px 48px -32px rgba(10,35,66,.5);
 }
@@ -848,3 +848,12 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   .faq summary{padding:18px;font-size:15.5px;gap:14px}
   .faq .resposta{padding:0 18px 20px;font-size:14.5px}
 }
+
+/* ---------- fotos reais no lugar dos slots ----------
+   Cada quadro recebe a proporção do próprio arquivo, como manda o DNA: o
+   comparativo vem em 16:9 (1672x941), as etapas em 3:2 (900x600) e o retrato
+   em 4:5 (910x1142). Assim o object-fit não corta nada que importe. */
+.dueto-foto img,.etapa-foto img,.video-slot video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.video-slot video{border-radius:inherit;background:var(--dark-1)}
