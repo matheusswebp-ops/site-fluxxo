@@ -317,12 +317,29 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. VIRADA DE CRITÉRIO ---------- */
-/* A seção mais curta da página, de propósito: é uma respirada entre a
-   promessa e a explicação. Só a frase, centrada, e um filete que se
-   desenha quando ela entra. Nada de card, nada de ícone. */
-.virada{padding-block:clamp(46px,4.4vw,70px)}
-.virada .h2{max-width:20ch;margin:0 auto;font-size:clamp(27px,3vw,42px)}
-.virada .lead{max-width:56ch;margin-left:auto;margin-right:auto;text-align:center}
+/* A seção mais curta da página, de propósito: é a respirada entre a promessa
+   e a explicação. Ela vem logo depois da hero, que também é escura, então o
+   que a separa não é cor de fundo — é tom: aqui o navy fecha quase a preto,
+   e um facho de luz sobe do centro para segurar a frase. Curta e densa:
+   respiro medido, senão vira um vazio branco no meio da página. */
+.virada{
+  padding-block:clamp(62px,5.6vw,92px);
+  background:
+    radial-gradient(ellipse 46% 120% at 50% 6%,rgba(126,186,240,.20),transparent 62%),
+    linear-gradient(180deg,#05172c,#081f3a 52%,#0a2342);
+  overflow:hidden;
+}
+/* fio de luz no topo, esmaecendo nas pontas: marca a emenda com a hero sem
+   virar uma borda dura atravessando a tela */
+.virada::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(143,196,240,.42) 32%,
+             rgba(143,196,240,.42) 68%,transparent);
+}
+.virada .h2{max-width:19ch;margin:0 auto;font-size:clamp(30px,3.7vw,54px)}
+.virada .lead{max-width:60ch;margin:clamp(20px,2vw,26px) auto 0;text-align:center;
+  font-size:clamp(15px,1.2vw,17.5px)}
+
 .filete{
   width:clamp(64px,7vw,96px);height:2px;margin:0 auto clamp(24px,2.6vw,34px);
   border-radius:2px;background:linear-gradient(90deg,#6fd0e0,#3f9fd0);
@@ -330,6 +347,7 @@ html{scroll-padding-top:88px}
   transition:transform .7s var(--ease);
 }
 .filete.in{transform:scaleX(1)}
+.sec--dark .filete{box-shadow:0 0 18px rgba(111,208,224,.55)}
 
 /* ---------- 4. COMO FUNCIONA · ilustração da microcânula ---------- */
 /* Sem uma palavra dentro do desenho: os três cards abaixo são as legendas.
