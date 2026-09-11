@@ -832,7 +832,10 @@ html{scroll-padding-top:88px}
      logo abaixo de onde a foto acaba (a foto tem 1,5x a largura de altura
      e some por volta dos 50% dela). Os 12vw finais desaparecem no preto:
      sem isso a vinheta da foto desenha um fio horizontal na emenda. */
-  .hero-dna{display:block;padding-top:calc(80vw + 88px);min-height:0}
+  /* a cena da foto acaba por volta de 55vw (37% da altura dela) mais os
+     88px da barra: o texto entra logo depois, com um respiro de ~30px.
+     Antes eram 80vw e sobrava um palmo de preto entre foto e headline. */
+  .hero-dna{display:block;padding-top:calc(63vw + 88px);min-height:0}
   .hero-arte{position:absolute;inset:0;width:auto;height:auto;background:#030303}
   /* desce a altura da barra fixa: a foto tem a cabeça colada na borda de
      cima, e sem isso o botão do cabeçalho senta no rosto do médico. Os
