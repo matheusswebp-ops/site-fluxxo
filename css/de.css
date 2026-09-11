@@ -126,16 +126,22 @@ html{scroll-padding-top:88px}
 /* selos: uma tira sob o CTA, alinhada à esquerda como o resto da coluna do
    hero, com o check. O wrap fica liberado — na largura de desktop os três
    cabem na mesma linha, e onde não couberem quebram em vez de vazar. */
+/* Uma linha só, sempre. Como a coluna do hero encolhe junto com a janela, o
+   corpo, o disco e os vãos encolhem com ela (clamp em vw): a tira mede 549px
+   no desktop cheio e ~450px em 1100px de janela, sempre dentro da coluna.
+   Só no celular, onde a conta não fecha de jeito nenhum, ela volta a quebrar. */
 .selos{
-  list-style:none;display:flex;flex-wrap:wrap;
-  gap:10px clamp(16px,2vw,26px);margin-top:clamp(24px,3vw,34px);
+  list-style:none;display:flex;flex-wrap:nowrap;
+  gap:10px clamp(12px,1.6vw,22px);margin-top:clamp(24px,3vw,34px);
 }
 .selos li{
-  display:flex;align-items:center;gap:9px;
-  font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap;
+  display:flex;align-items:center;gap:clamp(6px,.6vw,8px);
+  font-size:clamp(11px,.98vw,13.5px);font-weight:500;color:var(--ink);
+  white-space:nowrap;
 }
 .selos li::before{
-  content:"";width:19px;height:19px;border-radius:50%;flex:none;
+  content:"";width:clamp(15px,1.3vw,18px);height:clamp(15px,1.3vw,18px);
+  border-radius:50%;flex:none;
   background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6.5 9.2 17.3 4 12.1' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
 }
 
