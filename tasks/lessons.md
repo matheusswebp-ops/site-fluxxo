@@ -44,3 +44,24 @@ do degradê e sobrou um vazio navy entre o texto e a foto. Reprovado como
 3. Usar sempre o maior arquivo disponível; nada de recorte menor que a
    largura em que vai ser exibido. Em retina qualquer upscale > 2x borra.
 4. Capturar também em 1673px @2x (a tela dele), não só 1440@1x.
+
+## 2026-09-11 — Foto de banner cortando: é a ALTURA da seção, não a foto
+
+**O erro:** encaixei a de-consulta-desk.webp (1920x850) como fundo da seção e
+ela aparecia ampliada e cortada. Culpei o enquadramento. A causa era outra: a
+seção tinha 896px de altura em 1413px de largura, proporção 1.58 contra 2.26
+da foto. Com `object-fit:cover` o navegador precisa AMPLIAR a foto (1,05x,
+perdendo nitidez em retina) e jogar 30% dela para fora. Também tinha posto um
+`font-size` próprio no h2 da seção, então a headline saía menor que a das
+outras seções — o Mateus viu na hora que fugia do padrão.
+
+**As regras:**
+1. Foto de banner com proporção fixa: medir `secH` e comparar a proporção da
+   caixa com a da imagem antes de culpar o enquadramento. Se a caixa for mais
+   "quadrada" que a foto, a foto é ampliada e cortada — a correção é baixar a
+   altura da seção (padding e tamanhos), não mexer no object-position.
+2. `object-position` decide o que sai do quadro. Nessa foto o assunto mora na
+   direita, então `100% 50%`: o que sobra para cortar é o navy chapado da
+   esquerda, que a cortina do CSS repõe na mesma cor.
+3. Nada de `font-size` próprio em `.h2` dentro de uma seção. A escala do site
+   é `--fs-h2`; override só de `max-width`/`margin` quando a coluna exigir.

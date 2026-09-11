@@ -21,6 +21,12 @@
       trocado para #112241 para o platô não deixar emenda.
 - [x] `<picture>`: a foto nova só no desktop (min-width:881px); no mobile
       segue a de-nivel-1, que é vertical o bastante para virar o topo.
+- [x] Altura da seção apertada (--sec-y 64px, número 116px, listas mais
+      justas) para a foto caber sem ser ampliada: em 1920px ela entra
+      1:1 e sem corte nenhum; em 1413px sobra 22%, tudo navy chapado.
+      `object-position:100% 50%` mantém o médico sempre no quadro.
+- [x] Headline sem `font-size` próprio: usa a escala do site (--fs-h2),
+      igual à das outras seções.
 
 ## Pendência
 - [ ] Falta a versão mobile da foto nova (a de-consulta-desk é 1920x850,
