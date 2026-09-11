@@ -176,58 +176,41 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. NÚMERO-HERÓI ---------- */
-/* Duas partes: o retrato de um lado, ocupando a altura toda, e o número com a
-   frase do outro. Enquanto a foto não chega, o quadro fica como espaço
-   reservado — mesma proporção e mesma posição que a imagem vai ocupar, então
-   quando o arquivo entrar nada se mexe de lugar. */
+/* A frase é literal, então a ilustração também é: dois homens, um aceso.
+   Nada de anel nem de contagem — "1 em cada 2" se lê de imediato. O aceso
+   respira em looping para a seção não ficar parada. */
 .numero-heroi{
-  display:grid;grid-template-columns:minmax(0,40%) minmax(0,60%);
-  gap:clamp(28px,3.6vw,64px);align-items:center;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.dupla{margin:0 0 clamp(22px,2.6vw,32px)}
+.dupla svg{display:block;width:clamp(176px,18vw,232px);height:auto;overflow:visible}
+.busto.apagado{fill:rgba(255,255,255,.12)}
+.busto.aceso{
+  fill:url(#gBusto);transform-origin:center bottom;
+  animation:bustoRespira 3.6s var(--ease) infinite;
+}
+@keyframes bustoRespira{
+  0%,100%{filter:drop-shadow(0 0 0 rgba(143,196,240,0))}
+  45%{filter:drop-shadow(0 6px 20px rgba(143,196,240,.45))}
 }
 
-.retrato{
-  position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;
-  border-radius:var(--radius-lg);
-  background:rgba(255,255,255,.05);
-  box-shadow:0 30px 60px -40px rgba(0,0,0,.7);
-}
-.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* o rótulo do espaço vazio: some assim que existir uma imagem dentro */
-.retrato-vazio{
-  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
-  padding:24px;font-size:13.5px;line-height:1.5;color:var(--dark-ink-soft);
-  border:1px dashed var(--dark-line);border-radius:inherit;
-}
-.retrato:has(img) .retrato-vazio{display:none}
-
-.numero-texto{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-
-/* o número em duas vozes: os algarismos em peso cheio, o "em cada" miúdo */
 .numero-heroi .valor{
-  font-family:var(--font-display);color:var(--dark-ink);
-  font-size:clamp(52px,7.4vw,104px);line-height:.92;letter-spacing:-.05em;
-  white-space:nowrap;display:flex;align-items:baseline;gap:.15em;margin:0;
+  font-family:var(--font-display);font-weight:700;white-space:nowrap;
+  font-size:clamp(38px,5.6vw,76px);line-height:1;letter-spacing:-.045em;
+  background:linear-gradient(150deg,#ffffff 30%,#8fc4f0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.numero-heroi .valor b{font-weight:700}
-.numero-heroi .valor span{
-  font-weight:400;font-size:.34em;letter-spacing:-.01em;color:var(--dark-ink-soft);
+.numero-texto{
+  margin-top:clamp(22px,2.6vw,32px);
+  display:flex;flex-direction:column;align-items:center;
 }
+.numero-heroi .h2{font-size:clamp(26px,2.7vw,38px);max-width:40ch;margin-bottom:16px}
+/* medida larga de propósito: o texto tem que fechar em duas linhas */
+.numero-heroi .lead{max-width:78ch;margin:0 auto;font-size:16px}
 
-.numero-heroi .h2{
-  font-size:clamp(26px,2.9vw,40px);max-width:22ch;
-  margin:clamp(22px,2.4vw,32px) 0 clamp(16px,1.8vw,22px);
+@media (prefers-reduced-motion:reduce){
+  .busto.aceso{animation:none}
 }
-.numero-heroi .lead{max-width:52ch;margin:0;font-size:clamp(15.5px,1.2vw,17px)}
-
-@media (max-width:880px){
-  /* empilhado, o retrato vira uma faixa deitada e o texto volta ao centro */
-  .numero-heroi{grid-template-columns:1fr;gap:28px}
-  .retrato{aspect-ratio:3/2;max-width:520px;margin:0 auto}
-  .numero-texto{align-items:center;text-align:center}
-  .numero-heroi .valor{justify-content:center}
-  .numero-heroi .h2,.numero-heroi .lead{margin-left:auto;margin-right:auto}
-}
-
 /* ---------- 4. ILUSTRAÇÃO ---------- */
 .ilustra{
   border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);

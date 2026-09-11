@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/dna.css?v=202609102238">
-<link rel="stylesheet" href="css/de.css?v=202609102324">
+<link rel="stylesheet" href="css/de.css?v=202609102327">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -143,20 +143,29 @@
   <div class="wrap">
     <div class="numero-heroi">
 
-      <!-- espaço da foto: quando o arquivo chegar, entra um <img> aqui dentro e
-           o quadro some sozinho (o fundo do slot fica atrás da imagem) -->
-      <figure class="retrato">
-        <span class="retrato-vazio slot">foto — homem de 45 a 60 anos</span>
+      <figure class="dupla" aria-hidden="true">
+        <svg viewBox="0 0 220 124">
+          <defs>
+            <linearGradient id="gBusto" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d5eafb"/><stop offset="1" stop-color="#5f9fd6"/>
+            </linearGradient>
+            <symbol id="i-busto" viewBox="0 0 90 120">
+              <circle cx="45" cy="26" r="21"/>
+              <path d="M6 120V96c0-21.5 17.5-39 39-39s39 17.5 39 39v24z"/>
+            </symbol>
+          </defs>
+          <use class="busto apagado" href="#i-busto" x="130" y="2" width="90" height="120"/>
+          <use class="busto aceso"   href="#i-busto" x="0"   y="2" width="90" height="120"/>
+        </svg>
       </figure>
 
+      <p class="valor">1 em cada 2</p>
+
       <div class="numero-texto">
-        <p class="valor"><b>1</b> <span>em cada</span> <b>2</b></p>
-
-        <h2 class="h2">Metade dos homens acima dos 40 anos tem
-          <b>algum grau de dificuldade de ereção.</b></h2>
-
-        <p class="lead">É comum, tem explicação médica e, na grande maioria dos casos,
-          <b>tem tratamento</b>. O primeiro passo não é se conformar — é entender por
+        <h2 class="h2">A dificuldade de ereção atinge cerca de
+          <b>metade dos homens acima dos 40 anos.</b></h2>
+        <p class="lead">É comum, tem explicação médica e, na grande maioria dos
+          casos, <b>tem tratamento</b>. O primeiro passo não é se conformar — é entender por
           que está acontecendo.</p>
       </div>
 
