@@ -18,11 +18,12 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<link rel="preload" as="image" href="img/pp-medico.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609111210">
-<link rel="stylesheet" href="css/rh.css?v=202609111210">
+<link rel="stylesheet" href="css/dna.css?v=202609111340">
+<link rel="stylesheet" href="css/rh.css?v=202609111340">
 </head>
 
 <body class="tema-cobre">
@@ -35,6 +36,8 @@
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.2 17.3 4 12.1"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7 17 17M17 7 7 17"/></symbol>
   <symbol id="i-whats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 11.8a8.4 8.4 0 0 1-12.4 7.4L3.6 20.4l1.4-4.4A8.4 8.4 0 1 1 20.4 11.8Z"/><path d="M9.3 9.1c.3 2.6 2.4 4.6 5 5l.9-1.4 1.9.7v1.3c-2.7.5-6.6-2.2-7.7-5.4l1.3-.9-1.4-1.9Z"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.3 5.2 6v5.3c0 4.2 2.8 7.5 6.8 9.2 4-1.7 6.8-5 6.8-9.2V6L12 3.3Z"/><path d="m9.2 11.9 2 2 3.6-3.6"/></symbol>
+  <symbol id="i-tela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.6" width="17.6" height="12" rx="2"/><path d="M9 20h6M12 16.6V20"/></symbol>
   <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.6 15.6 4.2 4.2"/></symbol>
 </svg>
 
@@ -59,8 +62,9 @@
 <main id="conteudo">
 
 <!-- ===== SEÇÃO 2 — HERO =====
-     Sem retrato: a primeira dobra é a triagem. O leitor marca o que
-     reconhece e a página responde — é a tese da copy virada interação. -->
+     Retrato em arco à direita, como na página irmã, mas em cobre. Sob o
+     grid, a faixa de triagem: o card que a copy pede, funcionando — o
+     leitor marca o que reconhece e a página responde. -->
 <section class="hero-dna sec--dark">
   <div class="wrap">
 
@@ -80,30 +84,50 @@
         <a class="link" href="#sinais">Ver os sintomas</a>
       </div>
 
-      <ul class="selos">
-        <li>Urologista com RQE</li>
-        <li>Diagnóstico antes de receita</li>
-        <li>Presencial e online</li>
-      </ul>
     </div>
 
-    <!-- a triagem: 4 sintomas, contagem viva, e o card acende em 2 -->
-    <aside class="triagem" id="triagem">
+    <div class="hero-foto">
+      <span class="halo" aria-hidden="true"></span>
+
+      <figure class="foto">
+        <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
+             width="880" height="1104" fetchpriority="high" decoding="async">
+      </figure>
+
+      <span class="chip chip--1">
+        <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-cruz"/></svg></i>
+        Urologista com RQE</span>
+      <span class="chip chip--2">
+        <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-lupa"/></svg></i>
+        Diagnóstico antes da receita</span>
+      <span class="chip chip--3">
+        <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-tela"/></svg></i>
+        Presencial e online</span>
+
+      <!-- selo: um por página, só no hero, como manda o DNA -->
       <span class="selo" aria-hidden="true">
         <svg class="selo-anel" viewBox="0 0 100 100">
           <defs>
-            <path id="rhAnel" d="M50 50 m-37 0 a37 37 0 1 1 74 0 a37 37 0 1 1 -74 0"/>
+            <path id="rhAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
           </defs>
           <text><textPath href="#rhAnel">DIAGNÓSTICO ANTES DE RECEITA · </textPath></text>
         </svg>
         <span class="selo-nucleo">
-          <svg width="19" height="19"><use href="#i-lupa"/></svg>
+          <svg width="19" height="19"><use href="#i-escudo"/></svg>
         </span>
       </span>
+    </div>
+  </div>
 
+  <!-- faixa de triagem -->
+  <div class="wrap hero-triagem">
+    <aside class="triagem" id="triagem">
       <div class="triagem-cab">
         <h2>Você anda se sentindo assim?</h2>
         <span class="triagem-conta"><b id="triagemNum">0</b> de 4</span>
+        <div class="triagem-medidor" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
       </div>
 
       <ul class="triagem-lista">
@@ -128,10 +152,6 @@
           <span class="triagem-tx">Humor pra baixo, foco ruim</span>
         </label></li>
       </ul>
-
-      <div class="triagem-medidor" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-      </div>
 
       <p class="triagem-fecho" id="triagemFecho" aria-live="polite">
         <span class="ic" aria-hidden="true"><svg width="15" height="15"><use href="#i-lupa"/></svg></span>
