@@ -480,54 +480,58 @@ html{scroll-padding-top:88px}
 .sec--dark .nota b{color:var(--dark-ink)}
 
 /* ---------- 8. AS FORMAS DE REPOR ---------- */
+/* Escura, mas leve. A versão anterior empilhava quatro caixas com fundo,
+   borda e filete sobre um fundo já escuro — três camadas de peso uma em
+   cima da outra, e a seção afundava. Aqui as caixas somem: cada via é só
+   ícone, nome e frase, separadas por um fio. O escuro vira ar em vez de
+   virar massa. */
 .formas{
   background:
-    radial-gradient(ellipse 54% 90% at 50% 0%,rgba(233,167,79,.1),transparent 62%),
-    linear-gradient(180deg,#0d0d0f,#16161a 56%,#0f0f12);
+    radial-gradient(ellipse 54% 80% at 50% 0%,rgba(233,167,79,.09),transparent 64%),
+    linear-gradient(180deg,#101013,#17171a 58%,#111114);
 }
 .formas::before{
   content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(233,167,79,.4) 32%,
-             rgba(233,167,79,.4) 68%,transparent);
+  background:linear-gradient(90deg,transparent,rgba(233,167,79,.34) 32%,
+             rgba(233,167,79,.34) 68%,transparent);
 }
-.formas .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
+.formas .head-center{margin-bottom:clamp(38px,4vw,56px)}
 .formas .kicker{color:var(--cobre-luz)}
-.formas-grid .card-icone{
-  width:44px;height:44px;border-radius:11px;display:grid;place-items:center;
-  background:rgba(233,167,79,.14);color:var(--cobre-luz);margin-bottom:18px;
-}
-.formas-grid .card h3{margin-bottom:9px;color:var(--dark-ink)}
-/* o quarto card não é um quarto pilar: é a porta que diz que a lista não
-   acabou. Centralizado e com borda tracejada, ele lê como fecho da lista,
-   não como mais uma opção da mesma ordem. */
-.card--outras{
-  grid-column:span 3;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:14px;padding:clamp(26px,2.6vw,34px);
-  background:rgba(240,238,234,.03);border-style:dashed;
-  border-color:rgba(233,167,79,.3);
-}
-.card--outras .card-icone{margin:0}
-.card--outras h3{margin:0}
-.card--outras p{max-width:62ch;margin:0}
 
-/* moldura vazia sobre seção escura: clara ali vira um bloco pálido */
-.sec--dark .vago{
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(226,214,196,.05) 0 2px,transparent 2px 9px),
-    linear-gradient(160deg,#1b1b1f,#141417);
-  border-color:rgba(226,214,196,.16);
+.vias{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(24px,3vw,48px)}
+.via{padding-left:clamp(24px,3vw,48px);border-left:1px solid var(--dark-line)}
+.via:first-child{padding-left:0;border-left:0}
+.via-ic{
+  display:grid;place-items:center;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(233,167,79,.3);color:var(--cobre-luz);
+  margin-bottom:20px;
 }
-.sec--dark .vago-tag{
-  color:var(--cobre-luz);background:rgba(20,20,23,.9);
-  border-color:rgba(233,167,79,.26);
+.via h3{font-size:var(--fs-h3);font-weight:500;letter-spacing:-.02em;
+  color:var(--dark-ink);margin-bottom:10px}
+.via p{font-size:var(--fs-body);line-height:var(--lh-body);
+  color:var(--dark-ink-soft);margin:0;max-width:34ch}
+.via p b{color:var(--dark-ink);font-weight:600}
+
+/* "Outras opções" não é uma quarta via — é a linha que diz que a lista
+   não fecha aqui. Então é linha mesmo, não caixa. */
+.vias-mais{
+  margin:clamp(32px,3.4vw,48px) 0 0;padding-top:clamp(24px,2.4vw,32px);
+  border-top:1px solid var(--dark-line);
+  font-size:var(--fs-body);line-height:1.7;color:var(--dark-ink-soft);
+  max-width:78ch;
 }
-.sec--dark .vago::after{
-  color:var(--dark-ink-soft);
-  background:linear-gradient(to top,rgba(16,16,19,.96),rgba(16,16,19,.7));
-  border-top-color:rgba(226,214,196,.12);
+.vias-mais span{
+  display:inline-block;margin-right:12px;
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cobre-luz);
+  padding:5px 11px;border-radius:var(--radius-pill);
+  background:rgba(233,167,79,.1);border:1px solid rgba(233,167,79,.24);
+  vertical-align:2px;
 }
+.vias-mais b{color:var(--dark-ink);font-weight:600}
+
+.formas .nota{margin-top:clamp(28px,3vw,40px)}
 
 /* o filete de topo do card escuro vem ciano do dna.css: nesta pagina e cobre */
 .sec--dark .card::before{background:linear-gradient(90deg,var(--brand),var(--cobre-luz))}
@@ -822,8 +826,11 @@ html{scroll-padding-top:88px}
   .autoridade-foto{max-width:340px;aspect-ratio:4/5}
   .falas-grid{grid-template-columns:1fr}
   .falas-foto{aspect-ratio:16/8}
-  .formas-grid{grid-template-columns:1fr 1fr}
-  .card--outras{grid-column:span 2}
+  .vias{grid-template-columns:1fr;gap:0}
+  .via{padding-left:0;border-left:0;border-top:1px solid var(--dark-line);
+    padding-block:clamp(22px,2.6vw,30px)}
+  .via:first-child{border-top:0;padding-top:0}
+  .via-ic{margin-bottom:16px}
   .passo{grid-template-columns:52px minmax(0,1fr);
     grid-template-areas:"marca foto" "marca txt";
     align-items:start;row-gap:20px}
@@ -844,7 +851,6 @@ html{scroll-padding-top:88px}
   .faq summary{gap:12px}
   .faq summary i{width:28px;height:28px}
   .faq details p{padding-right:0}
-  .formas-grid{grid-template-columns:1fr}
   .sintomas-grid{grid-template-columns:1fr}
   .card--outras{grid-column:span 1;grid-template-columns:auto minmax(0,1fr);
     row-gap:12px}
