@@ -855,7 +855,9 @@ html{scroll-padding-top:88px}
   .hero-dna .kicker::before,.hero-dna .kicker::after{width:16px}
   .hero-dna .h1{font-size:clamp(24px,7.2vw,31px)}
   .hero-dna .lead{font-size:14.5px;margin-top:14px}
-  .selos{margin-top:16px}
+  /* um por linha: em duas linhas o terceiro ficava sozinho e torto */
+  .selos{margin-top:16px;flex-direction:column;align-items:flex-start;
+    gap:10px;width:max-content;max-width:100%;margin-inline:auto}
   .hero-acoes{gap:14px;margin-top:16px;flex-direction:column;width:100%}
   .hero-acoes .btn{width:100%;max-width:330px;justify-content:center;
     padding:13px 13px 13px 24px}

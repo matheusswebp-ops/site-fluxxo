@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/dna.css?v=202609102219">
-<link rel="stylesheet" href="css/pp.css?v=202609102219">
+<link rel="stylesheet" href="css/pp.css?v=202609111045">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -565,6 +565,16 @@
                '.etapa h3, .etapa p,' +
                '.nome, .crm, .bio, .credenciais li, .faq summary';
 
+  /* No desktop os blocos chegam de lado e a cascata cabe. No celular tudo
+     vira uma coluna: a margem negativa obrigava o elemento a entrar 10% na
+     tela para só então começar a acender, e a cascata somava mais 280ms —
+     dava quase um segundo de caixa vazia enquanto a pessoa já estava
+     olhando para ela. Em tela estreita a revelação passa a disparar um
+     pouco antes da borda e sem escalonar. */
+  var estreito = window.matchMedia('(max-width:780px)').matches;
+  var passo = estreito ? 0 : 55;
+  var teto  = estreito ? 0 : 280;
+
   var animados = [];
   /* a hero fica de fora: primeira dobra entra pronta, sem esperar animação */
   document.querySelectorAll('.sec').forEach(function(sec){
@@ -594,7 +604,7 @@
       itens.forEach(function(i){
         var el = i.target;
         if (i.isIntersecting){
-          el.style.transitionDelay = Math.min((el.dataset.ordem | 0) * 55, 280) + 'ms';
+          el.style.transitionDelay = Math.min((el.dataset.ordem | 0) * passo, teto) + 'ms';
           el.classList.add('in');
         } else {
           el.style.transitionDelay = '0ms';
@@ -602,7 +612,7 @@
           el.classList.remove('in');
         }
       });
-    }, {rootMargin:'0px 0px -10% 0px', threshold:0});
+    }, {rootMargin: estreito ? '0px 0px 14% 0px' : '0px 0px -10% 0px', threshold:0});
     animados.forEach(function(el){ obs.observe(el) });
 
     /* o platô do ombro continua sendo movimento da seção */
@@ -618,13 +628,27 @@
      não adianta gastar bateria animando o que ninguém está vendo. */
   var vid = document.getElementById('videoComo');
   if (vid && !reduz && 'IntersectionObserver' in window){
+    var tocar = function(){
+      var p = vid.play();
+      /* alguns navegadores recusam o autoplay: o pôster fica no lugar */
+      if (p && p.catch) p.catch(function(){});
+    };
     var obsVid = new IntersectionObserver(function(itens){
       itens.forEach(function(i){
         if (i.isIntersecting){
-          if (!vid.src) vid.src = vid.dataset.src;
-          var p = vid.play();
-          /* alguns navegadores recusam o autoplay: o pôster fica no lugar */
-          if (p && p.catch) p.catch(function(){});
+          if (!vid.src){
+            /* O play() chamado no mesmo instante em que o src é ligado é
+               recusado no celular: com preload="none" o arquivo ainda não
+               tem nem o primeiro quadro, e a promessa volta rejeitada — o
+               pôster ficava parado para sempre. Agora o arquivo é pedido de
+               verdade e a tentativa se repete quando ele fica pronto. */
+            vid.preload = 'auto';
+            vid.src = vid.dataset.src;
+            vid.load();
+            vid.addEventListener('loadeddata', tocar, {once:true});
+            vid.addEventListener('canplay', tocar, {once:true});
+          }
+          tocar();
         } else if (vid.src){
           vid.pause();
         }
