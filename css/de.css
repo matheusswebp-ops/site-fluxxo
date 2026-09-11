@@ -123,20 +123,15 @@ html{scroll-padding-top:88px}
 .brief b{display:block;color:inherit;font-weight:600;font-size:11px;
   letter-spacing:.13em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
 
-/* selos: viram itens de linha sob o CTA, sem pílula branca — em fundo claro
-   uma pílula branca flutua no vazio. O check basta. */
+/* selos: uma tira só, centrada, sob o CTA. Sem check e sem pílula — três
+   frases curtas em linha já são o bastante, e o marcador só roubava largura
+   da linha única. */
 .selos{
-  list-style:none;display:flex;flex-wrap:wrap;
-  gap:10px clamp(18px,2vw,30px);margin-top:clamp(24px,3vw,34px);
+  list-style:none;display:flex;flex-wrap:nowrap;justify-content:center;
+  gap:clamp(16px,2.2vw,30px);margin-top:clamp(24px,3vw,34px);
+  text-align:center;
 }
-.selos li{
-  display:flex;align-items:center;gap:9px;
-  font-size:14px;font-weight:500;color:var(--ink);
-}
-.selos li::before{
-  content:"";width:19px;height:19px;border-radius:50%;flex:none;
-  background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6.5 9.2 17.3 4 12.1' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
-}
+.selos li{font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
 
 /* faixa de garantias: fecha a primeira dobra sem cobrir a figura */
 .hero-garantias{margin-top:clamp(38px,5vw,64px)}
@@ -714,6 +709,7 @@ html{scroll-padding-top:88px}
   .hero-acoes{gap:14px;margin-top:22px;flex-direction:column;width:100%}
   .hero-acoes .btn{width:100%;max-width:330px;justify-content:center;
     padding:13px 13px 13px 24px}
+  .selos{flex-wrap:wrap;gap:8px 18px}
   .selos li{font-size:13px}
   .garantias-card{padding:18px}
   .garantias-card h2{font-size:13px;margin-bottom:14px}
