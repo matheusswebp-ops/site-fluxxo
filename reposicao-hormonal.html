@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609111705">
-<link rel="stylesheet" href="css/rh.css?v=202609111705">
+<link rel="stylesheet" href="css/dna.css?v=202609111745">
+<link rel="stylesheet" href="css/rh.css?v=202609111745">
 </head>
 
 <body class="tema-cobre">
@@ -130,70 +130,50 @@
 </section>
 
 
-<!-- ===== SEÇÃO 3 — AUTOAVALIAÇÃO =====
+<!-- ===== SEÇÃO 3 — O QUE VOCÊ ANDA SENTINDO =====
      O briefing entrega esta lista como um card de apoio no hero. Ela vale
-     mais que isso: é o único momento em que o leitor faz alguma coisa em
-     vez de ler. Então virou seção inteira, em fundo claro — o contraste
-     com o hero já avisa que aqui a página muda de modo.
+     uma seção: é aqui que o leitor se reconhece, antes de qualquer
+     explicação. Por isso cada sintoma tem imagem própria — reconhecimento
+     se faz por cena, não por ícone. Os ícones ficam para "Os sinais", que
+     é enumeração, não identificação.
 
-     O veredito muda com o que foi marcado. Em 2 ele deixa de ser pergunta
-     e vira resposta, e só aí o botão aparece: quem marcou zero não tem
-     motivo nenhum para agendar, e empurrar CTA em cima dele é ruído. -->
-<section class="sec sec--paper quiz-sec" id="autoavaliacao">
+     As molduras estão vazias porque ainda não há footage. Cada uma carrega
+     o briefing da foto que vai ali; some sozinha quando a <img> entrar. -->
+<section class="sec sec--paper sintomas" id="autoavaliacao">
   <div class="wrap">
-    <div class="head-center">
-      <span class="kicker kicker--center">Autoavaliação · 1 minuto</span>
+    <div class="head-center reveal">
+      <span class="kicker kicker--center">O que os 40 trazem</span>
       <h2 class="h2">Você anda
         <b class="cobre">se sentindo assim?</b></h2>
-      <p class="lead lead--center">Marque o que você reconhece em si. <b>Não é
-        diagnóstico</b> — é o primeiro filtro, o mesmo que a consulta começa
-        fazendo.</p>
+      <p class="lead lead--center">Se você reconhece <b>dois ou mais</b>,
+        vale investigar sua testosterona.</p>
     </div>
 
-    <ul class="quiz" id="quiz">
-      <li><label class="quiz-item">
-        <input type="checkbox" data-triagem>
-        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-bateria"/></svg></span>
-        <span class="quiz-tx">Cansaço mesmo dormindo bem</span>
-        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-      </label></li>
-      <li><label class="quiz-item">
-        <input type="checkbox" data-triagem>
-        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-coracao"/></svg></span>
-        <span class="quiz-tx">Menos vontade e disposição sexual</span>
-        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-      </label></li>
-      <li><label class="quiz-item">
-        <input type="checkbox" data-triagem>
-        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-balanca"/></svg></span>
-        <span class="quiz-tx">Gordura na barriga, músculo sumindo</span>
-        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-      </label></li>
-      <li><label class="quiz-item">
-        <input type="checkbox" data-triagem>
-        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-cerebro"/></svg></span>
-        <span class="quiz-tx">Humor pra baixo, foco ruim</span>
-        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-      </label></li>
-    </ul>
-
-    <div class="veredito tem-0" id="veredito">
-      <!-- o anel é o número: ele enche conforme a marcação, então dá para
-           ler a resposta sem ler o texto -->
-      <div class="veredito-anel" aria-hidden="true">
-        <span class="veredito-disco">
-          <b id="triagemNum">0</b>
-          <em>de 4</em>
-        </span>
-      </div>
-
-      <div class="veredito-corpo">
-        <p class="veredito-txt" id="triagemTxt" aria-live="polite">
-          <b>Marcou 2 ou mais?</b> Vale investigar sua testosterona.</p>
-      </div>
-
-      <a class="btn" href="#agendar" id="vereditoBtn" tabindex="-1">Quero uma avaliação
-        <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
+    <div class="sintomas-grid">
+      <article class="sintoma reveal">
+        <figure class="sintoma-foto vago" data-brief="Homem de 45 anos sentado na beira da cama de manhã, ombros caídos, luz fria de quarto. Cansaço real, não pose. 4:3">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <h3>Cansaço mesmo dormindo bem</h3>
+      </article>
+      <article class="sintoma reveal">
+        <figure class="sintoma-foto vago" data-brief="Casal 40+ na cama, de costas um para o outro, luz baixa. Distância, não nudez. Discreto. 4:3">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <h3>Menos vontade e disposição sexual</h3>
+      </article>
+      <article class="sintoma reveal">
+        <figure class="sintoma-foto vago" data-brief="Homem 40+ de perfil fechando o cinto na última casa, roupa comum, banheiro de casa. Sem academia. 4:3">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <h3>Gordura na barriga, músculo sumindo</h3>
+      </article>
+      <article class="sintoma reveal">
+        <figure class="sintoma-foto vago" data-brief="Homem 40+ diante do notebook no fim da tarde, olhar perdido fora da tela, escritório vazio. 4:3">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <h3>Humor pra baixo, foco ruim</h3>
+      </article>
     </div>
   </div>
 </section>
@@ -332,32 +312,6 @@
   }
   window.addEventListener('scroll', aoRolar, {passive:true});
   aoRolar();
-
-  /* ---- a autoavaliação ----
-     Conta o que o leitor marcou. Em 2 o bloco acende, a frase do briefing
-     deixa de ser pergunta e vira resposta, e só então o botão entra: quem
-     marcou zero não tem por que agendar nada. */
-  var cx = document.querySelectorAll('[data-triagem]');
-  var ver = document.getElementById('veredito');
-  var num = document.getElementById('triagemNum');
-  var txt = document.getElementById('triagemTxt');
-  var bt = document.getElementById('vereditoBtn');
-  var base = txt.innerHTML;
-  function contar(){
-    var n = 0;
-    cx.forEach(function(c){ if (c.checked) n++; });
-    num.textContent = n;
-    ver.className = 'veredito tem-' + n + (n >= 2 ? ' acesa' : '');
-    txt.innerHTML = n >= 2
-      ? '<b>Você marcou ' + n + ' de 4.</b> Vale investigar sua testosterona — ' +
-        'com exame e consulta, não por conta própria.'
-      : (n === 1
-        ? '<b>Um sintoma sozinho diz pouco.</b> Sono ruim e estresse causam o mesmo.'
-        : base);
-    bt.tabIndex = n >= 2 ? 0 : -1;
-  }
-  cx.forEach(function(c){ c.addEventListener('change', contar); });
-  contar();
 
   /* ---- entrada por seção ----
      O observador vigia a seção inteira e escalona os .reveal de dentro.
