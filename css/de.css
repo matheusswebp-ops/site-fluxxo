@@ -567,7 +567,11 @@ html{scroll-padding-top:88px}
   padding:clamp(26px,3vw,40px);box-shadow:var(--sombra);
 }
 .campo{margin-bottom:18px}
-.campo label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
+/* o :not() é obrigatório: o consentimento também é um <label> dentro de
+   .campo, e `.campo label` tem especificidade maior que `.aceite` — sem
+   isso o display:block vencia o display:flex e a segunda linha do texto
+   caía embaixo da caixinha, sem recuo. */
+.campo label:not(.aceite){display:block;font-size:13px;font-weight:600;margin-bottom:8px}
 .campo input{
   width:100%;font:inherit;font-size:15px;color:var(--ink);
   background:var(--paper);border:1px solid var(--line);border-radius:10px;
@@ -744,8 +748,6 @@ html{scroll-padding-top:88px}
   .form-bloco>div:first-child{display:flex;flex-direction:column;align-items:center}
   .form-bloco .lead{margin-left:auto;margin-right:auto}
   .form-card{text-align:center}
-  /* o :not() é necessário: o aceite também é um <label> dentro de .campo,
-     e .campo label tem especificidade maior que .aceite */
   .campo label:not(.aceite){text-align:center}
   .campo input{text-align:left}
   /* o consentimento fica à esquerda, alinhado com os campos */
