@@ -176,30 +176,31 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. NÚMERO-HERÓI ---------- */
-/* A frase é literal, então a ilustração também é: dois homens, um aceso.
-   Nada de anel nem de contagem — "1 em cada 2" se lê de imediato. O aceso
-   respira em looping para a seção não ficar parada. */
+/* A frase é "1 em cada 2", então o desenho é literalmente isso: dez homens em
+   fila, um aceso a cada dois. Quem olha conta sem querer e chega na mesma
+   conclusão que o número diz embaixo — e sem degradê, brilho ou animação, que
+   era o que deixava a seção com cara de tela de aplicativo. */
 .numero-heroi{
   display:flex;flex-direction:column;align-items:center;text-align:center;
 }
-.dupla{margin:0 0 clamp(22px,2.6vw,32px)}
-.dupla svg{display:block;width:clamp(176px,18vw,232px);height:auto;overflow:visible}
-.busto.apagado{fill:rgba(255,255,255,.12)}
-.busto.aceso{
-  fill:url(#gBusto);transform-origin:center bottom;
-  animation:bustoRespira 3.6s var(--ease) infinite;
+.fileira{margin:0 0 clamp(22px,2.6vw,32px);width:100%}
+.fileira svg{display:block;width:100%;max-width:clamp(300px,42vw,440px);margin:0 auto;height:auto}
+.fig.aceso{fill:var(--dark-ink)}
+.fig.apagado{fill:rgba(255,255,255,.17)}
+
+/* O número em duas vozes: os algarismos em peso cheio, a ligação miúda e
+   tingida de azul claro. É o mesmo gesto do título duotom do sistema. */
+.numero-heroi .valor{
+  font-family:var(--font-display);color:var(--dark-ink);
+  font-size:clamp(38px,5.6vw,76px);line-height:1;letter-spacing:-.045em;
+  white-space:nowrap;display:flex;align-items:baseline;gap:.18em;
 }
-@keyframes bustoRespira{
-  0%,100%{filter:drop-shadow(0 0 0 rgba(143,196,240,0))}
-  45%{filter:drop-shadow(0 6px 20px rgba(143,196,240,.45))}
+.numero-heroi .valor b{font-weight:700}
+.numero-heroi .valor span{
+  font-weight:400;font-size:.42em;letter-spacing:-.01em;
+  color:var(--dark-ink-soft);
 }
 
-.numero-heroi .valor{
-  font-family:var(--font-display);font-weight:700;white-space:nowrap;
-  font-size:clamp(38px,5.6vw,76px);line-height:1;letter-spacing:-.045em;
-  background:linear-gradient(150deg,#ffffff 30%,#8fc4f0);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
 .numero-texto{
   margin-top:clamp(22px,2.6vw,32px);
   display:flex;flex-direction:column;align-items:center;
@@ -208,9 +209,6 @@ html{scroll-padding-top:88px}
 /* medida larga de propósito: o texto tem que fechar em duas linhas */
 .numero-heroi .lead{max-width:78ch;margin:0 auto;font-size:16px}
 
-@media (prefers-reduced-motion:reduce){
-  .busto.aceso{animation:none}
-}
 /* ---------- 4. ILUSTRAÇÃO ---------- */
 .ilustra{
   border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
