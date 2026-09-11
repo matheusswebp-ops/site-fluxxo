@@ -552,30 +552,48 @@ html{scroll-padding-top:88px}
   max-width:46ch}
 
 /* ---------- 7. JORNADA DE ATENDIMENTO ---------- */
-/* É uma sequência de verdade, então numerar é informação e não enfeite.
-   O trilho liga os quatro marcadores e para no último. */
+/* Quatro etapas em duas fileiras de dois. Cada uma é um card deitado: a foto
+   ocupa a esquerda em 3:2 (o corte nativo do arquivo, então nada é perdido) e
+   o texto respira à direita, centrado na altura da foto. O número sai do
+   corpo do texto e vai para cima da imagem, num disco com anel branco — é ele
+   que conta a ordem, e o texto fica só com a informação. */
 .jornada{list-style:none;margin-top:clamp(30px,3.4vw,46px);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:var(--gap);position:relative}
-.etapa{position:relative;padding-top:8px}
-.etapa-marca{
-  flex:none;width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--brand);color:#fff;
-  font-family:var(--font-display);font-size:15px;font-weight:700;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:clamp(20px,2vw,28px);position:relative}
+
+.etapa{
+  position:relative;
+  display:grid;grid-template-columns:minmax(0,43%) minmax(0,57%);
+  align-items:center;gap:clamp(16px,1.5vw,22px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:clamp(12px,1.1vw,16px);
+  box-shadow:0 20px 44px -34px rgba(10,35,66,.42);
+  transition:transform .3s var(--ease),border-color .3s var(--ease),
+             box-shadow .3s var(--ease);
 }
-/* Cada etapa carrega a própria imagem. Com foto no topo de todas, o trilho
-   horizontal entre os marcadores não tem mais por onde passar — e nem faz
-   falta: os números já contam a sequência. */
+.etapa:hover{transform:translateY(-3px);border-color:var(--brand);
+  box-shadow:0 28px 56px -32px rgba(10,35,66,.5)}
+
 .etapa-foto{
   position:relative;aspect-ratio:3/2;overflow:hidden;
-  border-radius:var(--radius);margin-bottom:20px;
-  box-shadow:0 24px 48px -32px rgba(10,35,66,.5);
+  border-radius:calc(var(--radius-lg) - 8px);margin:0;
 }
-.etapa-cab{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.etapa h3{font-size:var(--fs-card);font-weight:600;line-height:var(--lh-card)}
+/* o disco do número mora no canto da foto, com anel branco para não sumir
+   em cima de trecho claro nem de trecho escuro */
+.etapa-marca{
+  position:absolute;z-index:2;top:10px;left:10px;
+  width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--brand);color:#fff;
+  font-family:var(--font-display);font-size:14px;font-weight:700;
+  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 6px 16px -8px rgba(10,35,66,.6);
+}
+.etapa-txt{min-width:0}
+.etapa h3{font-size:clamp(18px,1.45vw,21px);font-weight:600;
+  line-height:var(--lh-card);letter-spacing:-.015em;margin-bottom:8px}
 .etapa p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-soft);
   max-width:34ch}
+
 /* botão avulso de meia página: repete o CTA sem inventar frase nova */
 .meio-cta{display:flex;justify-content:center;margin-top:clamp(34px,3.6vw,48px)}
 
@@ -711,7 +729,8 @@ html{scroll-padding-top:88px}
 .rodape .slot{border-bottom-color:rgba(169,196,222,.5)}
 
 /* ---------- BARRA FIXA MOBILE ---------- */
-X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
+.barra-mobile{
+  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   padding:12px 16px calc(12px + env(safe-area-inset-bottom));
   background:rgba(8,28,54,.92);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -730,13 +749,18 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
    RESPONSIVO
    ============================================================ */
 @media (max-width:1080px){
-  .jornada{grid-template-columns:repeat(2,1fr);gap:clamp(26px,3vw,36px) var(--gap)}
-  /* com duas colunas o trilho ligaria a linha 1 na 2 pulando o vão */
+  /* com a grade já em 2x2, aqui o card só aperta o próprio respiro */
+  .etapa{gap:14px}
 
 }
 
 @media (max-width:980px){
   .barra-mobile{display:block}
+
+  /* no tablet o card deitado aperta demais a foto: ela sobe para o topo e o
+     texto vai para baixo, ainda em duas colunas */
+  .etapa{grid-template-columns:1fr;gap:14px}
+  .etapa-foto{aspect-ratio:16/9}
 
   /* Uma coluna e tudo centrado. O fio de luz sai da lateral e vira régua
      curta acima da citação: fio vertical com texto centrado deixa o bloco
@@ -855,8 +879,10 @@ X  position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;
   .garantias-card{padding:18px}
   .garantias-card h2{font-size:13px;margin-bottom:14px}
 
-  .jornada{grid-template-columns:1fr;gap:30px}
-  .etapa{padding-top:0}
+  .jornada{grid-template-columns:1fr;gap:18px}
+  .etapa{grid-template-columns:1fr;gap:16px}
+  .etapa-foto{aspect-ratio:16/9}
+  .etapa p{max-width:none}
 
   .faq summary{padding:18px;font-size:15.5px;gap:14px}
   .faq .resposta{padding:0 18px 20px;font-size:14.5px}

@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609101846">
-<link rel="stylesheet" href="css/pp.css?v=202609101846">
+<link rel="stylesheet" href="css/dna.css?v=202609102211">
+<link rel="stylesheet" href="css/pp.css?v=202609102211">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -176,6 +176,10 @@
 
 <!-- ===== SEÇÃO 4 — COMO FUNCIONA ===== -->
 <section class="sec sec--paper t-ombro" id="como" style="--ombro-cor:var(--paper)">
+  <span class="ombro-seta" aria-hidden="true">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </span>
   <div class="wrap">
     <div class="head-center">
       <span class="kicker kicker--center">Como funciona</span>
@@ -317,45 +321,45 @@
         <figure class="etapa-foto">
           <img src="img/pp-etapa-1.webp" width="900" height="600" loading="lazy"
                decoding="async" alt="Celular na mao com uma conversa de agendamento aberta no WhatsApp, recepcao da clinica ao fundo">
-        </figure>
-        <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">1</span>
+        </figure>
+        <div class="etapa-txt">
           <h3>Contato</h3>
+          <p>Você fala com a equipe pelo WhatsApp.</p>
         </div>
-        <p>Você fala com a equipe pelo WhatsApp.</p>
       </li>
       <li class="etapa">
         <figure class="etapa-foto">
           <img src="img/pp-etapa-2.webp" width="900" height="600" loading="lazy"
                decoding="async" alt="Urologista mostrando um diagrama anatomico em tablet para o paciente durante a consulta">
-        </figure>
-        <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">2</span>
+        </figure>
+        <div class="etapa-txt">
           <h3>Avaliação</h3>
+          <p>Consulta para entender seu caso e alinhar expectativas.</p>
         </div>
-        <p>Consulta para entender seu caso e alinhar expectativas.</p>
       </li>
       <li class="etapa">
         <figure class="etapa-foto">
           <img src="img/pp-etapa-3.webp" width="900" height="600" loading="lazy"
                decoding="async" alt="Medico de luvas preparando a seringa ao lado da maca, com o material esteril na bandeja">
-        </figure>
-        <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">3</span>
+        </figure>
+        <div class="etapa-txt">
           <h3>Procedimento</h3>
+          <p>Aplicação em consultório, com produto certificado.</p>
         </div>
-        <p>Aplicação em consultório, com produto certificado.</p>
       </li>
       <li class="etapa">
         <figure class="etapa-foto">
           <img src="img/pp-etapa-4.webp" width="900" height="600" loading="lazy"
                decoding="async" alt="Consulta de retorno: a ficha de acompanhamento sendo preenchida sobre a mesa">
-        </figure>
-        <div class="etapa-cab">
           <span class="etapa-marca" aria-hidden="true">4</span>
+        </figure>
+        <div class="etapa-txt">
           <h3>Retorno</h3>
+          <p>Acompanhamento para avaliar o resultado.</p>
         </div>
-        <p>Acompanhamento para avaliar o resultado.</p>
       </li>
     </ol>
 
@@ -558,7 +562,7 @@
                '.garantias-card li, .garantias-card h2,' +
                '.dueto-cab, .dueto p, .nota-mat p,' +
                '.verdade .ic, .verdade .rot, .verdade h3, .verdade p,' +
-               '.etapa-marca, .etapa h3, .etapa p,' +
+               '.etapa h3, .etapa p,' +
                '.nome, .crm, .bio, .credenciais li, .faq summary';
 
   var animados = [];

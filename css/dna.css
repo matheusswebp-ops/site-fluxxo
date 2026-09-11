@@ -394,6 +394,24 @@ p,li{text-wrap:pretty}
 .t-ombro::after{opacity:0;transition:opacity .45s var(--ease) .2s}
 .t-ombro.in::after{opacity:1}
 
+/* Seta do platô — uma dica de rolagem que mora dentro do ombro. Fica no meio
+   do platô, pulsa de leve para baixo em looping e só aparece quando a virada
+   entra (.in), junto com o platô que a abriga. Decorativa: aria-hidden e sem
+   captura de clique. */
+.ombro-seta{
+  position:absolute;z-index:4;left:50%;top:calc(-1 * var(--ombro-alt));
+  transform:translateX(-50%);
+  height:var(--ombro-alt);width:40px;
+  display:grid;place-items:center;pointer-events:none;
+  color:var(--brand);opacity:0;transition:opacity .45s var(--ease) .35s;
+}
+.t-ombro.in .ombro-seta{opacity:1}
+.ombro-seta svg{display:block;animation:setaDesce 1.9s var(--ease) infinite}
+@keyframes setaDesce{
+  0%,100%{transform:translateY(-4px);opacity:.5}
+  50%{transform:translateY(4px);opacity:1}
+}
+
 @media (max-width:640px){
   :root{--ombro-larg:clamp(200px,74%,420px);--ombro-alt:40px;--ombro-r:18px}
 }
@@ -516,6 +534,8 @@ p,li{text-wrap:pretty}
   .selo svg{animation:none}
   .t-ombro::before{transform:translateX(-50%);transition:none}
   .t-ombro::after{opacity:1;transition:none}
+  .ombro-seta{opacity:1;transition:none}
+  .ombro-seta svg{animation:none;transform:none}
 }
 
 /* ---------- 11. RESPONSIVO ---------- */
