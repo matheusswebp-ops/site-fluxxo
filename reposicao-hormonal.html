@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609111830">
-<link rel="stylesheet" href="css/rh.css?v=202609111830">
+<link rel="stylesheet" href="css/dna.css?v=202609111910">
+<link rel="stylesheet" href="css/rh.css?v=202609111910">
 </head>
 
 <body class="tema-cobre">
@@ -49,6 +49,8 @@
   <symbol id="i-pilula" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="8.4" width="18.4" height="7.2" rx="3.6" transform="rotate(-32 12 12)"/><path d="m9.4 8.2 5.2 7.6"/></symbol>
   <symbol id="i-mais" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></symbol>
   <symbol id="i-aspas" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M9.6 5.4c-3 1.4-4.8 4-4.8 7.2v5.8h6.4v-6.2H8c0-1.8.8-3.1 2.4-4L9.6 5.4Zm9 0c-3 1.4-4.8 4-4.8 7.2v5.8h6.4v-6.2H17c0-1.8.8-3.1 2.4-4l-.8-2.8Z"/></symbol>
+  <symbol id="i-cadeado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="10.4" width="14.8" height="9.6" rx="2.2"/><path d="M8.4 10.4V7.8a3.6 3.6 0 0 1 7.2 0v2.6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.6 9.4 5.4 5.4 5.4-5.4"/></symbol>
   <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.6 15.6 4.2 4.2"/></symbol>
 </svg>
 
@@ -426,7 +428,249 @@
   </div>
 </section>
 
+<!-- ===== SEÇÃO 9 — CUSTO DE NÃO TRATAR (escura) =====
+     A única seção da página que fala do que acontece se nada for feito.
+     Escura de propósito: é o contraponto, e o briefing pede que seja
+     informativa, não alarmista — por isso a nota de rodapé do bloco. -->
+<section class="sec sec--dark custo" id="custo">
+  <div class="wrap custo-grid">
+    <div class="reveal">
+      <span class="kicker tarja">Por que não deixar pra depois</span>
+      <h2 class="h2">Ignorar
+        <b class="cobre">não é neutro</b></h2>
+      <p class="lead">A testosterona baixa não tratada tende a <b>cobrar seu
+        preço ao longo do tempo</b> — no corpo, na energia e na relação.</p>
+    </div>
+
+    <ul class="custo-lista">
+      <li class="reveal">
+        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-musculo"/></svg></span>
+        <div><h3>Massa óssea e muscular</h3>
+          <p>Tende a <b>reduzir progressivamente</b> com os anos.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-bateria"/></svg></span>
+        <div><h3>Energia e humor</h3>
+          <p>Disposição e ânimo <b>seguem em queda</b> sem tratamento.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-coracao"/></svg></span>
+        <div><h3>Vida a dois</h3>
+          <p>Libido e autoestima <b>impactam o relacionamento</b>.</p></div>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <p class="nota reveal">Riscos descritos de forma geral e informativa; a
+      <b>avaliação individual</b> define o que se aplica ao seu caso.</p>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 10 — AUTORIDADE =====
+     O retrato 4:5 que o briefing pede. É a primeira vez na página que o
+     médico aparece com nome, registro e credencial — o hero mostrou o
+     rosto, aqui ele assina. -->
+<section class="sec sec--paper autoridade" id="medico">
+  <div class="wrap autoridade-grid">
+    <figure class="autoridade-foto reveal">
+      <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
+           width="880" height="1104" loading="lazy" decoding="async">
+    </figure>
+
+    <div class="reveal">
+      <span class="kicker">Quem atende</span>
+      <h2 class="h2">Dr. Eduardo
+        <b class="cobre">Miranda</b></h2>
+      <p class="autoridade-reg">CRM-<span class="slot">[UF]</span>
+        <span class="slot">[número]</span> ·
+        RQE <span class="slot">[número]</span> — Urologia</p>
+
+      <p class="lead">Urologista dedicado à <b>saúde do homem</b> e à reposição
+        hormonal com <b>diagnóstico criterioso</b> e acompanhamento contínuo.</p>
+
+      <ul class="credenciais">
+        <li><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></span>
+          Título de especialista — Sociedade Brasileira de Urologia</li>
+        <li><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></span>
+          Atuação em endocrinologia do homem e longevidade</li>
+        <li><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></span>
+          Acompanhamento com dose ajustada e monitorada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 11 — PROVA SOCIAL + DISCRIÇÃO =====
+     Depoimentos com identidade preservada, sobre o atendimento, sem
+     prometer resultado — como o briefing exige e o CFM cobra. O card de
+     discrição anda junto porque é a mesma promessa: aqui ninguém é
+     exposto. -->
+<section class="sec sec--tint prova" id="prova">
+  <div class="wrap prova-grid">
+    <div class="prova-falas">
+      <blockquote class="depo reveal">
+        <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+        <p>Voltei a me sentir eu mesmo. Mas o que me marcou foi a seriedade:
+          fizeram exames antes de qualquer coisa.</p>
+        <cite>— Paciente, 47 anos</cite>
+      </blockquote>
+      <blockquote class="depo reveal">
+        <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+        <p>Já tinha visto mil anúncios de "booster". Aqui foi médico de verdade,
+          com acompanhamento. Faz diferença.</p>
+        <cite>— Paciente, 52 anos</cite>
+      </blockquote>
+      <p class="prova-nota reveal">Depoimentos com identidade preservada, sobre o
+        atendimento, sem prometer resultado.</p>
+    </div>
+
+    <aside class="discricao reveal">
+      <span class="discricao-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-cadeado"/></svg></span>
+      <h3>Total discrição</h3>
+      <p><b>Salas privativas</b> e atendimento reservado para preservar cada
+        paciente. Seus dados e sua história ficam protegidos.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 12 — COMO FUNCIONA O ATENDIMENTO ===== -->
+<section class="sec sec--branco atendimento" id="atendimento">
+  <div class="wrap">
+    <div class="head-center reveal">
+      <span class="kicker kicker--center">Como funciona</span>
+      <h2 class="h2">Como funciona
+        <b class="cobre">o atendimento</b></h2>
+      <p class="lead lead--center">Transparência no acesso — <b>sem transformar
+        saúde em vitrine de preço</b>.</p>
+    </div>
+
+    <div class="grid grid-2 atend-grid">
+      <article class="card reveal">
+        <h3>Atendimento particular</h3>
+        <p>Avaliação médica completa, com <b>tempo dedicado e acompanhamento</b>.
+          Os valores são informados no contato, conforme o seu caso.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Presencial e online</h3>
+        <p>Consulta no consultório ou <b>por telemedicina</b> para a primeira
+          conversa, com a mesma seriedade de diagnóstico.</p>
+        <!-- confirmar com o Dr. se a telemedicina vale para a primeira consulta -->
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 13 — FAQ (escura) ===== -->
+<section class="sec sec--dark faq" id="faq">
+  <div class="wrap">
+    <div class="head-center reveal">
+      <span class="kicker kicker--center tarja">Perguntas frequentes</span>
+      <h2 class="h2">As dúvidas que mais aparecem
+        <b class="cobre">antes da primeira consulta</b></h2>
+    </div>
+
+    <div class="faq-lista">
+      <details class="reveal">
+        <summary>Cansaço e falta de libido são sempre testosterona baixa?
+          <i aria-hidden="true"><svg width="17" height="17"><use href="#i-chevron"/></svg></i></summary>
+        <p>Não. Sono ruim, estresse, tireoide, uso de álcool e outras condições
+          produzem sintomas muito parecidos. Por isso o diagnóstico não se faz
+          pelo sintoma isolado, e sim pelo exame somado à avaliação clínica.</p>
+      </details>
+      <details class="reveal">
+        <summary>Como é feito o diagnóstico?
+          <i aria-hidden="true"><svg width="17" height="17"><use href="#i-chevron"/></svg></i></summary>
+        <p>Dosagem hormonal colhida pela manhã e em jejum, em geral repetida para
+          confirmação, junto de exames complementares e da consulta. Um exame
+          isolado não fecha diagnóstico.</p>
+      </details>
+      <details class="reveal">
+        <summary>Reposição hormonal causa problema na próstata?
+          <i aria-hidden="true"><svg width="17" height="17"><use href="#i-chevron"/></svg></i></summary>
+        <p>É o receio mais comum. O entendimento atual é que a reposição bem
+          indicada e monitorada não causa câncer de próstata — mas avaliar a
+          próstata antes e acompanhar durante o tratamento é obrigatório, sem
+          exceção.</p>
+      </details>
+      <details class="reveal">
+        <summary>Vou ficar dependente para sempre?
+          <i aria-hidden="true"><svg width="17" height="17"><use href="#i-chevron"/></svg></i></summary>
+        <p>Depende do caso e da conduta escolhida. Algumas opções estimulam a
+          produção própria; outras repõem diretamente. Isso é discutido na
+          avaliação, considerando seu quadro e seus planos.</p>
+      </details>
+      <details class="reveal">
+        <summary>E se eu quiser ter filhos?
+          <i aria-hidden="true"><svg width="17" height="17"><use href="#i-chevron"/></svg></i></summary>
+        <p>Diga isso já na primeira consulta. A reposição de testosterona pode
+          reduzir a fertilidade, e quem deseja preservá-la tem protocolo próprio,
+          avaliado caso a caso.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 14 — FORMULÁRIO ===== -->
+<section class="sec sec--paper agendar" id="agendar">
+  <div class="wrap agendar-grid">
+    <div class="reveal">
+      <span class="kicker">Dê o primeiro passo</span>
+      <h2 class="h2">Descubra se a sua testosterona
+        <b class="cobre">está te sabotando</b></h2>
+      <p class="lead">Agende sua avaliação. Em pouco tempo você <b>troca a
+        dúvida por um diagnóstico claro</b>.</p>
+
+      <p class="agendar-alt">Prefere conversar antes?
+        <!-- href: trocar por https://wa.me/55DDDNUMERO?text=... quando o numero existir -->
+        <a class="link" href="#">Chamar no WhatsApp</a>
+        <span>Retornamos em até 24h.</span></p>
+    </div>
+
+    <!-- sem back-end ainda: o action entra quando o destino existir -->
+    <form class="formulario reveal" action="#" method="post" novalidate>
+      <label>
+        <span>Seu nome</span>
+        <input type="text" name="nome" placeholder="Nome completo"
+               autocomplete="name" required>
+      </label>
+      <label>
+        <span>WhatsApp</span>
+        <input type="tel" name="whatsapp" placeholder="(11) 90000-0000"
+               autocomplete="tel" required>
+      </label>
+      <label>
+        <span>Principal sintoma</span>
+        <select name="sintoma" required>
+          <option value="" selected disabled>Selecione</option>
+          <option>Cansaço mesmo dormindo bem</option>
+          <option>Libido em queda</option>
+          <option>Gordura abdominal, perda de músculo</option>
+          <option>Humor e foco</option>
+          <option>Mais de um dos anteriores</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Quero minha avaliação
+        <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></button>
+    </form>
+  </div>
+</section>
+
 </main>
+
+<!-- ===== RODAPÉ =====
+     O briefing registra que esta variação não tinha rodapé de compliance no
+     PDF original e que o CFM exige. Entra aqui. -->
+<footer class="rodape">
+  <div class="wrap">
+    <p class="rodape-tec"><b class="slot">[Nome da clínica]</b> — Responsável
+      técnico: Dr. Eduardo Miranda · CRM-<span class="slot">[UF]</span>
+      <span class="slot">[número]</span> / RQE <span class="slot">[número]</span></p>
+    <p class="rodape-end"><span class="slot">[endereço]</span> ·
+      CNPJ <span class="slot">[número]</span></p>
+    <p class="rodape-leg">Conteúdo informativo sobre saúde.
+      · <a href="privacidade">Política de Privacidade</a></p>
+  </div>
+</footer>
 
 <!-- barra fixa do celular -->
 <div class="barra-mobile" id="barraMobile">

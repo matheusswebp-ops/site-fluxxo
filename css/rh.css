@@ -440,6 +440,208 @@ html{scroll-padding-top:88px}
 .card--outras h3{margin:0;white-space:nowrap}
 .card--outras p{max-width:72ch}
 
+/* moldura vazia sobre seção escura: clara ali vira um bloco pálido */
+.sec--dark .vago{
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(226,214,196,.05) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,#1b1b1f,#141417);
+  border-color:rgba(226,214,196,.16);
+}
+.sec--dark .vago-tag{
+  color:var(--cobre-luz);background:rgba(20,20,23,.9);
+  border-color:rgba(233,167,79,.26);
+}
+.sec--dark .vago::after{
+  color:var(--dark-ink-soft);
+  background:linear-gradient(to top,rgba(16,16,19,.96),rgba(16,16,19,.7));
+  border-top-color:rgba(226,214,196,.12);
+}
+
+/* ---------- 9. CUSTO DE NÃO TRATAR ---------- */
+.custo{
+  background:
+    radial-gradient(ellipse 50% 90% at 22% 0%,rgba(196,85,63,.14),transparent 64%),
+    linear-gradient(180deg,#0d0d0f,#17151a 56%,#0f0f12);
+  overflow:hidden;
+}
+.custo::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(196,85,63,.5) 32%,
+             rgba(233,167,79,.35) 68%,transparent);
+}
+.custo .kicker{color:var(--cobre-luz)}
+.custo-grid{display:grid;grid-template-columns:minmax(0,40%) minmax(0,60%);
+  gap:clamp(30px,4vw,64px);align-items:center}
+.custo .lead{max-width:44ch;margin-top:18px}
+.custo-lista{list-style:none;display:flex;flex-direction:column;gap:2px}
+.custo-lista li{display:flex;gap:16px;align-items:flex-start;
+  padding:clamp(16px,1.6vw,22px) 0;border-top:1px solid var(--dark-line)}
+.custo-lista li:last-child{border-bottom:1px solid var(--dark-line)}
+.custo-ic{
+  width:40px;height:40px;flex:none;border-radius:10px;display:grid;
+  place-items:center;background:rgba(233,167,79,.13);color:var(--cobre-luz);
+}
+.custo-lista h3{font-size:var(--fs-card);font-weight:600;color:var(--dark-ink);
+  margin-bottom:6px}
+.custo-lista p{font-size:var(--fs-body);line-height:var(--lh-body);
+  color:var(--dark-ink-soft);margin:0}
+
+/* ---------- 10. AUTORIDADE ---------- */
+.autoridade-grid{display:grid;grid-template-columns:minmax(0,38%) minmax(0,62%);
+  gap:clamp(30px,4vw,64px);align-items:center}
+.autoridade .kicker{color:var(--brand)}
+.autoridade-foto{
+  position:relative;margin:0;width:100%;aspect-ratio:4/5;
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(150deg,#e2d3bf,#c99a5e);
+  box-shadow:0 40px 80px -46px rgba(33,24,12,.6);
+}
+.autoridade-foto img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 12%}
+.autoridade .h2{margin-top:16px}
+.autoridade-reg{margin-top:12px;font-size:13.5px;font-weight:600;
+  letter-spacing:.01em;color:var(--brand)}
+.autoridade .lead{margin-top:18px;max-width:50ch}
+.credenciais{list-style:none;display:flex;flex-direction:column;gap:12px;
+  margin-top:clamp(22px,2.4vw,30px)}
+.credenciais li{display:flex;gap:12px;align-items:flex-start;
+  font-size:var(--fs-body);line-height:1.5;color:var(--ink)}
+.credenciais .ic{
+  width:22px;height:22px;flex:none;border-radius:50%;display:grid;
+  place-items:center;background:var(--brand);color:#fff;margin-top:1px;
+}
+
+/* ---------- 11. PROVA SOCIAL + DISCRIÇÃO ---------- */
+.prova-grid{display:grid;grid-template-columns:minmax(0,62%) minmax(0,38%);
+  gap:var(--gap);align-items:start}
+.prova-falas{display:flex;flex-direction:column;gap:var(--gap)}
+.depo{
+  margin:0;padding:clamp(22px,2.2vw,30px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+.depo .estrelas{display:block;color:var(--brand);font-size:13px;
+  letter-spacing:2px;margin-bottom:14px}
+.depo p{font-size:clamp(15px,1.25vw,17.5px);line-height:1.6;color:var(--ink)}
+.depo p::before{content:"\201C"}
+.depo p::after{content:"\201D"}
+.depo cite{display:block;margin-top:14px;font-style:normal;
+  font-size:var(--fs-micro);color:var(--ink-soft)}
+.prova-nota{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+
+.discricao{
+  padding:clamp(24px,2.4vw,32px);border-radius:var(--radius-lg);
+  background:linear-gradient(160deg,#1a1a1e,#242024);color:var(--dark-ink);
+  box-shadow:0 32px 64px -40px rgba(33,24,12,.6);
+}
+.discricao-ic{
+  width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(233,167,79,.16);color:var(--cobre-luz);margin-bottom:18px;
+}
+.discricao h3{font-size:var(--fs-h3);font-weight:500;letter-spacing:-.02em;
+  margin-bottom:12px}
+.discricao p{font-size:var(--fs-body);line-height:var(--lh-body);
+  color:var(--dark-ink-soft)}
+.discricao p b{color:var(--dark-ink)}
+
+/* ---------- 12. ATENDIMENTO ---------- */
+.atendimento .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
+.atendimento .kicker{color:var(--brand)}
+.atend-grid .card{padding:clamp(24px,2.4vw,32px)}
+.atend-grid .card h3{font-size:var(--fs-h3);font-weight:500;
+  letter-spacing:-.02em;margin-bottom:12px}
+
+/* ---------- 13. FAQ ---------- */
+.faq{
+  background:
+    radial-gradient(ellipse 56% 90% at 50% 0%,rgba(233,167,79,.1),transparent 62%),
+    linear-gradient(180deg,#0d0d0f,#16161a 56%,#0f0f12);
+}
+.faq::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(233,167,79,.4) 32%,
+             rgba(233,167,79,.4) 68%,transparent);
+}
+.faq .kicker{color:var(--cobre-luz)}
+.faq .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.faq .h2{max-width:20ch}
+.faq-lista{max-width:860px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--dark-line)}
+.faq details:first-child{border-top:1px solid var(--dark-line)}
+.faq summary{
+  display:flex;align-items:center;gap:18px;cursor:pointer;list-style:none;
+  padding:clamp(18px,1.8vw,24px) 0;
+  font-size:clamp(15.5px,1.3vw,18px);font-weight:500;line-height:1.4;
+  color:var(--dark-ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{
+  margin-left:auto;flex:none;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(233,167,79,.13);color:var(--cobre-luz);
+  transition:transform .3s var(--ease),background .3s var(--ease);
+}
+.faq details[open] summary i{transform:rotate(180deg);
+  background:rgba(233,167,79,.26)}
+.faq details p{
+  padding:0 60px clamp(20px,2vw,26px) 0;margin:0;
+  font-size:var(--fs-lead);line-height:1.65;color:var(--dark-ink-soft);
+  max-width:70ch;
+}
+
+/* ---------- 14. FORMULÁRIO ---------- */
+.agendar-grid{display:grid;grid-template-columns:minmax(0,48%) minmax(0,52%);
+  gap:clamp(30px,4vw,64px);align-items:center}
+.agendar .kicker{color:var(--brand)}
+.agendar .h2{margin-top:16px}
+.agendar .lead{margin-top:18px;max-width:42ch}
+.agendar-alt{margin-top:clamp(22px,2.4vw,30px);font-size:var(--fs-body);
+  line-height:1.9;color:var(--ink-soft)}
+.agendar-alt .link{margin:0 8px}
+.agendar-alt span{display:block;font-size:var(--fs-micro)}
+
+.formulario{
+  display:flex;flex-direction:column;gap:16px;
+  padding:clamp(24px,2.6vw,36px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);box-shadow:var(--sombra);
+}
+.formulario label{display:flex;flex-direction:column;gap:8px}
+.formulario label>span{font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  color:var(--ink)}
+.formulario input,.formulario select{
+  font:inherit;font-size:15px;color:var(--ink);
+  padding:14px 16px;border-radius:10px;
+  background:var(--paper);border:1px solid var(--line);
+  transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.formulario input::placeholder{color:rgba(109,98,88,.7)}
+.formulario select{appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--brand) 50%),
+                   linear-gradient(135deg,var(--brand) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+.formulario input:focus,.formulario select:focus{
+  outline:none;border-color:var(--brand);background:var(--paper-2)}
+.formulario .btn{margin-top:8px;justify-content:center;width:100%;border:0;
+  font-family:inherit;cursor:pointer}
+
+/* ---------- RODAPÉ ---------- */
+/* Terminador, não seção: escuro chapado, sem brilho radial. */
+.rodape{
+  background:#0b0b0d;color:var(--dark-ink-soft);
+  padding:clamp(34px,3.6vw,48px) 0;
+  border-top:1px solid var(--dark-line);
+}
+.rodape p{font-size:12.5px;line-height:1.7;margin:0}
+.rodape-tec b{color:var(--dark-ink);font-weight:700}
+.rodape-end{margin-top:4px}
+.rodape-leg{margin-top:14px;padding-top:14px;
+  border-top:1px solid rgba(226,214,196,.08);font-size:11.5px}
+.rodape a{color:var(--cobre-luz)}
+.rodape .slot{border-bottom-color:rgba(205,187,163,.4)}
+
 /* ---------- responsivo ---------- */
 @media (max-width:1180px){
   .hero-txt{max-width:48%}
@@ -465,6 +667,9 @@ html{scroll-padding-top:88px}
   .hero-acoes{margin-bottom:18px}
 }
 @media (max-width:980px){
+  .custo-grid,.autoridade-grid,.prova-grid,.agendar-grid{
+    grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .autoridade-foto{max-width:340px;aspect-ratio:4/5}
   .falas-grid{grid-template-columns:1fr}
   .falas-foto{aspect-ratio:16/8}
   .passos{grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,34px)}
@@ -478,6 +683,10 @@ html{scroll-padding-top:88px}
   .sintomas-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
+  .atend-grid{grid-template-columns:1fr}
+  .faq summary{gap:12px}
+  .faq summary i{width:28px;height:28px}
+  .faq details p{padding-right:0}
   .passos{grid-template-columns:1fr;gap:26px}
   .formas-grid{grid-template-columns:1fr}
   .card--outras{grid-column:span 1;grid-template-columns:auto minmax(0,1fr);
