@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609111505">
-<link rel="stylesheet" href="css/rh.css?v=202609111505">
+<link rel="stylesheet" href="css/dna.css?v=202609111545">
+<link rel="stylesheet" href="css/rh.css?v=202609111545">
 </head>
 
 <body class="tema-cobre">
@@ -38,6 +38,10 @@
   <symbol id="i-whats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 11.8a8.4 8.4 0 0 1-12.4 7.4L3.6 20.4l1.4-4.4A8.4 8.4 0 1 1 20.4 11.8Z"/><path d="M9.3 9.1c.3 2.6 2.4 4.6 5 5l.9-1.4 1.9.7v1.3c-2.7.5-6.6-2.2-7.7-5.4l1.3-.9-1.4-1.9Z"/></symbol>
   <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.3 5.2 6v5.3c0 4.2 2.8 7.5 6.8 9.2 4-1.7 6.8-5 6.8-9.2V6L12 3.3Z"/><path d="m9.2 11.9 2 2 3.6-3.6"/></symbol>
   <symbol id="i-tela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.6" width="17.6" height="12" rx="2"/><path d="M9 20h6M12 16.6V20"/></symbol>
+  <symbol id="i-bateria" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="7.4" width="15.4" height="9.2" rx="2.2"/><path d="M20.8 10.6v2.8"/><path d="M5.6 12h3.6"/></symbol>
+  <symbol id="i-coracao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.4-4.5-7.4-9.4A4.2 4.2 0 0 1 12 8.1a4.2 4.2 0 0 1 7.4 2.5C19.4 15.5 12 20 12 20Z"/></symbol>
+  <symbol id="i-balanca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.4v15.2M5.6 6.6h12.8"/><path d="M5.6 6.6 2.8 13h5.6L5.6 6.6Z"/><path d="M18.4 6.6 15.6 13h5.6l-2.8-6.4Z"/></symbol>
+  <symbol id="i-cerebro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2v13.6"/><path d="M12 6.4a2.8 2.8 0 0 0-5.2 1.3 2.6 2.6 0 0 0-1.4 4.5A2.8 2.8 0 0 0 7.6 17a2.7 2.7 0 0 0 4.4.7"/><path d="M12 6.4a2.8 2.8 0 0 1 5.2 1.3 2.6 2.6 0 0 1 1.4 4.5A2.8 2.8 0 0 1 16.4 17a2.7 2.7 0 0 1-4.4.7"/></symbol>
   <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.6 15.6 4.2 4.2"/></symbol>
 </svg>
 
@@ -91,48 +95,9 @@
       <div class="hero-acoes">
         <a class="btn" href="#agendar">Quero uma avaliação
           <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
-        <a class="link" href="#sinais">Ver os sintomas</a>
+        <a class="link" href="#autoavaliacao">Fazer a autoavaliação</a>
       </div>
 
-      <!-- a triagem: o leitor marca o que reconhece e a página responde -->
-      <aside class="triagem" id="triagem">
-        <div class="triagem-cab">
-          <h2>Você anda se sentindo assim?</h2>
-          <span class="triagem-conta"><b id="triagemNum">0</b> de 4</span>
-        </div>
-
-        <ul class="triagem-lista">
-          <li><label>
-            <input type="checkbox" data-triagem>
-            <span class="triagem-cx" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-            <span class="triagem-tx">Cansaço mesmo dormindo bem</span>
-          </label></li>
-          <li><label>
-            <input type="checkbox" data-triagem>
-            <span class="triagem-cx" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-            <span class="triagem-tx">Menos vontade e disposição sexual</span>
-          </label></li>
-          <li><label>
-            <input type="checkbox" data-triagem>
-            <span class="triagem-cx" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-            <span class="triagem-tx">Gordura na barriga, músculo sumindo</span>
-          </label></li>
-          <li><label>
-            <input type="checkbox" data-triagem>
-            <span class="triagem-cx" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-            <span class="triagem-tx">Humor pra baixo, foco ruim</span>
-          </label></li>
-        </ul>
-
-        <div class="triagem-pe">
-          <div class="triagem-medidor" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <p class="triagem-fecho" id="triagemFecho" aria-live="polite">
-            <span id="triagemTxt"><b>Marcou 2 ou mais?</b> Vale investigar sua testosterona.</span>
-          </p>
-        </div>
-      </aside>
     </div>
 
   </div>
@@ -162,6 +127,70 @@
   </span>
 </section>
 
+
+<!-- ===== SEÇÃO 3 — AUTOAVALIAÇÃO =====
+     O briefing entrega esta lista como um card de apoio no hero. Ela vale
+     mais que isso: é o único momento em que o leitor faz alguma coisa em
+     vez de ler. Então virou seção inteira, em fundo claro — o contraste
+     com o hero já avisa que aqui a página muda de modo.
+
+     O veredito muda com o que foi marcado. Em 2 ele deixa de ser pergunta
+     e vira resposta, e só aí o botão aparece: quem marcou zero não tem
+     motivo nenhum para agendar, e empurrar CTA em cima dele é ruído. -->
+<section class="sec sec--paper quiz-sec" id="autoavaliacao">
+  <div class="wrap">
+    <div class="head-center">
+      <span class="kicker kicker--center">Autoavaliação · 1 minuto</span>
+      <h2 class="h2">Você anda
+        <b class="cobre">se sentindo assim?</b></h2>
+      <p class="lead lead--center">Marque o que você reconhece em si. <b>Não é
+        diagnóstico</b> — é o primeiro filtro, o mesmo que a consulta começa
+        fazendo.</p>
+    </div>
+
+    <ul class="quiz" id="quiz">
+      <li><label class="quiz-item">
+        <input type="checkbox" data-triagem>
+        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-bateria"/></svg></span>
+        <span class="quiz-tx">Cansaço mesmo dormindo bem</span>
+        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+      </label></li>
+      <li><label class="quiz-item">
+        <input type="checkbox" data-triagem>
+        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-coracao"/></svg></span>
+        <span class="quiz-tx">Menos vontade e disposição sexual</span>
+        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+      </label></li>
+      <li><label class="quiz-item">
+        <input type="checkbox" data-triagem>
+        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-balanca"/></svg></span>
+        <span class="quiz-tx">Gordura na barriga, músculo sumindo</span>
+        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+      </label></li>
+      <li><label class="quiz-item">
+        <input type="checkbox" data-triagem>
+        <span class="quiz-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-cerebro"/></svg></span>
+        <span class="quiz-tx">Humor pra baixo, foco ruim</span>
+        <span class="quiz-mk" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+      </label></li>
+    </ul>
+
+    <div class="veredito" id="veredito">
+      <div class="veredito-conta">
+        <span class="veredito-num" id="triagemNum">0</span>
+        <span class="veredito-de">de 4<br>marcados</span>
+      </div>
+      <div class="veredito-medidor" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <p class="veredito-txt" id="triagemTxt" aria-live="polite">
+        <b>Marcou 2 ou mais?</b> Vale investigar sua testosterona.</p>
+      <a class="btn" href="#agendar" id="vereditoBtn" tabindex="-1">Quero uma avaliação
+        <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- barra fixa do celular -->
@@ -188,24 +217,31 @@
   window.addEventListener('scroll', aoRolar, {passive:true});
   aoRolar();
 
-  /* ---- a triagem ----
-     Conta o que o leitor marcou. Em 2 o card acende e a frase do briefing
-     deixa de ser pergunta e vira resposta: ele já se qualificou sozinho. */
+  /* ---- a autoavaliação ----
+     Conta o que o leitor marcou. Em 2 o bloco acende, a frase do briefing
+     deixa de ser pergunta e vira resposta, e só então o botão entra: quem
+     marcou zero não tem por que agendar nada. */
   var cx = document.querySelectorAll('[data-triagem]');
-  var card = document.getElementById('triagem');
+  var ver = document.getElementById('veredito');
   var num = document.getElementById('triagemNum');
   var txt = document.getElementById('triagemTxt');
+  var bt = document.getElementById('vereditoBtn');
   var base = txt.innerHTML;
   function contar(){
     var n = 0;
     cx.forEach(function(c){ if (c.checked) n++; });
     num.textContent = n;
-    card.className = 'triagem' + (n ? ' tem-' + n : '') + (n >= 2 ? ' acesa' : '');
+    ver.className = 'veredito tem-' + n + (n >= 2 ? ' acesa' : '');
     txt.innerHTML = n >= 2
-      ? '<b>Você marcou ' + n + '.</b> Vale investigar sua testosterona.'
-      : base;
+      ? '<b>Você marcou ' + n + ' de 4.</b> Vale investigar sua testosterona — ' +
+        'com exame e consulta, não por conta própria.'
+      : (n === 1
+        ? '<b>Um sintoma sozinho diz pouco.</b> Sono ruim e estresse causam o mesmo.'
+        : base);
+    bt.tabIndex = n >= 2 ? 0 : -1;
   }
   cx.forEach(function(c){ c.addEventListener('change', contar); });
+  contar();
 })();
 </script>
 </body>
