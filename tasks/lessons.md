@@ -65,3 +65,29 @@ outras seções — o Mateus viu na hora que fugia do padrão.
    esquerda, que a cortina do CSS repõe na mesma cor.
 3. Nada de `font-size` próprio em `.h2` dentro de uma seção. A escala do site
    é `--fs-h2`; override só de `max-width`/`margin` quando a coluna exigir.
+
+## 2026-09-11 — Vídeo que não roda no celular: o índice estava no fim do arquivo
+
+**O erro:** o Mateus reportou duas vezes que o vídeo da página de preenchimento
+peniano não rodava no celular. Na primeira eu mexi só no JavaScript (preload,
+load() e nova tentativa no canplay) e reportei como corrigido sem conseguir
+reproduzir. Não era o JavaScript. Era o arquivo: a caixa `moov`, que é o índice
+do MP4, estava depois da `mdat`, no fim dos 3,8 MB. Sem o índice o navegador não
+sabe decodificar nada, então precisa baixar o arquivo inteiro antes do primeiro
+quadro. No desktop isso passa despercebido; no celular a pessoa rola a página
+antes, o observador pausa, e o pôster fica parado para sempre.
+
+**As regras:**
+1. Vídeo que não toca: antes de mexer no player, olhar o ARQUIVO e o SERVIDOR.
+   No servidor: `content-type`, `accept-ranges` e se um `Range` devolve 206
+   (Safari exige). No arquivo: a ordem das caixas do MP4 — `moov` tem que vir
+   antes de `mdat` (faststart).
+2. Dá para mover o `moov` para o início sem ffmpeg: reescrever o arquivo na
+   ordem ftyp, moov, mdat e somar o tamanho do `moov` a cada deslocamento em
+   `stco`/`co64`. Depois conferir que todo chunk cai dentro do novo `mdat` e
+   que o vídeo ainda abre com a mesma duração e resolução.
+3. Nesta máquina não há ffmpeg. O `avconvert` do macOS existe, mas os presets
+   dele ficaram MAIORES que o original (3,7 e 4,2 MB contra 3,8) — não serve
+   para reduzir peso.
+4. Não reportar como corrigido o que não foi reproduzido. Dizer o que foi
+   verificado e o que continua sem prova.
