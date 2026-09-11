@@ -29,8 +29,6 @@
   /* apoio sobre escuro: claro e quente. Cinza apagado é proibido. */
   --dark-ink-soft:#c9c2b6;
   --dark-line:rgba(226,214,196,.16);
-  --alerta:#c4553f;
-  --alerta-soft:#f8e6e1;
   --sombra:0 24px 48px -28px rgba(33,24,12,.38);
   --sombra-chip:0 10px 26px -12px rgba(33,24,12,.34);
   /* cobre claro: a cor do destaque quando o chão é grafite */
@@ -571,7 +569,7 @@ html{scroll-padding-top:88px}
 
 /* ---------- 9. CUSTO DE NÃO TRATAR ---------- */
 /* Claro, e não escura: "como se repõe" passou a ser escura e duas seções
-   escuras coladas achatam as duas. O peso aqui vem do tom de alerta, não
+   escuras coladas achatam as duas. O peso aqui vem do cobre profundo, não
    do fundo. */
 .custo{
   background:
@@ -581,14 +579,14 @@ html{scroll-padding-top:88px}
 }
 .custo::before{
   content:"";position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--alerta) 32%,
-             var(--alerta) 68%,transparent);
+  background:linear-gradient(90deg,transparent,var(--brand-deep) 32%,
+             var(--brand-deep) 68%,transparent);
   opacity:.5;
 }
-.custo .kicker{color:var(--alerta)}
-.custo .kicker.tarja{background:rgba(196,85,63,.09);
-  border-color:rgba(196,85,63,.26)}
-.custo .h2 .cobre{color:var(--alerta)}
+.custo .kicker{color:var(--brand-deep)}
+.custo .kicker.tarja{background:rgba(138,75,18,.09);
+  border-color:rgba(138,75,18,.26)}
+.custo .h2 .cobre{color:var(--brand-deep)}
 .custo .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
 .custo .lead{max-width:56ch}
 
@@ -599,19 +597,20 @@ html{scroll-padding-top:88px}
 .perda{
   display:flex;flex-direction:column;
   background:var(--paper-2);
-  border:1px solid rgba(196,85,63,.18);
+  border:1px solid rgba(178,101,28,.18);
   border-radius:var(--radius-lg);overflow:hidden;
-  box-shadow:0 26px 52px -38px rgba(120,45,30,.4);
+  box-shadow:0 26px 52px -38px rgba(90,55,18,.4);
 }
-/* filete de alerta no topo: é o que marca a seção como contraponto */
+/* filete no topo: marca a seção como contraponto sem sair da paleta —
+   o cobre profundo, não o vermelho, que era a única cor fora do sistema */
 .perda::before{
   content:"";height:3px;flex:none;
-  background:linear-gradient(90deg,var(--alerta),rgba(196,85,63,.25));
+  background:linear-gradient(90deg,var(--brand-deep),rgba(138,75,18,.25));
 }
 .perda-txt{padding:clamp(20px,1.9vw,26px)}
 .perda-ic{
   width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-  background:var(--alerta-soft);color:var(--alerta);margin-bottom:14px;
+  background:var(--brand-soft);color:var(--brand-deep);margin-bottom:14px;
 }
 .perda-txt h3{font-size:var(--fs-card);font-weight:600;
   line-height:var(--lh-card);color:var(--ink);margin-bottom:8px}
@@ -654,21 +653,46 @@ html{scroll-padding-top:88px}
 .prova .kicker{color:var(--brand)}
 .prova-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);
   align-items:stretch}
+/* O card antes era estrelas soltas, um parágrafo e uma linha de crédito em
+   corpo miúdo: lia como aviso, não como depoimento. O que faz um
+   depoimento parecer depoimento é a pessoa aparecer — por isso a fala
+   vem entre aspas de verdade, abaixo dela um rosto (silhueta, porque a
+   identidade é preservada), o nome em corpo de leitura e as estrelas
+   coladas em quem falou, não flutuando no topo. */
 .depo{
   margin:0;padding:clamp(24px,2.4vw,34px);
   background:var(--paper-2);border:1px solid var(--line);
   border-radius:var(--radius-lg);
   display:flex;flex-direction:column;
+  box-shadow:0 22px 44px -36px rgba(90,55,18,.35);
 }
-.depo .estrelas{display:block;color:var(--brand);font-size:13px;
-  letter-spacing:2px;margin-bottom:16px}
+.depo-aspas{
+  width:34px;height:34px;border-radius:50%;flex:none;
+  display:grid;place-items:center;margin-bottom:16px;
+  background:var(--brand-soft);color:var(--brand);
+}
 .depo p{font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:var(--ink);
-  flex:1}
+  flex:1;margin:0}
 .depo p::before{content:"\201C"}
 .depo p::after{content:"\201D"}
-.depo cite{display:block;margin-top:18px;padding-top:16px;
-  border-top:1px solid var(--line);
-  font-style:normal;font-size:var(--fs-micro);color:var(--ink-soft)}
+
+.depo-quem{
+  display:flex;align-items:center;gap:13px;
+  margin-top:20px;padding-top:17px;border-top:1px solid var(--line);
+}
+.depo-av{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand-deep);
+}
+.depo-id{display:flex;flex-direction:column;gap:3px;min-width:0}
+.depo cite{font-style:normal;font-size:14.5px;font-weight:600;
+  letter-spacing:-.01em;color:var(--ink)}
+.depo-meta{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  font-size:var(--fs-micro);color:var(--ink-soft);
+}
+.depo .estrelas{color:var(--brand);font-size:12px;letter-spacing:1.6px}
 
 .prova-nota{margin:16px 0 0;font-size:12.5px;line-height:1.5;
   color:var(--ink-soft);text-align:center}
