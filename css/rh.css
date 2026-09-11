@@ -301,6 +301,72 @@ html{scroll-padding-top:88px}
   opacity:1;visibility:visible;transform:none;transition-delay:0s;
 }
 
+/* ---------- 4. ISSO TEM NOME ---------- */
+/* Escura, logo depois do claro da autoavaliação: o leitor acabou de marcar
+   sintomas e a página responde com o nome disso. */
+.nome{
+  background:
+    radial-gradient(ellipse 48% 110% at 78% 8%,rgba(233,167,79,.14),transparent 64%),
+    linear-gradient(180deg,#0b0b0d,#141417 54%,#0e0e11);
+  overflow:hidden;
+}
+.nome::before{ /* fio de luz no topo, esmaecendo nas pontas */
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(233,167,79,.4) 32%,
+             rgba(233,167,79,.4) 68%,transparent);
+}
+.nome-grid{display:grid;grid-template-columns:minmax(0,43%) minmax(0,57%);
+  align-items:center;gap:clamp(30px,4vw,64px)}
+.nome .kicker{color:var(--cobre-luz)}
+.nome .h2{margin-top:16px}
+.nome .lead{margin-top:18px;max-width:46ch}
+
+/* ----- a curva: o único gráfico da página -----
+   O argumento do briefing é numérico — 1% ao ano. Número em texto corrido
+   ninguém lê; desenhado, ele vira a seção. A linha se traça quando a seção
+   entra, e para: é informação, não animação. */
+.curva{margin:0}
+.curva svg{display:block;width:100%;height:auto;overflow:visible}
+.cv-faixa{fill:rgba(196,85,63,.12)}
+.cv-faixa-tx{fill:rgba(226,214,196,.45);font-size:9.5px;font-weight:600;
+  letter-spacing:.14em}
+.cv-grade{stroke:rgba(226,214,196,.09);stroke-width:1}
+.cv-base{stroke:rgba(226,214,196,.2);stroke-width:1}
+.cv-area{fill:url(#cvFill);opacity:0;transition:opacity .7s var(--ease) .5s}
+.cv-linha{
+  fill:none;stroke:url(#cvLinha);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:640;stroke-dashoffset:640;
+  transition:stroke-dashoffset 1.5s var(--ease) .15s;
+}
+.cv-pt{fill:#12120f;stroke:var(--cobre-luz);stroke-width:2;
+  opacity:0;transition:opacity .4s var(--ease)}
+.cv-pt--fim{fill:var(--cobre-luz);stroke:none}
+.cv-idade{fill:var(--dark-ink-soft);font-size:11.5px;font-weight:500}
+.cv-idade--m{text-anchor:middle}
+.cv-idade--f{text-anchor:end}
+.cv-taxa{fill:var(--cobre-luz);font-size:15px;font-weight:700;letter-spacing:-.01em}
+.cv-chamada{stroke:rgba(233,167,79,.45);stroke-width:1}
+
+.curva.in .cv-linha{stroke-dashoffset:0}
+.curva.in .cv-area{opacity:1}
+.curva.in .cv-pt{opacity:1}
+.curva.in .cv-pt:nth-of-type(2){transition-delay:.9s}
+.curva.in .cv-pt:nth-of-type(3){transition-delay:1.5s}
+@media (prefers-reduced-motion:reduce){
+  .cv-linha{stroke-dashoffset:0;transition:none}
+  .cv-area,.cv-pt{opacity:1;transition:none}
+}
+
+/* ---------- 5. OS SINAIS ---------- */
+.sinais .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
+.sinais .kicker{color:var(--brand)}
+.sinais-grid .card{padding:clamp(22px,2vw,28px)}
+.sinais-grid .card-icone{
+  width:44px;height:44px;border-radius:11px;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);margin-bottom:18px;
+}
+.sinais-grid .card h3{margin-bottom:9px}
+
 /* ---------- responsivo ---------- */
 @media (max-width:1180px){
   .hero-txt{max-width:48%}
@@ -325,12 +391,18 @@ html{scroll-padding-top:88px}
   .hero-dna .selo{display:none}
   .hero-acoes{margin-bottom:18px}
 }
+@media (max-width:980px){
+  .nome-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .curva{order:2}
+  .sinais-grid{grid-template-columns:1fr 1fr}
+}
 @media (max-width:900px){
   .quiz{grid-template-columns:1fr 1fr}
   .veredito{grid-template-columns:auto auto minmax(0,1fr);row-gap:20px}
   .veredito .btn{grid-column:1 / -1;justify-self:start}
 }
 @media (max-width:640px){
+  .sinais-grid{grid-template-columns:1fr}
   .quiz{grid-template-columns:1fr;gap:10px}
   .quiz-item{flex-direction:row;align-items:center;gap:14px;padding:15px 16px}
   .quiz-ic{width:38px;height:38px;border-radius:10px}
