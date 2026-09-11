@@ -106,47 +106,62 @@ html{scroll-padding-top:88px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
 /* ---------- 2. HERO ---------- */
-/* Retrato em arco à direita — a mesma família da página irmã, porque é o
-   mesmo médico e as três páginas têm que parecer a mesma casa. O que muda é
-   a temperatura: lá o arco é iluminado em azul, aqui em cobre.
-   Sob o grid vem a faixa de triagem: o card que a copy pede, funcionando. */
-.hero-dna{flex-direction:column;justify-content:center;align-items:stretch}
-.hero-dna{padding-top:clamp(104px,11vw,150px)}
+/* Meia tela de foto, sangrando até a borda. A divisa entre o carvão e a
+   imagem é a linha de montagem: os chips se alinham nela, o selo se senta
+   em cima dela, e a foto não precisa de moldura nenhuma — ela termina em
+   gradiente, então o fundo cinza do estúdio nunca encosta no escuro.
 
-/* Carvão neutro, não marrom. O cobre é acento — quando ele entra no fundo
-   inteiro a página vira lama. Aqui ele só ilumina por trás do retrato. */
-.hero-dna.sec--dark{
+   As páginas irmãs abrem com texto à esquerda e retrato em caixa à direita.
+   Repetir isso aqui seria entregar a mesma página três vezes. */
+.hero-dna{
+  display:block;position:relative;overflow:hidden;
+  min-height:min(94vh,900px);
+  padding:clamp(112px,11vw,152px) 0 clamp(48px,5vw,74px);
   background:
-    radial-gradient(ellipse 42% 52% at 72% 44%,rgba(233,167,79,.13),transparent 68%),
+    radial-gradient(ellipse 40% 46% at 62% 34%,rgba(233,167,79,.12),transparent 70%),
     linear-gradient(168deg,#0c0c0e,var(--dark-2) 62%,#101013);
   color:var(--dark-ink);
 }
-.hero-dna.sec--dark::before{display:none}
-
-/* Trama de pontos: grafite chapado é só uma cor. Mascarada em elipse do lado
-   do texto, some antes de encostar no card. */
-.hero-dna.sec--dark::after{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+.hero-dna::before{display:none}
+/* trama de pontos: carvão chapado é só uma cor */
+.hero-dna::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background-image:radial-gradient(rgba(226,214,196,.13) 1px,transparent 1px);
   background-size:26px 26px;
-  -webkit-mask-image:radial-gradient(ellipse 58% 56% at 24% 44%,#000,transparent 74%);
-  mask-image:radial-gradient(ellipse 58% 56% at 24% 44%,#000,transparent 74%);
+  -webkit-mask-image:radial-gradient(ellipse 52% 62% at 20% 46%,#000,transparent 76%);
+  mask-image:radial-gradient(ellipse 52% 62% at 20% 46%,#000,transparent 76%);
 }
-.hero-dna.sec--dark>.wrap{position:relative;z-index:1}
 
-.hero-dna .wrap{grid-template-columns:minmax(0,53%) minmax(0,47%);
-  align-items:center;gap:clamp(30px,3.4vw,54px)}
+/* ----- a foto ocupa a metade direita inteira, de topo a base ----- */
+.hero-arte{position:absolute;top:0;right:0;bottom:0;width:49%;z-index:0}
+.hero-arte img{
+  width:100%;height:100%;object-fit:cover;object-position:52% 2%;
+  filter:saturate(.82) contrast(1.06) brightness(.92);
+}
+/* A borda esquerda da foto não pode existir: ela vira gradiente e some
+   dentro do carvão. É o que resolve o fundo de estúdio sem recorte. */
+.hero-arte::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#0d0d0f 2%,rgba(13,13,15,.86) 22%,rgba(13,13,15,.22) 52%,transparent 72%),
+    linear-gradient(0deg,#0e0e11 1%,rgba(14,14,17,.5) 16%,transparent 38%),
+    linear-gradient(180deg,rgba(14,14,17,.72),transparent 26%),
+    linear-gradient(270deg,rgba(14,14,17,.5),transparent 22%);
+}
 
-.hero-dna.sec--dark .kicker{color:var(--cobre-luz)}
-.hero-dna.sec--dark .lead{color:var(--dark-ink-soft);max-width:46ch}
-.hero-dna.sec--dark .link{color:var(--cobre-luz)}
+/* o .wrap do hero e grid no dna.css; aqui os chips e o selo sao filhos dele
+   e virariam itens de grade, estourando a diagramacao. */
+.hero-dna>.wrap{position:relative;z-index:2;display:block}
+.hero-txt{max-width:min(524px,46%)}
+
+.hero-dna .kicker{color:var(--cobre-luz)}
+.hero-dna .lead{color:var(--dark-ink-soft);max-width:44ch}
+.hero-dna .link{color:var(--cobre-luz)}
 .sec--dark .h1 .cobre{color:var(--cobre-luz)}
 .h1 .cobre,.h2 .cobre{color:var(--brand)}
-/* O DNA trava o titulo em 3 linhas. Esta manchete tem 63 caracteres, entao o
-   corpo desce e a coluna de texto abre - 4 linhas nao passa. */
-.hero-dna.sec--dark .h1{font-size:clamp(33px,3.6vw,51px)}
+.hero-dna .h1{font-size:clamp(33px,3.5vw,50px);margin-top:18px}
 
-/* kicker em tarja: pílula fina com fio, para não sumir no grafite */
+/* kicker em tarja: pílula fina com fio, para não sumir no carvão */
 .kicker.tarja{
   display:inline-flex;align-items:center;gap:9px;
   padding:7px 15px 7px 13px;border-radius:var(--radius-pill);
@@ -155,161 +170,88 @@ html{scroll-padding-top:88px}
 .kicker.tarja::before{width:18px;opacity:.9}
 
 .hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
-  flex-wrap:wrap;margin-top:clamp(26px,3vw,38px)}
+  flex-wrap:wrap;margin-top:clamp(24px,2.6vw,34px)}
 .hero-acoes .btn{margin-top:0}
 
-/* tira de credencial sob as ações */
-.selos{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;
-  margin-top:clamp(24px,2.6vw,34px);padding-top:clamp(20px,2.2vw,26px);
-  border-top:1px solid var(--dark-line)}
-.selos li{display:flex;align-items:center;gap:8px;font-size:12.5px;
-  color:var(--dark-ink-soft)}
-.selos li::before{content:"";width:5px;height:5px;border-radius:50%;
-  background:var(--cobre-luz);flex:none}
-
-/* ----- o retrato vira arco, não caixa -----
-   O DNA proíbe foto em caixa de canto vivo. O arco é a saída: topo em
-   meia-elipse, base assentada, fio de luz na aresta de cima e halo por trás.
-   Sem o halo o retrato fica colado no grafite, como adesivo. */
-.hero-dna .hero-foto{align-self:end;max-width:418px;justify-self:end}
-
-/* ----- o retrato dissolve, não é recortado em caixa -----
-   A foto é de estúdio: fundo cinza claro. Posta numa moldura sobre o carvão,
-   esse cinza vira um bloco pálido no meio do escuro — foi o que ficou feio.
-   A saída é não ter borda: uma máscara em elipse apaga as beiradas e o cinza
-   some antes de encontrar o fundo, e um véu por cima puxa o que sobra para o
-   tom da página. O médico continua inteiro; só a moldura desaparece. */
-.hero-dna.sec--dark .hero-foto .foto{
-  position:relative;z-index:1;border-radius:0;overflow:visible;
-  filter:saturate(.86) contrast(1.04);
-  -webkit-mask-image:radial-gradient(ellipse 62% 70% at 50% 38%,#000 46%,transparent 82%);
-  mask-image:radial-gradient(ellipse 62% 70% at 50% 38%,#000 46%,transparent 82%);
-}
-.hero-dna.sec--dark .hero-foto .foto img{
-  display:block;width:100%;height:auto;position:relative;z-index:0;
-}
-/* véu: o cinza de estúdio escurece até virar quase o fundo. Multiply porque
-   precisa puxar o claro para baixo sem lavar o rosto. */
-.hero-dna.sec--dark .hero-foto .foto::after{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  mix-blend-mode:multiply;
-  background:
-    radial-gradient(ellipse 54% 46% at 50% 30%,rgba(140,140,146,.05),rgba(46,46,52,.62) 74%),
-    linear-gradient(to top,rgba(18,18,21,.9),rgba(24,24,28,.5) 34%,transparent 62%);
-}
-/* halo: a luz que separa o retrato do fundo agora que não há moldura */
-.hero-dna.sec--dark .halo{
-  position:absolute;z-index:0;left:50%;top:44%;transform:translate(-50%,-50%);
-  width:126%;aspect-ratio:1;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,
-    rgba(233,167,79,.30) 0 30%,rgba(190,124,52,.11) 52%,transparent 68%);
-  filter:blur(6px);
-}
-.hero-dna.sec--dark .halo::before,
-.hero-dna.sec--dark .halo::after{
-  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  aspect-ratio:1;border-radius:50%;
-}
-.hero-dna.sec--dark .halo::before{width:78%;border:1px solid rgba(233,167,79,.26)}
-.hero-dna.sec--dark .halo::after{width:100%;border:1px solid rgba(233,167,79,.10)}
-
-/* chips: credencial concreta, nunca adjetivo, e nunca sobre o rosto */
+/* ----- chips: alinhados na costura, não espalhados ----- */
 .hero-dna .chip{
+  position:absolute;z-index:3;left:52%;right:auto;transform:none;
+  display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+  padding:9px 16px 9px 9px;border-radius:var(--radius-pill);
+  font-size:12.5px;font-weight:500;color:var(--dark-ink);
   background:rgba(23,23,27,.9);
   border:1px solid rgba(226,214,196,.16);
-  color:var(--dark-ink);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 14px 30px -16px rgba(0,0,0,.85);
-  gap:9px;
+  box-shadow:0 14px 30px -16px rgba(0,0,0,.9);
 }
 .hero-dna .chip::before{display:none}
 .chip-ic{width:22px;height:22px;flex:none;border-radius:50%;display:grid;
   place-items:center;background:rgba(233,167,79,.16);color:var(--cobre-luz)}
-.hero-dna .chip--1{top:24%;left:-19%}
-.hero-dna .chip--2{top:56%;left:-25%}
-.hero-dna .chip--3{top:79%;right:-9%}
+.hero-dna .chip--1{top:19%}
+.hero-dna .chip--2{top:35%}
+.hero-dna .chip--3{top:51%}
 
-.hero-dna .selo{top:7%;right:-6%;width:84px;height:84px;display:grid;
-  place-items:center}
+/* selo: sentado na costura, embaixo da fila de chips */
+.hero-dna .selo{
+  position:absolute;z-index:3;top:68%;left:52%;right:auto;
+  transform:translateX(-50%);
+  width:86px;height:86px;display:grid;place-items:center;
+}
 .hero-dna .selo-anel{position:absolute;inset:0;width:100%;height:100%;
   animation:girar 24s linear infinite;
   fill:var(--dark-ink-soft);font-size:9.2px;font-weight:600;letter-spacing:.15em}
 .hero-dna .selo-nucleo{
   width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
   background:linear-gradient(135deg,var(--cobre-luz),var(--brand));color:#1a140c;
-  box-shadow:0 12px 26px -10px rgba(0,0,0,.85);
+  box-shadow:0 12px 26px -10px rgba(0,0,0,.9);
 }
+@media (prefers-reduced-motion:reduce){.hero-dna .selo-anel{animation:none}}
 
 /* ---------- a triagem: o card que a copy pede, funcionando ---------- */
-/* Em faixa larga sob o grid do hero: três tempos na horizontal —
-   a pergunta, os quatro sintomas em duas colunas, e o veredito. */
-/* a faixa e um .wrap dentro do hero, que e grid: sem display:block ela vira
-   item da primeira coluna e encolhe pela metade. */
-.hero-dna .hero-triagem{display:block;margin-top:clamp(34px,4vw,58px);position:relative;z-index:1}
+/* Colada na copy, não solta no rodapé do hero: é o fecho do argumento.
+   O leitor marca o que reconhece, o medidor enche, e em 2 o card acende
+   e a pergunta do briefing vira resposta. */
 .triagem{
-  position:relative;
-  background:linear-gradient(160deg,rgba(240,238,234,.07),rgba(240,238,234,.025));
+  position:relative;margin-top:clamp(28px,3vw,40px);
+  background:linear-gradient(160deg,rgba(240,238,234,.075),rgba(240,238,234,.025));
   border:1px solid var(--dark-line);
   border-radius:var(--radius-lg);
-  padding:clamp(22px,2.4vw,32px);
+  padding:clamp(18px,1.7vw,24px);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  box-shadow:0 40px 80px -44px rgba(0,0,0,.9);
+  box-shadow:0 40px 80px -44px rgba(0,0,0,.95);
   transition:border-color .4s var(--ease),box-shadow .4s var(--ease);
-  display:grid;
-  grid-template-columns:minmax(0,23%) minmax(0,44%) minmax(0,33%);
-  align-items:center;gap:clamp(24px,2.8vw,40px);
 }
-.triagem>*{min-width:0}
-/* estado de alerta: marcou 2 ou mais. O card acende — é a resposta da
-   página ao leitor, e é o que transforma a lista em triagem. */
+/* marcou 2: o card acende. É a resposta da página ao leitor. */
 .triagem.acesa{
   border-color:rgba(233,167,79,.5);
-  box-shadow:0 0 0 1px rgba(233,167,79,.22),0 40px 84px -40px rgba(0,0,0,.9),
-             0 0 60px -14px rgba(233,167,79,.30);
+  box-shadow:0 0 0 1px rgba(233,167,79,.2),0 40px 84px -40px rgba(0,0,0,.95),
+             0 0 60px -14px rgba(233,167,79,.26);
 }
 
-.triagem-cab{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.triagem-cab{display:flex;align-items:center;gap:14px;
+  padding-bottom:14px;border-bottom:1px solid var(--dark-line)}
 .triagem-cab h2{
-  font-family:var(--font-display);font-size:clamp(19px,1.7vw,23px);
-  font-weight:500;line-height:1.25;letter-spacing:-.02em;color:var(--dark-ink);
-  margin:0;max-width:16ch;
+  font-family:var(--font-display);font-size:16px;font-weight:600;
+  line-height:1.3;letter-spacing:-.01em;color:var(--dark-ink);margin:0;
 }
 .triagem-conta{
-  flex:none;display:flex;align-items:baseline;gap:3px;
-  font-size:12.5px;color:var(--dark-ink-soft);
-  font-variant-numeric:tabular-nums;
+  margin-left:auto;flex:none;display:flex;align-items:baseline;gap:3px;
+  font-size:12px;color:var(--dark-ink-soft);font-variant-numeric:tabular-nums;
 }
-.triagem-conta b{font-size:21px;font-weight:700;color:var(--cobre-luz);
-  line-height:1;transition:color .3s var(--ease)}
-
-/* medidor: 4 traços que acendem. É a contagem virando forma — o leitor vê
-   quanto marcou sem precisar ler o número. */
-.triagem-medidor{display:flex;gap:5px;width:100%}
-.triagem-medidor span{
-  height:3px;flex:1;border-radius:2px;background:rgba(226,214,196,.14);
-  transition:background .35s var(--ease);
-}
-.triagem.tem-1 .triagem-medidor span:nth-child(-n+1),
-.triagem.tem-2 .triagem-medidor span:nth-child(-n+2),
-.triagem.tem-3 .triagem-medidor span:nth-child(-n+3),
-.triagem.tem-4 .triagem-medidor span:nth-child(-n+4){
-  background:linear-gradient(90deg,var(--brand),var(--cobre-luz));
-}
+.triagem-conta b{font-size:19px;font-weight:700;color:var(--cobre-luz);line-height:1}
 
 .triagem-lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;
-  gap:2px 10px;border-left:1px solid var(--dark-line);
-  border-right:1px solid var(--dark-line);
-  padding-inline:clamp(18px,2.2vw,30px)}
+  gap:0 14px;padding:6px 0}
 .triagem-lista label{
-  display:flex;align-items:center;gap:13px;cursor:pointer;
-  padding:13px 12px;margin:0 -12px;border-radius:10px;
-  font-size:15px;line-height:1.35;color:var(--dark-ink-soft);
+  display:flex;align-items:center;gap:11px;cursor:pointer;
+  padding:10px 8px;margin:0 -8px;border-radius:9px;
+  font-size:13.5px;line-height:1.3;color:var(--dark-ink-soft);
   transition:background .2s var(--ease),color .2s var(--ease);
 }
 .triagem-lista label:hover{background:rgba(240,238,234,.05);color:var(--dark-ink)}
 .triagem-lista input{position:absolute;opacity:0;width:0;height:0}
 .triagem-cx{
-  width:24px;height:24px;flex:none;border-radius:7px;
+  width:21px;height:21px;flex:none;border-radius:6px;
   border:1.5px solid rgba(226,214,196,.3);
   display:grid;place-items:center;color:transparent;
   transition:background .22s var(--ease),border-color .22s var(--ease),
@@ -323,81 +265,54 @@ html{scroll-padding-top:88px}
 .triagem-lista input:focus-visible + .triagem-cx{
   outline:2px solid var(--cobre-luz);outline-offset:3px}
 
-.triagem-fecho{
-  margin:0;font-size:14px;line-height:1.5;color:var(--dark-ink-soft);
-  display:flex;align-items:flex-start;gap:12px;
+.triagem-pe{display:flex;align-items:center;gap:16px;
+  padding-top:14px;border-top:1px solid var(--dark-line)}
+/* medidor: a contagem virando forma — o olho lê antes do número */
+.triagem-medidor{display:flex;gap:4px;flex:none;width:84px}
+.triagem-medidor span{
+  height:3px;flex:1;border-radius:2px;background:rgba(226,214,196,.14);
+  transition:background .35s var(--ease);
 }
+.triagem.tem-1 .triagem-medidor span:nth-child(-n+1),
+.triagem.tem-2 .triagem-medidor span:nth-child(-n+2),
+.triagem.tem-3 .triagem-medidor span:nth-child(-n+3),
+.triagem.tem-4 .triagem-medidor span:nth-child(-n+4){
+  background:linear-gradient(90deg,var(--brand),var(--cobre-luz));
+}
+.triagem-fecho{margin:0;font-size:13px;line-height:1.45;color:var(--dark-ink-soft)}
 .triagem-fecho b{color:var(--dark-ink);font-weight:600}
 .triagem.acesa .triagem-fecho b{color:var(--cobre-luz)}
-.triagem-fecho .ic{
-  width:28px;height:28px;flex:none;border-radius:50%;display:grid;place-items:center;
-  background:rgba(233,167,79,.14);color:var(--cobre-luz);
-  transition:background .3s var(--ease);
-}
-.triagem.acesa .triagem-fecho .ic{background:rgba(233,167,79,.26)}
-
-/* selo girando: um por página, só no hero — como manda o DNA */
-.triagem .selo{
-  position:absolute;z-index:2;top:auto;right:auto;bottom:-30px;left:-30px;width:84px;height:84px;
-  display:grid;place-items:center;
-}
-.triagem .selo-anel{position:absolute;inset:0;width:100%;height:100%;
-  animation:girar 24s linear infinite;
-  fill:var(--dark-ink-soft);font-size:9.4px;font-weight:600;letter-spacing:.16em}
-.triagem .selo-nucleo{
-  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cobre-luz),var(--brand));color:#1a140c;
-  box-shadow:0 10px 24px -10px rgba(0,0,0,.8);
-}
-
-@media (prefers-reduced-motion:reduce){
-  .triagem .selo-anel{animation:none}
-}
 
 /* ---------- responsivo ---------- */
-@media (max-width:1080px){
-  .triagem{grid-template-columns:minmax(0,32%) minmax(0,68%);
-    align-items:start;row-gap:26px}
-  .triagem-lista{border-right:0;padding-right:0}
-  .triagem-fecho{grid-column:1 / -1;padding-top:20px;
-    border-top:1px solid var(--dark-line)}
+@media (max-width:1180px){
+  .hero-txt{max-width:48%}
+  .hero-dna .chip,.hero-dna .selo{left:50%}
 }
 @media (max-width:980px){
-  .hero-dna .wrap{grid-template-columns:1fr;gap:clamp(34px,5vw,48px)}
-  .hero-dna .hero-foto{max-width:340px;justify-self:center}
-  .hero-dna .chip--1{left:-6%}
-  .hero-dna .chip--2{left:-9%}
-  .hero-dna .chip--3{right:-2%}
-  .hero-dna.sec--dark::after{mask-image:radial-gradient(ellipse 90% 40% at 50% 22%,#000,transparent 78%);
-    -webkit-mask-image:radial-gradient(ellipse 90% 40% at 50% 22%,#000,transparent 78%)}
-}
-@media (max-width:760px){
-  .triagem{grid-template-columns:1fr;row-gap:22px;align-items:stretch}
-  .triagem-cab{flex-direction:row;flex-wrap:wrap;align-items:center;width:100%;gap:12px}
-  .triagem-cab h2{width:100%;max-width:none}
-  .triagem-medidor{flex:1;width:auto}
-  .triagem-lista{grid-template-columns:1fr;border:0;padding-inline:0;
-    border-block:1px solid var(--dark-line);padding-block:8px}
-  .triagem-fecho{border-top:0;padding-top:0}
-}
-/* No celular o retrato encolhe e os chips flutuantes passariam por cima do
-   rosto - o DNA proibe. Entao eles saem da moldura e viram uma fila embaixo. */
-@media (max-width:760px){
-  .hero-dna .hero-foto{display:flex;flex-direction:column;align-items:center}
-  .hero-dna .hero-foto .foto{width:100%}
-  .hero-dna .chip{position:static;transform:none}
-  .hero-dna .hero-foto>.chip{order:2}
-  .hero-dna .hero-foto{gap:0}
-  .hero-dna .chip--1,.hero-dna .chip--2,.hero-dna .chip--3{inset:auto;margin-top:10px}
+  /* A divisa não cabe: a foto vira faixa no topo e a copy desce inteira. */
+  .hero-dna{padding-top:0;min-height:0}
+  .hero-arte{position:relative;width:100%;height:clamp(300px,46vw,420px)}
+  .hero-arte img{object-position:62% 10%}
+  .hero-arte::after{
+    background:
+      linear-gradient(0deg,#0e0e11 2%,rgba(14,14,17,.6) 22%,transparent 58%),
+      linear-gradient(180deg,rgba(14,14,17,.86) 0,rgba(14,14,17,.3) 24%,transparent 46%);
+  }
+  .hero-dna>.wrap{margin-top:clamp(-90px,-7vw,-56px)}
+  .hero-txt{max-width:none}
+  .hero-dna .h1{font-size:clamp(32px,5.4vw,44px)}
+  .hero-dna .lead{max-width:52ch}
+  /* chips saem da costura e viram fila abaixo do botão */
+  .hero-dna .chip{position:static;transform:none;margin:0 8px 8px 0}
+  .hero-dna .selo{display:none}
+  .hero-acoes{margin-bottom:18px}
 }
 @media (max-width:640px){
-  .hero-dna{padding-top:112px}
   .hero-acoes{width:100%}
   .hero-acoes .btn{width:100%;justify-content:center}
-  .triagem-cab h2{max-width:none}
-  .hero-dna .hero-foto{max-width:280px}
-  .hero-dna .selo{width:68px;height:68px;right:-2%}
-  .hero-dna .selo-nucleo{width:36px;height:36px}
+  .triagem-lista{grid-template-columns:1fr;gap:0}
+  .triagem-pe{flex-direction:column;align-items:flex-start;gap:12px}
+  .triagem-medidor{width:100%}
   .hero-dna .chip{font-size:11.5px;padding:8px 13px 8px 8px}
 }
 
