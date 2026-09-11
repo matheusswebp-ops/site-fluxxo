@@ -245,23 +245,23 @@ html{scroll-padding-top:88px}
   0%{transform:translateX(0);opacity:0}
   10%{opacity:1}
   85%{opacity:1}
-  100%{transform:translateX(150px);opacity:0}
+  100%{transform:translateX(185px);opacity:0}
 }
 /* sangue que tenta sair e é barrado pelas veias comprimidas */
 .ilustra .pulso--trava{animation:barrado 2.4s ease-out infinite}
 @keyframes barrado{
   0%{transform:translateX(0);opacity:0}
   15%{opacity:.9}
-  55%{transform:translateX(52px);opacity:.9}
-  75%,100%{transform:translateX(52px);opacity:0}
+  55%{transform:translateX(54px);opacity:.9}
+  75%,100%{transform:translateX(54px);opacity:0}
 }
 /* fluxo fraco: entra devagar e nem chega */
 .ilustra .pulso--fraco{animation:fraco 3.4s ease-in-out infinite}
 @keyframes fraco{
   0%{transform:translateX(0);opacity:0}
   18%{opacity:.75}
-  70%{transform:translateX(74px);opacity:.4}
-  100%{transform:translateX(88px);opacity:0}
+  70%{transform:translateX(92px);opacity:.4}
+  100%{transform:translateX(104px);opacity:0}
 }
 /* fuga venosa: sai rápido */
 .ilustra .pulso--fuga{animation:fuga 1.5s linear infinite}
@@ -269,7 +269,7 @@ html{scroll-padding-top:88px}
   0%{transform:translateX(0);opacity:0}
   12%{opacity:1}
   80%{opacity:1}
-  100%{transform:translateX(118px);opacity:0}
+  100%{transform:translateX(140px);opacity:0}
 }
 /* câmara cheia respirando / câmara parcial oscilando sem encher */
 .ilustra .enche,.ilustra .oscila{transform-box:fill-box}

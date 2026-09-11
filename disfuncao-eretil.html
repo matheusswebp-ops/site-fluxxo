@@ -21,8 +21,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css">
-<link rel="stylesheet" href="css/de.css">
+<link rel="stylesheet" href="css/dna.css?v=202609102226">
+<link rel="stylesheet" href="css/de.css?v=202609102226">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -157,6 +157,145 @@
           <use class="busto apagado" href="#i-busto" x="130" y="2" width="90" height="120"/>
           <use class="busto aceso"   href="#i-busto" x="0"   y="2" width="90" height="120"/>
         </svg>
+      </figure>
+
+      <p class="valor">1 em cada 2</p>
+
+      <div class="numero-texto">
+        <h2 class="h2">A dificuldade de ereção atinge cerca de
+          <b>metade dos homens acima dos 40 anos.</b></h2>
+        <p class="lead">É comum, tem explicação médica e, na grande maioria dos
+          casos, <b>tem tratamento</b>. O primeiro passo não é se conformar — é entender por
+          que está acontecendo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEÇÃO 4 — AS CAUSAS ===== -->
+<section class="sec sec--paper t-ombro" style="--ombro-cor:var(--paper)">
+  <div class="wrap">
+    <div class="head-center" style="margin-bottom:clamp(34px,4vw,52px)">
+      <span class="kicker kicker--center">As causas</span>
+      <h2 class="h2">Por que a ereção <b>deixa de responder</b></h2>
+      <p class="lead lead--center">A disfunção erétil quase sempre é um sinal — e
+        <b>cada causa pede uma conduta diferente</b>. Identificá-la é o que direciona o tratamento.</p>
+    </div>
+
+    <!-- ILUSTRAÇÃO 16:6 — como funciona a ereção e onde o fluxo falha -->
+    <figure class="ilustra">
+      <svg id="svgIlustra" viewBox="0 0 1200 480" role="img" aria-label="Diagrama animado: no funcionamento normal a artéria traz sangue em volume, os corpos cavernosos enchem e as veias comprimidas seguram o sangue dentro. Na falha, a artéria estreitada por placa traz pouco sangue, o enchimento fica parcial e as veias abertas deixam o sangue escapar.">
+        <defs>
+          <linearGradient id="gCheio" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4e96a8"/><stop offset="1" stop-color="#0b4c74"/>
+          </linearGradient>
+          <linearGradient id="gVaso" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#e3edf3"/><stop offset="1" stop-color="#d5e4ec"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ================= PAINEL A · COMO FUNCIONA =================
+             O circuito é um caminho só: a artéria entra no corpo cavernoso e a
+             veia sai dele, encostadas, sem vão entre as peças. Os dois painéis
+             usam a mesma geometria — o que muda é a largura do lúmen, o nível
+             de enchimento e a válvula aberta ou fechada. -->
+        <g id="painelA" font-family="Figtree,sans-serif">
+          <text class="i-titulo" x="60" y="46" letter-spacing="2.4" fill="#4e96a8">COMO FUNCIONA</text>
+
+          <!-- seta de entrada: diz de que lado o sangue chega -->
+          <path d="M36 164l16 16-16 16" fill="none" stroke="#0b4c74" stroke-width="5"
+                stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
+
+          <!-- artéria: tubo cheio, lúmen largo -->
+          <rect x="60" y="156" width="205" height="48" rx="24" fill="url(#gVaso)"/>
+          <rect x="68" y="168" width="197" height="24" rx="12" fill="#cfe1ee"/>
+          <circle class="pulso pulso--a" cx="92" cy="180" r="8" fill="#0b4c74"/>
+          <circle class="pulso pulso--a d2" cx="92" cy="180" r="8" fill="#0b4c74"/>
+          <circle class="pulso pulso--a d3" cx="92" cy="180" r="8" fill="#0b4c74"/>
+
+          <!-- veia: sai do corpo cavernoso e é fechada pela compressão -->
+          <rect x="440" y="156" width="152" height="48" rx="24" fill="url(#gVaso)"/>
+          <rect x="448" y="168" width="72" height="24" rx="12" fill="#cfe1ee"/>
+          <circle class="pulso pulso--trava" cx="466" cy="180" r="7" fill="#8ba3ba"/>
+
+          <!-- corpos cavernosos: desenhados depois, então cobrem as pontas dos
+               tubos e o circuito fecha sem emenda aparente -->
+          <rect x="248" y="100" width="208" height="160" rx="46" fill="#eef2f4"
+                stroke="#0b4c74" stroke-width="2"/>
+          <rect class="enche" x="260" y="112" width="184" height="136" rx="38" fill="url(#gCheio)"/>
+
+          <!-- a compressão que fecha a veia. As duas peças na cor do cartão comem
+               o tubo por cima e por baixo: sobra uma cintura de 8px, e é isso que
+               faz "comprimida" ser algo que se enxerga, não só uma legenda. -->
+          <rect x="520" y="146" width="36" height="26" rx="13" fill="#fff"/>
+          <rect x="520" y="188" width="36" height="26" rx="13" fill="#fff"/>
+          <g class="trava" stroke="#0b4c74" stroke-width="9" stroke-linecap="round">
+            <path d="M520 140v32"/><path d="M520 188v32"/>
+            <path d="M556 140v32"/><path d="M556 188v32"/>
+          </g>
+
+          <!-- rótulos -->
+          <text class="i-rot"  x="60"  y="300" fill="#12294a">Artéria</text>
+          <text class="i-rot2" x="60"  y="324" fill="#5a6b80">o sangue entra</text>
+          <text class="i-rot"  x="248" y="300" fill="#12294a">Corpos cavernosos</text>
+          <text class="i-rot2" x="248" y="324" fill="#5a6b80">enchem por completo</text>
+          <text class="i-rot"  x="440" y="300" fill="#12294a">Veias comprimidas</text>
+          <text class="i-rot2" x="440" y="324" fill="#5a6b80">o sangue fica</text>
+
+          <!-- resultado -->
+          <rect x="60" y="364" width="532" height="88" rx="18" fill="#e3edf3"/>
+          <text class="i-res1" x="88" y="402" fill="#12294a">Entra bastante, quase não sai.</text>
+          <text class="i-res2" x="88" y="428" fill="#5a6b80">A ereção se forma e se sustenta.</text>
+        </g>
+
+        <line id="divIlustra" x1="624" y1="30" x2="624" y2="452" stroke="#d7dee5" stroke-width="2" stroke-dasharray="6 9"/>
+
+        <!-- ================= PAINEL B · ONDE O FLUXO FALHA ================= -->
+        <g id="painelB" font-family="Figtree,sans-serif">
+          <text class="i-titulo" x="660" y="46" letter-spacing="2.4" fill="#e08b6a">ONDE O FLUXO FALHA</text>
+
+          <path d="M636 164l16 16-16 16" fill="none" stroke="#8ba3ba" stroke-width="5"
+                stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+
+          <!-- artéria estreitada: o mesmo tubo, com a placa apertando o lúmen -->
+          <rect x="660" y="156" width="205" height="48" rx="24" fill="url(#gVaso)"/>
+          <rect x="668" y="168" width="197" height="24" rx="12" fill="#cfe1ee"/>
+          <rect x="764" y="157" width="52" height="18" rx="9" fill="#e08b6a"/>
+          <rect x="764" y="185" width="52" height="18" rx="9" fill="#e08b6a"/>
+          <circle class="pulso pulso--fraco" cx="684" cy="180" r="7" fill="#8ba3ba"/>
+
+          <!-- veia aberta: lúmen inteiro livre e o sangue indo embora -->
+          <rect x="1040" y="156" width="136" height="48" rx="24" fill="#fbeee7"/>
+          <rect x="1048" y="168" width="128" height="24" rx="12" fill="#f2c6ae"/>
+          <circle class="pulso pulso--fuga" cx="1060" cy="180" r="7" fill="#e08b6a"/>
+          <circle class="pulso pulso--fuga d2" cx="1060" cy="180" r="7" fill="#e08b6a"/>
+          <path d="M1180 164l14 16-14 16" fill="none" stroke="#e08b6a" stroke-width="5"
+                stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+
+          <!-- enchimento parcial -->
+          <rect x="848" y="100" width="208" height="160" rx="46" fill="#eef2f4"
+                stroke="#8ba3ba" stroke-width="2"/>
+          <!-- a linha tracejada marca onde o enchimento deveria chegar: é ela que
+               transforma "parcial" em algo que se enxerga -->
+          <line x1="864" y1="120" x2="1040" y2="120" stroke="#8ba3ba" stroke-width="2"
+                stroke-dasharray="7 8" opacity=".85"/>
+          <rect class="oscila" x="860" y="176" width="184" height="72" rx="34" fill="#9db8cd"/>
+
+          <!-- rótulos -->
+          <text class="i-rot"  x="660"  y="300" fill="#12294a">Artéria estreitada</text>
+          <text class="i-rot2" x="660"  y="324" fill="#5a6b80">entra pouco</text>
+          <text class="i-rot"  x="848"  y="300" fill="#12294a">Enchimento parcial</text>
+          <text class="i-rot2" x="848"  y="324" fill="#5a6b80">não chega ao topo</text>
+          <text class="i-rot"  x="1040" y="300" fill="#12294a">Veias abertas</text>
+          <text class="i-rot2" x="1040" y="324" fill="#5a6b80">o sangue escapa</text>
+
+          <!-- resultado -->
+          <rect x="660" y="364" width="532" height="88" rx="18" fill="#fbeee7"/>
+          <text class="i-res1" x="688" y="402" fill="#12294a">Entra pouco e escapa fácil.</text>
+          <text class="i-res2" x="688" y="428" fill="#5a6b80">A ereção não se sustenta — e o Doppler mostra isso.</text>
+        </g>
+      </svg>
       </figure>
 
       <p class="valor">1 em cada 2</p>
