@@ -104,10 +104,10 @@ html{scroll-padding-top:88px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
 /* ---------- 2. HERO ---------- */
-/* Meia tela de foto, sangrando até a borda. A divisa entre o carvão e a
-   imagem é a linha de montagem: os chips se alinham nela, o selo se senta
-   em cima dela, e a foto não precisa de moldura nenhuma — ela termina em
-   gradiente, então o fundo cinza do estúdio nunca encosta no escuro.
+/* A foto cobre o hero inteiro, sangrando até as quatro bordas. Ela já vem
+   com o escuro embutido na metade esquerda, que é onde a copy mora — por
+   isso não precisa de moldura, recorte nem véu: o fundo do consultório
+   simplesmente continua no carvão da página.
 
    As páginas irmãs abrem com texto à esquerda e retrato em caixa à direita.
    Repetir isso aqui seria entregar a mesma página três vezes. */
@@ -130,25 +130,28 @@ html{scroll-padding-top:88px}
   mask-image:radial-gradient(ellipse 52% 62% at 20% 46%,#000,transparent 76%);
 }
 
-/* ----- a foto ocupa a metade direita inteira, de topo a base ----- */
-.hero-arte{position:absolute;top:0;right:0;bottom:0;width:49%;z-index:0}
+/* ----- a foto cobre o hero inteiro ----- */
+/* A rh-hero-desk.webp (1920x941) já vem com o escuro embutido na metade
+   esquerda, onde a copy mora: por isso ela entra nítida, sem véu e sem
+   máscara. A cortina abaixo usa o mesmo #070707 da parte já escura da
+   foto — some sobre ela e só age se a foto escorregar para baixo do
+   texto em alguma largura. Ancorada em 100%: o que sai do quadro quando
+   a proporção não fecha é sempre o preto chapado da esquerda, nunca o
+   médico, que mora na borda direita. */
+.hero-arte{position:absolute;inset:0;z-index:0}
 .hero-arte img{
-  width:100%;height:100%;object-fit:cover;object-position:52% 2%;
-  filter:saturate(.82) contrast(1.06) brightness(.92);
+  width:100%;height:100%;object-fit:cover;object-position:100% 40%;
 }
-/* A borda esquerda da foto não pode existir: ela vira gradiente e some
-   dentro do carvão. É o que resolve o fundo de estúdio sem recorte. */
+.hero-arte picture{display:contents}
 .hero-arte::after{
   content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(90deg,#0d0d0f 2%,rgba(13,13,15,.86) 22%,rgba(13,13,15,.22) 52%,transparent 72%),
-    linear-gradient(0deg,#0e0e11 1%,rgba(14,14,17,.5) 16%,transparent 38%),
-    linear-gradient(180deg,rgba(14,14,17,.72),transparent 26%),
-    linear-gradient(270deg,rgba(14,14,17,.5),transparent 22%);
+  background:linear-gradient(90deg,
+    rgba(7,7,7,.62) 0%,rgba(7,7,7,.7) 26%,
+    rgba(7,7,7,.34) 44%,rgba(7,7,7,0) 60%);
 }
 
-/* o .wrap do hero e grid no dna.css; aqui os chips e o selo sao filhos dele
-   e virariam itens de grade, estourando a diagramacao. */
+/* o .wrap do hero e grid no dna.css; aqui ele volta a block para a copy
+   nao virar item de grade e estourar a diagramacao. */
 .hero-dna>.wrap{position:relative;z-index:2;display:block;width:100%}
 .hero-txt{max-width:min(524px,46%)}
 
@@ -170,40 +173,6 @@ html{scroll-padding-top:88px}
 .hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
   flex-wrap:wrap;margin-top:clamp(24px,2.6vw,34px)}
 .hero-acoes .btn{margin-top:0}
-
-/* ----- chips: alinhados na costura, não espalhados ----- */
-.hero-dna .chip{
-  position:absolute;z-index:3;left:52%;right:auto;transform:none;
-  display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
-  padding:9px 16px 9px 9px;border-radius:var(--radius-pill);
-  font-size:12.5px;font-weight:500;color:var(--dark-ink);
-  background:rgba(23,23,27,.9);
-  border:1px solid rgba(226,214,196,.16);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 14px 30px -16px rgba(0,0,0,.9);
-}
-.hero-dna .chip::before{display:none}
-.chip-ic{width:22px;height:22px;flex:none;border-radius:50%;display:grid;
-  place-items:center;background:rgba(233,167,79,.16);color:var(--cobre-luz)}
-.hero-dna .chip--1{top:19%}
-.hero-dna .chip--2{top:35%}
-.hero-dna .chip--3{top:51%}
-
-/* selo: sentado na costura, embaixo da fila de chips */
-.hero-dna .selo{
-  position:absolute;z-index:3;top:68%;left:52%;right:auto;
-  transform:translateX(-50%);
-  width:86px;height:86px;display:grid;place-items:center;
-}
-.hero-dna .selo-anel{position:absolute;inset:0;width:100%;height:100%;
-  animation:girar 24s linear infinite;
-  fill:var(--dark-ink-soft);font-size:9.2px;font-weight:600;letter-spacing:.15em}
-.hero-dna .selo-nucleo{
-  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cobre-luz),var(--brand));color:#1a140c;
-  box-shadow:0 12px 26px -10px rgba(0,0,0,.9);
-}
-@media (prefers-reduced-motion:reduce){.hero-dna .selo-anel{animation:none}}
 
 /* ---------- 3. O QUE VOCÊ ANDA SENTINDO ---------- */
 /* Fundo claro logo depois do hero escuro: o corte de cor já avisa que a
@@ -848,7 +817,6 @@ html{scroll-padding-top:88px}
 /* ---------- responsivo ---------- */
 @media (max-width:1180px){
   .hero-txt{max-width:48%}
-  .hero-dna .chip,.hero-dna .selo{left:50%}
 }
 @media (max-width:980px){
   /* A divisa não cabe: a foto vira faixa no topo e a copy desce inteira.
@@ -858,21 +826,30 @@ html{scroll-padding-top:88px}
      lado da copy e as duas colunas se espremiam. */
   /* o respiro no topo e a altura do cabecalho fixo: sem ele a barra corta
      a cabeca do medico logo na primeira dobra. */
-  .hero-dna{display:block;padding-top:66px;min-height:0}
-  .hero-arte{position:relative;width:100%;height:clamp(310px,62vw,430px)}
-  .hero-arte img{object-position:60% 4%}
-  .hero-arte::after{
-    background:
-      linear-gradient(0deg,#0e0e11 2%,rgba(14,14,17,.6) 22%,transparent 58%),
-      linear-gradient(180deg,rgba(14,14,17,.86) 0,rgba(14,14,17,.3) 24%,transparent 46%);
+  /* A rh-hero-mob.webp (800x1200) traz a foto no topo e termina no preto:
+     ela é desenhada em largura cheia a partir do topo e o fundo continua
+     nesse mesmo preto, então não existe emenda. O texto começa em 80vw,
+     logo abaixo de onde a foto acaba (a foto tem 1,5x a largura de altura
+     e some por volta dos 50% dela). Os 12vw finais desaparecem no preto:
+     sem isso a vinheta da foto desenha um fio horizontal na emenda. */
+  .hero-dna{display:block;padding-top:calc(80vw + 88px);min-height:0}
+  .hero-arte{position:absolute;inset:0;width:auto;height:auto;background:#030303}
+  /* desce a altura da barra fixa: a foto tem a cabeça colada na borda de
+     cima, e sem isso o botão do cabeçalho senta no rosto do médico. Os
+     28px de entrada evitam o corte seco contra o preto, porque a borda
+     superior da foto tem o quadro anatômico claro no canto direito. */
+  .hero-arte img{
+    position:absolute;top:88px;left:0;width:100%;height:auto;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 28px,
+      #000 calc(100% - 12vw),transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 28px,
+      #000 calc(100% - 12vw),transparent 100%);
   }
-  .hero-dna>.wrap{margin-top:clamp(-90px,-7vw,-56px)}
+  .hero-arte::after{display:none}
+  .hero-dna>.wrap{margin-top:0}
   .hero-txt{max-width:none}
   .hero-dna .h1{font-size:clamp(32px,5.4vw,44px)}
   .hero-dna .lead{max-width:52ch}
-  /* chips saem da costura e viram fila abaixo do botão */
-  .hero-dna .chip{position:static;transform:none;margin:0 8px 8px 0}
-  .hero-dna .selo{display:none}
   .hero-acoes{margin-bottom:18px}
 }
 @media (max-width:980px){
@@ -941,7 +918,6 @@ html{scroll-padding-top:88px}
   .triagem-lista{grid-template-columns:1fr;gap:0}
   .triagem-pe{flex-direction:column;align-items:flex-start;gap:12px}
   .triagem-medidor{width:100%}
-  .hero-dna .chip{font-size:11.5px;padding:8px 13px 8px 8px}
 }
 
 /* ---------- barra fixa do celular ---------- */

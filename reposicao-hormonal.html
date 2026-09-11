@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/dna.css?v=202609120110">
-<link rel="stylesheet" href="css/rh.css?v=202609111022">
+<link rel="stylesheet" href="css/rh.css?v=202609111028">
 </head>
 
 <body class="tema-cobre">
@@ -36,7 +36,6 @@
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.2 17.3 4 12.1"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M7 7 17 17M17 7 7 17"/></symbol>
   <symbol id="i-whats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 11.8a8.4 8.4 0 0 1-12.4 7.4L3.6 20.4l1.4-4.4A8.4 8.4 0 1 1 20.4 11.8Z"/><path d="M9.3 9.1c.3 2.6 2.4 4.6 5 5l.9-1.4 1.9.7v1.3c-2.7.5-6.6-2.2-7.7-5.4l1.3-.9-1.4-1.9Z"/></symbol>
-  <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.3 5.2 6v5.3c0 4.2 2.8 7.5 6.8 9.2 4-1.7 6.8-5 6.8-9.2V6L12 3.3Z"/><path d="m9.2 11.9 2 2 3.6-3.6"/></symbol>
   <symbol id="i-tela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.6" width="17.6" height="12" rx="2"/><path d="M9 20h6M12 16.6V20"/></symbol>
   <symbol id="i-bateria" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="7.4" width="15.4" height="9.2" rx="2.2"/><path d="M20.8 10.6v2.8"/><path d="M5.6 12h3.6"/></symbol>
   <symbol id="i-coracao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.4-4.5-7.4-9.4A4.2 4.2 0 0 1 12 8.1a4.2 4.2 0 0 1 7.4 2.5C19.4 15.5 12 20 12 20Z"/></symbol>
@@ -52,7 +51,6 @@
   <symbol id="i-aspas" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M9.6 5.4c-3 1.4-4.8 4-4.8 7.2v5.8h6.4v-6.2H8c0-1.8.8-3.1 2.4-4L9.6 5.4Zm9 0c-3 1.4-4.8 4-4.8 7.2v5.8h6.4v-6.2H17c0-1.8.8-3.1 2.4-4l-.8-2.8Z"/></symbol>
   <symbol id="i-cadeado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="10.4" width="14.8" height="9.6" rx="2.2"/><path d="M8.4 10.4V7.8a3.6 3.6 0 0 1 7.2 0v2.6"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.6 9.4 5.4 5.4 5.4-5.4"/></symbol>
-  <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m15.6 15.6 4.2 4.2"/></symbol>
 </svg>
 
 <!-- ===== SEÇÃO 1 — CABEÇALHO FIXO ===== -->
@@ -76,10 +74,10 @@
 <main id="conteudo">
 
 <!-- ===== SEÇÃO 2 — HERO =====
-     Meia página de foto, sangrando até a borda da tela. A divisa entre o
-     escuro e a foto é a linha de montagem do hero: os chips se alinham
-     nela e o selo se senta em cima dela. À esquerda a copy e, colada
-     nela, a triagem — o card que o briefing pede, funcionando.
+     A foto cobre o hero inteiro e já vem com o escuro embutido na
+     esquerda, onde mora a copy: nada de recorte, moldura ou véu por
+     cima. No celular a mesma foto em versão vertical ocupa o topo e
+     termina no preto de onde o texto começa.
 
      Por que não o hero das páginas irmãs: elas abrem com texto à esquerda
      e retrato em moldura à direita. Repetir isso na terceira página do
@@ -87,8 +85,11 @@
 <section class="hero-dna sec--dark">
 
   <div class="hero-arte">
-    <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
-         width="880" height="1104" fetchpriority="high" decoding="async">
+    <picture>
+      <source media="(min-width:981px)" srcset="img/rh-hero-desk.webp" width="1920" height="941">
+      <img src="img/rh-hero-mob.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
+           width="800" height="1200" fetchpriority="high" decoding="async">
+    </picture>
   </div>
 
   <div class="wrap">
@@ -112,29 +113,6 @@
 
   </div>
 
-  <!-- chips e selo: fora do .wrap, ancorados na costura entre o escuro e a foto -->
-  <span class="chip chip--1">
-    <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-cruz"/></svg></i>
-    Urologista com RQE</span>
-  <span class="chip chip--2">
-    <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-lupa"/></svg></i>
-    Diagnóstico antes da receita</span>
-  <span class="chip chip--3">
-    <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-tela"/></svg></i>
-    Presencial e online</span>
-
-  <!-- selo: um por página, só no hero, sentado na divisa -->
-  <span class="selo" aria-hidden="true">
-    <svg class="selo-anel" viewBox="0 0 100 100">
-      <defs>
-        <path id="rhAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
-      </defs>
-      <text><textPath href="#rhAnel">DIAGNÓSTICO ANTES DE RECEITA · </textPath></text>
-    </svg>
-    <span class="selo-nucleo">
-      <svg width="19" height="19"><use href="#i-escudo"/></svg>
-    </span>
-  </span>
 </section>
 
 
