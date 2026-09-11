@@ -29,8 +29,12 @@
       igual à das outras seções.
 
 ## Pendência
-- [ ] Falta a versão mobile da foto nova (a de-consulta-desk é 1920x850,
-      horizontal demais para o topo da seção no celular).
+- [x] Mobile: `img/de-consulta-mob.webp` (800x1200), do Mateus. Foto no terço
+      de cima terminando num navy chapado #0a1022; ela é desenhada em largura
+      cheia a partir do topo e a figura ganha esse mesmo navy de fundo, então
+      a foto continua no fundo da seção sem emenda. Texto começa em 62vw.
+      Os 14vw finais da imagem somem no navy: sem isso a vinheta de canto da
+      foto deixava um fio horizontal de ~10 pontos de azul na emenda.
 - [ ] Viewmax segue sem crédito (0) — geração de imagem bloqueada.
 
 ## Tentativas reprovadas antes (não repetir)

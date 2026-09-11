@@ -259,17 +259,29 @@ html{scroll-padding-top:88px}
 
 /* Telas estreitas: a foto vira o topo da seção, inteira e nítida, e só a
    base dela escurece para o navy onde o texto começa. */
+/* Telas estreitas: entra a de-consulta-mob.webp (800x1200), que traz a foto
+   no terço de cima e termina num navy chapado (#0a1022). Ela é desenhada em
+   largura cheia a partir do topo, e a figura ganha esse mesmo navy de fundo
+   — assim a foto simplesmente continua no fundo da seção, sem emenda e sem
+   máscara nenhuma. O texto começa em 62vw, logo abaixo de onde a foto acaba
+   de virar navy (a foto tem 1,5x a largura de altura e some aos 40% dela). */
 @media (max-width:880px){
   .metade .wrap{min-height:0;display:block;text-align:center}
+  .metade{padding-top:62vw}
   .metade-foto{
-    position:relative;inset:auto;width:100%;
-    aspect-ratio:1/1;max-height:520px;
-    margin:calc(-1 * var(--sec-y)) 0 clamp(18px,4vw,28px);
+    position:absolute;inset:0;margin:0;overflow:hidden;
+    background:#0a1022;
   }
-  .metade-foto img{object-position:64% 30%}
-  .metade-foto::after{
-    background:linear-gradient(180deg,rgba(10,35,66,0) 58%,var(--dark-1) 100%);
+  .metade-foto img{
+    position:absolute;top:0;left:0;width:100%;height:auto;
+    /* a foto tem uma vinheta de canto que deixa a última linha uns 10 pontos
+       de azul acima do #0a1022 do fundo, e isso desenha um fio horizontal.
+       Os 14vw finais da imagem desaparecem nesse mesmo navy e o fio some.
+       É só a emenda: a parte com foto, lá em cima, não é tocada. */
+    -webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 14vw),transparent 100%);
+    mask-image:linear-gradient(180deg,#000 calc(100% - 14vw),transparent 100%);
   }
+  .metade-foto::after{content:none}
   .metade-texto{max-width:none}
   .metade .valor{justify-content:center;font-size:clamp(56px,16vw,84px)}
   .metade .h2{max-width:24ch;margin:0 auto}
