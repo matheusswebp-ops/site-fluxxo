@@ -833,10 +833,16 @@ html{scroll-padding-top:88px}
   .hero-dna .chip,.hero-dna .selo{left:50%}
 }
 @media (max-width:980px){
-  /* A divisa não cabe: a foto vira faixa no topo e a copy desce inteira. */
-  .hero-dna{padding-top:0;min-height:0}
-  .hero-arte{position:relative;width:100%;height:clamp(300px,46vw,420px)}
-  .hero-arte img{object-position:62% 10%}
+  /* A divisa não cabe: a foto vira faixa no topo e a copy desce inteira.
+     O display:block é o que faz isso acontecer — no desktop o hero é flex
+     para centrar a copy verticalmente, e a foto é absoluta. Ao soltar a
+     foto do absoluto sem trocar o display, ela virava um item de flex ao
+     lado da copy e as duas colunas se espremiam. */
+  /* o respiro no topo e a altura do cabecalho fixo: sem ele a barra corta
+     a cabeca do medico logo na primeira dobra. */
+  .hero-dna{display:block;padding-top:66px;min-height:0}
+  .hero-arte{position:relative;width:100%;height:clamp(310px,62vw,430px)}
+  .hero-arte img{object-position:60% 4%}
   .hero-arte::after{
     background:
       linear-gradient(0deg,#0e0e11 2%,rgba(14,14,17,.6) 22%,transparent 58%),
@@ -874,6 +880,18 @@ html{scroll-padding-top:88px}
 @media (max-width:900px){
   .sintomas-grid{grid-template-columns:1fr 1fr}
 }
+/* No celular estas duas seções perdem a coluna ao lado, e texto alinhado
+   à esquerda sozinho numa tela estreita fica torto. Centralizam. */
+@media (max-width:980px){
+  .atend-grid>div:first-child,
+  .agendar-grid>div:first-child{text-align:center}
+  .atendimento .kicker,.agendar .kicker{justify-content:center}
+  .atendimento .kicker::after,.agendar .kicker::after{
+    content:"";width:26px;height:1px;background:currentColor;opacity:.7}
+  .atendimento .h2,.agendar .h2{margin-inline:auto}
+  .atendimento .lead,.agendar .lead{margin-inline:auto;max-width:46ch}
+  .agendar-alt{margin-inline:auto}
+}
 @media (max-width:640px){
   .prova-duo{grid-template-columns:1fr}
   .custo-grid{grid-template-columns:1fr}
@@ -888,12 +906,14 @@ html{scroll-padding-top:88px}
   .falas-foto{aspect-ratio:4/3}
   .faixa-zap .btn{width:100%;justify-content:center}
   .sinais-grid{grid-template-columns:1fr}
-  .sintomas-grid{gap:22px}
-  .sintoma{flex-direction:row;align-items:center;gap:16px}
-  .sintoma-foto{width:132px;flex:none;aspect-ratio:1}
-  .sintoma-foto .vago-tag{top:8px;left:8px;font-size:8.5px;padding:4px 7px}
+  /* imagem em cima, texto embaixo, centralizado: lado a lado a foto
+     encolhia a ponto de não dar para reconhecer a cena nela. */
+  .sintomas-grid{gap:26px}
+  .sintoma{flex-direction:column;align-items:center;text-align:center;gap:14px}
+  .sintoma-foto{width:100%;aspect-ratio:16/10}
+  .sintoma-foto .vago-tag{top:10px;left:10px;font-size:9px;padding:4px 8px}
   .vago::after{display:none}
-  .sintoma h3{font-size:15.5px;max-width:none}
+  .sintoma h3{font-size:16.5px;max-width:28ch}
   .passo{grid-template-columns:1fr;grid-template-areas:"marca" "foto" "txt";
     row-gap:16px}
   .passo-marca{justify-content:flex-start}
