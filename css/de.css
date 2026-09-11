@@ -176,41 +176,76 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. NÚMERO-HERÓI ---------- */
-/* A frase é literal, então a ilustração também é: dois homens, um aceso.
-   Nada de anel nem de contagem — "1 em cada 2" se lê de imediato. O aceso
-   respira em looping para a seção não ficar parada. */
-.numero-heroi{
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-}
-.dupla{margin:0 0 clamp(22px,2.6vw,32px)}
-.dupla svg{display:block;width:clamp(176px,18vw,232px);height:auto;overflow:visible}
-.busto.apagado{fill:rgba(255,255,255,.12)}
-.busto.aceso{
-  fill:url(#gBusto);transform-origin:center bottom;
-  animation:bustoRespira 3.6s var(--ease) infinite;
-}
-@keyframes bustoRespira{
-  0%,100%{filter:drop-shadow(0 0 0 rgba(143,196,240,0))}
-  45%{filter:drop-shadow(0 6px 20px rgba(143,196,240,.45))}
-}
+/* Três andares, e é a régua tipográfica que faz o desenho — nada de ícone,
+   pictograma ou degradê, que era o que dava cara de tela de aplicativo.
+   1) O número enorme encostado na frase que ele significa, ombro a ombro.
+   2) Um filete, e sob ele os três pilares da conversa, separados por fios.
+   3) A frase de virada, sozinha, fechando a seção.
+   A largura inteira é ocupada porque o número e a frase dividem a linha de
+   cima e os três pilares dividem a de baixo. */
+.numero-heroi{display:flex;flex-direction:column}
 
+/* ---- andar 1: número + frase ---- */
+.numero-topo{
+  display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(24px,3.4vw,58px);align-items:center;
+}
 .numero-heroi .valor{
-  font-family:var(--font-display);font-weight:700;white-space:nowrap;
-  font-size:clamp(38px,5.6vw,76px);line-height:1;letter-spacing:-.045em;
-  background:linear-gradient(150deg,#ffffff 30%,#8fc4f0);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-family:var(--font-display);color:var(--dark-ink);margin:0;
+  font-size:clamp(56px,8.4vw,132px);line-height:.86;letter-spacing:-.055em;
+  display:flex;flex-direction:column;align-items:flex-start;
 }
-.numero-texto{
-  margin-top:clamp(22px,2.6vw,32px);
-  display:flex;flex-direction:column;align-items:center;
+.numero-heroi .valor b{font-weight:700;display:block}
+/* "em cada" entra como linha própria, miúda: o bloco do número vira um
+   carimbo compacto de três linhas em vez de uma faixa comprida */
+.numero-heroi .valor span{
+  font-weight:400;font-size:.26em;letter-spacing:-.01em;line-height:1.1;
+  color:var(--dark-ink-soft);padding:.12em 0;
 }
-.numero-heroi .h2{font-size:clamp(26px,2.7vw,38px);max-width:40ch;margin-bottom:16px}
-/* medida larga de propósito: o texto tem que fechar em duas linhas */
-.numero-heroi .lead{max-width:78ch;margin:0 auto;font-size:16px}
+.numero-heroi .h2{
+  font-size:clamp(25px,3.1vw,46px);max-width:none;margin:0;
+  border-left:1px solid var(--dark-line);padding-left:clamp(22px,2.6vw,44px);
+}
 
-@media (prefers-reduced-motion:reduce){
-  .busto.aceso{animation:none}
+/* ---- andar 2: os três pilares ---- */
+.pilares{
+  list-style:none;display:grid;grid-template-columns:repeat(3,1fr);
+  margin-top:clamp(34px,4vw,58px);padding-top:clamp(30px,3.4vw,46px);
+  border-top:1px solid var(--dark-line);
 }
+.pilares li{padding:0 clamp(18px,2.2vw,38px)}
+.pilares li:first-child{padding-left:0}
+.pilares li:last-child{padding-right:0}
+.pilares li+li{border-left:1px solid var(--dark-line)}
+.pilares strong{
+  display:block;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(17px,1.5vw,21px);letter-spacing:-.015em;color:var(--dark-ink);
+  margin-bottom:8px;
+}
+.pilares span{
+  display:block;font-size:clamp(14.5px,1.15vw,16px);line-height:1.55;
+  color:var(--dark-ink-soft);max-width:30ch;
+}
+
+/* ---- andar 3: a virada ---- */
+.fecho-escuro{
+  margin-top:clamp(32px,3.6vw,52px);text-align:center;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(19px,2vw,28px);line-height:1.3;letter-spacing:-.02em;
+  color:var(--dark-ink-soft);
+}
+.fecho-escuro b{font-weight:700;color:var(--dark-ink)}
+
+@media (max-width:880px){
+  .numero-topo{grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center}
+  .numero-heroi .valor{align-items:center}
+  .numero-heroi .h2{border-left:0;padding-left:0;max-width:28ch;text-align:center}
+  .pilares{grid-template-columns:1fr;gap:22px;text-align:center}
+  .pilares li{padding:0}
+  .pilares li+li{border-left:0;border-top:1px solid var(--dark-line);padding-top:22px}
+  .pilares span{max-width:38ch;margin:0 auto}
+}
+
 /* ---------- 4. ILUSTRAÇÃO ---------- */
 .ilustra{
   border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);
