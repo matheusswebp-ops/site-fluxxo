@@ -176,19 +176,36 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. NÚMERO-HERÓI ---------- */
-/* Sem desenho. Quem lê esta página tem 40, 50, 60 anos e não vai decifrar
-   pictograma nenhum: o número é escrito por extenso do jeito que se fala,
-   a frase embaixo diz a mesma coisa em português, e é só isso. O que ocupa
-   espaço aqui é o tamanho do texto, não ilustração. */
+/* Duas partes: o retrato de um lado, ocupando a altura toda, e o número com a
+   frase do outro. Enquanto a foto não chega, o quadro fica como espaço
+   reservado — mesma proporção e mesma posição que a imagem vai ocupar, então
+   quando o arquivo entrar nada se mexe de lugar. */
 .numero-heroi{
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  padding:clamp(6px,1vw,16px) 0;
+  display:grid;grid-template-columns:minmax(0,40%) minmax(0,60%);
+  gap:clamp(28px,3.6vw,64px);align-items:center;
 }
+
+.retrato{
+  position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;
+  border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.05);
+  box-shadow:0 30px 60px -40px rgba(0,0,0,.7);
+}
+.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* o rótulo do espaço vazio: some assim que existir uma imagem dentro */
+.retrato-vazio{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  padding:24px;font-size:13.5px;line-height:1.5;color:var(--dark-ink-soft);
+  border:1px dashed var(--dark-line);border-radius:inherit;
+}
+.retrato:has(img) .retrato-vazio{display:none}
+
+.numero-texto{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
 
 /* o número em duas vozes: os algarismos em peso cheio, o "em cada" miúdo */
 .numero-heroi .valor{
   font-family:var(--font-display);color:var(--dark-ink);
-  font-size:clamp(56px,8vw,116px);line-height:.92;letter-spacing:-.05em;
+  font-size:clamp(52px,7.4vw,104px);line-height:.92;letter-spacing:-.05em;
   white-space:nowrap;display:flex;align-items:baseline;gap:.15em;margin:0;
 }
 .numero-heroi .valor b{font-weight:700}
@@ -197,10 +214,19 @@ html{scroll-padding-top:88px}
 }
 
 .numero-heroi .h2{
-  font-size:clamp(27px,3.1vw,44px);max-width:26ch;
-  margin:clamp(26px,3vw,40px) auto clamp(18px,2vw,26px);
+  font-size:clamp(26px,2.9vw,40px);max-width:22ch;
+  margin:clamp(22px,2.4vw,32px) 0 clamp(16px,1.8vw,22px);
 }
-.numero-heroi .lead{max-width:60ch;margin:0 auto;font-size:clamp(16px,1.25vw,18px)}
+.numero-heroi .lead{max-width:52ch;margin:0;font-size:clamp(15.5px,1.2vw,17px)}
+
+@media (max-width:880px){
+  /* empilhado, o retrato vira uma faixa deitada e o texto volta ao centro */
+  .numero-heroi{grid-template-columns:1fr;gap:28px}
+  .retrato{aspect-ratio:3/2;max-width:520px;margin:0 auto}
+  .numero-texto{align-items:center;text-align:center}
+  .numero-heroi .valor{justify-content:center}
+  .numero-heroi .h2,.numero-heroi .lead{margin-left:auto;margin-right:auto}
+}
 
 /* ---------- 4. ILUSTRAÇÃO ---------- */
 .ilustra{
