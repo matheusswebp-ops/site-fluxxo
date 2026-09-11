@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609112010">
-<link rel="stylesheet" href="css/rh.css?v=202609112010">
+<link rel="stylesheet" href="css/dna.css?v=202609112110">
+<link rel="stylesheet" href="css/rh.css?v=202609112110">
 </head>
 
 <body class="tema-cobre">
@@ -468,34 +468,49 @@
      Escura de propósito: é o contraponto, e o briefing pede que seja
      informativa, não alarmista — por isso a nota de rodapé do bloco. -->
 <section class="sec sec--tint custo" id="custo">
-  <div class="wrap custo-grid">
-    <div class="reveal">
-      <span class="kicker tarja">Por que não deixar pra depois</span>
+  <div class="wrap">
+    <div class="head-center reveal">
+      <span class="kicker kicker--center tarja">Por que não deixar pra depois</span>
       <h2 class="h2">Ignorar
         <b class="cobre">não é neutro</b></h2>
-      <p class="lead">A testosterona baixa não tratada tende a <b>cobrar seu
-        preço ao longo do tempo</b> — no corpo, na energia e na relação.</p>
+      <p class="lead lead--center">A testosterona baixa não tratada tende a
+        <b>cobrar seu preço ao longo do tempo</b> — no corpo, na energia e na
+        relação.</p>
     </div>
 
-    <ul class="custo-lista">
-      <li class="reveal">
-        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-musculo"/></svg></span>
-        <div><h3>Massa óssea e muscular</h3>
-          <p>Tende a <b>reduzir progressivamente</b> com os anos.</p></div>
-      </li>
-      <li class="reveal">
-        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-bateria"/></svg></span>
-        <div><h3>Energia e humor</h3>
-          <p>Disposição e ânimo <b>seguem em queda</b> sem tratamento.</p></div>
-      </li>
-      <li class="reveal">
-        <span class="custo-ic" aria-hidden="true"><svg width="20" height="20"><use href="#i-coracao"/></svg></span>
-        <div><h3>Vida a dois</h3>
-          <p>Libido e autoestima <b>impactam o relacionamento</b>.</p></div>
-      </li>
-    </ul>
-  </div>
-  <div class="wrap">
+    <div class="custo-grid">
+      <article class="perda reveal">
+        <figure class="perda-foto vago" data-brief="Homem 40+ se levantando da cadeira apoiado nos bracos dela — o gesto que denuncia perda de forca. Casa comum, luz natural. 16:10">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <div class="perda-txt">
+          <span class="perda-ic" aria-hidden="true"><svg width="19" height="19"><use href="#i-musculo"/></svg></span>
+          <h3>Massa óssea e muscular</h3>
+          <p>Tende a <b>reduzir progressivamente</b> com os anos.</p>
+        </div>
+      </article>
+      <article class="perda reveal">
+        <figure class="perda-foto vago" data-brief="Homem 40+ no sofa no fim do dia, ainda de roupa de trabalho, sem fazer nada. Desanimo, nao tristeza teatral. 16:10">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <div class="perda-txt">
+          <span class="perda-ic" aria-hidden="true"><svg width="19" height="19"><use href="#i-bateria"/></svg></span>
+          <h3>Energia e humor</h3>
+          <p>Disposição e ânimo <b>seguem em queda</b> sem tratamento.</p>
+        </div>
+      </article>
+      <article class="perda reveal">
+        <figure class="perda-foto vago" data-brief="Casal 40+ no sofa, cada um olhando para um lado, um palmo de distancia entre eles. Discreto, sem nudez. 16:10">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <div class="perda-txt">
+          <span class="perda-ic" aria-hidden="true"><svg width="19" height="19"><use href="#i-coracao"/></svg></span>
+          <h3>Vida a dois</h3>
+          <p>Libido e autoestima <b>impactam o relacionamento</b>.</p>
+        </div>
+      </article>
+    </div>
+
     <p class="nota reveal">Riscos descritos de forma geral e informativa; a
       <b>avaliação individual</b> define o que se aplica ao seu caso.</p>
   </div>
@@ -541,8 +556,12 @@
      discrição anda junto porque é a mesma promessa: aqui ninguém é
      exposto. -->
 <section class="sec sec--tint prova" id="prova">
-  <div class="wrap prova-grid">
-    <div class="prova-falas">
+  <div class="wrap">
+    <div class="head-center reveal">
+      <span class="kicker kicker--center">Depoimentos</span>
+    </div>
+
+    <div class="prova-duo">
       <blockquote class="depo reveal">
         <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
         <p>Voltei a me sentir eu mesmo. Mas o que me marcou foi a seriedade:
@@ -555,15 +574,21 @@
           com acompanhamento. Faz diferença.</p>
         <cite>— Paciente, 52 anos</cite>
       </blockquote>
-      <p class="prova-nota reveal">Depoimentos com identidade preservada, sobre o
-        atendimento, sem prometer resultado.</p>
     </div>
 
+    <p class="prova-nota reveal">Depoimentos com identidade preservada, sobre o
+      atendimento, sem prometer resultado.</p>
+
+    <!-- A discrição não é um terceiro depoimento: é a promessa que vale para
+         todo mundo que lê os dois. Por isso vem como faixa embaixo, e não
+         como card ao lado deles. -->
     <aside class="discricao reveal">
-      <span class="discricao-ic" aria-hidden="true"><svg width="22" height="22"><use href="#i-cadeado"/></svg></span>
-      <h3>Total discrição</h3>
-      <p><b>Salas privativas</b> e atendimento reservado para preservar cada
-        paciente. Seus dados e sua história ficam protegidos.</p>
+      <span class="discricao-ic" aria-hidden="true"><svg width="24" height="24"><use href="#i-cadeado"/></svg></span>
+      <div>
+        <h3>Total discrição</h3>
+        <p><b>Salas privativas</b> e atendimento reservado para preservar cada
+          paciente. Seus dados e sua história ficam protegidos.</p>
+      </div>
     </aside>
   </div>
 </section>

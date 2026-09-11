@@ -552,21 +552,41 @@ html{scroll-padding-top:88px}
 .custo .kicker.tarja{background:rgba(196,85,63,.09);
   border-color:rgba(196,85,63,.26)}
 .custo .h2 .cobre{color:var(--alerta)}
-.custo-grid{display:grid;grid-template-columns:minmax(0,40%) minmax(0,60%);
-  gap:clamp(30px,4vw,64px);align-items:center}
-.custo .lead{max-width:44ch;margin-top:18px}
-.custo-lista{list-style:none;display:flex;flex-direction:column;gap:2px}
-.custo-lista li{display:flex;gap:16px;align-items:flex-start;
-  padding:clamp(16px,1.6vw,22px) 0;border-top:1px solid rgba(196,85,63,.2)}
-.custo-lista li:last-child{border-bottom:1px solid rgba(196,85,63,.2)}
-.custo-ic{
-  width:40px;height:40px;flex:none;border-radius:10px;display:grid;
-  place-items:center;background:var(--alerta-soft);color:var(--alerta);
+.custo .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
+.custo .lead{max-width:56ch}
+
+/* Cada perda com a sua cena. A lista de três linhas dizia o que se perde;
+   a imagem mostra como isso aparece num dia comum — que é o que faz o
+   leitor reconhecer o custo em vez de só ler sobre ele. */
+.custo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.perda{
+  display:flex;flex-direction:column;
+  background:var(--paper-2);
+  border:1px solid rgba(196,85,63,.18);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 26px 52px -38px rgba(120,45,30,.4);
 }
-.custo-lista h3{font-size:var(--fs-card);font-weight:600;color:var(--ink);
-  margin-bottom:6px}
-.custo-lista p{font-size:var(--fs-body);line-height:var(--lh-body);
+/* filete de alerta no topo: é o que marca a seção como contraponto */
+.perda::before{
+  content:"";height:3px;flex:none;
+  background:linear-gradient(90deg,var(--alerta),rgba(196,85,63,.25));
+}
+.perda-foto{
+  position:relative;width:100%;aspect-ratio:16/10;margin:0;
+  border-radius:0;border-left:0;border-right:0;border-top:0;
+}
+.perda-foto img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover}
+.perda-txt{padding:clamp(20px,1.9vw,26px)}
+.perda-ic{
+  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:var(--alerta-soft);color:var(--alerta);margin-bottom:14px;
+}
+.perda-txt h3{font-size:var(--fs-card);font-weight:600;
+  line-height:var(--lh-card);color:var(--ink);margin-bottom:8px}
+.perda-txt p{font-size:var(--fs-body);line-height:var(--lh-body);
   color:var(--ink-soft);margin:0}
+.perda-txt p b{color:var(--ink);font-weight:600}
 
 /* ---------- 10. AUTORIDADE ---------- */
 .autoridade-grid{display:grid;grid-template-columns:minmax(0,38%) minmax(0,62%);
@@ -594,36 +614,51 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 11. PROVA SOCIAL + DISCRIÇÃO ---------- */
-.prova-grid{display:grid;grid-template-columns:minmax(0,62%) minmax(0,38%);
-  gap:var(--gap);align-items:start}
-.prova-falas{display:flex;flex-direction:column;gap:var(--gap)}
+/* A versão anterior punha a discrição como card ao lado dos depoimentos:
+   o card era curto, a coluna de depoimentos era alta, e sobrava meio
+   metro de vazio embaixo dele. Pior: sugeria que a discrição fosse um
+   terceiro depoimento. Ela é a promessa que vale para todo mundo que lê
+   os dois — então é faixa embaixo, não coluna ao lado. */
+.prova .head-center{margin-bottom:clamp(24px,2.6vw,34px)}
+.prova .kicker{color:var(--brand)}
+.prova-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);
+  align-items:stretch}
 .depo{
-  margin:0;padding:clamp(22px,2.2vw,30px);
+  margin:0;padding:clamp(24px,2.4vw,34px);
   background:var(--paper-2);border:1px solid var(--line);
-  border-radius:var(--radius);
+  border-radius:var(--radius-lg);
+  display:flex;flex-direction:column;
 }
 .depo .estrelas{display:block;color:var(--brand);font-size:13px;
-  letter-spacing:2px;margin-bottom:14px}
-.depo p{font-size:clamp(15px,1.25vw,17.5px);line-height:1.6;color:var(--ink)}
+  letter-spacing:2px;margin-bottom:16px}
+.depo p{font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:var(--ink);
+  flex:1}
 .depo p::before{content:"\201C"}
 .depo p::after{content:"\201D"}
-.depo cite{display:block;margin-top:14px;font-style:normal;
-  font-size:var(--fs-micro);color:var(--ink-soft)}
-.prova-nota{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+.depo cite{display:block;margin-top:18px;padding-top:16px;
+  border-top:1px solid var(--line);
+  font-style:normal;font-size:var(--fs-micro);color:var(--ink-soft)}
+
+.prova-nota{margin:16px 0 0;font-size:12.5px;line-height:1.5;
+  color:var(--ink-soft);text-align:center}
 
 .discricao{
-  padding:clamp(24px,2.4vw,32px);border-radius:var(--radius-lg);
-  background:linear-gradient(160deg,#1a1a1e,#242024);color:var(--dark-ink);
-  box-shadow:0 32px 64px -40px rgba(33,24,12,.6);
+  margin-top:clamp(30px,3.2vw,44px);
+  display:flex;align-items:center;gap:clamp(20px,2.4vw,32px);
+  padding:clamp(24px,2.4vw,32px) clamp(26px,2.8vw,40px);
+  border-radius:var(--radius-lg);
+  background:linear-gradient(120deg,#141417,#201c1c);color:var(--dark-ink);
+  box-shadow:0 34px 68px -44px rgba(33,24,12,.7);
 }
 .discricao-ic{
-  width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
-  background:rgba(233,167,79,.16);color:var(--cobre-luz);margin-bottom:18px;
+  width:52px;height:52px;flex:none;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(233,167,79,.16);color:var(--cobre-luz);
 }
 .discricao h3{font-size:var(--fs-h3);font-weight:500;letter-spacing:-.02em;
-  margin-bottom:12px}
+  margin-bottom:8px}
 .discricao p{font-size:var(--fs-body);line-height:var(--lh-body);
-  color:var(--dark-ink-soft)}
+  color:var(--dark-ink-soft);margin:0;max-width:78ch}
 .discricao p b{color:var(--dark-ink)}
 
 /* ---------- 12. ATENDIMENTO ---------- */
@@ -748,8 +783,9 @@ html{scroll-padding-top:88px}
   .hero-acoes{margin-bottom:18px}
 }
 @media (max-width:980px){
-  .custo-grid,.autoridade-grid,.prova-grid,.agendar-grid{
+  .autoridade-grid,.agendar-grid{
     grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .custo-grid{grid-template-columns:1fr 1fr}
   .autoridade-foto{max-width:340px;aspect-ratio:4/5}
   .falas-grid{grid-template-columns:1fr}
   .falas-foto{aspect-ratio:16/8}
@@ -770,6 +806,9 @@ html{scroll-padding-top:88px}
   .sintomas-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
+  .prova-duo{grid-template-columns:1fr}
+  .discricao{flex-direction:column;align-items:flex-start;gap:16px}
+  .custo-grid{grid-template-columns:1fr}
   .atend-grid{grid-template-columns:1fr}
   .faq summary{gap:12px}
   .faq summary i{width:28px;height:28px}
