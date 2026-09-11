@@ -136,7 +136,7 @@ html{scroll-padding-top:88px}
 }
 .selos li{
   display:flex;align-items:center;gap:clamp(6px,.6vw,8px);
-  font-size:clamp(11px,.98vw,13.5px);font-weight:500;color:var(--ink);
+  font-size:clamp(9px,.83vw,11.5px);font-weight:500;color:var(--ink);
   white-space:nowrap;
 }
 .selos li::before{
@@ -551,16 +551,13 @@ html{scroll-padding-top:88px}
 
 /* ---------- 8. SIGILO ---------- */
 .sigilo{
-  display:grid;grid-template-columns:56px 1fr;gap:22px;align-items:start;
   background:var(--brand-soft);border-radius:var(--radius-lg);
-  padding:clamp(26px,3vw,40px);
+  padding:clamp(26px,3vw,40px);text-align:center;
 }
-.sigilo .cadeado{width:56px;height:56px;border-radius:14px;display:grid;
-  place-items:center;background:var(--brand);color:#fff}
 .sigilo h2{font-family:var(--font-display);font-size:clamp(20px,2.2vw,28px);
   font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-bottom:12px}
 .sigilo p{font-size:var(--fs-lead);line-height:var(--lh-body);color:var(--ink-soft);
-  max-width:70ch}
+  max-width:70ch;margin-inline:auto}
 
 /* ---------- 9. FORMULÁRIO ---------- */
 .form-bloco{display:grid;grid-template-columns:minmax(0,44%) minmax(0,56%);
@@ -763,8 +760,6 @@ html{scroll-padding-top:88px}
     opacity:.7}
   .dados{text-align:left}
 
-  .sigilo{grid-template-columns:1fr;gap:18px;text-align:center;justify-items:center}
-  .sigilo p{margin-inline:auto}
 }
 
 @media (max-width:640px){
@@ -785,7 +780,7 @@ html{scroll-padding-top:88px}
   .hero-acoes .btn{width:100%;max-width:330px;justify-content:center;
     padding:13px 13px 13px 24px}
   .selos{flex-wrap:wrap;gap:8px 18px}
-  .selos li{font-size:13px}
+  .selos li{font-size:11px}
   .garantias-card{padding:18px}
   .garantias-card h2{font-size:13px;margin-bottom:14px}
 
