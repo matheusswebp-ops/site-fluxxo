@@ -251,13 +251,18 @@ html{scroll-padding-top:88px}
 .quiz-item:has(input:focus-visible){outline:2px solid var(--brand);outline-offset:3px}
 
 /* ----- o veredito ----- */
-/* Muda com o que foi marcado. O botão só existe a partir de 2: quem marcou
-   zero não tem motivo para agendar, e CTA em cima dele é ruído. */
+/* A versão anterior era uma barra fina com um número de 44px espremido ao
+   lado de duas linhas de 11px, três tracinhos soltos e meio metro de vazio
+   à direita enquanto o botão não existia. Não dava para ler nem para olhar.
+
+   Agora a contagem é um anel que enche: dá para ler a resposta sem ler o
+   texto. E o bloco é flex — quando o botão não existe, o que sobra ocupa a
+   largura, em vez de deixar buraco. */
 .veredito{
   margin-top:clamp(26px,2.8vw,38px);
-  display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;
-  align-items:center;gap:clamp(18px,2.2vw,32px);
-  padding:clamp(20px,2vw,26px) clamp(22px,2.4vw,32px);
+  display:flex;align-items:center;flex-wrap:wrap;
+  gap:clamp(20px,2.4vw,34px);
+  padding:clamp(22px,2.2vw,30px) clamp(24px,2.6vw,36px);
   background:var(--paper-2);border:1px solid var(--line);
   border-radius:var(--radius-lg);
   transition:border-color .4s var(--ease),background .4s var(--ease),
@@ -267,38 +272,59 @@ html{scroll-padding-top:88px}
   border-color:var(--brand);background:var(--brand-soft);
   box-shadow:0 26px 54px -34px rgba(138,75,18,.55);
 }
-.veredito-conta{display:flex;align-items:center;gap:10px}
-.veredito-num{
-  font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1;
+
+@property --p{syntax:'<number>';inherits:true;initial-value:0}
+.veredito{--p:0}
+.veredito.tem-1{--p:25}
+.veredito.tem-2{--p:50}
+.veredito.tem-3{--p:75}
+.veredito.tem-4{--p:100}
+
+.veredito-anel{
+  flex:none;width:104px;height:104px;border-radius:50%;
+  display:grid;place-items:center;
+  background:conic-gradient(from -90deg,
+    var(--brand) calc(var(--p) * 1%),
+    rgba(33,29,24,.09) 0);
+  transition:--p .55s var(--ease);
+}
+.veredito.acesa .veredito-anel{
+  background:conic-gradient(from -90deg,
+    var(--brand) calc(var(--p) * 1%),
+    rgba(138,75,18,.16) 0);
+}
+.veredito-disco{
+  width:86px;height:86px;border-radius:50%;
+  background:var(--paper-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  line-height:1;transition:background .4s var(--ease);
+}
+.veredito.acesa .veredito-disco{background:var(--brand-soft)}
+.veredito-disco b{
+  font-family:var(--font-display);font-size:38px;font-weight:700;
   letter-spacing:-.04em;color:var(--brand);font-variant-numeric:tabular-nums;
 }
-.veredito-de{font-size:11.5px;line-height:1.25;color:var(--ink-soft)}
+.veredito-disco em{font-style:normal;font-size:12px;font-weight:500;
+  color:var(--ink-soft);margin-top:5px}
 
-/* medidor: a contagem virando forma — o olho lê antes do número */
-.veredito-medidor{display:flex;gap:5px;width:86px}
-.veredito-medidor span{
-  height:5px;flex:1;border-radius:3px;background:var(--line);
-  transition:background .35s var(--ease);
+.veredito-corpo{flex:1 1 300px;min-width:0}
+/* sem botao, o par anel+frase se centraliza: barra com conteudo encostado
+   na esquerda e meio metro de vazio a direita nao e diagramacao, e sobra. */
+.veredito:not(.acesa){justify-content:center}
+.veredito:not(.acesa) .veredito-corpo{flex:0 1 auto}
+.veredito-txt{
+  margin:0;max-width:46ch;
+  font-size:clamp(16px,1.35vw,19px);line-height:1.5;color:var(--ink-soft);
 }
-.veredito.tem-1 .veredito-medidor span:nth-child(-n+1),
-.veredito.tem-2 .veredito-medidor span:nth-child(-n+2),
-.veredito.tem-3 .veredito-medidor span:nth-child(-n+3),
-.veredito.tem-4 .veredito-medidor span:nth-child(-n+4){
-  background:linear-gradient(90deg,var(--brand),var(--accent));
-}
-.veredito-txt{font-size:var(--fs-lead);line-height:1.55;color:var(--ink-soft);
-  margin:0;max-width:56ch}
 .veredito-txt b{color:var(--ink);font-weight:600}
 .veredito.acesa .veredito-txt b{color:var(--brand-deep)}
 
-/* o botão só entra quando o veredito acende */
-.veredito .btn{
-  margin:0;opacity:0;visibility:hidden;transform:translateY(6px) scale(.96);
-  transition:opacity .35s var(--ease),transform .35s var(--ease),
-             visibility 0s linear .35s;
-}
-.veredito.acesa .btn{
-  opacity:1;visibility:visible;transform:none;transition-delay:0s;
+/* o botão só existe a partir de 2 — e some do fluxo, senão deixa buraco */
+.veredito .btn{margin:0;flex:none}
+.veredito:not(.acesa) .btn{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  .veredito-anel{transition:none}
 }
 
 /* ---------- 4. ISSO TEM NOME ---------- */
@@ -398,8 +424,8 @@ html{scroll-padding-top:88px}
 }
 @media (max-width:900px){
   .quiz{grid-template-columns:1fr 1fr}
-  .veredito{grid-template-columns:auto auto minmax(0,1fr);row-gap:20px}
-  .veredito .btn{grid-column:1 / -1;justify-self:start}
+  .veredito{gap:20px}
+  .veredito .btn{flex:1 1 100%}
 }
 @media (max-width:640px){
   .sinais-grid{grid-template-columns:1fr}
@@ -408,10 +434,10 @@ html{scroll-padding-top:88px}
   .quiz-ic{width:38px;height:38px;border-radius:10px}
   .quiz-tx{font-size:14.5px;max-width:none;padding-right:26px}
   .quiz-mk{top:50%;right:14px;margin-top:-12px}
-  .veredito{grid-template-columns:auto minmax(0,1fr);row-gap:16px;
-    padding:20px}
-  .veredito-medidor{grid-row:1;width:72px}
-  .veredito-txt{grid-column:1 / -1}
+  .veredito{padding:22px;gap:18px}
+  .veredito-anel{width:88px;height:88px}
+  .veredito-disco{width:72px;height:72px}
+  .veredito-disco b{font-size:31px}
   .veredito .btn{width:100%;justify-content:center}
   .hero-acoes{width:100%}
   .hero-acoes .btn{width:100%;justify-content:center}

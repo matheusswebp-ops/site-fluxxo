@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609111625">
-<link rel="stylesheet" href="css/rh.css?v=202609111625">
+<link rel="stylesheet" href="css/dna.css?v=202609111705">
+<link rel="stylesheet" href="css/rh.css?v=202609111705">
 </head>
 
 <body class="tema-cobre">
@@ -177,16 +177,21 @@
       </label></li>
     </ul>
 
-    <div class="veredito" id="veredito">
-      <div class="veredito-conta">
-        <span class="veredito-num" id="triagemNum">0</span>
-        <span class="veredito-de">de 4<br>marcados</span>
+    <div class="veredito tem-0" id="veredito">
+      <!-- o anel é o número: ele enche conforme a marcação, então dá para
+           ler a resposta sem ler o texto -->
+      <div class="veredito-anel" aria-hidden="true">
+        <span class="veredito-disco">
+          <b id="triagemNum">0</b>
+          <em>de 4</em>
+        </span>
       </div>
-      <div class="veredito-medidor" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
+
+      <div class="veredito-corpo">
+        <p class="veredito-txt" id="triagemTxt" aria-live="polite">
+          <b>Marcou 2 ou mais?</b> Vale investigar sua testosterona.</p>
       </div>
-      <p class="veredito-txt" id="triagemTxt" aria-live="polite">
-        <b>Marcou 2 ou mais?</b> Vale investigar sua testosterona.</p>
+
       <a class="btn" href="#agendar" id="vereditoBtn" tabindex="-1">Quero uma avaliação
         <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
     </div>
