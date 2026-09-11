@@ -230,6 +230,43 @@ html{scroll-padding-top:88px}
    lead daquele cabeçalho. */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
 
+/* Os quatro cards de causa. Brancos e iguais eles viravam uma tabela: cada um
+   ganha um tom próprio, que aparece no filete de topo, no ícone, no halo ao
+   fundo e na lavagem que desce até a base do card. O tom não é enfeite — é o
+   que separa as quatro frentes de relance. */
+.grid-4 .card{
+  position:relative;overflow:hidden;isolation:isolate;
+  padding-top:clamp(24px,2.1vw,30px);
+  background:linear-gradient(180deg,var(--paper-2) 58%,var(--tom-soft));
+  box-shadow:0 18px 40px -34px rgba(10,35,66,.45);
+}
+.grid-4 .card:nth-child(1){--tom:#0b4c74;--tom-soft:#e7eff5}
+.grid-4 .card:nth-child(2){--tom:#4e96a8;--tom-soft:#e6f1f3}
+.grid-4 .card:nth-child(3){--tom:#2f6f9e;--tom-soft:#e8f0f7}
+.grid-4 .card:nth-child(4){--tom:#e08b6a;--tom-soft:#fbeee7}
+
+/* filete de topo: nasce curto e corre até a largura toda no hover */
+.grid-4 .card::before{
+  content:"";position:absolute;top:0;left:0;height:3px;width:56px;
+  background:var(--tom);border-radius:0 0 3px 3px;
+  transition:width .4s var(--ease);
+}
+.grid-4 .card:hover::before{width:100%}
+
+/* halo do tom no canto, atrás do conteúdo */
+.grid-4 .card::after{
+  content:"";position:absolute;z-index:-1;right:-48px;top:-48px;
+  width:152px;height:152px;border-radius:50%;background:var(--tom);opacity:.08;
+  transition:transform .45s var(--ease),opacity .45s var(--ease);
+}
+.grid-4 .card:hover::after{transform:scale(1.18);opacity:.14}
+.grid-4 .card:hover{border-color:var(--tom)}
+
+.grid-4 .card-icone{
+  width:44px;height:44px;border-radius:12px;background:var(--tom);
+  box-shadow:0 12px 24px -12px var(--tom);
+}
+
 /* Fluxo animado em looping. O movimento aqui é o conteúdo: de um lado o
    sangue entra e fica; do outro entra pouco e escapa. */
 .ilustra .pulso{will-change:transform,opacity}
