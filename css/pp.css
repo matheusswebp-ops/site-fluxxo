@@ -577,21 +577,14 @@ html{scroll-padding-top:88px}
   position:relative;aspect-ratio:16/9;overflow:hidden;
   border-radius:calc(var(--radius-lg) - 8px);margin:0;
 }
-/* o disco do número mora no canto da foto, com anel branco para não sumir
-   em cima de trecho claro nem de trecho escuro */
-.etapa-marca{
-  position:absolute;z-index:2;top:12px;left:12px;
-  width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;
-  background:var(--brand);color:#fff;
-  font-family:var(--font-display);font-size:15px;font-weight:700;
-  box-shadow:0 0 0 3px rgba(255,255,255,.9),0 6px 16px -8px rgba(10,35,66,.6);
-}
+/* o número saiu da foto e virou kicker acima do título: o mesmo filete e a
+   mesma caixa alta do resto da página, só com o respiro mais curto */
+.etapa .kicker{margin-bottom:10px}
 .etapa-txt{padding:clamp(16px,1.4vw,20px) clamp(6px,.6vw,10px) clamp(6px,.6vw,8px)}
 .etapa h3{font-size:clamp(18px,1.45vw,21px);font-weight:600;
   line-height:var(--lh-card);letter-spacing:-.015em;margin-bottom:8px}
-.etapa p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink-soft);
-  max-width:42ch}
+.etapa p{font-size:calc(var(--fs-body) + 2px);line-height:var(--lh-body);
+  color:var(--ink-soft);max-width:42ch}
 
 /* botão avulso de meia página: repete o CTA sem inventar frase nova */
 .meio-cta{display:flex;justify-content:center;margin-top:clamp(34px,3.6vw,48px)}
