@@ -549,10 +549,11 @@ html{scroll-padding-top:88px}
 .vias-mais{
   margin:clamp(28px,3vw,40px) 0 0;padding-top:clamp(22px,2.2vw,28px);
   border-top:1px solid rgba(233,205,163,.16);
-  font-size:var(--fs-body);line-height:1.7;color:#cfc4b4;max-width:80ch;
+  font-size:var(--fs-body);line-height:1.7;color:#cfc4b4;
+  max-width:76ch;margin-inline:auto;text-align:center;
 }
 .vias-mais span{
-  display:inline-block;margin-right:12px;
+  display:block;margin:0 auto 12px;width:max-content;
   font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:#221a10;
   padding:5px 11px;border-radius:var(--radius-pill);
