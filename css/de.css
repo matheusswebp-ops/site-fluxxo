@@ -226,14 +226,8 @@ html{scroll-padding-top:88px}
   .ilustra .i-res1{font-size:20px}
   .ilustra .i-res2{font-size:18px}
 }
-/* A legenda saiu de baixo da ilustração e virou o título que abre os cards:
-   é ela que faz a ponte entre o diagrama e as quatro causas. */
-.frase-cards{
-  text-align:center;max-width:44ch;margin:clamp(30px,3.6vw,46px) auto clamp(26px,3vw,36px);
-  font-family:var(--font-display);font-weight:400;
-  font-size:clamp(19px,1.9vw,26px);line-height:1.3;letter-spacing:-.02em;
-}
-.frase-cards b{font-weight:700;color:var(--brand)}
+/* As quatro causas ganharam seção própria: a ponte que existia aqui virou o
+   lead daquele cabeçalho. */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
 
 /* Fluxo animado em looping. O movimento aqui é o conteúdo: de um lado o
