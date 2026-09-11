@@ -479,23 +479,36 @@ html{scroll-padding-top:88px}
 .sec--dark .nota{color:var(--dark-ink-soft);border-top-color:var(--dark-line)}
 .sec--dark .nota b{color:var(--dark-ink)}
 
-/* ---------- 8. AS FORMAS DE REPOR ---------- */
-/* Três coisas deixavam esta seção pesada, e nenhuma era a caixa:
-   1. O fundo era quase preto (#101013). Preto chapado numa faixa larga
-      é uma parede — o olho não atravessa.
-   2. O respiro vertical era o padrão da página, mas o conteúdo aqui é
-      curto: sobrava mais vazio escuro do que texto.
-   3. O cobre só aparecia em fio de 1px, então o escuro não tinha nada
-      que o quebrasse.
-
-   Agora o chão é grafite quente e claro o bastante para ter matéria, a
-   seção é mais baixa que as vizinhas, e a luz de cobre atravessa por
-   trás das três vias. */
-.formas{
-  padding-block:clamp(46px,4.4vw,70px);
+/* moldura vazia sobre seção escura: clara ali vira um bloco pálido */
+.sec--dark .vago{
   background:
-    radial-gradient(ellipse 62% 78% at 50% 58%,rgba(233,167,79,.16),transparent 64%),
-    linear-gradient(180deg,#232025,#2c262a 52%,#242024);
+    repeating-linear-gradient(135deg,
+      rgba(226,214,196,.05) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,#2a262b,#201c21);
+  border-color:rgba(226,214,196,.16);
+}
+.sec--dark .vago-tag{
+  color:var(--cobre-luz);background:rgba(26,23,27,.9);
+  border-color:rgba(233,167,79,.26);
+}
+.sec--dark .vago::after{
+  color:#cfc4b4;
+  background:linear-gradient(to top,rgba(26,23,27,.96),rgba(26,23,27,.72));
+  border-top-color:rgba(226,214,196,.12);
+}
+
+/* ---------- 8. AS FORMAS DE REPOR ---------- */
+/* Cada via com a sua cena. Três blocos de texto sobre escuro não tinham o
+   que olhar — era por isso que a seção lia como uma parede, e não porque
+   faltava contorno ou sobrava padding.
+
+   O chão continua escuro, mas em grafite quente: preto chapado atrás de
+   três fotos apaga as três. */
+.formas{
+  padding-block:clamp(48px,4.6vw,74px);
+  background:
+    radial-gradient(ellipse 62% 74% at 50% 56%,rgba(233,167,79,.13),transparent 66%),
+    linear-gradient(180deg,#201d21,#292428 54%,#221e22);
 }
 .formas::before{
   content:"";position:absolute;top:0;left:0;right:0;height:1px;
@@ -506,28 +519,29 @@ html{scroll-padding-top:88px}
 .formas .kicker{color:var(--cobre-luz)}
 .formas .lead{color:#d8cdbd}
 
-.vias{display:grid;grid-template-columns:repeat(3,1fr);
-  gap:clamp(22px,2.6vw,42px)}
+.vias{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
 .via{
-  display:grid;grid-template-columns:auto minmax(0,1fr);
-  column-gap:16px;row-gap:7px;align-items:start;
-  padding-left:clamp(22px,2.6vw,42px);
-  border-left:1px solid rgba(233,205,163,.16);
+  display:flex;flex-direction:column;
+  background:rgba(255,250,242,.045);
+  border:1px solid rgba(233,205,163,.14);
+  border-radius:var(--radius-lg);overflow:hidden;
 }
-.via-ic{grid-row:1 / span 2}
-.via h3,.via p{grid-column:2}
-.via:first-child{padding-left:0;border-left:0}
+.via-foto{
+  position:relative;width:100%;aspect-ratio:16/10;margin:0;
+  border-radius:0;border:0;
+}
+.via-foto img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover}
+.via-txt{padding:clamp(20px,1.9vw,26px)}
 .via-ic{
-  flex:none;display:grid;place-items:center;width:44px;height:44px;
-  border-radius:13px;
+  display:grid;place-items:center;width:40px;height:40px;border-radius:11px;
   background:linear-gradient(140deg,var(--cobre-luz),var(--brand));
-  color:#221a10;
-  box-shadow:0 12px 26px -12px rgba(0,0,0,.8);
+  color:#221a10;margin-bottom:16px;
+  box-shadow:0 12px 24px -12px rgba(0,0,0,.8);
 }
-.via h3{font-size:17.5px;font-weight:600;letter-spacing:-.01em;
-  color:#fffaf2;margin:0;align-self:center}
-.via p{font-size:var(--fs-body);line-height:1.6;color:#cfc4b4;margin:0;
-  max-width:30ch}
+.via h3{font-size:var(--fs-card);font-weight:600;letter-spacing:-.01em;
+  color:#fffaf2;margin-bottom:8px}
+.via p{font-size:var(--fs-body);line-height:1.6;color:#cfc4b4;margin:0}
 .via p b{color:#fffaf2;font-weight:600}
 
 /* "Outras opções" não é uma quarta via — é a linha que diz que a lista
@@ -844,12 +858,7 @@ html{scroll-padding-top:88px}
   .autoridade-foto{max-width:340px;aspect-ratio:4/5}
   .falas-grid{grid-template-columns:1fr}
   .falas-foto{aspect-ratio:16/8}
-  .vias{grid-template-columns:1fr;gap:0}
-  .via{padding-left:0;border-left:0;
-    border-top:1px solid rgba(233,205,163,.16);
-    padding-block:clamp(20px,2.4vw,26px)}
-  .via:first-child{border-top:0;padding-top:0}
-  .via p{max-width:none}
+  .vias{grid-template-columns:1fr;gap:20px}
   .passo{grid-template-columns:52px minmax(0,1fr);
     grid-template-areas:"marca foto" "marca txt";
     align-items:start;row-gap:20px}
