@@ -890,7 +890,19 @@ html{scroll-padding-top:88px}
   .atendimento .lead,.agendar .lead{margin-inline:auto;max-width:46ch}
   .agendar-alt{margin-inline:auto}
 }
+/* Celular: o rótulo do botão quebrava em duas linhas porque a marca não
+   cedia espaço. Agora o botão não quebra e não encolhe, e quem cede é o
+   nome da clínica, que já tem reticências. */
 @media (max-width:640px){
+  .topo .wrap{gap:12px}
+  .topo .btn{flex:none;white-space:nowrap;font-size:12.5px;
+    padding:9px 9px 9px 16px}
+  .topo .btn i{width:23px;height:23px}
+  .marca{flex:1 1 auto;min-width:0;overflow:hidden}
+  .marca-sigla{width:34px;height:34px}
+  .marca-nome{font-size:14px}
+
+
   .prova-duo{grid-template-columns:1fr}
   .custo-grid{grid-template-columns:1fr}
   .faq summary{gap:12px}
@@ -912,11 +924,15 @@ html{scroll-padding-top:88px}
   .sintoma-foto .vago-tag{top:10px;left:10px;font-size:9px;padding:4px 8px}
   .vago::after{display:none}
   .sintoma h3{font-size:16.5px;max-width:28ch}
-  .passo{grid-template-columns:1fr;grid-template-areas:"marca" "foto" "txt";
+  /* o número ficava sozinho acima da foto, pendurado no nada. Entre a foto
+     e o texto ele fecha a cena e abre o passo. */
+  .passo{grid-template-columns:1fr;grid-template-areas:"foto" "marca" "txt";
     row-gap:16px}
   .passo-marca{justify-content:flex-start}
   .passo-marca::before{display:none}
-  .hero-acoes{width:100%}
+  /* o botão ocupa a linha inteira; o link ia para a linha de baixo colado
+     na esquerda, desalinhado do rótulo centrado do botão acima dele */
+  .hero-acoes{width:100%;justify-content:center}
   .hero-acoes .btn{width:100%;justify-content:center}
   .triagem-lista{grid-template-columns:1fr;gap:0}
   .triagem-pe{flex-direction:column;align-items:flex-start;gap:12px}
