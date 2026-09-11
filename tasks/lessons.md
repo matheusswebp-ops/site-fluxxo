@@ -14,3 +14,15 @@ aparecia e eu subi quebrado.
 não é olhar o pedaço editado — é contar as âncoras do documento inteiro
 (`<section>` abre/fecha, ids únicos, marcadores de seção) e comparar com o
 esperado antes de commitar.
+
+## 2026-09-10 — Chrome headless não desce de 500px de largura
+
+**O erro:** capturei "mobile" com `--window-size=390,...` e o texto saiu cortado
+à direita. Não era bug de CSS: o Chrome headless em modo desktop tem largura
+mínima de 500px, então o layout foi feito a 500 e a imagem cortada em 390.
+Quase fui mexer no CSS por causa de um artefato da captura.
+
+**A regra:** antes de corrigir um "bug" que só aparece na captura, medir as
+caixas (`getBoundingClientRect` + `--dump-dom`) e conferir `innerWidth`.
+Para capturar abaixo de 500px, colocar a página num `<iframe>` da largura
+desejada dentro de uma janela de 500+; as media queries respondem ao iframe.
