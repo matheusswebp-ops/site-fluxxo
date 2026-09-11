@@ -177,17 +177,19 @@ html{scroll-padding-top:88px}
 
 /* ---------- 3. "1 EM CADA 2" (seção escura) ---------- */
 /* Foto de gente real cobrindo a seção inteira, nítida, sem máscara nem
-   véu: o que faz ela morar no navy é uma cortina sólida de --dark-1 que
-   começa opaca na esquerda (onde fica o texto) e abre para a direita, onde
-   o homem aparece inteiro, fora de qualquer degradê. Aprendido na 7ª
-   tentativa: máscara em degradê + véu + foto pequena esticada em retina
-   vira névoa; e o assunto da foto nunca pode cair na zona de transição.
-   A foto é a de-nivel-1 inteira (1536px), a maior que temos, porque em
-   tela larga retina qualquer recorte menor fica borrado. */
+   véu. No desktop entra a de-consulta-desk.webp (1920x850), que já vem com
+   a cortina navy embutida na esquerda: a cortina do CSS usa exatamente a
+   mesma cor (#112241), então ela some sobre a parte já navy da foto e só
+   age onde a foto aparece — nunca escurece duas vezes.
+   No mobile (<=880px) o <picture> troca para a de-nivel-1, vertical o
+   bastante para virar o topo da seção, e a cortina volta ao --dark-1.
+   Aprendido na 8ª tentativa: máscara em degradê + véu + foto pequena
+   esticada em retina vira névoa, e o assunto da foto nunca pode cair na
+   zona de transição. */
 .metade{isolation:isolate}
 .metade .wrap{
   position:relative;z-index:2;
-  min-height:clamp(500px,40vw,640px);
+  min-height:clamp(500px,40vw,700px);
   display:flex;align-items:center;
 }
 .metade-foto{
@@ -195,23 +197,21 @@ html{scroll-padding-top:88px}
   pointer-events:none;
 }
 .metade-foto img{
-  /* deslocada para a direita: o homem fica entre 64% e 83% da largura,
-     inteiro e fora da cortina; a sobra da esquerda some sob o navy opaco */
-  position:absolute;top:0;left:24%;width:100%;height:100%;
-  object-fit:cover;object-position:50% 42%;
+  width:100%;height:100%;object-fit:cover;object-position:50% 50%;
   display:block;
 }
+.metade-foto picture{display:contents}
 /* a cortina: opaca sob o texto, aberta sobre o homem; embaixo escurece um
    pouco para a próxima seção encostar em navy, não em foto clara */
 .metade-foto::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(10,35,66,.6) 0,rgba(10,35,66,0) 26%,
-      rgba(10,35,66,0) 72%,rgba(10,35,66,.55) 100%),
+    linear-gradient(180deg,rgba(17,34,65,.5) 0,rgba(17,34,65,0) 22%,
+      rgba(17,34,65,0) 78%,rgba(17,34,65,.5) 100%),
     linear-gradient(90deg,
-      var(--dark-1) 0%,var(--dark-1) 30%,
-      rgba(10,35,66,.9) 40%,rgba(10,35,66,.5) 52%,
-      rgba(10,35,66,.16) 64%,rgba(10,35,66,.08) 100%);
+      #112241 0%,#112241 30%,
+      rgba(17,34,65,.92) 40%,rgba(17,34,65,.62) 50%,
+      rgba(17,34,65,.2) 62%,rgba(17,34,65,0) 74%);
 }
 
 .metade-texto{max-width:min(620px,48%)}
@@ -261,7 +261,7 @@ html{scroll-padding-top:88px}
     aspect-ratio:1/1;max-height:520px;
     margin:calc(-1 * var(--sec-y)) 0 clamp(18px,4vw,28px);
   }
-  .metade-foto img{position:static;left:auto;object-position:64% 30%}
+  .metade-foto img{object-position:64% 30%}
   .metade-foto::after{
     background:linear-gradient(180deg,rgba(10,35,66,0) 58%,var(--dark-1) 100%);
   }

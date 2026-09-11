@@ -13,11 +13,18 @@
 - [x] Capturas conferidas (desktop 1440 e mobile 390) e página inteira
       verificada: 12 `<section>` abrem e fecham, sem id duplicado.
 
+## Foto do desktop (chegou 2026-09-11)
+- [x] `img/de-consulta-desk.webp` (1920x850), do Mateus: paciente de costas e
+      urologista mostrando a anatomia no tablet. Ela JÁ vem com a cortina
+      navy embutida na esquerda, cor #112241 — a cortina do CSS usa a mesma
+      cor, então não escurece duas vezes, e o `--ombro-cor` da seção foi
+      trocado para #112241 para o platô não deixar emenda.
+- [x] `<picture>`: a foto nova só no desktop (min-width:881px); no mobile
+      segue a de-nivel-1, que é vertical o bastante para virar o topo.
+
 ## Pendência
-- [ ] A foto é a mesma do card "nível 1" da seção de tratamento (só muda o
-      enquadramento). Quando a foto do Mateus chegar em img/ (homem 45–60,
-      sozinho, luz natural, tom fechado), trocar só o `src` em
-      `.metade-foto img` e ajustar `object-position` se precisar.
+- [ ] Falta a versão mobile da foto nova (a de-consulta-desk é 1920x850,
+      horizontal demais para o topo da seção no celular).
 - [ ] Viewmax segue sem crédito (0) — geração de imagem bloqueada.
 
 ## Tentativas reprovadas antes (não repetir)
