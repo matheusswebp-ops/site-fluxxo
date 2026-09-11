@@ -176,48 +176,48 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 3. "1 EM CADA 2" (seção escura) ---------- */
-/* Foto de gente real, sem moldura: ela mora à direita da seção e sangra
-   para o navy por máscara (some para a esquerda, em cima e embaixo), então
-   o fundo da própria seção é o que aparece nas bordas — não existe emenda.
-   O texto ocupa a metade esquerda: o número grande, a frase, os três
-   pilares em lista com fio e a virada. Nada de degradê em texto, brilho ou
-   pictograma: é foto, número e frase. Para trocar a foto basta trocar o
-   src; o enquadramento (object-position) mira o homem, na metade direita. */
+/* Foto de gente real cobrindo a seção inteira, nítida, sem máscara nem
+   véu: o que faz ela morar no navy é uma cortina sólida de --dark-1 que
+   começa opaca na esquerda (onde fica o texto) e abre para a direita, onde
+   o homem aparece inteiro, fora de qualquer degradê. Aprendido na 7ª
+   tentativa: máscara em degradê + véu + foto pequena esticada em retina
+   vira névoa; e o assunto da foto nunca pode cair na zona de transição.
+   A foto é a de-nivel-1 inteira (1536px), a maior que temos, porque em
+   tela larga retina qualquer recorte menor fica borrado. */
+.metade{isolation:isolate}
 .metade .wrap{
-  position:relative;z-index:1;
-  min-height:clamp(480px,42vw,620px);
+  position:relative;z-index:2;
+  min-height:clamp(500px,40vw,640px);
   display:flex;align-items:center;
 }
 .metade-foto{
-  position:absolute;z-index:0;margin:0;
-  top:0;bottom:0;right:0;width:min(62%,940px);
-  overflow:hidden;pointer-events:none;
-  -webkit-mask-image:
-    linear-gradient(to right,transparent 0,#000 38%),
-    linear-gradient(to bottom,transparent 0,#000 12%,#000 86%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(to right,transparent 0,#000 38%),
-    linear-gradient(to bottom,transparent 0,#000 12%,#000 86%,transparent 100%);
-  mask-composite:intersect;
+  position:absolute;z-index:0;margin:0;inset:0;overflow:hidden;
+  pointer-events:none;
 }
 .metade-foto img{
-  width:100%;height:100%;object-fit:cover;object-position:62% 40%;
+  /* deslocada para a direita: o homem fica entre 64% e 83% da largura,
+     inteiro e fora da cortina; a sobra da esquerda some sob o navy opaco */
+  position:absolute;top:0;left:24%;width:100%;height:100%;
+  object-fit:cover;object-position:50% 42%;
   display:block;
-  /* leve puxada para o azul, só para a foto morar no mesmo mundo do navy */
-  filter:saturate(.9);
 }
-/* véu navy uniforme por cima: a foto lê como parte do fundo, não como
-   recorte colado; rgba(10,35,66) é o --dark-1 do tema navy */
+/* a cortina: opaca sob o texto, aberta sobre o homem; embaixo escurece um
+   pouco para a próxima seção encostar em navy, não em foto clara */
 .metade-foto::after{
   content:"";position:absolute;inset:0;
-  background:rgba(10,35,66,.14);
+  background:
+    linear-gradient(180deg,rgba(10,35,66,.6) 0,rgba(10,35,66,0) 26%,
+      rgba(10,35,66,0) 72%,rgba(10,35,66,.55) 100%),
+    linear-gradient(90deg,
+      var(--dark-1) 0%,var(--dark-1) 30%,
+      rgba(10,35,66,.9) 40%,rgba(10,35,66,.5) 52%,
+      rgba(10,35,66,.16) 64%,rgba(10,35,66,.08) 100%);
 }
 
-.metade-texto{max-width:min(600px,52%)}
+.metade-texto{max-width:min(620px,48%)}
 .metade .valor{
   font-family:var(--font-display);color:var(--dark-ink);margin:0 0 clamp(18px,2vw,28px);
-  font-size:clamp(64px,8vw,124px);line-height:.86;letter-spacing:-.055em;
+  font-size:clamp(72px,8.6vw,136px);line-height:.86;letter-spacing:-.055em;
   display:flex;align-items:baseline;gap:.18em;
 }
 .metade .valor b{font-weight:700}
@@ -226,7 +226,7 @@ html{scroll-padding-top:88px}
   color:var(--dark-ink-soft);
 }
 .metade .h2{
-  font-size:clamp(24px,2.4vw,34px);max-width:24ch;margin:0;
+  font-size:clamp(26px,2.7vw,40px);max-width:20ch;margin:0;
 }
 
 .metade .pilares{
@@ -237,35 +237,34 @@ html{scroll-padding-top:88px}
 .metade .pilares li+li{border-top:1px solid var(--dark-line)}
 .metade .pilares strong{
   font-family:var(--font-display);font-weight:600;
-  font-size:clamp(16px,1.35vw,19px);letter-spacing:-.015em;color:var(--dark-ink);
+  font-size:clamp(17px,1.4vw,20px);letter-spacing:-.015em;color:var(--dark-ink);
   margin-right:.6em;
 }
 .metade .pilares span{
-  font-size:clamp(14.5px,1.1vw,16px);line-height:1.55;color:var(--dark-ink-soft);
+  font-size:clamp(15px,1.15vw,17px);line-height:1.55;color:var(--dark-ink-soft);
 }
 
 .metade .fecho-escuro{
   margin:clamp(24px,2.6vw,36px) 0 0;
   font-family:var(--font-display);font-weight:400;
-  font-size:clamp(18px,1.7vw,24px);line-height:1.3;letter-spacing:-.02em;
+  font-size:clamp(19px,1.8vw,26px);line-height:1.3;letter-spacing:-.02em;
   color:var(--dark-ink-soft);max-width:26ch;
 }
 .metade .fecho-escuro b{font-weight:700;color:var(--dark-ink)}
 
-/* Telas estreitas: a foto vira o topo da seção, colada na borda de cima e
-   sumindo para o navy embaixo; o texto vem depois, centralizado. */
+/* Telas estreitas: a foto vira o topo da seção, inteira e nítida, e só a
+   base dela escurece para o navy onde o texto começa. */
 @media (max-width:880px){
   .metade .wrap{min-height:0;display:block;text-align:center}
   .metade-foto{
-    position:relative;right:auto;width:100%;
+    position:relative;inset:auto;width:100%;
     aspect-ratio:1/1;max-height:520px;
     margin:calc(-1 * var(--sec-y)) 0 clamp(18px,4vw,28px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);
-    -webkit-mask-composite:source-over;
-    mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);
-    mask-composite:add;
   }
-  .metade-foto img{object-position:60% 30%}
+  .metade-foto img{position:static;left:auto;object-position:64% 30%}
+  .metade-foto::after{
+    background:linear-gradient(180deg,rgba(10,35,66,0) 58%,var(--dark-1) 100%);
+  }
   .metade-texto{max-width:none}
   .metade .valor{justify-content:center;font-size:clamp(56px,16vw,84px)}
   .metade .h2{max-width:24ch;margin:0 auto;font-size:clamp(25px,6.6vw,34px)}

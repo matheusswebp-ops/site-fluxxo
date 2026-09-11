@@ -1,11 +1,13 @@
 # Seção "1 em cada 2" — disfuncao-eretil.html (SEÇÃO 3, escura)
 
 ## Estado (2026-09-10, sessão nova)
-- [x] Refeita com foto de gente real sangrando no navy: `img/de-metade.webp`
-      (recorte da metade direita de `de-nivel-1.jpg`, o homem sentado na cama)
-      à direita da seção, máscara em degradê para a esquerda/cima/baixo, véu
-      navy por cima. Texto à esquerda: número, frase, três pilares em lista
-      com fio, virada. Sem moldura, sem card, sem glow, sem pictograma.
+- [x] Refeita (2ª vez na noite): `de-nivel-1.jpg` inteira (1536px) cobrindo a
+      seção como fundo, nítida, sem máscara nem véu; cortina sólida de
+      --dark-1 na esquerda abrindo para a direita, foto deslocada 24% para o
+      homem ficar inteiro entre 64% e 83% da largura, fora da cortina.
+      Texto à esquerda: número, frase, pilares em lista com fio, virada.
+      A 1ª versão da noite (foto recortada + máscara em degradê + véu)
+      foi reprovada: "lixo inutilizável" — virou névoa borrada em retina.
 - [x] Mobile: foto vira o topo da seção, some pro navy embaixo, texto
       centralizado depois.
 - [x] Capturas conferidas (desktop 1440 e mobile 390) e página inteira

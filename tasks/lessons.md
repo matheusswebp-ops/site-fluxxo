@@ -26,3 +26,21 @@ Quase fui mexer no CSS por causa de um artefato da captura.
 caixas (`getBoundingClientRect` + `--dump-dom`) e conferir `innerWidth`.
 Para capturar abaixo de 500px, colocar a página num `<iframe>` da largura
 desejada dentro de uma janela de 500+; as media queries respondem ao iframe.
+
+## 2026-09-11 — Foto com máscara + véu virou "névoa"; verificar em retina largo
+
+**O erro:** na seção "1 em cada 2" fiz a foto sangrar no navy com mask-image
+em degradê + véu navy + recorte de 976px. Em 1440@1x parecia ok; na tela do
+Mateus (1673 CSS px @2x) ficou uma névoa borrada, o homem caiu dentro da zona
+do degradê e sobrou um vazio navy entre o texto e a foto. Reprovado como
+"lixo inutilizável". Sete reprovações na mesma seção antes disso.
+
+**A regra:**
+1. Foto que "se funde com o fundo" = foto NÍTIDA cobrindo a seção + cortina
+   sólida da cor do fundo por cima, abrindo onde está o assunto. Nunca
+   máscara em degradê sobre a foto inteira, nunca véu por cima do assunto.
+2. O assunto da foto (rosto, corpo) fica 100% fora da zona de transição.
+   Se cair dentro, deslocar a imagem (left:N%), não afinar o degradê.
+3. Usar sempre o maior arquivo disponível; nada de recorte menor que a
+   largura em que vai ser exibido. Em retina qualquer upscale > 2x borra.
+4. Capturar também em 1673px @2x (a tela dele), não só 1440@1x.
