@@ -123,15 +123,21 @@ html{scroll-padding-top:88px}
 .brief b{display:block;color:inherit;font-weight:600;font-size:11px;
   letter-spacing:.13em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
 
-/* selos: uma tira só, centrada, sob o CTA. Sem check e sem pílula — três
-   frases curtas em linha já são o bastante, e o marcador só roubava largura
-   da linha única. */
+/* selos: uma tira centrada sob o CTA, com o check de volta. O wrap fica
+   liberado de propósito — na largura de desktop os três cabem na mesma linha,
+   e onde não couberem eles quebram em vez de vazar da coluna. */
 .selos{
-  list-style:none;display:flex;flex-wrap:nowrap;justify-content:center;
-  gap:clamp(16px,2.2vw,30px);margin-top:clamp(24px,3vw,34px);
-  text-align:center;
+  list-style:none;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:10px clamp(16px,2vw,26px);margin-top:clamp(24px,3vw,34px);
 }
-.selos li{font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
+.selos li{
+  display:flex;align-items:center;gap:9px;
+  font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap;
+}
+.selos li::before{
+  content:"";width:19px;height:19px;border-radius:50%;flex:none;
+  background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6.5 9.2 17.3 4 12.1' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;
+}
 
 /* faixa de garantias: fecha a primeira dobra sem cobrir a figura */
 .hero-garantias{margin-top:clamp(38px,5vw,64px)}
@@ -225,38 +231,9 @@ html{scroll-padding-top:88px}
    lead daquele cabeçalho. */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
 
-/* Os quatro cards de causa. Brancos e chapados eles viravam uma tabela — o que
-   dá vida aqui é profundidade, não cor nova: filete de topo, ícone, halo no
-   canto e uma lavagem descendo até a base. Tudo em tokens da marca, nenhum
-   valor solto fora da paleta. */
-.grid-4 .card{
-  position:relative;overflow:hidden;isolation:isolate;
-  padding-top:clamp(24px,2.1vw,30px);
-  background:linear-gradient(180deg,var(--paper-2) 58%,var(--brand-soft));
-  box-shadow:0 18px 40px -34px rgba(10,35,66,.45);
-}
-
-/* filete de topo: nasce curto e corre até a largura toda no hover */
-.grid-4 .card::before{
-  content:"";position:absolute;top:0;left:0;height:3px;width:56px;
-  background:var(--brand);border-radius:0 0 3px 3px;
-  transition:width .4s var(--ease);
-}
-.grid-4 .card:hover::before{width:100%}
-
-/* halo do tom no canto, atrás do conteúdo */
-.grid-4 .card::after{
-  content:"";position:absolute;z-index:-1;right:-48px;top:-48px;
-  width:152px;height:152px;border-radius:50%;background:var(--brand);opacity:.07;
-  transition:transform .45s var(--ease),opacity .45s var(--ease);
-}
-.grid-4 .card:hover::after{transform:scale(1.18);opacity:.14}
-.grid-4 .card:hover{border-color:var(--brand)}
-
-.grid-4 .card-icone{
-  width:44px;height:44px;border-radius:12px;background:var(--brand);
-  box-shadow:0 12px 24px -12px var(--brand);
-}
+/* Os cards de causa ficam no padrão do sistema: fundo branco, borda de 1px,
+   sem halo, sem lavagem e sem filete. O que separa as quatro frentes é o
+   título, não o enfeite. */
 
 /* Fluxo animado em looping. O movimento aqui é o conteúdo: de um lado o
    sangue entra e fica; do outro entra pouco e escapa. */
