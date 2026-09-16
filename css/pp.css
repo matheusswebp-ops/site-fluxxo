@@ -182,8 +182,8 @@ html{scroll-padding-top:88px}
   font-size:13.5px;padding:10px 18px 10px 10px;gap:11px;
 }
 .hero-dna.sec--dark .chip .chip-ic{width:26px;height:26px}
-.hero-foto .chip--2{order:2}
-.hero-foto .chip--3{order:3}
+.hero-foto .chips{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:10px}
+.hero-foto .chips .chip{margin-top:0}
 @media (max-width:1180px){
   .hero-dna.sec--dark .chip{font-size:12.5px;padding:9px 15px 9px 9px;
     white-space:normal}
@@ -875,19 +875,27 @@ html{scroll-padding-top:88px}
      e as credenciais param de disputar espaço com a foto. */
   .hero-foto{display:flex;flex-direction:column;align-items:center}
   .hero-foto .foto{width:100%}
-  /* No celular as duas credenciais deixam de ser caixa: duas pilulas brancas
-     empilhadas embaixo do retrato viravam faixas. Viram linhas de legenda -
-     icone e texto, sem fundo - centradas sob a foto. */
-  .hero-dna.sec--dark .chip{
-    position:static;transform:none;max-width:none;width:auto;
-    white-space:normal;text-align:left;justify-content:flex-start;
-    background:none;box-shadow:none;border:0;
-    color:var(--dark-ink);font-size:12.5px;font-weight:500;
-    padding:0;margin:10px 0 0;gap:10px;
+  /* No celular as duas credenciais moram num card de vidro so, sob a foto,
+     com um fio entre as linhas. Duas pilulas brancas empilhadas liam como
+     faixas; sem fundo nenhum liam como texto perdido. Um bloco unico le
+     como o que e: a ficha do medico. */
+  .hero-foto .chips{
+    margin-top:16px;gap:0;overflow:hidden;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(160,200,235,.22);border-radius:16px;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:0 18px 40px -24px rgba(0,0,0,.7);
   }
+  .hero-dna.sec--dark .chip{
+    position:static;transform:none;max-width:none;width:100%;
+    white-space:normal;text-align:left;justify-content:flex-start;
+    background:none;box-shadow:none;border:0;border-radius:0;
+    color:var(--dark-ink);font-size:13px;font-weight:500;line-height:1.35;
+    padding:12px 14px;margin:0;gap:11px;
+  }
+  .hero-dna.sec--dark .chip+.chip{border-top:1px solid rgba(160,200,235,.16)}
   .hero-dna.sec--dark .chip .chip-ic{
-    width:24px;height:24px;background:rgba(143,196,240,.16);color:#8fc4f0}
-  .hero-foto .chip--2{margin-top:16px}
+    width:26px;height:26px;background:rgba(143,196,240,.18);color:#8fc4f0}
   .hero-foto .chip--1{order:2}
   .hero-foto .chip--2{order:3}
   .hero-foto .chip--3{order:4}
