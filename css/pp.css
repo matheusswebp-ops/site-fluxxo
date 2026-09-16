@@ -170,21 +170,23 @@ html{scroll-padding-top:88px}
   background:rgba(255,255,255,.96);
   box-shadow:0 16px 34px -16px rgba(0,0,0,.8);
 }
-/* As credenciais sao frases inteiras. Em duas ou tres linhas viram etiqueta
-   amassada; a saida e uma linha so, pilula larga, apoiada no jaleco - abaixo
-   do rosto, que o DNA proibe cobrir. Uma sai pela esquerda na altura do
-   peito, a outra pela direita na altura das maos. */
+/* As credenciais sao frases inteiras e nao ficam sobre o retrato: descem
+   para uma fila logo abaixo dele, uma linha cada. Sobre a foto - em
+   qualquer tamanho - elas cobriam ou o rosto ou o jaleco, e o pedido foi
+   claro: fora da imagem. */
+.hero-foto{display:flex;flex-direction:column;align-items:center}
+.hero-foto .foto{width:100%}
 .hero-dna.sec--dark .chip{
-  white-space:nowrap;font-size:13.5px;padding:10px 18px 10px 10px;gap:11px;
+  position:static;transform:none;white-space:nowrap;
+  margin-top:10px;width:100%;justify-content:flex-start;
+  font-size:13.5px;padding:10px 18px 10px 10px;gap:11px;
 }
 .hero-dna.sec--dark .chip .chip-ic{width:26px;height:26px}
-.hero-dna.sec--dark .chip--2{top:55%;left:-16%}
-.hero-dna.sec--dark .chip--3{top:76%;right:-18%}
+.hero-foto .chip--2{order:2}
+.hero-foto .chip--3{order:3}
 @media (max-width:1180px){
-  /* retrato mais estreito: as pilulas encolhem e se afastam, nao quebram */
-  .hero-dna.sec--dark .chip{font-size:12.5px;padding:9px 15px 9px 9px}
-  .hero-dna.sec--dark .chip--2{left:-22%}
-  .hero-dna.sec--dark .chip--3{right:-24%}
+  .hero-dna.sec--dark .chip{font-size:12.5px;padding:9px 15px 9px 9px;
+    white-space:normal}
 }
 .hero-dna.sec--dark .chip::before{display:none}
 .chip-ic{

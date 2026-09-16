@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609160140">
-<link rel="stylesheet" href="css/pp.css?v=202609160140">
+<link rel="stylesheet" href="css/dna.css?v=202609160240">
+<link rel="stylesheet" href="css/pp.css?v=202609160240">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -111,6 +111,19 @@
       <figure class="foto r45">
         <img src="img/de-medico.jpg" alt="Dr. Eduardo Miranda, urologista, no consultório"
              width="794" height="1124" fetchpriority="high" decoding="async">
+        <!-- selo dentro da moldura: ancora no pe da foto, nao no pe do container,
+             que agora inclui a fila de credenciais -->
+        <span class="selo" aria-hidden="true">
+          <svg class="selo-anel" viewBox="0 0 100 100">
+            <defs>
+              <path id="ppAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
+            </defs>
+            <text><textPath href="#ppAnel">REVERSÍVEL · SEM CORTES · SEGURO · </textPath></text>
+          </svg>
+          <span class="selo-nucleo">
+            <svg width="21" height="21"><use href="#i-check"/></svg>
+          </span>
+        </span>
       </figure>
 
       <span class="chip chip--2">
@@ -120,18 +133,6 @@
         <i class="chip-ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-relogio"/></svg></i>
         + de 10 anos de experiência em saúde íntima dos homens</span>
 
-      <!-- selo: o argumento que a concorrência não tem, virado forma -->
-      <span class="selo" aria-hidden="true">
-        <svg class="selo-anel" viewBox="0 0 100 100">
-          <defs>
-            <path id="ppAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
-          </defs>
-          <text><textPath href="#ppAnel">REVERSÍVEL · SEM CORTES · SEGURO · </textPath></text>
-        </svg>
-        <span class="selo-nucleo">
-          <svg width="21" height="21"><use href="#i-check"/></svg>
-        </span>
-      </span>
     </div>
   </div>
 
