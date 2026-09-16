@@ -180,9 +180,9 @@ html{scroll-padding-top:88px}
   text-wrap:balance;
 }
 .hero-dna.sec--dark .chip .chip-ic{margin-top:-1px}
-/* duas credenciais, nao tres: uma de cada lado do retrato */
-.hero-dna.sec--dark .chip--2{top:30%;left:-34%}
-.hero-dna.sec--dark .chip--3{top:70%;right:-28%}
+.hero-dna.sec--dark .chip--1{top:16%;left:-30%}
+.hero-dna.sec--dark .chip--2{top:48%;left:-38%}
+.hero-dna.sec--dark .chip--3{top:79%;right:-26%}
 .hero-dna.sec--dark .chip::before{display:none}
 .chip-ic{
   width:25px;height:25px;border-radius:50%;flex:none;display:grid;place-items:center;
