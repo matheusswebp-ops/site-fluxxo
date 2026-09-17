@@ -2,7 +2,6 @@
 (() => {
   const form = document.getElementById('vgForm');
   if (!form) return;
-  const done = document.getElementById('vgDone');
   const errBox = document.getElementById('vgErr');
   const submit = form.querySelector('.ct-submit');
   const pretensao = document.getElementById('vgPretensao');
@@ -87,12 +86,14 @@
         body: JSON.stringify(d),
       });
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      form.hidden = true;
-      done.hidden = false;
-      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // página de obrigado levando os UTMs junto
+      const utms = new URLSearchParams();
+      params.forEach((v, k) => { if (k.startsWith('utm')) utms.set(k, v); });
+      location.href = '/obrigado-vaga-design' + (utms.toString() ? '?' + utms : '');
+      return;
     } catch (err) {
       mostrarErro(`Não conseguimos enviar agora. Tente de novo em instantes ou <a href="${WHATS}" target="_blank" rel="noopener">fale com a gente no WhatsApp</a>.`);
-    } finally {
+      // botão só volta se deu erro; no sucesso fica carregando até a página trocar
       submit.classList.remove('loading');
       submit.disabled = false;
     }

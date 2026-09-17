@@ -132,3 +132,17 @@
   .rp-dl{grid-template-columns:1fr;gap:2px}
   .rp-dl dd{margin-bottom:10px}
 }
+
+/* ============ PÁGINA DE OBRIGADO ============ */
+.ob-main{max-width:760px;text-align:center;padding-top:clamp(140px,17vw,190px);padding-bottom:clamp(80px,10vw,130px)}
+.ob-main .ob-ic{margin-bottom:26px;animation:obPop .6s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes obPop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.ob-main .ct-kicker{justify-content:center;margin-bottom:18px}
+.ob-main h1{font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.04;letter-spacing:-0.035em;color:var(--title);margin-bottom:18px}
+.ob-steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin:38px auto 26px;max-width:520px;text-align:left}
+.ob-steps li{display:flex;gap:14px;align-items:flex-start;padding:15px 17px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.ob-steps li.is-done{border-color:rgba(181,123,255,.4);background:rgba(139,61,255,.1)}
+.ob-steps b{display:block;font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text-bright);margin-bottom:3px}
+.ob-steps small{font-size:13.5px;color:var(--text-muted);line-height:1.5}
+.ob-steps .vg-n{flex-shrink:0;margin-top:1px}
+.ob-tip{font-size:13.5px;color:var(--text-dim);margin-bottom:26px}
