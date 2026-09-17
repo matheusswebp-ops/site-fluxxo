@@ -16,7 +16,7 @@ const CAMPOS = {
   nome: [true, 120], email: [true, 160], whatsapp: [true, 30], cidade: [true, 120],
   instagram: [false, 120], portfolio: [true, 400],
   experiencia: [true, 40], nichos: [false, 400],
-  disponibilidade: [true, 60], pecas_semana: [true, 40], outros_clientes: [true, 20], inicio: [true, 40],
+  disponibilidade: [true, 60], pecas_dia: [true, 40], outros_clientes: [true, 20], inicio: [true, 40],
   aceita_valor: [true, 40], pretensao: [false, 120], mei: [true, 40], teste_pratico: [true, 20],
   motivo: [false, 2000],
   utm_source: [false, 200], utm_medium: [false, 200], utm_campaign: [false, 200],

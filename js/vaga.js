@@ -30,7 +30,7 @@
     const d = {};
     ['nome', 'email', 'whatsapp', 'cidade', 'instagram', 'portfolio', 'nichos', 'pretensao', 'motivo', 'site_empresa',
      'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(n => { d[n] = valor(n); });
-    ['experiencia', 'disponibilidade', 'pecas_semana', 'outros_clientes', 'inicio', 'aceita_valor', 'mei', 'teste_pratico']
+    ['experiencia', 'disponibilidade', 'pecas_dia', 'outros_clientes', 'inicio', 'aceita_valor', 'mei', 'teste_pratico']
       .forEach(n => { d[n] = marcados(n)[0] || ''; });
     d.ferramentas = marcados('ferramentas');
     d.formatos = marcados('formatos');
@@ -48,7 +48,7 @@
         : d[k].length > 1;
       if (!ok) { document.getElementById(id).closest('.ct-field').classList.add('is-err'); erros.push(id); }
     });
-    ['experiencia', 'ferramentas', 'formatos', 'disponibilidade', 'pecas_semana', 'outros_clientes', 'inicio', 'aceita_valor', 'mei', 'teste_pratico']
+    ['experiencia', 'ferramentas', 'formatos', 'disponibilidade', 'pecas_dia', 'outros_clientes', 'inicio', 'aceita_valor', 'mei', 'teste_pratico']
       .forEach(k => {
         const vazio = Array.isArray(d[k]) ? !d[k].length : !d[k];
         if (vazio) { form.querySelector(`[data-q="${k}"]`).classList.add('is-err'); erros.push(k); }

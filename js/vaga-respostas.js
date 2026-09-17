@@ -11,7 +11,7 @@
     ['whatsapp', 'WhatsApp'], ['email', 'E-mail'], ['cidade', 'Cidade'], ['instagram', 'Instagram'],
     ['portfolio', 'Portfólio'], ['experiencia', 'Experiência'], ['ferramentas', 'Ferramentas'],
     ['formatos', 'Já entregou'], ['nichos', 'Nichos'], ['disponibilidade', 'Disponibilidade'],
-    ['pecas_semana', 'Peças por semana'], ['outros_clientes', 'Outros clientes/emprego'], ['inicio', 'Início'],
+    ['pecas_dia', 'Peças por dia'], ['outros_clientes', 'Outros clientes/emprego'], ['inicio', 'Início'],
     ['aceita_valor', 'Aceita R$ 1.000'], ['pretensao', 'Pretensão'], ['mei', 'Nota fiscal'],
     ['teste_pratico', 'Topa teste prático'], ['motivo', 'Por que a Fluxxo'],
     ['utm_source', 'utm_source'], ['utm_medium', 'utm_medium'], ['utm_campaign', 'utm_campaign'],
@@ -109,7 +109,7 @@
       el('div', {},
         el('div', { class: 'rp-name', text: c.nome }),
         el('div', { class: 'rp-meta', text: `${c.cidade} · ${c.experiencia} · ${data(c.criado_em)}` })),
-      el('div', { class: 'rp-tags' }, tag('Teste', c.teste_pratico), tag('R$ 1.000', c.aceita_valor), el('span', { class: 'rp-tag', text: c.pecas_semana + ' peças/sem' })),
+      el('div', { class: 'rp-tags' }, tag('Teste', c.teste_pratico), tag('R$ 1.000', c.aceita_valor), el('span', { class: 'rp-tag', text: (c.pecas_dia || '—') + ' peças/dia' })),
       el('span', { class: 'rp-status', 'data-s': c.status, text: c.status })));
 
     const dl = el('dl', { class: 'rp-dl' });
