@@ -16,20 +16,8 @@
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
-<section class="rp-login wrap" id="rpLogin" hidden>
-  <img src="img/brand/logo.webp" alt="fluxxo" class="brand-img" style="height:28px;width:auto;margin-bottom:28px">
-  <h1>Candidatos</h1>
-  <p>Vaga de designer de redes sociais. Digite a senha do painel.</p>
-  <form id="rpLoginForm" class="ct-card">
-    <div class="ct-field"><input id="rpSenha" type="password" placeholder=" " autocomplete="current-password" required><label for="rpSenha">Senha</label></div>
-    <p class="vg-err" id="rpLoginErr" hidden></p>
-    <button type="submit" class="ct-submit"><span class="spin" aria-hidden="true"></span><span class="lbl">Entrar</span></button>
-  </form>
-</section>
-
 <!-- ============ PAINEL ============ -->
-<div class="rp-wrap" id="rpApp" hidden>
+<div class="rp-wrap" id="rpApp">
   <div class="rp-top">
     <div>
       <img src="img/brand/logo.webp" alt="fluxxo" class="brand-img">
@@ -39,7 +27,6 @@
       <button class="rp-btn" id="rpReload" type="button">Atualizar</button>
       <button class="rp-btn" id="rpCsv" type="button">Baixar planilha (CSV)</button>
       <a class="rp-btn" href="vaga-design.html" target="_blank" rel="noopener">Ver formulário</a>
-      <button class="rp-btn" id="rpSair" type="button">Sair</button>
     </div>
   </div>
 
@@ -57,9 +44,10 @@
     <select id="fStatus"><option value="">Status: todos</option></select>
   </div>
 
+  <p class="vg-err" id="rpErr" hidden></p>
   <div class="rp-list" id="rpList"></div>
 </div>
 
-<script src="js/vaga-respostas.js?v=1"></script>
+<script src="js/vaga-respostas.js?v=2"></script>
 </body>
 </html>

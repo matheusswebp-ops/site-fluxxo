@@ -2,11 +2,8 @@
 // Tudo que vem do candidato entra na tela por textContent (nunca innerHTML).
 (() => {
   const API = '/api/candidaturas';
-  const CHAVE = 'fluxxo_painel_vaga';
   const $ = id => document.getElementById(id);
 
-  let senha = '';
-  try { senha = sessionStorage.getItem(CHAVE) || ''; } catch {}
   let dados = [];
   let statusLista = ['novo', 'em análise', 'teste enviado', 'aprovado', 'reprovado'];
 
@@ -42,7 +39,7 @@
   async function api(metodo, corpo) {
     const r = await fetch(API, {
       method: metodo,
-      headers: { authorization: 'Bearer ' + senha, ...(corpo ? { 'content-type': 'application/json' } : {}) },
+      headers: corpo ? { 'content-type': 'application/json' } : {},
       body: corpo ? JSON.stringify(corpo) : undefined,
     });
     const j = await r.json().catch(() => ({}));
@@ -50,29 +47,19 @@
     return j;
   }
 
-  function mostrarLogin(msg) {
-    $('rpApp').hidden = true;
-    $('rpLogin').hidden = false;
-    $('rpLoginErr').hidden = !msg;
-    $('rpLoginErr').textContent = msg || '';
-    $('rpSenha').focus();
-  }
-
   async function carregar() {
     try {
       const j = await api('GET');
       dados = j.candidaturas || [];
       if (j.status) statusLista = j.status;
-      try { sessionStorage.setItem(CHAVE, senha); } catch {}
-      $('rpLogin').hidden = true;
-      $('rpApp').hidden = false;
+      $('rpErr').hidden = true;
       preencherFiltroStatus();
       render();
     } catch (e) {
-      try { sessionStorage.removeItem(CHAVE); } catch {}
-      mostrarLogin(e.status === 401 ? 'Senha incorreta.'
-        : e.message === 'armazenamento_nao_configurado' ? 'O armazenamento ainda não foi ligado no Cloudflare.'
-        : 'Não foi possível carregar agora.');
+      $('rpErr').textContent = e.message === 'armazenamento_nao_configurado'
+        ? 'O armazenamento ainda não foi ligado no Cloudflare.'
+        : 'Não foi possível carregar agora. Tente atualizar.';
+      $('rpErr').hidden = false;
     }
   }
 
@@ -158,7 +145,7 @@
         Object.assign(c, j.candidatura);
         render();
       } catch (e) {
-        aviso.textContent = e.status === 401 ? 'Sessão expirou, entre de novo.' : 'Não salvou. Tente de novo.';
+        aviso.textContent = 'Não salvou. Tente de novo.';
         salvar.disabled = false;
       }
     });
@@ -189,20 +176,9 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
-  $('rpLoginForm').addEventListener('submit', e => {
-    e.preventDefault();
-    senha = $('rpSenha').value;
-    carregar();
-  });
   $('rpReload').addEventListener('click', carregar);
   $('rpCsv').addEventListener('click', baixarCsv);
-  $('rpSair').addEventListener('click', () => {
-    senha = '';
-    try { sessionStorage.removeItem(CHAVE); } catch {}
-    $('rpSenha').value = '';
-    mostrarLogin();
-  });
   ['fBusca', 'fTeste', 'fValor', 'fStatus'].forEach(id => $(id).addEventListener('input', render));
 
-  if (senha) carregar(); else mostrarLogin();
+  carregar();
 })();

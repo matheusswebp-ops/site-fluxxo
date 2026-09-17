@@ -1,12 +1,12 @@
 // Candidaturas da vaga de design (fluxxo.io/vaga-design)
 //
 // POST  público   → grava uma candidatura
-// GET   com senha → lista todas (painel fluxxo.io/vaga-design-respostas)
-// PATCH com senha → muda status/nota de uma candidatura
+// GET             → lista todas (painel fluxxo.io/vaga-design-respostas)
+// PATCH           → muda status/nota de uma candidatura
+// Sem senha, por decisão do Mateus: o painel é aberto para quem tiver o endereço.
 //
-// Precisa, no projeto do Cloudflare Pages (Settings → Bindings / Variables):
+// Precisa, no projeto do Cloudflare Pages (Settings → Bindings):
 //   KV namespace ligado como  CANDIDATURAS
-//   variável secreta          PAINEL_SENHA
 
 const PREFIXO = 'c:';
 const STATUS = ['novo', 'em análise', 'teste enviado', 'aprovado', 'reprovado'];
@@ -31,20 +31,6 @@ const json = (dados, status = 200) =>
   });
 
 const semArmazenamento = env => !env.CANDIDATURAS;
-
-async function autorizado(request, env) {
-  if (!env.PAINEL_SENHA) return false;
-  const enviada = (request.headers.get('authorization') || '').replace(/^Bearer\s+/i, '');
-  const enc = new TextEncoder();
-  const [a, b] = await Promise.all([
-    crypto.subtle.digest('SHA-256', enc.encode(enviada)),
-    crypto.subtle.digest('SHA-256', enc.encode(env.PAINEL_SENHA)),
-  ]);
-  const va = new Uint8Array(a), vb = new Uint8Array(b);
-  let dif = 0;
-  for (let i = 0; i < va.length; i++) dif |= va[i] ^ vb[i];
-  return dif === 0;
-}
 
 export async function onRequestPost({ request, env }) {
   if (semArmazenamento(env)) return json({ erro: 'armazenamento_nao_configurado' }, 503);
@@ -84,7 +70,6 @@ export async function onRequestPost({ request, env }) {
 
 export async function onRequestGet({ request, env }) {
   if (semArmazenamento(env)) return json({ erro: 'armazenamento_nao_configurado' }, 503);
-  if (!(await autorizado(request, env))) return json({ erro: 'nao_autorizado' }, 401);
 
   const chaves = [];
   let cursor;
@@ -100,7 +85,6 @@ export async function onRequestGet({ request, env }) {
 
 export async function onRequestPatch({ request, env }) {
   if (semArmazenamento(env)) return json({ erro: 'armazenamento_nao_configurado' }, 503);
-  if (!(await autorizado(request, env))) return json({ erro: 'nao_autorizado' }, 401);
 
   let corpo;
   try { corpo = await request.json(); } catch { return json({ erro: 'json_invalido' }, 400); }
