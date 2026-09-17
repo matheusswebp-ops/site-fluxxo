@@ -1,0 +1,527 @@
+/* ============================================================
+   VASECTOMIA · Variação 01 — Preço / acesso
+   Quarta página do Dr. Eduardo. Herda os primitivos de dna.css,
+   com preset de cor próprio.
+
+   As três irmãs já usam navy claro+acento navy, navy escuro+acento
+   claro e grafite+cobre. Esta ganha verde-teal clínico: é a cor de
+   "seguro", "liberado", "sem intercorrência" — o oposto do medo que
+   ronda a decisão. E o hero não tem retrato: sem foto ainda, e o
+   argumento da página é o card "o que está incluso", não o rosto do
+   médico — o rosto mora na autoridade, mais abaixo.
+   ============================================================ */
+
+/* ---------- preset D — verde clínico ---------- */
+.tema-verde{
+  --paper:#f4f8f6;
+  --paper-2:#ffffff;
+  --paper-tint:#e7f1ec;
+  --ink:#132420;
+  --ink-soft:#5b6c65;
+  --line:rgba(19,36,32,.12);
+  --brand:#0f7a5c;
+  --brand-deep:#0b5c45;
+  --brand-soft:#ddefe7;
+  --accent:#159c78;
+  --dark-1:#0a1e18;
+  --dark-2:#123328;
+  --dark-ink:#fbfdfc;
+  /* apoio sobre escuro: claro tingido de verde, nunca cinza */
+  --dark-ink-soft:#a9cfc1;
+  --dark-line:rgba(169,207,193,.18);
+  --alerta:#c4553f;
+  --alerta-soft:#f8e6e1;
+  --sombra:0 24px 48px -28px rgba(10,30,24,.36);
+  --sombra-chip:0 10px 26px -12px rgba(10,30,24,.30);
+}
+
+/* utilitário: rótulo só para leitor de tela (o campo de e-mail do lead
+   magnet já tem placeholder visível, mas precisa de label para acessibilidade) */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------- slots de preenchimento ---------- */
+.slot{
+  border-bottom:1px dashed rgba(15,122,92,.45);
+  padding-bottom:1px;
+  white-space:nowrap;
+}
+
+/* ---------- 1. CABEÇALHO FIXO ---------- */
+html{scroll-padding-top:88px}
+
+.topo{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .3s var(--ease),box-shadow .3s var(--ease),
+             backdrop-filter .3s var(--ease),padding .3s var(--ease);
+  padding:16px 0;
+}
+.topo.solido{
+  background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(1.5) blur(16px);
+  -webkit-backdrop-filter:saturate(1.5) blur(16px);
+  box-shadow:0 1px 0 var(--line),0 16px 34px -28px rgba(10,30,24,.22);
+  padding:10px 0;
+}
+.topo .wrap{display:flex;align-items:center;gap:20px}
+
+.marca{display:flex;align-items:center;gap:11px;min-width:0}
+.marca-sigla{
+  width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#5fceac,#0f7a5c);color:#06140f;
+}
+.marca-txt{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.marca-nome{font-family:var(--font-display);font-size:15.5px;font-weight:700;
+  letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:var(--ink)}
+.marca-fone{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:5px}
+
+.topo .btn{margin-left:auto;padding:11px 20px;font-size:14px}
+
+/* barra de progresso de leitura */
+.progresso{position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:linear-gradient(90deg,#0f7a5c,#5fceac);
+  transition:width .1s linear}
+
+/* pular para o conteúdo */
+.pular{position:absolute;left:-9999px;top:0;z-index:100;background:var(--brand);
+  color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-size:14px}
+.pular:focus{left:0}
+
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ---------- 2. HERO ---------- */
+/* Sem retrato: nenhuma foto ainda, e o argumento aqui não é o rosto do
+   médico — é o que o procedimento resolve. O card "o que está incluso"
+   é o âncora visual, não uma imagem. O rosto entra na autoridade. */
+.hero-vs{
+  position:relative;
+  padding:clamp(112px,11vw,150px) 0 clamp(56px,6vw,86px);
+  background:
+    radial-gradient(ellipse 60% 60% at 82% 18%,rgba(15,122,92,.09),transparent 68%),
+    radial-gradient(ellipse 50% 50% at 0% 100%,rgba(95,206,172,.10),transparent 66%),
+    var(--paper);
+  overflow:hidden;
+}
+.hero-vs::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(19,36,32,.05) 1px,transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 78% 20%,#000,transparent 72%);
+  mask-image:radial-gradient(ellipse 60% 60% at 78% 20%,#000,transparent 72%);
+}
+.hero-vs>.wrap{
+  position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,54%) minmax(0,46%);
+  gap:clamp(30px,4vw,60px);align-items:start;
+}
+.hero-vs .kicker{margin-bottom:20px}
+.hero-vs .h1{margin-top:0}
+.hero-vs .lead{margin-top:20px;max-width:48ch}
+
+.hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
+  flex-wrap:wrap;margin-top:clamp(26px,3vw,36px)}
+.hero-acoes .btn{margin-top:0}
+
+/* selos em linha, sob o lead — credencial concreta, curta */
+.hero-selos{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;
+  margin-top:clamp(24px,2.6vw,32px)}
+.hero-selos li{display:flex;align-items:center;gap:8px;font-size:13.5px;
+  font-weight:500;color:var(--ink)}
+.hero-selos .ic{
+  width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+}
+
+/* ----- o card "o que está incluso" ----- */
+.incluso{
+  position:relative;
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:clamp(26px,2.6vw,34px);
+  box-shadow:var(--sombra);
+}
+.incluso::before{
+  content:"";position:absolute;top:0;left:26px;right:26px;height:3px;
+  border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+}
+.incluso h2{
+  font-family:var(--font-display);font-size:19px;font-weight:600;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:20px;
+}
+.incluso-lista{list-style:none;display:flex;flex-direction:column;gap:14px;
+  margin-bottom:24px}
+.incluso-lista li{display:flex;align-items:flex-start;gap:12px;
+  font-size:14.5px;line-height:1.5;color:var(--ink)}
+.incluso-lista .ic{
+  width:23px;height:23px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);margin-top:1px;
+}
+.incluso .btn{width:100%;justify-content:center;margin:0}
+.incluso-nota{margin-top:16px;font-size:12px;line-height:1.55;
+  color:var(--ink-soft);text-align:center}
+
+/* ---------- 3. BARRA DE CREDIBILIDADE ---------- */
+.credibilidade{
+  padding-block:clamp(30px,3.2vw,46px);
+  background:var(--paper-tint);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.credibilidade .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(18px,2.4vw,32px);
+}
+.credibilidade li{list-style:none;text-align:center}
+.credibilidade .num{
+  display:block;font-family:var(--font-display);
+  font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.03em;
+  color:var(--brand-deep);font-variant-numeric:tabular-nums;line-height:1.1;
+}
+.credibilidade .legenda{
+  display:block;margin-top:6px;font-size:12.5px;line-height:1.4;
+  color:var(--ink-soft);
+}
+
+/* ---------- 4. A TÉCNICA (escura, ênfase 1 de 2) ---------- */
+.tecnica{
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,rgba(95,206,172,.14),transparent 66%),
+    linear-gradient(180deg,#081812,var(--dark-2) 58%,#0a1f18);
+  overflow:hidden;
+}
+.tecnica::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(95,206,172,.4) 32%,
+             rgba(95,206,172,.4) 68%,transparent);
+}
+.tecnica .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.tecnica .kicker{color:#7fe0be}
+.tecnica .h2 .verde{color:#7fe0be}
+
+/* diagrama comparativo: técnica tradicional × esta técnica */
+.diagrama{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:clamp(16px,2.4vw,36px);
+  max-width:920px;margin:0 auto clamp(40px,4.2vw,58px);
+  padding:clamp(24px,2.6vw,34px);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--dark-line);border-radius:var(--radius-lg);
+}
+.diagrama-lado{text-align:center}
+.diagrama-lado h3{
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.diagrama-lado--nao h3{color:rgba(226,214,196,.5)}
+.diagrama-lado--sim h3{color:#7fe0be}
+.diagrama-icones{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
+.diagrama-ic{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  position:relative;
+}
+.diagrama-lado--nao .diagrama-ic{
+  background:rgba(226,214,196,.06);border:1px solid rgba(226,214,196,.14);
+  color:rgba(226,214,196,.45);
+}
+.diagrama-lado--sim .diagrama-ic{
+  background:rgba(95,206,172,.14);border:1px solid rgba(95,206,172,.34);
+  color:#7fe0be;
+}
+.diagrama-lado--nao .diagrama-ic::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(45deg,transparent 47%,rgba(226,214,196,.35) 50%,transparent 53%);
+}
+.diagrama-lado p{font-size:13px;line-height:1.5;color:var(--dark-ink-soft);
+  margin:0 auto;max-width:22ch}
+.diagrama-vs{
+  width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:rgba(95,206,172,.12);border:1px solid rgba(95,206,172,.3);
+  color:#7fe0be;font-size:11px;font-weight:700;
+}
+
+.tecnica-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.tecnica-item{
+  padding:clamp(22px,2.2vw,28px);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--dark-line);border-radius:var(--radius);
+}
+.tecnica-ic{
+  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(95,206,172,.13);color:#7fe0be;margin-bottom:16px;
+}
+.tecnica-item h3{font-size:var(--fs-card);font-weight:600;color:var(--dark-ink);
+  margin-bottom:8px}
+.tecnica-item p{font-size:var(--fs-body);line-height:var(--lh-body);
+  color:var(--dark-ink-soft);margin:0}
+
+/* ---------- 5. VANTAGENS ---------- */
+.vantagens .head-center{margin-bottom:clamp(34px,3.6vw,50px)}
+.vantagens .kicker{color:var(--brand)}
+.vantagens-grid .card-icone{background:var(--brand-soft);color:var(--brand)}
+
+/* ---------- 6. A OBJEÇÃO Nº 1 ---------- */
+.objecao{
+  background:var(--paper-tint);
+}
+.objecao .wrap{max-width:860px}
+.objecao-card{
+  padding:clamp(32px,3.6vw,52px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);text-align:center;
+  box-shadow:var(--sombra);
+}
+.objecao-pergunta{
+  font-family:var(--font-display);
+  font-size:clamp(21px,2.3vw,30px);font-weight:500;line-height:1.35;
+  letter-spacing:-.015em;color:var(--ink);margin-bottom:24px;
+}
+.objecao-pergunta::before{content:"\201C"}
+.objecao-pergunta::after{content:"\201D"}
+.objecao-resposta{
+  font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.65;color:var(--ink-soft);
+  max-width:62ch;margin:0 auto;padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.objecao-resposta b{color:var(--ink);font-weight:600}
+
+/* ---------- 7. FAQ ---------- */
+.faq{background:var(--paper-2)}
+.faq .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.faq .kicker{color:var(--brand)}
+.faq-lista{max-width:860px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{
+  display:flex;align-items:center;gap:18px;cursor:pointer;list-style:none;
+  padding:clamp(18px,1.8vw,24px) 0;
+  font-size:clamp(15.5px,1.3vw,18px);font-weight:500;line-height:1.4;
+  color:var(--ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{
+  margin-left:auto;flex:none;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+  transition:transform .3s var(--ease),background .3s var(--ease);
+}
+.faq details[open] summary i{transform:rotate(180deg)}
+.faq details p{
+  padding:0 60px clamp(20px,2vw,26px) 0;margin:0;
+  font-size:var(--fs-lead);line-height:1.65;color:var(--ink-soft);
+  max-width:70ch;
+}
+
+/* ---------- 8. AUTORIDADE ---------- */
+.autoridade{background:var(--paper)}
+.autoridade-grid{display:grid;grid-template-columns:minmax(0,38%) minmax(0,62%);
+  gap:clamp(30px,4vw,64px);align-items:center}
+.autoridade .kicker{color:var(--brand)}
+.autoridade-foto{
+  position:relative;margin:0;width:100%;aspect-ratio:4/5;
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 40px 80px -46px rgba(10,30,24,.5);
+}
+.autoridade-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.autoridade .h2{margin-top:16px}
+.autoridade-reg{margin-top:12px;font-size:13.5px;font-weight:600;
+  letter-spacing:.01em;color:var(--brand)}
+.autoridade .lead{margin-top:18px;max-width:52ch}
+.credenciais{list-style:none;display:flex;flex-direction:column;gap:12px;
+  margin-top:clamp(22px,2.4vw,30px)}
+.credenciais li{display:flex;gap:12px;align-items:flex-start;
+  font-size:var(--fs-body);line-height:1.5;color:var(--ink)}
+.credenciais .ic{
+  width:22px;height:22px;flex:none;border-radius:50%;display:grid;
+  place-items:center;background:var(--brand);color:#fff;margin-top:1px;
+}
+
+/* ---------- 9. PROVA SOCIAL ---------- */
+.prova-sec{background:var(--paper-tint)}
+.prova-sec .head-center{margin-bottom:clamp(30px,3.2vw,42px)}
+.prova-sec .kicker{color:var(--brand)}
+.prova-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.depo{
+  margin:0;padding:clamp(22px,2.2vw,28px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius);display:flex;flex-direction:column;gap:14px;
+}
+.depo-cab{display:flex;align-items:center;gap:11px}
+.depo-avatar{
+  width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+}
+.depo .estrelas{color:var(--brand);font-size:12px;letter-spacing:1.5px}
+.depo p{font-size:14.5px;line-height:1.6;color:var(--ink);margin:0}
+.depo p::before{content:"\201C"}
+.depo p::after{content:"\201D"}
+.depo cite{font-style:normal;font-size:var(--fs-micro);color:var(--ink-soft)}
+.prova-nota{margin:clamp(24px,2.6vw,32px) auto 0;text-align:center;
+  font-size:12.5px;color:var(--ink-soft);max-width:60ch}
+
+/* ---------- 10. CONDIÇÕES (escura, ênfase 2 de 2) ---------- */
+.condicoes{
+  background:
+    radial-gradient(ellipse 60% 90% at 50% 0%,rgba(95,206,172,.12),transparent 62%),
+    linear-gradient(180deg,#0a1e18,#123328 54%,#0a1f18);
+}
+.condicoes::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(95,206,172,.4) 32%,
+             rgba(95,206,172,.4) 68%,transparent);
+}
+.condicoes .head-center{margin-bottom:clamp(30px,3.2vw,42px)}
+.condicoes .kicker{color:#7fe0be}
+.condicoes .h2 .verde{color:#7fe0be}
+.condicoes .lead{color:var(--dark-ink-soft)}
+
+.condicoes-card{
+  max-width:640px;margin:0 auto;
+  padding:clamp(28px,3vw,40px);
+  background:rgba(255,255,255,.05);border:1px solid var(--dark-line);
+  border-radius:var(--radius-lg);
+}
+.condicoes-lista{list-style:none;display:flex;flex-direction:column;gap:16px;
+  margin-bottom:clamp(26px,2.8vw,34px)}
+.condicoes-lista li{display:flex;align-items:center;gap:14px;
+  font-size:15.5px;color:var(--dark-ink);font-weight:500}
+.condicoes-lista .ic{
+  width:26px;height:26px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:rgba(95,206,172,.16);color:#7fe0be;
+}
+.condicoes-nota{margin-top:18px;padding-top:18px;border-top:1px solid var(--dark-line);
+  text-align:center;font-size:12.5px;color:var(--dark-ink-soft)}
+.condicoes-card .btn{width:100%;justify-content:center;margin:0}
+.condicoes .sec--dark .btn{background:#fff;color:var(--brand-deep)}
+
+/* ---------- 11. CTA FINAL + LOCALIZAÇÃO ---------- */
+.local{background:var(--paper-2)}
+.local-grid{display:grid;grid-template-columns:minmax(0,48%) minmax(0,52%);
+  gap:clamp(30px,4vw,60px);align-items:center}
+.local .kicker{color:var(--brand)}
+.local .h2{margin-top:16px}
+.local .lead{margin-top:18px;max-width:46ch}
+.local .hero-acoes{margin-top:clamp(26px,2.8vw,34px)}
+
+.local-info{margin-top:clamp(30px,3.2vw,40px);display:flex;flex-direction:column;gap:22px}
+.local-bloco h3{font-size:11.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+.local-bloco p{font-size:14.5px;line-height:1.6;color:var(--ink)}
+.local-bloco p b{font-weight:600}
+
+.local-foto{
+  position:relative;width:100%;aspect-ratio:3/2;margin:0;
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 32px 64px -40px rgba(10,30,24,.5);
+}
+.local-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- 12. LEAD MAGNET ---------- */
+.magnet{background:var(--paper-tint)}
+.magnet .wrap{max-width:720px;text-align:center}
+.magnet .h2{margin-top:14px}
+.magnet .lead{margin:18px auto 0;max-width:52ch}
+.magnet-form{
+  display:flex;gap:12px;max-width:460px;margin:clamp(26px,2.8vw,34px) auto 0;
+}
+.magnet-form input{
+  flex:1;min-width:0;font:inherit;font-size:14.5px;color:var(--ink);
+  padding:14px 18px;border-radius:var(--radius-pill);
+  background:var(--paper-2);border:1px solid var(--line);
+}
+.magnet-form input::placeholder{color:rgba(91,108,101,.7)}
+.magnet-form input:focus{outline:none;border-color:var(--brand)}
+.magnet-form .btn{flex:none;margin:0;white-space:nowrap;border:0;
+  font-family:inherit;cursor:pointer}
+
+/* ---------- moldura de imagem vazia ---------- */
+.vago{
+  background:
+    repeating-linear-gradient(135deg,rgba(19,36,32,.045) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,var(--paper-tint),#d9e9e1);
+  border:1px dashed rgba(19,36,32,.18);
+  box-shadow:none;position:relative;
+}
+.vago-tag{
+  position:absolute;top:12px;left:12px;z-index:2;
+  font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand);background:rgba(255,255,255,.86);
+  border:1px solid rgba(15,122,92,.2);
+  padding:5px 9px;border-radius:var(--radius-pill);
+}
+.vago::after{
+  content:attr(data-brief);
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:12px 14px;font-size:11px;line-height:1.45;color:var(--ink-soft);
+  background:linear-gradient(to top,rgba(255,255,255,.96),rgba(255,255,255,.72));
+  border-top:1px dashed rgba(19,36,32,.14);
+}
+
+/* ---------- RODAPÉ ---------- */
+.rodape{
+  background:#081712;color:var(--dark-ink-soft);
+  padding:clamp(34px,3.6vw,48px) 0;
+  border-top:1px solid var(--dark-line);
+}
+.rodape p{font-size:12.5px;line-height:1.7;margin:0}
+.rodape-tec b{color:var(--dark-ink);font-weight:700}
+.rodape-end{margin-top:4px}
+.rodape-leg{margin-top:14px;padding-top:14px;
+  border-top:1px solid rgba(169,207,193,.1);font-size:11.5px}
+.rodape a{color:#7fe0be}
+.rodape .slot{border-bottom-color:rgba(169,207,193,.4)}
+
+/* ---------- barra fixa do celular ---------- */
+.barra-mobile{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:49;
+  padding:11px var(--gutter) calc(11px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .3s var(--ease);
+}
+.barra-mobile.visivel{transform:none}
+.barra-mobile .btn{width:100%;justify-content:center;box-shadow:var(--sombra)}
+@media (max-width:640px){
+  .barra-mobile{display:block}
+  /* sem isto a barra fixa cobre as duas últimas linhas do rodapé —
+     justo o endereço e o CNPJ, que são texto de compliance */
+  .rodape{padding-bottom:calc(clamp(34px,3.6vw,48px) + 64px + env(safe-area-inset-bottom))}
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width:980px){
+  .hero-vs>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
+  .incluso{max-width:460px}
+  .credibilidade .wrap{grid-template-columns:1fr 1fr;row-gap:22px}
+  .tecnica-grid{grid-template-columns:1fr}
+  .diagrama{grid-template-columns:1fr;gap:20px}
+  .diagrama-vs{margin:0 auto}
+  .vantagens-grid{grid-template-columns:1fr 1fr}
+  .autoridade-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .autoridade-foto{max-width:340px}
+  .prova-grid{grid-template-columns:1fr}
+  .local-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+}
+
+@media (max-width:640px){
+  html{scroll-padding-top:74px}
+  .marca-fone{display:none}
+  .hero-vs{padding-top:96px}
+  .hero-acoes{width:100%}
+  .hero-acoes .btn{width:100%;justify-content:center}
+  .credibilidade .wrap{grid-template-columns:1fr 1fr}
+  .diagrama-icones{gap:10px}
+  .diagrama-ic{width:44px;height:44px}
+  .vantagens-grid{grid-template-columns:1fr}
+  .faq summary{gap:12px}
+  .faq summary i{width:28px;height:28px}
+  .faq details p{padding-right:0}
+  .magnet-form{flex-direction:column}
+  .magnet-form .btn{width:100%;justify-content:center}
+  body{padding-bottom:0}
+}
