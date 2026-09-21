@@ -320,7 +320,9 @@ html{scroll-padding-top:88px}
 
 /* a ilustração: largura inteira da coluna, não miniatura */
 .diagrama-foto{
-  width:100%;aspect-ratio:4/3;margin:14px 0 0;position:relative;
+  /* 16/9: as fotos sao 1280x720 e o instrumento fica na beirada;
+     recortadas em 4/3 a seringa e o bisturi saiam do quadro */
+  width:100%;aspect-ratio:16/9;margin:14px 0 0;position:relative;
   border-radius:0;border-left:0;border-right:0;
 }
 .diagrama-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
