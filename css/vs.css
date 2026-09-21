@@ -219,23 +219,13 @@ html{scroll-padding-top:88px}
 }
 .diagrama-lado--nao h3{color:rgba(226,214,196,.5)}
 .diagrama-lado--sim h3{color:#7fe0be}
-.diagrama-icones{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
-.diagrama-ic{
-  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
-  position:relative;
+
+/* a ilustração de cada lado: compacta, quadrada, centrada na coluna */
+.diagrama-foto{
+  width:132px;aspect-ratio:4/3;margin:0 auto 14px;position:relative;
+  border-radius:12px;overflow:hidden;
 }
-.diagrama-lado--nao .diagrama-ic{
-  background:rgba(226,214,196,.06);border:1px solid rgba(226,214,196,.14);
-  color:rgba(226,214,196,.45);
-}
-.diagrama-lado--sim .diagrama-ic{
-  background:rgba(95,206,172,.14);border:1px solid rgba(95,206,172,.34);
-  color:#7fe0be;
-}
-.diagrama-lado--nao .diagrama-ic::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(45deg,transparent 47%,rgba(226,214,196,.35) 50%,transparent 53%);
-}
+.diagrama-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .diagrama-lado p{font-size:13px;line-height:1.5;color:var(--dark-ink-soft);
   margin:0 auto;max-width:22ch}
 .diagrama-vs{
@@ -460,6 +450,26 @@ html{scroll-padding-top:88px}
   background:linear-gradient(to top,rgba(255,255,255,.96),rgba(255,255,255,.72));
   border-top:1px dashed rgba(19,36,32,.14);
 }
+/* moldura vazia sobre seção escura: clara ali vira um bloco pálido */
+.sec--dark .vago{
+  background:
+    repeating-linear-gradient(135deg,rgba(169,207,193,.05) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,#173a2d,#0f2a21);
+  border-color:rgba(169,207,193,.18);
+}
+.sec--dark .vago-tag{
+  color:#7fe0be;background:rgba(10,30,24,.9);
+  border-color:rgba(95,206,172,.28);
+}
+.sec--dark .vago::after{
+  color:var(--dark-ink-soft);
+  background:linear-gradient(to top,rgba(10,30,24,.96),rgba(10,30,24,.72));
+  border-top-color:rgba(169,207,193,.14);
+}
+/* a moldura do diagrama é compacta: etiqueta e legenda encolhem junto */
+.diagrama-foto .vago-tag{top:5px;left:5px;font-size:7px;padding:3px 6px;
+  letter-spacing:.1em}
+.diagrama-foto.vago::after{display:none}
 
 /* ---------- RODAPÉ ---------- */
 .rodape{
