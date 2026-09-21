@@ -371,27 +371,51 @@ html{scroll-padding-top:88px}
 .vantagens-grid .card-icone{background:var(--brand-soft);color:var(--brand)}
 
 /* ---------- 6. A OBJEÇÃO Nº 1 ---------- */
-.objecao{
-  background:var(--paper-tint);
-}
-.objecao .wrap{max-width:860px}
+/* A resposta para o medo número 1 é uma palavra só. Então ela é que vira
+   o elemento: "Não." em corpo de display, ao lado do porquê. Card branco e
+   texto centrado não diziam nada antes de serem lidos — este diz. */
+.objecao{background:var(--paper-tint)}
+.objecao .wrap{max-width:900px}
 .objecao-card{
-  padding:clamp(32px,3.6vw,52px);
+  position:relative;overflow:hidden;
   background:var(--paper-2);border:1px solid var(--line);
-  border-radius:var(--radius-lg);text-align:center;
-  box-shadow:var(--sombra);
+  border-radius:var(--radius-lg);box-shadow:var(--sombra);
+  padding:clamp(32px,3.6vw,52px) clamp(26px,3.4vw,54px) clamp(28px,3.2vw,46px);
+}
+/* campo verde no topo: separa a dúvida da resposta sem precisar de régua */
+.objecao-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;
+  height:clamp(130px,14vw,190px);pointer-events:none;
+  background:linear-gradient(180deg,var(--brand-soft),rgba(221,239,231,0));
+}
+.objecao-aspas{
+  position:relative;display:grid;place-items:center;
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(140deg,#5fceac,var(--brand));color:#fff;
+  margin-bottom:clamp(18px,2vw,26px);
+  box-shadow:0 14px 28px -14px rgba(10,30,24,.5);
 }
 .objecao-pergunta{
+  position:relative;margin:0;max-width:21ch;
   font-family:var(--font-display);
-  font-size:clamp(21px,2.3vw,30px);font-weight:500;line-height:1.35;
-  letter-spacing:-.015em;color:var(--ink);margin-bottom:24px;
+  font-size:clamp(22px,2.6vw,34px);font-weight:500;line-height:1.28;
+  letter-spacing:-.02em;color:var(--ink);text-wrap:balance;
 }
-.objecao-pergunta::before{content:"\201C"}
-.objecao-pergunta::after{content:"\201D"}
-.objecao-resposta{
-  font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.65;color:var(--ink-soft);
-  max-width:62ch;margin:0 auto;padding-top:24px;
+.objecao-resp{
+  position:relative;
+  display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(18px,3vw,44px);align-items:start;
+  margin-top:clamp(26px,3vw,38px);padding-top:clamp(22px,2.4vw,32px);
   border-top:1px solid var(--line);
+}
+.objecao-nao{
+  margin:0;font-family:var(--font-display);
+  font-size:clamp(46px,6.2vw,88px);font-weight:700;line-height:.84;
+  letter-spacing:-.05em;color:var(--brand);
+}
+.objecao-resposta{
+  margin:0;max-width:56ch;
+  font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.68;color:var(--ink-soft);
 }
 .objecao-resposta b{color:var(--ink);font-weight:600}
 
@@ -524,7 +548,9 @@ html{scroll-padding-top:88px}
   border-radius:var(--radius-lg);overflow:hidden;
   box-shadow:0 32px 64px -40px rgba(10,30,24,.5);
 }
-.local-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* scale porque o arquivo original traz uma moldura branca fina embutida */
+.local-foto img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transform:scale(1.04)}
 
 /* ---------- 12. LEAD MAGNET ---------- */
 .magnet{background:var(--paper-tint)}
@@ -611,6 +637,9 @@ html{scroll-padding-top:88px}
 .barra-mobile.visivel{transform:none}
 .barra-mobile .btn{width:100%;justify-content:center;box-shadow:var(--sombra)}
 @media (max-width:640px){
+  .objecao-resp{grid-template-columns:1fr;gap:14px}
+  .objecao-nao{line-height:1}
+
   .barra-mobile{display:block}
   /* sem isto a barra fixa cobre as duas últimas linhas do rodapé —
      justo o endereço e o CNPJ, que são texto de compliance */
