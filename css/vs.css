@@ -6,9 +6,9 @@
    As três irmãs já usam navy claro+acento navy, navy escuro+acento
    claro e grafite+cobre. Esta ganha verde-teal clínico: é a cor de
    "seguro", "liberado", "sem intercorrência" — o oposto do medo que
-   ronda a decisão. E o hero não tem retrato: sem foto ainda, e o
-   argumento da página é o card "o que está incluso", não o rosto do
-   médico — o rosto mora na autoridade, mais abaixo.
+   ronda a decisão. O hero leva o retrato do médico, como as irmãs, mas
+   em card 4:5 sobre halo verde — com o card de conversão apoiado na
+   base dele.
    ============================================================ */
 
 /* ---------- preset D — verde clínico ---------- */
@@ -94,9 +94,8 @@ html{scroll-padding-top:88px}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
 
 /* ---------- 2. HERO ---------- */
-/* Sem retrato: nenhuma foto ainda, e o argumento aqui não é o rosto do
-   médico — é o que o procedimento resolve. O card "o que está incluso"
-   é o âncora visual, não uma imagem. O rosto entra na autoridade. */
+/* Retrato à direita e, apoiado na base dele, o card de conversão. O card
+   ancora embaixo de propósito: ali só há jaleco, nunca o rosto. */
 .hero-vs{
   position:relative;
   padding:clamp(112px,11vw,150px) 0 clamp(56px,6vw,86px);
@@ -136,14 +135,87 @@ html{scroll-padding-top:88px}
   background:var(--brand-soft);color:var(--brand);
 }
 
+/* ----- o retrato ----- */
+/* Card 4:5 sobre halo verde — a terceira saída do DNA para retrato sem
+   recorte. O arco já é do preenchimento e a foto sangrando a tela é da
+   reposição; repetir qualquer uma seria entregar a mesma página de novo. */
+.hero-foto{
+  position:relative;justify-self:end;
+  width:100%;max-width:440px;
+  /* o card se apoia na base da foto e passa dela: o respiro embaixo é o
+     que impede que ele encoste na barra de credibilidade */
+  margin-bottom:clamp(24px,3vw,44px);
+}
+.hero-foto .foto{
+  position:relative;z-index:1;margin:0;width:100%;aspect-ratio:4/5;
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(150deg,#cfe6da,#0f7a5c);
+  box-shadow:0 40px 80px -44px rgba(10,30,24,.55);
+}
+.hero-foto .foto img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 8%;
+}
+/* veu verde na base: sem ele o cinza do estudio termina numa aresta dura
+   e o retrato le como adesivo colado no fundo claro */
+.hero-foto .foto::after{
+  content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;
+  background:
+    linear-gradient(to top,rgba(15,122,92,.30),rgba(15,122,92,.06) 34%,transparent 58%),
+    radial-gradient(ellipse 80% 36% at 50% 104%,rgba(11,92,69,.34),transparent 70%);
+}
+/* halo: separa o retrato do fundo claro sem precisar de moldura dura */
+.hero-foto .halo{
+  position:absolute;z-index:0;left:50%;top:44%;transform:translate(-50%,-50%);
+  width:124%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,
+    rgba(15,122,92,.16) 0 34%,rgba(95,206,172,.12) 56%,transparent 72%);
+  filter:blur(6px);
+}
+.hero-foto .halo::before,
+.hero-foto .halo::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  aspect-ratio:1;border-radius:50%;
+}
+.hero-foto .halo::before{width:76%;border:1px solid rgba(15,122,92,.16)}
+.hero-foto .halo::after{width:98%;border:1px solid rgba(15,122,92,.08)}
+
+/* selo: o dna.css ancora em top/right; aqui ele senta no canto de cima */
+.hero-foto .selo{
+  top:26px;left:-34px;right:auto;bottom:auto;
+  width:84px;height:84px;z-index:3;display:grid;place-items:center;
+}
+.hero-foto .selo-anel{
+  position:absolute;inset:0;width:100%;height:100%;
+  animation:girar 24s linear infinite;
+  fill:var(--brand-deep);font-size:9.2px;font-weight:700;letter-spacing:.14em;
+}
+.hero-foto .selo-nucleo{
+  position:relative;z-index:1;
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(140deg,#5fceac,var(--brand));color:#fff;
+  box-shadow:0 12px 26px -10px rgba(10,30,24,.6);
+}
+/* o dna.css manda todo svg dentro de .selo virar absoluto, 100% e girando —
+   regra escrita para o anel. Sem este reset o ícone do núcleo vira um
+   segundo anel gigante em cima do primeiro. */
+.selo .selo-nucleo svg{position:static;width:20px;height:20px;animation:none}
+@media (prefers-reduced-motion:reduce){
+  .hero-foto .selo-anel{animation:none}
+}
+
 /* ----- o card "o que está incluso" ----- */
+/* Sobreposto à base do retrato, avançando para dentro do vão entre as
+   colunas: é o elemento de conversão da dobra, então fica por cima de
+   tudo — mas ancorado embaixo, onde só há jaleco, nunca sobre o rosto. */
 .incluso{
-  position:relative;
+  position:absolute;z-index:2;
+  left:calc(-1 * clamp(28px,3vw,56px));right:20px;bottom:calc(-1 * clamp(24px,3vw,44px));
   background:var(--paper-2);
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
-  padding:clamp(26px,2.6vw,34px);
-  box-shadow:var(--sombra);
+  padding:clamp(20px,2vw,26px);
+  box-shadow:0 34px 68px -30px rgba(10,30,24,.45);
 }
 .incluso::before{
   content:"";position:absolute;top:0;left:26px;right:26px;height:3px;
@@ -151,19 +223,19 @@ html{scroll-padding-top:88px}
   background:linear-gradient(90deg,var(--brand),var(--accent));
 }
 .incluso h2{
-  font-family:var(--font-display);font-size:19px;font-weight:600;
-  letter-spacing:-.01em;color:var(--ink);margin-bottom:20px;
+  font-family:var(--font-display);font-size:17px;font-weight:600;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:14px;
 }
-.incluso-lista{list-style:none;display:flex;flex-direction:column;gap:14px;
-  margin-bottom:24px}
-.incluso-lista li{display:flex;align-items:flex-start;gap:12px;
-  font-size:14.5px;line-height:1.5;color:var(--ink)}
+.incluso-lista{list-style:none;display:flex;flex-direction:column;gap:10px;
+  margin-bottom:18px}
+.incluso-lista li{display:flex;align-items:flex-start;gap:11px;
+  font-size:13.5px;line-height:1.45;color:var(--ink)}
 .incluso-lista .ic{
   width:23px;height:23px;flex:none;border-radius:50%;display:grid;place-items:center;
   background:var(--brand-soft);color:var(--brand);margin-top:1px;
 }
 .incluso .btn{width:100%;justify-content:center;margin:0}
-.incluso-nota{margin-top:16px;font-size:12px;line-height:1.55;
+.incluso-nota{margin-top:12px;font-size:11.5px;line-height:1.5;
   color:var(--ink-soft);text-align:center}
 
 /* ----- kicker em pílula -----
@@ -547,7 +619,14 @@ html{scroll-padding-top:88px}
 /* ---------- responsivo ---------- */
 @media (max-width:980px){
   .hero-vs>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
-  .incluso{max-width:460px}
+  /* abaixo de 980 o card sai de cima da foto e volta para o fluxo: na
+     coluna unica ele cobriria o retrato inteiro */
+  .hero-foto{justify-self:center;max-width:420px;margin-bottom:0}
+  /* o selo sai para fora da moldura no desktop; na coluna unica isso o
+     joga para fora da tela, entao ele entra para dentro do retrato */
+  .hero-foto .selo{top:14px;left:14px;width:74px;height:74px}
+  .hero-foto .selo-nucleo{width:38px;height:38px}
+  .incluso{position:static;left:auto;right:auto;bottom:auto;margin-top:18px}
   .credibilidade .wrap{grid-template-columns:1fr 1fr;row-gap:22px}
   .tecnica-grid{grid-template-columns:1fr}
   .diagrama{grid-template-columns:1fr;gap:18px}
