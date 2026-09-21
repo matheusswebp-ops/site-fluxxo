@@ -145,9 +145,11 @@ html{scroll-padding-top:88px}
     background-size:var(--arte) auto;
     background-position:center var(--desce);
     padding-top:calc(var(--desce) + var(--arte) * .66);
+    text-align:center;
   }
-  /* so a headline centraliza: o resto continua alinhado a esquerda */
-  .hero-vs .h1{text-align:center}
+  .hero-vs .lead{margin-left:auto;margin-right:auto}
+  .hero-vs .hero-selos{justify-content:center}
+  .hero-vs .hero-acoes{justify-content:center}
 }
 
 .hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
@@ -652,7 +654,7 @@ html{scroll-padding-top:88px}
   /* abaixo de 980 o card sai de cima da foto e volta para o fluxo: na
      coluna unica ele cobriria o retrato inteiro */
   /* a faixa vira pilha: título, itens, botão */
-  .incluso{grid-template-columns:1fr;gap:18px;text-align:left}
+  .incluso{grid-template-columns:1fr;gap:18px}
   /* tres colunas num celular espremem cada item em quatro linhas */
   .incluso-lista{grid-template-columns:1fr;gap:12px}
   .incluso h2{max-width:none;padding-right:0;border-right:0;
@@ -670,7 +672,16 @@ html{scroll-padding-top:88px}
   .autoridade-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
   .autoridade-foto{max-width:340px}
   .prova-grid{grid-template-columns:1fr}
+  /* a foto do local vem antes do texto no celular: e ela a prova de que
+     a clinica existe, e chegar nela depois do CTA e tarde */
   .local-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .local-foto{order:-1}
+
+  /* a faixa de bullets vira pilha centralizada */
+  .sec-incluso{text-align:center}
+  .incluso-lista li{justify-content:center}
+  .incluso h2{margin-inline:auto}
+  .incluso-nota{max-width:52ch;margin-inline:auto}
 }
 
 @media (max-width:640px){
