@@ -96,50 +96,68 @@ html{scroll-padding-top:88px}
 /* ---------- 2. HERO ---------- */
 /* Retrato à direita e, apoiado na base dele, o card de conversão. O card
    ancora embaixo de propósito: ali só há jaleco, nunca o rosto. */
+/* ---------- 2. HERO ----------
+   A arte da dobra é a foto de fundo, como nas irmãs: o médico já vem nela,
+   com o lado esquerdo vazio reservado ao texto. Nada de UI empilhada por
+   cima da figura — por isso a coluna da direita do grid fica vazia e o
+   selo pousa no canto claro. */
 .hero-vs{
   position:relative;
   padding:clamp(112px,11vw,150px) 0 clamp(56px,6vw,86px);
-  background:
-    radial-gradient(ellipse 60% 60% at 82% 18%,rgba(15,122,92,.09),transparent 68%),
-    radial-gradient(ellipse 50% 50% at 0% 100%,rgba(95,206,172,.10),transparent 66%),
-    var(--paper);
+  background-color:var(--paper);
   overflow:hidden;
 }
-.hero-vs::after{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(19,36,32,.05) 1px,transparent 1px);
-  background-size:26px 26px;
-  -webkit-mask-image:radial-gradient(ellipse 46% 52% at 14% 78%,#000,transparent 74%);
-  mask-image:radial-gradient(ellipse 46% 52% at 14% 78%,#000,transparent 74%);
-}
 .hero-vs>.wrap{
+  /* width:100% porque no hero a secao e flex-column: com margin:0 auto no
+     eixo cruzado o item deixa de esticar e encolhe ate o conteudo */
+  width:100%;
   position:relative;z-index:1;display:grid;
-  grid-template-columns:minmax(0,54%) minmax(0,46%);
+  grid-template-columns:minmax(0,50%) minmax(0,50%);
   gap:clamp(30px,4vw,56px);align-items:center;
-}
-/* ----- a lâmina -----
-   Dissolver a foto no papel não resolveu: o fundo de estúdio é cinza
-   médio e, desbotando no claro, virava névoa. O que faltava era massa.
-   Esta lâmina escura sangra na direita da tela e dá ao lado do retrato
-   o peso que o lado do texto tem em tipografia. O retrato atravessa a
-   borda dela — metade no escuro, metade no papel — e é esse cruzamento
-   que faz a foto pertencer à página em vez de boiar nela.
-   z-index negativo porque com 0 ela pintaria por cima do texto. */
-/* :not(.hero-incluso) porque a faixa tambem e um .wrap dentro do hero:
-   sem isso ela ganha uma segunda lamina, que foi o bloco escuro que
-   aparecia atras dela ate o fim da secao */
-.hero-vs>.wrap:not(.hero-incluso)::before{
-  content:"";position:absolute;z-index:-1;pointer-events:none;
-  left:58%;right:calc((var(--wrap) - 100vw) / 2);
-  top:calc(-1 * clamp(46px,5vw,78px));bottom:calc(-1 * clamp(10px,1.4vw,24px));
-  background:linear-gradient(158deg,#12543f,#061f18 76%);
-  /* canto de baixo reto: arredondado, a curva reaparecia logo abaixo do
-     disco e abria um entalhe embaixo do medico */
-  border-radius:clamp(90px,9vw,150px) 0 0 0;
 }
 .hero-vs .kicker{margin-bottom:20px}
 .hero-vs .h1{margin-top:0}
-.hero-vs .lead{margin-top:20px;max-width:48ch}
+.hero-vs .lead{margin-top:20px;max-width:46ch}
+
+/* a arte larga (1920x887): cobre a dobra e é velada à esquerda, onde
+   entra o texto. O véu vai até 62% porque é onde o médico começa. */
+@media (min-width:981px){
+  .hero-vs{
+    display:flex;flex-direction:column;justify-content:center;align-items:stretch;
+    min-height:min(86vh,780px);
+    background-image:
+      linear-gradient(94deg,var(--paper) 0 36%,rgba(244,248,246,.97) 46%,
+        rgba(244,248,246,.6) 57%,rgba(244,248,246,0) 70%),
+      url("../img/vs-hero-desk.webp");
+    background-repeat:no-repeat,no-repeat;
+    background-size:cover,cover;
+    background-position:center,right center;
+  }
+  /* véu no topo: sem ele o cabeçalho fixo disputa com a figura */
+  .hero-vs::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:150px;z-index:0;
+    background:linear-gradient(var(--paper) 8%,rgba(244,248,246,0));
+    pointer-events:none;
+  }
+}
+
+/* a arte vertical (800x1200): o médico ocupa a metade de cima e o resto
+   já vem vazio, reservado ao texto, que começa depois dele */
+@media (max-width:980px){
+  .hero-vs{
+    --arte:min(100vw,540px);
+    --desce:76px;
+    background-image:url("../img/vs-hero-mob.webp");
+    background-repeat:no-repeat;
+    background-size:var(--arte) auto;
+    background-position:center var(--desce);
+    padding-top:calc(var(--desce) + var(--arte) * .78);
+    text-align:center;
+  }
+  .hero-vs .lead{margin-left:auto;margin-right:auto}
+  .hero-vs .hero-selos{justify-content:center}
+  .hero-vs .hero-acoes{justify-content:center}
+}
 
 .hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
   flex-wrap:wrap;margin-top:clamp(26px,3vw,36px)}
@@ -155,68 +173,20 @@ html{scroll-padding-top:88px}
   background:var(--brand-soft);color:var(--brand);
 }
 
-/* ----- o retrato: disco nítido atravessando a lâmina -----
-   Nada de máscara e nada de caixa. O DNA proíbe retângulo, e as irmãs já
-   usaram as outras duas saídas: arco no preenchimento, foto sangrando a
-   tela na reposição. Sobrou o disco — e disco é a única forma que não
-   precisa esconder que a foto tem fundo de estúdio, porque o contraste
-   com a lâmina escura transforma esse cinza em luz. */
-.hero-foto{
-  position:relative;z-index:1;justify-self:start;
-  width:100%;max-width:452px;
-  margin-left:calc(-1 * clamp(20px,4vw,72px));
+/* ----- o selo -----
+   Um por página, só no hero, como manda o DNA. Pousa no canto de baixo à
+   direita, onde a arte já desbota em branco: ali o verde escuro dele lê,
+   e nada de UI fica sobre o rosto. */
+.hero-vs .selo{
+  top:auto;left:auto;right:clamp(20px,3.4vw,58px);bottom:clamp(20px,3vw,44px);
+  width:92px;height:92px;z-index:2;display:grid;place-items:center;
 }
-.hero-foto .foto{
-  position:relative;z-index:1;margin:0;width:100%;aspect-ratio:1;
-  border-radius:50%;overflow:hidden;
-  background:#cfdcd6;
-  box-shadow:0 40px 80px -34px rgba(3,18,13,.7);
-}
-.hero-foto .foto img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 7%;
-}
-/* base do disco levemente puxada para o verde, para o retrato não
-   terminar num corte seco de cinza contra escuro */
-.hero-foto .foto::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(to top,rgba(7,35,27,.30) 0,
-    rgba(15,122,92,.10) 22%,transparent 48%);
-}
-
-/* dois aros abertos, concêntricos com o disco: vistos sobre o escuro
-   eles aparecem de verdade — antes ficavam atrás da foto e só sobrava
-   um fiapo de cada um na beirada */
-.hero-foto .moldura,
-.hero-foto .halo{
-  position:absolute;z-index:0;pointer-events:none;
-  left:50%;top:50%;border-radius:50%;aspect-ratio:1;
-}
-.hero-foto .moldura{
-  width:110%;transform:translate(-50%,-50%);
-  border:1.5px solid rgba(127,224,190,.34);
-  -webkit-mask-image:conic-gradient(from 34deg,#000 0 70%,transparent 70%);
-  mask-image:conic-gradient(from 34deg,#000 0 70%,transparent 70%);
-}
-.hero-foto .halo{
-  width:124%;transform:translate(-50%,-50%);
-  border:1px solid rgba(127,224,190,.18);
-  -webkit-mask-image:conic-gradient(from 96deg,#000 0 46%,transparent 46%);
-  mask-image:conic-gradient(from 96deg,#000 0 46%,transparent 46%);
-}
-
-/* o selo pousa no aro, do lado claro: o texto dele é verde escuro e
-   sobre a lâmina sumiria */
-.hero-foto .selo{
-  top:auto;bottom:6%;left:-14px;right:auto;
-  width:94px;height:94px;z-index:3;display:grid;place-items:center;
-}
-.hero-foto .selo-anel{
+.hero-vs .selo-anel{
   position:absolute;inset:0;width:100%;height:100%;
   animation:girar 24s linear infinite;
   fill:var(--brand-deep);font-size:9.2px;font-weight:700;letter-spacing:.14em;
 }
-.hero-foto .selo-nucleo{
+.hero-vs .selo-nucleo{
   position:relative;z-index:1;
   width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
   background:linear-gradient(140deg,#5fceac,var(--brand));color:#fff;
@@ -227,32 +197,32 @@ html{scroll-padding-top:88px}
    segundo anel gigante em cima do primeiro. */
 .selo .selo-nucleo svg{position:static;width:21px;height:21px;animation:none}
 @media (prefers-reduced-motion:reduce){
-  .hero-foto .selo-anel{animation:none}
+  .hero-vs .selo-anel{animation:none}
+}
+/* na arte vertical o canto de baixo é o próprio texto: o selo sairia por
+   cima do CTA */
+@media (max-width:980px){
+  .hero-vs .selo{display:none}
 }
 
-/* ----- a faixa "o que está incluso" -----
-   Antes ela ficava por cima da base do retrato e tapava o médico. Agora
-   é faixa larga sob o grid: o que está incluso na horizontal, o botão na
-   ponta e a nota de valores atravessando embaixo. */
-/* a faixa é um .wrap dentro do hero, e .hero-vs>.wrap é grid de duas
-   colunas: sem o display:block ela vira item da primeira coluna e se
-   esmaga. Mesmo tropeço da página de reposição. */
-.hero-vs>.hero-incluso{display:block}
-.hero-incluso{position:relative;z-index:2;margin-top:clamp(34px,4vw,56px)}
+/* ---------- 3. O QUE ESTÁ INCLUSO ----------
+   Era uma faixa solta dentro do hero, disputando a dobra com a arte.
+   Agora é dobra própria: uma faixa branca entre a hero e os números,
+   marcada por um filete no topo. */
+.sec-incluso{
+  position:relative;
+  padding-block:clamp(26px,3vw,40px);
+  background:var(--paper-2);
+  border-bottom:1px solid var(--line);
+}
+.sec-incluso::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+}
 .incluso{
-  position:relative;overflow:hidden;
   display:grid;
   grid-template-columns:auto minmax(0,1fr) auto;
   align-items:center;gap:clamp(20px,2.6vw,40px);
-  background:var(--paper-2);
-  border:1px solid var(--line);
-  border-radius:var(--radius-lg);
-  padding:clamp(22px,2.2vw,30px) clamp(24px,2.6vw,36px);
-  box-shadow:0 34px 68px -34px rgba(10,30,24,.4);
-}
-.incluso::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--brand),var(--accent));
 }
 .incluso h2{
   font-family:var(--font-display);font-size:17px;font-weight:600;
@@ -271,8 +241,8 @@ html{scroll-padding-top:88px}
 }
 .incluso .btn{margin:0;flex:none;white-space:nowrap}
 .incluso-nota{
-  grid-column:1 / -1;margin:clamp(16px,1.8vw,22px) 0 0;
-  padding-top:clamp(14px,1.6vw,18px);border-top:1px solid var(--line);
+  grid-column:1 / -1;margin:clamp(14px,1.6vw,20px) 0 0;
+  padding-top:clamp(12px,1.4vw,16px);border-top:1px solid var(--line);
   font-size:12px;line-height:1.5;color:var(--ink-soft);
 }
 
@@ -659,24 +629,8 @@ html{scroll-padding-top:88px}
   .hero-vs>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
   /* abaixo de 980 o card sai de cima da foto e volta para o fluxo: na
      coluna unica ele cobriria o retrato inteiro */
-  /* na coluna única a lâmina não tem de onde vir: ela passa a ser o
-     bloco escuro do próprio retrato, atrás e deslocado para a direita */
-  .hero-vs>.wrap::before{display:none}
-  .hero-foto::before{
-    content:"";position:absolute;z-index:0;
-    /* sangra ate a borda direita da tela, como a lamina do desktop */
-    top:16%;bottom:-7%;left:34%;right:-40vw;
-    border-radius:min(34vw,150px) 0 0 0;
-    background:linear-gradient(158deg,#12543f,#061f18 78%);
-  }
-  .hero-foto{justify-self:start;max-width:300px;
-    margin-left:calc(-1 * clamp(8px,3vw,20px))}
-  .hero-foto .moldura{width:112%}
-  .hero-foto .halo{width:126%}
-  .hero-foto .selo{bottom:4%;left:-2px;width:74px;height:74px}
-  .hero-foto .selo-nucleo{width:38px;height:38px}
   /* a faixa vira pilha: título, itens, botão */
-  .incluso{grid-template-columns:1fr;gap:18px}
+  .incluso{grid-template-columns:1fr;gap:18px;text-align:left}
   /* tres colunas num celular espremem cada item em quatro linhas */
   .incluso-lista{grid-template-columns:1fr;gap:12px}
   .incluso h2{max-width:none;padding-right:0;border-right:0;
@@ -700,7 +654,7 @@ html{scroll-padding-top:88px}
 @media (max-width:640px){
   html{scroll-padding-top:74px}
   .marca-fone{display:none}
-  .hero-vs{padding-top:96px}
+  .hero-vs{--desce:66px}
   .hero-acoes{width:100%}
   .hero-acoes .btn{width:100%;justify-content:center}
   .credibilidade .wrap{grid-template-columns:1fr 1fr}

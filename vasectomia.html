@@ -18,12 +18,15 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="preload" as="image" href="img/pp-medico.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/vs-hero-desk.webp" fetchpriority="high"
+      media="(min-width:981px)">
+<link rel="preload" as="image" href="img/vs-hero-mob.webp" fetchpriority="high"
+      media="(max-width:980px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609212130">
-<link rel="stylesheet" href="css/vs.css?v=202609212130">
+<link rel="stylesheet" href="css/dna.css?v=202609212300">
+<link rel="stylesheet" href="css/vs.css?v=202609212300">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -123,40 +126,33 @@
       </div>
     </div>
 
-    <!-- Retrato + card de conversão na mesma coluna: o card se apoia na base
-         da foto, nunca no rosto. As irmãs abrem com arco (preenchimento) e
-         com foto sangrando a tela inteira (reposição) — aqui é card 4:5 sobre
-         halo verde, que é a terceira saída do DNA para retrato sem recorte. -->
-    <div class="hero-foto">
-      <span class="halo" aria-hidden="true"></span>
-      <span class="moldura" aria-hidden="true"></span>
+    <!-- a coluna da direita fica vazia de propósito: o médico vem na
+         própria arte de fundo da dobra, como nas irmãs -->
+    <div></div>
+  </div>
 
-      <figure class="foto">
-        <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
-             width="880" height="1104" fetchpriority="high" decoding="async">
-      </figure>
-
-      <!-- selo: um por página, só no hero, como manda o DNA -->
-      <span class="selo" aria-hidden="true">
+  <!-- selo: um por página, só no hero, como manda o DNA. Fora do grid,
+       pousado no canto vazio da arte. -->
+  <span class="selo" aria-hidden="true">
         <svg class="selo-anel" viewBox="0 0 100 100">
           <defs>
             <path id="vsAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
           </defs>
           <text><textPath href="#vsAnel">SEM BISTURI · SEM AGULHA · </textPath></text>
         </svg>
-        <span class="selo-nucleo">
-          <svg width="20" height="20"><use href="#i-check"/></svg>
-        </span>
-      </span>
+    <span class="selo-nucleo">
+      <svg width="20" height="20"><use href="#i-check"/></svg>
+    </span>
+  </span>
+</section>
 
-    </div>
-  </div>
-
-  <!-- faixa do que esta incluso: larga, sob o grid. Antes ela ficava por
-       cima da foto e tapava o medico. -->
-  <div class="wrap hero-incluso">
-  <!-- o card que a copy pede: sem valor, sem parcelamento, sem selo de preço -->
-  <aside class="incluso">
+<!-- ===== SEÇÃO 2 — O QUE ESTÁ INCLUSO (dobra própria) =====
+     Era uma faixa solta dentro do hero, que disputava a dobra com a arte.
+     Agora é a segunda dobra: uma faixa larga, com seção própria. -->
+<section class="sec-incluso">
+  <div class="wrap">
+  <!-- sem valor, sem parcelamento, sem selo de preço, como manda a copy -->
+  <div class="incluso">
     <h2>O que está incluso</h2>
     <ul class="incluso-lista">
       <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
@@ -170,7 +166,7 @@
       <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
     <p class="incluso-nota">Atendimento particular. Os valores e formas de
       pagamento são informados no contato.</p>
-  </aside>
+  </div>
   </div>
 </section>
 
