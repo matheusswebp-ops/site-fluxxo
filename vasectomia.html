@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609211430">
-<link rel="stylesheet" href="css/vs.css?v=202609211430">
+<link rel="stylesheet" href="css/dna.css?v=202609211640">
+<link rel="stylesheet" href="css/vs.css?v=202609211640">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -129,6 +129,7 @@
          halo verde, que é a terceira saída do DNA para retrato sem recorte. -->
     <div class="hero-foto">
       <span class="halo" aria-hidden="true"></span>
+      <span class="moldura" aria-hidden="true"></span>
 
       <figure class="foto">
         <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, urologista, no consultório"
@@ -148,23 +149,28 @@
         </span>
       </span>
 
-    <!-- o card que a copy pede: sem valor, sem parcelamento, sem selo de preço -->
-    <aside class="incluso">
-      <h2>O que está incluso</h2>
-      <ul class="incluso-lista">
-        <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-          Consulta de avaliação inclusa</li>
-        <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-          Procedimento + retorno</li>
-        <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
-          Espermograma de controle</li>
-      </ul>
-      <a class="btn" href="#agendar">Agendar minha avaliação
-        <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
-      <p class="incluso-nota">Atendimento particular. Os valores e formas de
-        pagamento são informados no contato.</p>
-    </aside>
     </div>
+  </div>
+
+  <!-- faixa do que esta incluso: larga, sob o grid. Antes ela ficava por
+       cima da foto e tapava o medico. -->
+  <div class="wrap hero-incluso">
+  <!-- o card que a copy pede: sem valor, sem parcelamento, sem selo de preço -->
+  <aside class="incluso">
+    <h2>O que está incluso</h2>
+    <ul class="incluso-lista">
+      <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+        Consulta de avaliação inclusa</li>
+      <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+        Procedimento + retorno</li>
+      <li><span class="ic" aria-hidden="true"><svg width="13" height="13"><use href="#i-check"/></svg></span>
+        Espermograma de controle</li>
+    </ul>
+    <a class="btn" href="#agendar">Agendar minha avaliação
+      <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
+    <p class="incluso-nota">Atendimento particular. Os valores e formas de
+      pagamento são informados no contato.</p>
+  </aside>
   </div>
 </section>
 

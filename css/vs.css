@@ -141,10 +141,18 @@ html{scroll-padding-top:88px}
    reposição; repetir qualquer uma seria entregar a mesma página de novo. */
 .hero-foto{
   position:relative;justify-self:end;
-  width:100%;max-width:440px;
-  /* o card se apoia na base da foto e passa dela: o respiro embaixo é o
-     que impede que ele encoste na barra de credibilidade */
-  margin-bottom:clamp(24px,3vw,44px);
+  width:100%;max-width:470px;
+  margin-right:clamp(0px,1.6vw,26px);
+}
+/* moldura deslocada atrás do retrato: é o que dá profundidade sem pôr
+   nada por cima da foto. Um retângulo vazado, deslocado na diagonal,
+   costurando o retrato ao fundo. */
+.hero-foto .moldura{
+  content:"";position:absolute;z-index:0;
+  top:30px;left:30px;right:-30px;bottom:-30px;
+  border:1.5px solid rgba(15,122,92,.28);
+  border-radius:var(--radius-lg);
+  pointer-events:none;
 }
 .hero-foto .foto{
   position:relative;z-index:1;margin:0;width:100%;aspect-ratio:4/5;
@@ -182,8 +190,8 @@ html{scroll-padding-top:88px}
 
 /* selo: o dna.css ancora em top/right; aqui ele senta no canto de cima */
 .hero-foto .selo{
-  top:26px;left:-34px;right:auto;bottom:auto;
-  width:84px;height:84px;z-index:3;display:grid;place-items:center;
+  top:-26px;left:-30px;right:auto;bottom:auto;
+  width:88px;height:88px;z-index:3;display:grid;place-items:center;
 }
 .hero-foto .selo-anel{
   position:absolute;inset:0;width:100%;height:100%;
@@ -204,18 +212,24 @@ html{scroll-padding-top:88px}
   .hero-foto .selo-anel{animation:none}
 }
 
-/* ----- o card "o que está incluso" ----- */
-/* Sobreposto à base do retrato, avançando para dentro do vão entre as
-   colunas: é o elemento de conversão da dobra, então fica por cima de
-   tudo — mas ancorado embaixo, onde só há jaleco, nunca sobre o rosto. */
+/* ----- a faixa "o que está incluso" -----
+   Antes ela ficava por cima da base do retrato e tapava o médico. Agora
+   é faixa larga sob o grid: o que está incluso na horizontal, o botão na
+   ponta e a nota de valores atravessando embaixo. */
+/* a faixa é um .wrap dentro do hero, e .hero-vs>.wrap é grid de duas
+   colunas: sem o display:block ela vira item da primeira coluna e se
+   esmaga. Mesmo tropeço da página de reposição. */
+.hero-vs>.hero-incluso{display:block}
+.hero-incluso{position:relative;z-index:2;margin-top:clamp(34px,4vw,56px)}
 .incluso{
-  position:absolute;z-index:2;
-  left:calc(-1 * clamp(28px,3vw,56px));right:20px;bottom:calc(-1 * clamp(24px,3vw,44px));
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;gap:clamp(20px,2.6vw,40px);
   background:var(--paper-2);
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
-  padding:clamp(20px,2vw,26px);
-  box-shadow:0 34px 68px -30px rgba(10,30,24,.45);
+  padding:clamp(22px,2.2vw,30px) clamp(24px,2.6vw,36px);
+  box-shadow:0 34px 68px -34px rgba(10,30,24,.4);
 }
 .incluso::before{
   content:"";position:absolute;top:0;left:26px;right:26px;height:3px;
@@ -224,19 +238,25 @@ html{scroll-padding-top:88px}
 }
 .incluso h2{
   font-family:var(--font-display);font-size:17px;font-weight:600;
-  letter-spacing:-.01em;color:var(--ink);margin-bottom:14px;
+  letter-spacing:-.01em;color:var(--ink);margin:0;max-width:14ch;
+  padding-right:clamp(20px,2.6vw,40px);
+  border-right:1px solid var(--line);
 }
-.incluso-lista{list-style:none;display:flex;flex-direction:column;gap:10px;
-  margin-bottom:18px}
+.incluso-lista{list-style:none;display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px clamp(16px,2vw,28px);margin:0}
 .incluso-lista li{display:flex;align-items:flex-start;gap:11px;
   font-size:13.5px;line-height:1.45;color:var(--ink)}
 .incluso-lista .ic{
   width:23px;height:23px;flex:none;border-radius:50%;display:grid;place-items:center;
   background:var(--brand-soft);color:var(--brand);margin-top:1px;
 }
-.incluso .btn{width:100%;justify-content:center;margin:0}
-.incluso-nota{margin-top:12px;font-size:11.5px;line-height:1.5;
-  color:var(--ink-soft);text-align:center}
+.incluso .btn{margin:0;flex:none;white-space:nowrap}
+.incluso-nota{
+  grid-column:1 / -1;margin:clamp(16px,1.8vw,22px) 0 0;
+  padding-top:clamp(14px,1.6vw,18px);border-top:1px solid var(--line);
+  font-size:12px;line-height:1.5;color:var(--ink-soft);
+}
 
 /* ----- kicker em pílula -----
    A classe .tarja estava no HTML em quatro lugares e não existia no CSS:
@@ -621,12 +641,19 @@ html{scroll-padding-top:88px}
   .hero-vs>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
   /* abaixo de 980 o card sai de cima da foto e volta para o fluxo: na
      coluna unica ele cobriria o retrato inteiro */
-  .hero-foto{justify-self:center;max-width:420px;margin-bottom:0}
-  /* o selo sai para fora da moldura no desktop; na coluna unica isso o
-     joga para fora da tela, entao ele entra para dentro do retrato */
+  .hero-foto{justify-self:center;max-width:420px;margin-right:0}
+  /* o selo e a moldura saem para fora do retrato no desktop; na coluna
+     única isso os joga para fora da tela */
   .hero-foto .selo{top:14px;left:14px;width:74px;height:74px}
   .hero-foto .selo-nucleo{width:38px;height:38px}
-  .incluso{position:static;left:auto;right:auto;bottom:auto;margin-top:18px}
+  .hero-foto .moldura{top:18px;left:18px;right:-18px;bottom:-18px}
+  /* a faixa vira pilha: título, itens, botão */
+  .incluso{grid-template-columns:1fr;gap:18px}
+  /* tres colunas num celular espremem cada item em quatro linhas */
+  .incluso-lista{grid-template-columns:1fr;gap:12px}
+  .incluso h2{max-width:none;padding-right:0;border-right:0;
+    padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .incluso .btn{width:100%;justify-content:center}
   .credibilidade .wrap{grid-template-columns:1fr 1fr;row-gap:22px}
   .tecnica-grid{grid-template-columns:1fr}
   .diagrama{grid-template-columns:1fr;gap:18px}
