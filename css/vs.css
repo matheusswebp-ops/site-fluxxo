@@ -139,7 +139,9 @@ html{scroll-padding-top:88px}
 @media (max-width:980px){
   .hero-vs{
     --arte:min(100vw,540px);
-    --desce:60px;
+    /* o cabecalho tem 78px no celular e 84 no tablet: com desce menor
+       que isso, ele tapava o topo da arte — e e onde esta a cabeca do Dr. */
+    --desce:92px;
     background-image:url("../img/vs-hero-mob.webp");
     background-repeat:no-repeat;
     background-size:var(--arte) auto;
@@ -696,7 +698,7 @@ html{scroll-padding-top:88px}
   .topo .wrap{gap:12px}
   .marca-sigla{width:34px;height:34px}
   .marca-nome{font-size:14.5px}
-  .hero-vs{--desce:52px}
+  .hero-vs{--desce:86px}
   .hero-acoes{width:100%}
   .hero-acoes .btn{width:100%;justify-content:center}
   .credibilidade .wrap{grid-template-columns:1fr 1fr}
