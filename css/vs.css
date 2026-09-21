@@ -135,74 +135,90 @@ html{scroll-padding-top:88px}
   background:var(--brand-soft);color:var(--brand);
 }
 
-/* ----- o retrato: composição, não caixa -----
-   O DNA é explícito: nunca foto em caixa retangular. A versão anterior era
-   exatamente isso — um retângulo 4:5 com a foto dentro e uma moldura
-   deslocada atrás, o que é enfeite, não composição.
+/* ----- o retrato: o problema não era a forma da caixa, era haver caixa -----
+   A foto tem fundo de estúdio cinza — medido, rgb(190,197,196) — contra um
+   papel #f4f8f6. Recortada em qualquer forma, o que se vê primeiro é o
+   retângulo cinza, e não o médico. Era isso que lia como imagem jogada:
+   moldura, disco e anéis apareciam só como sobras nas beiradas, porque a
+   foto, opaca, tapava tudo que havia atrás dela.
 
-   Aqui são quatro camadas que se encaixam: um disco verde sólido deslocado
-   no sentido contrário ao da foto, dois anéis finos abertos em volta, o
-   retrato em forma de pétala (dois cantos redondos na diagonal, dois vivos)
-   e a base dele dissolvendo no fundo, sem aresta — que é o que o DNA quer
-   dizer com cliente recortado quando não há recorte disponível.
+   Agora a própria margem de estúdio é dissolvida por máscara, até o papel.
+   Não sobra aresta em lado nenhum — é o que o DNA quer dizer com cliente
+   recortado, sem recorte de verdade (que já foi recusado). O que compõe
+   passa a ser o que está atrás e agora atravessa: um disco de luz na altura
+   do tronco e um arco aberto que passa por trás dos ombros.
 
-   A pétala também é o que separa esta página das irmãs: o arco já é do
-   preenchimento e a foto sangrando a tela é da reposição. */
+   Os limites da máscara vêm de medida, não de chute: o médico ocupa de 17%
+   a 90% da largura do arquivo e começa a 8% da altura. O núcleo opaco cobre
+   essa faixa inteira; só a sobra de estúdio desbota. */
 .hero-foto{
   position:relative;justify-self:end;
-  width:100%;max-width:470px;
+  width:100%;max-width:500px;
   margin-right:clamp(0px,1.6vw,26px);
 }
 
-/* 1. o disco: massa de cor que ancora a composição */
+/* 1. o campo: uma área de luz no tom do próprio estúdio, maior que a
+      foto. É ele que recebe a dissolução das bordas — sem ele, a sobra
+      cinza do arquivo desbota direto no papel claro e vira névoa suja.
+      Deslocado para o canto, como estava antes, o disco só aparecia
+      como uma meia-lua solta ao lado da foto. */
 .hero-foto .moldura{
-  position:absolute;z-index:0;
-  left:-13%;top:6%;width:92%;aspect-ratio:1;
-  border-radius:50%;pointer-events:none;
+  position:absolute;z-index:0;pointer-events:none;
+  left:50%;top:1%;width:116%;height:88%;transform:translateX(-50%);
+  border-radius:50%;
   background:
-    radial-gradient(circle at 34% 30%,rgba(95,206,172,.34),rgba(15,122,92,.18) 58%,transparent 72%);
-  filter:blur(1px);
+    radial-gradient(closest-side,
+      rgba(203,218,211,.92) 0 46%,
+      rgba(203,218,211,.52) 70%,
+      rgba(203,218,211,0) 100%),
+    radial-gradient(closest-side at 50% 34%,
+      rgba(95,206,172,.30),rgba(95,206,172,0) 66%);
 }
-/* 2. os anéis: abertos, não fechados — fio contínuo em volta pesa */
+
+/* 2. o arco: um só, grande, aberto em cima. Aberto em cima porque
+      fechando ele cruzaria a cabeça; e um arco grande e firme compõe,
+      onde dois fios finos e escondidos só pareciam risco na tela. */
 .hero-foto .halo{
-  position:absolute;z-index:0;right:-9%;bottom:2%;
-  width:86%;aspect-ratio:1;border-radius:50%;pointer-events:none;
-  border:1.5px solid rgba(15,122,92,.26);
-  -webkit-mask-image:conic-gradient(from 210deg,#000 0 62%,transparent 62%);
-  mask-image:conic-gradient(from 210deg,#000 0 62%,transparent 62%);
+  position:absolute;z-index:0;pointer-events:none;
+  left:50%;top:13%;width:104%;aspect-ratio:1;transform:translateX(-50%);
+  border-radius:50%;
+  border:2px solid rgba(15,122,92,.26);
+  -webkit-mask-image:conic-gradient(from 50deg,#000 0 72%,transparent 72%);
+  mask-image:conic-gradient(from 50deg,#000 0 72%,transparent 72%);
 }
 .hero-foto .halo::before{
   content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:118%;aspect-ratio:1;border-radius:50%;
-  border:1px solid rgba(15,122,92,.14);
+  width:113%;aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(15,122,92,.15);
 }
 
-/* 3. a pétala: dois cantos redondos na diagonal, dois vivos */
+/* 3. a foto. Sem border-radius e sem box-shadow de propósito: sombra
+      segue a caixa, não a máscara, e devolveria na sombra o retângulo
+      que a máscara acabou de tirar. */
 .hero-foto .foto{
   position:relative;z-index:1;margin:0;width:100%;aspect-ratio:4/5;
-  border-radius:clamp(60px,10vw,132px) var(--radius-lg)
-                clamp(60px,10vw,132px) var(--radius-lg);
-  overflow:hidden;
-  background:linear-gradient(150deg,#cfe6da,#0f7a5c);
-  box-shadow:0 44px 88px -46px rgba(10,30,24,.55);
+  -webkit-mask-image:radial-gradient(ellipse 64% 66% at 52% 57%,
+    #000 0 57%,rgba(0,0,0,.88) 74%,transparent 100%);
+  mask-image:radial-gradient(ellipse 64% 66% at 52% 57%,
+    #000 0 57%,rgba(0,0,0,.88) 74%,transparent 100%);
 }
 .hero-foto .foto img{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 6%;
+  object-fit:cover;object-position:center 4%;
 }
-/* 4. a base derrete no fundo: sem isto o retrato termina numa aresta e
-      volta a ler como foto colada numa caixa */
+/* a base: o terno é escuro e a máscara sozinha o cortaria tarde demais.
+   Este degradê termina o retrato no papel, sem linha. */
 .hero-foto .foto::after{
-  content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;
-  background:
-    linear-gradient(to top,var(--paper) 1%,rgba(244,248,246,.6) 12%,
-                    rgba(15,122,92,.16) 34%,transparent 58%);
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,var(--paper) 2%,
+    rgba(244,248,246,.6) 15%,rgba(15,122,92,.10) 32%,transparent 54%);
 }
 
-/* selo: sobre o encontro do disco com a pétala */
+/* 4. o selo pousa sobre o arco, na altura do ombro e longe do rosto —
+      ancorado em alguma coisa, e não colado num canto qualquer. */
 .hero-foto .selo{
-  top:2%;left:-34px;right:auto;bottom:auto;
-  width:88px;height:88px;z-index:3;display:grid;place-items:center;
+  top:29%;left:-20px;right:auto;bottom:auto;
+  width:92px;height:92px;z-index:3;display:grid;place-items:center;
 }
 .hero-foto .selo-anel{
   position:absolute;inset:0;width:100%;height:100%;
@@ -211,14 +227,14 @@ html{scroll-padding-top:88px}
 }
 .hero-foto .selo-nucleo{
   position:relative;z-index:1;
-  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
   background:linear-gradient(140deg,#5fceac,var(--brand));color:#fff;
   box-shadow:0 12px 26px -10px rgba(10,30,24,.6);
 }
 /* o dna.css manda todo svg dentro de .selo virar absoluto, 100% e girando —
    regra escrita para o anel. Sem este reset o ícone do núcleo vira um
    segundo anel gigante em cima do primeiro. */
-.selo .selo-nucleo svg{position:static;width:20px;height:20px;animation:none}
+.selo .selo-nucleo svg{position:static;width:21px;height:21px;animation:none}
 @media (prefers-reduced-motion:reduce){
   .hero-foto .selo-anel{animation:none}
 }
@@ -233,6 +249,7 @@ html{scroll-padding-top:88px}
 .hero-vs>.hero-incluso{display:block}
 .hero-incluso{position:relative;z-index:2;margin-top:clamp(34px,4vw,56px)}
 .incluso{
+  position:relative;overflow:hidden;
   display:grid;
   grid-template-columns:auto minmax(0,1fr) auto;
   align-items:center;gap:clamp(20px,2.6vw,40px);
@@ -243,8 +260,7 @@ html{scroll-padding-top:88px}
   box-shadow:0 34px 68px -34px rgba(10,30,24,.4);
 }
 .incluso::before{
-  content:"";position:absolute;top:0;left:26px;right:26px;height:3px;
-  border-radius:0 0 3px 3px;
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--brand),var(--accent));
 }
 .incluso h2{
@@ -297,12 +313,12 @@ html{scroll-padding-top:88px}
   gap:clamp(18px,2.4vw,32px);
 }
 .credibilidade li{list-style:none;text-align:center}
-.credibilidade .num{
+.credibilidade .cred-num{
   display:block;font-family:var(--font-display);
   font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.03em;
   color:var(--brand-deep);font-variant-numeric:tabular-nums;line-height:1.1;
 }
-.credibilidade .legenda{
+.credibilidade .cred-rotulo{
   display:block;margin-top:6px;font-size:12.5px;line-height:1.4;
   color:var(--ink-soft);
 }
@@ -652,13 +668,12 @@ html{scroll-padding-top:88px}
   .hero-vs>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
   /* abaixo de 980 o card sai de cima da foto e volta para o fluxo: na
      coluna unica ele cobriria o retrato inteiro */
-  .hero-foto{justify-self:center;max-width:420px;margin-right:0}
-  /* o selo e a moldura saem para fora do retrato no desktop; na coluna
-     única isso os joga para fora da tela */
-  .hero-foto .selo{top:14px;left:14px;width:74px;height:74px}
+  .hero-foto{justify-self:center;max-width:430px;margin-right:0}
+  /* disco e arco encolhem para dentro da coluna única */
+  .hero-foto .moldura{width:92%}
+  .hero-foto .halo{width:98%;border-width:1.5px}
+  .hero-foto .selo{top:26%;left:-6px;width:76px;height:76px}
   .hero-foto .selo-nucleo{width:38px;height:38px}
-  .hero-foto .moldura{left:-8%;top:5%;width:86%}
-  .hero-foto .halo{right:-5%;width:80%}
   /* a faixa vira pilha: título, itens, botão */
   .incluso{grid-template-columns:1fr;gap:18px}
   /* tres colunas num celular espremem cada item em quatro linhas */
