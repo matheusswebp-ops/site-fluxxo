@@ -687,6 +687,15 @@ html{scroll-padding-top:88px}
 @media (max-width:640px){
   html{scroll-padding-top:74px}
   .marca-fone{display:none}
+  /* o CTA do cabecalho quebrava em duas linhas no celular: isso empurrava
+     o cabecalho para 88px e espremia o nome da clinica ate as reticencias.
+     Numa linha so, o cabecalho volta para ~64px e a arte do hero passa a
+     comecar por baixo dele, sem emenda a vista. */
+  .topo .btn{white-space:nowrap;font-size:13px;padding:10px 10px 10px 16px;gap:9px}
+  .topo .btn i{width:26px;height:26px;font-size:12px}
+  .topo .wrap{gap:12px}
+  .marca-sigla{width:34px;height:34px}
+  .marca-nome{font-size:14.5px}
   .hero-vs{--desce:52px}
   .hero-acoes{width:100%}
   .hero-acoes .btn{width:100%;justify-content:center}
