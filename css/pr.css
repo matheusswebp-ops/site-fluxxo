@@ -109,13 +109,42 @@ html{scroll-padding-top:88px}
    nela, com o lado esquerdo vazio reservado ao texto. Por isso a coluna
    da direita do grid fica vazia e nada de UI sobe na figura — só o selo,
    no canto claro. A headline desta página é a mais longa das cinco, então
-   tem escala própria: na do dna.css ela ocupava seis linhas. */
+   tem escala própria: na do dna.css ela ocupava seis linhas.
+
+   A arte em si já vem escurecida de ponta a ponta (medido nos pixels do
+   arquivo: mesmo na borda esquerda o fundo já está em torno de rgb(60,47,40),
+   não só do lado direito) — não é o véu recortado que as irmãs usam. Por
+   isso a hero vira seção escura de verdade, com o texto claro que o resto
+   da página já usa em .diferencial e .fechamento. */
 .hero-pr{
   position:relative;
   padding:clamp(120px,12vw,166px) 0 clamp(58px,6vw,88px);
-  background-color:var(--paper);
+  background-color:var(--dark-1);
+  color:var(--dark-ink);
   overflow:hidden;
 }
+.hero-pr .kicker{color:var(--dark-ink-soft)}
+.hero-pr .kicker.tarja{
+  background:rgba(231,154,166,.14);border-color:rgba(231,154,166,.3);
+}
+.hero-pr .h1 .azul{color:#e79aa6}
+.hero-pr .lead{color:var(--dark-ink-soft)}
+.hero-pr .lead b{color:var(--dark-ink)}
+/* botão branco sobre foto escura, como nas outras duas seções escuras */
+.hero-pr .btn{
+  background:
+    linear-gradient(105deg,transparent 42%,rgba(11,76,116,.14) 50%,transparent 58%) no-repeat,
+    linear-gradient(135deg,#ffffff,#f3e3e5);
+  background-size:230% 100%,100% 100%;background-position:-70% 0,0 0;
+  color:var(--brand-deep);
+  box-shadow:0 0 0 8px rgba(255,255,255,.12),0 22px 44px -20px rgba(0,0,0,.62);
+}
+.hero-pr .btn::after{box-shadow:0 0 0 2px rgba(255,255,255,.75)}
+.hero-pr .btn i{background:var(--brand);color:#fff}
+.hero-pr .btn:hover{box-shadow:0 0 0 13px rgba(255,255,255,.16),0 26px 50px -20px rgba(0,0,0,.7)}
+.hero-pr .link{color:#f3cfd5}
+.hero-pr .hero-selos li{color:var(--dark-ink)}
+.hero-pr .hero-selos .ic{background:rgba(255,255,255,.16);color:#fff}
 .hero-pr>.wrap{
   /* width:100% porque no hero a seção é flex-column: com margin:0 auto no
      eixo cruzado o item deixa de esticar e encolhe até o conteúdo */
@@ -140,13 +169,12 @@ html{scroll-padding-top:88px}
 }
 @media (max-width:980px){
   .hero-pr{
-    --arte:min(100vw,540px);
-    --desce:92px;
     background-image:url("../img/pr-hero-mob.webp");
     background-repeat:no-repeat;
-    background-size:var(--arte) auto;
-    background-position:center var(--desce);
-    padding-top:calc(var(--desce) + var(--arte) * .66);
+    background-size:100% auto;
+    background-position:top center;
+    padding-top:min(78vw,420px);
+    padding-bottom:clamp(40px,6vw,64px);
     text-align:center;
   }
   .hero-pr .lead{margin-left:auto;margin-right:auto}
