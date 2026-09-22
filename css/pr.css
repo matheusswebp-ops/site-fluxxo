@@ -608,21 +608,10 @@ html{scroll-padding-top:88px}
 @media (max-width:640px){
   html{scroll-padding-top:74px}
 
-  /* ----- no celular tudo centraliza -----
-     Menos as linhas da FAQ, que sao botoes: o chevron mora na direita e
-     centralizar o rotulo separaria um do outro. */
-  .sec,.hero-pr{text-align:center}
-  .quem-col h3,.acesso-col h3,.tipo h3{justify-content:center}
-  .quem-col>p{margin-inline:auto}
-  .hero-selos li,.quem-lista li,.tipo-lista li,.credenciais li{
-    justify-content:center;text-align:left}
-  .quem-lista,.tipo-lista,.credenciais{align-items:center}
-  .etapa{display:flex;flex-direction:column;align-items:center}
+  /* so o diferencial centraliza no celular — foi a secao apontada.
+     O resto da pagina segue alinhado a esquerda. */
+  .diferencial{text-align:center}
   .diferencial-texto{text-align:center}
-  .sigilo p{margin-inline:auto;
-    border-image:linear-gradient(90deg,transparent calc(50% - 28px),
-      var(--brand) calc(50% - 28px) calc(50% + 28px),transparent calc(50% + 28px)) 2}
-  .faq summary,.faq details p{text-align:left}
   /* o CTA do cabeçalho quebrava em duas linhas e espremia o nome da
      clínica até as reticências */
   .topo .btn{white-space:nowrap;font-size:13px;padding:10px 10px 10px 16px;gap:9px}
