@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/dna.css?v=202609220720">
-<link rel="stylesheet" href="css/pr.css?v=202609220900">
+<link rel="stylesheet" href="css/pr.css?v=202609220930">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -86,22 +86,22 @@
 <section class="hero-pr">
   <div class="wrap">
     <div>
-      <span class="kicker tarja">Andrologia · Cirurgia do pênis</span>
+      <span class="kicker tarja reveal">Andrologia · Cirurgia do pênis</span>
 
-      <h1 class="h1">Prótese peniana com técnica de reconstrução —
+      <h1 class="h1 reveal">Prótese peniana com técnica de reconstrução —
         <b class="azul">a referência para disfunção erétil severa</b></h1>
 
-      <p class="lead">Para o homem que já tentou comprimidos e injeções sem
+      <p class="lead reveal">Para o homem que já tentou comprimidos e injeções sem
         resposta. Cirurgia conduzida por especialista, com foco em
         <b>preservar tamanho e calibre</b> — não apenas implantar o dispositivo.</p>
 
-      <div class="hero-acoes">
+      <div class="hero-acoes reveal">
         <a class="btn" href="#agendar">Agendar avaliação
           <i aria-hidden="true"><svg width="14" height="14"><use href="#i-seta"/></svg></i></a>
         <a class="link" href="#tecnica">Conhecer a técnica</a>
       </div>
 
-      <ul class="hero-selos">
+      <ul class="hero-selos reveal">
         <li><span class="ic" aria-hidden="true"><svg width="11" height="11"><use href="#i-losango"/></svg></span>
           Cirurgião com título de especialista (SBU)</li>
         <li><span class="ic" aria-hidden="true"><svg width="11" height="11"><use href="#i-losango"/></svg></span>
@@ -219,7 +219,7 @@
   <div class="wrap">
     <div class="head-center reveal">
       <span class="kicker kicker--center tarja">Os tipos</span>
-      <h2 class="h2">Maleável ou inflável
+      <h2 class="h2">Maleável ou inflável —
         <b class="azul">a escolha é individual</b></h2>
       <p class="lead lead--center">Definida na avaliação, conforme sua
         anatomia, rotina e expectativa.</p>
@@ -390,22 +390,22 @@
         medo.</p>
     </div>
 
-    <div class="faq-lista reveal">
-      <details>
+    <div class="faq-lista">
+      <details class="reveal">
         <summary>Vou perder a sensibilidade ou o orgasmo?
           <i aria-hidden="true"><svg width="15" height="15"><use href="#i-chevron"/></svg></i></summary>
         <p>Não. A prótese não interfere na sensibilidade nem na capacidade de
           ter orgasmo. A ejaculação permanece normal. A diferença é que a ereção
           passa a ser mecânica — o prazer continua.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>Vai parecer artificial? Alguém percebe?
           <i aria-hidden="true"><svg width="15" height="15"><use href="#i-chevron"/></svg></i></summary>
         <p>A prótese fica inteiramente dentro do corpo, sem nenhuma parte externa
           visível. Com técnica adequada, o aspecto e o toque são naturais — quem
           não souber, não percebe.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>O pênis vai ficar menor?
           <i aria-hidden="true"><svg width="15" height="15"><use href="#i-chevron"/></svg></i></summary>
         <p>Essa é a queixa mais comum quando a cirurgia é feita sem cuidado com a
@@ -413,7 +413,7 @@
           cilindro, o objetivo é preservar comprimento e calibre — é aí que a
           técnica faz diferença.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>E o risco de infecção?
           <i aria-hidden="true"><svg width="15" height="15"><use href="#i-chevron"/></svg></i></summary>
         <!-- o briefing pergunta se o Dr. quer citar taxa; segue sem número -->
@@ -421,7 +421,7 @@
           antibiótico, dispositivos com cobertura antimicrobiana e centro
           cirúrgico adequado reduzem esse risco de forma importante.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>Posso fazer ressonância depois?
           <i aria-hidden="true"><svg width="15" height="15"><use href="#i-chevron"/></svg></i></summary>
         <p>Sim. Os modelos atuais são compatíveis com ressonância magnética.
@@ -581,22 +581,32 @@
   window.addEventListener('scroll', aoRolar, {passive:true});
   aoRolar();
 
-  /* ---- entrada por seção ----
-     O observador vigia a seção inteira e escalona os .reveal de dentro.
-     É isso que dá sensação de bloco entrando, em vez de peças piscando. */
+  /* ---- entrada por seção, de ida e volta ----
+     O observador vigia a seção inteira e escalona os .reveal de dentro:
+     é isso que dá sensação de bloco entrando, em vez de peças piscando.
+     Ele não solta a seção depois da primeira vez (nada de unobserve), e
+     retira o .in quando ela sai de vista — então subir de volta refaz a
+     entrada. Na saída o atraso zera: escalonar a saída faria a seção se
+     desmontar em cascata, que é lento e chama atenção para o lado errado. */
   if (reduz || !('IntersectionObserver' in window)){
     document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
   } else {
-    var obs = new IntersectionObserver(function(itens, o){
+    var obs = new IntersectionObserver(function(itens){
       itens.forEach(function(i){
-        if (!i.isIntersecting) return;
         var pecas = i.target.querySelectorAll('.reveal');
-        pecas.forEach(function(p, n){
-          p.style.transitionDelay = Math.min(n * 70, 420) + 'ms';
-          p.classList.add('in');
-        });
-        i.target.classList.add('in');
-        o.unobserve(i.target);
+        if (i.isIntersecting){
+          pecas.forEach(function(p, n){
+            p.style.transitionDelay = Math.min(n * 70, 420) + 'ms';
+            p.classList.add('in');
+          });
+          i.target.classList.add('in');
+        } else {
+          pecas.forEach(function(p){
+            p.style.transitionDelay = '0ms';
+            p.classList.remove('in');
+          });
+          i.target.classList.remove('in');
+        }
       });
     }, {rootMargin:'0px 0px -12% 0px', threshold:0});
     document.querySelectorAll('.sec,.hero-pr').forEach(function(s){ obs.observe(s); });
