@@ -105,29 +105,54 @@ html{scroll-padding-top:88px}
 }
 
 /* ---------- 2. HERO ----------
-   O retrato entra num quadro chanfrado — cantos cortados em diagonal,
-   não arredondados. É a forma que nenhuma irmã usa (arco no
-   preenchimento, sangria na reposição, arte de fundo na vasectomia e na
-   disfunção) e é a que combina com o argumento desta: precisão. Atrás
-   dele, um bloco vinho na mesma forma, deslocado — é ele que dá
-   profundidade, e não sombra: clip-path corta a sombra junto. */
+   A arte da dobra é a foto de fundo, como nas irmãs: o cirurgião já vem
+   nela, com o lado esquerdo vazio reservado ao texto. Por isso a coluna
+   da direita do grid fica vazia e nada de UI sobe na figura — só o selo,
+   no canto claro. A headline desta página é a mais longa das cinco, então
+   tem escala própria: na do dna.css ela ocupava seis linhas. */
 .hero-pr{
   position:relative;
   padding:clamp(120px,12vw,166px) 0 clamp(58px,6vw,88px);
-  background:
-    radial-gradient(ellipse 58% 60% at 84% 16%,rgba(140,47,61,.10),transparent 68%),
-    radial-gradient(ellipse 50% 50% at 0% 100%,rgba(176,70,84,.08),transparent 66%),
-    var(--paper);
+  background-color:var(--paper);
   overflow:hidden;
 }
 .hero-pr>.wrap{
+  /* width:100% porque no hero a seção é flex-column: com margin:0 auto no
+     eixo cruzado o item deixa de esticar e encolhe até o conteúdo */
+  width:100%;
   position:relative;z-index:1;display:grid;
-  grid-template-columns:minmax(0,54%) minmax(0,46%);
+  grid-template-columns:minmax(0,52%) minmax(0,48%);
   gap:clamp(30px,4vw,56px);align-items:center;
 }
 .hero-pr .kicker{margin-bottom:20px}
-.hero-pr .h1{margin-top:0}
+.hero-pr .h1{margin-top:0;font-size:clamp(31px,3.5vw,50px)}
 .hero-pr .lead{margin-top:20px;max-width:44ch}
+
+@media (min-width:981px){
+  .hero-pr{
+    display:flex;flex-direction:column;justify-content:center;align-items:stretch;
+    min-height:min(86vh,780px);
+    background-image:url("../img/pr-hero-desk.webp");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:right center;
+  }
+}
+@media (max-width:980px){
+  .hero-pr{
+    --arte:min(100vw,540px);
+    --desce:92px;
+    background-image:url("../img/pr-hero-mob.webp");
+    background-repeat:no-repeat;
+    background-size:var(--arte) auto;
+    background-position:center var(--desce);
+    padding-top:calc(var(--desce) + var(--arte) * .66);
+    text-align:center;
+  }
+  .hero-pr .lead{margin-left:auto;margin-right:auto}
+  .hero-pr .hero-selos{justify-content:center}
+  .hero-pr .hero-acoes{justify-content:center}
+}
 
 .hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
   flex-wrap:wrap;margin-top:clamp(26px,3vw,36px)}
@@ -143,58 +168,22 @@ html{scroll-padding-top:88px}
   background:var(--brand-soft);color:var(--brand);
 }
 
-/* ----- o retrato ----- */
-.hero-foto{
-  --chanfro:clamp(36px,4.6vw,66px);
-  position:relative;justify-self:end;
-  width:100%;max-width:452px;
-  margin-right:clamp(0px,1.4vw,22px);
-}
-/* o bloco atrás: mesma forma, deslocado na diagonal */
-.hero-foto .campo{
-  position:absolute;z-index:0;pointer-events:none;
-  top:clamp(20px,2.4vw,34px);left:clamp(20px,2.4vw,34px);
-  right:calc(-1 * clamp(20px,2.4vw,34px));bottom:calc(-1 * clamp(20px,2.4vw,34px));
-  background:linear-gradient(152deg,var(--accent),var(--brand-deep) 76%);
-  clip-path:polygon(
-    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
-    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
-}
-/* e um fio na mesma forma, deslocado para o outro lado */
-.hero-foto .fio{
-  position:absolute;z-index:0;pointer-events:none;
-  top:calc(-1 * clamp(16px,2vw,26px));right:clamp(24px,3vw,44px);
-  left:calc(-1 * clamp(16px,2vw,26px));bottom:clamp(24px,3vw,44px);
-  border:1px solid rgba(140,47,61,.28);
-  clip-path:polygon(
-    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
-    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
-}
-.hero-foto .foto{
-  position:relative;z-index:1;margin:0;width:100%;aspect-ratio:4/5;
-  overflow:hidden;background:var(--paper-tint);
-  clip-path:polygon(
-    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
-    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
-}
-.hero-foto .foto img{position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 8%}
-
-/* o selo pousa no canto vivo de baixo, sobre o bloco vinho */
+/* ----- o selo -----
+   Um por página, só no hero, como manda o DNA. Pousa no canto de baixo à
+   direita, onde a arte desbota: ali ele lê, e nada de UI fica sobre o rosto. */
 .hero-pr .selo{
-  top:auto;right:auto;left:auto;
-  bottom:calc(-1 * clamp(4px,1vw,14px));right:calc(-1 * clamp(10px,1.6vw,22px));
-  width:92px;height:92px;z-index:3;display:grid;place-items:center;
+  top:auto;left:auto;right:clamp(20px,3.4vw,58px);bottom:clamp(20px,3vw,44px);
+  width:92px;height:92px;z-index:2;display:grid;place-items:center;
 }
 .hero-pr .selo-anel{
   position:absolute;inset:0;width:100%;height:100%;
   animation:girar 26s linear infinite;
-  fill:#fff;font-size:9.2px;font-weight:700;letter-spacing:.14em;
+  fill:var(--brand-deep);font-size:9.2px;font-weight:700;letter-spacing:.14em;
 }
 .hero-pr .selo-nucleo{
   position:relative;z-index:1;
   width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
-  background:var(--paper-2);color:var(--brand);
+  background:linear-gradient(140deg,var(--accent),var(--brand-deep));color:#fff;
   box-shadow:0 12px 26px -10px rgba(30,16,20,.6);
 }
 /* o dna.css manda todo svg dentro de .selo virar absoluto, 100% e girando —
@@ -203,6 +192,10 @@ html{scroll-padding-top:88px}
 .selo .selo-nucleo svg{position:static;width:21px;height:21px;animation:none}
 @media (prefers-reduced-motion:reduce){
   .hero-pr .selo-anel{animation:none}
+}
+/* na arte vertical o canto de baixo é o próprio texto */
+@media (max-width:980px){
+  .hero-pr .selo{display:none}
 }
 
 /* ---------- 3. PARA QUEM É ---------- */
@@ -320,7 +313,20 @@ html{scroll-padding-top:88px}
   background:linear-gradient(90deg,transparent,rgba(231,154,166,.4) 32%,
              rgba(231,154,166,.4) 68%,transparent);
 }
-.diferencial .wrap{max-width:900px}
+.diferencial .wrap{
+  display:grid;grid-template-columns:minmax(0,38%) minmax(0,62%);
+  gap:clamp(32px,4.4vw,72px);align-items:center;
+}
+/* a etapa que a seção defende precisa ser vista: sem imagem isto era um
+   parágrafo solto no escuro, e parágrafo solto no escuro não convence */
+.diferencial-foto{
+  --chanfro:clamp(26px,3vw,44px);
+  position:relative;margin:0;width:100%;aspect-ratio:4/5;overflow:hidden;
+  clip-path:polygon(
+    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
+    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.diferencial-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .diferencial .kicker{color:#e79aa6}
 .diferencial .h2{margin-top:16px}
 .diferencial-texto{
@@ -355,13 +361,19 @@ html{scroll-padding-top:88px}
 .sigilo{background:var(--paper-tint);
   border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sigilo .wrap{
-  max-width:860px;display:grid;grid-template-columns:auto minmax(0,1fr);
-  gap:clamp(20px,3vw,36px);align-items:center;
+  display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);
+  gap:clamp(28px,4vw,60px);align-items:center;
 }
+.sigilo-foto{
+  position:relative;margin:0;width:100%;aspect-ratio:3/2;overflow:hidden;
+  border-radius:var(--radius-lg);box-shadow:var(--sombra);
+}
+.sigilo-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .sigilo-ic{
-  width:60px;height:60px;flex:none;border-radius:50%;display:grid;place-items:center;
+  width:52px;height:52px;flex:none;border-radius:50%;display:grid;place-items:center;
   background:linear-gradient(140deg,var(--accent),var(--brand-deep));color:#fff;
   box-shadow:0 16px 34px -18px rgba(30,16,20,.6);
+  margin-bottom:20px;
 }
 .sigilo h2{font-family:var(--font-display);
   font-size:clamp(19px,2vw,26px);font-weight:600;letter-spacing:-.02em;
@@ -400,10 +412,13 @@ html{scroll-padding-top:88px}
 .acesso .kicker{color:var(--brand)}
 .acesso-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
 .acesso-col{
-  padding:clamp(24px,2.6vw,34px);
+  overflow:hidden;
   background:var(--paper-2);border:1px solid var(--line);
   border-radius:var(--radius-lg);
 }
+.acesso-foto{position:relative;width:100%;aspect-ratio:3/2;margin:0}
+.acesso-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.acesso-corpo{padding:clamp(24px,2.6vw,34px)}
 .acesso-col h3{
   display:flex;align-items:center;gap:10px;
   font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
@@ -429,6 +444,11 @@ html{scroll-padding-top:88px}
   background:var(--brand-soft);color:var(--brand);margin-bottom:22px;
 }
 .onde .lead{margin-top:20px}
+.onde-foto{
+  position:relative;width:100%;aspect-ratio:16/6;margin:clamp(32px,3.6vw,48px) 0 0;
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--sombra);
+}
+.onde-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* ---------- 13. AUTORIDADE ---------- */
 .autoridade{background:var(--paper-tint)}
@@ -544,18 +564,17 @@ html{scroll-padding-top:88px}
 
 @media (max-width:980px){
   .hero-pr>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
-  .hero-pr>.wrap>div:first-child{order:2}
-  .hero-foto{justify-self:center;max-width:380px;margin-right:0;order:1}
-  .hero-pr .selo{width:76px;height:76px;bottom:-8px;right:-8px}
-  .hero-pr .selo-nucleo{width:38px;height:38px}
   .quem-grid,.tipos-grid,.acesso-grid{grid-template-columns:1fr}
+  .diferencial .wrap{grid-template-columns:1fr;gap:clamp(28px,4vw,40px)}
+  .diferencial-foto{max-width:360px;margin:0 auto}
+  .sigilo .wrap{grid-template-columns:1fr;gap:clamp(24px,3.4vw,36px)}
+  .onde-foto{aspect-ratio:16/9}
   .numeros{grid-template-columns:1fr}
   .autoridade-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px);
     justify-items:center;text-align:center}
   .autoridade-foto{max-width:340px;order:-1}
   .autoridade .lead{margin-left:auto;margin-right:auto}
   .credenciais li{text-align:left}
-  .sigilo .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}
   .cirurgia-ilustra{aspect-ratio:16/9}
 }
 

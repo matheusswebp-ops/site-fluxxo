@@ -18,12 +18,15 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="preload" as="image" href="img/pp-medico.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/pr-hero-desk.webp" fetchpriority="high"
+      media="(min-width:981px)">
+<link rel="preload" as="image" href="img/pr-hero-mob.webp" fetchpriority="high"
+      media="(max-width:980px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/dna.css?v=202609220600">
-<link rel="stylesheet" href="css/pr.css?v=202609220600">
+<link rel="stylesheet" href="css/dna.css?v=202609220720">
+<link rel="stylesheet" href="css/pr.css?v=202609220720">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -108,32 +111,24 @@
       </ul>
     </div>
 
-    <!-- retrato em quadro chanfrado: as irmãs abrem com arco, com sangria
-         na tela e com arte de fundo — o canto cortado é o que sobra, e é
-         o que combina com o argumento desta página -->
-    <div class="hero-foto">
-      <span class="fio" aria-hidden="true"></span>
-      <span class="campo" aria-hidden="true"></span>
+    <!-- a coluna da direita fica vazia de propósito: o cirurgião vem na
+         própria arte de fundo da dobra, como nas irmãs -->
+    <div></div>
+  </div>
 
-      <figure class="foto">
-        <img src="img/pp-medico.webp" alt="Dr. Eduardo Miranda, cirurgião, no ambiente de trabalho"
-             width="880" height="1104" fetchpriority="high" decoding="async">
-      </figure>
-
-      <!-- selo: um por página, só no hero, como manda o DNA -->
-      <span class="selo" aria-hidden="true">
+  <!-- selo: um por página, só no hero, como manda o DNA. Fora do grid,
+       pousado no canto vazio da arte. -->
+  <span class="selo" aria-hidden="true">
         <svg class="selo-anel" viewBox="0 0 100 100">
           <defs>
             <path id="prAnel" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/>
           </defs>
           <text><textPath href="#prAnel">TÉCNICA DE RECONSTRUÇÃO · </textPath></text>
         </svg>
-        <span class="selo-nucleo">
-          <svg width="20" height="20"><use href="#i-escudo"/></svg>
-        </span>
-      </span>
-    </div>
-  </div>
+    <span class="selo-nucleo">
+      <svg width="20" height="20"><use href="#i-escudo"/></svg>
+    </span>
+  </span>
 </section>
 
 <!-- ===== SEÇÃO 3 — PARA QUEM É ===== -->
@@ -315,7 +310,11 @@
 <!-- ===== SEÇÃO 7 — O DIFERENCIAL (escura, ênfase 1 de 2) ===== -->
 <section class="sec sec--dark diferencial" id="tecnica">
   <div class="wrap">
-    <div class="reveal">
+    <figure class="diferencial-foto vago reveal" data-brief="Detalhe da etapa de reconstrução dos tecidos — mão do cirurgião e instrumental, enquadramento fechado e clínico. 4:5 — é a etapa que a seção defende.">
+      <span class="vago-tag">Imagem</span>
+    </figure>
+
+    <div class="diferencial-txt reveal">
       <span class="kicker tarja">O diferencial</span>
       <h2 class="h2">Não é só implantar — é reconstruir
         <b class="azul">para preservar tamanho e calibre</b></h2>
@@ -364,9 +363,13 @@
 <!-- ===== SEÇÃO 9 — SIGILO ===== -->
 <section class="sec sigilo">
   <div class="wrap">
-    <span class="sigilo-ic reveal" aria-hidden="true">
-      <svg width="25" height="25"><use href="#i-cadeado"/></svg></span>
-    <div class="reveal">
+    <figure class="sigilo-foto vago reveal" data-brief="Sala de espera reservada ou corredor da clínica, sem pessoas identificáveis. 3:2 — prova de discrição.">
+      <span class="vago-tag">Imagem</span>
+    </figure>
+
+    <div class="sigilo-txt reveal">
+      <span class="sigilo-ic" aria-hidden="true">
+        <svg width="22" height="22"><use href="#i-cadeado"/></svg></span>
       <h2>Do primeiro contato à alta, com total discrição</h2>
       <p>Sala de espera reservada, atendimento individualizado e cuidado com a
         sua privacidade em cada etapa. Aqui você é acolhido sem exposição e sem
@@ -438,17 +441,27 @@
 
     <div class="acesso-grid">
       <div class="acesso-col reveal">
-        <h3><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-carteira"/></svg></span>
-          Convênio — cobertura e reembolso</h3>
-        <p>A cobertura varia conforme o plano e o caso; em muitas situações é
-          possível <b>reembolso parcial</b>, analisado individualmente.
-          Orientamos você em todo o processo de solicitação.</p>
+        <figure class="acesso-foto vago" data-brief="Carteirinha de convênio e documentos sobre a mesa do consultório, ou atendimento da secretária orientando o paciente. 3:2.">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <div class="acesso-corpo">
+          <h3><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-carteira"/></svg></span>
+            Convênio — cobertura e reembolso</h3>
+          <p>A cobertura varia conforme o plano e o caso; em muitas situações é
+            possível <b>reembolso parcial</b>, analisado individualmente.
+            Orientamos você em todo o processo de solicitação.</p>
+        </div>
       </div>
       <div class="acesso-col reveal">
-        <h3><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-pessoas"/></svg></span>
-          SUS — pela rede pública</h3>
-        <p>A cirurgia existe no SUS, com critérios e filas de espera. Explicamos
-          com <b>transparência</b> os caminhos possíveis.</p>
+        <figure class="acesso-foto vago" data-brief="Consulta de orientação: o médico explicando os caminhos ao paciente, de frente. 3:2.">
+          <span class="vago-tag">Imagem</span>
+        </figure>
+        <div class="acesso-corpo">
+          <h3><span class="ic" aria-hidden="true"><svg width="14" height="14"><use href="#i-pessoas"/></svg></span>
+            SUS — pela rede pública</h3>
+          <p>A cirurgia existe no SUS, com critérios e filas de espera. Explicamos
+            com <b>transparência</b> os caminhos possíveis.</p>
+        </div>
       </div>
     </div>
 
@@ -469,6 +482,10 @@
       <b>centro cirúrgico hospitalar</b>, com toda a estrutura de segurança que
       um implante exige — equipe completa, protocolo de antibiótico e suporte de
       internação.</p>
+
+    <figure class="onde-foto vago reveal" data-brief="Centro cirúrgico montado, equipe paramentada, sem identificar o hospital. 16:6 — estrutura, não marca.">
+      <span class="vago-tag">Imagem</span>
+    </figure>
   </div>
 </section>
 
