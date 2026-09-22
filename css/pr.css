@@ -177,18 +177,11 @@ html{scroll-padding-top:88px}
     background-image:url("../img/pr-hero-mob.webp");
     background-repeat:no-repeat;
     background-size:100% auto;
-    background-position:top center;
-    padding-top:min(78vw,420px);
+    --desce:78px;
+    background-position:center var(--desce);
+    padding-top:calc(var(--desce) + min(78vw,420px));
     padding-bottom:clamp(40px,6vw,64px);
     text-align:center;
-  }
-  /* o rosto do medico fica bem no topo do arquivo, exatamente atras do
-     cabecalho fixo. Um veu escuro atras do cabecalho resolve — a foto
-     so escurece sozinha mais embaixo, onde o texto comeca. */
-  .hero-pr::before{
-    content:"";position:absolute;top:0;left:0;right:0;z-index:1;
-    height:112px;pointer-events:none;
-    background:linear-gradient(180deg,rgba(6,8,16,.6),rgba(6,8,16,0));
   }
   .hero-pr .lead{margin-left:auto;margin-right:auto}
   .hero-pr .hero-selos{justify-content:center}
