@@ -1,0 +1,590 @@
+/* ============================================================
+   PRÓTESE PENIANA · Variação 01 — Autoridade
+   Quinta página do Dr. Eduardo. Herda os primitivos de dna.css,
+   com preset de cor próprio.
+
+   As quatro irmãs já usam navy claro, navy escuro, grafite+cobre e
+   verde-teal. Esta ganha vinho profundo sobre papel quente: é a cor
+   institucional da autoridade — a de diploma e de sala de cirurgia —
+   e é o que esta variação vende. Os alertas saem para o âmbar, para
+   não disputarem com a marca.
+   ============================================================ */
+
+/* ---------- preset E — vinho institucional ---------- */
+.tema-vinho{
+  --paper:#faf7f6;
+  --paper-2:#ffffff;
+  --paper-tint:#f3e9e8;
+  --ink:#1e1417;
+  --ink-soft:#6b585c;
+  --line:rgba(30,20,23,.12);
+  --brand:#8c2f3d;
+  --brand-deep:#69202b;
+  --brand-soft:#f5e3e5;
+  --accent:#b04654;
+  --dark-1:#190e12;
+  --dark-2:#2e171e;
+  --dark-ink:#fdf8f7;
+  /* apoio sobre escuro: claro tingido de vinho, nunca cinza */
+  --dark-ink-soft:#d6aeb5;
+  --dark-line:rgba(214,174,181,.2);
+  /* alerta em âmbar: vermelho aqui é a marca, não o aviso */
+  --alerta:#a2661d;
+  --alerta-soft:#f7ecda;
+  --sombra:0 24px 48px -28px rgba(30,16,20,.36);
+  --sombra-chip:0 10px 26px -12px rgba(30,16,20,.30);
+}
+
+/* o dna.css fixa um azul para o destaque sobre fundo escuro */
+.sec--dark .h1 .azul,.sec--dark .h2 .azul{color:#e79aa6}
+
+/* utilitário: rótulo só para leitor de tela */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------- slots de preenchimento ---------- */
+.slot{
+  border-bottom:1px dashed rgba(140,47,61,.45);
+  padding-bottom:1px;
+  white-space:nowrap;
+}
+
+/* ---------- 1. CABEÇALHO FIXO ---------- */
+html{scroll-padding-top:88px}
+
+.topo{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  transition:background .3s var(--ease),box-shadow .3s var(--ease),
+             backdrop-filter .3s var(--ease),padding .3s var(--ease);
+  padding:16px 0;
+}
+.topo.solido{
+  background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(1.5) blur(16px);
+  -webkit-backdrop-filter:saturate(1.5) blur(16px);
+  box-shadow:0 1px 0 var(--line),0 16px 34px -28px rgba(30,16,20,.22);
+  padding:10px 0;
+}
+.topo .wrap{display:flex;align-items:center;gap:20px}
+
+.marca{display:flex;align-items:center;gap:11px;min-width:0}
+.marca-sigla{
+  width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#b04654,#69202b);color:#fff;
+}
+.marca-nome{font-family:var(--font-display);font-size:15.5px;font-weight:700;
+  letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:var(--ink)}
+
+.topo .btn{margin-left:auto;padding:11px 20px;font-size:14px}
+
+/* barra de progresso de leitura */
+.progresso{position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:linear-gradient(90deg,#69202b,#b04654);
+  transition:width .1s linear}
+
+.pular{position:absolute;left:-9999px;top:0;z-index:100;background:var(--brand);
+  color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-size:14px}
+.pular:focus{left:0}
+
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ---------- kicker em pílula ---------- */
+.kicker.tarja{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:7px 16px;border-radius:var(--radius-pill);
+  background:var(--brand-soft);border:1px solid rgba(140,47,61,.2);
+}
+.kicker.tarja::before,.kicker.tarja::after{
+  width:5px;height:5px;border-radius:50%;background:currentColor;opacity:1;
+}
+.sec--dark .kicker.tarja{
+  background:rgba(231,154,166,.12);border-color:rgba(231,154,166,.28);
+}
+
+/* ---------- 2. HERO ----------
+   O retrato entra num quadro chanfrado — cantos cortados em diagonal,
+   não arredondados. É a forma que nenhuma irmã usa (arco no
+   preenchimento, sangria na reposição, arte de fundo na vasectomia e na
+   disfunção) e é a que combina com o argumento desta: precisão. Atrás
+   dele, um bloco vinho na mesma forma, deslocado — é ele que dá
+   profundidade, e não sombra: clip-path corta a sombra junto. */
+.hero-pr{
+  position:relative;
+  padding:clamp(120px,12vw,166px) 0 clamp(58px,6vw,88px);
+  background:
+    radial-gradient(ellipse 58% 60% at 84% 16%,rgba(140,47,61,.10),transparent 68%),
+    radial-gradient(ellipse 50% 50% at 0% 100%,rgba(176,70,84,.08),transparent 66%),
+    var(--paper);
+  overflow:hidden;
+}
+.hero-pr>.wrap{
+  position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,54%) minmax(0,46%);
+  gap:clamp(30px,4vw,56px);align-items:center;
+}
+.hero-pr .kicker{margin-bottom:20px}
+.hero-pr .h1{margin-top:0}
+.hero-pr .lead{margin-top:20px;max-width:44ch}
+
+.hero-acoes{display:flex;align-items:center;gap:clamp(16px,2vw,28px);
+  flex-wrap:wrap;margin-top:clamp(26px,3vw,36px)}
+.hero-acoes .btn{margin-top:0}
+
+/* selos em linha, sob os botões */
+.hero-selos{list-style:none;display:flex;flex-wrap:wrap;gap:12px 24px;
+  margin-top:clamp(26px,2.8vw,34px)}
+.hero-selos li{display:flex;align-items:center;gap:9px;font-size:13.5px;
+  font-weight:500;color:var(--ink)}
+.hero-selos .ic{
+  width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+}
+
+/* ----- o retrato ----- */
+.hero-foto{
+  --chanfro:clamp(36px,4.6vw,66px);
+  position:relative;justify-self:end;
+  width:100%;max-width:452px;
+  margin-right:clamp(0px,1.4vw,22px);
+}
+/* o bloco atrás: mesma forma, deslocado na diagonal */
+.hero-foto .campo{
+  position:absolute;z-index:0;pointer-events:none;
+  top:clamp(20px,2.4vw,34px);left:clamp(20px,2.4vw,34px);
+  right:calc(-1 * clamp(20px,2.4vw,34px));bottom:calc(-1 * clamp(20px,2.4vw,34px));
+  background:linear-gradient(152deg,var(--accent),var(--brand-deep) 76%);
+  clip-path:polygon(
+    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
+    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+/* e um fio na mesma forma, deslocado para o outro lado */
+.hero-foto .fio{
+  position:absolute;z-index:0;pointer-events:none;
+  top:calc(-1 * clamp(16px,2vw,26px));right:clamp(24px,3vw,44px);
+  left:calc(-1 * clamp(16px,2vw,26px));bottom:clamp(24px,3vw,44px);
+  border:1px solid rgba(140,47,61,.28);
+  clip-path:polygon(
+    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
+    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.hero-foto .foto{
+  position:relative;z-index:1;margin:0;width:100%;aspect-ratio:4/5;
+  overflow:hidden;background:var(--paper-tint);
+  clip-path:polygon(
+    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
+    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.hero-foto .foto img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 8%}
+
+/* o selo pousa no canto vivo de baixo, sobre o bloco vinho */
+.hero-pr .selo{
+  top:auto;right:auto;left:auto;
+  bottom:calc(-1 * clamp(4px,1vw,14px));right:calc(-1 * clamp(10px,1.6vw,22px));
+  width:92px;height:92px;z-index:3;display:grid;place-items:center;
+}
+.hero-pr .selo-anel{
+  position:absolute;inset:0;width:100%;height:100%;
+  animation:girar 26s linear infinite;
+  fill:#fff;font-size:9.2px;font-weight:700;letter-spacing:.14em;
+}
+.hero-pr .selo-nucleo{
+  position:relative;z-index:1;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:var(--paper-2);color:var(--brand);
+  box-shadow:0 12px 26px -10px rgba(30,16,20,.6);
+}
+/* o dna.css manda todo svg dentro de .selo virar absoluto, 100% e girando —
+   regra escrita para o anel. Sem este reset o ícone do núcleo vira um
+   segundo anel gigante em cima do primeiro. */
+.selo .selo-nucleo svg{position:static;width:21px;height:21px;animation:none}
+@media (prefers-reduced-motion:reduce){
+  .hero-pr .selo-anel{animation:none}
+}
+
+/* ---------- 3. PARA QUEM É ---------- */
+.quem{background:var(--paper-2)}
+.quem .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.quem .kicker{color:var(--brand)}
+.quem-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.quem-col{
+  padding:clamp(24px,2.6vw,34px);
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:var(--paper);
+}
+.quem-col--sim{
+  border-color:rgba(140,47,61,.3);background:var(--paper-2);
+  box-shadow:var(--sombra);
+}
+.quem-col h3{
+  display:flex;align-items:center;gap:10px;
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.quem-col--sim h3{color:var(--brand)}
+.quem-col--nao h3{color:var(--alerta)}
+.quem-col>p{font-size:13.5px;line-height:1.5;color:var(--ink-soft);
+  margin-bottom:clamp(18px,2vw,24px)}
+.quem-lista{list-style:none;display:flex;flex-direction:column;gap:14px}
+.quem-lista li{display:flex;align-items:flex-start;gap:12px;
+  font-size:var(--fs-body);line-height:1.5;color:var(--ink)}
+.quem-lista .ic{
+  width:24px;height:24px;flex:none;border-radius:50%;display:grid;place-items:center;
+  margin-top:1px;
+}
+.quem-col--sim .ic{background:var(--brand-soft);color:var(--brand)}
+.quem-col--nao .ic{background:var(--alerta-soft);color:var(--alerta)}
+
+/* ---------- 4. AS CAUSAS ---------- */
+.causas{background:var(--paper)}
+.causas .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.causas .kicker{color:var(--brand)}
+.causas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.causas-grid .card-icone{background:var(--brand-soft);color:var(--brand)}
+
+/* ---------- 5. OS TIPOS ---------- */
+.tipos{background:var(--paper-tint)}
+.tipos .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.tipos .kicker{color:var(--brand)}
+.tipos-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
+.tipo{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--sombra);
+  display:flex;flex-direction:column;
+}
+.tipo-foto{position:relative;width:100%;aspect-ratio:3/2;margin:0}
+.tipo-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tipo-corpo{padding:clamp(22px,2.4vw,30px)}
+.tipo-selo{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 12px;border-radius:var(--radius-pill);
+  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--brand-soft);color:var(--brand-deep);
+}
+.tipo h3{font-family:var(--font-display);font-size:clamp(20px,2vw,25px);
+  font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-top:14px}
+.tipo-lista{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.tipo-lista li{display:flex;align-items:flex-start;gap:11px;
+  font-size:var(--fs-body);line-height:1.5;color:var(--ink-soft)}
+.tipo-lista .ic{
+  width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);margin-top:1px;
+}
+
+/* ---------- 6. COMO É A CIRURGIA ---------- */
+.cirurgia{background:var(--paper-2)}
+.cirurgia .head-center{margin-bottom:clamp(30px,3.2vw,44px)}
+.cirurgia .kicker{color:var(--brand)}
+.cirurgia-ilustra{
+  position:relative;width:100%;aspect-ratio:16/6;margin:0 0 clamp(36px,4vw,54px);
+  border-radius:var(--radius-lg);overflow:hidden;
+}
+.cirurgia-ilustra img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* a trilha: quatro etapas numa linha, ligadas. A linha é o que diz
+   "previsível", que é a promessa do subtítulo. */
+.etapas{
+  list-style:none;position:relative;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.6vw,36px);
+}
+.etapas::before{
+  content:"";position:absolute;left:0;right:0;top:19px;height:1px;
+  background:linear-gradient(90deg,var(--brand-soft),var(--brand) 22%,
+             var(--brand) 78%,var(--brand-soft));
+}
+.etapa{position:relative}
+.etapa-n{
+  position:relative;z-index:1;
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-display);font-size:14px;font-weight:700;
+  background:linear-gradient(140deg,var(--accent),var(--brand-deep));color:#fff;
+  box-shadow:0 0 0 6px var(--paper-2);
+}
+.etapa h3{font-size:var(--fs-card);font-weight:600;line-height:var(--lh-card);
+  color:var(--ink);margin-top:18px}
+.etapa p{font-size:var(--fs-body);line-height:var(--lh-body);
+  color:var(--ink-soft);margin-top:8px}
+
+/* ---------- 7. O DIFERENCIAL (escura, ênfase 1 de 2) ---------- */
+.diferencial{
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,rgba(231,154,166,.13),transparent 66%),
+    linear-gradient(180deg,#140a0e,var(--dark-2) 58%,#1b0f13);
+  overflow:hidden;
+}
+.diferencial::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,154,166,.4) 32%,
+             rgba(231,154,166,.4) 68%,transparent);
+}
+.diferencial .wrap{max-width:900px}
+.diferencial .kicker{color:#e79aa6}
+.diferencial .h2{margin-top:16px}
+.diferencial-texto{
+  margin-top:clamp(26px,3vw,38px);padding-top:clamp(24px,2.6vw,32px);
+  border-top:1px solid var(--dark-line);
+  font-size:clamp(16px,1.35vw,19px);line-height:1.68;color:var(--dark-ink-soft);
+}
+.diferencial-texto b{color:var(--dark-ink);font-weight:600}
+
+/* ---------- 8. ÍNDICE DE SATISFAÇÃO ---------- */
+.satisfacao{background:var(--paper)}
+.satisfacao .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.satisfacao .kicker{color:var(--brand)}
+.numeros{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:var(--gap)}
+.numero{
+  text-align:center;padding:clamp(26px,3vw,38px) clamp(18px,2vw,26px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+}
+.numero-v{
+  display:block;font-family:var(--font-display);
+  font-size:clamp(34px,4vw,54px);font-weight:700;letter-spacing:-.04em;
+  line-height:1;color:var(--brand);font-variant-numeric:tabular-nums;
+}
+.numero-l{display:block;margin-top:12px;font-size:14px;line-height:1.5;
+  color:var(--ink-soft)}
+.satisfacao-nota{margin:clamp(24px,2.6vw,32px) auto 0;text-align:center;
+  max-width:70ch;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+
+/* ---------- 9. SIGILO ---------- */
+.sigilo{background:var(--paper-tint);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sigilo .wrap{
+  max-width:860px;display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(20px,3vw,36px);align-items:center;
+}
+.sigilo-ic{
+  width:60px;height:60px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--accent),var(--brand-deep));color:#fff;
+  box-shadow:0 16px 34px -18px rgba(30,16,20,.6);
+}
+.sigilo h2{font-family:var(--font-display);
+  font-size:clamp(19px,2vw,26px);font-weight:600;letter-spacing:-.02em;
+  line-height:1.3;color:var(--ink)}
+.sigilo p{margin-top:10px;font-size:var(--fs-body);line-height:1.6;
+  color:var(--ink-soft)}
+
+/* ---------- 10. FAQ ---------- */
+.faq{background:var(--paper-2)}
+.faq .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.faq .kicker{color:var(--brand)}
+.faq-lista{max-width:860px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{
+  display:flex;align-items:center;gap:18px;cursor:pointer;list-style:none;
+  padding:clamp(18px,1.8vw,24px) 0;
+  font-size:clamp(15.5px,1.3vw,18px);font-weight:500;line-height:1.4;
+  color:var(--ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{
+  margin-left:auto;flex:none;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;background:var(--brand-soft);color:var(--brand);
+  transition:transform .3s var(--ease);
+}
+.faq details[open] summary i{transform:rotate(180deg)}
+.faq details p{
+  padding:0 52px clamp(20px,2vw,26px) 0;
+  font-size:var(--fs-body);line-height:1.7;color:var(--ink-soft);
+}
+
+/* ---------- 11. ACESSO (convênio e SUS) ---------- */
+.acesso{background:var(--paper)}
+.acesso .head-center{margin-bottom:clamp(34px,3.6vw,48px)}
+.acesso .kicker{color:var(--brand)}
+.acesso-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.acesso-col{
+  padding:clamp(24px,2.6vw,34px);
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+}
+.acesso-col h3{
+  display:flex;align-items:center;gap:10px;
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--brand);
+}
+.acesso-col .ic{
+  width:26px;height:26px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+}
+.acesso-col p{margin-top:14px;font-size:var(--fs-body);line-height:1.65;
+  color:var(--ink-soft)}
+.acesso-nota{
+  margin:clamp(24px,2.6vw,32px) auto 0;max-width:72ch;text-align:center;
+  font-size:12.5px;line-height:1.6;color:var(--ink-soft);
+}
+
+/* ---------- 12. ONDE AS CIRURGIAS SÃO REALIZADAS ---------- */
+.onde{background:var(--paper-2)}
+.onde .wrap{max-width:820px;text-align:center;display:flex;
+  flex-direction:column;align-items:center}
+.onde-ic{
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);margin-bottom:22px;
+}
+.onde .lead{margin-top:20px}
+
+/* ---------- 13. AUTORIDADE ---------- */
+.autoridade{background:var(--paper-tint)}
+.autoridade-grid{display:grid;grid-template-columns:minmax(0,38%) minmax(0,62%);
+  gap:clamp(32px,4.4vw,72px);align-items:center}
+.autoridade .kicker{color:var(--brand)}
+.autoridade-foto{
+  --chanfro:clamp(28px,3.4vw,48px);
+  position:relative;margin:0;width:100%;aspect-ratio:4/5;overflow:hidden;
+  background:var(--paper);
+  clip-path:polygon(
+    0 0,calc(100% - var(--chanfro)) 0,100% var(--chanfro),
+    100% 100%,var(--chanfro) 100%,0 calc(100% - var(--chanfro)));
+}
+.autoridade-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.autoridade .h2{margin-top:16px}
+.autoridade-reg{margin-top:12px;font-size:13.5px;font-weight:600;
+  letter-spacing:.01em;color:var(--brand)}
+.autoridade .lead{margin-top:18px;max-width:52ch}
+.credenciais{list-style:none;display:flex;flex-direction:column;gap:12px;
+  margin-top:clamp(24px,2.6vw,32px)}
+.credenciais li{display:flex;gap:12px;align-items:flex-start;
+  font-size:var(--fs-body);line-height:1.5;color:var(--ink)}
+.credenciais .ic{
+  width:24px;height:24px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand);color:#fff;margin-top:1px;
+}
+
+/* ---------- 14. CTA FINAL (escura, ênfase 2 de 2) ---------- */
+.fechamento{
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 100%,rgba(231,154,166,.13),transparent 66%),
+    linear-gradient(180deg,#1b0f13,var(--dark-1));
+  overflow:hidden;
+}
+.fechamento .wrap{max-width:760px;text-align:center;display:flex;
+  flex-direction:column;align-items:center}
+.fechamento .kicker{color:#e79aa6}
+.fechamento .h2{margin-top:16px}
+.fechamento .lead{margin-top:18px;color:var(--dark-ink-soft)}
+.fechamento .hero-acoes{justify-content:center}
+.fechamento .link{color:#e79aa6}
+.fechamento-nota{
+  margin-top:clamp(26px,3vw,36px);padding-top:clamp(20px,2.2vw,28px);
+  border-top:1px solid var(--dark-line);width:100%;
+  font-size:13px;line-height:1.6;color:var(--dark-ink-soft);
+}
+.fechamento-nota a{color:#e79aa6;font-weight:600}
+
+/* ---------- moldura de imagem vazia ---------- */
+.vago{
+  position:relative;
+  background:
+    repeating-linear-gradient(135deg,rgba(140,47,61,.07) 0 9px,transparent 9px 18px),
+    var(--brand-soft);
+  border:1px dashed rgba(140,47,61,.32);
+}
+.vago-tag{
+  position:absolute;top:12px;left:12px;z-index:1;
+  padding:5px 11px;border-radius:var(--radius-pill);
+  background:var(--paper-2);color:var(--brand-deep);
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.vago::after{
+  content:attr(data-brief);
+  position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+  background:rgba(255,255,255,.9);
+  font-size:11.5px;line-height:1.45;color:var(--ink-soft);
+}
+/* sobre seção escura a moldura clara vira um bloco pálido */
+.sec--dark .vago{
+  background:
+    repeating-linear-gradient(135deg,rgba(231,154,166,.08) 0 9px,transparent 9px 18px),
+    rgba(231,154,166,.05);
+  border-color:rgba(231,154,166,.26);
+}
+.sec--dark .vago-tag{background:rgba(231,154,166,.16);color:#f3cfd5}
+.sec--dark .vago::after{background:rgba(25,14,18,.82);color:var(--dark-ink-soft)}
+
+/* ---------- RODAPÉ ---------- */
+.rodape{
+  background:var(--dark-1);color:var(--dark-ink-soft);
+  padding:clamp(34px,3.6vw,48px) 0;
+}
+.rodape p{font-size:12.5px;line-height:1.7;margin:0}
+.rodape-tec b{color:var(--dark-ink);font-weight:700}
+.rodape-end{margin-top:4px}
+.rodape-leg{margin-top:14px;padding-top:14px;
+  border-top:1px solid var(--dark-line);font-size:11.5px}
+.rodape a{color:#e79aa6}
+.rodape .slot{border-bottom-color:rgba(214,174,181,.4)}
+
+/* ---------- barra fixa do celular ---------- */
+.barra-mobile{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .32s var(--ease);
+}
+.barra-mobile.visivel{transform:none}
+.barra-mobile .btn{width:100%;justify-content:center;box-shadow:var(--sombra)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:1080px){
+  .causas-grid{grid-template-columns:repeat(2,1fr)}
+  .etapas{grid-template-columns:repeat(2,1fr);row-gap:clamp(28px,3.4vw,40px)}
+  /* com duas colunas a linha contínua passa a mentir sobre a ordem */
+  .etapas::before{display:none}
+}
+
+@media (max-width:980px){
+  .hero-pr>.wrap{grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
+  .hero-pr>.wrap>div:first-child{order:2}
+  .hero-foto{justify-self:center;max-width:380px;margin-right:0;order:1}
+  .hero-pr .selo{width:76px;height:76px;bottom:-8px;right:-8px}
+  .hero-pr .selo-nucleo{width:38px;height:38px}
+  .quem-grid,.tipos-grid,.acesso-grid{grid-template-columns:1fr}
+  .numeros{grid-template-columns:1fr}
+  .autoridade-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px);
+    justify-items:center;text-align:center}
+  .autoridade-foto{max-width:340px;order:-1}
+  .autoridade .lead{margin-left:auto;margin-right:auto}
+  .credenciais li{text-align:left}
+  .sigilo .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .cirurgia-ilustra{aspect-ratio:16/9}
+}
+
+@media (max-width:640px){
+  html{scroll-padding-top:74px}
+  /* o CTA do cabeçalho quebrava em duas linhas e espremia o nome da
+     clínica até as reticências */
+  .topo .btn{white-space:nowrap;font-size:13px;padding:10px 10px 10px 16px;gap:9px}
+  .topo .btn i{width:26px;height:26px;font-size:12px}
+  .topo .wrap{gap:12px}
+  .marca-sigla{width:34px;height:34px}
+  .marca-nome{font-size:14.5px}
+
+  .hero-pr{text-align:center}
+  .hero-pr .lead{margin-left:auto;margin-right:auto}
+  .hero-pr .hero-selos{justify-content:center;flex-direction:column;align-items:center}
+  .hero-pr .hero-acoes{justify-content:center;width:100%}
+  .hero-pr .hero-acoes .btn{width:100%;justify-content:center}
+  .causas-grid{grid-template-columns:1fr}
+  .etapas{grid-template-columns:1fr}
+  .faq summary{gap:12px}
+  .faq summary i{width:28px;height:28px}
+  .faq details p{padding-right:0}
+  .fechamento .hero-acoes{width:100%;flex-direction:column}
+  .fechamento .hero-acoes .btn{width:100%;justify-content:center}
+
+  .barra-mobile{display:block}
+  /* sem isto a barra fixa cobre as duas últimas linhas do rodapé —
+     justo o endereço e o CNPJ, que são texto de compliance */
+  .rodape{padding-bottom:calc(clamp(34px,3.6vw,48px) + 64px + env(safe-area-inset-bottom))}
+  body{padding-bottom:0}
+}
