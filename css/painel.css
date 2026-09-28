@@ -226,3 +226,7 @@ a{color:inherit}
 .marca .logo{height:34px;width:auto;display:block}
 .marca .logo-grande{height:60px;margin:0 auto 6px}
 .marca > span{margin-left:-2px}
+
+/* Os rótulos das conversões numa linha só, com os números alinhados (28/09) */
+.conv span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv div{min-width:0}

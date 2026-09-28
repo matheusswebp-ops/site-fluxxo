@@ -260,7 +260,7 @@
         return "<tr><td><code>" + esc(tituloCurto(g.titulo, g.caminho)) + '</code><span class="sub">' + esc(g.caminho) + '</span></td><td class="n num">' + num(g.vistas) + '</td><td class="n num">' + num(g.visitantes) + '</td><td class="n num">' + tempo(g.tempo) + '</td><td class="n num">' + num(g.rolagem) + '%</td><td class="n">' + velocidade(ultimaNota[g.caminho], vitais[g.caminho]) + "</td></tr>";
       }).join("") : '<tr><td colspan="6" class="vazio">Sem visitas no período.</td></tr>';
 
-      $("conv").innerHTML = '<div><span>WhatsApp</span><b class="num">' + num(conv.whatsapp) + '</b></div><div><span>Formulários</span><b class="num">' + num(conv.formulario) + '</b></div><div><span>Telefone/e-mail</span><b class="num">' + num(conv.contato) + "</b></div>";
+      $("conv").innerHTML = '<div><span>WhatsApp</span><b class="num">' + num(conv.whatsapp) + '</b></div><div><span>Formulários</span><b class="num">' + num(conv.formulario) + '</b></div><div><span>Tel./e-mail</span><b class="num">' + num(conv.contato) + "</b></div>";
       var cp = Object.keys(porPagina).map(function (k) { return [k, porPagina[k]]; }).sort(function (x, y) { return y[1] - x[1]; }).slice(0, 6);
       $("conv-paginas").innerHTML = cp.length ? cp.map(function (c) { return "<tr><td><code>" + esc(c[0]) + '</code></td><td class="n num">' + num(c[1]) + "</td></tr>"; }).join("") : '<tr><td colspan="2" class="vazio">Nenhum clique de contato no período.</td></tr>';
 
