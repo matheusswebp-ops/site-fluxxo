@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Painel · fluxxo.io</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0916">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" href="/favicon-32.png?v=2" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/painel.css?v=1">
+</head>
+<body>
+<div class="fundo" aria-hidden="true"></div>
+<div class="wrap" id="app" hidden>
+  <header class="topo">
+    <div class="marca"><i>fx</i> fluxxo.io <span>· painel</span></div>
+    <nav class="abas" role="tablist" aria-label="Seções">
+      <button role="tab" aria-selected="true" data-aba="agora"><span class="ao-vivo"></span>Agora</button>
+      <button role="tab" aria-selected="false" data-aba="site">Site</button>
+      <button role="tab" aria-selected="false" data-aba="blog">Blog</button>
+      <button role="tab" aria-selected="false" data-aba="seo">SEO</button>
+    </nav>
+    <div class="esp"></div>
+    <div class="periodo" id="periodo" hidden>
+      <button aria-pressed="false" data-dias="0">Hoje</button><button aria-pressed="true" data-dias="7">7 dias</button><button aria-pressed="false" data-dias="30">30 dias</button><button aria-pressed="false" data-dias="90">90 dias</button>
+    </div>
+    <button type="button" class="eu" id="eu" aria-haspopup="menu" title="Conta">M</button>
+    <div class="menu-eu" id="menu-eu" role="menu" hidden><button type="button" role="menuitem" id="sair">Sair</button></div>
+  </header>
+
+  <!-- ═════════ AGORA ═════════ -->
+  <section class="painel" id="agora">
+    <div class="agora-topo">
+      <div class="card agora-num">
+        <span class="rot"><span class="ao-vivo"></span>No site agora</span>
+        <b class="num" id="online">0</b>
+        <p id="online-sub">pessoas navegando neste momento</p>
+      </div>
+      <div class="card">
+        <div class="mini-kpis" id="hoje"></div>
+        <div class="onde" id="onde"></div>
+      </div>
+    </div>
+    <div class="agora-corpo">
+      <div><div class="pessoas" id="pessoas"></div></div>
+      <div class="card">
+        <h3>Acontecendo agora <small>ao vivo</small></h3>
+        <div class="feed" id="feed"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ SITE ═════════ -->
+  <section class="painel" id="site" hidden>
+    <div class="kpis" id="site-kpis"></div>
+    <div class="linha2">
+      <div class="card grafico">
+        <h3>Visitas por dia <span class="legenda"><span><i style="background:var(--roxo)"></i>Visitantes</span></span></h3>
+        <svg id="graf" viewBox="0 0 700 220" preserveAspectRatio="none" role="img" aria-label="Visitantes por dia"></svg>
+      </div>
+      <div class="card"><h3>De onde vieram</h3><div class="barras" id="origens"></div></div>
+    </div>
+    <div class="linha2">
+      <div class="card scroll-x">
+        <h3><span>Páginas mais vistas<i class="dica" tabindex="0" data-dica="Tempo = tempo ativo médio na página (aba visível). Rolagem = até onde as pessoas desceram, em média. Velocidade = teste diário do Google PageSpeed no celular.">i</i></span></h3>
+        <table class="tabela">
+          <thead><tr><th>Página</th><th class="n">Vistas</th><th class="n">Pessoas</th><th class="n">Tempo</th><th class="n">Rolagem</th><th class="n">Velocidade</th></tr></thead>
+          <tbody id="paginas"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span>Conversões<i class="dica dir" tabindex="0" data-dica="Cliques em botões de contato: WhatsApp, formulários enviados, telefone e e-mail.">i</i></span></h3>
+        <div class="conv" id="conv"></div>
+        <table class="tabela"><thead><tr><th>Página do clique</th><th class="n">Cliques</th></tr></thead><tbody id="conv-paginas"></tbody></table>
+      </div>
+    </div>
+    <div class="linha3">
+      <div class="card"><h3><span>Campanhas (UTM)<i class="dica" tabindex="0" data-dica="Visitas que chegaram por links com utm_source/utm_campaign, como o link da bio ou dos stories.">i</i></span></h3>
+        <table class="tabela"><thead><tr><th>Campanha</th><th class="n">Visitas</th></tr></thead><tbody id="campanhas"></tbody></table></div>
+      <div class="card"><h3>Aparelhos</h3><div class="barras" id="aparelhos"></div></div>
+      <div class="card"><h3><span>Cidades<i class="dica dir" tabindex="0" data-dica="Aproximada: vem da internet da pessoa. No 4G às vezes aparece a cidade da operadora.">i</i></span></h3>
+        <table class="tabela"><tbody id="cidades"></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ═════════ BLOG ═════════ -->
+  <section class="painel" id="blog" hidden>
+    <div class="kpis" style="grid-template-columns:repeat(4,1fr)" id="blog-kpis"></div>
+    <div class="card scroll-x" style="margin-bottom:14px">
+      <h3>Artigos <small>ordem por leituras no período</small></h3>
+      <table class="tabela">
+        <thead><tr><th>Artigo</th><th class="n">Leituras</th><th class="n">Leitores</th><th class="n">Tempo médio</th><th>Leram até o fim</th><th>Veio de</th></tr></thead>
+        <tbody id="artigos"></tbody>
+      </table>
+    </div>
+    <div class="card"><h3><span>Até onde as pessoas leem<i class="dica" tabindex="0" data-dica="De todas as leituras de artigos no período, quantas chegaram a 25%, 50%, 75% da página e até o fim (90%).">i</i></span></h3>
+      <div class="barras" id="funil"></div></div>
+  </section>
+
+  <!-- ═════════ SEO ═════════ -->
+  <section class="painel" id="seo" hidden>
+    <div id="seo-aviso"></div>
+    <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+      <div class="kpi"><span>Cliques vindos do Google<i class="dica" tabindex="0" data-dica="Quantas vezes alguém pesquisou no Google, viu o fluxxo.io na lista e clicou para entrar.">i</i></span><b class="num" id="seo-cliques">–</b></div>
+      <div class="kpi"><span>Vezes que apareceu no Google<i class="dica" tabindex="0" data-dica="Quantas vezes o fluxxo.io apareceu na lista de resultados quando alguém pesquisou, mesmo que a pessoa não tenha clicado.">i</i></span><b class="num" id="seo-impressoes">–</b></div>
+      <div class="kpi"><span>Taxa de clique<i class="dica" tabindex="0" data-dica="De cada 100 vezes que o site apareceu no Google, quantas viraram clique. Quanto maior, melhor.">i</i></span><b class="num" id="seo-ctr">–</b></div>
+      <div class="kpi"><span>Posição média<i class="dica dir" tabindex="0" data-dica="Em que lugar da lista do Google o site aparece, em média. 1 = primeiro resultado. De 1 a 10 = primeira página. Quanto MENOR, melhor.">i</i></span><b class="num" id="seo-posicao">–</b></div>
+    </div>
+    <div class="linha2">
+      <div class="card scroll-x"><h3><span>Pesquisas em que o site aparece<i class="dica" tabindex="0" data-dica="As palavras que as pessoas digitaram no Google e que fizeram o fluxxo.io aparecer nos resultados. O Google esconde pesquisas muito raras, então a soma desta lista é menor que o total.">i</i></span></h3>
+        <p style="margin:-6px 0 12px;font-size:12px;color:var(--dim)">O que as pessoas digitaram no Google e fez o fluxxo.io aparecer nos resultados</p>
+        <table class="tabela"><thead><tr><th>O que a pessoa pesquisou</th><th class="n">Apareceu</th><th class="n">Cliques</th><th class="n">Taxa</th><th class="n">Posição<i class="dica dir" tabindex="0" data-dica="Lugar médio na lista do Google. Verde: 1ª página (1 a 10). Amarelo: logo abaixo (11 a 20). Vermelho: longe.">i</i></th></tr></thead><tbody id="termos"></tbody></table></div>
+      <div class="card"><h3><span>Páginas que mais aparecem no Google<i class="dica dir" tabindex="0" data-dica="Quais páginas do fluxxo.io o Google mais mostra nas pesquisas, e quantos cliques cada uma recebe.">i</i></span></h3>
+        <table class="tabela"><thead><tr><th>Página</th><th class="n">Apareceu</th><th class="n">Cliques</th><th class="n">Posição</th></tr></thead><tbody id="seo-paginas"></tbody></table></div>
+    </div>
+    <div class="card scroll-x">
+      <h3><span>Checagem das páginas<i class="dica dir" tabindex="0" data-dica="O painel lê cada página do site e confere se ela tem o básico que o Google precisa. Funciona sem conectar nada. ✕ vermelho = falta.">i</i></span></h3>
+      <div class="check" style="min-width:620px" id="checagem"></div>
+    </div>
+  </section>
+</div>
+<div class="sem-acesso" id="sem-acesso" hidden><p>Esta conta não tem acesso ao painel.</p><p><a href="/login" id="trocar" style="color:var(--roxo-claro)">Entrar com outra conta</a></p></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2/dist/umd/supabase.js"></script>
+<script src="js/painel-sb.js?v=1"></script>
+<script src="js/painel.js?v=1"></script>
+</body>
+</html>

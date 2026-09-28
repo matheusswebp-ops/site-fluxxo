@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entrar · Painel Fluxxo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0916">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" href="/favicon-32.png?v=2" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/painel.css?v=1">
+</head>
+<body>
+<div class="fundo" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="login-wrap" style="min-height:100vh">
+    <form class="login" id="form-login" novalidate>
+      <div class="marca"><i>fx</i> fluxxo.io</div>
+      <h2>Entrar no painel</h2>
+      <p>Use a mesma conta do Fluxxo OS</p>
+      <div id="passo-senha" style="display:grid;gap:16px">
+        <div class="campo"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" required></div>
+      </div>
+      <div id="passo-codigo" class="campo" hidden>
+        <label for="l-codigo">Código do aplicativo autenticador</label>
+        <input id="l-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}">
+      </div>
+      <p class="erro-login" id="erro" role="alert"></p>
+      <button class="entrar" type="submit" id="entrar">Entrar</button>
+      <div class="link"><a href="https://app.fluxxo.io/recuperar-senha">Esqueci minha senha</a></div>
+    </form>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2/dist/umd/supabase.js"></script>
+<script src="js/painel-sb.js?v=1"></script>
+<script src="js/login.js?v=1"></script>
+</body>
+</html>

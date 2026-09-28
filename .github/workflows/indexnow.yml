@@ -1,0 +1,31 @@
+# Avisa Bing, Yandex e outros buscadores (IndexNow) das páginas que mudaram
+# a cada push na main. O Google NÃO usa IndexNow: ele acha pelo sitemap e
+# pelo Search Console.
+name: IndexNow
+on:
+  push:
+    branches: [main]
+    paths: ["**.html"]
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Avisar páginas mudadas
+        run: |
+          urls=()
+          for f in $(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html'); do
+            grep -qi 'name="robots"[^>]*noindex' "$f" && continue
+            case "$f" in login.html|painel.html|carrossel*|vaga-design*) continue;; esac
+            nome="${f%.html}"
+            [ "$nome" = "index" ] && url="https://fluxxo.io/" || url="https://fluxxo.io/$nome"
+            urls+=("\"$url\"")
+          done
+          [ ${#urls[@]} -eq 0 ] && { echo "nada para avisar"; exit 0; }
+          lista=$(IFS=,; echo "${urls[*]}")
+          echo "avisando: $lista"
+          curl -s -o /dev/null -w "IndexNow: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"fluxxo.io\",\"key\":\"5e425b047a4bce9647ddbce70d8a1c7b\",\"keyLocation\":\"https://fluxxo.io/5e425b047a4bce9647ddbce70d8a1c7b.txt\",\"urlList\":[$lista]}"
