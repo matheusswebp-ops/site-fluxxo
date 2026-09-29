@@ -91,3 +91,28 @@ antes, o observador pausa, e o pôster fica parado para sempre.
    para reduzir peso.
 4. Não reportar como corrigido o que não foi reproduzido. Dizer o que foi
    verificado e o que continua sem prova.
+
+## 2026-09-29 — Troca de copy alargou a página no celular
+
+**O erro:** ao trocar o texto do botão do NoShave pela copy do documento
+("Quero saber se a técnica no-shave é para mim"), o botão ficou mais largo
+que a tela de 390px. Como os botões do celular são `white-space:nowrap`, a
+coluna do grid cresceu junto e a página inteira passou a ter 436px (o
+celular reduz o zoom para caber). Conferi a rolagem lateral com o celular
+emulado só DEPOIS de subir.
+
+**A regra:** toda troca de texto em botão, título ou rótulo conta como
+mudança de layout. Antes de commitar, medir `scrollWidth === innerWidth`
+com `isMobile:true` em 360, 390 e 414. Itens de grid com texto `nowrap`
+levam `min-width:0`.
+
+## 2026-09-29 — Altura mínima fixa para prender a jornada ficou velha
+
+**O erro:** a jornada só prendia na rolagem com `min-height:860px`, número
+tirado da altura do conteúdo naquele dia. Com a copy mais curta a seção
+passou a caber em ~700px, mas telas de 720–859px continuavam sem a
+animação — o Mateus viu como "a animação por scroll parou".
+
+**A regra:** quando um comportamento depende do conteúdo caber na tela,
+medir o conteúdo no script (`preso` quando cabe) em vez de fixar um número
+na media query.

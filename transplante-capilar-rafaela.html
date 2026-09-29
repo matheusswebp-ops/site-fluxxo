@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="https://use.typekit.net/tpl0vsf.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/dna.css?v=202609291930">
-<link rel="stylesheet" href="css/rs.css?v=202609291930">
+<link rel="stylesheet" href="css/rs.css?v=202609292330">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -415,7 +415,7 @@
       <a class="btn reveal" href="#agendar">Quero saber se a técnica no-shave é para mim<i aria-hidden="true"><svg width="15" height="15"><use href="#i-seta"/></svg></i></a>
     </div>
     <figure class="ns-foto reveal">
-      <div class="moldura vago" data-brief="Foto de alta qualidade · 4:5 · paciente de perfil, cabelo comprido, pós-operatório discreto do NoShave"><span class="vago-tag">Imagem</span></div>
+      <div class="moldura"><img src="img/rs-noshave.webp" alt="Médica examinando a linha do cabelo de um paciente" width="1122" height="1402" loading="lazy" decoding="async"></div>
     </figure>
   </div>
 </section>
@@ -448,39 +448,96 @@
   <svg class="monograma monograma--form" viewBox="0 0 600 400" aria-hidden="true"><text x="0" y="340">RS</text></svg>
   <div class="wrap form-grade">
     <div class="form-txt">
-      <span class="kicker reveal">Agendamento</span>
-      <h2 class="h2 reveal">Agende sua consulta <b>com a Dra. Rafaela</b></h2>
-      <p class="lead reveal">Preencha os dados e fale direto com a equipe para ver a disponibilidade de agenda. <b>Na consulta, a Dra. Rafaela avalia:</b></p>
-      <ul class="avalia reveal">
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Início e evolução da calvície</li>
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Tratamentos já realizados</li>
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Área doadora e área a reconstruir</li>
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Se há indicação para o NoShave</li>
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Desenho da linha frontal</li>
-        <li><svg width="14" height="14"><use href="#i-check"/></svg>Planejamento cirúrgico</li>
-      </ul>
-      <p class="form-local reveal"><svg width="18" height="18"><use href="#i-pin"/></svg>Consultório em Cuiabá · cirurgia no Hospital Santa Helena</p>
+      <h2 class="h2 reveal">O primeiro passo para o transplante capilar <b>é a consulta médica.</b></h2>
+      <p class="lead reveal">O transplante capilar é um procedimento cirúrgico que exige planejamento individualizado. Na consulta, a Dra. Rafaela Sandrin avalia o couro cabeludo e a área doadora e define a conduta mais indicada para o seu caso.</p>
+      <p class="form-p reveal">Como a queda de cabelo costuma ser progressiva, o planejamento considera não só o transplante, mas também o cuidado com os fios que você ainda tem.</p>
+      <p class="form-p form-p--forte reveal">Atendimento exclusivamente particular. Não atendemos convênios e não realizamos avaliações gratuitas.</p>
+      <p class="form-local reveal">Leva cerca de 1 minuto. Responda às perguntas e inicie seu agendamento.</p>
     </div>
 
+    <!-- formulário de qualificação (v2): uma pergunta por tela. As respostas que
+         encerram (P2 "Não", P3 "Ainda não tenho previsão", P4 "não tenho condições")
+         levam à tela do Instagram; o resto segue até o botão do WhatsApp. -->
     <form class="form reveal" id="form" novalidate>
-      <h3>Quero falar com a equipe</h3>
-      <label>Nome<input name="nome" type="text" autocomplete="name" required placeholder="Seu nome completo"></label>
-      <label>WhatsApp<input name="whats" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="(65) 99999-9999"></label>
-      <label>Cidade<input name="cidade" type="text" autocomplete="address-level2" required placeholder="Ex.: Cuiabá"></label>
-      <label>Qual é a sua principal dúvida?
-        <select name="duvida" required>
-          <option value="" disabled selected>Escolha uma opção</option>
-          <option>Se tenho indicação para transplante</option>
-          <option>Se tenho indicação para o NoShave</option>
-          <option>Como funciona a cirurgia</option>
-          <option>Recuperação e pós-operatório</option>
-          <option>Valores e agenda da consulta</option>
-          <option>Outra dúvida</option>
-        </select>
-      </label>
+      <div class="q-topo">
+        <button class="q-voltar" type="button" data-voltar aria-label="Voltar à pergunta anterior" hidden><svg width="18" height="18"><use href="#i-esq"/></svg></button>
+        <div class="q-barra" aria-hidden="true"><i data-barra></i></div>
+      </div>
+
+      <fieldset class="q-passo" data-passo="1">
+        <legend tabindex="-1">O que você procura neste momento?</legend>
+        <label class="q-op"><input type="radio" name="p1" value="Quero realizar meu transplante capilar." required><span>Quero realizar meu transplante capilar.</span></label>
+        <label class="q-op"><input type="radio" name="p1" value="Quero entender melhor como funciona o transplante capilar."><span>Quero entender melhor como funciona o transplante capilar.</span></label>
+        <label class="q-op"><input type="radio" name="p1" value="Ainda estou pesquisando e quero mais informações sobre o transplante capilar."><span>Ainda estou pesquisando e quero mais informações sobre o transplante capilar.</span></label>
+        <label class="q-op"><input type="radio" name="p1" value="Quero tratar minha queda de cabelo."><span>Quero tratar minha queda de cabelo.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="2" hidden>
+        <legend tabindex="-1"><span class="q-ctx">A consulta é particular. Não realizamos avaliações gratuitas nem atendemos convênios, pois nosso compromisso é uma consulta completa e de qualidade para o seu caso.</span>Deseja prosseguir com o agendamento?</legend>
+        <label class="q-op"><input type="radio" name="p2" value="Sim, compreendo que a consulta é particular e quero agendar." required><span>Sim, compreendo que a consulta é particular e quero agendar.</span></label>
+        <label class="q-op"><input type="radio" name="p2" value="Não, prefiro deixar para outro momento."><span>Não, prefiro deixar para outro momento.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="3" hidden>
+        <legend tabindex="-1">Quando você gostaria de realizar sua consulta?</legend>
+        <label class="q-op"><input type="radio" name="p3" value="Nos próximos 15 dias." required><span>Nos próximos 15 dias.</span></label>
+        <label class="q-op"><input type="radio" name="p3" value="Nos próximos 30 dias."><span>Nos próximos 30 dias.</span></label>
+        <label class="q-op"><input type="radio" name="p3" value="Nos próximos 3 meses."><span>Nos próximos 3 meses.</span></label>
+        <label class="q-op"><input type="radio" name="p3" value="Ainda não tenho previsão."><span>Ainda não tenho previsão.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="4" hidden>
+        <legend tabindex="-1"><span class="q-ctx">O transplante capilar é um procedimento particular e o investimento é apresentado após a consulta, de acordo com o planejamento de cada caso.</span>Caso o transplante capilar seja indicado, qual opção melhor representa sua situação hoje?</legend>
+        <label class="q-op"><input type="radio" name="p4" value="Tenho condições financeiras e quero conhecer mais sobre a técnica utilizada e conversar com a Dra. Rafaela sobre o meu caso." required><span>Tenho condições financeiras e quero conhecer mais sobre a técnica utilizada e conversar com a Dra. Rafaela sobre o meu caso.</span></label>
+        <label class="q-op"><input type="radio" name="p4" value="No momento, não tenho condições financeiras para o procedimento."><span>No momento, não tenho condições financeiras para o procedimento.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="5" hidden>
+        <legend tabindex="-1">Você já fez alguma consulta ou tratamento para a queda de cabelo?</legend>
+        <label class="q-op"><input type="radio" name="p5" value="Nunca fiz consulta nem tratamento." required><span>Nunca fiz consulta nem tratamento.</span></label>
+        <label class="q-op"><input type="radio" name="p5" value="Já faço ou já fiz tratamento clínico."><span>Já faço ou já fiz tratamento clínico.</span></label>
+        <label class="q-op"><input type="radio" name="p5" value="Já consultei outro médico sobre transplante."><span>Já consultei outro médico sobre transplante.</span></label>
+        <label class="q-op"><input type="radio" name="p5" value="Já realizei transplante capilar anteriormente."><span>Já realizei transplante capilar anteriormente.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="6" hidden>
+        <legend tabindex="-1">Qual é a principal queixa em relação ao seu cabelo?</legend>
+        <label class="q-op"><input type="radio" name="p6" value="Entradas." required><span>Entradas.</span></label>
+        <label class="q-op"><input type="radio" name="p6" value="Topo da cabeça."><span>Topo da cabeça.</span></label>
+        <label class="q-op"><input type="radio" name="p6" value="Coroa."><span>Coroa.</span></label>
+        <label class="q-op"><input type="radio" name="p6" value="Perda de cabelo em várias regiões."><span>Perda de cabelo em várias regiões.</span></label>
+        <label class="q-op"><input type="radio" name="p6" value="Outro."><span>Outro.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="7" hidden>
+        <legend tabindex="-1"><span class="q-ctx">Após o envio, caso você não continue seu atendimento pelo WhatsApp, nossa equipe entrará em contato pelo número informado para agendar sua consulta.</span>Você confirma que esse número tem WhatsApp e que irá responder?</legend>
+        <label class="q-op"><input type="radio" name="p7" value="Sim, confirmo e vou responder no WhatsApp." required><span>Sim, confirmo e vou responder no WhatsApp.</span></label>
+        <label class="q-op"><input type="radio" name="p7" value="Prefiro receber uma ligação."><span>Prefiro receber uma ligação.</span></label>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="8" hidden>
+        <legend tabindex="-1">Qual o melhor horário para ligarmos para você?</legend>
+        <input name="p8" type="text" maxlength="80" required aria-label="Qual o melhor horário para ligarmos para você?">
+        <button class="btn btn--form" type="button" data-avancar>Continuar<i aria-hidden="true"><svg width="15" height="15"><use href="#i-seta"/></svg></i></button>
+      </fieldset>
+      <fieldset class="q-passo" data-passo="9" hidden>
+        <legend tabindex="-1">Dados de contato</legend>
+        <label>Nome completo<input name="nome" type="text" autocomplete="name" required></label>
+        <label>Telefone (com WhatsApp)<input name="whats" type="tel" inputmode="tel" autocomplete="tel-national" required></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+        <label>Profissão<input name="profissao" type="text" autocomplete="organization-title" required></label>
+        <button class="btn btn--form" type="submit">Enviar<i aria-hidden="true"><svg width="15" height="15"><use href="#i-seta"/></svg></i></button>
+      </fieldset>
       <p class="form-erro" data-erro role="alert" hidden></p>
-      <button class="btn btn--form" type="submit">Quero falar com a equipe<i aria-hidden="true"><svg width="16" height="16"><use href="#i-whats"/></svg></i></button>
-      <p class="form-nota">Ao enviar, o WhatsApp abre com a sua mensagem pronta. A consulta é particular.</p>
+
+      <div class="q-fim" data-fim="ok" hidden>
+        <h3 tabindex="-1">Você está a um passo de agendar sua consulta!</h3>
+        <p>Recebemos suas respostas! Clique no botão abaixo e envie a mensagem que já está pronta para continuar o agendamento da sua consulta com a Dra. Rafaela Sandrin pelo WhatsApp. Caso você não continue, nossa equipe entrará em contato com você.</p>
+        <a class="btn btn--form" data-whats href="https://wa.me/5565996951441" target="_blank" rel="noopener">AGENDAR PELO WHATSAPP<i aria-hidden="true"><svg width="16" height="16"><use href="#i-whats"/></svg></i></a>
+      </div>
+
+      <div class="q-fim" data-fim="ig" hidden>
+        <h3 tabindex="-1">Continue acompanhando nossos conteúdos</h3>
+        <p>Agradecemos o seu interesse.</p>
+        <p>A consulta médica é o primeiro passo para entender a causa da queda de cabelo e identificar as possibilidades de tratamento para o seu caso.</p>
+        <p>Se este ainda não é o momento de agendar, acompanhe nossos conteúdos no Instagram. Compartilhamos informações, orientações e respostas às dúvidas mais frequentes sobre transplante capilar e saúde capilar.</p>
+        <p>Quando for o momento certo para você, estaremos à disposição para atendê-lo.</p>
+        <p>Basta acessar o link da bio para agendar seu horário com nossa equipe de atendimento.</p>
+        <a class="btn btn--form" href="https://www.instagram.com/drarafaelasandrin/" target="_blank" rel="noopener">Seguir no Instagram<i aria-hidden="true"><svg width="15" height="15"><use href="#i-seta"/></svg></i></a>
+      </div>
     </form>
   </div>
 </section>
@@ -535,6 +592,6 @@
   <i aria-hidden="true"><svg width="18" height="18"><use href="#i-whats"/></svg></i>
 </a>
 
-<script src="js/rs.js?v=202609292300" defer></script>
+<script src="js/rs.js?v=202609292330" defer></script>
 </body>
 </html>

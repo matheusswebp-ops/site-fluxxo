@@ -219,7 +219,16 @@
     var botoes = $$('[data-ir]', jor), paineis = $$('[data-painel]', jor);
     var linha = $('.jor-trilha', jor), contador = $('[data-jor-contador]', jor);
     var bAnt = $('[data-jor-ant]', jor), bProx = $('[data-jor-prox]', jor);
-    var modo = window.matchMedia('(min-width:981px) and (min-height:860px)');
+    /* a seção só prende quando cabe inteira na tela: mede o conteúdo em vez de
+       fixar uma altura mínima, que ficava velha a cada mudança de texto */
+    var secao = jor.closest('.jornada'), cabeca = $('.head-center', jor), grade = $('.jor-grade', jor);
+    var modo = {matches:false};
+    function avaliaModo(){
+      var secY = parseFloat(getComputedStyle(document.body).getPropertyValue('--sec-y')) || 0;
+      var precisa = grade.getBoundingClientRect().bottom - cabeca.getBoundingClientRect().top + secY + 24;
+      var cabe = window.innerWidth >= 981 && precisa <= window.innerHeight;
+      if (cabe !== modo.matches){ modo.matches = cabe; secao.classList.toggle('preso', cabe); }
+    }
     var atual = -1, jaCresceu = false;
 
     function ativa(i){
@@ -250,7 +259,7 @@
       ativa(Math.min(5, Math.floor(p * 6)));
     }
     window.addEventListener('scroll', aoRolarJor, {passive:true});
-    window.addEventListener('resize', aoRolarJor);
+    window.addEventListener('resize', function(){ avaliaModo(); aoRolarJor(); });
 
     function vai(i){
       i = limita(i, 0, paineis.length - 1);
@@ -283,9 +292,10 @@
       x0 = null;
     });
 
+    avaliaModo();
     ativa(0);
-    modo.addEventListener ? modo.addEventListener('change', aoRolarJor) : modo.addListener(aoRolarJor);
     aoRolarJor();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ avaliaModo(); aoRolarJor(); });
   }
 
   /* ---- faixas de depoimento: duplica o conteúdo para o loop sem emenda ---- */
@@ -308,36 +318,122 @@
     });
   });
 
-  /* ---- formulário: valida e abre o WhatsApp com a mensagem pronta ---- */
+  /* ---- formulário de qualificação: uma pergunta por tela ----
+     P2 "Não", P3 "Ainda não tenho previsão" e P4 "não tenho condições"
+     encerram na tela do Instagram. Quem passa por tudo chega ao botão do
+     WhatsApp, com a mensagem pronta e as respostas logo abaixo. */
   var form = $('#form');
   if (form){
-    var tel = form.elements.whats, erro = $('[data-erro]', form);
+    var passos = $$('[data-passo]', form), TOTAL = passos.length;
+    var barra = $('[data-barra]', form), voltar = $('[data-voltar]', form), erro = $('[data-erro]', form);
+    var ENCERRA = {
+      p2: 'Não, prefiro deixar para outro momento.',
+      p3: 'Ainda não tenho previsão.',
+      p4: 'No momento, não tenho condições financeiras para o procedimento.'
+    };
+    var historico = [1], trava = false;
+    var passoAtual = function(){ return historico[historico.length - 1]; };
+
+    /* no celular a tela nova pode começar acima da dobra: traz o cartão de volta */
+    function enquadra(){
+      var topo = form.getBoundingClientRect().top;
+      if (topo < 70) window.scrollBy({top: topo - 80, behavior: reduz ? 'auto' : 'smooth'});
+    }
+    function mostra(n, foca){
+      passos.forEach(function(ps){ ps.hidden = +ps.getAttribute('data-passo') !== n; });
+      $$('[data-fim]', form).forEach(function(f){ f.hidden = true; });
+      erro.hidden = true;
+      voltar.hidden = historico.length < 2;
+      barra.style.width = ((n - 1) / TOTAL * 100) + '%';
+      if (foca){ $('legend', passos[n - 1]).focus({preventScroll:true}); enquadra(); }
+    }
+    function fim(qual){
+      passos.forEach(function(ps){ ps.hidden = true; });
+      voltar.hidden = false;
+      erro.hidden = true;
+      barra.style.width = '100%';
+      var tela = $('[data-fim="' + qual + '"]', form);
+      tela.hidden = false;
+      $('h3', tela).focus({preventScroll:true});
+      enquadra();
+    }
+    function avanca(){
+      var n = passoAtual();
+      historico.push(n + 1);
+      mostra(n + 1, true);
+    }
+
+    passos.forEach(function(ps){
+      $$('input[type=radio]', ps).forEach(function(r){
+        /* click (e não change): quem volta e clica na mesma opção também avança */
+        r.addEventListener('click', function(){
+          if (trava) return;
+          trava = true;
+          setTimeout(function(){
+            trava = false;
+            if (ENCERRA[r.name] === r.value){ historico.push('ig'); fim('ig'); }
+            else avanca();
+          }, 220);
+        });
+      });
+    });
+
+    voltar.addEventListener('click', function(){
+      if (historico.length < 2) return;
+      historico.pop();
+      mostra(passoAtual(), true);
+    });
+
+    var horario = form.elements.p8;
+    $('[data-avancar]', form).addEventListener('click', function(){
+      horario.classList.remove('invalido');
+      if (!horario.value.trim()){
+        horario.classList.add('invalido');
+        erro.textContent = 'Informe o melhor horário para a equipe ligar.';
+        erro.hidden = false; horario.focus(); return;
+      }
+      avanca();
+    });
+    horario.addEventListener('keydown', function(e){
+      if (e.key === 'Enter'){ e.preventDefault(); $('[data-avancar]', form).click(); }
+    });
+
+    var tel = form.elements.whats;
     tel.addEventListener('input', function(){
       var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d;
       if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2);
       if (d.length > 7) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
       tel.value = s;
     });
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      if (passoAtual() !== TOTAL) return;
       var f = form.elements, falta = [];
-      [f.nome, f.whats, f.cidade, f.duvida].forEach(function(c){ c.classList.remove('invalido'); });
+      [f.nome, f.whats, f.email, f.profissao].forEach(function(c){ c.classList.remove('invalido'); });
       if (f.nome.value.trim().length < 3) falta.push(f.nome);
       if (f.whats.value.replace(/\D/g, '').length < 10) falta.push(f.whats);
-      if (f.cidade.value.trim().length < 2) falta.push(f.cidade);
-      if (!f.duvida.value) falta.push(f.duvida);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) falta.push(f.email);
+      if (f.profissao.value.trim().length < 2) falta.push(f.profissao);
       if (falta.length){
         falta.forEach(function(c){ c.classList.add('invalido'); });
         erro.textContent = 'Confira os campos destacados para a equipe conseguir falar com você.';
         erro.hidden = false; falta[0].focus(); return;
       }
-      erro.hidden = true;
-      var msg = 'Olá! Vim pela página do transplante capilar e gostaria de agendar uma consulta com a Dra. Rafaela Sandrin.\n\n' +
-        'Nome: ' + f.nome.value.trim() + '\nWhatsApp: ' + f.whats.value + '\nCidade: ' + f.cidade.value.trim() +
-        '\nPrincipal dúvida: ' + f.duvida.value;
-      var url = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
-      var w = window.open(url, '_blank');
-      if (w) w.opener = null; else window.location.href = url;
+      var val = function(n){ var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; };
+      var msg = 'Olá! Acabei de preencher o formulário e quero agendar minha consulta particular com a Dra. Rafaela Sandrin.\n\n' +
+        'O que procuro: ' + val('p1') + '\n' +
+        'Quando: ' + val('p3') + '\n' +
+        'Situação: ' + val('p4') + '\n' +
+        'Consulta ou tratamento anterior: ' + val('p5') + '\n' +
+        'Principal queixa: ' + val('p6') + '\n' +
+        'Contato: ' + val('p7') + '\n' +
+        'Melhor horário para ligação: ' + f.p8.value.trim() + '\n\n' +
+        'Nome: ' + f.nome.value.trim() + '\nTelefone: ' + f.whats.value + '\nE-mail: ' + f.email.value.trim() +
+        '\nProfissão: ' + f.profissao.value.trim();
+      $('[data-whats]', form).href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
+      historico.push('ok');
+      fim('ok');
     });
   }
 })();
