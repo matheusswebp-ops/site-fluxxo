@@ -191,7 +191,7 @@
     mesInput.value = m;
     mesInput.style.setProperty('--p', (m / 12 * 100) + '%');
     mesRot.textContent = 'Mês ' + Math.round(m);
-    for (var i = 0; i < FASES.length; i++){ if (m < FASES[i][0]){ mesFase.textContent = FASES[i][1]; break; } }
+    if (mesFase) for (var i = 0; i < FASES.length; i++){ if (m < FASES[i][0]){ mesFase.textContent = FASES[i][1]; break; } }
   }
   var animMes = null;
   function tocaMeses(){
