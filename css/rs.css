@@ -604,6 +604,28 @@ h3{font-family:var(--font-body)}
   .sec .h2,.sec .lead,.destaque h3{text-align:center}
   .sec .lead{margin-left:auto;margin-right:auto}
   .faq-cab{text-align:center}
+
+  /* blocos que o usuário pediu centralizados no celular */
+  .destaque-corpo{text-align:center}
+  .destaque-corpo p{margin-left:auto;margin-right:auto}
+  .destaque-pontos{justify-content:center}
+  .bio-p{text-align:center;margin-left:auto;margin-right:auto}
+  .formacao{justify-items:center;text-align:center;gap:14px}
+  .formacao::before,.formacao li::before{display:none}
+  .formacao li{grid-template-columns:1fr;gap:2px;padding:0}
+  .valores{justify-content:center}
+  .avalia{grid-template-columns:1fr;justify-items:center}
+  .avalia li{text-align:left}
+  .form-local{flex-direction:column;gap:8px;text-align:center}
+
+  /* todo botão numa linha só, centralizado */
+  .tema-rs main .btn{display:flex;white-space:nowrap;width:max-content;max-width:100%;margin-left:auto;margin-right:auto;
+    font-size:13.5px;gap:10px;padding:13px 12px 13px 20px}
+  .tema-rs main .btn i{width:28px;height:28px}
+  .hero-rs .btn{align-self:center}
+}
+@media (max-width:380px){
+  .tema-rs main .btn{font-size:12.5px;padding-left:16px;gap:8px}
 }
 @media (max-width:640px){
   :root{--curva:28px}
@@ -613,15 +635,12 @@ h3{font-family:var(--font-body)}
   .vsl-play{width:66px;height:66px;left:27%}
   .vsl-legenda{left:16px;bottom:12px;font-size:11.5px}
   .vsl-legenda b{font-size:13px}
-  .hero-rs .btn{align-self:stretch;justify-content:space-between}
   .hero-rs .kicker{font-size:10.5px;letter-spacing:.1em}
 
   .caso{flex-basis:84%}
   .casos-nav{grid-template-columns:1fr auto}
   .casos-pontos{display:none}
-  .avalia{grid-template-columns:1fr}
   .ns-tabela div{grid-template-columns:1fr;gap:4px}
-  .formacao li{grid-template-columns:1fr;gap:2px}
   .bio-chip{font-size:12px;padding:8px 13px}
   .bio-chip--1{right:10px}
   .bio-chip--2{left:10px}
@@ -630,7 +649,6 @@ h3{font-family:var(--font-body)}
   .destaque-cab{padding-bottom:0}
   .destaque-cab::after{display:none}
   .destaque-corpo{padding-top:18px}
-  .btn{padding-left:22px}
 }
 
 @media (prefers-reduced-motion:reduce){
