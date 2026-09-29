@@ -661,8 +661,6 @@ h3{font-family:var(--font-body)}
   .casos .casos-nav{grid-template-columns:1fr;justify-items:center;gap:14px}
   .form-p{text-align:center;margin-left:auto;margin-right:auto}
   .q-passo legend,.q-ctx,.q-fim{text-align:center}
-  .form .q-op{justify-content:center;text-align:center}
-  .q-op span{justify-content:center}
 
   /* todo botão numa linha só, centralizado */
   .tema-rs main .btn{display:flex;white-space:nowrap;width:max-content;max-width:100%;margin-left:auto;margin-right:auto;
