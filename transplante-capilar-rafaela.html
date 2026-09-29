@@ -62,7 +62,6 @@
   <symbol id="i-bisturi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 3.8 9.4 14.6"/><path d="M9.4 14.6c-1.8 2.9-4.3 4.9-6 5.6.6-2.3 2.3-5 4.4-7.2"/><path d="m12.8 11.2 2 2"/></symbol>
   <symbol id="i-hospital" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 20.4V8.6l7.6-4.4 7.6 4.4v11.8"/><path d="M3.2 20.4h17.6"/><path d="M12 9.6v4.8M9.6 12h4.8"/></symbol>
   <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.6" cy="10.6" r="6.2"/><path d="m15.2 15.2 5 5"/></symbol>
-  <symbol id="i-relogio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3 2"/></symbol>
   <symbol id="i-maos" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 20.4V9.8"/><path d="M6.8 20.4h7.6c1.4 0 2.6-.8 3.2-2l2.2-4.6c.4-.9-.4-1.9-1.4-1.6l-3.2 1H11"/><path d="M3.4 12.2h4.4l3.4 1.2h3.2"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.6s-6.4-5.6-6.4-10.6a6.4 6.4 0 0 1 12.8 0c0 5-6.4 10.6-6.4 10.6Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   <symbol id="i-arrasta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7 8.4-3.6 3.6L7 15.6M17 8.4l3.6 3.6-3.6 3.6M3.4 12h17.2"/></symbol>
@@ -97,7 +96,7 @@
 
     <!-- player: a capa segura a dobra até o vídeo chegar.
          Para ligar o vídeo, preencha data-embed com a URL do embed (YouTube, Vimeo ou vturb). -->
-    <!-- no celular o .hero-txt vira display:contents e o vídeo sobe para logo abaixo do título -->
+    <!-- o .hero-txt vira display:contents e o vídeo entra entre o subtítulo e o botão -->
     <div class="vsl reveal">
       <div class="vsl-moldura" data-embed="">
         <picture>
@@ -373,10 +372,16 @@
 
   <div class="wrap">
     <aside class="destaque reveal">
-      <span class="destaque-icone" aria-hidden="true"><svg width="22" height="22"><use href="#i-relogio"/></svg></span>
-      <div>
-        <h3>Por que não trabalhamos com avaliações gratuitas ou convênios?</h3>
-        <p>O transplante capilar exige tempo, planejamento e uma análise cuidadosa. Durante a consulta, a Dra. Rafaela <b>dedica atenção completa ao seu caso</b> para compreender e apresentar a melhor solução. Esse cuidado permite uma condução sem pressa, mais próxima e completa, desde o primeiro contato.</p>
+      <div class="destaque-cab">
+        <span class="destaque-kicker">Consulta particular</span>
+        <h3>Por que não trabalhamos com <b>avaliações gratuitas ou convênios?</b></h3>
+      </div>
+      <div class="destaque-corpo">
+        <p>O transplante capilar exige tempo, planejamento e uma análise cuidadosa. Durante a consulta, a Dra. Rafaela <b>dedica atenção completa ao seu caso</b> para compreender e apresentar a melhor solução.</p>
+        <p>Esse cuidado permite uma condução sem pressa, mais próxima e completa, desde o primeiro contato.</p>
+        <ul class="destaque-pontos">
+          <li>Sem pressa</li><li>Atenção completa</li><li>Desde o primeiro contato</li>
+        </ul>
       </div>
     </aside>
   </div>
