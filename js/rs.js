@@ -219,7 +219,7 @@
     var botoes = $$('[data-ir]', jor), paineis = $$('[data-painel]', jor);
     var linha = $('.jor-trilha', jor), contador = $('[data-jor-contador]', jor);
     var bAnt = $('[data-jor-ant]', jor), bProx = $('[data-jor-prox]', jor);
-    var modo = window.matchMedia('(min-width:981px) and (min-height:780px)');
+    var modo = window.matchMedia('(min-width:981px) and (min-height:860px)');
     var atual = -1, jaCresceu = false;
 
     function ativa(i){

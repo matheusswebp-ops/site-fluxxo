@@ -288,10 +288,13 @@ h3{font-family:var(--font-body)}
 .jor-ctrl{display:none}
 
 /* desktop: a seção prende na tela e a rolagem conduz as etapas */
-@media (min-width:981px) and (min-height:780px){
+/* A área fixa já ocupa a tela inteira: o respiro de cima fica dentro dela
+   (e não na seção), senão os dois somam e o título desce para o meio da tela. */
+@media (min-width:981px) and (min-height:860px){
+  .jornada{padding-top:0}
   .jor{height:calc(100vh + 5 * 60vh)}
   .jor-palco{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
-    justify-content:center;padding-top:62px}
+    justify-content:flex-start;padding-top:var(--sec-y)}
 }
 
 /* artes — as peças da cabeça valem para as três cenas que a reaproveitam */
@@ -593,6 +596,14 @@ h3{font-family:var(--font-body)}
     transform:translateY(140%);transition:transform .45s var(--ease)}
   .barra-mobile.visivel{transform:none}
   .barra-mobile i{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--oliva);display:grid;place-items:center}
+}
+/* celular: toda headline de seção centralizada (kicker, título e subtítulo) */
+@media (max-width:768px){
+  .sec .kicker,.destaque-kicker{display:flex;justify-content:center}
+  .sec .kicker::after,.destaque-kicker::after{content:'';width:26px;height:1px;background:currentColor;opacity:.7}
+  .sec .h2,.sec .lead,.destaque h3{text-align:center}
+  .sec .lead{margin-left:auto;margin-right:auto}
+  .faq-cab{text-align:center}
 }
 @media (max-width:640px){
   :root{--curva:28px}
