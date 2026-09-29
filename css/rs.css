@@ -658,9 +658,6 @@ h3{font-family:var(--font-body)}
   .jor-txt p{margin-left:auto;margin-right:auto}
   .dif-lista li{grid-template-columns:1fr;justify-items:center;text-align:center;gap:12px}
   .dif-lista p{margin-left:auto;margin-right:auto}
-  .faq-lista summary{text-align:center}
-  .faq-lista summary::before{content:"";flex:none;width:36px}
-  .faq-lista p{text-align:center}
   .casos .casos-nav{grid-template-columns:1fr;justify-items:center;gap:14px}
   .form-p{text-align:center;margin-left:auto;margin-right:auto}
   .q-passo legend,.q-ctx,.q-fim{text-align:center}
