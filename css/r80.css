@@ -111,7 +111,7 @@ p,li{text-wrap:pretty}
 .hero-selo b i{font-style:normal;color:var(--ouro)}
 .hero-selo span{font-size:13px;color:var(--claro-2)}
 .hero-logo{height:88px;width:auto;margin-bottom:34px}
-.hero .h1{max-width:21ch}
+.hero .h1{max-width:760px}
 .hero-apoio{font-size:clamp(16px,1.25vw,18px);font-weight:300;line-height:1.7;color:var(--claro-2);max-width:60ch;margin:26px auto 38px}
 .faixa{position:relative;margin-top:90px;border-top:1px solid var(--fio-e);border-bottom:1px solid var(--fio-e);overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
