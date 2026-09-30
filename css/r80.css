@@ -284,7 +284,16 @@ p,li{text-wrap:pretty}
 /* =================== QUEM CONDUZ =================== */
 .escuro--bloco{border-radius:44px 44px 0 0;margin-top:-44px;z-index:1}
 .sec:has(+ .escuro--bloco){padding-bottom:calc(var(--sec) + 44px)}
-.clara{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,80px);align-items:center}
+/* Quem conduz: a foto cobre a seção inteira; o texto fica sobre o lado escuro dela.
+   Cortina sólida marinho à esquerda que termina antes da Clara (ela ocupa ~54–82% da foto). */
+.clara-sec{background:#020304;min-height:min(56vw,980px);display:flex;align-items:center}
+.clara-fundo{position:absolute;inset:0;pointer-events:none}
+.clara-fundo img{position:absolute;top:0;right:-4%;height:100%;width:auto;max-width:none;min-width:70%;object-fit:cover;object-position:70% 28%}  /* altura manda; o que sobra à esquerda é o preto do fundo */
+.clara-fundo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(2,3,4,.92) 0%,rgba(2,3,4,.75) 28%,rgba(2,3,4,0) 46%),
+    linear-gradient(0deg,rgba(2,3,4,.85) 0%,rgba(2,3,4,0) 22%)}
+.clara{position:relative;z-index:1;width:100%}
+.clara-txt{max-width:600px}
 .clara-cargo{font-size:17px;font-weight:400;color:var(--ouro-2);margin-top:14px}
 .citacao{margin:28px 0 8px;font-size:clamp(19px,1.7vw,23px);font-weight:300;line-height:1.45;letter-spacing:-.015em;color:#fff;
   padding-left:18px;border-left:2px solid var(--ouro)}
@@ -293,17 +302,6 @@ p,li{text-wrap:pretty}
 .credenciais li{display:flex;gap:14px;align-items:flex-start;font-size:15px;font-weight:300;line-height:1.65;color:var(--claro-2)}
 .credenciais i{flex:none;margin-top:2px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
   background:rgba(255,255,255,.06);border:1px solid var(--fio-e);color:var(--ouro-2)}
-.clara-foto{position:relative;aspect-ratio:4/5;max-width:440px;justify-self:center;width:100%}
-.aro{position:absolute;inset:-6% -8% 8% 8%;border-radius:999px 999px 30px 30px;
-  border:18px solid transparent;background:linear-gradient(160deg,var(--ouro-2),var(--ouro-3) 60%,transparent) border-box;
-  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  opacity:.55;filter:drop-shadow(0 0 30px rgba(226,203,153,.35))}
-.vaga-foto{position:relative;height:100%;border-radius:28px;overflow:hidden;display:grid;place-items:center;
-  background:radial-gradient(ellipse at 50% 20%,rgba(60,110,190,.35),transparent 70%),linear-gradient(170deg,var(--e3),var(--e1));
-  border:1px solid var(--fio-e);box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
-.vaga-foto span{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro-2);
-  padding:9px 16px;border-radius:99px;border:1px solid rgba(226,203,153,.35)}
-.vaga-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* =================== PROCESSO =================== */
 /* processo: uma coluna, lida de cima para baixo. Título, as 3 etapas lado a lado, e o botão no fim */
@@ -397,8 +395,13 @@ p,li{text-wrap:pretty}
   .passo--inv .passo-foto{order:0}
   .passo-txt,.passo--inv .passo-txt{padding:10px 8px 14px}
   .passo-foto{min-height:300px}
-  .clara{grid-template-columns:1fr}
-  .clara-foto{max-width:360px;order:-1;margin-bottom:10px}
+  /* celular: a foto vira um bloco no topo, recortado na Clara, e se funde no escuro antes do texto */
+  .clara-sec{display:block;min-height:0;padding-top:0}
+  .clara-fundo{position:relative;inset:auto;height:min(118vw,560px)}
+  .clara-fundo img{position:static;width:100%;height:100%;min-width:0;object-position:68% 20%}
+  .clara-fundo::after{background:linear-gradient(0deg,#020304 0%,rgba(2,3,4,0) 38%)}
+  .clara{margin-top:-40px}
+  .clara-txt{max-width:none}
   .perfis,.alem{grid-template-columns:1fr}
   .etapas{grid-template-columns:1fr;margin-top:44px}
   /* celular: cada etapa acende sozinha e o fio de cima dela vira dourado */
