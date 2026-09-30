@@ -84,7 +84,8 @@ p,li{text-wrap:pretty}
 .topo.solido{background:rgba(4,11,24,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--fio-e)}
 .topo-in{display:flex;align-items:center;justify-content:space-between;width:100%}
 .marca{display:flex;align-items:center;gap:12px;color:#fff}
-.marca-logo{height:40px;width:auto}
+.marca b{font-size:21px;font-weight:700;letter-spacing:-.04em}
+.marca b i{font-style:normal;color:var(--ouro)}
 .marca span{font-size:12.5px;font-weight:400;color:var(--claro-2);padding-left:12px;border-left:1px solid var(--fio-e)}
 
 /* ---------- entrada ---------- */
@@ -109,6 +110,7 @@ p,li{text-wrap:pretty}
   background:linear-gradient(135deg,var(--e3),var(--e1));border:1px solid rgba(194,160,104,.35)}
 .hero-selo b i{font-style:normal;color:var(--ouro)}
 .hero-selo span{font-size:13px;color:var(--claro-2)}
+.hero-logo{height:88px;width:auto;margin-bottom:34px}
 .hero .h1{max-width:21ch}
 .hero-apoio{font-size:clamp(16px,1.25vw,18px);font-weight:300;line-height:1.7;color:var(--claro-2);max-width:60ch;margin:26px auto 38px}
 .faixa{position:relative;margin-top:90px;border-top:1px solid var(--fio-e);border-bottom:1px solid var(--fio-e);overflow:hidden;
@@ -404,4 +406,5 @@ p,li{text-wrap:pretty}
 @media (max-width:768px){
   .micro svg{display:none}
   .hero .h1{font-size:26px}
+  .hero-logo{height:64px;margin-bottom:26px}
 }

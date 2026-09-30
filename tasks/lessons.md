@@ -116,3 +116,14 @@ animação — o Mateus viu como "a animação por scroll parou".
 **A regra:** quando um comportamento depende do conteúdo caber na tela,
 medir o conteúdo no script (`preso` quando cabe) em vez de fixar um número
 na media query.
+
+## 2026-09-30 — "Logo mude" era um lugar só, e eu escolhi o errado
+
+**O erro:** o Mateus mandou a logo da Mentoria PPA com "logo mude". Troquei a
+marca do cabeçalho (o "R80+" do canto) sem perguntar onde. Ele queria a logo
+só no selo acima da headline do hero. Subi para produção no lugar errado.
+
+**A regra:** quando um pedido de troca de imagem ou logo não diz o lugar e a
+página tem mais de um candidato (cabeçalho, selo do hero, rodapé), trocar só
+o mais visível da dobra citada. Na dúvida, perguntar antes de subir, e não
+mexer em mais de um lugar.
