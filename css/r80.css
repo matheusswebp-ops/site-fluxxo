@@ -326,6 +326,10 @@ p,li{text-wrap:pretty}
 .clara-sec{background:#020304;min-height:min(56vw,980px);display:flex;align-items:center}
 .clara-fundo{position:absolute;inset:0;pointer-events:none}
 .clara-fundo img{position:absolute;top:0;right:-4%;height:100%;width:auto;max-width:none;min-width:70%;object-fit:cover;object-position:70% 28%}  /* altura manda; o que sobra à esquerda é o preto do fundo */
+/* Quem conduz, foto do centro cirúrgico: Clara em ~54–82% da largura, rosto em 67,5% */
+@media (min-width:981px){
+  .qc-fundo img{inset:0 -12% 0 auto;left:auto;width:112%;height:100%;min-width:0;object-fit:cover;object-position:62% 30%}  /* 12% para a direita: Clara longe do texto */
+}
 .clara-fundo::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,rgba(2,3,4,.92) 0%,rgba(2,3,4,.75) 28%,rgba(2,3,4,0) 46%),
     linear-gradient(0deg,rgba(2,3,4,.85) 0%,rgba(2,3,4,0) 22%)}
@@ -427,8 +431,8 @@ p,li{text-wrap:pretty}
 @media (max-width:980px){
   .topo .bt--mini{display:none}
   .dor-grade{grid-template-columns:1fr}
-  .foto--dor{min-height:380px;order:-1;margin:calc(clamp(28px,5vw,64px) * -1) calc(clamp(28px,5vw,64px) * -1) 0;border-radius:0}
-  .foto--dor img{object-position:50% 40%}
+  .foto--dor{min-height:0;aspect-ratio:1/1;max-height:520px;order:-1;margin:calc(clamp(28px,5vw,64px) * -1) calc(clamp(28px,5vw,64px) * -1) 0;border-radius:0}
+  .foto--dor img{object-position:50% 57%}  /* estudante e notebook ficam entre 42% e 70% da foto */
   .foto--dor figcaption{display:none}
   .dor-virada-m{display:block;margin-top:22px;padding:18px 20px;border-radius:16px;text-align:center;
     font-size:19px;font-weight:500;line-height:1.35;letter-spacing:-.015em;color:#fff;background:linear-gradient(160deg,var(--e3),var(--e1))}
@@ -450,6 +454,10 @@ p,li{text-wrap:pretty}
   .clara-fundo{position:relative;inset:auto;height:min(118vw,560px)}
   .clara-fundo img{position:static;width:100%;height:100%;min-width:0;object-position:84% 20%}
   .clara-fundo::after{background:linear-gradient(0deg,#020304 0%,rgba(2,3,4,0) 38%)}
+  /* celular: amplia e prende o rosto no meio da tela, em qualquer largura */
+  .qc-fundo{overflow:hidden}
+  .qc-fundo img{position:absolute;top:0;left:50%;width:auto;height:max(100%,90vw);min-width:0;max-width:none;object-fit:initial;transform:translateX(-67.5%)}
+  .qc-fundo::after{z-index:1}
   .clara{margin-top:-40px}
   .clara-txt{max-width:none}
   .perfis,.alem{grid-template-columns:1fr}
