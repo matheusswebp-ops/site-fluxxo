@@ -46,7 +46,7 @@ p,li{text-wrap:pretty}
 
 /* ---------- tipografia: leve + negrito ---------- */
 .h1,.h2{font-weight:300;letter-spacing:-.035em;text-wrap:balance}
-.h1{font-size:clamp(29px,calc(4.3vw - 5px),55px);line-height:1.06}
+.h1{font-size:clamp(25px,calc(4.3vw - 9px),51px);line-height:1.06}
 .h2{font-size:clamp(28px,3vw,42px);line-height:1.12}
 .h1 em,.h2 em{font-style:normal;font-weight:600}
 .claro .h2 em{color:var(--azul)}
@@ -405,6 +405,6 @@ p,li{text-wrap:pretty}
 }
 @media (max-width:768px){
   .micro svg{display:none}
-  .hero .h1{font-size:26px}
+  .hero .h1{font-size:22px}
   .hero-logo{height:64px;margin-bottom:26px}
 }
