@@ -479,8 +479,12 @@ p,li{text-wrap:pretty}
   .hero.clara-sec{padding-top:0}
   /* celular: foto mais baixa e recortada com a Clara no centro (ela ocupa ~53–90% da largura da foto),
      texto compacto para o botão caber na primeira tela */
-  .hero .clara-fundo{height:min(78vw,340px,44svh)}
-  .hero .clara-fundo img{right:auto;object-position:90% 12%}
+  .hero .clara-fundo{height:min(78vw,340px,44svh);overflow:hidden}
+  /* rosto da Clara fica a 70,5% da largura da foto: amplia a foto e puxa esse ponto para o meio da tela,
+     assim ela fica centralizada em qualquer largura de celular */
+  .hero .clara-fundo img{position:absolute;top:0;left:50%;right:auto;width:170%;height:auto;min-width:0;max-width:none;
+    object-fit:initial;transform:translateX(-70.5%)}
+  .hero .clara-fundo::after{z-index:1}
   .hero .clara{margin-top:-56px}
   .hero-logo{height:50px;margin-bottom:16px}
   .hero-apoio{font-size:15px;line-height:1.55;margin:14px 0 22px}
