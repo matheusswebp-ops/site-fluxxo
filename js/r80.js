@@ -80,11 +80,27 @@
   $$('.faixa-trilho').forEach(function(t){ t.innerHTML += t.innerHTML; });
 
   /* ---- dor: marcar o que parece com você ---- */
-  $$('[data-dor] button').forEach(function(b){
+  var marcas = $$('[data-dor] button');
+  marcas.forEach(function(b){
     b.addEventListener('click', function(){
       b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     });
   });
+  /* rolagem: cada item se marca ao passar de 68% da tela e desmarca ao voltar.
+     Só mexe quando o item cruza a linha, então o clique manual não é desfeito a cada pixel. */
+  if (marcas.length && !reduz){
+    var pendDor = false;
+    function marcaPorRolagem(){
+      pendDor = false;
+      var linha = window.innerHeight * .68;
+      marcas.forEach(function(b){
+        var r = b.getBoundingClientRect(), passou = r.top + r.height / 2 < linha ? '1' : '0';
+        if (b.dataset.lado !== passou){ b.dataset.lado = passou; b.setAttribute('aria-pressed', passou === '1' ? 'true' : 'false'); }
+      });
+    }
+    window.addEventListener('scroll', function(){ if (!pendDor){ pendDor = true; requestAnimationFrame(marcaPorRolagem); } }, {passive:true});
+    marcaPorRolagem();
+  }
 
   /* ---- resultados: triplica a fila para o loop sem emenda, mesmo em tela larga (cópia escondida de leitores de tela) ---- */
   $$('[data-res]').forEach(function(t){

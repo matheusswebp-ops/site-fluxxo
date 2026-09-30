@@ -159,6 +159,11 @@ p,li{text-wrap:pretty}
 .dor-lista button:hover{border-color:rgba(29,63,115,.3);transform:translateX(4px)}
 .dor-lista button[aria-pressed="true"]{background:#eef3fb;border-color:var(--azul)}
 .dor-lista button[aria-pressed="true"] i{background:var(--azul);border-color:var(--azul);color:#fff;box-shadow:0 0 0 5px rgba(29,63,115,.1)}
+/* check que se desenha ao marcar e se apaga ao desmarcar (o traço do ícone tem ~23 de comprimento) */
+.dor-lista i svg{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .45s var(--ease) .12s}
+.dor-lista button[aria-pressed="true"] i svg{stroke-dashoffset:0}
+.dor-lista button[aria-pressed="true"] i{animation:marca .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes marca{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:none}}
 .foto--dor{min-height:100%}
 .foto--dor figcaption{font-size:clamp(20px,1.8vw,26px);font-weight:300;line-height:1.25;letter-spacing:-.02em;
   padding-left:16px;border-left:2px solid var(--ouro)}
@@ -459,6 +464,8 @@ p,li{text-wrap:pretty}
   .bt{font-size:11px;padding-left:14px;padding-right:14px}
 }
 @media (prefers-reduced-motion:reduce){
+  .dor-lista i svg{transition:none}
+  .dor-lista button[aria-pressed="true"] i{animation:none}
   .res-trilho{animation:none}
   .res{overflow-x:auto}
   .etapa-n::after{display:none}
