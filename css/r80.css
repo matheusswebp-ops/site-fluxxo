@@ -288,6 +288,23 @@ p,li{text-wrap:pretty}
   background:linear-gradient(170deg,var(--ouro-2),var(--ouro) 55%,var(--ouro-3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .etapas h3{font-size:clamp(19px,1.6vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.25;color:var(--tinta);margin-top:18px}
 .etapas p{font-size:15.5px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin:10px auto 0;max-width:34ch}
+/* animação por rolagem (só quando o JS liga .etapas--anim): o fio dourado corre e acende cada etapa */
+.etapas{position:relative}
+.etapas li{position:relative}
+.etapas--anim::after{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;border-radius:2px;transform-origin:left;
+  transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--ouro-3),var(--ouro) 50%,var(--ouro-2));box-shadow:0 0 14px rgba(194,160,104,.55)}
+.etapas--anim .etapa-n{opacity:.25;filter:grayscale(1);transform:translateY(12px) scale(.9);
+  transition:opacity .7s var(--ease),filter .7s var(--ease),transform .9s cubic-bezier(.2,.9,.3,1.35)}
+.etapas--anim h3,.etapas--anim p{opacity:.45;transition:opacity .7s var(--ease)}
+.etapas--anim .aceso .etapa-n{opacity:1;filter:grayscale(0);transform:none}
+.etapas--anim .aceso h3,.etapas--anim .aceso p{opacity:1}
+.etapa-n{position:relative}
+.etapa-n::after{content:"";position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;
+  border:1px solid var(--ouro);opacity:0;pointer-events:none}
+.etapas--anim .aceso .etapa-n::after{animation:anel 1.2s var(--ease) forwards}
+@keyframes anel{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(1.6)}}
+.entrar-acao.pronto .bt{animation:chama 1.4s var(--ease)}
+@keyframes chama{0%,100%{transform:none}35%{transform:scale(1.05);box-shadow:0 0 0 12px rgba(29,63,115,.1),0 24px 50px -16px rgba(29,63,115,.55)}}
 .entrar-acao{display:flex;flex-direction:column;align-items:center;margin-top:48px;text-align:center}
 .entrar-vagas{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:22px}
 .entrar-vagas svg{color:#c4664c}
@@ -357,6 +374,11 @@ p,li{text-wrap:pretty}
   .clara-foto{max-width:360px;order:-1;margin-bottom:10px}
   .perfis,.alem{grid-template-columns:1fr}
   .etapas{grid-template-columns:1fr;margin-top:44px}
+  /* celular: cada etapa acende sozinha e o fio de cima dela vira dourado */
+  .etapas--anim::after{display:none}
+  .etapas--anim li::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;transform:scaleX(0);
+    background:linear-gradient(90deg,transparent,var(--ouro) 20%,var(--ouro) 80%,transparent);transition:transform 1s var(--ease)}
+  .etapas--anim li.aceso::before{transform:scaleX(1)}
   .etapas li{padding:32px 8px 34px}
   .etapas li+li{border-left:0;border-top:1px solid var(--fio-c)}
   .etapa-n{font-size:60px}
@@ -404,6 +426,7 @@ p,li{text-wrap:pretty}
   .bt{font-size:11px;padding-left:14px;padding-right:14px}
 }
 @media (prefers-reduced-motion:reduce){
+  .etapa-n::after{display:none}
   .rv{opacity:1;transform:none;transition:none}
   .faixa-trilho{animation:none}
   html{scroll-behavior:auto}

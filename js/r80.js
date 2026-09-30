@@ -41,6 +41,30 @@
       {threshold:.25}).observe($('#processo'));
   }
 
+  /* ---- processo seletivo: o fio dourado corre com a rolagem e acende cada etapa ----
+     Desktop: progresso contínuo (--p) enquanto a lista cruza a tela.
+     Celular: cada etapa acende quando passa do meio da tela. Volta ao rolar para cima. */
+  var etapas = $('.etapas');
+  if (etapas && !reduz){
+    etapas.classList.add('etapas--anim');
+    var lis = $$(':scope > li', etapas), acao = $('.entrar-acao'), celular = window.matchMedia('(max-width:980px)'), pend = false;
+    function acende(){
+      pend = false;
+      var vh = window.innerHeight;
+      if (celular.matches){
+        lis.forEach(function(li){ var b = li.getBoundingClientRect(); li.classList.toggle('aceso', b.top + b.height * .35 < vh * .72); });
+      } else {
+        var p = Math.max(0, Math.min(1, (vh * .85 - etapas.getBoundingClientRect().top) / (vh * .5)));
+        etapas.style.setProperty('--p', p.toFixed(3));
+        lis.forEach(function(li, k){ li.classList.toggle('aceso', p >= (k + .5) / lis.length); });
+      }
+      if (acao) acao.classList.toggle('pronto', lis[lis.length - 1].classList.contains('aceso'));
+    }
+    window.addEventListener('scroll', function(){ if (!pend){ pend = true; requestAnimationFrame(acende); } }, {passive:true});
+    window.addEventListener('resize', acende);
+    acende();
+  }
+
   /* ---- luz que segue o mouse nos blocos escuros ---- */
   if (!reduz && window.matchMedia('(hover:hover)').matches){
     $$('[data-luz]').forEach(function(el){
