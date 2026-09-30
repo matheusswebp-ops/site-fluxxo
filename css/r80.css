@@ -179,11 +179,16 @@ p,li{text-wrap:pretty}
 [data-luz]:hover::after{opacity:1}
 .passo-foto{min-height:420px}
 .passo-foto figcaption{display:flex;align-items:center;gap:14px;font-size:clamp(21px,1.9vw,27px);font-weight:400;letter-spacing:-.02em}
-.num{display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:50%;font-size:14px;font-weight:600;letter-spacing:0;
-  border:1px solid rgba(226,203,153,.55);background:rgba(4,11,24,.45);backdrop-filter:blur(6px);color:var(--ouro-2)}
+.num{display:grid;place-items:center;width:58px;height:58px;flex:none;border-radius:50%;font-size:22px;font-weight:600;letter-spacing:-.02em;
+  color:var(--e1);background:linear-gradient(135deg,var(--ouro-2),var(--ouro) 60%,var(--ouro-3));box-shadow:0 0 0 6px rgba(226,203,153,.18),0 14px 30px -10px rgba(0,0,0,.6)}
 .passo-txt{padding:clamp(10px,2vw,30px) clamp(6px,1.5vw,20px) clamp(10px,2vw,30px) 0;display:flex;flex-direction:column;justify-content:center}
 .passo--inv .passo-txt{padding-left:clamp(10px,2vw,30px);padding-right:0}
-.passo-txt .pilula{align-self:flex-start}
+/* rótulo do passo: "PASSO 1" pequeno em dourado e o nome grande embaixo (o texto é o mesmo do doc) */
+.passo-rot{margin-bottom:18px}
+.passo-k{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+.passo-k::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--ouro),transparent)}
+.passo-sep{display:none}
+.passo-nome{display:block;margin-top:8px;font-size:clamp(26px,2.5vw,36px);font-weight:500;line-height:1.1;letter-spacing:-.03em;color:#fff}
 .passo-txt>p{font-size:16px;font-weight:300;line-height:1.75;color:var(--claro-2);max-width:58ch}
 .passo-txt>p+p{margin-top:12px}
 .passo-txt strong{color:#fff;font-weight:500}
@@ -398,7 +403,8 @@ p,li{text-wrap:pretty}
   .dor-talvez{text-align:center}
   .dor-lista button{font-size:15px}
   .passo{padding:12px;border-radius:26px}
-  .passo-txt .pilula{align-self:center}
+  .passo-rot{text-align:center}
+  .passo-k::after{display:none}
   .passo-tese{justify-content:center}
   .passo-txt>p:not(.destaque):not(.sabia){text-align:center}
   .caminhos{grid-template-columns:1fr}
