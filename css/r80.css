@@ -307,12 +307,13 @@ p,li{text-wrap:pretty}
 /* processo: uma coluna, lida de cima para baixo. Título, as 3 etapas lado a lado, e o botão no fim */
 .entrar-cab .lead{max-width:52ch}
 .etapas{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:64px;border-top:1px solid var(--fio-c);border-bottom:1px solid var(--fio-c)}
-.etapas li{padding:40px clamp(20px,3vw,44px) 44px;text-align:center}
+.etapas li{padding:40px clamp(14px,1.8vw,28px) 44px;text-align:center}
 .etapas li+li{border-left:1px solid var(--fio-c)}
 .etapa-n{display:block;font-size:clamp(60px,6vw,88px);font-weight:300;line-height:.9;letter-spacing:-.06em;
   background:linear-gradient(170deg,var(--ouro-2),var(--ouro) 55%,var(--ouro-3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .etapas h3{font-size:clamp(19px,1.6vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.25;color:var(--tinta);margin-top:18px}
-.etapas p{font-size:15.5px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin:10px auto 0;max-width:34ch}
+.etapas p{font-size:15.5px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin:10px auto 0;max-width:40ch;text-wrap:balance}
+.etapas li:nth-child(2) p{max-width:25ch}  /* texto mais curto: estreita para as 3 etapas terem 3 linhas */
 /* animação por rolagem (só quando o JS liga .etapas--anim): o fio dourado corre e acende cada etapa */
 .etapas{position:relative}
 .etapas li{position:relative}
