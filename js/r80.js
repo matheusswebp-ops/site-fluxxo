@@ -1,6 +1,6 @@
 /* Mentoria R80+ · Dra. Clara Aragão
    Link único do formulário, cabeçalho, entradas, luz que segue o mouse,
-   checklist da dor, faixa do hero e trilho de resultados. */
+   checklist da dor, processo animado e fila de resultados em loop. */
 (function(){
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(s, r){ return (r || document).querySelector(s); }
@@ -86,28 +86,9 @@
     });
   });
 
-  /* ---- resultados: setas e arrastar com o mouse ---- */
-  var res = $('[data-res]');
-  if (res){
-    var ant = $('[data-res-ant]'), prox = $('[data-res-prox]');
-    function passo(){ var c = res.children; return c[1] ? c[1].offsetLeft - c[0].offsetLeft : res.clientWidth; }
-    function estado(){
-      ant.disabled = res.scrollLeft <= 4;
-      prox.disabled = res.scrollLeft >= res.scrollWidth - res.clientWidth - 4;
-    }
-    ant.addEventListener('click', function(){ res.scrollBy({left:-passo(), behavior:'smooth'}); });
-    prox.addEventListener('click', function(){ res.scrollBy({left:passo(), behavior:'smooth'}); });
-    res.addEventListener('scroll', estado, {passive:true});
-    estado();
-    var x0 = 0, s0 = 0, puxando = false;
-    res.addEventListener('pointerdown', function(e){
-      if (e.pointerType !== 'mouse') return;
-      puxando = true; x0 = e.clientX; s0 = res.scrollLeft;
-      res.classList.add('arrastando'); res.setPointerCapture(e.pointerId);
-    });
-    res.addEventListener('pointermove', function(e){ if (puxando) res.scrollLeft = s0 - (e.clientX - x0); });
-    ['pointerup','pointercancel'].forEach(function(ev){
-      res.addEventListener(ev, function(){ puxando = false; res.classList.remove('arrastando'); });
-    });
-  }
+  /* ---- resultados: triplica a fila para o loop sem emenda, mesmo em tela larga (cópia escondida de leitores de tela) ---- */
+  $$('[data-res]').forEach(function(t){
+    var orig = $$(':scope > *', t);
+    for (var k = 0; k < 2; k++) orig.forEach(function(el){ var c = el.cloneNode(true); c.setAttribute('aria-hidden', 'true'); t.appendChild(c); });
+  });
 })();

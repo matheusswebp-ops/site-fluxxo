@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/r80.css?v=202609302300">
+<link rel="stylesheet" href="css/r80.css?v=202609302500">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -75,21 +75,19 @@
 
 <!-- ============ DOBRA 2 ============ -->
 <section class="sec claro" id="resultados">
-  <div class="caixa cab-lado">
+  <div class="caixa cab-centro">
     <h2 class="h2 rv">Veja os resultados de quem <em>participou da mentoria:</em></h2>
-    <div class="setas rv">
-      <button type="button" data-res-ant aria-label="Anterior"><svg width="18" height="18"><use href="#i-esq"/></svg></button>
-      <button type="button" data-res-prox aria-label="Próximo"><svg width="18" height="18"><use href="#i-seta"/></svg></button>
-    </div>
   </div>
-  <!-- troque cada .res-vaga por <img> do print (com autorização do mentorado) -->
-  <div class="res" data-res tabindex="0" aria-label="Resultados de mentorados">
-    <figure class="res-card"><div class="res-vaga"></div></figure>
-    <figure class="res-card"><div class="res-vaga"></div></figure>
-    <figure class="res-card"><div class="res-vaga"></div></figure>
-    <figure class="res-card"><div class="res-vaga"></div></figure>
-    <figure class="res-card"><div class="res-vaga"></div></figure>
-    <figure class="res-card"><div class="res-vaga"></div></figure>
+  <!-- coloque o <img> de cada print dentro de .res-vaga (com autorização do mentorado); o JS triplica a fila para o loop -->
+  <div class="res" aria-label="Resultados de mentorados">
+    <div class="res-trilho" data-res>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+      <figure class="res-card"><div class="res-vaga"></div></figure>
+    </div>
   </div>
 </section>
 
@@ -397,6 +395,6 @@
 </footer>
 
 
-<script src="js/r80.js?v=202609302300" defer></script>
+<script src="js/r80.js?v=202609302400" defer></script>
 </body>
 </html>

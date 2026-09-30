@@ -121,23 +121,20 @@ p,li{text-wrap:pretty}
 @keyframes faixa{to{transform:translateX(-50%)}}
 
 /* =================== RESULTADOS =================== */
-.cab-lado{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
-.cab-lado .h2{max-width:16ch}
-.setas{display:flex;gap:10px}
-.setas button{width:52px;height:52px;border-radius:50%;cursor:pointer;background:#fff;border:1px solid var(--fio-c);color:var(--tinta);
-  display:grid;place-items:center;transition:all .3s var(--ease)}
-.setas button:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
-.setas button:disabled{opacity:.35;pointer-events:none}
-.res{display:flex;gap:18px;margin-top:44px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;outline:none;
-  padding:0 max(var(--lado),calc((100vw - var(--caixa)) / 2 + var(--lado))) 6px;
-  scroll-padding-left:max(var(--lado),calc((100vw - var(--caixa)) / 2 + var(--lado)))}
-.res::-webkit-scrollbar{display:none}
-.res.arrastando{cursor:grabbing;scroll-snap-type:none}
-.res-card{flex:none;width:clamp(250px,24vw,300px);scroll-snap-align:start}
-.res-vaga{aspect-ratio:4/5;border-radius:20px;background:linear-gradient(160deg,#eef2f7,#e3e9f1);border:1px solid var(--fio-c);
-  display:flex;align-items:flex-end;padding:22px;font-size:13px;color:#8190a6;transition:transform .5s var(--ease)}
-.res-vaga img{width:100%;height:100%;object-fit:cover;border-radius:20px}
-.res-card:hover .res-vaga{transform:translateY(-6px)}
+/* resultados: fila que passa sozinha em loop; pausa com o mouse em cima.
+   Cada card é uma moldura branca (o print entra dentro de .res-vaga) e as alturas alternam para dar ritmo. */
+#resultados{background:radial-gradient(ellipse 70% 55% at 50% 68%,#e6eef9 0%,rgba(230,238,249,0) 70%),#fff}
+.res{margin-top:52px;overflow:hidden;padding:10px 0 60px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.res-trilho{display:flex;align-items:flex-start;gap:22px;width:max-content;animation:res-loop 42s linear infinite}
+.res:hover .res-trilho{animation-play-state:paused}
+@keyframes res-loop{to{transform:translateX(calc(-33.3333% - 7.3333px))}}  /* 3 cópias: anda 1 cópia + 1 vão */
+.res-card{flex:none;width:clamp(220px,20vw,270px);padding:10px;border-radius:26px;background:#fff;border:1px solid var(--fio-c);
+  box-shadow:0 34px 60px -38px rgba(10,26,51,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.res-card:nth-child(even){margin-top:44px}
+.res-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 44px 70px -36px rgba(10,26,51,.5)}
+.res-vaga{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#f1f5fb,#e2e9f3)}
+.res-vaga img{width:100%;height:100%;object-fit:cover}
 
 /* =================== FOTO TRATADA =================== */
 .foto{position:relative;overflow:hidden;border-radius:24px;background:var(--e2);isolation:isolate}
@@ -391,10 +388,9 @@ p,li{text-wrap:pretty}
 }
 @media (max-width:768px){
   /* celular: headlines centralizadas e botões numa linha só, centralizados */
-  .h2,.lead,.cab-lado .h2{text-align:center;margin-left:auto;margin-right:auto}
-  .cab-lado{flex-direction:column;align-items:center}
-  .setas{display:none}
-  .res-card{width:72vw}
+  .h2,.lead{text-align:center;margin-left:auto;margin-right:auto}
+  .res-card{width:58vw}
+  .res-card:nth-child(even){margin-top:30px}
   .bt{font-size:12px;padding:17px 20px;letter-spacing:.03em}
   .hero{padding-top:calc(var(--topo) + 44px)}
   .hero{padding-bottom:60px}
@@ -426,6 +422,8 @@ p,li{text-wrap:pretty}
   .bt{font-size:11px;padding-left:14px;padding-right:14px}
 }
 @media (prefers-reduced-motion:reduce){
+  .res-trilho{animation:none}
+  .res{overflow-x:auto}
   .etapa-n::after{display:none}
   .rv{opacity:1;transform:none;transition:none}
   .faixa-trilho{animation:none}
