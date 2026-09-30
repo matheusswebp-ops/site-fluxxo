@@ -477,7 +477,14 @@ p,li{text-wrap:pretty}
   .bt{font-size:12px;padding:17px 20px;letter-spacing:.03em}
   .hero{padding-bottom:60px}
   .hero.clara-sec{padding-top:0}
-  .hero .clara-fundo img{right:auto;object-position:71% 18%}  /* celular: recorte na Clara */
+  /* celular: foto mais baixa e recortada com a Clara no centro (ela ocupa ~53–90% da largura da foto),
+     texto compacto para o botão caber na primeira tela */
+  .hero .clara-fundo{height:min(78vw,340px,44svh)}
+  .hero .clara-fundo img{right:auto;object-position:90% 12%}
+  .hero .clara{margin-top:-56px}
+  .hero-logo{height:50px;margin-bottom:16px}
+  .hero-apoio{font-size:15px;line-height:1.55;margin:14px 0 22px}
+  .hero .micro{margin-top:12px}
   .hero-in{align-items:center;text-align:center}
   .hero-in>*{margin-left:auto;margin-right:auto}
   .hero .h1,.hero-apoio{text-align:center}
@@ -544,5 +551,5 @@ p,li{text-wrap:pretty}
 @media (max-width:768px){
   .micro svg{display:none}
   .hero .h1{font-size:22px}
-  .hero-logo{height:64px;margin-bottom:26px}
+
 }
