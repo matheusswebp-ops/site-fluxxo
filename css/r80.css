@@ -143,6 +143,8 @@ p,li{text-wrap:pretty}
 .foto::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,transparent 35%,rgba(4,11,24,.9) 100%),radial-gradient(ellipse at 80% 10%,rgba(226,203,153,.18),transparent 60%)}
 .foto:hover img{transform:scale(1.04)}
+/* dor e passos: a caixa tem altura própria (texto ou min-height); a foto só preenche, não estica o card */
+.foto--dor img,.passo-foto img{position:absolute;inset:0}
 .foto figcaption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;color:#fff}
 
 /* =================== DOR =================== */
