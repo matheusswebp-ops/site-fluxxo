@@ -17,7 +17,7 @@
   function aoRolar(){
     var y = window.scrollY;
     if (topo) topo.classList.toggle('solido', y > 30);
-    barra.classList.toggle('visivel', y > hero.offsetHeight * .6 && !processoVisivel);
+    if (barra) barra.classList.toggle('visivel', y > hero.offsetHeight * .6 && !processoVisivel);
   }
   window.addEventListener('scroll', aoRolar, {passive:true});
   aoRolar();

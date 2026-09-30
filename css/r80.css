@@ -93,7 +93,7 @@ p,li{text-wrap:pretty}
 .rv.in{opacity:1;transform:none}
 
 /* =================== HERO =================== */
-.hero{position:relative;overflow:hidden;padding:calc(var(--topo) + 70px) 0 0;text-align:center}
+.hero{position:relative;overflow:hidden;padding:calc(var(--topo) + 70px) 0 90px;text-align:center}
 /* listras verticais de luz, como cortina */
 .hero-listras{position:absolute;inset:0 0 30%;pointer-events:none;opacity:.9;
   background:repeating-linear-gradient(90deg,rgba(60,110,190,.0) 0 38px,rgba(60,110,190,.16) 38px 40px,rgba(60,110,190,.04) 40px 76px);
@@ -165,7 +165,7 @@ p,li{text-wrap:pretty}
 .foto--dor{min-height:100%}
 .foto--dor figcaption{font-size:clamp(20px,1.8vw,26px);font-weight:300;line-height:1.25;letter-spacing:-.02em;
   padding-left:16px;border-left:2px solid var(--ouro)}
-.painel-rodape{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:28px clamp(28px,5vw,64px);
+.painel-rodape{display:flex;align-items:center;justify-content:center;text-align:center;gap:30px;padding:28px clamp(28px,5vw,64px);
   background:linear-gradient(90deg,#f1f5fb,#e8eef8);border-top:1px solid var(--fio-c)}
 .painel-rodape p{font-size:clamp(17px,1.5vw,21px);font-weight:400;line-height:1.4;letter-spacing:-.015em;color:var(--azul);max-width:40ch}
 
@@ -371,7 +371,7 @@ p,li{text-wrap:pretty}
   .res-card{width:72vw}
   .bt{font-size:12px;padding:17px 20px;letter-spacing:.03em}
   .hero{padding-top:calc(var(--topo) + 44px)}
-  .faixa{margin-top:60px}
+  .hero{padding-bottom:60px}
   .marca span{display:none}
   .dor-talvez{text-align:center}
   .dor-lista button{font-size:15px}
