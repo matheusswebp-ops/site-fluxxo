@@ -65,6 +65,21 @@
     acende();
   }
 
+  /* ---- jornada em fases: a linha enche com a rolagem e a fase que passa da linha de leitura acende ---- */
+  var fases = $('[data-fases]');
+  if (fases && !reduz){
+    var itensF = $$('[data-fase]', fases), pendF = false;
+    function faseRolar(){
+      pendF = false;
+      var vh = window.innerHeight, r = fases.getBoundingClientRect(), leitura = vh * .6;
+      fases.style.setProperty('--p', Math.max(0, Math.min(1, (leitura - r.top) / r.height)).toFixed(4));
+      itensF.forEach(function(f){ f.classList.toggle('ativa', f.getBoundingClientRect().top + 40 < leitura); });
+    }
+    window.addEventListener('scroll', function(){ if (!pendF){ pendF = true; requestAnimationFrame(faseRolar); } }, {passive:true});
+    window.addEventListener('resize', faseRolar);
+    faseRolar();
+  } else if (fases){ $$('[data-fase]', fases).forEach(function(f){ f.classList.add('ativa'); }); }
+
   /* ---- luz que segue o mouse nos blocos escuros ---- */
   if (!reduz && window.matchMedia('(hover:hover)').matches){
     $$('[data-luz]').forEach(function(el){

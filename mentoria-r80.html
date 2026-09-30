@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/r80.css?v=202609304100">
+<link rel="stylesheet" href="css/r80.css?v=202609304200">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -121,112 +121,102 @@
 </section>
 
 <!-- ============ JORNADA ============ -->
-<section class="sec escuro jornada" id="jornada">
+<section class="sec escuro jornada jornada--fases" id="jornada">
+  <!-- versão em fases (sem fotos). A versão com fotos está no backup: git tag r80-jornada-com-fotos -->
   <div class="caixa">
     <h2 class="h2 h2--centro rv">Esses são os 5 passos da <em>Jornada R80+:</em></h2>
 
-    <div class="passos">
-      <article class="passo rv" data-luz>
-        <figure class="foto passo-foto">
-          <img src="img/r80-passo1.webp?v=2" alt="" loading="lazy" decoding="async" width="1122" height="1402">
-          <figcaption><span class="num">1</span></figcaption>
-        </figure>
-        <div class="passo-txt">
-          <p class="passo-rot"><span class="passo-k">Passo 1</span><span class="passo-sep"> · </span><span class="passo-nome">Escolha dos 3 destinos</span></p>
+    <ol class="fases" data-fases>
+      <li class="fase" data-fase>
+        <div class="fase-lado">
+          <span class="fase-n" aria-hidden="true">1</span>
+          <p class="fase-rot"><span class="fase-k">Passo 1</span><span class="passo-sep"> · </span><span class="fase-nome">Escolha dos 3 destinos</span></p>
+        </div>
+        <div class="fase-corpo passo-txt">
           <h3 class="passo-tese"><svg width="22" height="22"><use href="#i-destino"/></svg>Teoria 3DP</h3>
           <p>Você não fica refém de um único edital. A gente escolhe com você os 3 editais dos seus destinos possíveis e encontra as atividades que pontuam nos três ao mesmo tempo.</p>
           <p class="destaque">Se um edital mudar, o seu plano continua de pé.</p>
           <div class="recebe">
-            <span class="recebe-rot">O que você recebe</span>
-            <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-alvo"/></svg></i>
-              <div><h4>Planejamento curricular individualizado</h4>
-              <p>Um encontro individual comigo para analisar o currículo que você tem hoje, os editais dos seus principais destinos e quanto você já construiu em cada categoria.</p></div></div>
+          <span class="recebe-rot">O que você recebe</span>
+          <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-alvo"/></svg></i>
+          <div><h4>Planejamento curricular individualizado</h4>
+          <p>Um encontro individual comigo para analisar o currículo que você tem hoje, os editais dos seus principais destinos e quanto você já construiu em cada categoria.</p></div></div>
           </div>
         </div>
-      </article>
-
-      <article class="passo passo--inv rv" data-luz>
-        <figure class="foto passo-foto">
-          <img src="img/r80-passo2.webp?v=2" alt="" loading="lazy" decoding="async" width="1122" height="1402">
-          <figcaption><span class="num">2</span></figcaption>
-        </figure>
-        <div class="passo-txt">
-          <p class="passo-rot"><span class="passo-k">Passo 2</span><span class="passo-sep"> · </span><span class="passo-nome">Plano do seu currículo</span></p>
+      </li>
+      <li class="fase" data-fase>
+        <div class="fase-lado">
+          <span class="fase-n" aria-hidden="true">2</span>
+          <p class="fase-rot"><span class="fase-k">Passo 2</span><span class="passo-sep"> · </span><span class="fase-nome">Plano do seu currículo</span></p>
+        </div>
+        <div class="fase-corpo passo-txt">
           <p>A partir desse encontro, montamos o seu plano até os 80+, mostrando:</p>
           <ul class="plano">
-            <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Onde você está hoje em cada edital;</li>
-            <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Quanto ainda falta até os 80+;</li>
-            <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Quais atividades dão mais pontos no menor tempo;</li>
-            <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>O que pode esperar;</li>
-            <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Onde vale concentrar o tempo que você tem até a prova.</li>
+          <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Onde você está hoje em cada edital;</li>
+          <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Quanto ainda falta até os 80+;</li>
+          <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Quais atividades dão mais pontos no menor tempo;</li>
+          <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>O que pode esperar;</li>
+          <li><i><svg width="12" height="12"><use href="#i-check"/></svg></i>Onde vale concentrar o tempo que você tem até a prova.</li>
           </ul>
           <p class="destaque">Você sai sabendo o que fazer agora e quais atividades não merecem ocupar a sua agenda.</p>
         </div>
-      </article>
-
-      <article class="passo passo--largo rv" data-luz>
-        <div class="passo3-cab">
-          <figure class="foto passo-foto passo-foto--baixa">
-            <img src="img/r80-passo3.webp?v=2" alt="" loading="lazy" decoding="async" width="1122" height="1402">
-            <figcaption><span class="num">3</span></figcaption>
-          </figure>
-          <div class="passo-txt">
-            <p class="passo-rot"><span class="passo-k">Passo 3</span><span class="passo-sep"> · </span><span class="passo-nome">Construção dos pontos</span></p>
-            <p>É aqui que o currículo costuma travar: poucas vagas, processo seletivo, professor indisponível e uma rotina que não cabe no internato. <strong>Na R80+, você tem um caminho para cada categoria:</strong></p>
+      </li>
+      <li class="fase" data-fase>
+        <div class="fase-lado">
+          <span class="fase-n" aria-hidden="true">3</span>
+          <p class="fase-rot"><span class="fase-k">Passo 3</span><span class="passo-sep"> · </span><span class="fase-nome">Construção dos pontos</span></p>
+        </div>
+        <div class="fase-corpo passo-txt">
+          <p>É aqui que o currículo costuma travar: poucas vagas, processo seletivo, professor indisponível e uma rotina que não cabe no internato. <strong>Na R80+, você tem um caminho para cada categoria:</strong></p>
+          <div class="caminhos">
+          <div class="caminho caminho--destaque" data-luz><i><svg width="20" height="20"><use href="#i-micro"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-micro"/></svg><h4>Iniciação Científica R80+</h4>
+          <p>Projetos 100% online, com temas prontos, projetos estruturados, eventos selecionados e orientação em cada etapa.</p></div>
+          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-caneta"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-caneta"/></svg><h4>Grupo de Publicação</h4>
+          <p>Convites para congressos e revistas, temas definidos e apoio na estrutura e na submissão. Se o evento exigir presença, você ou alguém apresenta, não é obrigatório sua presença.</p></div>
+          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-quadro"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-quadro"/></svg><h4>Monitoria sem processo seletivo</h4>
+          <p>Monitoria acadêmica do PPA, sem disputar vaga nos processos seletivos da sua faculdade.</p></div>
+          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-maos"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-maos"/></svg><h4>Extensão pelo Programa PPA</h4>
+          <p>Um caminho para fazer extensão sem esperar a faculdade abrir uma oportunidade que caiba na sua rotina.</p></div>
+          <div class="caminho caminho--cursos" data-luz><i><svg width="20" height="20"><use href="#i-certificado"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-certificado"/></svg><h4>5 cursos com certificação</h4>
+          <p class="cursos"><span>ECG</span> · <span>MedClub</span> · <span>MEDestágio</span> · <span>Lattes Descomplicado</span> · <span>MPP</span>.</p>
+          <p>Cada um entra no currículo com um propósito dentro do seu plano.</p></div>
           </div>
         </div>
-        <div class="caminhos">
-          <div class="caminho caminho--destaque" data-luz><i><svg width="20" height="20"><use href="#i-micro"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-micro"/></svg><h4>Iniciação Científica R80+</h4>
-            <p>Projetos 100% online, com temas prontos, projetos estruturados, eventos selecionados e orientação em cada etapa.</p></div>
-          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-caneta"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-caneta"/></svg><h4>Grupo de Publicação</h4>
-            <p>Convites para congressos e revistas, temas definidos e apoio na estrutura e na submissão. Se o evento exigir presença, você ou alguém apresenta, não é obrigatório sua presença.</p></div>
-          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-quadro"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-quadro"/></svg><h4>Monitoria sem processo seletivo</h4>
-            <p>Monitoria acadêmica do PPA, sem disputar vaga nos processos seletivos da sua faculdade.</p></div>
-          <div class="caminho" data-luz><i><svg width="20" height="20"><use href="#i-maos"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-maos"/></svg><h4>Extensão pelo Programa PPA</h4>
-            <p>Um caminho para fazer extensão sem esperar a faculdade abrir uma oportunidade que caiba na sua rotina.</p></div>
-          <div class="caminho caminho--cursos" data-luz><i><svg width="20" height="20"><use href="#i-certificado"/></svg></i><svg class="caminho-fundo" aria-hidden="true" width="150" height="150"><use href="#i-certificado"/></svg><h4>5 cursos com certificação</h4>
-            <p class="cursos"><span>ECG</span> · <span>MedClub</span> · <span>MEDestágio</span> · <span>Lattes Descomplicado</span> · <span>MPP</span>.</p>
-            <p>Cada um entra no currículo com um propósito dentro do seu plano.</p></div>
+      </li>
+      <li class="fase" data-fase>
+        <div class="fase-lado">
+          <span class="fase-n" aria-hidden="true">4</span>
+          <p class="fase-rot"><span class="fase-k">Passo 4</span><span class="passo-sep"> · </span><span class="fase-nome">Validação guiada</span></p>
         </div>
-      </article>
-
-      <article class="passo rv" data-luz>
-        <figure class="foto passo-foto">
-          <img src="img/r80-passo4.webp?v=2" alt="" loading="lazy" decoding="async" width="1122" height="1402">
-          <figcaption><span class="num">4</span></figcaption>
-        </figure>
-        <div class="passo-txt">
-          <p class="passo-rot"><span class="passo-k">Passo 4</span><span class="passo-sep"> · </span><span class="passo-nome">Validação guiada</span></p>
+        <div class="fase-corpo passo-txt">
           <p>Cada certificado é revisado e colocado na categoria que mais pontua.</p>
           <p class="sabia">Sabia que, em alguns editais, um certificado de monitoria pode entrar na aba de iniciação científica e pontuar <strong>MAIS</strong>?</p>
           <div class="recebe">
-            <span class="recebe-rot">O que você recebe</span>
-            <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-lupa"/></svg></i>
-              <div><h4>Correção e validação de certificados</h4>
-              <p>Um certificado emitido de forma inadequada ou na categoria errada é um erro que só aparece quando você já está diante do edital. Por isso, verificamos a documentação e orientamos o enquadramento antes do envio.</p></div></div>
+          <span class="recebe-rot">O que você recebe</span>
+          <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-lupa"/></svg></i>
+          <div><h4>Correção e validação de certificados</h4>
+          <p>Um certificado emitido de forma inadequada ou na categoria errada é um erro que só aparece quando você já está diante do edital. Por isso, verificamos a documentação e orientamos o enquadramento antes do envio.</p></div></div>
           </div>
           <p class="destaque">Aqui nenhum ponto que você já conquistou fica para trás.</p>
         </div>
-      </article>
-
-      <article class="passo passo--inv rv" data-luz>
-        <figure class="foto passo-foto">
-          <img src="img/r80-passo5.webp?v=2" alt="" loading="lazy" decoding="async" width="1122" height="1402">
-          <figcaption><span class="num">5</span></figcaption>
-        </figure>
-        <div class="passo-txt">
-          <p class="passo-rot"><span class="passo-k">Passo 5</span><span class="passo-sep"> · </span><span class="passo-nome">Envio sem erro</span></p>
+      </li>
+      <li class="fase" data-fase>
+        <div class="fase-lado">
+          <span class="fase-n" aria-hidden="true">5</span>
+          <p class="fase-rot"><span class="fase-k">Passo 5</span><span class="passo-sep"> · </span><span class="fase-nome">Envio sem erro</span></p>
+        </div>
+        <div class="fase-corpo passo-txt">
           <p>Versões adaptadas para cada edital e modelo de envio pronto.</p>
           <div class="recebe">
-            <span class="recebe-rot">O que você recebe</span>
-            <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-pasta"/></svg></i>
-              <div><h4>Consultoria para documentação da faculdade</h4>
-              <p>Orientação sobre <strong>quais documentos solicitar, como solicitar e o que precisa constar neles</strong>, com os modelos para fazer os pedidos à instituição. Nada de depender da secretaria na reta final.</p></div></div>
+          <span class="recebe-rot">O que você recebe</span>
+          <div class="recebe-it"><i><svg width="20" height="20"><use href="#i-pasta"/></svg></i>
+          <div><h4>Consultoria para documentação da faculdade</h4>
+          <p>Orientação sobre <strong>quais documentos solicitar, como solicitar e o que precisa constar neles</strong>, com os modelos para fazer os pedidos à instituição. Nada de depender da secretaria na reta final.</p></div></div>
           </div>
           <p class="destaque">Você chega na análise curricular sem surpresa.</p>
         </div>
-      </article>
-    </div>
+      </li>
+    </ol>
 
   </div>
 </section>
@@ -400,6 +390,6 @@
 </footer>
 
 
-<script src="js/r80.js?v=202609303700" defer></script>
+<script src="js/r80.js?v=202609304200" defer></script>
 </body>
 </html>
