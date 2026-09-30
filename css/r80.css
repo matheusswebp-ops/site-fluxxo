@@ -49,7 +49,7 @@ p,li{text-wrap:pretty}
 .h1{font-size:clamp(24px,2.8vw,40px);line-height:1.06}
 .h2{font-size:clamp(28px,3vw,42px);line-height:1.12}
 .h1 em,.h2 em{font-style:normal;font-weight:600}
-.claro .h2 em{color:var(--azul)}
+.claro .h2 em{background:linear-gradient(100deg,#c4a064,#a9854f 50%,#7f5f30);-webkit-background-clip:text;background-clip:text;color:transparent}  /* dourado mais fechado para contrastar no branco */
 .escuro .h1 em,.escuro .h2 em{background:linear-gradient(100deg,var(--ouro-2),var(--ouro) 60%,#a9854f);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .h2--centro{text-align:center;max-width:22ch;margin:0 auto}
