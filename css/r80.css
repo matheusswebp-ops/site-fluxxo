@@ -279,24 +279,20 @@ p,li{text-wrap:pretty}
 .vaga-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* =================== PROCESSO =================== */
-/* processo: editorial em duas colunas. À esquerda o chamado (fica preso), à direita as etapas com numerais grandes */
-.entrar{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:start}
-.entrar-cab{position:sticky;top:60px}
-.entrar-cab .h2{margin-top:18px}
-.entrar-cab .lead{margin-top:18px;max-width:42ch}
-.entrar-acao{margin-top:36px}
-.entrar-vagas{display:flex;gap:12px;align-items:flex-start;margin-top:22px}
-.entrar-vagas svg{flex:none;margin-top:3px;color:#c4664c}
+/* processo: uma coluna, lida de cima para baixo. Título, as 3 etapas lado a lado, e o botão no fim */
+.entrar-cab .lead{max-width:52ch}
+.etapas{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:64px;border-top:1px solid var(--fio-c);border-bottom:1px solid var(--fio-c)}
+.etapas li{padding:40px clamp(20px,3vw,44px) 44px;text-align:center}
+.etapas li+li{border-left:1px solid var(--fio-c)}
+.etapa-n{display:block;font-size:clamp(60px,6vw,88px);font-weight:300;line-height:.9;letter-spacing:-.06em;
+  background:linear-gradient(170deg,var(--ouro-2),var(--ouro) 55%,var(--ouro-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.etapas h3{font-size:clamp(19px,1.6vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.25;color:var(--tinta);margin-top:18px}
+.etapas p{font-size:15.5px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin:10px auto 0;max-width:34ch}
+.entrar-acao{display:flex;flex-direction:column;align-items:center;margin-top:48px;text-align:center}
+.entrar-vagas{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:22px}
+.entrar-vagas svg{color:#c4664c}
 .entrar-vagas strong{display:block;font-size:15.5px;font-weight:600;color:var(--tinta)}
 .entrar-vagas em{display:block;font-size:14px;color:var(--tinta-2);margin-top:2px}
-.etapas{list-style:none;counter-reset:none;border-top:1px solid var(--fio-c)}
-.etapas li{display:grid;grid-template-columns:clamp(70px,8vw,112px) minmax(0,1fr);gap:clamp(16px,2.4vw,34px);align-items:start;
-  padding:clamp(28px,3.4vw,44px) 0;border-bottom:1px solid var(--fio-c);transition:background .4s var(--ease)}
-.etapa-n{font-size:clamp(64px,7vw,104px);font-weight:300;line-height:.82;letter-spacing:-.06em;
-  background:linear-gradient(170deg,var(--ouro-2),var(--ouro) 55%,var(--ouro-3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.etapas h3{font-size:clamp(20px,1.8vw,25px);font-weight:500;letter-spacing:-.02em;line-height:1.2;color:var(--tinta)}
-.etapas p{font-size:16px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin-top:10px;max-width:46ch}
-.etapas li:last-child h3{color:var(--azul);font-weight:600}
 
 /* =================== DÚVIDAS =================== */
 .faq-caixa{max-width:880px}
@@ -360,16 +356,10 @@ p,li{text-wrap:pretty}
   .clara{grid-template-columns:1fr}
   .clara-foto{max-width:360px;order:-1;margin-bottom:10px}
   .perfis,.alem{grid-template-columns:1fr}
-  /* no celular o botão vem depois das etapas */
-  .entrar{grid-template-columns:1fr;gap:0}
-  .entrar-cab{display:contents}
-  .entrar-cab>*{justify-self:center;text-align:center}
-  .entrar-cab .lead{margin-left:auto;margin-right:auto}
-  .etapas{order:1;margin-top:40px}
-  .etapas li{grid-template-columns:52px minmax(0,1fr);gap:14px}
-  .etapa-n{font-size:56px}
-  .entrar-acao{order:2;display:flex;flex-direction:column;align-items:center;margin-top:40px}
-  .entrar-vagas{text-align:left}
+  .etapas{grid-template-columns:1fr;margin-top:44px}
+  .etapas li{padding:32px 8px 34px}
+  .etapas li+li{border-left:0;border-top:1px solid var(--fio-c)}
+  .etapa-n{font-size:60px}
   .opcoes{grid-template-columns:1fr;text-align:center}
   .opcao i{margin:0 auto 16px}
   .barra{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:55;display:flex;
