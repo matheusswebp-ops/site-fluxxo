@@ -235,18 +235,28 @@ p,li{text-wrap:pretty}
 .cursos span{font-size:13px;font-weight:500;padding:6px 12px;border-radius:99px;color:var(--ouro-2);border:1px solid rgba(226,203,153,.35);background:rgba(226,203,153,.06)}
 
 /* =================== ALÉM DISSO =================== */
-.alem{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px}
-.card-claro{padding:clamp(28px,3vw,40px);border-radius:26px;background:linear-gradient(180deg,#fff,#f6f9fd);border:1px solid var(--fio-c);
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.card-claro:hover{transform:translateY(-4px);box-shadow:0 30px 60px -40px rgba(29,63,115,.4)}
-.ic-azul{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,#2a5494,#0c1f3d);box-shadow:0 12px 24px -10px rgba(29,63,115,.6)}
-.card-claro h3{font-size:22px;font-weight:500;letter-spacing:-.02em;margin:24px 0 10px}
-.card-claro p{font-size:16px;font-weight:300;line-height:1.7;color:var(--tinta-2)}
-.frase-fecho{display:flex;align-items:center;gap:22px;margin-top:48px;font-size:clamp(18px,1.8vw,24px);font-weight:300;letter-spacing:-.02em;color:var(--azul)}
-.frase-fecho::before,.frase-fecho::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--ouro))}
-.frase-fecho::after{background:linear-gradient(90deg,var(--ouro),transparent)}
-.frase-fecho em{text-align:center;max-width:30ch}
+.alem{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+/* cards com foto no topo; sem foto, o espaço mostra marinho com o ícone grande */
+.alem-card{position:relative;overflow:hidden;border-radius:28px;background:#fff;border:1px solid var(--fio-c);
+  box-shadow:0 34px 70px -48px rgba(10,26,51,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.alem-card:hover{transform:translateY(-6px);box-shadow:0 44px 80px -44px rgba(10,26,51,.5)}
+.alem-foto{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(ellipse 70% 80% at 30% 20%,rgba(60,110,190,.45),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1))}
+.alem-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,20,41,.35))}
+.alem-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.alem-card:hover .alem-foto img{transform:scale(1.05)}
+.alem-marca{color:var(--ouro-2);opacity:.22;transition:transform .8s var(--ease)}
+.alem-card:hover .alem-marca{transform:scale(1.08) rotate(-6deg)}
+.alem-foto:has(img) .alem-marca{display:none}
+.alem-txt{position:relative;padding:0 clamp(26px,3vw,40px) clamp(30px,3vw,40px)}
+.alem-ic{display:grid;place-items:center;width:60px;height:60px;margin-top:-30px;border-radius:18px;position:relative;z-index:1;
+  color:var(--e1);background:linear-gradient(135deg,var(--ouro-2),var(--ouro));box-shadow:0 0 0 6px #fff,0 16px 30px -12px rgba(143,109,59,.6)}
+.alem-txt h3{font-size:clamp(21px,1.9vw,25px);font-weight:600;letter-spacing:-.02em;margin:22px 0 10px;color:var(--tinta)}
+.alem-txt p{font-size:16px;font-weight:300;line-height:1.7;color:var(--tinta-2)}
+/* frase de fecho em faixa escura */
+.alem-fecho{margin-top:28px;padding:clamp(26px,3vw,36px);border-radius:24px;text-align:center;
+  background:radial-gradient(ellipse 60% 120% at 50% 0%,rgba(226,203,153,.18),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1))}
+.alem-fecho em{font-style:normal;font-size:clamp(20px,2vw,27px);font-weight:300;letter-spacing:-.02em;line-height:1.35;color:#fff}
 
 /* =================== PARA QUEM =================== */
 .perfis{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px}
@@ -428,10 +438,8 @@ p,li{text-wrap:pretty}
   .clara-txt{text-align:center}
   .clara-txt .pilula{margin-left:auto;margin-right:auto}
   .citacao{text-align:left}
-  .card-claro{text-align:center}
-  .ic-azul{margin:0 auto}
-  .frase-fecho{gap:12px}
-  .frase-fecho::before,.frase-fecho::after{flex:0 0 24px}
+  .alem-txt{text-align:center}
+  .alem-ic{margin-left:auto;margin-right:auto}
   .naoe ul{grid-template-columns:1fr}
   .naoe{padding:30px 18px}
   .naoe li{padding:16px;gap:14px}
