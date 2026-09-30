@@ -279,34 +279,24 @@ p,li{text-wrap:pretty}
 .vaga-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* =================== PROCESSO =================== */
-/* etapas: medalhões presos no topo dos cards, ligados por um fio dourado; a 3ª é o destino */
-.etapas{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:92px;position:relative}
-.etapas::before{content:"";position:absolute;top:0;left:16.6%;right:16.6%;height:2px;border-radius:2px;
-  background:linear-gradient(90deg,rgba(194,160,104,.25),var(--ouro) 50%,rgba(194,160,104,.25))}
-.etapas li{position:relative;padding:54px 30px 34px;border-radius:26px;background:#fff;border:1px solid var(--fio-c);text-align:center;
-  box-shadow:0 28px 60px -44px rgba(10,26,51,.4);transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
-.etapas li:hover{transform:translateY(-6px);border-color:rgba(194,160,104,.55);box-shadow:0 36px 70px -40px rgba(10,26,51,.45)}
-.etapa-n{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:62px;height:62px;border-radius:50%;
-  font-size:23px;font-weight:600;letter-spacing:-.02em;color:var(--ouro-2);background:linear-gradient(160deg,var(--e3),var(--e1));
-  box-shadow:0 0 0 7px #fff,0 0 0 8px rgba(194,160,104,.6),0 18px 34px -12px rgba(7,20,41,.55)}
-.etapa-ic{display:grid;place-items:center;width:48px;height:48px;margin:0 auto 18px;border-radius:15px;background:#eef3fb;color:var(--azul)}
-.etapas h3{font-size:19px;font-weight:600;letter-spacing:-.015em;margin-bottom:10px;color:var(--tinta)}
-.etapas p{font-size:15px;font-weight:300;line-height:1.65;color:var(--tinta-2);max-width:32ch;margin:0 auto}
-.etapa--fim{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(226,203,153,.16),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1))!important;
-  border-color:rgba(194,160,104,.45)!important}
-.etapa--fim .etapa-n{color:var(--e1);background:linear-gradient(135deg,var(--ouro-2),var(--ouro))}
-.etapa--fim .etapa-ic{background:rgba(226,203,153,.14);color:var(--ouro-2)}
-.etapa--fim h3{color:#fff}
-.etapa--fim p{color:var(--claro-2)}
-
-/* chamada final: aviso de vagas e botão no mesmo painel */
-.entrar-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:40px;padding:26px 26px 26px 30px;
-  border-radius:26px;background:#fff;border:1px solid var(--fio-c);box-shadow:0 28px 60px -44px rgba(10,26,51,.4)}
-.entrar-aviso{display:flex;align-items:center;gap:16px;text-align:left}
-.entrar-aviso i{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#fbeeea;color:#c4664c;
-  box-shadow:0 0 0 6px rgba(196,102,76,.08)}
-.entrar-aviso strong{display:block;font-size:17px;font-weight:600;color:var(--tinta)}
-.entrar-aviso em{display:block;font-size:14.5px;color:var(--tinta-2);margin-top:2px}
+/* processo: editorial em duas colunas. À esquerda o chamado (fica preso), à direita as etapas com numerais grandes */
+.entrar{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:start}
+.entrar-cab{position:sticky;top:60px}
+.entrar-cab .h2{margin-top:18px}
+.entrar-cab .lead{margin-top:18px;max-width:42ch}
+.entrar-acao{margin-top:36px}
+.entrar-vagas{display:flex;gap:12px;align-items:flex-start;margin-top:22px}
+.entrar-vagas svg{flex:none;margin-top:3px;color:#c4664c}
+.entrar-vagas strong{display:block;font-size:15.5px;font-weight:600;color:var(--tinta)}
+.entrar-vagas em{display:block;font-size:14px;color:var(--tinta-2);margin-top:2px}
+.etapas{list-style:none;counter-reset:none;border-top:1px solid var(--fio-c)}
+.etapas li{display:grid;grid-template-columns:clamp(70px,8vw,112px) minmax(0,1fr);gap:clamp(16px,2.4vw,34px);align-items:start;
+  padding:clamp(28px,3.4vw,44px) 0;border-bottom:1px solid var(--fio-c);transition:background .4s var(--ease)}
+.etapa-n{font-size:clamp(64px,7vw,104px);font-weight:300;line-height:.82;letter-spacing:-.06em;
+  background:linear-gradient(170deg,var(--ouro-2),var(--ouro) 55%,var(--ouro-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.etapas h3{font-size:clamp(20px,1.8vw,25px);font-weight:500;letter-spacing:-.02em;line-height:1.2;color:var(--tinta)}
+.etapas p{font-size:16px;font-weight:300;line-height:1.7;color:var(--tinta-2);margin-top:10px;max-width:46ch}
+.etapas li:last-child h3{color:var(--azul);font-weight:600}
 
 /* =================== DÚVIDAS =================== */
 .faq-caixa{max-width:880px}
@@ -370,11 +360,16 @@ p,li{text-wrap:pretty}
   .clara{grid-template-columns:1fr}
   .clara-foto{max-width:360px;order:-1;margin-bottom:10px}
   .perfis,.alem{grid-template-columns:1fr}
-  .etapas{grid-template-columns:1fr;gap:52px;margin-top:70px}
-  .etapas::before{top:0;bottom:0;left:50%;right:auto;width:2px;height:auto;
-    background:linear-gradient(180deg,rgba(194,160,104,.25),var(--ouro) 50%,rgba(194,160,104,.25))}
-  .entrar-cta{flex-direction:column;text-align:center;padding:26px 20px}
-  .entrar-aviso{flex-direction:column;text-align:center;gap:12px}
+  /* no celular o botão vem depois das etapas */
+  .entrar{grid-template-columns:1fr;gap:0}
+  .entrar-cab{display:contents}
+  .entrar-cab>*{justify-self:center;text-align:center}
+  .entrar-cab .lead{margin-left:auto;margin-right:auto}
+  .etapas{order:1;margin-top:40px}
+  .etapas li{grid-template-columns:52px minmax(0,1fr);gap:14px}
+  .etapa-n{font-size:56px}
+  .entrar-acao{order:2;display:flex;flex-direction:column;align-items:center;margin-top:40px}
+  .entrar-vagas{text-align:left}
   .opcoes{grid-template-columns:1fr;text-align:center}
   .opcao i{margin:0 auto 16px}
   .barra{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:55;display:flex;
