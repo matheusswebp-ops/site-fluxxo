@@ -330,7 +330,7 @@ p,li{text-wrap:pretty}
 .etapas--anim .aceso .etapa-n::after{animation:anel 1.2s var(--ease) forwards}
 @keyframes anel{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(1.6)}}
 .entrar-acao.pronto .bt{animation:chama 1.4s var(--ease)}
-@keyframes chama{0%,100%{transform:none}35%{transform:scale(1.05);box-shadow:0 0 0 12px rgba(29,63,115,.1),0 24px 50px -16px rgba(29,63,115,.55)}}
+@keyframes chama{0%,100%{transform:none}35%{transform:scale(1.05);box-shadow:0 0 0 12px rgba(226,203,153,.22),0 24px 50px -16px rgba(194,160,104,.6)}}
 .entrar-acao{display:flex;flex-direction:column;align-items:center;margin-top:48px;text-align:center}
 .entrar-vagas{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:22px}
 .entrar-vagas svg{color:#c4664c}
