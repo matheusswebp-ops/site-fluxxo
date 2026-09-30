@@ -242,17 +242,17 @@ p,li{text-wrap:pretty}
 .perfil-sol{display:flex;gap:12px;align-items:flex-start;padding:18px 20px;border-radius:18px;background:#fff;border:1px solid var(--fio-c);
   font-size:15.5px;font-weight:500;line-height:1.55;color:var(--azul)}
 .perfil-sol i{flex:none;margin-top:1px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--azul);color:#fff}
-/* "não é para você": painel escuro que contrasta com a seção clara */
-.naoe{position:relative;overflow:hidden;margin-top:24px;padding:clamp(30px,4vw,48px);border-radius:28px;text-align:center;color:#fff;
-  background:radial-gradient(ellipse 60% 90% at 50% 0%,rgba(214,96,76,.18),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1));
-  box-shadow:0 40px 80px -45px rgba(7,20,41,.7)}
-.naoe h3{font-size:clamp(24px,2.3vw,32px);font-weight:300;letter-spacing:-.025em;line-height:1.2}
-.naoe h3 em{font-style:normal;font-weight:600;color:#f3a08c}
+/* "não é para você": card branco com acento coral, para chamar atenção sem sair do fundo claro */
+.naoe{position:relative;overflow:hidden;margin-top:24px;padding:clamp(30px,4vw,48px);border-radius:28px;text-align:center;
+  background:#fff;border:1px solid rgba(196,102,76,.22);box-shadow:0 30px 70px -40px rgba(196,102,76,.35)}
+.naoe::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#e0826a,#c4664c)}
+.naoe h3{font-size:clamp(24px,2.3vw,32px);font-weight:300;letter-spacing:-.025em;line-height:1.2;color:var(--tinta)}
+.naoe h3 em{font-style:normal;font-weight:600;color:#c4664c}
 .naoe ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px;max-width:900px;margin-left:auto;margin-right:auto}
 .naoe li{display:flex;align-items:center;gap:16px;text-align:left;padding:20px 22px;border-radius:18px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(243,160,140,.28);font-size:clamp(16px,1.3vw,18px);font-weight:400;line-height:1.45;color:#fff;text-wrap:pretty}
+  background:#fdf3f0;border:1px solid rgba(196,102,76,.25);font-size:clamp(16px,1.3vw,18px);font-weight:500;line-height:1.45;color:var(--tinta);text-wrap:pretty}
 .naoe i{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(214,96,76,.18);border:1px solid rgba(243,160,140,.5);color:#f3a08c}
+  background:#c4664c;color:#fff;box-shadow:0 0 0 6px rgba(196,102,76,.14)}
 
 /* =================== QUEM CONDUZ =================== */
 .escuro--bloco{border-radius:44px 44px 0 0;margin-top:-44px;z-index:1}
