@@ -241,8 +241,8 @@ p,li{text-wrap:pretty}
 .perfil-sol i{flex:none;margin-top:1px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--azul);color:#fff}
 .naoe{margin-top:20px;padding:26px 30px;border-radius:22px;background:#fff;border:1px solid var(--fio-c);
   display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-.naoe h3{font-size:18px;font-weight:500;letter-spacing:-.01em}
-.naoe ul{list-style:none;display:flex;flex-wrap:wrap;gap:12px 28px}
+.naoe h3{flex:1 1 100%;font-size:18px;font-weight:500;letter-spacing:-.01em;text-align:center}
+.naoe ul{flex:1 1 100%;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px}
 .naoe li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:300;color:var(--tinta-2)}
 .naoe i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fbeeea;color:#c4664c}
 
