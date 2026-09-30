@@ -1,19 +1,19 @@
 /* ============================================================
    Mentoria R80+ · Dra. Clara Aragão
-   Escuro: marinho profundo com brilho, vidro e botão dourado com glow.
-   Claro: branco azulado, cards de borda fina, fotos tratadas em marinho.
+   Paleta da marca: preto profundo, degradê dourado e branco.
+   Claro: branco e off-white quente, cards de borda fina.
    Títulos em peso leve com o trecho-chave em negrito. Sem serifa.
    ============================================================ */
 
 :root{
-  --e0:#040b18; --e1:#071429; --e2:#0c1f3d; --e3:#14305a;
-  --azul:#1d3f73;          /* azul meio escuro, a cor principal */
-  --azul-2:#2a5494;
-  --ouro:#c2a068; --ouro-2:#e2cb99; --ouro-3:#8f6d3b;
-  --c0:#ffffff; --c1:#f4f7fb; --c2:#eaf0f7;
-  --tinta:#0a1a33; --tinta-2:#4b5b73;
-  --claro-2:#b9c6da;       /* apoio sobre escuro, azulado */
-  --fio-c:rgba(10,26,51,.09); --fio-e:rgba(185,198,218,.13);
+  --e0:#000000; --e1:#080808; --e2:#111111; --e3:#1c1a17;   /* pretos, o último levemente quente */
+  --azul:#7a5a22;          /* nome mantido: agora é o dourado escuro de destaque sobre fundo claro */
+  --azul-2:#a8843c;
+  --ouro:#c9a24f; --ouro-2:#f0d89a; --ouro-3:#8a6524;       /* dourado da marca R80+ */
+  --c0:#ffffff; --c1:#f7f6f3; --c2:#efede8;
+  --tinta:#0d0d0d; --tinta-2:#57534c;
+  --claro-2:#c8c2b6;       /* apoio sobre preto, cinza quente */
+  --fio-c:rgba(0,0,0,.08); --fio-e:rgba(255,255,255,.12);
   --ease:cubic-bezier(.22,1,.36,1);
   --caixa:1180px; --lado:clamp(20px,4vw,40px);
   --sec:100px; --topo:72px;
@@ -38,7 +38,7 @@ p,li{text-wrap:pretty}
 .claro{background:var(--c0)}
 .claro--2{background:var(--c1)}
 .escuro{color:#fff;background:
-  radial-gradient(ellipse 60% 45% at 50% 0%,rgba(42,84,148,.32),transparent 70%),
+  radial-gradient(ellipse 60% 45% at 50% 0%,rgba(201,162,79,.12),transparent 70%),
   radial-gradient(ellipse 50% 40% at 85% 100%,rgba(194,160,104,.10),transparent 70%),
   linear-gradient(180deg,var(--e1),var(--e0))}
 
@@ -48,7 +48,7 @@ p,li{text-wrap:pretty}
 .h2{font-size:clamp(28px,3vw,42px);line-height:1.12}
 .h1 em,.h2 em{font-style:normal;font-weight:600}
 .claro .h2 em{background:linear-gradient(100deg,#c4a064,#a9854f 50%,#7f5f30);-webkit-background-clip:text;background-clip:text;color:transparent}  /* dourado mais fechado para contrastar no branco */
-.escuro .h1 em,.escuro .h2 em{background:linear-gradient(100deg,var(--ouro-2),var(--ouro) 60%,#a9854f);
+.escuro .h1 em,.escuro .h2 em{background:linear-gradient(100deg,#f6e7b0,var(--ouro) 55%,var(--ouro-3));
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .h2--centro{text-align:center;max-width:22ch;margin:0 auto}
 .lead{font-size:17px;line-height:1.7;color:var(--tinta-2);margin-top:20px;max-width:56ch}
@@ -60,18 +60,18 @@ p,li{text-wrap:pretty}
   font-size:12.5px;font-weight:500;letter-spacing:.01em;color:var(--ouro-2);
   background:rgba(194,160,104,.1);border:1px solid rgba(194,160,104,.25);margin-bottom:18px}
 .pilula::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
-.pilula--claro{color:var(--azul);background:#e9eff8;border-color:rgba(29,63,115,.14)}
+.pilula--claro{color:var(--azul);background:#f3eee3;border-color:rgba(122,90,34,.14)}
 
 /* ---------- botões ---------- */
 .bt{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
   padding:19px 34px;border-radius:99px;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   white-space:nowrap;transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s}
 .bt:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.bt--ouro{color:#0a1a33;background:linear-gradient(100deg,#a9854f 0%,#c9a86f 35%,#ecd9ae 100%);
+.bt--ouro{color:#0d0d0d;background:linear-gradient(100deg,#8a6524 0%,#c9a24f 30%,#f0d89a 55%,#b8913f 100%);  /* metálico como o logo */
   box-shadow:0 0 0 1px rgba(236,217,174,.5) inset,0 12px 34px -8px rgba(194,160,104,.55),0 0 50px -10px rgba(226,203,153,.45)}
 .bt--ouro:hover{box-shadow:0 0 0 1px rgba(236,217,174,.6) inset,0 16px 40px -8px rgba(194,160,104,.7),0 0 70px -10px rgba(226,203,153,.6)}
-.bt--azul{color:#fff;background:linear-gradient(100deg,#0c1f3d 0%,#1d3f73 55%,#3767ad 100%);
-  box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 14px 34px -10px rgba(29,63,115,.55)}
+.bt--azul{color:#fff;background:linear-gradient(100deg,#0d0d0d 0%,#7a5a22 55%,#c9a24f 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 14px 34px -10px rgba(122,90,34,.55)}
 .bt--mini{padding:12px 20px;font-size:11.5px}
 .micro{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;font-size:12.5px;letter-spacing:.02em;color:var(--claro-2)}
 .micro svg{color:var(--ouro)}
@@ -79,7 +79,7 @@ p,li{text-wrap:pretty}
 /* ---------- cabeçalho ---------- */
 .topo{position:fixed;inset:0 0 auto;z-index:60;height:var(--topo);display:flex;align-items:center;
   transition:background .4s var(--ease),border-color .4s;border-bottom:1px solid transparent}
-.topo.solido{background:rgba(4,11,24,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--fio-e)}
+.topo.solido{background:rgba(0,0,0,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--fio-e)}
 .topo-in{display:flex;align-items:center;justify-content:space-between;width:100%}
 .marca{display:flex;align-items:center;gap:12px;color:#fff}
 .marca b{font-size:21px;font-weight:700;letter-spacing:-.04em}
@@ -91,26 +91,20 @@ p,li{text-wrap:pretty}
 .rv.in{opacity:1;transform:none}
 
 /* =================== HERO =================== */
-.hero{position:relative;overflow:hidden;padding:calc(var(--topo) + 70px) 0 90px;text-align:center}
-/* listras verticais de luz, como cortina */
-.hero-listras{position:absolute;inset:0 0 30%;pointer-events:none;opacity:.9;
-  background:repeating-linear-gradient(90deg,rgba(60,110,190,.0) 0 38px,rgba(60,110,190,.16) 38px 40px,rgba(60,110,190,.04) 40px 76px);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 45%,transparent 100%);
-  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 45%,transparent 100%)}
-.hero::before{content:"";position:absolute;left:50%;top:-240px;width:900px;height:600px;transform:translateX(-50%);
-  background:radial-gradient(ellipse at center,rgba(60,110,190,.35),transparent 65%);pointer-events:none}
-/* foto de fundo: sala cirúrgica escura; o centro já vem escurecido para o texto */
-.hero-fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;pointer-events:none}
-.hero-in{position:relative;display:flex;flex-direction:column;align-items:center}
+.hero{position:relative;overflow:hidden;padding:calc(var(--topo) + 40px) 0 80px;text-align:left}
+.hero-in{position:relative;display:flex;flex-direction:column;align-items:flex-start}
+.hero-in>*{max-width:540px}
 .hero-selo{display:inline-flex;align-items:center;gap:12px;margin-bottom:34px;padding:8px 16px 8px 10px;border-radius:14px;
   background:rgba(255,255,255,.04);border:1px solid var(--fio-e)}
 .hero-selo b{display:flex;align-items:center;white-space:nowrap;height:36px;padding:0 10px;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:-.03em;
   background:linear-gradient(135deg,var(--e3),var(--e1));border:1px solid rgba(194,160,104,.35)}
 .hero-selo b i{font-style:normal;color:var(--ouro)}
 .hero-selo span{font-size:13px;color:var(--claro-2)}
-.hero-logo{height:88px;width:auto;margin-bottom:34px}
-.hero .h1{max-width:760px}
-.hero-apoio{font-size:clamp(16px,1.25vw,18px);font-weight:300;line-height:1.7;color:var(--claro-2);max-width:60ch;margin:26px auto 38px}
+.hero-logo{height:88px;width:auto;margin-bottom:30px}
+.hero .h1{max-width:540px}
+.hero-apoio{font-size:clamp(16px,1.25vw,18px);font-weight:300;line-height:1.7;color:var(--claro-2);margin:24px 0 34px}
+.hero .micro{justify-content:flex-start}
+.hero .clara-fundo img{right:-8%}  /* um pouco mais à direita que no Quem conduz: o texto do hero é mais alto */
 .faixa{position:relative;margin-top:90px;border-top:1px solid var(--fio-e);border-bottom:1px solid var(--fio-e);overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .faixa-trilho{display:flex;width:max-content;animation:faixa 45s linear infinite}
@@ -121,31 +115,31 @@ p,li{text-wrap:pretty}
 /* =================== RESULTADOS =================== */
 /* resultados: fila que passa sozinha em loop; pausa com o mouse em cima.
    Cada card é uma moldura branca (o print entra dentro de .res-vaga) e as alturas alternam para dar ritmo. */
-#resultados{background:radial-gradient(ellipse 70% 55% at 50% 68%,#e6eef9 0%,rgba(230,238,249,0) 70%),#fff}
+#resultados{background:radial-gradient(ellipse 70% 55% at 50% 68%,#f5efe2 0%,rgba(230,238,249,0) 70%),#fff}
 .res{margin-top:52px;overflow:hidden;padding:10px 0 60px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .res-trilho{display:flex;align-items:flex-start;gap:22px;width:max-content;animation:res-loop 42s linear infinite}
 .res:hover .res-trilho{animation-play-state:paused}
 @keyframes res-loop{to{transform:translateX(calc(-33.3333% - 7.3333px))}}  /* 3 cópias: anda 1 cópia + 1 vão */
 .res-card{flex:none;width:clamp(220px,20vw,270px);padding:10px;border-radius:26px;background:#fff;border:1px solid var(--fio-c);
-  box-shadow:0 34px 60px -38px rgba(10,26,51,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  box-shadow:0 34px 60px -38px rgba(0,0,0,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .res-card:nth-child(even){margin-top:44px}
-.res-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 44px 70px -36px rgba(10,26,51,.5)}
-.res-vaga{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#f1f5fb,#e2e9f3)}
+.res-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 44px 70px -36px rgba(0,0,0,.5)}
+.res-vaga{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#f7f5f0,#ece6d8)}
 .res-vaga img{width:100%;height:100%;object-fit:cover}
 
 /* =================== FOTO TRATADA =================== */
 .foto{position:relative;overflow:hidden;border-radius:24px;background:var(--e2);isolation:isolate}
 .foto img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .foto::after{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,transparent 35%,rgba(4,11,24,.9) 100%),radial-gradient(ellipse at 80% 10%,rgba(226,203,153,.18),transparent 60%)}
+  background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.9) 100%),radial-gradient(ellipse at 80% 10%,rgba(226,203,153,.18),transparent 60%)}
 .foto:hover img{transform:scale(1.04)}
 /* dor e passos: a caixa tem altura própria (texto ou min-height); a foto só preenche, não estica o card */
 .foto--dor img,.passo-foto img{position:absolute;inset:0}
 .foto figcaption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;color:#fff}
 
 /* =================== DOR =================== */
-.painel{border-radius:32px;background:#fff;border:1px solid var(--fio-c);box-shadow:0 30px 80px -50px rgba(10,26,51,.25);overflow:hidden}
+.painel{border-radius:32px;background:#fff;border:1px solid var(--fio-c);box-shadow:0 30px 80px -50px rgba(0,0,0,.25);overflow:hidden}
 .dor-grade{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,5vw,64px);padding:clamp(28px,5vw,64px)}
 .dor-talvez{font-size:15px;font-weight:600;color:var(--azul);margin:34px 0 14px}
 .dor-lista{list-style:none;display:grid;gap:10px}
@@ -153,10 +147,10 @@ p,li{text-wrap:pretty}
   padding:14px 18px 14px 14px;border-radius:14px;border:1px solid var(--fio-c);background:var(--c1);
   font-size:15.5px;font-weight:400;line-height:1.45;color:var(--tinta);transition:all .35s var(--ease)}
 .dor-lista i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff;
-  border:1px solid rgba(29,63,115,.18);color:transparent;transition:all .35s var(--ease)}
-.dor-lista button:hover{border-color:rgba(29,63,115,.3);transform:translateX(4px)}
-.dor-lista button[aria-pressed="true"]{background:#eef3fb;border-color:var(--azul)}
-.dor-lista button[aria-pressed="true"] i{background:var(--azul);border-color:var(--azul);color:#fff;box-shadow:0 0 0 5px rgba(29,63,115,.1)}
+  border:1px solid rgba(122,90,34,.18);color:transparent;transition:all .35s var(--ease)}
+.dor-lista button:hover{border-color:rgba(122,90,34,.3);transform:translateX(4px)}
+.dor-lista button[aria-pressed="true"]{background:#f5f1e7;border-color:var(--azul)}
+.dor-lista button[aria-pressed="true"] i{background:var(--azul);border-color:var(--azul);color:#fff;box-shadow:0 0 0 5px rgba(122,90,34,.1)}
 /* check que se desenha ao marcar e se apaga ao desmarcar (o traço do ícone tem ~23 de comprimento) */
 .dor-lista i svg{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .45s var(--ease) .12s}
 .dor-lista button[aria-pressed="true"] i svg{stroke-dashoffset:0}
@@ -167,7 +161,7 @@ p,li{text-wrap:pretty}
 .foto--dor figcaption{font-size:clamp(20px,1.8vw,26px);font-weight:300;line-height:1.25;letter-spacing:-.02em;
   padding-left:16px;border-left:2px solid var(--ouro)}
 .painel-rodape{display:flex;align-items:center;justify-content:center;text-align:center;gap:30px;padding:28px clamp(28px,5vw,64px);
-  background:linear-gradient(90deg,#f1f5fb,#e8eef8);border-top:1px solid var(--fio-c)}
+  background:linear-gradient(90deg,#f7f5f0,#f3eee3);border-top:1px solid var(--fio-c)}
 .painel-rodape p{font-size:clamp(17px,1.5vw,21px);font-weight:400;line-height:1.4;letter-spacing:-.015em;color:var(--azul);max-width:40ch}
 
 /* =================== JORNADA =================== */
@@ -224,7 +218,7 @@ p,li{text-wrap:pretty}
   transition:opacity .5s var(--ease),transform .7s var(--ease)}
 .caminho:hover .caminho-fundo{opacity:.12;transform:rotate(-8deg) scale(1.05)}
 .caminho--destaque{grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;
-  background:radial-gradient(ellipse 90% 70% at 20% 0%,rgba(226,203,153,.16),transparent 70%),linear-gradient(165deg,rgba(29,63,115,.55),rgba(7,20,41,.4))!important;
+  background:radial-gradient(ellipse 90% 70% at 20% 0%,rgba(226,203,153,.16),transparent 70%),linear-gradient(165deg,rgba(122,90,34,.55),rgba(0,0,0,.4))!important;
   border-color:rgba(194,160,104,.45)!important}
 .caminho--destaque>i{width:54px;height:54px;margin-bottom:auto;background:linear-gradient(135deg,var(--ouro-2),var(--ouro));color:var(--e1)}
 .caminho--destaque h4{font-size:22px;margin-top:40px}
@@ -242,11 +236,11 @@ p,li{text-wrap:pretty}
 .alem{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
 /* cards com foto no topo; sem foto, o espaço mostra marinho com o ícone grande */
 .alem-card{position:relative;overflow:hidden;border-radius:28px;background:#fff;border:1px solid var(--fio-c);
-  box-shadow:0 34px 70px -48px rgba(10,26,51,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.alem-card:hover{transform:translateY(-6px);box-shadow:0 44px 80px -44px rgba(10,26,51,.5)}
+  box-shadow:0 34px 70px -48px rgba(0,0,0,.45);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.alem-card:hover{transform:translateY(-6px);box-shadow:0 44px 80px -44px rgba(0,0,0,.5)}
 .alem-foto{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;
-  background:radial-gradient(ellipse 70% 80% at 30% 20%,rgba(60,110,190,.45),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1))}
-.alem-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,20,41,.35))}
+  background:radial-gradient(ellipse 70% 80% at 30% 20%,rgba(201,162,79,.45),transparent 70%),linear-gradient(160deg,var(--e3),var(--e1))}
+.alem-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.35))}
 .alem-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .alem-card:hover .alem-foto img{transform:scale(1.05)}
 .alem-marca{color:var(--ouro-2);opacity:.22;transition:transform .8s var(--ease)}
@@ -259,7 +253,7 @@ p,li{text-wrap:pretty}
 .alem-txt p{font-size:16px;font-weight:300;line-height:1.7;color:var(--tinta-2)}
 /* frase de fecho: cartão branco com sombra, filete dourado em cima */
 .alem-fecho{position:relative;overflow:hidden;margin-top:28px;padding:clamp(28px,3vw,38px);border-radius:24px;text-align:center;
-  background:#fff;border:1px solid var(--fio-c);box-shadow:0 30px 60px -36px rgba(10,26,51,.4),0 6px 16px -8px rgba(10,26,51,.12)}
+  background:#fff;border:1px solid var(--fio-c);box-shadow:0 30px 60px -36px rgba(0,0,0,.4),0 6px 16px -8px rgba(0,0,0,.12)}
 .alem-fecho::before{content:"";position:absolute;left:50%;top:0;width:120px;height:3px;margin-left:-60px;border-radius:0 0 3px 3px;
   background:linear-gradient(90deg,var(--ouro-2),var(--ouro))}
 .alem-fecho em{font-style:normal;font-size:clamp(20px,2vw,27px);font-weight:300;letter-spacing:-.02em;line-height:1.35;color:var(--azul)}
@@ -345,13 +339,13 @@ p,li{text-wrap:pretty}
 .faq-caixa{max-width:880px}
 .faq{display:grid;gap:12px;margin-top:44px}
 .faq details{border-radius:20px;background:#fff;border:1px solid var(--fio-c);transition:border-color .3s,box-shadow .3s}
-.faq details[open]{border-color:rgba(29,63,115,.22);box-shadow:0 20px 50px -35px rgba(29,63,115,.45)}
+.faq details[open]{border-color:rgba(122,90,34,.22);box-shadow:0 20px 50px -35px rgba(122,90,34,.45)}
 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 24px 22px 28px;
   font-size:17px;font-weight:500;line-height:1.4;letter-spacing:-.01em}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary b{font-weight:600;color:var(--ouro-3);margin-right:4px}
 .faq summary i{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;color:var(--azul);
-  background:#eef3fb;border:1px solid rgba(29,63,115,.14);transition:all .35s var(--ease)}
+  background:#f5f1e7;border:1px solid rgba(122,90,34,.14);transition:all .35s var(--ease)}
 .faq details[open] summary i{transform:rotate(45deg);background:var(--azul);color:#fff}
 .faq-r{padding:0 28px 24px;margin:0 0 0;border-top:1px solid var(--fio-c);padding-top:18px;margin:0 28px;padding-left:0;padding-right:0}
 .faq details[open] .faq-r{animation:abre .45s var(--ease)}
@@ -375,7 +369,7 @@ p,li{text-wrap:pretty}
 .opcao--nao{border:1px solid rgba(196,102,76,.28);background:rgba(196,102,76,.05)}
 .opcao--nao i{background:rgba(196,102,76,.15);color:#e89479}
 .opcao--nao h3{color:rgba(255,255,255,.75)}
-.opcao--nao p{color:rgba(185,198,218,.75)}
+.opcao--nao p{color:rgba(200,194,182,.75)}
 .opcao--sim{border:1px solid rgba(226,203,153,.55);background:linear-gradient(150deg,rgba(194,160,104,.16),rgba(194,160,104,.03));
   box-shadow:0 0 60px -20px rgba(226,203,153,.35)}
 .opcao--sim i{background:linear-gradient(135deg,var(--ouro-2),var(--ouro));color:var(--e0)}
@@ -434,8 +428,9 @@ p,li{text-wrap:pretty}
   .res-card{width:58vw}
   .res-card:nth-child(even){margin-top:30px}
   .bt{font-size:12px;padding:17px 20px;letter-spacing:.03em}
-  .hero{padding-top:calc(var(--topo) + 44px)}
   .hero{padding-bottom:60px}
+  .hero.clara-sec{padding-top:0}
+  .hero .clara-fundo img{right:auto}
   .marca span{display:none}
   .dor-talvez{text-align:center}
   .dor-lista button{font-size:15px}
