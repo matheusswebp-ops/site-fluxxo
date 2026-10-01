@@ -259,11 +259,11 @@ p,li{text-wrap:pretty}
   .hero-foto{position:relative;width:100%;height:min(118vw,560px);
     -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
   .hero-in{margin-top:-90px}
-  .hero-foto>img{object-position:72% 20%}
+  .hero-foto>img{object-position:87% 20%}
   .hero-foto:has(>img)::after{background:linear-gradient(180deg,rgba(5,13,23,.35) 0,transparent 24%,transparent 55%,var(--n0) 98%)}
   .aut,.rotina,.anat-card,.consulta,.holep{grid-template-columns:1fr}
   .aut-foto{min-height:0;aspect-ratio:4/5;order:-1}
-  .rotina-foto{max-width:460px;width:100%;margin:0 auto}
+  .rotina-foto{max-width:460px;width:100%;margin:0 auto;order:-1}
   .anat-palco{max-width:460px;width:100%;margin:0 auto}
   .anat-txt{padding:0 clamp(24px,5vw,48px) clamp(32px,5vw,48px)}
   .consulta-foto{aspect-ratio:16/11;min-height:0}
