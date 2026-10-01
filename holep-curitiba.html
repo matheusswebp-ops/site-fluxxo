@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;300;400;500;600&display=swap">
-<link rel="stylesheet" href="css/cm.css?v=202610011100">
+<link rel="stylesheet" href="css/cm.css?v=202610011500">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -44,6 +44,11 @@
   <symbol id="i-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19.6 14.6A8 8 0 0 1 9.4 4.4a8 8 0 1 0 10.2 10.2Z"/></symbol>
   <symbol id="i-laser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 14 10"/><path d="M14 10l2-2M17.5 3.5v3M20.5 6.5h-3M19.6 4.4l-2 2"/></symbol>
   <symbol id="i-robo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h6M8 20v-5l5-5 4 4"/><circle cx="13" cy="10" r="1.6"/><path d="m17 14 2.4-2.4"/></symbol>
+  <symbol id="i-funil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 5h16.8l-6.4 7.4v6.2l-4 1.8v-8Z"/></symbol>
+  <symbol id="i-bexiga" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c4.6 0 7.6 3.2 7.6 7.4 0 3.8-3 6.4-6 6.8V21h-3.2v-2.6c-3-.4-6-3-6-6.8 0-4.2 3-7.4 7.6-7.4Z"/><path d="M8.6 12.4a3.4 3.4 0 0 0 3.4 3.4"/></symbol>
+  <symbol id="i-exame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.6" width="14" height="16.8" rx="2"/><path d="M8.4 13h2l1.2-3 1.8 5.4 1.2-2.4h1.4M8.4 7.4h7"/></symbol>
+  <symbol id="i-pilula" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="8.4" width="18.4" height="7.2" rx="3.6" transform="rotate(-35 12 12)"/><path d="m9.6 8.6 4.8 6.8"/></symbol>
+  <symbol id="i-pessoa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2c.8-3.8 3.6-6 7.2-6s6.4 2.2 7.2 6"/></symbol>
   <!-- monograma CM, desenhado a partir da logo -->
   <symbol id="monograma" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2"><path d="M150 40A84 84 0 1 0 150 160"/><path d="M60 150V58l52 72 50-80v118"/></symbol>
 </svg>
@@ -209,11 +214,10 @@
     <h2 class="h2 h2--centro rv">Se a avaliação mostrar que o problema é a próstata aumentada, <b>existem diferentes formas de tratamento</b></h2>
     <p class="lead rv">Nem todo homem com próstata aumentada precisa do mesmo tratamento.</p>
 
-    <div class="escada">
-      <i class="escada-linha" aria-hidden="true"><b></b></i>
-      <div class="degrau rv"><span class="degrau-pt" aria-hidden="true"></span><p>Em alguns casos, o acompanhamento pode ser suficiente.</p></div>
-      <div class="degrau rv"><span class="degrau-pt" aria-hidden="true"></span><p>Em outros, pode haver indicação de medicamentos.</p></div>
-      <div class="degrau degrau--3 rv"><span class="degrau-pt" aria-hidden="true"></span><p>E existem situações em que, mesmo com o tratamento inicial, os sintomas continuam atrapalhando o sono e a rotina. Quando isso acontece, pode ser necessário avaliar outras possibilidades.</p></div>
+    <div class="trat">
+      <div class="trat-it rv"><span class="nivel n1" aria-hidden="true"><i></i><i></i><i></i></span><p>Em alguns casos, o acompanhamento pode ser suficiente.</p></div>
+      <div class="trat-it rv"><span class="nivel n2" aria-hidden="true"><i></i><i></i><i></i></span><p>Em outros, pode haver indicação de medicamentos.</p></div>
+      <div class="trat-it trat-it--3 rv"><span class="nivel n3" aria-hidden="true"><i></i><i></i><i></i></span><p>E existem situações em que, mesmo com o tratamento inicial, os sintomas continuam atrapalhando o sono e a rotina. <b>Quando isso acontece, pode ser necessário avaliar outras possibilidades.</b></p></div>
     </div>
   </div>
 
@@ -253,10 +257,20 @@
   </div>
 
   <div class="caixa">
-    <div class="criterios rv" data-criterios>
-      <p class="criterios-tit">Mas a indicação não depende apenas do tamanho da próstata.</p>
-      <p class="criterios-frase">É preciso considerar <mark>os sintomas</mark>, <mark>o grau de obstrução</mark>, <mark>o funcionamento da bexiga</mark>, <mark>os exames</mark>, <mark>a resposta aos tratamentos já realizados</mark> e <mark>as características de cada paciente.</mark></p>
-      <p class="criterios-fecho">Só depois dessa avaliação faz sentido discutir se o HoLEP é uma opção para aquele caso.</p>
+    <div class="crit" data-criterios>
+      <div class="crit-cab">
+        <h3 class="crit-tit rv">Mas a indicação não depende apenas do <b>tamanho da próstata.</b></h3>
+        <p class="crit-intro rv">É preciso considerar</p>
+      </div>
+      <ul class="crit-grade">
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-jato"/></svg></span>os sintomas,</li>
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-funil"/></svg></span>o grau de obstrução,</li>
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-bexiga"/></svg></span>o funcionamento da bexiga,</li>
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-exame"/></svg></span>os exames,</li>
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-pilula"/></svg></span>a resposta aos tratamentos já realizados</li>
+        <li><span class="ci"><svg width="20" height="20"><use href="#i-pessoa"/></svg></span>e as características de cada paciente.</li>
+      </ul>
+      <p class="crit-fecho rv"><span class="ci ci--laser"><svg width="20" height="20"><use href="#i-laser"/></svg></span>Só depois dessa avaliação faz sentido discutir se o HoLEP é uma opção para aquele caso.</p>
     </div>
   </div>
 </section>
@@ -283,19 +297,21 @@
 
 <!-- ================= 6. CTA FINAL ================= -->
 <section class="sec escuro curva final" id="agendar">
-  <svg class="marca-dagua marca-dagua--final" aria-hidden="true"><use href="#monograma"/></svg>
-  <div class="caixa final-grade">
+  <figure class="final-foto"><img src="img/cm-final.webp" alt="Dr. Cassiano Machado" width="900" height="1158" loading="lazy" decoding="async"></figure>
+  <div class="caixa final-in">
     <div class="final-txt">
       <h2 class="h2 rv">Se algo mudou na forma como você urina, <b>vale entender o motivo</b></h2>
       <p class="p rv">Se o jato ficou mais fraco, se está mais difícil urinar, se você passou a acordar várias vezes durante a noite ou se os sintomas continuam mesmo depois de um tratamento, vale olhar para isso com mais atenção.</p>
-      <p class="final-forte rv">Você não precisa decidir sozinho qual tratamento precisa.</p>
-      <p class="p rv">O próximo passo é fazer uma avaliação e entender qual caminho faz sentido para o seu caso.</p>
-      <div class="assinatura rv"><b>Dr. Cassiano Machado</b><span>Médico Urologista em Curitiba/PR</span></div>
+      <div class="final-card rv">
+        <p class="final-forte">Você não precisa decidir sozinho qual tratamento precisa.</p>
+        <p class="final-prox">O próximo passo é fazer uma avaliação e entender qual caminho faz sentido para o seu caso.</p>
+      </div>
+      <div class="final-assina rv">
+        <svg class="assina-mono" aria-hidden="true"><use href="#monograma"/></svg>
+        <div><b>Dr. Cassiano Machado</b><span>Médico Urologista em Curitiba/PR</span></div>
+      </div>
       <div class="rv"><a class="bt bt--claro" href="#" data-whats-link>Agendar avaliação<i><svg width="16" height="16"><use href="#i-whats"/></svg></i></a></div>
     </div>
-    <figure class="final-foto rv">
-      <img src="img/cm-final.webp" alt="Dr. Cassiano Machado" width="900" height="1158" loading="lazy" decoding="async">
-    </figure>
   </div>
 </section>
 
@@ -312,6 +328,6 @@
 
 <a class="barra bt" id="barra" href="#" data-whats-link>Agendar avaliação<i><svg width="16" height="16"><use href="#i-whats"/></svg></i></a>
 
-<script src="js/cm.js?v=202610011100" defer></script>
+<script src="js/cm.js?v=202610011500" defer></script>
 </body>
 </html>

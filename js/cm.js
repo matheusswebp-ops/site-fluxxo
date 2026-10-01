@@ -96,7 +96,7 @@
   if (crit && 'IntersectionObserver' in window){
     new IntersectionObserver(function(it, o){
       if (it[0].isIntersecting){ crit.classList.add('in'); o.disconnect(); }
-    }, {threshold:.45}).observe(crit);
+    }, {threshold:.15}).observe(crit);
   }
 
   /* ---- trilhos: setas e arrastar com o mouse ---- */
