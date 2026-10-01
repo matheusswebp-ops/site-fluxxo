@@ -11,8 +11,10 @@
 
   /* ---- WhatsApp ---- */
   var numero = document.body.getAttribute('data-whats');
+  var tocou = false;
   function linkWhats(){
-    var marcados = $$('[data-sintomas] button[aria-pressed="true"] .s-t').map(function(s){
+    /* só leva os sintomas para a mensagem se a pessoa marcou com o dedo (não os da animação) */
+    var marcados = (tocou ? $$('[data-sintomas] button[aria-pressed="true"] .s-t') : []).map(function(s){
       return '- ' + s.textContent.replace(/[\s;?.]+$/, '');
     });
     var msg = 'Olá! Vim pela página do Dr. Cassiano Machado e gostaria de agendar uma avaliação.';
@@ -28,6 +30,7 @@
   var sint = $('[data-sintomas]');
   if (sint) $$('button', sint).forEach(function(b){
     b.addEventListener('click', function(){
+      if (!tocou){ tocou = true; $$('button', sint).forEach(function(o){ if (o !== b) o.setAttribute('aria-pressed', 'false'); }); }
       b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
       sint.classList.toggle('marcou', !!$('button[aria-pressed="true"]', sint));
     });
@@ -361,6 +364,16 @@
       }
       a.define(v);
     });
+
+    /* celular: os sintomas do hero vão sendo marcados com a rolagem, e desmarcam na volta */
+    if (sint && !tocou && window.innerWidth <= 768){
+      var algum = false;
+      $$('button', sint).forEach(function(b){
+        var on = reduz || b.getBoundingClientRect().top + b.offsetHeight / 2 < vh * .62;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false'); if (on) algum = true;
+      });
+      sint.classList.toggle('marcou', algum);
+    }
 
     criterios.forEach(function(li){ li.classList.toggle('on', reduz || li.getBoundingClientRect().top < vh * .72); });
   }

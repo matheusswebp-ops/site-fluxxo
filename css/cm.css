@@ -104,6 +104,8 @@ p,li{text-wrap:pretty}
   padding-left:16px;border-left:2px solid var(--aco-2);font-size:clamp(17px,1.45vw,20px);font-weight:300;line-height:1.45;color:#fff}
 .ph:has(.sobre-foto)::after{content:"";position:absolute;inset:40% 0 0;z-index:1;background:linear-gradient(180deg,transparent,rgba(5,13,23,.85))}
 
+.so-mob{display:none}
+
 /* =================== HERO =================== */
 .hero{position:relative;overflow:hidden;color:#fff;background:var(--n0);padding:calc(var(--topo) + 64px) 0 96px;min-height:min(100vh,940px)}
 .hero::before,.hero::after{content:"";position:absolute;pointer-events:none;border-radius:50%;filter:blur(20px)}
@@ -283,6 +285,7 @@ p,li{text-wrap:pretty}
 @media (max-width:768px){
   /* celular: headlines e blocos centralizados, botões numa linha só e centralizados */
   .h1{font-size:29px}
+  .hero-sub{font-size:15px}
   .hero .h1,.hero-sub,.hero-cta,.h2,.lead,.p,.destaque,.anat-lead,.anat-nota,.indica-tit,.indica-intro,.final-txt{text-align:center;margin-left:auto;margin-right:auto}
   .sintomas{margin-left:auto;margin-right:auto}
   .sintomas-perg{text-align:center}
@@ -297,6 +300,11 @@ p,li{text-wrap:pretty}
   .final-card{text-align:left}
   .final-assina{justify-content:center;text-align:left}
   .aut .h2{margin-left:auto;margin-right:auto}
+  /* frases que ficam sobre a foto no desktop: no celular entram no fim do texto */
+  .ph .sobre-foto,.ph:has(.sobre-foto)::after{display:none}
+  .so-mob{display:block}
+  .fecho-mob{margin-top:26px;padding-top:18px;border-top:2px solid var(--aco);text-align:center;
+    font-size:19px;font-weight:300;line-height:1.45;letter-spacing:-.015em;color:var(--tinta)}
 }
 @media (max-width:380px){
   .bt{font-size:12.5px;gap:10px;padding-left:20px}
