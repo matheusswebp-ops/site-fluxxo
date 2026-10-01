@@ -99,23 +99,28 @@
     }, {threshold:.15}).observe(crit);
   }
 
-  /* ---- trilhos: setas e arrastar com o mouse ---- */
+  /* ---- carrosséis em loop: rolam sozinhos, param no toque/mouse, dá pra arrastar ----
+     O conteúdo é duplicado (cópia escondida de leitor de tela) e o scroll volta
+     meia volta quando passa da metade, então o loop não tem emenda. */
   $$('[data-trilho]').forEach(function(t){
-    var id = t.getAttribute('data-trilho');
-    var ant = $('[data-ant="' + id + '"]'), prox = $('[data-prox="' + id + '"]');
-    function passo(){ var c = t.children; return c[1] ? c[1].offsetLeft - c[0].offsetLeft : t.clientWidth; }
-    function estado(){
-      if (!ant) return;
-      ant.disabled = t.scrollLeft <= 4;
-      prox.disabled = t.scrollLeft >= t.scrollWidth - t.clientWidth - 4;
+    $$(':scope > *', t).forEach(function(el){ var c = el.cloneNode(true); c.setAttribute('aria-hidden', 'true'); t.appendChild(c); });
+    var parado = false, volta = 0, x0 = 0, s0 = 0, puxando = false, pos = 0;
+    function metade(){ return t.scrollWidth / 2; }
+    function passo(){
+      if (!parado && !puxando && !reduz){
+        pos += .45; if (pos >= metade()) pos -= metade();
+        t.scrollLeft = pos;
+      } else pos = t.scrollLeft;
+      requestAnimationFrame(passo);
     }
-    if (ant){
-      ant.addEventListener('click', function(){ t.scrollBy({left:-passo(), behavior:'smooth'}); });
-      prox.addEventListener('click', function(){ t.scrollBy({left:passo(), behavior:'smooth'}); });
-    }
-    t.addEventListener('scroll', estado, {passive:true});
-    estado();
-    var x0 = 0, s0 = 0, puxando = false;
+    t.addEventListener('mouseenter', function(){ parado = true; });
+    t.addEventListener('mouseleave', function(){ parado = false; });
+    t.addEventListener('touchstart', function(){ parado = true; clearTimeout(volta); }, {passive:true});
+    t.addEventListener('touchend', function(){ volta = setTimeout(function(){ parado = false; }, 2500); });
+    t.addEventListener('scroll', function(){
+      if (t.scrollLeft >= metade()){ t.scrollLeft -= metade(); }
+      else if (t.scrollLeft <= 0 && (parado || puxando)){ t.scrollLeft += metade(); }
+    }, {passive:true});
     t.addEventListener('pointerdown', function(e){
       if (e.pointerType !== 'mouse') return;
       puxando = true; x0 = e.clientX; s0 = t.scrollLeft;
@@ -125,5 +130,6 @@
     ['pointerup','pointercancel'].forEach(function(ev){
       t.addEventListener(ev, function(){ puxando = false; t.classList.remove('arrastando'); });
     });
+    requestAnimationFrame(passo);
   });
 })();

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;300;400;500;600&display=swap">
-<link rel="stylesheet" href="css/cm.css?v=202610011500">
+<link rel="stylesheet" href="css/cm.css?v=202610011800">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -44,6 +44,7 @@
   <symbol id="i-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19.6 14.6A8 8 0 0 1 9.4 4.4a8 8 0 1 0 10.2 10.2Z"/></symbol>
   <symbol id="i-laser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 14 10"/><path d="M14 10l2-2M17.5 3.5v3M20.5 6.5h-3M19.6 4.4l-2 2"/></symbol>
   <symbol id="i-robo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h6M8 20v-5l5-5 4 4"/><circle cx="13" cy="10" r="1.6"/><path d="m17 14 2.4-2.4"/></symbol>
+  <symbol id="i-olho" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 12s3.4-6.4 9.4-6.4 9.4 6.4 9.4 6.4-3.4 6.4-9.4 6.4S2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
   <symbol id="i-funil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 5h16.8l-6.4 7.4v6.2l-4 1.8v-8Z"/></symbol>
   <symbol id="i-bexiga" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c4.6 0 7.6 3.2 7.6 7.4 0 3.8-3 6.4-6 6.8V21h-3.2v-2.6c-3-.4-6-3-6-6.8 0-4.2 3-7.4 7.6-7.4Z"/><path d="M8.6 12.4a3.4 3.4 0 0 0 3.4 3.4"/></symbol>
   <symbol id="i-exame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.6" width="14" height="16.8" rx="2"/><path d="M8.4 13h2l1.2-3 1.8 5.4 1.2-2.4h1.4M8.4 7.4h7"/></symbol>
@@ -87,10 +88,6 @@
   <div class="caixa hero-av">
     <div class="trilho-cab">
       <p class="hero-av-tit rv">Veja algumas avaliações sobre o atendimento do Dr. Cassiano Machado</p>
-      <div class="setas setas--escuro rv">
-        <button type="button" data-ant="av" aria-label="Anterior"><svg width="18" height="18"><use href="#i-esq"/></svg></button>
-        <button type="button" data-prox="av" aria-label="Próxima"><svg width="18" height="18"><use href="#i-seta"/></svg></button>
-      </div>
     </div>
   </div>
   <!-- AVALIAÇÕES DO GMN: cada figure recebe o print/texto real da avaliação -->
@@ -214,63 +211,58 @@
     <h2 class="h2 h2--centro rv">Se a avaliação mostrar que o problema é a próstata aumentada, <b>existem diferentes formas de tratamento</b></h2>
     <p class="lead rv">Nem todo homem com próstata aumentada precisa do mesmo tratamento.</p>
 
-    <div class="trat">
-      <div class="trat-it rv"><span class="nivel n1" aria-hidden="true"><i></i><i></i><i></i></span><p>Em alguns casos, o acompanhamento pode ser suficiente.</p></div>
-      <div class="trat-it rv"><span class="nivel n2" aria-hidden="true"><i></i><i></i><i></i></span><p>Em outros, pode haver indicação de medicamentos.</p></div>
-      <div class="trat-it trat-it--3 rv"><span class="nivel n3" aria-hidden="true"><i></i><i></i><i></i></span><p>E existem situações em que, mesmo com o tratamento inicial, os sintomas continuam atrapalhando o sono e a rotina. <b>Quando isso acontece, pode ser necessário avaliar outras possibilidades.</b></p></div>
-    </div>
+    <ol class="caminho">
+      <li class="parada rv"><span class="parada-ic" aria-hidden="true"><svg width="24" height="24"><use href="#i-olho"/></svg></span><p>Em alguns casos, o acompanhamento pode ser suficiente.</p></li>
+      <li class="parada rv"><span class="parada-ic" aria-hidden="true"><svg width="24" height="24"><use href="#i-pilula"/></svg></span><p>Em outros, pode haver indicação de medicamentos.</p></li>
+      <li class="parada parada--3 rv"><span class="parada-ic" aria-hidden="true"><svg width="24" height="24"><use href="#i-laser"/></svg></span><p>E existem situações em que, mesmo com o tratamento inicial, os sintomas continuam atrapalhando o sono e a rotina. <b>Quando isso acontece, pode ser necessário avaliar outras possibilidades.</b></p></li>
+    </ol>
   </div>
 
-  <div class="caixa holep-grade" data-holep>
-    <!-- corte da próstata: a rolagem conduz o laser e a passagem se abre -->
+  <div class="caixa holep-grade">
     <div class="holep-palco" aria-hidden="true">
       <svg class="holep-svg" viewBox="0 0 400 440">
         <defs>
           <radialGradient id="fundoH" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#1d3b5c"/><stop offset="1" stop-color="#0a1a2b" stop-opacity="0"/></radialGradient>
           <radialGradient id="loboH" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#9cc3e3"/><stop offset="1" stop-color="#3e6387"/></radialGradient>
           <radialGradient id="brilho" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#bfe0ff" stop-opacity=".9"/><stop offset="1" stop-color="#679fca" stop-opacity="0"/></radialGradient>
+          <clipPath id="cortaH"><rect width="400" height="440" rx="28"/></clipPath>
         </defs>
-        <circle cx="200" cy="220" r="210" fill="url(#fundoH)"/>
-        <ellipse cx="200" cy="96" rx="112" ry="72" fill="rgba(207,226,242,.08)" stroke="rgba(156,195,227,.55)" stroke-width="2"/>
-        <ellipse cx="200" cy="248" rx="112" ry="94" fill="rgba(103,159,202,.08)" stroke="rgba(156,195,227,.55)" stroke-width="2"/>
-        <ellipse class="h-lobo h-lobo-e" cx="152" cy="248" rx="50" ry="70" fill="url(#loboH)"/>
-        <ellipse class="h-lobo h-lobo-d" cx="248" cy="248" rx="50" ry="70" fill="url(#loboH)"/>
-        <line class="h-uretra" x1="200" y1="160" x2="200" y2="430" stroke="#e8f2fa" stroke-linecap="round"/>
-        <line class="h-fluxo" x1="200" y1="165" x2="200" y2="430" stroke="#679fca" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 14"/>
-        <line class="h-fibra" x1="200" y1="440" x2="200" y2="300" stroke="#cfe2f2" stroke-width="4" stroke-linecap="round"/>
-        <circle class="h-ponta" cx="200" cy="300" r="34" fill="url(#brilho)"/>
+        <g clip-path="url(#cortaH)">
+          <circle cx="200" cy="220" r="210" fill="url(#fundoH)"/>
+          <ellipse cx="200" cy="96" rx="112" ry="72" fill="rgba(207,226,242,.08)" stroke="rgba(156,195,227,.55)" stroke-width="2"/>
+          <ellipse cx="200" cy="248" rx="112" ry="94" fill="rgba(103,159,202,.08)" stroke="rgba(156,195,227,.55)" stroke-width="2"/>
+          <ellipse class="h-lobo h-lobo-e" cx="152" cy="248" rx="50" ry="70" fill="url(#loboH)"/>
+          <ellipse class="h-lobo h-lobo-d" cx="248" cy="248" rx="50" ry="70" fill="url(#loboH)"/>
+          <line class="h-uretra" x1="200" y1="160" x2="200" y2="440" stroke="#e8f2fa" stroke-linecap="round"/>
+          <line class="h-fluxo" x1="200" y1="165" x2="200" y2="440" stroke="#679fca" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 14"/>
+          <g class="h-laser"><line x1="200" y1="440" x2="200" y2="330" stroke="#cfe2f2" stroke-width="4" stroke-linecap="round"/><circle class="h-ponta" cx="200" cy="330" r="30" fill="url(#brilho)"/></g>
+        </g>
       </svg>
     </div>
 
     <div class="holep-txt">
       <p class="holep-intro rv">Se houver indicação para um procedimento, uma das técnicas utilizadas pelo Dr. Cassiano no tratamento da próstata aumentada é o <b>HoLEP.</b></p>
-      <div class="vidro rv">
-        <p>O HoLEP é uma técnica realizada com laser que permite tratar o tecido da próstata responsável por dificultar a passagem da urina.</p>
-      </div>
-      <div class="vidro rv">
-        <p>Na prática, o objetivo é <b>desobstruir essa passagem e tratar a causa mecânica dos sintomas urinários</b> quando o aumento da próstata é o problema e existe indicação para esse tipo de abordagem.</p>
-      </div>
-      <div class="vidro vidro--forte rv">
-        <p>A técnica pode ser utilizada inclusive em próstatas de maior volume.</p>
-      </div>
+      <ul class="holep-lista">
+        <li class="rv">O HoLEP é uma técnica realizada com laser que permite tratar o tecido da próstata responsável por dificultar a passagem da urina.</li>
+        <li class="rv">Na prática, o objetivo é <b>desobstruir essa passagem e tratar a causa mecânica dos sintomas urinários</b> quando o aumento da próstata é o problema e existe indicação para esse tipo de abordagem.</li>
+        <li class="holep-volume rv">A técnica pode ser utilizada inclusive em próstatas de maior volume.</li>
+      </ul>
     </div>
   </div>
 
   <div class="caixa">
     <div class="crit" data-criterios>
-      <div class="crit-cab">
-        <h3 class="crit-tit rv">Mas a indicação não depende apenas do <b>tamanho da próstata.</b></h3>
-        <p class="crit-intro rv">É preciso considerar</p>
-      </div>
-      <ul class="crit-grade">
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-jato"/></svg></span>os sintomas,</li>
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-funil"/></svg></span>o grau de obstrução,</li>
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-bexiga"/></svg></span>o funcionamento da bexiga,</li>
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-exame"/></svg></span>os exames,</li>
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-pilula"/></svg></span>a resposta aos tratamentos já realizados</li>
-        <li><span class="ci"><svg width="20" height="20"><use href="#i-pessoa"/></svg></span>e as características de cada paciente.</li>
+      <p class="crit-tit rv">Mas a indicação não depende apenas do tamanho da próstata.</p>
+      <p class="crit-intro rv">É preciso considerar</p>
+      <ul class="crit-lista">
+        <li>os sintomas,</li>
+        <li>o grau de obstrução,</li>
+        <li>o funcionamento da bexiga,</li>
+        <li>os exames,</li>
+        <li>a resposta aos tratamentos já realizados</li>
+        <li>e as características de cada paciente.</li>
       </ul>
-      <p class="crit-fecho rv"><span class="ci ci--laser"><svg width="20" height="20"><use href="#i-laser"/></svg></span>Só depois dessa avaliação faz sentido discutir se o HoLEP é uma opção para aquele caso.</p>
+      <p class="crit-fecho rv">Só depois dessa avaliação faz sentido discutir se o HoLEP é uma opção para aquele caso.</p>
     </div>
   </div>
 </section>
@@ -282,10 +274,6 @@
       <div>
         <h2 class="h2 rv">Veja o que dizem pacientes que já passaram em consulta <b>com o Dr. Cassiano</b></h2>
         <p class="p rv">Deslize para o lado e confira alguns relatos sobre a experiência durante o atendimento.</p>
-      </div>
-      <div class="setas rv">
-        <button type="button" data-ant="dp" aria-label="Anterior"><svg width="18" height="18"><use href="#i-esq"/></svg></button>
-        <button type="button" data-prox="dp" aria-label="Próximo"><svg width="18" height="18"><use href="#i-seta"/></svg></button>
       </div>
     </div>
   </div>
@@ -328,6 +316,6 @@
 
 <a class="barra bt" id="barra" href="#" data-whats-link>Agendar avaliação<i><svg width="16" height="16"><use href="#i-whats"/></svg></i></a>
 
-<script src="js/cm.js?v=202610011500" defer></script>
+<script src="js/cm.js?v=202610011800" defer></script>
 </body>
 </html>
