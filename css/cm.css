@@ -99,7 +99,7 @@ p,li{text-wrap:pretty}
 @keyframes brilho{0%{transform:translateX(-30%)}60%,100%{transform:translateX(30%)}}
 .ph-mono{position:absolute;width:44%;height:44%;left:28%;top:24%;color:rgba(214,231,245,.07)}
 .ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
-.ph>img~.ph-mono{display:none}
+.ph>img~.ph-mono,.ph:has(>img)::before{display:none}
 .sobre-foto{position:absolute;z-index:2;left:clamp(20px,2.6vw,32px);right:clamp(20px,2.6vw,32px);bottom:clamp(20px,2.6vw,32px);
   padding-left:16px;border-left:2px solid var(--aco-2);font-size:clamp(17px,1.45vw,20px);font-weight:300;line-height:1.45;color:#fff}
 .ph:has(.sobre-foto)::after{content:"";position:absolute;inset:40% 0 0;z-index:1;background:linear-gradient(180deg,transparent,rgba(5,13,23,.85))}
@@ -113,7 +113,12 @@ p,li{text-wrap:pretty}
 .hero-foto{position:absolute;top:0;right:0;bottom:0;width:50%;z-index:1;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,#000 70%,transparent);
   -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 30%),linear-gradient(180deg,#000 70%,transparent);mask-composite:intersect}
-.hero-foto>img{object-position:50% 15%}
+/* foto do site dele, larga: ocupa o hero inteiro e escurece à esquerda para o texto */
+.hero-foto:has(>img){left:0;width:100%;-webkit-mask-image:none;mask-image:none}
+.hero-foto>img{object-position:80% 30%}
+.hero-foto:has(>img)::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,var(--n0) 0%,rgba(5,13,23,.92) 30%,rgba(5,13,23,.45) 52%,transparent 68%),
+    linear-gradient(0deg,var(--n0) 2%,rgba(5,13,23,.4) 22%,transparent 42%)}
 .hero-in{position:relative;z-index:2}
 .hero .h1{max-width:17ch}
 .hero-sub{font-size:17px;line-height:1.7;color:var(--claro-2);margin-top:22px;max-width:48ch}
@@ -161,7 +166,7 @@ p,li{text-wrap:pretty}
   font-size:15.5px;line-height:1.6;color:var(--tinta-2);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .tecnicas p:hover{transform:translateX(4px);box-shadow:0 20px 40px -30px rgba(15,34,54,.5)}
 .tecnicas b{font-weight:500;color:var(--pet)}
-.tecnicas i{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;
+.tecnicas i{flex:none;width:50px;height:50px;border-radius:15px;display:grid;place-items:center;color:#fff;
   background:linear-gradient(135deg,var(--aco),var(--pet-2));box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 12px 22px -12px rgba(43,74,105,.9)}
 .aut-foto{border-radius:24px;min-height:540px}
 
@@ -191,8 +196,8 @@ p,li{text-wrap:pretty}
 .consulta-forte{margin:22px 0 30px;padding-left:18px;border-left:2px solid var(--aco);font-size:clamp(19px,1.6vw,22px)!important;line-height:1.45!important;color:var(--tinta)!important}
 
 /* =================== TRATAMENTOS =================== */
-.trat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:56px;align-items:start}
-.tcard{position:relative;background:#fff;border-radius:26px;border:1px solid var(--fio);box-shadow:var(--sombra);overflow:hidden;
+.trat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:56px;align-items:stretch}
+.tcard{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:26px;border:1px solid var(--fio);box-shadow:var(--sombra);overflow:hidden;
   transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
 .tcard:hover{transform:translateY(-8px);box-shadow:0 60px 100px -50px rgba(15,34,54,.42)}
 .tcard-foto{aspect-ratio:16/11}
@@ -228,7 +233,7 @@ p,li{text-wrap:pretty}
 .final-foto{position:absolute;top:0;right:0;bottom:0;width:50%;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32%),linear-gradient(180deg,#000 60%,transparent);
   -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 32%),linear-gradient(180deg,#000 60%,transparent);mask-composite:intersect}
-.final-foto>img{object-position:50% 12%}
+.final-foto>img{object-position:50% 8%}
 .final-in{position:relative;z-index:2;width:100%}
 .final-txt{max-width:560px}
 .final-card{margin-top:30px;padding:24px 26px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
@@ -254,6 +259,8 @@ p,li{text-wrap:pretty}
   .hero-foto{position:relative;width:100%;height:min(118vw,560px);
     -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
   .hero-in{margin-top:-90px}
+  .hero-foto>img{object-position:72% 20%}
+  .hero-foto:has(>img)::after{background:linear-gradient(180deg,rgba(5,13,23,.35) 0,transparent 24%,transparent 55%,var(--n0) 98%)}
   .aut,.rotina,.anat-card,.consulta,.holep{grid-template-columns:1fr}
   .aut-foto{min-height:0;aspect-ratio:4/5;order:-1}
   .rotina-foto{max-width:460px;width:100%;margin:0 auto}

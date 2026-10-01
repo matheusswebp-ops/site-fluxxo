@@ -15,10 +15,11 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<link rel="preload" as="image" href="img/cm-hero.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;300;400;500;600&display=swap">
-<link rel="stylesheet" href="css/cm.css?v=202610012330">
+<link rel="stylesheet" href="css/cm.css?v=202610020010">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -35,8 +36,10 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5 9.2 17.3 4 12.1"/></symbol>
   <symbol id="i-whats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 11.8a8.4 8.4 0 0 1-12.4 7.4L3.6 20.4l1.4-4.4A8.4 8.4 0 1 1 20.4 11.8Z"/><path d="M9.3 9.1c.3 2.6 2.4 4.6 5 5l.9-1.4 1.9.7v1.3c-2.7.5-6.6-2.2-7.7-5.4l1.3-.9-1.4-1.9Z"/></symbol>
-  <symbol id="i-laser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 14 10"/><path d="M14 10l2-2M17.5 3.5v3M20.5 6.5h-3M19.6 4.4l-2 2"/></symbol>
-  <symbol id="i-robo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h6M8 20v-5l5-5 4 4"/><circle cx="13" cy="10" r="1.6"/><path d="m17 14 2.4-2.4"/></symbol>
+  <!-- fibra de laser emitindo na ponta -->
+  <symbol id="i-laser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 20.8 11 13"/><circle cx="12.6" cy="11.4" r="1.7" fill="currentColor" stroke="none"/><path d="M15.4 8.6l2.6-2.6M16.6 11.4h3.6M12.6 4.6v3.2M15.2 14l2.2 2.2M9.8 8.6 8 6.8"/></symbol>
+  <!-- braço robótico com pinça -->
+  <symbol id="i-robo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h9M8 20.5v-4.8"/><circle cx="8" cy="13.6" r="2"/><path d="m9.5 12.2 4-3.6"/><circle cx="15" cy="7.4" r="2"/><path d="m16.6 8.6 2.6 2.6M19.2 11.2l1.8-.4M19.2 11.2l.4 1.8"/></symbol>
   <symbol id="i-olho" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 12s3.4-6.4 9.4-6.4 9.4 6.4 9.4 6.4-3.4 6.4-9.4 6.4S2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
   <symbol id="i-pilula" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="8.4" width="18.4" height="7.2" rx="3.6" transform="rotate(-35 12 12)"/><path d="m9.6 8.6 4.8 6.8"/></symbol>
   <symbol id="i-busca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m15.6 15.6 4.6 4.6"/></symbol>
@@ -57,7 +60,7 @@
 <section class="hero" id="inicio">
   <!-- FOTO cm2-hero.webp (retrato vertical 4:5, ~1400x1750): Dr. Cassiano de jaleco, meio corpo, braços cruzados ou mão no bolso,
        consultório moderno desfocado ao fundo, luz lateral fria, tons azul-marinho, olhando para a câmera, espaço vazio à esquerda -->
-  <figure class="hero-foto ph" aria-hidden="true"><svg class="ph-mono"><use href="#monograma"/></svg></figure>
+  <figure class="hero-foto ph" aria-hidden="true"><img src="img/cm-hero.webp" alt="" width="1920" height="1000" fetchpriority="high"><svg class="ph-mono"><use href="#monograma"/></svg></figure>
   <div class="caixa hero-in">
     <h1 class="h1 rv">Acordar várias vezes à noite para urinar ou perceber que o jato ficou mais fraco <b>começou a atrapalhar a sua rotina?</b></h1>
     <p class="hero-sub rv">Talvez você tenha começado a dormir pior, esteja passando mais tempo no banheiro ou simplesmente tenha se acostumado com mudanças que antes não faziam parte da sua rotina.</p>
@@ -98,8 +101,8 @@
         <p class="p">Sua principal área de atuação são as doenças da próstata, incluindo a Hiperplasia Prostática Benigna e o câncer de próstata.</p>
         <p class="p">Também atua com cálculos urinários e tumores urológicos.</p>
         <div class="tecnicas">
-          <p><i><svg width="20" height="20"><use href="#i-laser"/></svg></i><span>No tratamento da próstata aumentada, trabalha com <b>HoLEP</b>, técnica realizada com laser.</span></p>
-          <p><i><svg width="20" height="20"><use href="#i-robo"/></svg></i><span>Também atua com <b>cirurgia robótica</b> no tratamento de tumores urológicos, além de procedimentos endourológicos e cirurgias a laser.</span></p>
+          <p><i><svg width="24" height="24"><use href="#i-laser"/></svg></i><span>No tratamento da próstata aumentada, trabalha com <b>HoLEP</b>, técnica realizada com laser.</span></p>
+          <p><i><svg width="24" height="24"><use href="#i-robo"/></svg></i><span>Também atua com <b>cirurgia robótica</b> no tratamento de tumores urológicos, além de procedimentos endourológicos e cirurgias a laser.</span></p>
         </div>
       </div>
       <!-- FOTO cm2-dr.webp (vertical 4:5, ~1200x1500): Dr. Cassiano em retrato editorial, fundo escuro azul-petróleo,
@@ -236,7 +239,7 @@
 <section class="sec escuro final" id="agendar">
   <!-- FOTO cm2-final.webp (vertical 4:5, ~1400x1750): Dr. Cassiano de jaleco, sorriso leve, olhando para a câmera,
        fundo escuro azul-marinho com luz de recorte, espaço vazio à esquerda -->
-  <figure class="final-foto ph" aria-hidden="true"><svg class="ph-mono"><use href="#monograma"/></svg></figure>
+  <figure class="final-foto ph" aria-hidden="true"><img src="img/cm-final.webp" alt="" width="900" height="1158" loading="lazy" decoding="async"><svg class="ph-mono"><use href="#monograma"/></svg></figure>
   <div class="caixa final-in">
     <div class="final-txt">
       <h2 class="h2 rv">Se algo mudou na forma como você urina, <b>vale entender o motivo</b></h2>
@@ -266,6 +269,6 @@
 
 <a class="barra bt" id="barra" href="#" data-whats-link>Agendar avaliação<i><svg width="16" height="16"><use href="#i-whats"/></svg></i></a>
 
-<script src="js/cm.js?v=202610012330" defer></script>
+<script src="js/cm.js?v=202610020010" defer></script>
 </body>
 </html>
