@@ -365,7 +365,6 @@ h3{font-family:var(--font-body)}
 .ativo .retornos circle:nth-child(2){transition-delay:.6s}
 .ativo .retornos circle:nth-child(3){transition-delay:.9s}
 
-.crostas circle{fill:#9c6a4e}
 .fios line{stroke:#3b362e;stroke-width:1.6;stroke-linecap:round}
 .fios .enxerto{fill:#3b362e;opacity:0}
 

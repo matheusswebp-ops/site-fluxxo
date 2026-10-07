@@ -168,9 +168,9 @@
   /* ---- crescimento dos fios (etapa 06) ----
      Os enxertos caem entre a linha frontal recuada e a linha planejada.
      Aleatório com semente fixa: o desenho é sempre o mesmo. */
-  var fiosG = $('[data-fios]'), crostasG = $('[data-crostas]');
+  var fiosG = $('[data-fios]');
   var mesInput = $('[data-mes]'), mesRot = $('[data-mes-rotulo]'), mesFase = $('[data-mes-fase]');
-  var fios = [], crostas = [], enxerto = null;
+  var fios = [], enxerto = null;
   (function(){
     if (!fiosG) return;
     var NS = 'http://www.w3.org/2000/svg', semente = 7;
@@ -185,11 +185,11 @@
     }
     function linhaPlanejada(x){ var u = (x - 180) / 54; return 118 - 11 * (1 - u * u); }
 
-    /* a massa de cabelo que fecha as entradas: entre a linha recuada (por
-       baixo do cabelo, para não deixar fresta) e a linha planejada */
-    var d = 'M122 ' + (linhaRecuada(122) - 2).toFixed(1);
-    for (var xa = 124; xa <= 238; xa += 2) d += ' L' + xa + ' ' + (linhaRecuada(xa) - 2).toFixed(1);
-    for (var xb = 238; xb >= 122; xb -= 2) d += ' L' + xb + ' ' + linhaPlanejada(xb).toFixed(1);
+    /* a massa de cabelo que fecha as entradas: tudo acima da linha planejada,
+       recortado pelo rosto. Por cima ela cai sobre o cabelo (mesma cor), então
+       as curvas das entradas ficam cobertas por inteiro, sem fresta de pele. */
+    var d = 'M100 70 L260 70';
+    for (var xb = 260; xb >= 100; xb -= 2) d += ' L' + xb + ' ' + linhaPlanejada(xb).toFixed(1);
     enxerto = document.createElementNS(NS, 'path');
     enxerto.setAttribute('d', d + 'Z'); enxerto.setAttribute('class', 'enxerto');
     fiosG.appendChild(enxerto);
@@ -199,9 +199,6 @@
       var x = 123 + rnd() * 114, y0 = linhaRecuada(x) + 1, y1 = linhaPlanejada(x);
       if (y1 - y0 < 3) continue;
       var y = y0 + rnd() * (y1 - y0);
-      var c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1)); c.setAttribute('r', '1.5');
-      if (fios.length % 2 === 0){ crostasG.appendChild(c); crostas.push(c); }
       var l = document.createElementNS(NS, 'line');
       l.setAttribute('x1', x.toFixed(1)); l.setAttribute('y1', y.toFixed(1));
       fiosG.appendChild(l);
@@ -218,18 +215,17 @@
   ];
   function desenhaMes(m){
     if (!fiosG) return;
-    var dens = m < 3 ? 0 : limita(.12 + (m - 3) / 6 * .88, 0, 1);
-    var comp = m < 3 ? 0 : 2 + limita((m - 3) / 7, 0, 1) * 9;
-    /* do 4º mês em diante a área vai fechando até ficar toda preenchida no 12º */
-    enxerto.style.opacity = limita((m - 4) / 7, 0, 1);
+    /* mês 0 sem nenhum fio; os fios vão nascendo e crescendo e a área
+       termina toda fechada no 12º */
+    var dens = limita(m / 8, 0, 1);
+    var comp = 2 + limita(m / 10, 0, 1) * 9;
+    enxerto.style.opacity = limita((m - 3) / 9, 0, 1);
     fios.forEach(function(f){
       var on = f.t < dens, L = on ? comp * (.75 + f.t * .35) : 0;
       f.el.setAttribute('x2', (f.x + f.lado * L * .5).toFixed(1));
       f.el.setAttribute('y2', (f.y + L * .8).toFixed(1));
       f.el.style.opacity = on ? .9 : 0;
     });
-    var op = limita(1 - m / 1.2, 0, 1);
-    crostas.forEach(function(c){ c.style.opacity = op; });
     mesInput.value = m;
     mesInput.style.setProperty('--p', (m / 12 * 100) + '%');
     mesRot.textContent = 'Mês ' + Math.round(m);
