@@ -357,7 +357,7 @@
   });
 
   /* ---- formulário de qualificação: uma pergunta por tela ----
-     P2 "Não", P3 "Ainda não tenho previsão" e P4 "não tenho condições"
+     P2 "Não", P3 "Ainda não tenho previsão" e P4 "não gostaria de fazer esse investimento"
      encerram na tela do Instagram. Quem passa por tudo chega ao botão do
      WhatsApp, com a mensagem pronta e as respostas logo abaixo. */
   var form = $('#form');
@@ -367,7 +367,7 @@
     var ENCERRA = {
       p2: 'Não, prefiro deixar para outro momento.',
       p3: 'Ainda não tenho previsão.',
-      p4: 'No momento, não tenho condições financeiras para o procedimento.'
+      p4: 'No momento, não gostaria de fazer esse investimento.'
     };
     var historico = [1], trava = false;
     var passoAtual = function(){ return historico[historico.length - 1]; };
