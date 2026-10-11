@@ -131,7 +131,7 @@
   box-shadow:0 34px 68px -34px rgba(86,65,49,.45);overflow:hidden}
 .chat-head{display:flex;align-items:center;gap:12px;padding:16px 20px;
   background:linear-gradient(120deg,#a77147,#674124)}
-.chat-av{width:36px;height:36px;border-radius:50%;background:#f5f0e8;padding:6px;flex-shrink:0}
+.chat-av{width:36px;height:36px;object-fit:contain;border-radius:50%;background:#f5f0e8;padding:6px;flex-shrink:0}
 .chat-id{display:flex;flex-direction:column;gap:1px;line-height:1.2}
 .chat-id b{font-family:var(--font-body);font-weight:800;font-size:15px;color:#f5f0e8}
 .chat-id i{font-style:normal;font-family:var(--font-mono);font-size:10.5px;color:rgba(245,240,232,.72)}

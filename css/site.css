@@ -1196,9 +1196,9 @@
 }
 
 /* marca real */
-.brand .brand-img{height:34px;width:auto;display:block}
-.logo-line .logo-img{height:38px;width:auto;display:block}
-.lap-cover img{width:24%;height:auto;filter:drop-shadow(0 0 20px rgba(168,85,247,.5))}
+.brand .brand-img{height:26px;width:auto;display:block}
+.logo-line .logo-img{height:30px;width:auto;display:block}
+.lap-cover img{width:24%;height:auto}
 
 /* ============ ENTRADA EM CASCATA (MacBook + Máquina) ============ */
 /* dispara quando a seção entra na tela (classe .is-in via

@@ -70,6 +70,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;l
   box-shadow:0 12px 30px -22px rgba(45,25,80,.4)}
 .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:-.02em}
 .brand-mk{width:24px;height:24px;object-fit:contain}
+.brand-logo{height:24px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:9px 13px;border-radius:10px;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--ink);background:rgba(124,58,237,.07)}
