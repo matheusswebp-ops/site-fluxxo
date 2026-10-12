@@ -528,7 +528,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
   transition: transform .45s cubic-bezier(.4, 0, .2, 1), border-color .45s, box-shadow .45s;
 }
 .sv:hover { transform: translateY(-3px); border-color: #DCC7FB; box-shadow: 0 14px 34px rgba(132, 24, 244, .08); }
-.sv { scroll-margin-top: 120px; }
+.sv { scroll-margin-top: 24px; }
 .sv:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
 .sv-g { grid-column: span 2; }
 .sv-f { grid-column: span 3; flex-direction: row; gap: 40px; align-items: stretch; }
