@@ -1,0 +1,87 @@
+/* Portfólio de design: usa a casca de portfolio-nova.css (topo escuro, mural, filtros, painel)
+   e mostra cada peça num mockup claro de post do Instagram. */
+
+.dz-mural .wp-col { flex-basis: 170px; }
+
+/* ---------- Grade de peças ---------- */
+/* colunas tipo mural: cada peça na proporção dela, sem buraco entre as linhas */
+.dz-grade { columns: 3; column-gap: 20px; }
+.dz { break-inside: avoid; margin-bottom: 20px; }
+.dz[hidden], .dz.dz-mais:not(.aberto) { display: none; }
+
+/* cartão escuro com o post claro dentro */
+.dz {
+  position: relative; isolation: isolate; padding: 12px; border-radius: 22px;
+  background: linear-gradient(180deg, rgba(30, 17, 72, .55), rgba(16, 9, 44, .45));
+  box-shadow: inset 0 0 0 1px var(--border);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.dz::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
+  background: linear-gradient(155deg, #F3C4FF, rgba(207, 113, 247, .7) 30%, rgba(132, 24, 244, .1) 70%, rgba(132, 24, 244, 0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  transition: opacity .45s var(--ease);
+}
+.dz:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px transparent, 0 26px 60px rgba(132, 24, 244, .2); }
+.dz:hover::after { opacity: 1; }
+
+/* ---------- Mockup claro do post ---------- */
+.dz-post { border-radius: 14px; overflow: hidden; background: #FFFFFF; color: #111319; box-shadow: 0 18px 40px rgba(4, 2, 16, .35); }
+.dz-topo { display: flex; align-items: center; gap: 10px; padding: 11px 12px; }
+.dz-av { flex: none; width: 30px; height: 30px; border-radius: 50%; padding: 2px; background: conic-gradient(from 200deg, #CF71F7, #8418F4, #F3C4FF, #CF71F7); }
+.dz-av::after { content: ""; display: block; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #fff; background: #111319 url("../img/home/fluxxo-simbolo-degrade.svg") center / 13px no-repeat; }
+.dz-quem { display: grid; min-width: 0; line-height: 1.25; }
+.dz-quem b { font-size: 13px; font-weight: 600; }
+.dz-quem small { font: 400 11px var(--tech); color: #6B6585; }
+.dz-tres { margin-left: auto; font-size: 10px; letter-spacing: 1px; color: #6B6585; }
+
+.dz-midia { position: relative; background: #F4F2F8; overflow: hidden; }
+.dz-midia > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* carrossel: faixa horizontal que desliza; no computador anda sozinha com o mouse em cima */
+.dz-slides { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.dz-slides::-webkit-scrollbar { display: none; }
+.dz-slides img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+.dz-slides:focus-visible { outline: 2px solid var(--violet); outline-offset: -2px; }
+/* setas do carrossel, como no Instagram */
+.dz-seta { position: absolute; top: 50%; z-index: 2; display: grid; place-items: center; width: 34px; height: 34px; margin-top: -17px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; color: #111319; background: rgba(255, 255, 255, .92); box-shadow: 0 4px 14px rgba(17, 19, 25, .28); transition: transform .2s var(--ease), background-color .2s; }
+.dz-seta[hidden] { display: none; }
+.dz-seta svg { width: 18px; height: 18px; stroke-width: 2.4; }
+.dz-seta:hover { background: #fff; transform: scale(1.08); }
+.dz-seta:active { transform: scale(.94); }
+.dz-seta:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; }
+.dz-ant { left: 10px; }
+.dz-prox { right: 10px; }
+.dz-cont { position: absolute; right: 10px; top: 10px; padding: 4px 8px; border-radius: 999px; font: 600 10.5px var(--tech); color: #fff; background: rgba(17, 19, 25, .62); }
+
+.dz-acoes { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 10px 12px 4px; }
+.dz-ics { display: flex; gap: 12px; }
+.dz-acoes svg { width: 20px; height: 20px; color: #111319; }
+.dz-salva { grid-column: 3; justify-self: end; }
+.dz-pontos { display: flex; gap: 4px; }
+.dz-pontos i { width: 6px; height: 6px; border-radius: 50%; background: #DCD6EA; transition: background-color .25s, transform .25s; }
+.dz-pontos i.on { background: var(--violet); transform: scale(1.15); }
+.dz-spec { margin: 0; padding: 4px 12px 12px; font: 400 11.5px var(--tech); color: #6B6585; }
+
+/* capa de vídeo: mockup claro de YouTube */
+.dz-yt .dz-yt-info { padding: 12px; }
+.dz-yt-play { position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 52px; height: 36px; margin: -18px 0 0 -26px; border-radius: 10px; background: rgba(17, 19, 25, .72); transition: background-color .25s; }
+.dz-yt-play svg { width: 18px; height: 18px; margin-left: 2px; fill: #fff; stroke: none; }
+.dz-yt:hover .dz-yt-play { background: var(--violet); }
+
+.dz-mais-wrap { display: flex; justify-content: center; margin-top: 36px; }
+.dz-mais-wrap[hidden] { display: none; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1080px) {
+  .dz-grade { columns: 2; }
+}
+@media (max-width: 620px) {
+  .dz-grade { columns: 1; }
+  .dz { margin-bottom: 14px; }
+  .dz { padding: 10px; border-radius: 18px; }
+  .dz-mais-wrap .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dz, .dz-pontos i { transition: none; }
+}

@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
 <title>Blog da Fluxxo · Ideias pra Sua Empresa Vender Mais</title>
 <meta name="description" content="Design, sites e estratégia sem enrolação. O que a gente aprende nos projetos, você lê aqui de graça.">
 <link rel="canonical" href="https://fluxxo.io/blog">
-<meta name="theme-color" content="#0e0815">
 <link rel="icon" href="/favicon.ico?v=3" sizes="48x48">
 <link rel="icon" href="/favicon-32.png?v=3" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
@@ -23,11 +23,6 @@
 <meta name="twitter:title" content="Blog da Fluxxo · Ideias pra Sua Empresa Vender Mais">
 <meta name="twitter:description" content="Design, sites e estratégia sem enrolação. O que a gente aprende nos projetos, você lê aqui de graça.">
 <meta name="twitter:image" content="https://fluxxo.io/img/brand/og-cover.jpg?v=2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1011">
-<link rel="stylesheet" href="css/blog.css?v=938">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Blog","name":"Blog da Fluxxo","url":"https://fluxxo.io/blog","inLanguage":"pt-BR","publisher":{"@id":"https://fluxxo.io/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://fluxxo.io/blog"}]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -37,126 +32,195 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xpoicaxxyd");
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap"></noscript>
+<link rel="stylesheet" href="css/home.css?v=10">
+<link rel="stylesheet" href="css/blog-nova.css?v=10">
+<script>document.documentElement.classList.add("js")</script>
 <script src="/js/r.js?v=2" defer></script>
+<script src="js/home.js?v=10" defer></script>
+<script src="js/blog-nova.js?v=10" defer></script>
 </head>
-<body>
-<div class="page-fx" aria-hidden="true">
-  <span class="sky"></span>
-  <b class="b1" data-sp="-0.11"></b>
-  <b class="b2" data-sp="-0.20"></b>
-  <b class="b3" data-sp="-0.15"></b>
-</div>
+<body class="pg-blog">
 
-<!-- ============ NAV (padrão da home) ============ -->
-<nav class="nav" id="nav">
-  <div class="nav-shell">
-    <a href="index.html" class="brand">
-      <img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="brand-img">
+<!-- ============ MENU (igual ao da home nova) ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="/" aria-label="Fluxxo, página inicial">
+      <img class="logo-full" src="img/home/fluxxo-logo-dark.svg" alt="Fluxxo" width="95" height="27">
+      <img class="logo-mark" src="img/home/fluxxo-simbolo-degrade.svg" alt="" width="22" height="22">
     </a>
-    <div class="nav-links">
-      <a href="design.html">Design</a>
-      <a href="webdesign.html">Web</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="sistemas.html">Sistemas</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="blog.html" aria-current="page">Blog</a>
-      <a href="analise.html" class="nav-tool">Análise grátis</a>
-    </div>
-    <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="nav-cta">Falar com a gente</a>
-    <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
-</nav>
-<div class="mobile-panel" id="mpanel">
-  <a href="design.html">Design</a>
-  <a href="webdesign.html">Web</a>
-  <a href="sistemas.html">Sistemas</a>
-  <a href="social.html">Redes sociais</a>
-  <a href="blog.html">Blog</a>
-  <a href="analise.html">Análise grátis</a>
-  <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
-</div>
 
-<!-- ============ CABEÇALHO DO BLOG ============ -->
-<header class="blog-hero">
-  <div class="wrap">
-    <p class="b-kicker">Blog da Fluxxo</p>
-    <h1>Ideias que fazem<br>sua empresa <span class="grad">vender mais.</span></h1>
-    <p class="b-sub">Design, sites e estratégia sem enrolação. O que a gente aprende nos projetos, você lê aqui de graça.</p>
+    <nav class="nav-links" aria-label="Principal">
+      <div class="has-menu" id="menuServicos">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="mega">
+          Serviços <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mega" id="mega">
+          <div class="mega-corpo">
+          <div class="mega-grade">
+            <a class="mega-item" style="--k:1" href="design.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg></span>
+              <span><strong>Design para redes sociais</strong><span>Posts, carrosséis e peças de campanha</span></span>
+            </a>
+            <a class="mega-item" style="--k:2" href="social.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
+              <span><strong>Social Media</strong><span>Pautas, criação e publicações organizadas</span></span>
+            </a>
+            <a class="mega-item" style="--k:3" href="edicao.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
+              <span><strong>Edição de vídeo</strong><span>Reels, institucionais e entrevistas</span></span>
+            </a>
+            <a class="mega-item" style="--k:4" href="webdesign.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+              <span><strong>Criação de sites</strong><span>Institucionais, portfólios e landing pages</span></span>
+            </a>
+            <a class="mega-item" style="--k:5" href="sistemas.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+              <span><strong>Sistemas e SaaS</strong><span>Dashboards e plataformas com login</span></span>
+            </a>
+          </div>
+          <a class="mega-dest" style="--k:6" href="/#trabalhos">
+            <span class="md-pecas" aria-hidden="true"><img src="img/home/port/carrossel-carneiros-temporada-1.webp" alt="" width="384" height="480" decoding="async"><img src="img/home/port/anuncio-estudio-de-rica.webp" alt="" width="384" height="480" decoding="async"><img src="img/home/port/carrossel-jiu-jitsu-1.webp" alt="" width="384" height="480" decoding="async"></span>
+            <span class="md-txt"><small>Portfólio</small><strong>Veja trabalhos reais por área</strong><span>Carrosséis, anúncios, reels, sites e sistemas.</span></span>
+            <span class="md-seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          </div>
+          <div class="mega-pe" style="--k:7">
+            <span>Cinco serviços, uma equipe</span>
+            <a href="/#servicos">Conhecer todos os serviços <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="/#como-funciona">Como funciona</a>
+      <a class="nav-link" href="/#portfolio">Portfólio</a>
+      <a class="nav-link" href="/#contratacao">Contratação</a>
+    </nav>
+
+    <a class="btn btn-s nav-cta" data-wa="menu" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Conversar com a equipe</a>
+    <button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="gaveta"><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ============ FILTROS + GRID DE POSTS ============ -->
-<section class="b-posts wrap">
-  <div class="b-filters b-rv" role="tablist" aria-label="Filtrar por categoria">
-    <button class="active" data-filter="all">Todos</button>
-    <button data-filter="design">Design</button>
-    <button data-filter="web">Web</button>
-    <button data-filter="conversao">Conversão</button>
-    <button data-filter="solucoes">Soluções</button>
+<div class="gaveta" id="gaveta" hidden>
+  <nav class="gaveta-links" aria-label="Menu do celular">
+    <p class="gaveta-rot">Serviços</p>
+    <a style="--n:1" href="design.html">Design</a>
+    <a style="--n:2" href="social.html">Social Media</a>
+    <a style="--n:3" href="edicao.html">Edição de vídeo</a>
+    <a style="--n:4" href="webdesign.html">Criação de sites</a>
+    <a style="--n:5" href="sistemas.html">Sistemas e SaaS</a>
+    <p class="gaveta-rot">Fluxxo</p>
+    <a style="--n:6" href="/#como-funciona">Como funciona</a>
+    <a style="--n:7" href="/#portfolio">Portfólio</a>
+    <a style="--n:8" href="/#contratacao">Contratação</a>
+  </nav>
+  <div class="gaveta-pe">
+    <a class="btn btn-p" data-wa="menu" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Conversar com a equipe</a>
   </div>
-
-  <div class="b-grid"></div>
-</section>
-
-<!-- ============ NEWSLETTER ============ -->
-<section class="b-news wrap b-rv">
-  <div class="b-news-card">
-    <div class="b-news-text">
-      <p class="b-kicker">Ferramenta gratuita</p>
-      <h2>Quer saber como está <span class="grad">o seu site hoje?</span></h2>
-      <p>Responda 12 perguntas em 3 minutos e receba a nota do seu site nos 4 pontos que mais derrubam venda. Sem cadastro.</p>
-    </div>
-    <div class="b-news-form">
-      <a href="analise.html" class="b-news-btn">Fazer a análise</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ RODAPÉ (padrão da home) ============ -->
-<div class="footer-wrap">
-<footer class="footer-card">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo-line"><img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="logo-img"></div>
-      <p class="tagline">Redes sociais, sites e sistemas para empresas. Fortaleza, CE.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.1h4.52V23H.24V8.1zM8.34 8.1h4.33v2h.06c.6-1.1 2.07-2.3 4.27-2.3 4.56 0 5.4 3 5.4 6.9V23h-4.5v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.9-2.75 3.8V23h-4.5V8.1z"/></svg></a>
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <b>Navegue</b>
-      <a href="index.html">Início</a>
-      <a href="design.html">Design</a>
-      <a href="webdesign.html">Web</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="sistemas.html">Sistemas</a>
-      <a href="blog.html">Blog</a>
-    </div>
-
-    <div class="footer-col">
-      <b>Fale com a gente</b>
-      <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
-      <a href="analise.html">Análise gratuita do seu site</a>
-      <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20blog%20da%20Fluxxo%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">WhatsApp</a>
-      <a href="mailto:contato@fluxxo.io">contato@fluxxo.io</a>
-    </div>
-  </div>
-
-  <div class="footer-base">
-    <div class="links">
-      <a href="termos.html">Termos</a><i>|</i>
-      <a href="privacidade.html">Privacidade</a>
-    </div>
-    <span>© 2026 Fluxxo · Todos os direitos reservados.</span>
-  </div>
-</footer>
 </div>
 
-<script src="js/blog.js?v=937"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="js/web-scroll.js?v=936"></script>
+<main data-claro>
+<!-- ============ ABERTURA DO BLOG ============ -->
+<section class="bn-topo rv-topo">
+  <i class="bn-luz" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="rv-cab">
+      <div>
+        <p class="rotulo rotulo-cor" data-reveal><span class="pontos" aria-hidden="true"><b></b><b></b><b></b></span>Blog da Fluxxo</p>
+        <h1 class="titulo-sec bn-tit" data-reveal style="--d:60ms"><span class="l">Ideias que fazem sua empresa</span> <span class="b">vender mais.</span></h1>
+      </div>
+      <p class="apoio-sec bn-apoio" data-reveal style="--d:120ms">Design, sites e estratégia sem enrolação. O que a gente aprende nos projetos, você lê aqui de graça.</p>
+    </div>
+
+    <!-- capa da revista: o mais novo grande e os seguintes empilhados -->
+    <div class="rv-capa">
+      <a class="rv-dest" href="artigo.html" data-reveal style="--d:80ms">
+        <span class="rv-dest-capa"><img src="img/blog-site-bonito.webp" alt="Seu site é bonito. E daí? O que faz uma página vender de verdade" width="1672" height="941" decoding="async" fetchpriority="high"></span>
+        <span class="bn-meta"><b class="bn-tag">Conversão</b><span>18 jul 2026</span><i>·</i><span>8 min de leitura</span></span>
+        <strong>Seu site é bonito. E daí? O que faz uma página vender de verdade</strong>
+        <span class="bn-resumo">Estética atrai, mas é a estrutura que converte. Os 6 elementos que separam páginas que enfeitam de páginas que pagam boleto.</span>
+        <span class="bn-ler">Ler artigo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+      <div class="rv-lado">
+        <p class="rv-lado-rot">Mais recentes</p>
+        <a class="rv-mini" href="artigo-marca-visual.html" data-reveal style="--d:120ms">
+          <span class="rv-mini-capa"><img src="img/blog-marca-visual.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span>
+          <span class="rv-mini-txt"><span class="bn-meta"><b class="bn-tag">Design</b><span>14 jul 2026</span></span><strong>5 sinais de que sua marca está perdendo cliente por causa do visual</strong></span>
+        </a>
+        <a class="rv-mini" href="artigo-velocidade-site.html" data-reveal style="--d:200ms">
+          <span class="rv-mini-capa"><img src="img/blog-velocidade-site.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span>
+          <span class="rv-mini-txt"><span class="bn-meta"><b class="bn-tag">Web</b><span>10 jul 2026</span></span><strong>O checklist de velocidade: por que seu site demora e como resolver</strong></span>
+        </a>
+        <a class="rv-mini" href="artigo-tarefas-manuais.html" data-reveal style="--d:280ms">
+          <span class="rv-mini-capa"><img src="img/blog-tarefas-manuais.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span>
+          <span class="rv-mini-txt"><span class="bn-meta"><b class="bn-tag">Soluções</b><span>28 jun 2026</span></span><strong>7 tarefas que sua empresa ainda faz na mão (e não devia)</strong></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANÁLISE GRÁTIS ============ -->
+<section class="bn-analise">
+  <div class="wrap">
+    <div class="bn-painel" data-reveal>
+      <div>
+        <p class="rotulo"><span class="pontos" aria-hidden="true"><b></b><b></b><b></b></span>Ferramenta gratuita</p>
+        <h2>Quer saber como está <span>o seu site hoje?</span></h2>
+        <p>Responda 12 perguntas em 3 minutos e receba a nota do seu site nos 4 pontos que mais derrubam venda. Sem cadastro.</p>
+      </div>
+      <a class="btn btn-p" href="analise.html">Fazer a análise <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ RODAPÉ (igual ao da home nova) ============ -->
+<footer class="rodape" aria-labelledby="rodapeTit">
+  <div class="wrap">
+    <div class="rd-grade">
+      <div class="rd-marca">
+        <h2 class="sr" id="rodapeTit">Fluxxo</h2>
+        <a href="/" aria-label="Fluxxo, página inicial"><img src="img/home/fluxxo-logo-dark.svg" alt="Fluxxo" width="114" height="32" loading="lazy" decoding="async"></a>
+        <p>Estúdio criativo e de desenvolvimento digital.</p>
+        <div class="rd-contato">
+          <a data-wa="rodape" href="https://wa.me/5585992657146" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp · (85) 99265-7146</a>
+          <a href="mailto:contato@fluxxo.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>contato@fluxxo.io</a>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Fortaleza, CE</span>
+        </div>
+      </div>
+      <nav class="rd-col" aria-label="Serviços">
+        <b>Serviços</b>
+        <a href="design.html">Design</a>
+        <a href="social.html">Social Media</a>
+        <a href="edicao.html">Edição de vídeo</a>
+        <a href="webdesign.html">Sites e landing pages</a>
+        <a href="sistemas.html">Sistemas e SaaS</a>
+      </nav>
+      <nav class="rd-col" aria-label="Empresa">
+        <b>Empresa</b>
+        <a href="/#como-funciona">Sobre a Fluxxo</a>
+        <a href="/#portfolio">Projetos</a>
+        <a href="blog.html">Blog</a>
+        <a data-wa="rodape" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Contato</a>
+      </nav>
+      <nav class="rd-col" aria-label="Redes sociais">
+        <b>Redes sociais</b>
+        <!-- PENDENTE: links reais do Instagram e do LinkedIn da Fluxxo -->
+        <a class="rd-rede" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>Instagram</a>
+        <a class="rd-rede" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+      </nav>
+    </div>
+    <div class="rd-base">
+      <span>© 2026 Fluxxo. Todos os direitos reservados.</span>
+      <span class="rd-legal"><a href="termos.html">Termos</a><a href="privacidade.html">Privacidade</a></span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

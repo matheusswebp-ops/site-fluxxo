@@ -1,0 +1,79 @@
+/* Portfólio de vídeo: casca de portfolio-nova.css + avatar de design-nova.css.
+   Reels num celular de moldura clara; capas de YouTube num cartão claro. */
+
+.pg-video .dz-mural .wp-col { flex-basis: 150px; }
+
+/* ---------- Reels: 4 por linha ---------- */
+.vz-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 20px; }
+.vz-grade[hidden] { display: none; }
+.vz { margin: 0; }
+
+/* celular claro: moldura branca, tela 9:16 */
+.vz-cel {
+  display: block; width: 100%; padding: 7px; border: 0; border-radius: 30px; cursor: pointer;
+  background: linear-gradient(160deg, #FFFFFF, #ECE8F4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9), 0 0 0 1px rgba(255, 255, 255, .12), 0 30px 60px rgba(4, 2, 16, .55);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.vz-cel:hover { transform: translateY(-5px); box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px rgba(207, 113, 247, .5), 0 34px 70px rgba(132, 24, 244, .3); }
+.vz-cel:focus-visible { outline: 2px solid var(--lilac); outline-offset: 4px; }
+.vz-tela { position: relative; display: block; aspect-ratio: 9 / 16; border-radius: 24px; overflow: hidden; background: #1B1830; }
+.vz-tela::before { content: ""; position: absolute; left: 50%; top: 8px; z-index: 2; width: 34%; height: 16px; margin-left: -17%; border-radius: 999px; background: #0B0A12; }
+.vz-tela video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vz-lado { position: absolute; right: 9px; bottom: 54px; z-index: 2; display: grid; gap: 14px; }
+.vz-lado svg { width: 20px; height: 20px; color: #fff; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .5)); }
+.vz-play { position: absolute; left: 50%; top: 50%; z-index: 2; display: grid; place-items: center; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; background: rgba(255, 255, 255, .92); box-shadow: 0 10px 26px rgba(0, 0, 0, .35); transition: opacity .3s, transform .3s var(--ease); }
+.vz-play svg { width: 22px; height: 22px; margin-left: 3px; fill: #111319; stroke: none; }
+.vz-cel:hover .vz-play { opacity: 0; transform: scale(.8); }
+
+.vz-info { display: flex; align-items: center; gap: 10px; margin: 14px 4px 0; font: 400 12px var(--tech); color: var(--muted); }
+.vz-tag { padding: 5px 10px; border-radius: 999px; font: 600 10px/1 var(--tech); letter-spacing: .12em; text-transform: uppercase; color: var(--lilac); background: rgba(207, 113, 247, .08); box-shadow: inset 0 0 0 1px rgba(207, 113, 247, .25); }
+.vz-som { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; opacity: 0; transition: opacity .3s; }
+.vz-som svg { width: 14px; height: 14px; }
+.vz:hover .vz-som { opacity: 1; }
+
+/* ---------- Capas de YouTube: cartão claro, 3 por linha ---------- */
+.vz-grade-yt { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.vz-yt { padding: 12px; border-radius: 22px; background: linear-gradient(180deg, rgba(30, 17, 72, .55), rgba(16, 9, 44, .45)); box-shadow: inset 0 0 0 1px var(--border); transition: transform .45s var(--ease); }
+.vz-yt:hover { transform: translateY(-4px); }
+.vz-yt-card { border-radius: 14px; overflow: hidden; background: #FFFFFF; color: #111319; }
+.vz-yt-img { position: relative; display: block; aspect-ratio: 16 / 9; background: #F4F2F8; }
+.vz-yt-img img { width: 100%; height: 100%; object-fit: cover; }
+.vz-yt-dur { position: absolute; right: 10px; bottom: 10px; display: grid; place-items: center; width: 30px; height: 22px; border-radius: 6px; background: rgba(17, 19, 25, .78); }
+.vz-yt-dur svg { width: 12px; height: 12px; fill: #fff; stroke: none; }
+.vz-yt-txt { display: flex; align-items: center; gap: 10px; padding: 12px; line-height: 1.25; }
+.vz-yt-txt b { display: block; font-size: 13.5px; font-weight: 600; }
+.vz-yt-txt small { font: 400 11.5px var(--tech); color: #6B6585; }
+
+/* ---------- Modal do vídeo com som ---------- */
+.vz-modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 24px; }
+.vz-modal[hidden] { display: none; }
+.vz-modal-fundo { position: absolute; inset: 0; background: rgba(4, 2, 16, .82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: vz-entra .3s var(--ease); }
+.vz-modal-caixa { position: relative; height: min(86vh, 820px); aspect-ratio: 9 / 16; max-width: 100%; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 40px 100px rgba(0, 0, 0, .6); animation: vz-sobe .45s var(--ease); }
+.vz-modal-caixa video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.vz-fechar { position: absolute; right: 12px; top: 12px; z-index: 2; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; color: #111319; background: rgba(255, 255, 255, .92); }
+.vz-fechar svg { width: 18px; height: 18px; stroke-width: 2.4; }
+.vz-fechar:focus-visible { outline: 2px solid var(--lilac); outline-offset: 2px; }
+@keyframes vz-entra { from { opacity: 0; } }
+@keyframes vz-sobe { from { opacity: 0; transform: translateY(20px) scale(.97); } }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1080px) {
+  .vz-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .vz-grade-yt { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .vz-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+  .vz-grade-yt { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .vz-cel { padding: 5px; border-radius: 22px; }
+  .vz-tela { border-radius: 18px; }
+  .vz-tela::before { top: 6px; height: 11px; }
+  .vz-play { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
+  .vz-lado { display: none; }
+  .vz-som { display: none; }
+  .vz-modal { padding: 12px; }
+  .vz-modal-caixa { height: auto; width: 100%; max-height: 88vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vz-cel, .vz-yt, .vz-modal-fundo, .vz-modal-caixa { transition: none; animation: none; }
+}

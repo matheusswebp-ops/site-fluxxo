@@ -1,0 +1,1262 @@
+[
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1440 · 8 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-clinica-1.webp",
+    "alt": "A clínica que você tem hoje não parece com a que você imaginou",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-2.webp",
+    "alt": "Carrossel clínica — slide 2",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-3.webp",
+    "alt": "Carrossel clínica — slide 3",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-4.webp",
+    "alt": "Carrossel clínica — slide 4",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-5.webp",
+    "alt": "Carrossel clínica — slide 5",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-6.webp",
+    "alt": "Carrossel clínica — slide 6",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-7.webp",
+    "alt": "Carrossel clínica — slide 7",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-clinica-8.webp",
+    "alt": "Carrossel clínica — slide 8",
+    "w": 540,
+    "h": 720
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-viapty-carro.webp",
+    "alt": "Viapty — venda seu carro em até 40 minutos e fuja do IPVA 2026",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-estudio-de-rica.webp",
+    "alt": "Anúncio de evento: Estúdio que funciona sem a dona",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-seller-pro-reabertura.webp",
+    "alt": "As vagas do treinamento Seller Pro vão reabrir",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-01.webp",
+    "alt": "Topnatus Feno Grego + Boro e Zinco — energia, equilíbrio e suporte diário",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 6 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-google-ads-1.webp",
+    "alt": "Seu Google pode estar afastando clientes todos os dias",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-google-ads-2.webp",
+    "alt": "Carrossel Google Ads — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-google-ads-3.webp",
+    "alt": "Carrossel Google Ads — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-google-ads-4.webp",
+    "alt": "Carrossel Google Ads — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-google-ads-5.webp",
+    "alt": "Carrossel Google Ads — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-google-ads-6.webp",
+    "alt": "Carrossel Google Ads — slide 6",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-01.webp",
+    "alt": "Vetter — sua safra em um investimento no litoral de SC",
+    "w": 540,
+    "h": 673
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-raio-x-curriculo-medico.webp",
+    "alt": "Raio-X Currículo Médico 2026 — desbloqueado",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1440 · 4 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-creme-dental-1.webp",
+    "alt": "Você cuida da sua pele, do seu corpo, da sua alimentação",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-creme-dental-2.webp",
+    "alt": "Carrossel creme dental — slide 2",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-creme-dental-3.webp",
+    "alt": "Carrossel creme dental — slide 3",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-creme-dental-4.webp",
+    "alt": "Carrossel creme dental — slide 4",
+    "w": 540,
+    "h": 720
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-02.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 2",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-pilates-precificacao.webp",
+    "alt": "Anúncio de evento sobre precificação para estúdios de Pilates",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-corretora-funil.webp",
+    "alt": "Sua corretora de seguros tem potencial — é apenas o funil certo que ainda não existe",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 6 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-1.webp",
+    "alt": "Carneiros Temporada — da escolha do imóvel ao check-out",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-2.webp",
+    "alt": "Carrossel Carneiros — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-3.webp",
+    "alt": "Carrossel Carneiros — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-4.webp",
+    "alt": "Carrossel Carneiros — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-5.webp",
+    "alt": "Carrossel Carneiros — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-carneiros-temporada-6.webp",
+    "alt": "Carrossel Carneiros — slide 6",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 1:1",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-03.webp",
+    "alt": "Campanha imobiliária — peça quadrada",
+    "w": 540,
+    "h": 542
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-02.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 678
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-pura-vive.webp",
+    "alt": "Pura Vive — eu cuido da minha saúde com quem realmente confio",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-claude-design.webp",
+    "alt": "Anúncio do curso Claude Design na Prática",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 6 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-trafego-pago-1.webp",
+    "alt": "Tráfego bom economiza o tempo da sua equipe",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-trafego-pago-2.webp",
+    "alt": "Carrossel tráfego pago — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-trafego-pago-3.webp",
+    "alt": "Carrossel tráfego pago — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-trafego-pago-4.webp",
+    "alt": "Carrossel tráfego pago — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-trafego-pago-5.webp",
+    "alt": "Carrossel tráfego pago — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-trafego-pago-6.webp",
+    "alt": "Carrossel tráfego pago — slide 6",
+    "w": 540,
+    "h": 679
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-03.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 3",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1440 · 5 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-marketing-investimento-1.webp",
+    "alt": "Você está tratando marketing como despesa",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-investimento-2.webp",
+    "alt": "Carrossel marketing — slide 2",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-investimento-3.webp",
+    "alt": "Carrossel marketing — slide 3",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-investimento-4.webp",
+    "alt": "Carrossel marketing — slide 4",
+    "w": 540,
+    "h": 720
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-investimento-5.webp",
+    "alt": "Carrossel marketing — slide 5",
+    "w": 540,
+    "h": 720
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 1:1",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-04.webp",
+    "alt": "Campanha imobiliária — peça quadrada",
+    "w": 540,
+    "h": 540
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-05.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 726
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-corretora-leads.webp",
+    "alt": "Dono de corretora de seguros, você sabe vender — o problema é não ter leads qualificados",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 7 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-saude-bucal-1.webp",
+    "alt": "5 sinais de que você está negligenciando sua saúde bucal",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-2.webp",
+    "alt": "Carrossel saúde bucal — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-3.webp",
+    "alt": "Carrossel saúde bucal — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-4.webp",
+    "alt": "Carrossel saúde bucal — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-5.webp",
+    "alt": "Carrossel saúde bucal — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-6.webp",
+    "alt": "Carrossel saúde bucal — slide 6",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-saude-bucal-7.webp",
+    "alt": "Carrossel saúde bucal — slide 7",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-04.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 4",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-protocolo-gem.webp",
+    "alt": "Anúncio do evento Protocolo GEM para Pilates",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mapa-100k-chegando.webp",
+    "alt": "Anúncio: o Mapa dos 100K está chegando",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 6 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-istrateg-1.webp",
+    "alt": "Antes de investir mais no seu negócio, leia esse post",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-istrateg-2.webp",
+    "alt": "Carrossel iStrateG — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-istrateg-3.webp",
+    "alt": "Carrossel iStrateG — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-istrateg-4.webp",
+    "alt": "Carrossel iStrateG — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-istrateg-5.webp",
+    "alt": "Carrossel iStrateG — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-istrateg-6.webp",
+    "alt": "Carrossel iStrateG — slide 6",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-seller-pro-preco.webp",
+    "alt": "O preço do treinamento Seller Pro vai subir",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-05.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 5",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-06.webp",
+    "alt": "Vetter Destin Beach — viva onde a brisa do mar encontra o conforto de casa",
+    "w": 540,
+    "h": 681
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mentoria-ppa-desconto.webp",
+    "alt": "Mentoria PPA com R$ 2.000 de desconto por tempo limitado",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "4:5 · 8 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-1.webp",
+    "alt": "Seller Pro — a Amazon acaba de lançar o programa Vem de Amazon",
+    "w": 540,
+    "h": 679
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-2.webp",
+    "alt": "Carrossel Vem de Amazon — slide 2",
+    "w": 540,
+    "h": 679
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-3.webp",
+    "alt": "Carrossel Vem de Amazon — slide 3",
+    "w": 540,
+    "h": 673
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-4.webp",
+    "alt": "Carrossel Vem de Amazon — slide 4",
+    "w": 540,
+    "h": 674
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-5.webp",
+    "alt": "Carrossel Vem de Amazon — slide 5",
+    "w": 540,
+    "h": 677
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-6.webp",
+    "alt": "Carrossel Vem de Amazon — slide 6",
+    "w": 540,
+    "h": 673
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-7.webp",
+    "alt": "Carrossel Vem de Amazon — slide 7",
+    "w": 540,
+    "h": 680
+   },
+   {
+    "src": "img/home/design/carrossel-vem-de-amazon-8.webp",
+    "alt": "Carrossel Vem de Amazon — slide 8",
+    "w": 540,
+    "h": 679
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-06.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 6",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-seller-pro.webp",
+    "alt": "Anúncio do treinamento Seller Pro para vender na Amazon Brasil",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-07.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-tiago-fontana.webp",
+    "alt": "Dr. Tiago Fontana — sigo firme, defendendo as mesmas causas de sempre",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-corretora-trafego.webp",
+    "alt": "Já tentei tráfego pago antes e não funcionou — a gente começa diferente",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 5 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-engenharia-civil-1.webp",
+    "alt": "Muitas pessoas falam que Engenharia Civil não tem mercado",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-engenharia-civil-2.webp",
+    "alt": "Carrossel engenharia civil — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-engenharia-civil-3.webp",
+    "alt": "Carrossel engenharia civil — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-engenharia-civil-4.webp",
+    "alt": "Carrossel engenharia civil — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-engenharia-civil-5.webp",
+    "alt": "Carrossel engenharia civil — slide 5",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-corretora-cresceu.webp",
+    "alt": "A corretora cresceu, o funil não — falta funil de aquisição claro",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 6 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-1.webp",
+    "alt": "Red Shield Jiu-Jitsu — mais do que uma academia, uma família",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-2.webp",
+    "alt": "Carrossel jiu-jitsu — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-3.webp",
+    "alt": "Carrossel jiu-jitsu — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-4.webp",
+    "alt": "Carrossel jiu-jitsu — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-5.webp",
+    "alt": "Carrossel jiu-jitsu — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-jiu-jitsu-6.webp",
+    "alt": "Carrossel jiu-jitsu — slide 6",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mentoria-ppa-ultimas-vagas.webp",
+    "alt": "Mentoria PPA — últimas vagas",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mapa-100k-hoje.webp",
+    "alt": "Anúncio: é hoje, começa o Mapa dos 100K",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-08.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 7 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-seguros-1.webp",
+    "alt": "Mais Soluções — um erro técnico pode colocar anos de reputação em risco",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-2.webp",
+    "alt": "Carrossel seguros — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-3.webp",
+    "alt": "Carrossel seguros — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-4.webp",
+    "alt": "Carrossel seguros — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-5.webp",
+    "alt": "Carrossel seguros — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-6.webp",
+    "alt": "Carrossel seguros — slide 6",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-seguros-7.webp",
+    "alt": "Carrossel seguros — slide 7",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-07.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 7",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-flowgrammers-claude-code.webp",
+    "alt": "Anúncio do Lab Flowgrammers sobre Claude Code",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-09.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 680
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-08.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 8",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mapa-100k-amanha.webp",
+    "alt": "Anúncio: é amanhã, começa o Mapa dos 100K",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-10.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 682
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-seller-pro-segunda-chance.webp",
+    "alt": "Você tentou entrar no Seller Pro e não conseguiu? Essa é a sua segunda chance",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-11.webp",
+    "alt": "Campanha imobiliária — peça vertical",
+    "w": 540,
+    "h": 677
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 9 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-1.webp",
+    "alt": "Retrospectiva 2025 do estudante de medicina",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-2.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-3.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-4.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-5.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-6.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 6",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-7.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 7",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-8.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 8",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-retrospectiva-medicina-9.webp",
+    "alt": "Carrossel retrospectiva medicina — slide 9",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-corretora-indicacao.webp",
+    "alt": "Indicação não é estratégia, é contar com a sorte",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "anuncio",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/anuncio-mentoria-ppa-inscricoes.webp",
+    "alt": "Mentoria PPA — inscrições abertas, reconhecida pelo MEC",
+    "w": 540,
+    "h": 686
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 4 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-marketing-imobiliario-1.webp",
+    "alt": "Seu CPM aumentou? Antes de culpar a Meta, confira estes pontos",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-imobiliario-2.webp",
+    "alt": "Carrossel marketing imobiliário — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-imobiliario-3.webp",
+    "alt": "Carrossel marketing imobiliário — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-marketing-imobiliario-4.webp",
+    "alt": "Carrossel marketing imobiliário — slide 4",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "carrossel",
+  "carrossel": true,
+  "spec": "1080×1350 · 8 slides",
+  "imgs": [
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-1.webp",
+    "alt": "Quero Bolo — mais de 130 receitas testadas",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-2.webp",
+    "alt": "Carrossel receitas de bolo — slide 2",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-3.webp",
+    "alt": "Carrossel receitas de bolo — slide 3",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-4.webp",
+    "alt": "Carrossel receitas de bolo — slide 4",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-5.webp",
+    "alt": "Carrossel receitas de bolo — slide 5",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-6.webp",
+    "alt": "Carrossel receitas de bolo — slide 6",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-7.webp",
+    "alt": "Carrossel receitas de bolo — slide 7",
+    "w": 540,
+    "h": 675
+   },
+   {
+    "src": "img/home/design/carrossel-receitas-bolo-8.webp",
+    "alt": "Carrossel receitas de bolo — slide 8",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "suplementos",
+  "carrossel": false,
+  "spec": "Meta Ads · 4:5",
+  "imgs": [
+   {
+    "src": "img/home/design/suplemento-feno-grego-09.webp",
+    "alt": "Campanha Topnatus Feno Grego — peça 9",
+    "w": 540,
+    "h": 675
+   }
+  ]
+ },
+ {
+  "cat": "imobiliaria",
+  "carrossel": false,
+  "spec": "Meta Ads · 1:1",
+  "imgs": [
+   {
+    "src": "img/home/design/imobiliaria-12.webp",
+    "alt": "Azus — desconto de R$ 110 mil na unidade 2103",
+    "w": 540,
+    "h": 547
+   }
+  ]
+ }
+]

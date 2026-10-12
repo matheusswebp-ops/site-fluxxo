@@ -1,3 +1,14 @@
+# Blog com a key visual nova (2026-10-12)
+
+Prévia, como a home nova: nada muda no ar até o Mateus aprovar e trocar tudo junto.
+- [x] Puxar os 4 posts que saíram da listagem (commit 8e26dce) de volta para a lista
+- [x] `blog-nova.html` CLARO, estrutura "Revista" (escolha dele): destaque grande + 3 mais recentes ao lado; lista "Mais artigos" com filtros só aparece a partir do 5º post (nada repetido)
+- [x] 4 artigos `*-nova.html` claros, texto original intacto: índice "Neste artigo" lateral, barra de progresso, CTA, compartilhar, continue lendo
+- [x] Menu, gaveta e rodapé iguais aos da home nova (gerados de home-nova.html por `tasks/blog_nova.py`, links "#" apontando para a home)
+- [x] `css/blog-nova.css` só com o que é do blog; reusa `css/home.css` e `js/home.js`
+- [x] Conferir desktop 1440 e celular 390: sem erro no console, sem rolagem lateral, filtros funcionando
+- [x] Troca feita em 2026-10-12: site antigo salvo (tag `site-antigo-2026-10-12`, ramo `site-antigo`, zip em ~/Antigravity), páginas novas nos endereços definitivos, SEO revisado
+
 # Seção "1 em cada 2" — disfuncao-eretil.html (SEÇÃO 3, escura)
 
 ## Estado (2026-09-10, sessão nova)

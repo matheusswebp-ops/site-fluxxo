@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
 <title>O Checklist de Velocidade: Por Que Seu Site Demora | Fluxxo</title>
 <meta name="description" content="Cada segundo de carregamento a mais derruba a conversão. Os vilões mais comuns e a ordem certa de atacar cada um.">
 <link rel="canonical" href="https://fluxxo.io/artigo-velocidade-site">
-<meta name="theme-color" content="#0e0815">
 <link rel="icon" href="/favicon.ico?v=3" sizes="48x48">
 <link rel="icon" href="/favicon-32.png?v=3" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
@@ -23,12 +23,6 @@
 <meta name="twitter:title" content="O Checklist de Velocidade: Por Que Seu Site Demora | Fluxxo">
 <meta name="twitter:description" content="Cada segundo de carregamento a mais derruba a conversão. Os vilões mais comuns e a ordem certa de atacar cada um.">
 <meta name="twitter:image" content="https://fluxxo.io/img/brand/og-cover.jpg?v=2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1011">
-<link rel="stylesheet" href="css/blog.css?v=938">
-<link rel="stylesheet" href="css/artigo.css?v=936">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"O checklist de velocidade: por que seu site demora e como resolver","description":"Cada segundo de carregamento a mais derruba a conversão. Os vilões mais comuns e a ordem certa de atacar cada um.","image":"https://fluxxo.io/img/brand/og-cover.jpg?v=2","datePublished":"2026-07-10","dateModified":"2026-07-10","inLanguage":"pt-BR","author":{"@id":"https://fluxxo.io/#org"},"publisher":{"@id":"https://fluxxo.io/#org"},"mainEntityOfPage":"https://fluxxo.io/artigo-velocidade-site"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://fluxxo.io/blog"},{"@type":"ListItem","position":3,"name":"Checklist de velocidade","item":"https://fluxxo.io/artigo-velocidade-site"}]}]}</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -38,97 +32,139 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xpoicaxxyd");
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap"></noscript>
+<link rel="stylesheet" href="css/home.css?v=10">
+<link rel="stylesheet" href="css/blog-nova.css?v=10">
+<script>document.documentElement.classList.add("js")</script>
 <script src="/js/r.js?v=2" defer></script>
+<script src="js/home.js?v=10" defer></script>
+<script src="js/blog-nova.js?v=10" defer></script>
 </head>
-<body>
-<span class="read-progress" id="readProgress" aria-hidden="true"></span>
+<body class="pg-artigo">
 
-<div class="page-fx" aria-hidden="true">
-  <span class="sky"></span>
-  <b class="b1" data-sp="-0.11"></b>
-  <b class="b2" data-sp="-0.20"></b>
-</div>
-
-<!-- ============ NAV (padrão da home) ============ -->
-<nav class="nav" id="nav">
-  <div class="nav-shell">
-    <a href="index.html" class="brand">
-      <img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="brand-img">
+<!-- ============ MENU (igual ao da home nova) ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="/" aria-label="Fluxxo, página inicial">
+      <img class="logo-full" src="img/home/fluxxo-logo-dark.svg" alt="Fluxxo" width="95" height="27">
+      <img class="logo-mark" src="img/home/fluxxo-simbolo-degrade.svg" alt="" width="22" height="22">
     </a>
-    <div class="nav-links">
-      <a href="design.html">Design</a>
-      <a href="webdesign.html">Web</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="sistemas.html">Sistemas</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="blog.html" aria-current="page">Blog</a>
-      <a href="analise.html" class="nav-tool">Análise grátis</a>
-    </div>
-    <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener" class="nav-cta">Falar com a gente</a>
-    <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
-</nav>
-<div class="mobile-panel" id="mpanel">
-  <a href="design.html">Design</a>
-  <a href="webdesign.html">Web</a>
-  <a href="sistemas.html">Sistemas</a>
-  <a href="social.html">Redes sociais</a>
-  <a href="blog.html">Blog</a>
-  <a href="analise.html">Análise grátis</a>
-  <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
-</div>
 
-<!-- ============ CABEÇALHO DO ARTIGO ============ -->
-<header class="art-head wrap">
-  <a href="blog.html" class="art-back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-    Voltar pro blog
-  </a>
-  <div class="b-meta art-meta"><span class="b-tag tag-web">Web</span><span>10 jul 2026</span><i>·</i><span>6 min de leitura</span></div>
-  <h1>O checklist de velocidade:<br><span class="grad">por que seu site demora e como resolver</span></h1>
-  <p class="art-sub">Cada segundo de carregamento a mais derruba a conversão. Os vilões mais comuns e a ordem certa de atacar cada um.</p>
+    <nav class="nav-links" aria-label="Principal">
+      <div class="has-menu" id="menuServicos">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="mega">
+          Serviços <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mega" id="mega">
+          <div class="mega-corpo">
+          <div class="mega-grade">
+            <a class="mega-item" style="--k:1" href="design.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></svg></span>
+              <span><strong>Design para redes sociais</strong><span>Posts, carrosséis e peças de campanha</span></span>
+            </a>
+            <a class="mega-item" style="--k:2" href="social.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
+              <span><strong>Social Media</strong><span>Pautas, criação e publicações organizadas</span></span>
+            </a>
+            <a class="mega-item" style="--k:3" href="edicao.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
+              <span><strong>Edição de vídeo</strong><span>Reels, institucionais e entrevistas</span></span>
+            </a>
+            <a class="mega-item" style="--k:4" href="webdesign.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+              <span><strong>Criação de sites</strong><span>Institucionais, portfólios e landing pages</span></span>
+            </a>
+            <a class="mega-item" style="--k:5" href="sistemas.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+              <span><strong>Sistemas e SaaS</strong><span>Dashboards e plataformas com login</span></span>
+            </a>
+          </div>
+          <a class="mega-dest" style="--k:6" href="/#trabalhos">
+            <span class="md-pecas" aria-hidden="true"><img src="img/home/port/carrossel-carneiros-temporada-1.webp" alt="" width="384" height="480" decoding="async"><img src="img/home/port/anuncio-estudio-de-rica.webp" alt="" width="384" height="480" decoding="async"><img src="img/home/port/carrossel-jiu-jitsu-1.webp" alt="" width="384" height="480" decoding="async"></span>
+            <span class="md-txt"><small>Portfólio</small><strong>Veja trabalhos reais por área</strong><span>Carrosséis, anúncios, reels, sites e sistemas.</span></span>
+            <span class="md-seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          </div>
+          <div class="mega-pe" style="--k:7">
+            <span>Cinco serviços, uma equipe</span>
+            <a href="/#servicos">Conhecer todos os serviços <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="/#como-funciona">Como funciona</a>
+      <a class="nav-link" href="/#portfolio">Portfólio</a>
+      <a class="nav-link" href="/#contratacao">Contratação</a>
+    </nav>
+
+    <a class="btn btn-s nav-cta" data-wa="menu" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Conversar com a equipe</a>
+    <button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="gaveta"><span></span><span></span></button>
+  </div>
 </header>
 
-<!-- capa -->
-<div class="art-cover wrap b-rv">
-  <div class="feat-cover cover-web">
-    <img src="img/blog-velocidade-site.webp" alt="O checklist de velocidade: por que seu site demora e como resolver" loading="lazy">
-    <span class="cover-num">03</span>
+<div class="gaveta" id="gaveta" hidden>
+  <nav class="gaveta-links" aria-label="Menu do celular">
+    <p class="gaveta-rot">Serviços</p>
+    <a style="--n:1" href="design.html">Design</a>
+    <a style="--n:2" href="social.html">Social Media</a>
+    <a style="--n:3" href="edicao.html">Edição de vídeo</a>
+    <a style="--n:4" href="webdesign.html">Criação de sites</a>
+    <a style="--n:5" href="sistemas.html">Sistemas e SaaS</a>
+    <p class="gaveta-rot">Fluxxo</p>
+    <a style="--n:6" href="/#como-funciona">Como funciona</a>
+    <a style="--n:7" href="/#portfolio">Portfólio</a>
+    <a style="--n:8" href="/#contratacao">Contratação</a>
+  </nav>
+  <div class="gaveta-pe">
+    <a class="btn btn-p" data-wa="menu" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Conversar com a equipe</a>
   </div>
 </div>
 
-<!-- ============ CORPO DO ARTIGO ============ -->
-<article class="art-body wrap">
+<main data-claro>
+<div class="bn-progresso" aria-hidden="true"><i id="bnProgresso"></i></div>
 
-  <p class="art-lead">Mais da metade das pessoas fecha uma página que demora mais de 3 segundos pra abrir no celular. Não interessa quão boa é a sua oferta se ninguém fica no site tempo suficiente pra ver ela.</p>
+<!-- ============ CABEÇALHO DO ARTIGO ============ -->
+<header class="ar-topo">
+  <i class="bn-luz" aria-hidden="true"></i>
+  <div class="wrap ar-grade">
+  <div class="ar-cab">
+    <a class="ar-volta" href="blog.html" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Voltar pro blog</a>
+    <!-- imagem primeiro, na largura do texto -->
+    <figure class="ar-capa" data-reveal style="--d:40ms"><img src="img/blog-velocidade-site.webp" alt="O checklist de velocidade: por que seu site demora e como resolver" width="1672" height="941" decoding="async" fetchpriority="high"></figure>
+    <p class="bn-meta ar-meta" data-reveal style="--d:40ms"><b class="bn-tag">Web</b><span>10 jul 2026</span><i>·</i><span>6 min de leitura</span></p>
+    <h1 class="titulo-sec ar-titulo" data-reveal style="--d:80ms"><span class="l">O checklist de velocidade:</span> <span class="b">por que seu site demora e como resolver</span></h1>
+    <p class="apoio-sec ar-sub" data-reveal style="--d:120ms">Cada segundo de carregamento a mais derruba a conversão. Os vilões mais comuns e a ordem certa de atacar cada um.</p>
+  </div>
+  </div>
+</header>
 
+<!-- ============ TEXTO (original, intacto) ============ -->
+<article class="ar-corpo">
+  <div class="wrap ar-grade">
+  <div class="ar-texto">
+<p class="art-lead">Mais da metade das pessoas fecha uma página que demora mais de 3 segundos pra abrir no celular. Não interessa quão boa é a sua oferta se ninguém fica no site tempo suficiente pra ver ela.</p>
   <p>A gente testa todo site no PageSpeed antes de publicar, com gravação de tela como prova. Esses são os vilões que mais aparecem quando um site demora, e a ordem certa de resolver cada um.</p>
-
   <h2>1. Imagem gigante direto da câmera</h2>
   <p>É o vilão número um, disparado. Foto de 8MB direto do celular ou da câmera profissional, sem nenhuma compressão, subida direto pro site. Uma única imagem assim pode pesar mais que a página inteira deveria pesar.</p>
   <p>A correção é simples: comprimir antes de subir e, sempre que possível, usar formato WebP. O olho não percebe diferença de qualidade, mas o tempo de carregamento despenca.</p>
-
   <h2>2. Fonte e ícone carregando de fora</h2>
   <p>Cada peso de fonte que você carrega é um pedido extra que o navegador precisa fazer antes de mostrar o texto. Sites que importam 6, 8, 10 variações de uma fonte, usando 2 na prática, estão pagando um pedágio de carregamento por nada.</p>
   <p>O mesmo vale pra bibliotecas de ícones inteiras carregadas só pra usar 5 símbolos. Carregue só o que a página realmente usa.</p>
-
   <h2>3. Plugin em cima de plugin</h2>
   <p>Em sites feitos em plataformas de plugin, é comum cada funcionalidade nova vir com seu próprio JavaScript e CSS, que se acumulam sem que ninguém perceba. Um formulário aqui, um pop-up ali, uma galeria acolá: cada um soma alguns décimos de segundo, e a soma vira o problema.</p>
   <p>Vale revisar periodicamente: cada plugin ativo precisa justificar seu custo em velocidade.</p>
-
   <blockquote>Velocidade não é detalhe técnico. É a primeira impressão que ninguém percebe conscientemente, mas que decide se a pessoa fica ou sai.</blockquote>
-
   <h2>4. Script de terceiro sem necessidade</h2>
   <p>Pixel de rastreamento, chat automático, ferramenta de mapa de calor, widget de avaliação: cada um carrega o próprio código de um servidor externo, fora do seu controle. Alguns são essenciais. A maioria dos sites carrega o dobro do que realmente usa.</p>
   <p>Audite o que está realmente gerando decisão de negócio e remova o resto.</p>
-
   <h2>5. Hospedagem barata demais</h2>
   <p>Existe uma diferença real entre um plano de hospedagem compartilhada de R$ 15 por mês e uma infraestrutura pensada pra performance. A primeira resposta do servidor, antes mesmo do site começar a carregar, já define boa parte do tempo total.</p>
   <p>Não é sobre gastar mais por gastar. É sobre entender que hospedagem também é decisão de conversão, não só de custo.</p>
-
   <h2>6. Nenhum cache configurado</h2>
   <p>Sem cache, o navegador de cada visitante baixa a página inteira do zero, toda vez. Com cache configurado, quem já visitou carrega quase instantaneamente na segunda vez, e a primeira visita também melhora, porque o servidor entrega mais rápido.</p>
-
   <p><b>Checklist rápido pra rodar agora:</b></p>
   <ul>
     <li>Comprima toda imagem antes de subir (ou use WebP)</li>
@@ -137,125 +173,114 @@
     <li>Ative cache de navegador e, se possível, CDN</li>
     <li>Teste no PageSpeed Insights antes de publicar, não depois</li>
   </ul>
-
   <div class="art-callout">
     <b>Resumo pra colar na parede</b>
     <p>Comprima imagem, carregue só a fonte que usa, revise plugin e script de terceiro, ative cache, e teste antes de publicar. Velocidade não é ajuste técnico de última hora: é argumento de venda que decide se alguém fica na página tempo suficiente pra ler sua oferta.</p>
   </div>
-
   <p>No fim, cada segundo importa mais do que parece. Não é sobre ter a nota mais alta no PageSpeed pra exibir como troféu: é sobre quantas pessoas a mais ficam até o final da página quando ela carrega rápido.</p>
 
-  <!-- CTA -->
-  <div class="art-cta b-rv">
-    <div>
-      <h3>Quer saber a nota do seu site agora?</h3>
-      <p>A gente roda a análise completa de graça e te manda o resultado com o que está pesando.</p>
+    <aside class="ar-cta">
+      <div>
+        <h3>Quer saber a nota do seu site agora?</h3>
+        <p>A gente roda a análise completa de graça e te manda o resultado com o que está pesando.</p>
+      </div>
+      <a class="btn btn-p" href="analise.html">Pedir análise gratuita <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </aside>
+
+    <div class="ar-share">
+      <span>Compartilhar:</span>
+      <a href="https://wa.me/?text=O%20checklist%20de%20velocidade%20de%20site%20da%20Fluxxo" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn" data-linkedin><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <button type="button" id="bnCopiar" aria-label="Copiar link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><em id="bnCopiado">Link copiado</em></button>
     </div>
-    <a href="analise.html" class="btn-primary">Pedir análise gratuita
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
   </div>
-
-  <!-- compartilhar -->
-  <div class="art-share">
-    <span>Compartilhar:</span>
-    <a href="https://wa.me/?text=O%20checklist%20de%20velocidade%20de%20site%20da%20Fluxxo" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg></a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.1h4.52V23H.24V8.1zM8.34 8.1h4.33v2h.06c.6-1.1 2.07-2.3 4.27-2.3 4.56 0 5.4 3 5.4 6.9V23h-4.5v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.9-2.75 3.8V23h-4.5V8.1z"/></svg></a>
-    <button id="copyLink" aria-label="Copiar link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><em id="copyMsg">link copiado!</em></button>
+  <!-- índice montado pelo js a partir dos subtítulos; acende o trecho que está na tela -->
+  <nav class="ar-indice" aria-label="Neste artigo"><b>Neste artigo</b><ol id="bnIndice"></ol><a class="ar-indice-cta" href="analise.html">Pedir análise gratuita <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></nav>
   </div>
-
 </article>
 
 <!-- ============ CONTINUE LENDO ============ -->
-<section class="art-related wrap">
-  <h2 class="art-rel-title">Continue <span class="grad">lendo</span></h2>
-  <div class="b-grid">
-
-    <a href="artigo.html" class="b-card b-rv" data-cat="conversao">
-      <div class="b-cover cover-conversao">
-        <img src="img/blog-site-bonito.webp" alt="Seu site é bonito. E daí? O que faz uma página vender de verdade" loading="lazy">
-        <span class="cover-num">01</span>
-      </div>
-      <div class="b-body">
-        <div class="b-meta"><span class="b-tag tag-conversao">Conversão</span><span>18 jul 2026</span><i>·</i><span>8 min</span></div>
-        <h3>Seu site é bonito. E daí? O que faz uma página vender de verdade</h3>
-        <p>Estética atrai, mas é a estrutura que converte. Os 6 elementos que separam páginas que enfeitam de páginas que pagam boleto.</p>
-      </div>
-    </a>
-
-    <a href="artigo-marca-visual.html" class="b-card b-rv" data-cat="design">
-      <div class="b-cover cover-design">
-        <img src="img/blog-marca-visual.webp" alt="5 sinais de que sua marca está perdendo cliente por causa do visual" loading="lazy">
-        <span class="cover-num">02</span>
-      </div>
-      <div class="b-body">
-        <div class="b-meta"><span class="b-tag tag-design">Design</span><span>14 jul 2026</span><i>·</i><span>6 min</span></div>
-        <h3>5 sinais de que sua marca está perdendo cliente por causa do visual</h3>
-        <p>Cliente não fala "achei sua identidade fraca". Ele só some. Aprenda a ler os sintomas antes do prejuízo.</p>
-      </div>
-    </a>
-
-    <a href="artigo-tarefas-manuais.html" class="b-card b-rv" data-cat="solucoes">
-      <div class="b-cover cover-solucoes">
-        <img src="img/blog-tarefas-manuais.webp" alt="7 tarefas que sua empresa ainda faz na mão (e não devia)" loading="lazy">
-        <span class="cover-num">04</span>
-      </div>
-      <div class="b-body">
-        <div class="b-meta"><span class="b-tag tag-solucoes">Soluções</span><span>28 jun 2026</span><i>·</i><span>6 min</span></div>
-        <h3>7 tarefas que sua empresa ainda faz na mão (e não devia)</h3>
-        <p>Planilha copiada, mensagem repetida, relatório manual. O que dá pra automatizar hoje sem virar projeto de um ano.</p>
-      </div>
-    </a>
-
+<section class="bn-posts ar-rel" aria-labelledby="relTit">
+  <div class="wrap">
+    <div class="ar-rel-topo">
+      <p class="rotulo rotulo-cor" data-reveal><span class="pontos" aria-hidden="true"><b></b><b></b><b></b></span>Blog da Fluxxo</p>
+      <h2 class="titulo-sec ar-rel-tit" id="relTit" data-reveal style="--d:60ms"><span class="l">Continue</span> <span class="b">lendo.</span></h2>
+    </div>
+    <div class="bn-lista">
+      <a class="bn-card" href="artigo.html" data-cat="conversao" data-reveal style="--d:0ms">
+        <span class="bn-capa"><img src="img/blog-site-bonito.webp" alt="Seu site é bonito. E daí? O que faz uma página vender de verdade" width="1672" height="941" loading="lazy" decoding="async"></span>
+        <span class="bn-corpo">
+          <span class="bn-meta"><b class="bn-tag">Conversão</b><span>18 jul 2026</span><i>·</i><span>8 min</span></span>
+          <strong>Seu site é bonito. E daí? O que faz uma página vender de verdade</strong>
+          <span class="bn-resumo">Estética atrai, mas é a estrutura que converte. Os 6 elementos que separam páginas que enfeitam de páginas que pagam boleto.</span>
+          <span class="bn-ler">Ler artigo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </span>
+      </a>
+      <a class="bn-card" href="artigo-marca-visual.html" data-cat="design" data-reveal style="--d:80ms">
+        <span class="bn-capa"><img src="img/blog-marca-visual.webp" alt="5 sinais de que sua marca está perdendo cliente por causa do visual" width="1672" height="941" loading="lazy" decoding="async"></span>
+        <span class="bn-corpo">
+          <span class="bn-meta"><b class="bn-tag">Design</b><span>14 jul 2026</span><i>·</i><span>6 min</span></span>
+          <strong>5 sinais de que sua marca está perdendo cliente por causa do visual</strong>
+          <span class="bn-resumo">Cliente não fala "achei sua identidade fraca". Ele só some. Aprenda a ler os sintomas antes do prejuízo.</span>
+          <span class="bn-ler">Ler artigo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </span>
+      </a>
+      <a class="bn-card" href="artigo-tarefas-manuais.html" data-cat="solucoes" data-reveal style="--d:160ms">
+        <span class="bn-capa"><img src="img/blog-tarefas-manuais.webp" alt="7 tarefas que sua empresa ainda faz na mão (e não devia)" width="1672" height="941" loading="lazy" decoding="async"></span>
+        <span class="bn-corpo">
+          <span class="bn-meta"><b class="bn-tag">Soluções</b><span>28 jun 2026</span><i>·</i><span>6 min</span></span>
+          <strong>7 tarefas que sua empresa ainda faz na mão (e não devia)</strong>
+          <span class="bn-resumo">Planilha copiada, mensagem repetida, relatório manual. O que dá pra automatizar hoje sem virar projeto de um ano.</span>
+          <span class="bn-ler">Ler artigo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </span>
+      </a>
+    </div>
   </div>
 </section>
+</main>
 
-<!-- ============ RODAPÉ (padrão da home) ============ -->
-<div class="footer-wrap">
-<footer class="footer-card">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo-line"><img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="logo-img"></div>
-      <p class="tagline">Redes sociais, sites e sistemas para empresas. Fortaleza, CE.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.1h4.52V23H.24V8.1zM8.34 8.1h4.33v2h.06c.6-1.1 2.07-2.3 4.27-2.3 4.56 0 5.4 3 5.4 6.9V23h-4.5v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.9-2.75 3.8V23h-4.5V8.1z"/></svg></a>
+<!-- ============ RODAPÉ (igual ao da home nova) ============ -->
+<footer class="rodape" aria-labelledby="rodapeTit">
+  <div class="wrap">
+    <div class="rd-grade">
+      <div class="rd-marca">
+        <h2 class="sr" id="rodapeTit">Fluxxo</h2>
+        <a href="/" aria-label="Fluxxo, página inicial"><img src="img/home/fluxxo-logo-dark.svg" alt="Fluxxo" width="114" height="32" loading="lazy" decoding="async"></a>
+        <p>Estúdio criativo e de desenvolvimento digital.</p>
+        <div class="rd-contato">
+          <a data-wa="rodape" href="https://wa.me/5585992657146" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp · (85) 99265-7146</a>
+          <a href="mailto:contato@fluxxo.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>contato@fluxxo.io</a>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Fortaleza, CE</span>
+        </div>
       </div>
+      <nav class="rd-col" aria-label="Serviços">
+        <b>Serviços</b>
+        <a href="design.html">Design</a>
+        <a href="social.html">Social Media</a>
+        <a href="edicao.html">Edição de vídeo</a>
+        <a href="webdesign.html">Sites e landing pages</a>
+        <a href="sistemas.html">Sistemas e SaaS</a>
+      </nav>
+      <nav class="rd-col" aria-label="Empresa">
+        <b>Empresa</b>
+        <a href="/#como-funciona">Sobre a Fluxxo</a>
+        <a href="/#portfolio">Projetos</a>
+        <a href="blog.html">Blog</a>
+        <a data-wa="rodape" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Contato</a>
+      </nav>
+      <nav class="rd-col" aria-label="Redes sociais">
+        <b>Redes sociais</b>
+        <!-- PENDENTE: links reais do Instagram e do LinkedIn da Fluxxo -->
+        <a class="rd-rede" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>Instagram</a>
+        <a class="rd-rede" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+      </nav>
     </div>
-
-    <div class="footer-col">
-      <b>Navegue</b>
-      <a href="index.html">Início</a>
-      <a href="design.html">Design</a>
-      <a href="webdesign.html">Web</a>
-      <a href="social.html">Redes sociais</a>
-      <a href="sistemas.html">Sistemas</a>
-      <a href="blog.html">Blog</a>
+    <div class="rd-base">
+      <span>© 2026 Fluxxo. Todos os direitos reservados.</span>
+      <span class="rd-legal"><a href="termos.html">Termos</a><a href="privacidade.html">Privacidade</a></span>
     </div>
-
-    <div class="footer-col">
-      <b>Fale com a gente</b>
-      <a href="https://wa.me/5585992657146?text=Oi%21%20Vim%20pelo%20site%20da%20Fluxxo%20e%20quero%20tirar%20um%20projeto%20do%20papel.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
-      <a href="analise.html">Análise gratuita do seu site</a>
-      <a href="#">WhatsApp</a>
-      <a href="mailto:contato@fluxxo.io">contato@fluxxo.io</a>
-    </div>
-  </div>
-
-  <div class="footer-base">
-    <div class="links">
-      <a href="termos.html">Termos</a><i>|</i>
-      <a href="privacidade.html">Privacidade</a>
-    </div>
-    <span>© 2026 Fluxxo · Todos os direitos reservados.</span>
   </div>
 </footer>
-</div>
 
-<script src="js/blog.js?v=937"></script>
-<script src="js/artigo.js?v=936"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="js/web-scroll.js?v=936"></script>
 </body>
 </html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistemas e Automações Baseados no Seu Processo | Fluxxo</title>
+<meta name="description" content="Painéis, integrações e automações definidos depois de mapear como sua empresa trabalha. Tecnologia para reduzir etapas, erros e tarefas repetitivas.">
+<link rel="canonical" href="https://fluxxo.io/sistemas">
+<meta name="theme-color" content="#0e0815">
+<link rel="icon" href="/favicon.ico?v=3" sizes="48x48">
+<link rel="icon" href="/favicon-32.png?v=3" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fluxxo">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Sistemas e Automações Baseados no Seu Processo | Fluxxo">
+<meta property="og:description" content="Painéis, integrações e automações definidos depois de mapear como sua empresa trabalha. Tecnologia para reduzir etapas, erros e tarefas repetitivas.">
+<meta property="og:url" content="https://fluxxo.io/sistemas">
+<meta property="og:image" content="https://fluxxo.io/img/brand/og-cover.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sistemas e Automações Baseados no Seu Processo | Fluxxo">
+<meta name="twitter:description" content="Painéis, integrações e automações definidos depois de mapear como sua empresa trabalha. Tecnologia para reduzir etapas, erros e tarefas repetitivas.">
+<meta name="twitter:image" content="https://fluxxo.io/img/brand/og-cover.jpg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=1011">
+<link rel="stylesheet" href="css/blog.css?v=938">
+<link rel="stylesheet" href="css/sistemas.css?v=938">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Sistemas e automação sob medida","serviceType":["Automação de processos","Painéis e dashboards","Integrações entre ferramentas"],"provider":{"@id":"https://fluxxo.io/#org"},"areaServed":"BR"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://fluxxo.io/"},{"@type":"ListItem","position":2,"name":"Sistemas","item":"https://fluxxo.io/sistemas"}]}]}</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xpoicaxxyd");
+</script>
+<script src="/js/r.js?v=2" defer></script>
+</head>
+<body>
+
+<!-- ============ INTRO · animação de entrada (o fluxo se acende) ============ -->
+<div class="sis-intro" id="sisIntro" aria-hidden="true">
+  <div class="si-stage">
+    <span class="si-line"></span>
+    <span class="si-burst"></span>
+    <span class="si-orb"></span>
+    <i class="si-pulse pa"></i><i class="si-pulse pb"></i><i class="si-pulse pc"></i><i class="si-pulse pd"></i>
+    <span class="si-tag">iniciando o fluxo</span>
+  </div>
+</div>
+
+<!-- ============ FUNDO EM PROFUNDIDADE · parallax contínuo ============ -->
+<div class="depth-bg" aria-hidden="true">
+  <div class="db-grid" id="dbGrid"></div>
+  <span class="db-glow g1" id="dbG1"></span>
+  <span class="db-glow g2" id="dbG2"></span>
+  <span class="db-glow g3" id="dbG3"></span>
+  <span class="db-glow g4" id="dbG4"></span>
+  <div class="db-particles" id="dbParticles"></div>
+  <span class="db-vignette"></span>
+</div>
+
+<!-- ============ NAV (padrão da home) ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-shell">
+    <a href="index.html" class="brand">
+      <img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="brand-img">
+    </a>
+    <div class="nav-links">
+      <a href="design.html">Design</a>
+      <a href="webdesign.html">Web</a>
+      <a href="social.html">Redes sociais</a>
+      <a href="sistemas.html">Sistemas</a>
+      <a href="blog.html">Blog</a>
+      <a href="analise.html" class="nav-tool">Análise grátis</a>
+    </div>
+    <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20pagina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20conversar%20sobre%20um%20sistema%20pro%20meu%20negocio." target="_blank" rel="noopener" class="nav-cta">Falar com a gente</a>
+    <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mpanel">
+  <a href="design.html">Design</a>
+  <a href="webdesign.html">Web</a>
+  <a href="sistemas.html">Sistemas</a>
+  <a href="social.html">Redes sociais</a>
+  <a href="blog.html">Blog</a>
+  <a href="analise.html">Análise grátis</a>
+  <a href="https://wa.me/5585992657146?text=Oi%21%20Usei%20a%20calculadora%20da%20Fluxxo%20e%20quero%20recuperar%20esse%20tempo.%20Bora%20conversar%3F" target="_blank" rel="noopener">Falar com a gente</a>
+</div>
+
+<!-- ============ HERO · vídeo desfocado + terminal vivo ============ -->
+<header class="sis-hero">
+  <div class="sis-video" aria-hidden="true">
+    <span class="sis-fallback"></span>
+    <span class="sis-shade"></span>
+  </div>
+  <div class="wrap sis-hero-in">
+    <p class="b-kicker">Sistemas · automação · sob medida</p>
+    <h1>Seu processo não deveria<br><span class="grad">se adaptar ao software.</span></h1>
+    <p class="sis-sub">Primeiro mapeamos como o trabalho acontece, onde ele se repete e onde surgem erros. Depois definimos se a resposta é um sistema, uma integração, uma automação, ou algo mais simples.</p>
+    <div class="sis-terminal" aria-hidden="true">
+      <span class="st-bar"><i></i><i></i><i></i><em>Fluxxo · analisando o processo</em></span>
+      <div class="st-body" id="stBody"></div>
+    </div>
+    <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20pagina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20desenhar%20a%20minha%20automacao." target="_blank" rel="noopener" class="btn-primary sis-btn">Mapear meu processo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ O COLAPSO · 12 tarefas viram 1 fluxo ============ -->
+<section class="col-stage" id="colapso" aria-label="O trabalho manual desmorona">
+  <div class="col-sticky">
+    <div class="col-head" id="colHead">
+      <span class="kicker">O jeito antigo</span>
+      <h2>O problema não é fazer uma tarefa. <span class="grad">É repeti-la sem necessidade.</span></h2>
+    </div>
+    <div class="col-field" id="colField">
+      <span class="col-chip">copia do WhatsApp</span>
+      <span class="col-chip">cola na planilha</span>
+      <span class="col-chip">confere pagamento</span>
+      <span class="col-chip">atualiza estoque</span>
+      <span class="col-chip">responde de novo</span>
+      <span class="col-chip">gera relatório</span>
+      <span class="col-chip">repete amanhã</span>
+      <div class="col-node" id="colNode">
+        <div class="cn-flow" aria-hidden="true">
+          <span class="cn-halo"></span>
+          <span class="cn-burst" id="cnBurst"></span>
+          <span class="cn-track"></span>
+          <span class="cn-corona"></span>
+          <span class="cn-orb"></span>
+          <i class="cn-pulse p1"></i><i class="cn-pulse p2"></i><i class="cn-pulse p3"></i><i class="cn-pulse p4"></i>
+          <span class="cn-beam" id="cnBeam"></span>
+          <i class="cn-drop" id="cnDrop"></i>
+        </div>
+        <div class="cn-result">
+          <b>A gente descobre <span class="cn-hl">o que deveria existir.</span></b>
+          <p><span>3h por dia podem virar</span> <b class="cn-zero">minutos</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMOS VIVAS · showcase pinado (3 atos no scroll) ============ -->
+<section class="show-stage" id="demos" aria-label="Sistemas rodando ao vivo">
+  <div class="show-sticky">
+    <div class="show-head">
+      <span class="kicker">Nada aqui é uma promessa abstrata</span>
+      <h2>A solução aparece <span class="grad">funcionando.</span></h2>
+    </div>
+    <div class="show-stack" id="showStack">
+
+      <article class="show-act" data-act="0">
+        <div class="show-demo">
+          <div class="demo-frame">
+            <div class="demo-chrome"><i></i><i></i><i></i><em>painel-financeiro</em></div>
+            <div class="demo-canvas">
+              <!-- Painel construido em SVG (nao imagem): escala sem perder nitidez
+                   em qualquer tela e nao pesa no carregamento. -->
+              <div class="demo-mock" data-placeholder aria-hidden="true">
+                <svg class="dsh" viewBox="0 0 560 357" preserveAspectRatio="xMidYMid slice" role="img"
+                     aria-label="Painel financeiro com receita, despesas, lucro e faturamento dos ultimos 12 meses">
+                  <defs>
+                    <linearGradient id="dshArea" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#8b93ff" stop-opacity=".42"/>
+                      <stop offset="1" stop-color="#8b93ff" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="dshStroke" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#c9a0ff"/>
+                    </linearGradient>
+                    <linearGradient id="dshLogo" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#a99cff"/><stop offset="1" stop-color="#6366f1"/>
+                    </linearGradient>
+                    <linearGradient id="dshScanG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b93ff" stop-opacity="0"/><stop offset=".7" stop-color="#8b93ff" stop-opacity=".3"/><stop offset="1" stop-color="#cbb0ff" stop-opacity=".85"/></linearGradient>
+                    <linearGradient id="dshSheen" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+                      <stop offset=".5" stop-color="#fff" stop-opacity=".07"/>
+                      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+                    </linearGradient>
+                    <clipPath id="dshChartClip"><rect x="112" y="136" width="284" height="136" rx="10"/></clipPath>
+                  </defs>
+
+                  <rect width="560" height="357" fill="#0a0d22"/>
+
+                  <!-- barra lateral -->
+                  <rect width="96" height="357" fill="#080b1c"/>
+                  <line x1="96" y1="0" x2="96" y2="357" class="dsh-hair"/>
+                  <rect x="16" y="16" width="20" height="20" rx="6" fill="url(#dshLogo)"/>
+                  <text x="43" y="31" class="dsh-t-brand">Fluxxo</text>
+                  <rect x="8" y="48" width="80" height="22" rx="7" fill="rgba(99,102,241,.2)"/>
+                  <rect x="8" y="48" width="2.5" height="22" rx="1.5" fill="#8b93ff"/>
+                  <text x="20" y="63" class="dsh-t-navon">Visão geral</text>
+                  <text x="20" y="87" class="dsh-t-nav">Receitas</text>
+                  <text x="20" y="111" class="dsh-t-nav">Despesas</text>
+                  <text x="20" y="135" class="dsh-t-nav">Metas</text>
+                  <text x="20" y="159" class="dsh-t-nav">Relatórios</text>
+                  <text x="20" y="183" class="dsh-t-nav">Config.</text>
+                  <circle cx="26" cy="331" r="9" fill="rgba(169,156,255,.22)"/>
+                  <text x="26" y="335" class="dsh-t-ava">M</text>
+                  <text x="42" y="335" class="dsh-t-nav">Mateus</text>
+
+                  <!-- cabecalho -->
+                  <text x="112" y="31" class="dsh-t-h1">Visão geral</text>
+                  <rect x="392" y="13" width="68" height="22" rx="7" class="dsh-pill"/>
+                  <text x="426" y="28" class="dsh-t-pill" text-anchor="middle">Julho 2026</text>
+                  <rect x="470" y="13" width="74" height="22" rx="7" class="dsh-pill"/>
+                  <circle cx="483" cy="24" r="3" fill="#4ade80" class="dsh-live"/>
+                  <text x="492" y="28" class="dsh-t-live">ao vivo</text>
+                  <line x1="112" y1="44" x2="544" y2="44" class="dsh-hair"/>
+
+                  <!-- indicadores -->
+                  <rect x="112" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="124" y="73" class="dsh-t-lbl">RECEITA</text>
+                  <text x="124" y="95" class="dsh-t-val">R$ 84.320</text>
+                  <text x="124" y="112" class="dsh-t-up">▲ 18,4%</text>
+                  <path class="dsh-spark" d="M196,116 L207,109 L218,112 L229,102 L240,95"/>
+
+                  <rect x="260" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="272" y="73" class="dsh-t-lbl">DESPESAS</text>
+                  <text x="272" y="95" class="dsh-t-val">R$ 31.940</text>
+                  <text x="272" y="112" class="dsh-t-up">▼ 4,2%</text>
+                  <path class="dsh-spark" d="M344,100 L355,107 L366,104 L377,111 L388,116"/>
+
+                  <rect x="408" y="56" width="136" height="68" rx="10" class="dsh-card"/>
+                  <text x="420" y="73" class="dsh-t-lbl">LUCRO LÍQUIDO</text>
+                  <text x="420" y="95" class="dsh-t-val">R$ 52.380</text>
+                  <text x="420" y="112" class="dsh-t-up">▲ 26,1% · margem 62%</text>
+                  <path class="dsh-spark" d="M492,118 L503,110 L514,113 L525,101 L536,93"/>
+
+                  <!-- faturamento -->
+                  <rect x="112" y="136" width="284" height="136" rx="10" class="dsh-card"/>
+                  <text x="124" y="155" class="dsh-t-cap">Faturamento · 12 meses</text>
+                  <line x1="124" y1="197" x2="384" y2="197" class="dsh-grid"/>
+                  <line x1="124" y1="226" x2="384" y2="226" class="dsh-grid"/>
+                  <line x1="124" y1="254" x2="384" y2="254" class="dsh-grid"/>
+                  <path class="dsh-area" d="M124,224.8 L147.6,218.7 L171.3,221.3 L194.9,209.3 L218.5,204.1 L242.2,207.6 L265.8,197.2 L289.5,192.1 L313.1,195.5 L336.7,184.3 L360.4,178.3 L384,172.3 L384,254 L124,254 Z"/>
+                  <path class="dsh-line" d="M124,224.8 L147.6,218.7 L171.3,221.3 L194.9,209.3 L218.5,204.1 L242.2,207.6 L265.8,197.2 L289.5,192.1 L313.1,195.5 L336.7,184.3 L360.4,178.3 L384,172.3"/>
+                  <rect class="dsh-scan" x="124" y="168" width="46" height="86" clip-path="url(#dshChartClip)"/>
+                    <circle class="dsh-ring" cx="384" cy="172.3" r="4" fill="none" stroke="#8b93ff" stroke-width="1.5"/>
+                    <circle cx="384" cy="172.3" r="3.5" fill="#fff" stroke="#8b93ff" stroke-width="2" class="dsh-dot"/>
+                  <rect x="322" y="148" width="58" height="18" rx="6" class="dsh-tip"/>
+                  <text x="351" y="161" class="dsh-t-tip" text-anchor="middle">R$ 84,3 mil</text>
+                  <text x="124" y="266" class="dsh-t-ax">jan</text>
+                  <text x="194" y="266" class="dsh-t-ax">abr</text>
+                  <text x="266" y="266" class="dsh-t-ax">jul</text>
+                  <text x="336" y="266" class="dsh-t-ax">out</text>
+                  <text x="384" y="266" class="dsh-t-ax" text-anchor="end">dez</text>
+                  <rect x="112" y="136" width="90" height="136" fill="url(#dshSheen)" clip-path="url(#dshChartClip)" class="dsh-sheen"/>
+
+                  <!-- por canal -->
+                  <rect x="408" y="136" width="136" height="136" rx="10" class="dsh-card"/>
+                  <text x="420" y="155" class="dsh-t-cap">Por canal</text>
+                  <text x="420" y="178" class="dsh-t-row">Vendas</text>
+                  <text x="532" y="178" class="dsh-t-row2" text-anchor="end">48%</text>
+                  <rect x="420" y="184" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="184" width="54" height="4" rx="2" class="dsh-bar b1"/>
+                  <text x="420" y="200" class="dsh-t-row">Serviços</text>
+                  <text x="532" y="200" class="dsh-t-row2" text-anchor="end">27%</text>
+                  <rect x="420" y="206" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="206" width="30" height="4" rx="2" class="dsh-bar b2"/>
+                  <text x="420" y="222" class="dsh-t-row">Recorrência</text>
+                  <text x="532" y="222" class="dsh-t-row2" text-anchor="end">19%</text>
+                  <rect x="420" y="228" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="228" width="21" height="4" rx="2" class="dsh-bar b3"/>
+                  <text x="420" y="244" class="dsh-t-row">Indicação</text>
+                  <text x="532" y="244" class="dsh-t-row2" text-anchor="end">6%</text>
+                  <rect x="420" y="250" width="112" height="4" rx="2" class="dsh-track"/>
+                  <rect x="420" y="250" width="7" height="4" rx="2" class="dsh-bar b4"/>
+
+                  <!-- movimentacoes -->
+                  <rect x="112" y="284" width="432" height="60" rx="10" class="dsh-card"/>
+                  <circle cx="126" cy="299" r="3" fill="#4ade80"/>
+                  <text x="136" y="302" class="dsh-t-row">Assinatura Pro · hoje, 09:14</text>
+                  <text x="532" y="302" class="dsh-t-in" text-anchor="end">+ R$ 1.290,00</text>
+                  <circle cx="126" cy="317" r="3" fill="#4ade80"/>
+                  <text x="136" y="320" class="dsh-t-row">Projeto landing page · ontem</text>
+                  <text x="532" y="320" class="dsh-t-in" text-anchor="end">+ R$ 4.800,00</text>
+                  <circle cx="126" cy="335" r="3" fill="#f87171"/>
+                  <text x="136" y="338" class="dsh-t-row">Ferramentas e licenças · ontem</text>
+                  <text x="532" y="338" class="dsh-t-out" text-anchor="end">− R$ 320,00</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="show-copy">
+          <span class="show-idx">01</span>
+          <b>Painéis e SaaS</b>
+          <p>Informações organizadas para a decisão que a equipe precisa tomar, sem procurar dados em várias planilhas.</p>
+        </div>
+      </article>
+
+      <article class="show-act" data-act="1">
+        <div class="show-demo">
+          <div class="demo-frame">
+            <div class="demo-chrome"><i></i><i></i><i></i><em>hub-de-automacoes</em></div>
+            <div class="demo-canvas">
+              <div class="demo-mock demo-flow" data-placeholder aria-hidden="true">
+                <span class="fl-node p-tl">WhatsApp</span>
+                <span class="fl-node p-tr">Site</span>
+                <span class="fl-node p-bl">CRM</span>
+                <span class="fl-node p-br">E-mail</span>
+                <span class="fl-node p-l">Planilha</span>
+                <span class="fl-node p-r">Financeiro</span>
+                <span class="fl-hub">Fluxxo</span>
+                <svg class="fl-lines" viewBox="0 0 400 250" preserveAspectRatio="none">
+                  <path d="M64 46 L200 125"/><path d="M336 46 L200 125"/><path d="M64 204 L200 125"/><path d="M336 204 L200 125"/><path d="M40 125 L200 125"/><path d="M360 125 L200 125"/>
+                </svg>
+                <i class="fl-dot f1"></i><i class="fl-dot f2"></i><i class="fl-dot f3"></i><i class="fl-dot f4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="show-copy">
+          <span class="show-idx">02</span>
+          <b>Automações e integrações</b>
+          <p>Dados passam entre as ferramentas corretas sem cópia manual e sem obrigar a empresa a trocar tudo o que já utiliza.</p>
+        </div>
+      </article>
+
+      <article class="show-act" data-act="2">
+        <div class="show-demo">
+          <div class="demo-frame">
+            <div class="demo-chrome"><i></i><i></i><i></i><em>atendimento-24h</em></div>
+            <div class="demo-canvas">
+              <div class="demo-mock demo-bot" data-placeholder aria-hidden="true">
+                <span class="bt-msg u1">oi, vocês atendem sábado?</span>
+                <span class="bt-typing"><i></i><i></i><i></i></span>
+                <span class="bt-msg r1">Atendemos sim! Sábado das 8h às 12h. Quer agendar um horário? 😊</span>
+                <span class="bt-msg u2">quero! pode ser 9h</span>
+                <span class="bt-msg r2">Fechado: sábado, 9h ✓ Te mandei a confirmação no WhatsApp.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="show-copy">
+          <span class="show-idx">03</span>
+          <b>Atendimento automático</b>
+          <p>Respostas, triagem e agendamento para situações repetitivas, com transição clara para atendimento humano quando necessário.</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="show-rail" id="showRail" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ SISTEMAS NO AR · vitrines em vídeo ============ -->
+<!-- Pra ativar os vídeos de verdade: coloque video/sistema-1.mp4 e video/sistema-2.mp4 nesta pasta.
+     Enquanto o arquivo não existir (ou não carregar), o placeholder animado abaixo cobre o vídeo sozinho. -->
+<section class="sis-live wrap" id="sistemas-no-ar">
+  <div class="work-head b-rv">
+    <span class="kicker">Sistemas no ar</span>
+    <h2>Dois processos transformados <span class="grad">em ferramentas reais.</span></h2>
+    <p>Não foram criados porque “todo negócio precisa de um sistema”. Foram criados porque havia informações e tarefas específicas que precisavam ser organizadas.</p>
+  </div>
+  <div class="sl-grid">
+    <div class="sl-window b-rv">
+      <div class="sl-bar"><i></i><i></i><i></i><em>gestor-financeiro</em></div>
+      <div class="sl-body">
+        <video class="sys-video" data-sysvideo src="video/sistema-1.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="sl-placeholder" data-placeholder>
+          <div class="sl-skel" aria-hidden="true">
+            <span class="sk-bar w1"></span>
+            <span class="sk-bar w2"></span>
+            <div class="sk-row"><span class="sk-block"></span><span class="sk-block"></span><span class="sk-block"></span></div>
+            <span class="sk-bar w3"></span>
+          </div>
+          <span class="sl-badge">vídeo em produção</span>
+        </div>
+      </div>
+      <div class="sl-meta">
+        <b>Gestor financeiro</b>
+        <p>Saldo, orçamento por categoria e projeção do mês na mesma tela. Alertas aparecem quando uma categoria ultrapassa o limite definido.</p>
+        <div class="sl-tags"><span>painel sob medida</span><span>assessor com IA</span></div>
+      </div>
+    </div>
+
+    <div class="sl-window b-rv">
+      <div class="sl-bar"><i></i><i></i><i></i><em>painel-de-demandas</em></div>
+      <div class="sl-body">
+        <video class="sys-video" data-sysvideo src="video/sistema-2.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="sl-placeholder" data-placeholder>
+          <div class="sl-skel" aria-hidden="true">
+            <span class="sk-bar w1"></span>
+            <span class="sk-bar w2"></span>
+            <div class="sk-row"><span class="sk-block"></span><span class="sk-block"></span><span class="sk-block"></span></div>
+            <span class="sk-bar w3"></span>
+          </div>
+          <span class="sl-badge">vídeo em produção</span>
+        </div>
+      </div>
+      <div class="sl-meta">
+        <b>Painel de demandas</b>
+        <p>Tarefas visualizadas em lista, kanban ou calendário, com cliente, responsável e prazo no mesmo card.</p>
+        <div class="sl-tags"><span>kanban e calendário</span><span>automações</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA ============ -->
+<section class="calc wrap" id="calculadora">
+  <div class="calc-card b-rv">
+    <div class="calc-left">
+      <span class="kicker">Calculadora de tempo perdido</span>
+      <h2>Quanto uma tarefa repetitiva <span class="grad">consome por ano?</span></h2>
+      <label class="calc-field">Horas por semana em tarefas que seguem sempre as mesmas etapas
+        <div class="calc-slider"><input type="range" id="cHoras" min="1" max="40" value="10"><b id="cHorasV">10h</b></div>
+      </label>
+      <label class="calc-field">Quanto custa uma hora da pessoa que executa essas tarefas
+        <div class="calc-slider"><input type="range" id="cValor" min="20" max="300" step="5" value="60"><b id="cValorV">R$ 60</b></div>
+      </label>
+    </div>
+    <div class="calc-right">
+      <span class="calc-lbl">Por ano, isso representa</span>
+      <b class="calc-horas" id="outHoras">520 horas</b>
+      <b class="calc-grana" id="outGrana">R$ 31.200</b>
+      <span class="calc-note">em um processo que precisa ser mapeado antes de ser automatizado</span>
+      <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20pagina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20conversar%20sobre%20um%20sistema%20pro%20meu%20negocio." class="btn-primary sis-btn" id="calcCta" target="_blank" rel="noopener">Quero mapear esse processo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEGMENTOS · trilho horizontal pinado ============ -->
+<section class="seg-stage" id="segmentos" aria-label="Onde a automação encaixa">
+  <div class="seg-sticky">
+    <div class="seg-head">
+      <span class="kicker">Onde isso pode se aplicar</span>
+      <h2>Se existe repetição, <span class="grad">existe algo para analisar.</span></h2>
+    </div>
+    <div class="seg-viewport">
+      <div class="seg-track" id="segTrack">
+        <article class="seg-card">
+          <span class="seg-num">01</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8v8M8 12h8"/></svg></div>
+          <b>Clínicas e consultórios</b>
+          <p>Agendamento, confirmação, retorno e organização de informações, respeitando os limites e as exigências do atendimento.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">02</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+          <b>E-commerce</b>
+          <p>Pedido, estoque, pagamento, rastreio e pós-venda sem repetir o mesmo dado em vários lugares.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">03</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M10.3 8.3v5l4.4-2.5-4.4-2.5z" fill="currentColor" stroke="none"/></svg></div>
+          <b>Negócios digitais</b>
+          <p>Venda, liberação de acesso, cobrança, suporte e acompanhamento organizados conforme o produto.</p>
+        </article>
+        <article class="seg-card">
+          <span class="seg-num">04</span>
+          <div class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4 8 4v14"/><path d="M9.5 21v-5.5h5V21"/><path d="M9.5 9.5h.01M14.5 9.5h.01"/></svg></div>
+          <b>Imobiliárias e corretores</b>
+          <p>Entrada, qualificação, distribuição e acompanhamento de leads sem depender de uma planilha paralela.</p>
+        </article>
+        <article class="seg-card seg-card-cta">
+          <span class="seg-num">+</span>
+          <b>Seu segmento não está aqui?</b>
+          <p>Não precisa estar. O ponto de partida não é o segmento. É o processo que consome tempo, cria erro ou impede a equipe de enxergar o que está acontecendo.</p>
+          <a href="https://wa.me/5585992657146?text=Oi%21%20Meu%20processo%20%C3%A9%20meio%20diferente%2C%20quero%20ver%20como%20a%20Fluxxo%20automatizaria%20pra%20mim." target="_blank" rel="noopener" class="seg-card-link">Desenhar o meu processo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+    <div class="seg-progress" id="segProgress" aria-hidden="true"><span></span></div>
+  </div>
+</section>
+
+<!-- ============ FECHO · cena de encerramento com texto formando + fluxxo ============ -->
+<section class="sclose-stage" id="fecho" aria-label="Fechamento">
+  <div class="sclose-sticky">
+    <span class="sclose-glow" id="scloseGlow" aria-hidden="true"></span>
+    <span class="sclose-flash" id="scloseFlash" aria-hidden="true"></span>
+
+    <div class="sclose-line" id="scloseLine" aria-hidden="true">
+      <span>Antes</span> <span>de</span> <span>pedir</span> <span>um</span> <span>sistema,</span> <span>mostre</span> <span>o</span> <span class="w-hot">processo.</span>
+    </div>
+
+    <div class="sclose-final" id="scloseFinal">
+      <span class="sclose-brand" id="scloseBrand" aria-label="fluxxo"><span>f</span><span>l</span><span>u</span><span>x</span><span>x</span><span>o</span></span>
+      <p>Conte qual tarefa mais se repete, quem participa, quais ferramentas estão envolvidas e onde normalmente algo dá errado. A primeira resposta é um mapa, não um orçamento automático.</p>
+      <div class="sis-mag" id="sisMag">
+        <a href="https://wa.me/5585992657146?text=Oi%21%20Usei%20a%20calculadora%20da%20Fluxxo%20e%20quero%20recuperar%20esse%20tempo.%20Bora%20conversar%3F" class="btn-primary sis-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:19px;height:19px"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 0 0 4.5 4.3c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+          <span>Mapear minha operação</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RODAPÉ (padrão da home) ============ -->
+<div class="footer-wrap">
+<footer class="footer-card">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-line"><img src="img/brand/fluxxo-logo.svg" alt="fluxxo" class="logo-img"></div>
+      <p class="tagline">Conteúdo, sites e sistemas pensados a partir do seu negócio. Fortaleza, CE.</p>
+    </div>
+    <div class="footer-col">
+      <b>Navegue</b>
+      <a href="index.html">Início</a>
+      <a href="design.html">Design</a>
+      <a href="webdesign.html">Web</a>
+      <a href="social.html">Redes sociais</a>
+      <a href="sistemas.html">Sistemas</a>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-col">
+      <b>Fale com a gente</b>
+      <a href="https://wa.me/5585992657146?text=Oi%21%20Vi%20a%20pagina%20de%20sistemas%20da%20Fluxxo%20e%20quero%20desenhar%20a%20minha%20automacao." target="_blank" rel="noopener">Falar com a gente</a>
+      <a href="analise.html">Análise gratuita do seu site</a>
+      <a href="mailto:contato@fluxxo.io">contato@fluxxo.io</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <div class="links">
+      <a href="termos.html">Termos</a><i>|</i>
+      <a href="privacidade.html">Privacidade</a>
+    </div>
+    <span>© 2026 Fluxxo · Todos os direitos reservados.</span>
+  </div>
+</footer>
+</div>
+
+<script src="js/blog.js?v=937"></script>
+<script src="js/sistemas.js?v=936"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/web-scroll.js?v=936"></script>
+</body>
+</html>

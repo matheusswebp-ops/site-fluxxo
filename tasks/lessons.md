@@ -127,3 +127,35 @@ só no selo acima da headline do hero. Subi para produção no lugar errado.
 página tem mais de um candidato (cabeçalho, selo do hero, rodapé), trocar só
 o mais visível da dobra citada. Na dúvida, perguntar antes de subir, e não
 mexer em mais de um lugar.
+
+## 2026-09-30 — Foto horizontal no celular: object-position não centraliza
+
+**O erro:** no hero da R80+ no celular usei `object-position:90% 12%` para
+"centralizar" a Clara numa foto 16:9. Numa caixa quase quadrada a foto quase
+não tem sobra lateral, então nenhuma porcentagem põe o rosto no meio — e o
+valor certo muda com a largura do aparelho. Reportei como alinhado sem medir;
+o Mateus viu torto no celular dele (duas vezes).
+
+**A regra:** para centralizar uma pessoa numa foto larga no celular, ampliar
+a foto (width ~170%) e ancorar o ponto do rosto no meio: `left:50%;
+transform:translateX(-X%)`, com X = posição do rosto na foto. Caixa com
+`overflow:hidden`. Verificar medindo `rosto === innerWidth/2` em 320–768 e
+conferir que a foto cobre as bordas, não só olhando uma captura.
+
+## 2026-10-11 — Copy da home nova reprovada 3 vezes
+- Erro: escrevi headline sem saber o que a Fluxxo mais vende, para quem e qual a prova real. Saiu genérico ("do briefing ao ar", lista de serviços, "redes que vendem").
+- Regra: antes de escrever copy institucional, fechar com o dono (1) cliente principal, (2) serviço carro-chefe, (3) diferencial concreto, (4) provas reais, (5) uma copy de referência que ele goste. Sem isso, não mandar opção.
+- Regra: copy literal, sem analogia; social media é o serviço principal da Fluxxo.
+
+## 2026-10-12 · "Nada clicável" vale para ilustração, não para filtro de verdade
+- Ele pediu "nada clicável" nas ilustrações (seção 4), mas no portfólio quis abas que a pessoa clica ("é melhor pra pessoa clicar").
+- Regra: animação/ilustração toca sozinha; navegação real de conteúdo (filtro de portfólio, categorias) pode e deve ser clicável. Na dúvida, perguntar.
+
+## 2026-10-12 · Blog: claro, estrutura escolhida por ele, sem repetir conteúdo
+- Fiz o blog escuro igual à home e ele reprovou ("quero blog light"); depois reprovou a estrutura de grade e escolheu "Revista" numa pergunta com prévias.
+- Ele não gosta do mesmo item aparecendo duas vezes na página (capa + lista com os mesmos artigos).
+- Regra: página de leitura nasce clara; antes de montar uma página nova, mostrar 2–3 estruturas com prévia ASCII e deixar ele escolher; nunca listar o mesmo conteúdo duas vezes.
+- Artigo: imagem de capa SEMPRE primeiro (logo após "Voltar"), na mesma largura e alinhamento da coluna de texto — conferir medindo left/width de capa, título e parágrafo.
+- Copy herdada das páginas antigas também passa pelo filtro "literal": frase tipo "repare menos em um estilo X e mais em como cada projeto encontra uma linguagem própria" foi reprovada como sem sentido — trocar por o que é, para quem.
+- Subhead de portfólio não lista ramos/nichos de cliente (ele reprovou "saúde, imobiliário, suplementos…"); dizer o que é e o diferencial.
+- Mockup de tela (notebook/celular): nada sobreposto à tela; etiquetas flutuantes por cima foram reprovadas ("tá tampando").
