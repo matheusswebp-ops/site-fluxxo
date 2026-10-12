@@ -159,3 +159,5 @@ conferir que a foto cobre as bordas, não só olhando uma captura.
 - Copy herdada das páginas antigas também passa pelo filtro "literal": frase tipo "repare menos em um estilo X e mais em como cada projeto encontra uma linguagem própria" foi reprovada como sem sentido — trocar por o que é, para quem.
 - Subhead de portfólio não lista ramos/nichos de cliente (ele reprovou "saúde, imobiliário, suplementos…"); dizer o que é e o diferencial.
 - Mockup de tela (notebook/celular): nada sobreposto à tela; etiquetas flutuantes por cima foram reprovadas ("tá tampando").
+- Ativos de marca (favicon, ícones, logos): baixar o arquivo oficial do design system (artifact 41sfSjrn1Q5LTCZLiXpczT, project/design-system.json → blob) em vez de montar. img/brand/fluxxo-simbolo-*.svg ainda é o símbolo ANTIGO (setas); o X novo está em img/home/fluxxo-simbolo-degrade.svg.
+- Menu de site: sempre listar todas as páginas novas (portfólios, blog) ao trocar o site; conferir menu e gaveta antes de subir.
