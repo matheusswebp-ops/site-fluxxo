@@ -92,12 +92,21 @@ def cabeca_original(texto):
     return "\n".join(x for x in linhas if x.strip())
 
 
+def favicon(page):
+    """Favicon da marca nova (fundo roxo e X branco, do design system); v=4 fura o cache do ícone antigo."""
+    page = page.replace("/favicon.ico?v=3", "/favicon.ico?v=4").replace("/favicon-32.png?v=3", "/favicon-32.png?v=4").replace("/apple-touch-icon.png?v=3", "/apple-touch-icon.png?v=4")
+    if "favicon.svg" not in page:
+        page = page.replace('<link rel="icon" href="/favicon-32.png?v=4" type="image/png" sizes="32x32">',
+                            '<link rel="icon" href="/favicon-32.png?v=4" type="image/png" sizes="32x32">\n<link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">', 1)
+    return page
+
+
 def pagina(texto_original, corpo, classe):
     seo = cabeca_original(texto_original)
     robots = '<!-- prévia do blog novo: fora do Google até virar o blog -->\n<meta name="robots" content="noindex, nofollow">\n' if PREVIA else ""
     if PREVIA:
         seo = re.sub(r'\n?<link rel="canonical"[^>]*>', "", seo)
-    return f"""<!DOCTYPE html>
+    return favicon(f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -105,11 +114,11 @@ def pagina(texto_original, corpo, classe):
 {robots}<meta name="theme-color" content="#FFFFFF">
 {seo}
 {FONTES}
-<link rel="stylesheet" href="css/home.css?v=10">
+<link rel="stylesheet" href="css/home.css?v=12">
 <link rel="stylesheet" href="css/blog-nova.css?v={V}">
 <script>document.documentElement.classList.add("js")</script>
 <script src="/js/r.js?v=2" defer></script>
-<script src="js/home.js?v=10" defer></script>
+<script src="js/home.js?v=11" defer></script>
 <script src="js/blog-nova.js?v={V}" defer></script>
 </head>
 <body class="{classe}">
@@ -128,7 +137,7 @@ def pagina(texto_original, corpo, classe):
 
 </body>
 </html>
-"""
+""")
 
 
 def seo(page, titulo, desc, url, nome_curto, colecao=None, servico=None):

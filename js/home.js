@@ -75,29 +75,28 @@
   window.addEventListener("scroll", aoRolar, { passive: true });
   aoRolar();
 
-  /* ---------- Submenu de serviços ---------- */
-  var caixa = document.getElementById("menuServicos");
-  var botao = caixa && caixa.querySelector("button");
-  var tempoFechar = null;
-  function abrirMenu(abrir) {
-    clearTimeout(tempoFechar);
-    caixa.classList.toggle("aberto", abrir);
-    botao.setAttribute("aria-expanded", abrir ? "true" : "false");
-  }
-  if (caixa) {
-    var hoverReal = window.matchMedia("(hover: hover)").matches;
+  /* ---------- Submenus (Serviços e Portfólio): um aberto por vez ---------- */
+  var caixas = document.querySelectorAll(".has-menu");
+  var hoverReal = window.matchMedia("(hover: hover)").matches;
+  caixas.forEach(function (caixa) {
+    var botao = caixa.querySelector("button");
+    var tempoFechar = null, tempoAbrir = null;
+    function abrirMenu(abrir) {
+      clearTimeout(tempoFechar);
+      if (abrir) caixas.forEach(function (outra) { if (outra !== caixa) { outra.classList.remove("aberto"); outra.querySelector("button").setAttribute("aria-expanded", "false"); } });
+      caixa.classList.toggle("aberto", abrir);
+      botao.setAttribute("aria-expanded", abrir ? "true" : "false");
+    }
     if (hoverReal) {
       // pequena espera antes de abrir, para não piscar quando o mouse só passa por cima
-      var tempoAbrir = null;
       caixa.addEventListener("mouseenter", function () { clearTimeout(tempoFechar); tempoAbrir = setTimeout(function () { abrirMenu(true); }, 90); });
-      caixa.addEventListener("mouseleave", function () { clearTimeout(tempoAbrir); });
-      caixa.addEventListener("mouseleave", function () { tempoFechar = setTimeout(function () { abrirMenu(false); }, 220); });
+      caixa.addEventListener("mouseleave", function () { clearTimeout(tempoAbrir); tempoFechar = setTimeout(function () { abrirMenu(false); }, 220); });
     }
     botao.addEventListener("click", function () { abrirMenu(!caixa.classList.contains("aberto")); });
     document.addEventListener("click", function (e) { if (!caixa.contains(e.target)) abrirMenu(false); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && caixa.classList.contains("aberto")) { abrirMenu(false); botao.focus(); } });
     caixa.querySelectorAll(".mega a").forEach(function (a) { a.addEventListener("click", function () { abrirMenu(false); }); });
-  }
+  });
 
   /* ---------- Gaveta do celular ---------- */
   var burger = document.getElementById("burger");

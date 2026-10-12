@@ -177,6 +177,8 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
 }
 .mega-corpo { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 10px; }
 .mega-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; align-content: start; }
+/* submenu do portfólio: mais estreito, só a grade de 4 */
+.mega-port .mega-grade { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .mega-item { display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: 14px; }
 .mega-item:hover, .mega-item:focus-visible { background: rgba(255, 255, 255, .05); outline: none; }
 .mega-item:focus-visible { box-shadow: inset 0 0 0 1.5px var(--lilac); }
@@ -253,7 +255,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
   opacity: 0; transform: translateY(30px);
   transition: opacity .55s cubic-bezier(.22, 1, .36, 1), transform .55s cubic-bezier(.22, 1, .36, 1), color .2s;
 }
-.gaveta-links a::before { content: "0" counter(gv); min-width: 22px; font: 600 11px var(--tech); letter-spacing: .08em; color: var(--lilac); opacity: .9; }
+.gaveta-links a::before { content: counter(gv, decimal-leading-zero); min-width: 22px; font: 600 11px var(--tech); letter-spacing: .08em; color: var(--lilac); opacity: .9; }
 .gaveta-links a:active { color: #fff; }
 .gaveta.aberta .gaveta-rot { opacity: 1; transition-delay: .12s; }
 .gaveta.aberta .gaveta-links a { opacity: 1; transform: none; transition-delay: calc(var(--n) * 45ms + 140ms); }

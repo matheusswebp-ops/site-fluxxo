@@ -7,9 +7,10 @@
 <title>Portfólio de Sistemas, Painéis e SaaS | Fluxxo</title>
 <meta name="description" content="Sistemas sob medida criados pela Fluxxo e em uso: gestor financeiro e painel de demandas. Veja as gravações reais funcionando.">
 <link rel="canonical" href="https://fluxxo.io/sistemas">
-<link rel="icon" href="/favicon.ico?v=3" sizes="48x48">
-<link rel="icon" href="/favicon-32.png?v=3" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico?v=4" sizes="48x48">
+<link rel="icon" href="/favicon-32.png?v=4" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fluxxo">
 <meta property="og:locale" content="pt_BR">
@@ -37,12 +38,12 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Sora:wght@400;600&display=swap"></noscript>
-<link rel="stylesheet" href="css/home.css?v=10">
+<link rel="stylesheet" href="css/home.css?v=12">
 <link rel="stylesheet" href="css/portfolio-nova.css?v=11">
 <link rel="stylesheet" href="css/sistemas-nova.css?v=3">
 <script>document.documentElement.classList.add("js")</script>
 <script src="/js/r.js?v=2" defer></script>
-<script src="js/home.js?v=10" defer></script>
+<script src="js/home.js?v=11" defer></script>
 <script src="js/sistemas-nova.js?v=3" defer></script>
 </head>
 <body class="pg-portfolio pg-sistemas">
@@ -96,8 +97,37 @@
           </div>
         </div>
       </div>
+      <div class="has-menu" id="menuPortfolio">
+        <button class="nav-link" type="button" aria-expanded="false" aria-controls="megaPort">
+          Portfólio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mega mega-port" id="megaPort">
+          <div class="mega-grade">
+            <a class="mega-item" style="--k:1" href="webdesign.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+              <span><strong>Sites</strong><span>Landing pages, páginas de vendas e lojas</span></span>
+            </a>
+            <a class="mega-item" style="--k:2" href="design.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H16c3.1 0 5.6-2.5 5.6-5.6C22 6 17.5 2 12 2z"/></svg></span>
+              <span><strong>Design</strong><span>Carrosséis, anúncios e capas de vídeo</span></span>
+            </a>
+            <a class="mega-item" style="--k:3" href="edicao.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+              <span><strong>Vídeo</strong><span>Reels editados, com som</span></span>
+            </a>
+            <a class="mega-item" style="--k:4" href="sistemas.html">
+              <span class="mega-ic vidro-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+              <span><strong>Sistemas</strong><span>Gravações de sistemas em uso</span></span>
+            </a>
+          </div>
+          <div class="mega-pe" style="--k:5">
+            <span>Trabalhos reais de clientes</span>
+            <a href="/#trabalhos">Ver por área na home <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
       <a class="nav-link" href="/#como-funciona">Como funciona</a>
-      <a class="nav-link" href="/#portfolio">Portfólio</a>
+      <a class="nav-link" href="blog.html">Blog</a>
       <a class="nav-link" href="/#contratacao">Contratação</a>
     </nav>
 
@@ -114,10 +144,15 @@
     <a style="--n:3" href="edicao.html">Edição de vídeo</a>
     <a style="--n:4" href="webdesign.html">Criação de sites</a>
     <a style="--n:5" href="sistemas.html">Sistemas e SaaS</a>
+    <p class="gaveta-rot">Portfólio</p>
+    <a style="--n:6" href="webdesign.html">Sites</a>
+    <a style="--n:7" href="design.html">Design</a>
+    <a style="--n:8" href="edicao.html">Vídeo</a>
+    <a style="--n:9" href="sistemas.html">Sistemas</a>
     <p class="gaveta-rot">Fluxxo</p>
-    <a style="--n:6" href="/#como-funciona">Como funciona</a>
-    <a style="--n:7" href="/#portfolio">Portfólio</a>
-    <a style="--n:8" href="/#contratacao">Contratação</a>
+    <a style="--n:10" href="/#como-funciona">Como funciona</a>
+    <a style="--n:11" href="blog.html">Blog</a>
+    <a style="--n:12" href="/#contratacao">Contratação</a>
   </nav>
   <div class="gaveta-pe">
     <a class="btn btn-p" data-wa="menu" href="https://wa.me/5585992657146" target="_blank" rel="noopener">Conversar com a equipe</a>
