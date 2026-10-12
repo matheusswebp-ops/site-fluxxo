@@ -114,7 +114,7 @@ def pagina(texto_original, corpo, classe):
 {robots}<meta name="theme-color" content="#FFFFFF">
 {seo}
 {FONTES}
-<link rel="stylesheet" href="css/home.css?v=12">
+<link rel="stylesheet" href="css/home.css?v=13">
 <link rel="stylesheet" href="css/blog-nova.css?v={V}">
 <script>document.documentElement.classList.add("js")</script>
 <script src="/js/r.js?v=2" defer></script>
