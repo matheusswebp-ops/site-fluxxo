@@ -35,12 +35,11 @@ body{
 .nav{
   position:absolute;top:50%;transform:translateY(-50%);
   width:36px;height:36px;border-radius:50%;
-  background:rgba(255,255,255,.12);backdrop-filter:blur(4px);
-  border:none;color:#fff;font-size:16px;
+  background:rgba(255,255,255,.92);box-shadow:0 1px 6px rgba(0,0,0,.25);
+  border:none;color:#262626;font-size:16px;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;opacity:0;transition:opacity .2s;
+  cursor:pointer;
 }
-.stage:hover .nav{opacity:1}
 .nav.prev{left:10px}
 .nav.next{right:10px}
 .nav:disabled{display:none}
